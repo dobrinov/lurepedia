@@ -1,0 +1,34 @@
+<%# locals: catch %>
+<%= link_to catch_path(catch), class: "card catch-card" do %>
+  <div class="ph ph-catch">
+    <% if catch.photos.attached? %>
+      <%= image_tag catch.photos.first.variant(resize_to_fill: [480, 360]), alt: species_common_name(catch.species), loading: "lazy" %>
+    <% else %>
+      <%= render "shared/fish_glyph" %>
+    <% end %>
+    <% if catch.photos.attached? && catch.photos.size > 1 %>
+      <span class="badge" style="position:absolute;top:9px;right:9px;background:rgba(24,24,27,.78);color:#fff">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="m3 16 5-5 4 4 3-3 6 6"></path></svg>
+        <%= catch.photos.size %>
+      </span>
+    <% end %>
+    <span style="position:absolute;bottom:9px;left:9px;background:rgba(255,255,255,.92);color:var(--ink-2);font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px"><%= catch.user.initials %></span>
+  </div>
+  <div class="card-body">
+    <div style="font-weight:600;font-size:14.5px"><%= species_common_name(catch.species) %></div>
+    <div class="muted" style="font-size:12.5px"><%= t("catch.on_lure", lure: catch.lure.title) %></div>
+    <div class="chips">
+      <% catch.condition_pairs.first(3).each do |group, value| %><span class="tag"><%= condition_name(group, value) %></span><% end %>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--surface-2)">
+      <span class="row" style="gap:6px;font-size:12px;color:var(--muted)">
+        <%= country_flag(catch.user.country, size: 16) %>
+        <span><%= catch.user.name %></span>
+      </span>
+      <span class="row" style="gap:4px;font-size:12px;font-weight:600;color:var(--ink-2)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg>
+        <%= catch.upvotes_count %>
+      </span>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<%# locals: page (Paginatable::Page) %>
+<% if page.total_pages > 1 %>
+  <nav class="pager" aria-label="Pagination">
+    <% if page.first? %>
+      <span class="disabled"><%= t("common.prev") %></span>
+    <% else %>
+      <%= link_to t("common.prev"), url_for(request.query_parameters.merge(page: page.current - 1)) %>
+    <% end %>
+
+    <% page.window.each do |n| %>
+      <% if n == page.current %>
+        <span class="current"><%= n %></span>
+      <% else %>
+        <%= link_to n, url_for(request.query_parameters.merge(page: n)) %>
+      <% end %>
+    <% end %>
+
+    <% if page.last? %>
+      <span class="disabled"><%= t("common.next") %></span>
+    <% else %>
+      <%= link_to t("common.next"), url_for(request.query_parameters.merge(page: page.current + 1)) %>
+    <% end %>
+  </nav>
+<% end %>

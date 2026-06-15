@@ -1,0 +1,27 @@
+<%#
+  locals: name (form field name), options (array of [label, value]),
+          selected (value, optional), placeholder (string, optional), form (optional form builder)
+%>
+<% options ||= [] %>
+<% placeholder ||= t("common.search") %>
+<% json = options.map { |label, value| { label: label, value: value } } %>
+<% selected_label = (options.find { |_l, v| v.to_s == selected.to_s } || []).first %>
+<div class="combobox" data-controller="combobox"
+     data-combobox-options-value="<%= json.to_json %>">
+  <% if defined?(form) && form %>
+    <%= form.hidden_field name.to_s.split(/[\[\]]/).last, value: selected, data: { combobox_target: "hidden" } %>
+  <% else %>
+    <%= hidden_field_tag name, selected, data: { combobox_target: "hidden" } %>
+  <% end %>
+  <button type="button" class="combobox-trigger <%= 'placeholder' unless selected_label %>"
+          data-combobox-target="trigger" data-action="combobox#toggle" aria-expanded="false">
+    <span data-combobox-target="label"><%= selected_label || placeholder %></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+  </button>
+  <div class="combobox-panel" data-combobox-target="panel" hidden>
+    <div class="combobox-search">
+      <input type="text" placeholder="<%= placeholder %>" data-combobox-target="search" data-action="input->combobox#filter">
+    </div>
+    <div class="combobox-options" data-combobox-target="options"></div>
+  </div>
+</div>

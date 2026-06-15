@@ -1,0 +1,34 @@
+<%# locals: lure %>
+<%= link_to lure_path(lure), class: "card lure-card" do %>
+  <div class="ph ph-lure">
+    <% if lure.variants.any? { |v| v.photo.attached? } %>
+      <%= image_tag (lure.variants.detect { |v| v.photo.attached? }).photo.variant(resize_to_fill: [560, 350]), alt: lure.title, loading: "lazy" %>
+    <% else %>
+      <%= render "shared/lure_glyph" %>
+    <% end %>
+    <% if lure.proven? %>
+      <span class="badge badge-proof" style="position:absolute;top:10px;left:10px">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg>
+        <%= t("lure.catches_count", count: lure.catches_count) %>
+      </span>
+    <% else %>
+      <span class="badge badge-noproof" style="position:absolute;top:10px;left:10px"><%= t("lure.no_proof") %></span>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <div class="card-brand"><%= lure.brand.name %></div>
+    <div class="card-title"><%= lure.model %></div>
+    <div class="chips">
+      <span class="tag"><%= lure_type_name(lure.lure_type) %></span>
+      <% if (d = fmt_depth(lure.depth_min_cm, lure.depth_max_cm)) %><span class="tag"><%= d %></span><% end %>
+      <span class="tag"><%= action_name(lure.action) %></span>
+    </div>
+    <% if lure.proven? %>
+      <div class="chips" style="margin-top:auto;padding-top:6px">
+        <% lure.proven_species.limit(3).each do |sp| %><span class="pill"><%= species_common_name(sp) %></span><% end %>
+      </div>
+    <% else %>
+      <div class="muted" style="margin-top:auto;padding-top:6px;font-size:12px;font-style:italic"><%= t("lure.be_first_short") %></div>
+    <% end %>
+  </div>
+<% end %>

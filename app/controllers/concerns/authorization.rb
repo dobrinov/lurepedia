@@ -5,6 +5,21 @@ module Authorization
 
   included do
     rescue_from NotAuthorized, with: :deny_access
+    helper_method :policy if respond_to?(:helper_method)
+  end
+
+  # Build a policy: policy(:catch) or policy(record) → infers <Class>Policy.
+  def policy(target)
+    klass =
+      if target.is_a?(Symbol) || target.is_a?(String)
+        "#{target.to_s.classify}Policy"
+      elsif target.is_a?(Class)
+        "#{target.name}Policy"
+      else
+        "#{target.class.name}Policy"
+      end
+    record = (target.is_a?(Symbol) || target.is_a?(String) || target.is_a?(Class)) ? nil : target
+    klass.constantize.new(current_user, record)
   end
 
   private
