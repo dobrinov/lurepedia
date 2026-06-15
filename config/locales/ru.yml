@@ -1,0 +1,4 @@
+ru:
+  common:
+    # UI strings fall back to English (config.i18n.fallbacks = [:en]).
+    all: All

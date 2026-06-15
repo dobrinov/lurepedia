@@ -1,0 +1,422 @@
+bg:
+  common:
+    all: Всички
+    none: "—"
+    save: Запази
+    cancel: Отказ
+    submit: Изпрати
+    edit: Редактирай
+    delete: Изтрий
+    add: Добави
+    search: Търси
+    loading: Зарежда се…
+    showing: "%{from}–%{to} от %{count}"
+    page: Страница
+    next: Напред
+    prev: Назад
+    by: от
+    on: с
+    yes: Да
+    no: Не
+    verified: Потвърден
+    promoted: Промотиран
+    sponsored: Спонсориран
+
+  home:
+    tagline: Всяка примамка, доказана с улов
+    meta_description: Lurepedia е споделена енциклопедия на риболовни примамки — намери примамки и виж реални доказателства, че ловят.
+    hero_title: Всяка примамка, доказана с улов
+    hero_sub: Споделена енциклопедия на риболовни примамки. Намери какво работи — подкрепено с реални улови.
+    browse_lures: Разгледай примамки
+    browse_another_way: Разгледай по друг начин
+    add_a_catch: Добави улов
+
+  nav:
+    lures: Примамки
+    species: Видове
+    catches: Улови
+    brands: Марки
+    shops: Магазини
+    leaderboard: Класация
+    search_placeholder: Търси примамки, риби, марки…
+
+  auth:
+    sign_in: Вход
+    sign_up: Създай профил
+    sign_out: Изход
+    email: Имейл
+    password: Парола
+    name: Име
+    sign_in_required: Моля, влез, за да допринесеш.
+    not_authorized: Нямаш права за това действие.
+    sign_in_to_contribute: Влез, за да допринесеш
+    create_account: Създай профил
+    have_account: Вече имаш профил?
+    no_account: Нов в Lurepedia?
+    welcome_back: Добре дошъл отново
+    join: Присъедини се към Lurepedia
+    choose_country: Твоята държава
+    choose_language: Предпочитан език
+    continue_with_google: Продължи с Google
+
+  units:
+    label: Мерни единици
+    auto: Автоматично (по език)
+    imperial: Имперски (ft, in, lb)
+    metric: Метрични (m, cm, kg)
+    cm: см
+    in: in
+    g: г
+    kg: кг
+    oz: oz
+    lb: lb
+    ft: ft
+    m: м
+
+  water:
+    fresh: Сладка вода
+    salt: Солена вода
+    both: Сладка и солена
+
+  action:
+    suspending: Суспендиращ
+    floating: Плаващ
+    sinking: Потъващ
+    none: "—"
+
+  condition:
+    season:
+      label: Сезон
+      any: Всички сезони
+      spring: Пролет
+      summer: Лято
+      fall: Есен
+      winter: Зима
+    clarity:
+      label: Бистрота
+      any: Всякаква бистрота
+      clear: Бистра
+      stained: Леко мътна
+      muddy: Мътна
+    water_body:
+      label: Водоем
+      any: Всякакъв водоем
+      lake: Езеро
+      pond: Яз
+      river: Река
+      reservoir: Язовир
+      stream: Поток
+    wind:
+      label: Вятър
+      any: Всякакъв вятър
+      calm: Тихо
+      light: Слаб (5–10 mph)
+      moderate: Умерен (10–20 mph)
+      strong: Силен (20+ mph)
+    time_of_day:
+      label: Време от деня
+      any: По всяко време
+      dawn: Зора
+      morning: Сутрин
+      midday: Обед
+      afternoon: Следобед
+      dusk: Здрач
+      night: Нощ
+
+  lure_type:
+    crankbait: Воблер
+    jerkbait: Джеркбейт
+    soft_plastic: Силикон
+    spinnerbait: Спинърбейт
+    bladed_jig: Чатърбейт
+    topwater: Повърхностна
+    swimbait: Суимбейт
+    jig: Джиг
+    spoon: Клатушка
+    lipless_crankbait: Безлопатков воблер
+
+  lure:
+    title: Примамки
+    subtitle: Всяка примамка, доказана с улов
+    add: Добави примамка
+    add_title: Добави примамка
+    type: Тип
+    depth: Целева дълбочина
+    action: Движение
+    water: Вода
+    brand: Марка
+    variants: Варианти
+    variant: Вариант
+    proof: Доказателство, че работи
+    catches_count:
+      one: "%{count} улов"
+      other: "%{count} улова"
+    no_proof: Все още без доказателство
+    be_first: Бъди първият, който докаже, че тази примамка лови
+    be_first_short: Бъди първият, който го докаже →
+    where_to_buy: Откъде да купя
+    quick_facts: Бързи факти
+    action_video: Примамката в действие
+    add_video: Добави видео в действие
+    watch_video: Гледай видео
+    suggest_edit: Предложи редакция
+    add_catch: Добави улов
+    proven_for: Доказана за
+    no_matches: Няма примамки по тези филтри
+    size: Размер
+    weight: Тегло
+
+  species:
+    title: Видове
+    subtitle: Речник на рибите
+    add: Добави вид
+    add_title: Добави вид
+    scientific_name: Научно име
+    habitat: Местообитание
+    tab_lures: Примамки
+    tab_catches: Улови
+    tab_leaderboard: Класация
+    tab_history: История
+    proven_lures: Доказани примамки
+    lures_count:
+      one: "%{count} примамка"
+      other: "%{count} примамки"
+    no_proven_lures: Все още без доказани примамки
+    be_first_lure: Бъди първият, който докаже примамка за тази риба
+
+  brand:
+    title: Марки
+    subtitle: Производителите
+    add: Добави марка
+    add_title: Добави марка
+    founded: Основана
+    country: Държава
+    website: Уебсайт
+    tab_lures: Примамки
+    tab_history: История
+    claim: Заяви тази марка
+    claimed: Заявена
+    owned_by: Собственост на
+
+  shop:
+    title: Магазини
+    subtitle: Откъде да купя
+    add: Добави магазин
+    add_title: Добави магазин
+    promoted_section: Промотирани
+    all_shops: Всички магазини
+    visit: Посети магазина
+    claim: Заяви магазин
+    owned_by: Собственост на
+    added_by: Добавен от
+    show_history: История
+    hide_history: Скрий историята
+
+  catch:
+    title: Улови
+    subtitle: Скорошни доказателства от общността
+    add: Добави улов
+    add_title: Докладвай улов
+    on_lure: "с %{lure}"
+    conditions: Условия
+    location: Локация
+    length: Дължина
+    weight: Тегло
+    contributor: Допринесъл
+    comments: Коментари
+    add_comment: Добави коментар
+    upvote: Гласувай
+    report: Докладвай този улов
+    related: Още улови от този вид
+    photos: Снимки
+    pick_lure: Избери примамка
+    pick_variant: Избери вариант
+    pick_species: Какво улови?
+    note: Бележки
+    submitted: Изпратено за преглед
+    submitted_body: Благодарим! Уловът ти е в опашката за модерация и ще се появи след одобрение.
+    add_another: Добави още един
+
+  search:
+    title: Търсене
+    filters: Филтри
+    combine_free: Комбинирай свободно — резултатите отговарят на всички
+    results_for: "Резултати за „%{q}“"
+    no_results: Няма намерени резултати
+    section_lures: Примамки
+    section_species: Видове
+    section_brands: Марки
+    any_species: Всички видове
+    any_type: Всички типове
+    any_brand: Всички марки
+    any_depth: Всякаква дълбочина
+    saltwater_only: Само солена вода
+    clear_all: Изчисти всичко
+    show_n_lures:
+      one: "Покажи %{count} примамка"
+      other: "Покажи %{count} примамки"
+    other: Друго
+
+  leaderboard:
+    title: Класация
+    subtitle: Топ риболовци по вид
+    all_species: Всички видове
+    rank_by: Подреди по
+    metric_catches: Улови
+    metric_upvotes: Гласове
+    metric_length: Дължина на рибата
+    rank: Място
+    angler: Риболовец
+    catches: Улови
+    upvotes: Гласове
+    best_length: Най-добра дължина
+    specialist: специалист
+    species_count:
+      one: "%{count} вид"
+      other: "%{count} вида"
+    you: ТИ
+    empty: Все още няма класирани риболовци
+
+  contribute:
+    suggest_edit: Предложи редакция
+    suggest_title: "Предложи редакция на %{name}"
+    suggest_note: Предложението ти ще бъде прегледано от модератор.
+    suggested: Предложението е изпратено
+    suggested_body: Благодарим — модератор ще прегледа предложението ти.
+    add_photos: Добави снимки
+    moderation_note: Приносите се преглеждат преди публикуване.
+
+  claim:
+    title: "Заяви %{name}"
+    intro: "Заяви този %{kind}, за да управляваш обявата. Потвърждаваме собствеността чрез DNS TXT запис."
+    step_intro: Започни
+    step_dns: Добави DNS запис
+    step_verify: Потвърди
+    domain: Твоят домейн
+    txt_record: Добави този TXT запис
+    copy: Копирай
+    copied: Копирано!
+    verify: Потвърди собствеността
+    verified_title: Собствеността е потвърдена
+    verified_body: Вече управляваш тази обява. Промените все пак минават през модерация.
+    pending: Изчаква потвърждение
+
+  report:
+    title: Докладвай съдържание
+    target: Докладване
+    reason: Причина
+    reason_inaccurate: Неточно или подвеждащо
+    reason_fake: Не е реален улов / фалшива снимка
+    reason_wrong: Грешен вид или примамка
+    reason_spam: Спам или реклама
+    reason_offensive: Обидно или неуместно
+    reason_other: Друго
+    note: Допълнителни детайли (по избор)
+    submit: Изпрати сигнал
+    submitted: Сигналът е изпратен
+    submitted_body: Благодарим — модераторите ще прегледат това скоро.
+
+  moderation:
+    title: Опашка за модерация
+    subtitle: Преглед на приноси от общността
+    moderator_view: ИЗГЛЕД НА МОДЕРАТОР
+    all: Всички
+    reports: Сигнали
+    catches: Улови
+    edits: Редакции
+    catalog: Каталог
+    claims: Заявки
+    awaiting: "%{count} чакат преглед"
+    approve: Одобри
+    reject: Отхвърли
+    undo: Отмени
+    approved: Одобрено
+    rejected: Отхвърлено
+    needs_admin: Изисква админ
+    submitted_by: Изпратено от
+    view_details: Виж детайли
+    kind:
+      catch: Улов
+      edit: Редакция
+      catalog: Каталог
+      claim: Заявка
+      report: Сигнал
+
+  admin:
+    title: Админ конзола
+    overview: Преглед
+    people: Хора и роли
+    activity: Дневник на активността
+    pending: Чакащи преглед
+    catches_logged: Регистрирани улови
+    contributors: Допринесли
+    lures_catalogued: Каталогизирани примамки
+    role: Роля
+    member: Член
+    moderator: Модератор
+    admin: Админ
+    joined: Присъединил се
+    you: ТИ
+
+  settings:
+    title: Настройки на профила
+    profile: Профил
+    country: Държава
+    language: Език
+    units: Мерни единици
+    notifications: Известия
+    saved: Настройките са запазени
+
+  dashboard:
+    my_catches: Моите улови
+    total_upvotes: Общо получени гласове
+    no_catches: Все още нямаш регистрирани улови.
+
+  provenance:
+    title: История и собственост
+    edits:
+      one: "%{count} редакция"
+      other: "%{count} редакции"
+    added_by: Добавено от
+    owned_by: Собственост на
+    originally_added: "Първоначално добавено от %{name} · %{date}"
+    edit_history: История на редакциите
+    created: Създаде този запис
+
+  species_names:
+    largemouth_bass:
+      common: Голямоуст костур
+      habitat: Топли, обрасли езера и язове; хищник от засада край укрития.
+    smallmouth_bass:
+      common: Малкоуст костур
+      habitat: Хладни, бистри реки и скалисти езера; силен борец.
+    northern_pike:
+      common: Щука
+      habitat: Обрасли заливи и хладни езера; агресивен хищник от засада.
+    walleye:
+      common: Американски бяс
+      habitat: Дълбоки, хладни езера и реки; храни се при слаба светлина.
+    yellow_perch:
+      common: Жълт костур
+      habitat: Стадна риба в езера и язове; храни се край дъното.
+    muskellunge:
+      common: Маскинонг
+      habitat: Големи бистри езера и реки; върховен сладководен хищник.
+    bluegill:
+      common: Син слънчев костур
+      habitat: Топли язове и плитчини; гнезди на колонии.
+    rainbow_trout:
+      common: Дъгова пъстърва
+      habitat: Студени потоци, реки и езера; ценена спортна риба.
+    mahi_mahi:
+      common: Махи-махи
+      habitat: Топли открити повърхностни води; бърз пелагичен хищник.
+    striped_bass:
+      common: Раиран лаврак
+      habitat: Крайбрежен прибой, устия и големи реки; мигриращ.
+    bonefish:
+      common: Кокалена риба
+      habitat: Тропически плитки зони; плашлива и бърза.
+    chinook_salmon:
+      common: Чинук
+      habitat: Студени тихоокеански реки и езера; мощна мигрираща риба.

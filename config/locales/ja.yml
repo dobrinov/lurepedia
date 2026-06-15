@@ -1,0 +1,417 @@
+ja:
+  common:
+    all: すべて
+    none: "—"
+    save: 保存
+    cancel: キャンセル
+    submit: 送信
+    edit: 編集
+    delete: 削除
+    add: 追加
+    search: 検索
+    loading: 読み込み中…
+    showing: "%{count}件中 %{from}–%{to}"
+    page: ページ
+    next: 次へ
+    prev: 前へ
+    by: 投稿者
+    on: 使用
+    yes: はい
+    no: いいえ
+    verified: 認証済み
+    promoted: 広告
+    sponsored: 提供
+
+  home:
+    tagline: すべてのルアーを、釣果で証明
+    meta_description: Lurepediaは釣りルアーの共同百科事典です。ルアーを見つけ、実際の釣果という証拠を確認できます。
+    hero_title: すべてのルアーを、釣果で証明
+    hero_sub: 釣りルアーの共同百科事典。実際の釣果に裏付けられた「効くルアー」を見つけよう。
+    browse_lures: ルアーを探す
+    browse_another_way: 別の方法で探す
+    add_a_catch: 釣果を追加
+
+  nav:
+    lures: ルアー
+    species: 魚種
+    catches: 釣果
+    brands: ブランド
+    shops: ショップ
+    leaderboard: ランキング
+    search_placeholder: ルアーを検索 — タイプ・水域・アクションで絞り込み…
+
+  auth:
+    sign_in: ログイン
+    sign_up: アカウント作成
+    sign_out: ログアウト
+    email: メール
+    password: パスワード
+    name: 名前
+    sign_in_required: 投稿するにはログインしてください。
+    not_authorized: この操作の権限がありません。
+    sign_in_to_contribute: ログインして投稿
+    create_account: アカウント作成
+    have_account: すでにアカウントをお持ちですか？
+    no_account: Lurepediaは初めてですか？
+    welcome_back: おかえりなさい
+    join: Lurepediaに参加
+    choose_country: お住まいの国
+    choose_language: 希望言語
+    continue_with_google: Googleで続行
+
+  units:
+    label: 単位
+    auto: 自動（言語に応じる）
+    imperial: ヤード・ポンド法（ft, in, lb）
+    metric: メートル法（m, cm, kg）
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: 淡水
+    salt: 海水
+    both: 淡水・海水
+
+  action:
+    suspending: サスペンド
+    floating: フローティング
+    sinking: シンキング
+    none: "—"
+
+  condition:
+    season:
+      label: 季節
+      any: すべての季節
+      spring: 春
+      summer: 夏
+      fall: 秋
+      winter: 冬
+    clarity:
+      label: 透明度
+      any: すべての透明度
+      clear: クリア
+      stained: ステイン
+      muddy: マッディ
+    water_body:
+      label: 水域
+      any: すべての水域
+      lake: 湖
+      pond: 池
+      river: 川
+      reservoir: 貯水池
+      stream: 渓流
+    wind:
+      label: 風
+      any: すべての風
+      calm: 無風
+      light: 弱い（5〜10 mph）
+      moderate: 中程度（10〜20 mph）
+      strong: 強い（20 mph以上）
+    time_of_day:
+      label: 時間帯
+      any: いつでも
+      dawn: 夜明け
+      morning: 午前
+      midday: 正午
+      afternoon: 午後
+      dusk: 夕暮れ
+      night: 夜
+
+  lure_type:
+    crankbait: クランクベイト
+    jerkbait: ジャークベイト
+    soft_plastic: ソフトプラスチック
+    spinnerbait: スピナーベイト
+    bladed_jig: チャターベイト
+    topwater: トップウォーター
+    swimbait: スイムベイト
+    jig: ジグ
+    spoon: スプーン
+    lipless_crankbait: リップレスクランク
+
+  lure:
+    title: ルアー
+    subtitle: すべてのルアーを、釣果で証明
+    add: ルアーを追加
+    add_title: ルアーを追加
+    type: タイプ
+    depth: 狙うレンジ
+    action: アクション
+    water: 水域
+    brand: ブランド
+    variants: バリエーション
+    variant: バリエーション
+    proof: 効果の証拠
+    catches_count:
+      other: "%{count} 釣果"
+    no_proof: まだ証拠なし
+    be_first: このルアーが釣れることを最初に証明しよう
+    be_first_short: 最初に証明しよう →
+    where_to_buy: 購入先
+    quick_facts: 基本情報
+    action_video: ルアーの動画
+    add_video: アクション動画を追加
+    watch_video: 動画を見る
+    suggest_edit: 修正を提案
+    add_catch: 釣果を追加
+    proven_for: 実績あり
+    no_matches: 条件に合うルアーがありません
+    size: サイズ
+    weight: 重さ
+
+  species:
+    title: 魚種
+    subtitle: 魚の図鑑
+    add: 魚種を追加
+    add_title: 魚種を追加
+    scientific_name: 学名
+    habitat: 生息地
+    tab_lures: ルアー
+    tab_catches: 釣果
+    tab_leaderboard: ランキング
+    tab_history: 履歴
+    proven_lures: 実績のあるルアー
+    lures_count:
+      other: "%{count} ルアー"
+    no_proven_lures: まだ実績のあるルアーがありません
+    be_first_lure: この魚に効くルアーを最初に証明しよう
+
+  brand:
+    title: ブランド
+    subtitle: メーカー
+    add: ブランドを追加
+    add_title: ブランドを追加
+    founded: 設立
+    country: 国
+    website: ウェブサイト
+    tab_lures: ルアー
+    tab_history: 履歴
+    claim: このブランドを申請
+    claimed: 申請済み
+    owned_by: 所有者
+
+  shop:
+    title: ショップ
+    subtitle: 購入先
+    add: ショップを追加
+    add_title: ショップを追加
+    promoted_section: 広告
+    all_shops: すべてのショップ
+    visit: ショップへ
+    claim: ショップを申請
+    owned_by: 所有者
+    added_by: 追加者
+    show_history: 履歴
+    hide_history: 履歴を隠す
+
+  catch:
+    title: 釣果
+    subtitle: コミュニティの最新の証拠
+    add: 釣果を追加
+    add_title: 釣果を報告
+    on_lure: "使用ルアー: %{lure}"
+    conditions: コンディション
+    location: 場所
+    length: 全長
+    weight: 重さ
+    contributor: 投稿者
+    comments: コメント
+    add_comment: コメントを追加
+    upvote: いいね
+    report: この釣果を報告
+    related: この魚種の他の釣果
+    photos: 写真
+    pick_lure: ルアーを選択
+    pick_variant: バリエーションを選択
+    pick_species: 何が釣れましたか？
+    note: メモ
+    submitted: 審査に送信しました
+    submitted_body: ありがとうございます！釣果は審査待ちで、承認後に表示されます。
+    add_another: 続けて追加
+
+  search:
+    title: 検索
+    filters: フィルター
+    combine_free: 自由に組み合わせ — すべてに一致
+    results_for: "「%{q}」の結果"
+    no_results: 結果が見つかりません
+    section_lures: ルアー
+    section_species: 魚種
+    section_brands: ブランド
+    any_species: すべての魚種
+    any_type: すべてのタイプ
+    any_brand: すべてのブランド
+    any_depth: すべてのレンジ
+    saltwater_only: 海水のみ
+    clear_all: すべてクリア
+    show_n_lures:
+      other: "%{count} ルアーを表示"
+    other: その他
+
+  leaderboard:
+    title: ランキング
+    subtitle: 魚種別トップアングラー
+    all_species: すべての魚種
+    rank_by: 並び替え
+    metric_catches: 釣果数
+    metric_upvotes: いいね
+    metric_length: 魚の全長
+    rank: 順位
+    angler: アングラー
+    catches: 釣果数
+    upvotes: いいね
+    best_length: 最長記録
+    specialist: スペシャリスト
+    species_count:
+      other: "%{count} 魚種"
+    you: あなた
+    empty: まだランク入りのアングラーがいません
+
+  contribute:
+    suggest_edit: 修正を提案
+    suggest_title: "%{name} の修正を提案"
+    suggest_note: 提案はモデレーターが確認します。
+    suggested: 提案を送信しました
+    suggested_body: ありがとうございます — モデレーターが提案を確認します。
+    add_photos: 写真を追加
+    moderation_note: 投稿は公開前に審査されます。
+
+  claim:
+    title: "%{name} を申請"
+    intro: "この%{kind}を申請して掲載を管理できます。DNS TXTレコードで所有権を確認します。"
+    step_intro: はじめる
+    step_dns: DNSレコードを追加
+    step_verify: 確認
+    domain: あなたのドメイン
+    txt_record: このTXTレコードを追加
+    copy: コピー
+    copied: コピーしました！
+    verify: 所有権を確認
+    verified_title: 所有権を確認しました
+    verified_body: この掲載を管理できるようになりました。変更は引き続き審査されます。
+    pending: 確認待ち
+
+  report:
+    title: コンテンツを報告
+    target: 報告対象
+    reason: 理由
+    reason_inaccurate: 不正確または誤解を招く
+    reason_fake: 実際の釣果でない／加工写真
+    reason_wrong: 魚種またはルアーが誤り
+    reason_spam: スパムまたは広告
+    reason_offensive: 不適切な内容
+    reason_other: その他
+    note: 追加の詳細（任意）
+    submit: 報告を送信
+    submitted: 報告を送信しました
+    submitted_body: ありがとうございます — モデレーターが間もなく確認します。
+
+  moderation:
+    title: モデレーションキュー
+    subtitle: コミュニティ投稿の審査
+    moderator_view: モデレーター表示
+    all: すべて
+    reports: 報告
+    catches: 釣果
+    edits: 修正
+    catalog: カタログ
+    claims: 申請
+    awaiting: "%{count}件 審査待ち"
+    approve: 承認
+    reject: 却下
+    undo: 取り消し
+    approved: 承認済み
+    rejected: 却下済み
+    needs_admin: 管理者が必要
+    submitted_by: 投稿者
+    view_details: 詳細を表示
+    kind:
+      catch: 釣果
+      edit: 修正
+      catalog: カタログ
+      claim: 申請
+      report: 報告
+
+  admin:
+    title: 管理コンソール
+    overview: 概要
+    people: ユーザーと権限
+    activity: アクティビティログ
+    pending: 審査待ち
+    catches_logged: 登録された釣果
+    contributors: 投稿者
+    lures_catalogued: 登録ルアー
+    role: 権限
+    member: メンバー
+    moderator: モデレーター
+    admin: 管理者
+    joined: 参加日
+    you: あなた
+
+  settings:
+    title: アカウント設定
+    profile: プロフィール
+    country: 国
+    language: 言語
+    units: 単位
+    notifications: 通知
+    saved: 設定を保存しました
+
+  dashboard:
+    my_catches: 自分の釣果
+    total_upvotes: 獲得した総いいね数
+    no_catches: まだ釣果を登録していません。
+
+  provenance:
+    title: 履歴と所有
+    edits:
+      other: "%{count} 件の編集"
+    added_by: 追加者
+    owned_by: 所有者
+    originally_added: "最初の追加者 %{name} · %{date}"
+    edit_history: 編集履歴
+    created: このエントリを作成
+
+  species_names:
+    largemouth_bass:
+      common: ラージマウスバス
+      habitat: 水草の多い温かい湖や池。カバー周りで待ち伏せする捕食者。
+    smallmouth_bass:
+      common: スモールマウスバス
+      habitat: 冷たく澄んだ川や岩場の湖。強い引きが特徴。
+    northern_pike:
+      common: ノーザンパイク
+      habitat: 水草の茂る入り江や冷たい湖。攻撃的な待ち伏せ型捕食者。
+    walleye:
+      common: ウォールアイ
+      habitat: 深く冷たい湖や川。薄暗い時間に捕食する。
+    yellow_perch:
+      common: イエローパーチ
+      habitat: 湖や池の群れ魚。底付近で捕食する。
+    muskellunge:
+      common: マスキー
+      habitat: 大きく澄んだ湖や川。淡水の頂点捕食者。
+    bluegill:
+      common: ブルーギル
+      habitat: 温かい池や浅瀬。集団で営巣する。
+    rainbow_trout:
+      common: ニジマス
+      habitat: 冷たい渓流・川・湖。人気の高い対象魚。
+    mahi_mahi:
+      common: シイラ
+      habitat: 温かい沖合の表層。素早い回遊性の捕食者。
+    striped_bass:
+      common: ストライプドバス
+      habitat: 沿岸のサーフ、河口、大河。回遊する。
+    bonefish:
+      common: ボーンフィッシュ
+      habitat: 熱帯の浅瀬。警戒心が強く素早い。
+    chinook_salmon:
+      common: キングサーモン
+      habitat: 冷たい太平洋の川や湖。力強い回遊魚。

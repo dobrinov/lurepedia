@@ -1,0 +1,422 @@
+de:
+  common:
+    all: Alle
+    none: "—"
+    save: Speichern
+    cancel: Abbrechen
+    submit: Absenden
+    edit: Bearbeiten
+    delete: Löschen
+    add: Hinzufügen
+    search: Suchen
+    loading: Wird geladen…
+    showing: "%{from}–%{to} von %{count}"
+    page: Seite
+    next: Weiter
+    prev: Zurück
+    by: von
+    on: an
+    yes: Ja
+    no: Nein
+    verified: Verifiziert
+    promoted: Gesponsert
+    sponsored: Gesponsert
+
+  home:
+    tagline: Jeder Köder, bewiesen durch einen Fang
+    meta_description: Lurepedia ist eine gemeinschaftliche Enzyklopädie der Angelköder — finde Köder und sieh echte Beweise, dass sie fangen.
+    hero_title: Jeder Köder, bewiesen durch einen Fang
+    hero_sub: Eine gemeinschaftliche Enzyklopädie der Angelköder. Finde, was funktioniert — belegt durch echte Fänge.
+    browse_lures: Köder durchsuchen
+    browse_another_way: Anders stöbern
+    add_a_catch: Fang hinzufügen
+
+  nav:
+    lures: Köder
+    species: Fischarten
+    catches: Fänge
+    brands: Marken
+    shops: Shops
+    leaderboard: Bestenliste
+    search_placeholder: Köder suchen — oder nach Typ, Wasser, Aktion filtern…
+
+  auth:
+    sign_in: Anmelden
+    sign_up: Konto erstellen
+    sign_out: Abmelden
+    email: E-Mail
+    password: Passwort
+    name: Name
+    sign_in_required: Bitte melde dich an, um beizutragen.
+    not_authorized: Dazu hast du keine Berechtigung.
+    sign_in_to_contribute: Zum Beitragen anmelden
+    create_account: Konto erstellen
+    have_account: Hast du schon ein Konto?
+    no_account: Neu bei Lurepedia?
+    welcome_back: Willkommen zurück
+    join: Bei Lurepedia mitmachen
+    choose_country: Dein Land
+    choose_language: Bevorzugte Sprache
+    continue_with_google: Mit Google fortfahren
+
+  units:
+    label: Einheiten
+    auto: Automatisch (nach Sprache)
+    imperial: Imperial (ft, in, lb)
+    metric: Metrisch (m, cm, kg)
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Süßwasser
+    salt: Salzwasser
+    both: Süß- & Salzwasser
+
+  action:
+    suspending: Schwebend
+    floating: Schwimmend
+    sinking: Sinkend
+    none: "—"
+
+  condition:
+    season:
+      label: Jahreszeit
+      any: Jede Jahreszeit
+      spring: Frühling
+      summer: Sommer
+      fall: Herbst
+      winter: Winter
+    clarity:
+      label: Klarheit
+      any: Jede Klarheit
+      clear: Klar
+      stained: Getrübt
+      muddy: Trüb
+    water_body:
+      label: Gewässer
+      any: Jedes Gewässer
+      lake: See
+      pond: Teich
+      river: Fluss
+      reservoir: Stausee
+      stream: Bach
+    wind:
+      label: Wind
+      any: Jeder Wind
+      calm: Windstill
+      light: Leicht (5–10 mph)
+      moderate: Mäßig (10–20 mph)
+      strong: Stark (20+ mph)
+    time_of_day:
+      label: Tageszeit
+      any: Jede Zeit
+      dawn: Morgendämmerung
+      morning: Vormittag
+      midday: Mittag
+      afternoon: Nachmittag
+      dusk: Abenddämmerung
+      night: Nacht
+
+  lure_type:
+    crankbait: Wobbler
+    jerkbait: Jerkbait
+    soft_plastic: Gummiköder
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Oberflächenköder
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Blinker
+    lipless_crankbait: Lippenloser Wobbler
+
+  lure:
+    title: Köder
+    subtitle: Jeder Köder, bewiesen durch einen Fang
+    add: Köder hinzufügen
+    add_title: Köder hinzufügen
+    type: Typ
+    depth: Zieltiefe
+    action: Aktion
+    water: Wasser
+    brand: Marke
+    variants: Varianten
+    variant: Variante
+    proof: Beweis, dass es funktioniert
+    catches_count:
+      one: "%{count} Fang"
+      other: "%{count} Fänge"
+    no_proof: Noch kein Beweis
+    be_first: Sei der Erste, der beweist, dass dieser Köder fängt
+    be_first_short: Sei der Erste, der es beweist →
+    where_to_buy: Wo kaufen
+    quick_facts: Kurzinfos
+    action_video: Köder in Aktion
+    add_video: Aktionsvideo hinzufügen
+    watch_video: Video ansehen
+    suggest_edit: Änderung vorschlagen
+    add_catch: Fang hinzufügen
+    proven_for: Bewährt für
+    no_matches: Keine Köder entsprechen deinen Filtern
+    size: Größe
+    weight: Gewicht
+
+  species:
+    title: Fischarten
+    subtitle: Das Fischlexikon
+    add: Fischart hinzufügen
+    add_title: Fischart hinzufügen
+    scientific_name: Wissenschaftlicher Name
+    habitat: Lebensraum
+    tab_lures: Köder
+    tab_catches: Fänge
+    tab_leaderboard: Bestenliste
+    tab_history: Verlauf
+    proven_lures: Bewährte Köder
+    lures_count:
+      one: "%{count} Köder"
+      other: "%{count} Köder"
+    no_proven_lures: Noch keine bewährten Köder
+    be_first_lure: Sei der Erste, der einen Köder für diesen Fisch beweist
+
+  brand:
+    title: Marken
+    subtitle: Die Hersteller
+    add: Marke hinzufügen
+    add_title: Marke hinzufügen
+    founded: Gegründet
+    country: Land
+    website: Website
+    tab_lures: Köder
+    tab_history: Verlauf
+    claim: Diese Marke beanspruchen
+    claimed: Beansprucht
+    owned_by: Im Besitz von
+
+  shop:
+    title: Shops
+    subtitle: Wo kaufen
+    add: Shop hinzufügen
+    add_title: Shop hinzufügen
+    promoted_section: Gesponsert
+    all_shops: Alle Shops
+    visit: Shop besuchen
+    claim: Shop beanspruchen
+    owned_by: Im Besitz von
+    added_by: Hinzugefügt von
+    show_history: Verlauf
+    hide_history: Verlauf ausblenden
+
+  catch:
+    title: Fänge
+    subtitle: Aktuelle Beweise der Community
+    add: Fang hinzufügen
+    add_title: Fang melden
+    on_lure: "mit %{lure}"
+    conditions: Bedingungen
+    location: Ort
+    length: Länge
+    weight: Gewicht
+    contributor: Beitragender
+    comments: Kommentare
+    add_comment: Kommentar hinzufügen
+    upvote: Hochstimmen
+    report: Diesen Fang melden
+    related: Weitere Fänge dieser Art
+    photos: Fotos
+    pick_lure: Köder wählen
+    pick_variant: Variante wählen
+    pick_species: Was hast du gefangen?
+    note: Notizen
+    submitted: Zur Prüfung eingereicht
+    submitted_body: Danke! Dein Fang ist in der Moderationswarteschlange und erscheint nach Freigabe.
+    add_another: Weiteren hinzufügen
+
+  search:
+    title: Suche
+    filters: Filter
+    combine_free: Frei kombinieren — Ergebnisse passen auf alle
+    results_for: "Ergebnisse für „%{q}“"
+    no_results: Keine Ergebnisse gefunden
+    section_lures: Köder
+    section_species: Fischarten
+    section_brands: Marken
+    any_species: Alle Arten
+    any_type: Alle Typen
+    any_brand: Alle Marken
+    any_depth: Jede Tiefe
+    saltwater_only: Nur Salzwasser
+    clear_all: Alles zurücksetzen
+    show_n_lures:
+      one: "%{count} Köder zeigen"
+      other: "%{count} Köder zeigen"
+    other: Sonstiges
+
+  leaderboard:
+    title: Bestenliste
+    subtitle: Top-Angler nach Fischart
+    all_species: Alle Arten
+    rank_by: Sortieren nach
+    metric_catches: Fänge
+    metric_upvotes: Stimmen
+    metric_length: Fischlänge
+    rank: Rang
+    angler: Angler
+    catches: Fänge
+    upvotes: Stimmen
+    best_length: Beste Länge
+    specialist: Spezialist
+    species_count:
+      one: "%{count} Art"
+      other: "%{count} Arten"
+    you: DU
+    empty: Noch keine bewerteten Angler
+
+  contribute:
+    suggest_edit: Änderung vorschlagen
+    suggest_title: "Änderung zu %{name} vorschlagen"
+    suggest_note: Dein Vorschlag wird von einem Moderator geprüft.
+    suggested: Vorschlag eingereicht
+    suggested_body: Danke — ein Moderator prüft deinen Vorschlag.
+    add_photos: Fotos hinzufügen
+    moderation_note: Beiträge werden vor der Veröffentlichung geprüft.
+
+  claim:
+    title: "%{name} beanspruchen"
+    intro: "Beanspruche diesen %{kind}, um den Eintrag zu verwalten. Wir bestätigen den Besitz über einen DNS-TXT-Eintrag."
+    step_intro: Loslegen
+    step_dns: DNS-Eintrag hinzufügen
+    step_verify: Bestätigen
+    domain: Deine Domain
+    txt_record: Füge diesen TXT-Eintrag hinzu
+    copy: Kopieren
+    copied: Kopiert!
+    verify: Besitz bestätigen
+    verified_title: Besitz bestätigt
+    verified_body: Du verwaltest diesen Eintrag jetzt. Änderungen werden weiterhin moderiert.
+    pending: Bestätigung ausstehend
+
+  report:
+    title: Inhalt melden
+    target: Meldung
+    reason: Grund
+    reason_inaccurate: Ungenau oder irreführend
+    reason_fake: Kein echter Fang / gefälschtes Foto
+    reason_wrong: Falsche Art oder Köder
+    reason_spam: Spam oder Werbung
+    reason_offensive: Beleidigend oder unangemessen
+    reason_other: Sonstiges
+    note: Weitere Angaben (optional)
+    submit: Meldung absenden
+    submitted: Meldung eingereicht
+    submitted_body: Danke — Moderatoren prüfen dies in Kürze.
+
+  moderation:
+    title: Moderationswarteschlange
+    subtitle: Beiträge der Community prüfen
+    moderator_view: MODERATOR-ANSICHT
+    all: Alle
+    reports: Meldungen
+    catches: Fänge
+    edits: Änderungen
+    catalog: Katalog
+    claims: Ansprüche
+    awaiting: "%{count} warten auf Prüfung"
+    approve: Freigeben
+    reject: Ablehnen
+    undo: Rückgängig
+    approved: Freigegeben
+    rejected: Abgelehnt
+    needs_admin: Admin erforderlich
+    submitted_by: Eingereicht von
+    view_details: Details ansehen
+    kind:
+      catch: Fang
+      edit: Änderung
+      catalog: Katalog
+      claim: Anspruch
+      report: Meldung
+
+  admin:
+    title: Admin-Konsole
+    overview: Übersicht
+    people: Personen & Rollen
+    activity: Aktivitätsprotokoll
+    pending: Ausstehende Prüfung
+    catches_logged: Erfasste Fänge
+    contributors: Beitragende
+    lures_catalogued: Katalogisierte Köder
+    role: Rolle
+    member: Mitglied
+    moderator: Moderator
+    admin: Admin
+    joined: Beigetreten
+    you: DU
+
+  settings:
+    title: Kontoeinstellungen
+    profile: Profil
+    country: Land
+    language: Sprache
+    units: Einheiten
+    notifications: Benachrichtigungen
+    saved: Einstellungen gespeichert
+
+  dashboard:
+    my_catches: Meine Fänge
+    total_upvotes: Erhaltene Stimmen insgesamt
+    no_catches: Du hast noch keine Fänge erfasst.
+
+  provenance:
+    title: Verlauf & Besitz
+    edits:
+      one: "%{count} Änderung"
+      other: "%{count} Änderungen"
+    added_by: Hinzugefügt von
+    owned_by: Im Besitz von
+    originally_added: "Ursprünglich hinzugefügt von %{name} · %{date}"
+    edit_history: Änderungsverlauf
+    created: Diesen Eintrag erstellt
+
+  species_names:
+    largemouth_bass:
+      common: Forellenbarsch
+      habitat: Warme, bewachsene Seen und Teiche; Lauerräuber in Deckung.
+    smallmouth_bass:
+      common: Schwarzbarsch
+      habitat: Kühle, klare Flüsse und felsige Seen; starker Kämpfer.
+    northern_pike:
+      common: Hecht
+      habitat: Verkrautete Buchten und kühle Seen; aggressiver Lauerräuber.
+    walleye:
+      common: Zander
+      habitat: Tiefe, kühle Seen und Flüsse; jagt bei wenig Licht.
+    yellow_perch:
+      common: Flussbarsch
+      habitat: Schwarmfisch in Seen und Teichen; frisst nahe dem Grund.
+    muskellunge:
+      common: Muskellunge
+      habitat: Große klare Seen und Flüsse; Spitzenräuber im Süßwasser.
+    bluegill:
+      common: Blauer Sonnenbarsch
+      habitat: Warme Teiche und Flachwasser; nistet in Kolonien.
+    rainbow_trout:
+      common: Regenbogenforelle
+      habitat: Kalte Bäche, Flüsse und Seen; begehrter Sportfisch.
+    mahi_mahi:
+      common: Mahi-Mahi
+      habitat: Warme Hochsee-Oberflächen; schneller pelagischer Räuber.
+    striped_bass:
+      common: Streifenbarsch
+      habitat: Küstenbrandung, Mündungen und große Flüsse; wandernd.
+    bonefish:
+      common: Grätenfisch
+      habitat: Tropische Flachwasserzonen; scheu und schnell.
+    chinook_salmon:
+      common: Königslachs
+      habitat: Kalte pazifische Flüsse und Seen; kraftvoller Wanderfisch.
