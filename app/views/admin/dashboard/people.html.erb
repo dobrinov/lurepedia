@@ -1,0 +1,33 @@
+<% content_for :title, t("admin.people") %>
+<div class="container">
+  <%= render "admin/nav" %>
+
+  <div class="card" style="overflow-x:auto">
+    <table class="lb-table">
+      <thead>
+        <tr><th><%= t("leaderboard.angler") %></th><th><%= t("auth.email") %></th><th><%= t("admin.joined") %></th><th><%= t("nav.catches") %></th><th><%= t("admin.role") %></th></tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="<%= 'you' if user == current_user %>">
+            <td>
+              <span class="row" style="gap:8px">
+                <%= country_flag(user.country, size: 18) %>
+                <strong><%= user.name %></strong>
+                <% if user == current_user %><span class="role-badge role-admin"><%= t("admin.you") %></span><% end %>
+              </span>
+            </td>
+            <td class="muted"><%= user.email_address %></td>
+            <td class="muted"><%= l(user.created_at.to_date, format: :long) %></td>
+            <td><%= user.catches.size %></td>
+            <td>
+              <%= form_with model: user, url: admin_user_path(user), method: :patch do |f| %>
+                <%= f.select :role, User.roles.keys.map { |r| [t("admin.#{r}"), r] }, { selected: user.role }, class: "input", style: "height:34px", onchange: "this.form.requestSubmit()" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

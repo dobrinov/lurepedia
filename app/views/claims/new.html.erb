@@ -1,0 +1,54 @@
+<% content_for :title, t("claim.step_intro") %>
+<div class="container" style="max-width:600px;margin:32px auto">
+  <% unless @claimable %>
+    <h1 style="font-size:24px;font-weight:700;margin-bottom:12px"><%= @type == "brand" ? t("brand.claim") : t("shop.claim") %></h1>
+    <p class="muted"><%= t("claim.intro", kind: @type) %></p>
+    <p style="margin-top:16px"><%= link_to (@type == "brand" ? t("nav.brands") : t("nav.shops")), (@type == "brand" ? brands_path : shops_path), class: "btn" %></p>
+  <% else %>
+    <%
+      name = @claimable.try(:name)
+      persisted = @claim&.persisted?
+      verified = @claim&.status_verified?
+      step = verified ? 2 : (persisted ? 1 : 0)
+    %>
+    <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px"><%= t("claim.title", name: name) %></h1>
+    <p class="muted" style="margin-bottom:24px"><%= t("claim.intro", kind: @type) %></p>
+
+    <div class="stepper">
+      <div class="step <%= step == 0 ? 'active' : 'done' %>">1. <%= t("claim.step_intro") %></div>
+      <div class="step <%= step == 1 ? 'active' : (step > 1 ? 'done' : '') %>">2. <%= t("claim.step_dns") %></div>
+      <div class="step <%= step == 2 ? 'done' : '' %>">3. <%= t("claim.step_verify") %></div>
+    </div>
+
+    <% if step == 0 %>
+      <%= form_with url: claims_path, method: :post do |f| %>
+        <%= hidden_field_tag "claim[type]", @type %>
+        <%= hidden_field_tag :slug, @claimable.slug %>
+        <div class="field">
+          <%= f.label "claim[email]", t("auth.email") %>
+          <%= f.email_field "claim[email]", value: current_user.email_address, class: "input", required: true %>
+        </div>
+        <%= f.submit t("claim.step_dns"), class: "btn btn-primary" %>
+      <% end %>
+
+    <% elsif step == 1 %>
+      <div class="card card-pad stack" data-controller="claim-verify">
+        <div>
+          <div class="filter-label"><%= t("claim.txt_record") %></div>
+          <div class="row" style="gap:8px;align-items:stretch">
+            <div class="txt-record" data-claim-verify-target="record" style="flex:1"><%= @claim.txt_record %></div>
+            <button type="button" class="btn" data-action="claim-verify#copy" data-claim-verify-target="copyButton" data-copied="<%= t('claim.copied') %>"><%= t("claim.copy") %></button>
+          </div>
+        </div>
+        <%= button_to t("claim.verify"), verify_claim_path(@claim), method: :post, class: "btn btn-primary" %>
+      </div>
+
+    <% else %>
+      <div class="empty-state" style="border-color:var(--ok-border);background:var(--ok-bg)">
+        <h3 style="color:var(--ok)"><%= t("claim.verified_title") %></h3>
+        <p><%= t("claim.verified_body") %></p>
+        <%= link_to name, (@type == "brand" ? brand_path(@claimable) : shops_path), class: "btn" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

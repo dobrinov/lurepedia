@@ -28,7 +28,7 @@
     </div>
     <div class="field">
       <%= f.label :action, t("lure.action") %>
-      <%= f.select :action, Lure.actions.keys.map { |a| [action_name(a), a] }, {}, class: "input" %>
+      <%= f.select :action, Lure.actions.keys.map { |a| [lure_action_label(a), a] }, {}, class: "input" %>
     </div>
     <div class="field">
       <%= f.label :water, t("lure.water") %>

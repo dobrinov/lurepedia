@@ -18,7 +18,7 @@ module TaxonomyHelper
     t("water.#{water}", default: water.to_s.titleize)
   end
 
-  def action_name(action)
+  def lure_action_label(action)
     return t("action.none") if action.blank? || action.to_s == "none"
 
     t("action.#{action}", default: action.to_s.titleize)

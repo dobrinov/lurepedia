@@ -24,4 +24,16 @@ module ApplicationHelper
   def locale_country(locale)
     LOCALE_NAMES.dig(locale.to_sym, :country) || "US"
   end
+
+  COUNTRIES = {
+    "US" => "United States", "CA" => "Canada", "GB" => "United Kingdom",
+    "DE" => "Germany", "FR" => "France", "ES" => "Spain", "IT" => "Italy",
+    "NL" => "Netherlands", "SE" => "Sweden", "NO" => "Norway", "PL" => "Poland",
+    "RU" => "Russia", "BG" => "Bulgaria", "GR" => "Greece", "JP" => "Japan",
+    "CN" => "China", "BR" => "Brazil", "MX" => "Mexico"
+  }.freeze
+
+  def country_options
+    COUNTRIES.map { |code, name| ["#{name}", code] }
+  end
 end

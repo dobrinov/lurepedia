@@ -1,0 +1,31 @@
+<% content_for :title, t("leaderboard.title") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1><%= t("leaderboard.title") %></h1>
+      <div class="sub"><%= t("leaderboard.subtitle") %></div>
+    </div>
+  </div>
+
+  <!-- Metric toggle -->
+  <div class="row" style="gap:16px;margin-bottom:16px;flex-wrap:wrap">
+    <div>
+      <div class="filter-label"><%= t("leaderboard.rank_by") %></div>
+      <div class="chips">
+        <% { catches: "metric_catches", upvotes: "metric_upvotes", length: "metric_length" }.each do |metric, key| %>
+          <%= link_to t("leaderboard.#{key}"), leaderboard_path(metric: metric, species: params[:species]), class: "chip #{'active' if @metric == metric}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Species filter -->
+  <div class="chips" style="margin-bottom:18px">
+    <%= link_to t("leaderboard.all_species"), leaderboard_path(metric: @metric), class: "chip #{'active' unless @selected_species}" %>
+    <% @species_options.each do |sp| %>
+      <%= link_to species_common_name(sp), leaderboard_path(metric: @metric, species: sp.slug), class: "chip #{'active' if @selected_species == sp}" %>
+    <% end %>
+  </div>
+
+  <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
+</div>

@@ -1,0 +1,18 @@
+<% content_for :title, t("contribute.suggest_edit") %>
+<%
+  name = @subject.respond_to?(:title) ? @subject.title : (@subject.try(:common_name) || @subject.try(:name))
+%>
+<div class="container" style="max-width:560px;margin:32px auto">
+  <h1 style="font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px"><%= t("contribute.suggest_title", name: name) %></h1>
+  <p class="muted" style="margin-bottom:24px"><%= t("contribute.suggest_note") %></p>
+
+  <%= form_with url: revisions_path, method: :post do |f| %>
+    <%= hidden_field_tag "revision[type]", @type %>
+    <%= hidden_field_tag "revision[slug]", @subject.slug %>
+    <div class="field">
+      <%= f.label "revision[summary]", t("contribute.suggest_edit") %>
+      <%= f.text_area "revision[summary]", class: "input", required: true, placeholder: "Describe your suggested change…" %>
+    </div>
+    <%= f.submit t("common.submit"), class: "btn btn-primary" %>
+  <% end %>
+</div>

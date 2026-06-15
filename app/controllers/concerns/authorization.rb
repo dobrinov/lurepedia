@@ -25,20 +25,23 @@ module Authorization
   private
 
   def require_login
-    return if signed_in?
+    return true if signed_in?
 
     store_return_location
     redirect_to new_session_path, alert: I18n.t("auth.sign_in_required")
+    false
   end
 
   def require_moderator
-    require_login
-    raise NotAuthorized unless current_user&.can_moderate?
+    return unless require_login
+
+    raise NotAuthorized unless current_user.can_moderate?
   end
 
   def require_admin
-    require_login
-    raise NotAuthorized unless current_user&.admin?
+    return unless require_login
+
+    raise NotAuthorized unless current_user.admin?
   end
 
   def store_return_location

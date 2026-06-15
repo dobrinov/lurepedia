@@ -31,7 +31,7 @@
           <div class="chips">
             <span class="tag"><%= lure_type_name(@lure.lure_type) %></span>
             <% if (d = fmt_depth(@lure.depth_min_cm, @lure.depth_max_cm)) %><span class="tag"><%= d %></span><% end %>
-            <span class="tag"><%= action_name(@lure.action) %></span>
+            <span class="tag"><%= lure_action_label(@lure.action) %></span>
             <span class="tag"><%= water_name(@lure.water) %></span>
           </div>
           <% if @lure.proven? %>
@@ -68,7 +68,7 @@
                     <td style="font-weight:600"><%= v.name %></td>
                     <td><%= v.size_mm ? "#{v.size_mm} mm" : t("common.none") %></td>
                     <td><%= fmt_weight(v.weight_g) || t("common.none") %></td>
-                    <td><%= action_name(v.effective_action) %></td>
+                    <td><%= lure_action_label(v.effective_action) %></td>
                     <td><%= v.catches_count %></td>
                   </tr>
                 <% end %>

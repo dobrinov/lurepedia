@@ -1,0 +1,39 @@
+<% content_for :title, t("auth.join") %>
+<div class="container" style="max-width:480px;margin:48px auto">
+  <div class="card card-pad">
+    <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px"><%= t("auth.join") %></h1>
+    <p class="muted" style="margin-bottom:20px"><%= t("auth.create_account") %></p>
+
+    <%= form_with model: @user, url: registration_path, method: :post do |f| %>
+      <div class="field">
+        <%= f.label :name, t("auth.name") %>
+        <%= f.text_field :name, class: "input", required: true %>
+      </div>
+      <div class="field">
+        <%= f.label :email_address, t("auth.email") %>
+        <%= f.email_field :email_address, class: "input", required: true, autocomplete: "username" %>
+      </div>
+      <div class="field">
+        <%= f.label :password, t("auth.password") %>
+        <%= f.password_field :password, class: "input", required: true, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <%= f.label :country, t("auth.choose_country") %>
+        <%= f.select :country, country_options, {}, class: "input" %>
+      </div>
+      <div class="field">
+        <%= f.label :locale, t("auth.choose_language") %>
+        <%= f.select :locale, available_locales_for_switcher.map { |loc, meta| [meta[:native], loc] }, {}, class: "input" %>
+      </div>
+      <div class="field">
+        <%= f.label :units, t("units.label") %>
+        <%= f.select :units, User.units.keys.map { |u| [t("units.#{u}"), u] }, {}, class: "input" %>
+      </div>
+      <%= f.submit t("auth.create_account"), class: "btn btn-primary btn-block" %>
+    <% end %>
+
+    <p class="muted center" style="margin-top:18px;font-size:13px">
+      <%= t("auth.have_account") %> <%= link_to t("auth.sign_in"), new_session_path %>
+    </p>
+  </div>
+</div>

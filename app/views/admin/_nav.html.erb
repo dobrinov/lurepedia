@@ -1,0 +1,8 @@
+<div class="page-head">
+  <h1><%= t("admin.title") %></h1>
+</div>
+<div class="tabs">
+  <%= link_to t("admin.overview"), admin_root_path, class: "tab #{'active' if action_name == 'overview'}" %>
+  <%= link_to t("admin.people"), admin_people_path, class: "tab #{'active' if action_name == 'people'}" %>
+  <%= link_to t("admin.activity"), admin_activity_path, class: "tab #{'active' if action_name == 'activity'}" %>
+</div>

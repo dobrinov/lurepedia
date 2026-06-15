@@ -29,8 +29,8 @@ class TaxonomyHelperTest < ActionView::TestCase
 
   test "action name handles none" do
     I18n.with_locale(:en) do
-      assert_equal "—", action_name("none")
-      assert_equal "Suspending", action_name("suspending")
+      assert_equal "—", lure_action_label("none")
+      assert_equal "Suspending", lure_action_label("suspending")
     end
   end
 end

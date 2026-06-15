@@ -1,0 +1,24 @@
+<% content_for :title, t("admin.title") %>
+<div class="container">
+  <%= render "admin/nav" %>
+
+  <div class="grid-cards">
+    <% [[t("admin.pending"), @pending_total], [t("admin.catches_logged"), @catches_count], [t("admin.contributors"), @contributors], [t("admin.lures_catalogued"), @lures_count]].each do |label, value| %>
+      <div class="card card-pad">
+        <div class="muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.04em"><%= label %></div>
+        <div style="font-size:32px;font-weight:700;margin-top:6px"><%= value %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section-head" style="margin-top:28px"><h2 style="font-size:18px"><%= t("moderation.title") %></h2></div>
+  <div class="card card-pad">
+    <% ModerationItem.kinds.keys.each do |kind| %>
+      <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--surface-2)">
+        <span class="badge-kind <%= moderation_kind_class(kind) %>"><%= t("moderation.kind.#{kind}") %></span>
+        <strong><%= @pending_by_kind[kind] || 0 %></strong>
+      </div>
+    <% end %>
+    <p style="margin-top:12px"><%= link_to t("moderation.title"), moderation_index_path, class: "btn btn-sm" %></p>
+  </div>
+</div>
