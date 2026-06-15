@@ -145,9 +145,8 @@ end
 puts "  lures: #{Lure.count}, variants: #{Variant.count}"
 
 # ---------------------------------------------------------------- Shops + buy links
+# No promoted shops are seeded — the "Promoted" placement is left empty.
 shop_data = [
-  { name: "TackleDirect", url: "tackledirect.com", promoted: true, claimed: true, blurb: "Saltwater & freshwater specialist with a huge catalog." },
-  { name: "Tackle Warehouse", url: "tacklewarehouse.com", promoted: true, claimed: true, blurb: "The bass angler's superstore." },
   { name: "Bass Pro Shops", url: "basspro.com", promoted: false, claimed: false, blurb: "Outdoor retail giant." },
   { name: "FishUSA", url: "fishusa.com", promoted: false, claimed: false, blurb: "Great Lakes and freshwater focus." },
   { name: "Karls Bait and Tackle", url: "karlsbait.com", promoted: false, claimed: false, blurb: "Community-driven tackle shop." },
@@ -159,28 +158,44 @@ shop_data.each do |attrs|
 end
 
 lures.values.each do |lure|
-  [ shops["TackleDirect"], shops["Tackle Warehouse"], shops["Bass Pro Shops"] ].each do |shop|
+  [ shops["Bass Pro Shops"], shops["FishUSA"], shops["Karls Bait and Tackle"] ].each do |shop|
     BuyLink.find_or_create_by!(lure: lure, shop: shop) { |bl| bl.url = "#{shop.url}/#{lure.slug}" }
   end
 end
 puts "  shops: #{Shop.count}, buy links: #{BuyLink.count}"
 
 # ---------------------------------------------------------------- Catches
+# Single-fish photos per species (no collages). Each catch attaches the first
+# `photos` images from its species' list, cycling if it needs more.
+SPECIES_PHOTOS = {
+  "largemouth_bass" => %w[bass_1.png bass_2.png],
+  "smallmouth_bass" => %w[bass_2.png bass_1.png],
+  "northern_pike" => %w[salmon_1.png],
+  "walleye" => %w[salmon_2.png],
+  "muskellunge" => %w[salmon_1.png salmon_2.png striper_1.png],
+  "bluegill" => %w[bluegill_1.png bluegill_2.png],
+  "yellow_perch" => %w[perch_1.png perch_2.png],
+  "rainbow_trout" => %w[trout_1.png trout_2.png],
+  "striped_bass" => %w[striper_1.png striper_2.png striper_3.png],
+  "chinook_salmon" => %w[salmon_1.png salmon_2.png]
+}.freeze
+
 catch_specs = [
-  { lure: "Vision 110", variant: "GG Megabass Kanata Ayu", species: "largemouth_bass", user: members[0], season: :spring, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Fork, TX", len: 54.6, wt: 2359, up: 42, photos: [ 1 ] },
-  { lure: "Vision 110", variant: "Pro Blue", species: "smallmouth_bass", user: members[2], season: :summer, clarity: :clear, water_body: :river, wind: :calm, tod: :morning, loc: "Columbia River", len: 48.0, wt: 1800, up: 31, photos: [ 2, 3 ] },
-  { lure: "KVD 1.5 Squarebill", variant: "Chartreuse Sexy Shad", species: "largemouth_bass", user: members[1], season: :fall, clarity: :stained, water_body: :reservoir, wind: :moderate, tod: :afternoon, loc: "Lake Guntersville", len: 50.8, wt: 2100, up: 28, photos: [ 4 ] },
-  { lure: "Original ChatterBait", variant: "Green Pumpkin", species: "largemouth_bass", user: admin, season: :spring, clarity: :stained, water_body: :pond, wind: :light, tod: :dusk, loc: "Private pond, GA", len: 47.0, wt: 1700, up: 63, photos: [ 5 ] },
-  { lure: "Original ChatterBait", variant: "White", species: "northern_pike", user: members[3], season: :summer, clarity: :clear, water_body: :lake, wind: :moderate, tod: :midday, loc: "Lake of the Woods", len: 86.4, wt: 4500, up: 88, photos: [ 6 ] },
-  { lure: "PowerBait Power Worm", variant: "Black Blue Fleck", species: "largemouth_bass", user: members[4], season: :summer, clarity: :muddy, water_body: :pond, wind: :calm, tod: :night, loc: "Sofia reservoir", len: 44.0, wt: 1500, up: 19, photos: [ 7 ] },
-  { lure: "Pond Magic", variant: "Chartreuse Shad", species: "bluegill", user: members[0], season: :summer, clarity: :clear, water_body: :pond, wind: :calm, tod: :morning, loc: "Neighborhood pond", len: 22.0, wt: 280, up: 12, photos: [ 1 ] },
-  { lure: "Magdraft Swimbait", variant: "Rainbow Trout", species: "largemouth_bass", user: members[2], season: :winter, clarity: :clear, water_body: :reservoir, wind: :light, tod: :midday, loc: "Lake Casitas", len: 61.0, wt: 4200, up: 77, photos: [ 2 ] },
-  { lure: "Husky Jerk", variant: "Glass Ghost", species: "walleye", user: moderator, season: :fall, clarity: :stained, water_body: :river, wind: :light, tod: :dusk, loc: "Detroit River", len: 58.0, wt: 2600, up: 34, photos: [ 3 ] },
-  { lure: "Prop Knocker", variant: "Bone", species: "smallmouth_bass", user: members[1], season: :summer, clarity: :clear, water_body: :lake, wind: :calm, tod: :dawn, loc: "Lake St. Clair", len: 45.0, wt: 1600, up: 41, photos: [ 4, 5 ] },
-  { lure: "Rage Swimmer", variant: "Pearl Flash", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :morning, loc: "Hudson River", len: 70.0, wt: 5000, up: 52, photos: [ 6 ] },
-  { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: [ 7 ] },
-  { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: [ 1 ] },
-  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: [ 2, 3, 4 ] }
+  { lure: "Vision 110", variant: "GG Megabass Kanata Ayu", species: "largemouth_bass", user: members[0], season: :spring, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Fork, TX", len: 54.6, wt: 2359, up: 42, photos: 1 },
+  { lure: "Vision 110", variant: "Pro Blue", species: "smallmouth_bass", user: members[2], season: :summer, clarity: :clear, water_body: :river, wind: :calm, tod: :morning, loc: "Columbia River", len: 48.0, wt: 1800, up: 31, photos: 2 },
+  { lure: "KVD 1.5 Squarebill", variant: "Chartreuse Sexy Shad", species: "largemouth_bass", user: members[1], season: :fall, clarity: :stained, water_body: :reservoir, wind: :moderate, tod: :afternoon, loc: "Lake Guntersville", len: 50.8, wt: 2100, up: 28, photos: 1 },
+  { lure: "Original ChatterBait", variant: "Green Pumpkin", species: "largemouth_bass", user: admin, season: :spring, clarity: :stained, water_body: :pond, wind: :light, tod: :dusk, loc: "Private pond, GA", len: 47.0, wt: 1700, up: 63, photos: 1 },
+  { lure: "Original ChatterBait", variant: "White", species: "northern_pike", user: members[3], season: :summer, clarity: :clear, water_body: :lake, wind: :moderate, tod: :midday, loc: "Lake of the Woods", len: 86.4, wt: 4500, up: 88, photos: 1 },
+  { lure: "PowerBait Power Worm", variant: "Black Blue Fleck", species: "largemouth_bass", user: members[4], season: :summer, clarity: :muddy, water_body: :pond, wind: :calm, tod: :night, loc: "Sofia reservoir", len: 44.0, wt: 1500, up: 19, photos: 1 },
+  { lure: "Pond Magic", variant: "Chartreuse Shad", species: "bluegill", user: members[0], season: :summer, clarity: :clear, water_body: :pond, wind: :calm, tod: :morning, loc: "Neighborhood pond", len: 22.0, wt: 280, up: 12, photos: 2 },
+  { lure: "Husky Jerk", variant: "Glass Ghost", species: "rainbow_trout", user: members[2], season: :spring, clarity: :clear, water_body: :stream, wind: :calm, tod: :morning, loc: "Gunnison River, CO", len: 46.0, wt: 1200, up: 71, photos: 2 },
+  { lure: "Husky Jerk", variant: "Glass Ghost", species: "walleye", user: moderator, season: :fall, clarity: :stained, water_body: :river, wind: :light, tod: :dusk, loc: "Detroit River", len: 58.0, wt: 2600, up: 34, photos: 1 },
+  { lure: "Prop Knocker", variant: "Bone", species: "smallmouth_bass", user: members[1], season: :summer, clarity: :clear, water_body: :lake, wind: :calm, tod: :dawn, loc: "Lake St. Clair", len: 45.0, wt: 1600, up: 41, photos: 2 },
+  { lure: "Rage Swimmer", variant: "Pearl Flash", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :morning, loc: "Hudson River", len: 70.0, wt: 5000, up: 52, photos: 2 },
+  { lure: "Magdraft Swimbait", variant: "Gizzard Shad", species: "chinook_salmon", user: members[2], season: :fall, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Michigan", len: 92.0, wt: 8200, up: 84, photos: 2 },
+  { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: 2 },
+  { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: 1 },
+  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: 3 }
 ]
 
 notes = [
@@ -206,9 +221,11 @@ catch_specs.each_with_index do |spec, i|
     catch_rec.note = notes[i % notes.size]
   end
   unless c.photos.attached?
-    spec[:photos].each do |n|
-      path = CATCH_IMG.join("catch#{n}.png")
-      c.photos.attach(io: File.open(path), filename: "catch#{n}.png", content_type: "image/png") if File.exist?(path)
+    pool = SPECIES_PHOTOS.fetch(spec[:species], %w[bass_1.png])
+    spec[:photos].times do |idx|
+      filename = pool[idx % pool.size]
+      path = CATCH_IMG.join(filename)
+      c.photos.attach(io: File.open(path), filename: filename, content_type: "image/png") if File.exist?(path)
     end
   end
   catches << c
@@ -224,7 +241,8 @@ comments_seed = [
   [ 0, members[1], "That GG finish is unreal in clear water." ],
   [ 0, members[3], "Lake Fork giants! Congrats." ],
   [ 4, admin, "Pike on a chatterbait — love it." ],
-  [ 7, moderator, "Winter swimbait bite is the best kept secret." ]
+  [ 7, moderator, "Gorgeous rainbow — that canyon water is gin-clear." ],
+  [ 11, members[3], "King salmon off Lake Michigan, what a fight!" ]
 ]
 comments_seed.each do |(idx, user, body)|
   catches[idx].comments.find_or_create_by!(user: user, body: body)
@@ -255,11 +273,6 @@ megabass_claim.verify! unless megabass_claim.status_verified?
 Claim.find_or_create_by!(claimable: brands["Strike King"], user: members[0]) do |c|
   c.email = "owner@strikeking.com"
   c.status = :pending
-end
-
-[ shops["TackleDirect"], shops["Tackle Warehouse"] ].each do |shop|
-  cl = Claim.find_or_create_by!(claimable: shop, user: admin) { |c| c.email = "owner@#{shop.url}" }
-  cl.verify! unless cl.status_verified?
 end
 
 # ---------------------------------------------------------------- Moderation queue (pending)
