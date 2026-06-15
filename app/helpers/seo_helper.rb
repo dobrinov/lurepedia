@@ -20,8 +20,9 @@ module SeoHelper
 
   def page_title(value = nil)
     @page_title = value if value
+    title = @page_title.presence || content_for(:title).presence
     base = "Lurepedia"
-    @page_title.present? ? "#{@page_title} · #{base}" : "#{base} — #{t('home.tagline')}"
+    title.present? ? "#{title} · #{base}" : "#{base} — #{t('home.tagline')}"
   end
 
   def meta_description(value = nil)

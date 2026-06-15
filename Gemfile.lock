@@ -400,6 +400,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  mini_magick (~> 5.0)
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.3)

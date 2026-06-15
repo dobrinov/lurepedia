@@ -149,6 +149,7 @@ ja:
     variant: バリエーション
     proof: 効果の証拠
     catches_count:
+      one: "%{count} 釣果"
       other: "%{count} 釣果"
     no_proof: まだ証拠なし
     be_first: このルアーが釣れることを最初に証明しよう
@@ -178,6 +179,7 @@ ja:
     tab_history: 履歴
     proven_lures: 実績のあるルアー
     lures_count:
+      one: "%{count} ルアー"
       other: "%{count} ルアー"
     no_proven_lures: まだ実績のあるルアーがありません
     be_first_lure: この魚に効くルアーを最初に証明しよう
@@ -251,6 +253,7 @@ ja:
     saltwater_only: 海水のみ
     clear_all: すべてクリア
     show_n_lures:
+      one: "%{count} ルアーを表示"
       other: "%{count} ルアーを表示"
     other: その他
 
@@ -269,6 +272,7 @@ ja:
     best_length: 最長記録
     specialist: スペシャリスト
     species_count:
+      one: "%{count} 魚種"
       other: "%{count} 魚種"
     you: あなた
     empty: まだランク入りのアングラーがいません
@@ -371,6 +375,7 @@ ja:
   provenance:
     title: 履歴と所有
     edits:
+      one: "%{count} 件の編集"
       other: "%{count} 件の編集"
     added_by: 追加者
     owned_by: 所有者
