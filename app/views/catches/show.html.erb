@@ -1,0 +1,109 @@
+<% content_for :title, "#{species_common_name(@catch.species)} — #{@catch.lure.title}" %>
+
+<div class="container" style="padding-top:24px">
+  <div class="detail-grid">
+    <div class="stack">
+      <!-- Gallery -->
+      <div data-controller="gallery">
+        <div class="gallery-main">
+          <% if @catch.photos.attached? %>
+            <%= image_tag @catch.photos.first.variant(resize_to_fill: [960, 720]), data: { gallery_target: "main" }, alt: species_common_name(@catch.species) %>
+          <% else %>
+            <div class="ph ph-catch" style="height:100%"><%= render "shared/fish_glyph" %></div>
+          <% end %>
+        </div>
+        <% if @catch.photos.attached? && @catch.photos.size > 1 %>
+          <div class="gallery-thumbs">
+            <% @catch.photos.each_with_index do |photo, i| %>
+              <button class="gallery-thumb <%= 'active' if i.zero? %>" data-gallery-target="thumb" data-action="gallery#select" data-src="<%= url_for(photo.variant(resize_to_fill: [960, 720])) %>">
+                <%= image_tag photo.variant(resize_to_fill: [112, 112]), alt: "Photo #{i + 1}" %>
+              </button>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Comments -->
+      <div id="comments">
+        <div class="section-head"><h2 style="font-size:18px"><%= t("catch.comments") %> (<%= @catch.comments_count %>)</h2></div>
+        <div class="stack" style="gap:14px">
+          <% @comments.each do |comment| %>
+            <div class="row" style="gap:10px;align-items:flex-start">
+              <span class="avatar" style="background:var(--surface-2);color:var(--ink-2)"><%= comment.user.initials %></span>
+              <div>
+                <div class="row" style="gap:8px"><strong style="font-size:13px"><%= comment.user.name %></strong><span class="muted" style="font-size:12px"><%= l(comment.created_at.to_date, format: :long) %></span></div>
+                <div style="font-size:14px"><%= comment.body %></div>
+              </div>
+            </div>
+          <% end %>
+          <% if @comments.empty? %><p class="muted" style="font-size:14px"><%= t("catch.comments") %> —</p><% end %>
+        </div>
+        <% if signed_in? %>
+          <%= form_with url: catch_comments_path(@catch), method: :post, class: "stack", style: "margin-top:16px;gap:8px" do |f| %>
+            <%= f.text_area "comment[body]", class: "input", placeholder: t("catch.add_comment"), required: true %>
+            <%= f.submit t("catch.add_comment"), class: "btn btn-primary", style: "align-self:flex-start" %>
+          <% end %>
+        <% else %>
+          <p class="muted" style="margin-top:16px"><%= link_to t("auth.sign_in_to_contribute"), new_session_path %></p>
+        <% end %>
+      </div>
+
+      <!-- Related -->
+      <% if @related.any? %>
+        <div>
+          <div class="section-head"><h2 style="font-size:18px"><%= t("catch.related") %></h2></div>
+          <div class="grid-catches">
+            <% @related.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="stack">
+      <div class="card card-pad stack">
+        <div>
+          <div class="muted" style="font-size:12px"><%= t("catch.title") %></div>
+          <h1 style="font-size:22px;font-weight:700"><%= link_to species_common_name(@catch.species), species_path(@catch.species) %></h1>
+          <div class="muted"><%= t("catch.on_lure", lure: "") %> <%= link_to @catch.lure.title, lure_path(@catch.lure) %></div>
+        </div>
+        <div class="row" style="gap:8px">
+          <%= button_to upvoted_label(@catch), catch_upvote_path(@catch), method: @catch.upvoted_by?(current_user) ? :delete : :post, class: "btn btn-sm" %>
+        </div>
+      </div>
+
+      <div class="card card-pad">
+        <h3 style="font-size:14px;margin-bottom:12px"><%= t("catch.contributor") %></h3>
+        <div class="row" style="gap:10px">
+          <span class="avatar" style="background:var(--ink);color:var(--surface-1)"><%= @catch.user.initials %></span>
+          <div>
+            <div class="row" style="gap:6px"><%= country_flag(@catch.user.country, size: 18) %><strong style="font-size:14px"><%= @catch.user.name %></strong><% unless @catch.user.member? %><span class="role-badge role-<%= @catch.user.role %>"><%= t("admin.#{@catch.user.role}") %></span><% end %></div>
+            <div class="muted" style="font-size:12px"><%= l(@catch.created_at.to_date, format: :long) %></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-pad">
+        <h3 style="font-size:14px;margin-bottom:12px"><%= t("catch.conditions") %></h3>
+        <dl class="facts">
+          <% @catch.condition_pairs.each do |group, value| %>
+            <dt><%= t("condition.#{group}.label") %></dt><dd><%= condition_name(group, value) %></dd>
+          <% end %>
+          <% if @catch.location.present? %><dt><%= t("catch.location") %></dt><dd><%= @catch.location %></dd><% end %>
+          <% if @catch.length_cm %><dt><%= t("catch.length") %></dt><dd><%= fmt_length(@catch.length_cm) %></dd><% end %>
+          <% if @catch.weight_g %><dt><%= t("catch.weight") %></dt><dd><%= fmt_weight(@catch.weight_g) %></dd><% end %>
+        </dl>
+        <% if @catch.note.present? %><p class="muted" style="font-size:13.5px"><%= @catch.note %></p><% end %>
+      </div>
+
+      <div class="card-pad center">
+        <% if signed_in? %>
+          <div data-controller="modal">
+            <button class="btn btn-sm" data-action="modal#open" style="color:var(--danger)"><%= t("catch.report") %></button>
+            <%= render "reports/modal", reportable: @catch, label: "#{species_common_name(@catch.species)} — #{@catch.lure.title}" %>
+          </div>
+        <% end %>
+      </div>
+    </aside>
+  </div>
+</div>

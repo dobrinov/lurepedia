@@ -1,0 +1,34 @@
+<% content_for :title, t("species.title") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1><%= t("species.title") %></h1>
+      <div class="sub"><%= t("species.subtitle") %></div>
+    </div>
+    <%= link_to t("species.add"), new_species_path, class: "btn btn-sm" %>
+  </div>
+
+  <div class="grid-cards">
+    <% @species.each do |sp| %>
+      <%= link_to species_path(sp), class: "card" do %>
+        <div class="ph ph-lure" style="aspect-ratio:16/10">
+          <% if sp.photo.attached? %>
+            <%= image_tag sp.photo.variant(resize_to_fill: [560, 350]), alt: sp.common_name, loading: "lazy" %>
+          <% else %>
+            <%= render "shared/fish_glyph" %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="card-title" style="font-size:16px"><%= sp.common_name %></div>
+          <div class="muted" style="font-size:12.5px;font-style:italic"><%= sp.scientific_name %></div>
+          <div class="chips" style="margin-top:auto;padding-top:6px">
+            <span class="tag"><%= water_name(sp.water) %></span>
+            <span class="tag"><%= t("species.lures_count", count: sp.lures_count) %></span>
+            <span class="tag"><%= t("lure.catches_count", count: sp.catches_count) %></span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= render "shared/pagination", page: @page %>
+</div>

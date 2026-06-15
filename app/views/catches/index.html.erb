@@ -1,0 +1,22 @@
+<% content_for :title, t("catch.title") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1><%= t("catch.title") %></h1>
+      <div class="sub"><%= t("catch.subtitle") %></div>
+    </div>
+    <%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-sm" %>
+  </div>
+
+  <% if @catches.any? %>
+    <div class="grid-catches">
+      <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+    </div>
+    <%= render "shared/pagination", page: @page %>
+  <% else %>
+    <div class="empty-state">
+      <h3><%= t("catch.subtitle") %></h3>
+      <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
+    </div>
+  <% end %>
+</div>

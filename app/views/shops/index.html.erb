@@ -1,0 +1,26 @@
+<% content_for :title, t("shop.title") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1><%= t("shop.title") %></h1>
+      <div class="sub"><%= t("shop.subtitle") %></div>
+    </div>
+    <div class="row">
+      <%= link_to t("shop.claim"), new_claim_path(type: "shop"), class: "btn btn-sm" %>
+      <%= link_to t("shop.add"), new_shop_path, class: "btn btn-sm" %>
+    </div>
+  </div>
+
+  <% if @promoted.any? %>
+    <div class="section-head"><h2 style="font-size:16px"><%= t("shop.promoted_section") %></h2></div>
+    <div class="grid-cards" style="margin-bottom:32px">
+      <% @promoted.each do |shop| %><%= render "shops/shop_row", shop: shop %><% end %>
+    </div>
+  <% end %>
+
+  <div class="section-head"><h2 style="font-size:16px"><%= t("shop.all_shops") %></h2></div>
+  <div class="grid-cards">
+    <% @shops.each do |shop| %><%= render "shops/shop_row", shop: shop %><% end %>
+  </div>
+  <%= render "shared/pagination", page: @page %>
+</div>

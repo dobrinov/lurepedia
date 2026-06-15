@@ -1,0 +1,40 @@
+class SpeciesController < ApplicationController
+  before_action :require_login, only: %i[new create]
+
+  def index
+    @page = paginate(Species.alpha, per: 12)
+    @species = @page.records
+  end
+
+  def show
+    @species = Species.find_by!(slug: params[:id])
+    @lures = @species.proven_lures.includes(:brand, :lure_type)
+    @catches = @species.catches.includes(:user, variant: :lure).recent.limit(12)
+    @metric = (params[:metric] || "catches").to_sym
+    @rows = LeaderboardQuery.new(species: @species, metric: @metric).rows
+    @tab = params[:tab].presence || "lures"
+  end
+
+  def new
+  end
+
+  def create
+    @species = Species.new(species_params)
+    @species.key = @species.scientific_name.to_s.parameterize(separator: "_").presence || "species_#{SecureRandom.hex(3)}"
+
+    if @species.save
+      @species.revisions.create!(user: current_user, summary: t("provenance.created"))
+      ModerationItem.create!(subject: @species, kind: :catalog, submitter: current_user)
+      redirect_to species_path(@species), notice: t("catch.submitted")
+    else
+      flash.now[:alert] = @species.errors.full_messages.to_sentence
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def species_params
+    params.require(:species).permit(:scientific_name, :water)
+  end
+end

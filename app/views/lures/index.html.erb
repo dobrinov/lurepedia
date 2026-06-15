@@ -1,6 +1,52 @@
+<% content_for :head, tag.meta(name: "robots", content: "index,follow") %>
 <div class="container">
   <section class="hero">
     <h1><%= t("home.hero_title") %></h1>
     <p><%= t("home.hero_sub") %></p>
+    <div class="row" style="margin-top:18px">
+      <%= link_to t("home.add_a_catch"), new_catch_path, class: "btn btn-primary" %>
+      <%= link_to t("nav.species"), species_index_path, class: "btn" %>
+      <%= link_to t("nav.leaderboard"), leaderboard_path, class: "btn" %>
+    </div>
   </section>
+
+  <div class="section-head">
+    <h2><%= t("home.browse_lures") %></h2>
+    <%= link_to t("lure.add"), new_lure_path, class: "btn btn-sm" %>
+  </div>
+
+  <!-- Type filter chips -->
+  <div class="chips" style="margin-bottom:18px">
+    <%= link_to t("common.all"), lures_path, class: "chip #{'active' unless params[:type].present?}" %>
+    <% @lure_types.each do |lt| %>
+      <%= link_to lure_type_name(lt), lures_path(type: lt.key), class: "chip #{'active' if params[:type] == lt.key}" %>
+    <% end %>
+  </div>
+
+  <!-- Active filter pills -->
+  <% if @filter.active_pills.any? %>
+    <div class="chips" style="margin-bottom:18px">
+      <% @filter.active_pills.each do |key, label| %>
+        <span class="filter-pill"><%= label %>
+          <%= link_to "×", url_for(request.query_parameters.except(key.to_s, "page")) %>
+        </span>
+      <% end %>
+      <%= link_to t("search.clear_all"), lures_path, class: "muted", style: "font-size:13px" %>
+    </div>
+  <% end %>
+
+  <% if @lures.any? %>
+    <div class="grid-cards">
+      <% @lures.each do |lure| %>
+        <%= render "shared/lure_card", lure: lure %>
+      <% end %>
+    </div>
+    <%= render "shared/pagination", page: @page %>
+  <% else %>
+    <div class="empty-state">
+      <h3><%= t("lure.no_matches") %></h3>
+      <p><%= t("home.hero_sub") %></p>
+      <%= link_to t("search.clear_all"), lures_path, class: "btn" %>
+    </div>
+  <% end %>
 </div>

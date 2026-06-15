@@ -1,0 +1,28 @@
+<%# locals: reportable, label %>
+<div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
+  <div class="modal" style="text-align:left">
+    <h3><%= t("report.title") %></h3>
+    <p class="muted" style="font-size:13px;margin-bottom:16px"><%= t("report.target") %>: <strong><%= label %></strong></p>
+    <%= form_with url: reports_path, method: :post do |f| %>
+      <%= hidden_field_tag :reportable_type, reportable.class.name %>
+      <%= hidden_field_tag :reportable_id, reportable.id %>
+      <div class="field">
+        <label><%= t("report.reason") %></label>
+        <% Report.reasons.keys.each do |reason| %>
+          <label class="row" style="gap:8px;padding:6px 0;cursor:pointer">
+            <%= radio_button_tag "report[reason]", reason, false, required: true %>
+            <%= t("report.reason_#{reason}") %>
+          </label>
+        <% end %>
+      </div>
+      <div class="field">
+        <label><%= t("report.note") %></label>
+        <%= text_area_tag "report[note]", nil, class: "input" %>
+      </div>
+      <div class="row" style="justify-content:flex-end;gap:8px">
+        <button type="button" class="btn" data-action="modal#close"><%= t("common.cancel") %></button>
+        <%= f.submit t("report.submit"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

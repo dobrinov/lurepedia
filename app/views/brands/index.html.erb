@@ -1,0 +1,28 @@
+<% content_for :title, t("brand.title") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1><%= t("brand.title") %></h1>
+      <div class="sub"><%= t("brand.subtitle") %></div>
+    </div>
+    <%= link_to t("brand.add"), new_brand_path, class: "btn btn-sm" %>
+  </div>
+
+  <div class="grid-cards">
+    <% @brands.each do |brand| %>
+      <%= link_to brand_path(brand), class: "card card-pad stack" do %>
+        <div class="row" style="justify-content:space-between">
+          <span class="avatar avatar-lg" style="background:var(--surface-2);color:var(--ink-2)"><%= brand.initials %></span>
+          <% if brand.claimed? %><span class="badge badge-ok"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg><%= t("brand.claimed") %></span><% end %>
+        </div>
+        <div class="card-title" style="font-size:17px"><%= brand.name %></div>
+        <div class="row muted" style="gap:8px;font-size:13px">
+          <% if brand.country.present? %><%= country_flag(brand.country, size: 18) %><span><%= brand.country %></span><% end %>
+          <% if brand.founded_year %><span>· <%= t("brand.founded") %> <%= brand.founded_year %></span><% end %>
+        </div>
+        <div class="tag" style="align-self:flex-start"><%= t("species.lures_count", count: brand.lures_count) %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= render "shared/pagination", page: @page %>
+</div>
