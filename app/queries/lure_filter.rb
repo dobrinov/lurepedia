@@ -17,13 +17,13 @@ class LureFilter
   # Active filters as [key, label] for rendering removable pills.
   def active_pills
     pills = []
-    pills << [:type, lure_type_label(@p[:type])] if present?(:type)
-    pills << [:brand, brand_label(@p[:brand])] if present?(:brand)
-    pills << [:species, species_label(@p[:species])] if present?(:species)
-    pills << [:action, @p[:action].to_s.titleize] if present?(:action)
-    pills << [:saltwater, I18n.t("search.saltwater_only")] if truthy?(:saltwater)
+    pills << [ :type, lure_type_label(@p[:type]) ] if present?(:type)
+    pills << [ :brand, brand_label(@p[:brand]) ] if present?(:brand)
+    pills << [ :species, species_label(@p[:species]) ] if present?(:species)
+    pills << [ :action, @p[:action].to_s.titleize ] if present?(:action)
+    pills << [ :saltwater, I18n.t("search.saltwater_only") ] if truthy?(:saltwater)
     %i[season clarity water_body wind].each do |k|
-      pills << [k, I18n.t("condition.#{k}.#{@p[k]}", default: @p[k].to_s.titleize)] if present?(k)
+      pills << [ k, I18n.t("condition.#{k}.#{@p[k]}", default: @p[k].to_s.titleize) ] if present?(k)
     end
     pills
   end

@@ -80,7 +80,7 @@ class CommunityTest < ActiveSupport::TestCase
   test "revision timeline ordering" do
     r1 = Revision.create!(subject: @lure, user: @user, summary: "Created", created_at: 2.days.ago)
     r2 = Revision.create!(subject: @lure, user: @other, summary: "Edited", created_at: 1.day.ago)
-    assert_equal [r1, r2], @lure.revisions.chronological.to_a
-    assert_equal [r2, r1], @lure.revisions.newest_first.to_a
+    assert_equal [ r1, r2 ], @lure.revisions.chronological.to_a
+    assert_equal [ r2, r1 ], @lure.revisions.newest_first.to_a
   end
 end

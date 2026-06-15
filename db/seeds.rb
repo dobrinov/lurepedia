@@ -33,7 +33,7 @@ members = [
   make_user("user4@example.com", "Tom Becker", :member, "DE", "de"),
   make_user("user5@example.com", "Ivan Petrov", :member, "BG", "bg")
 ]
-all_contributors = [admin, moderator, *members]
+all_contributors = [ admin, moderator, *members ]
 puts "  users: #{User.count}"
 
 # ---------------------------------------------------------------- Lure types
@@ -81,44 +81,44 @@ puts "  species: #{Species.count}"
 
 # ---------------------------------------------------------------- Lures + variants
 lure_specs = [
-  { brand: "Megabass", model: "Vision 110", type: "jerkbait", depth: [120, 180], action: :suspending, img: "ghost-jerkbait.jpg",
+  { brand: "Megabass", model: "Vision 110", type: "jerkbait", depth: [ 120, 180 ], action: :suspending, img: "ghost-jerkbait.jpg",
     blurb: "A 110mm suspending jerkbait with a darting, erratic action that triggers reaction strikes.",
     video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    variants: [["GG Megabass Kanata Ayu", 110, 17.5], ["Sexy French Pearl", 110, 17.5], ["Pro Blue", 110, 17.5]] },
-  { brand: "Strike King", model: "KVD 1.5 Squarebill", type: "crankbait", depth: [90, 150], action: :floating, img: "firetiger-crank.jpg",
+    variants: [ [ "GG Megabass Kanata Ayu", 110, 17.5 ], [ "Sexy French Pearl", 110, 17.5 ], [ "Pro Blue", 110, 17.5 ] ] },
+  { brand: "Strike King", model: "KVD 1.5 Squarebill", type: "crankbait", depth: [ 90, 150 ], action: :floating, img: "firetiger-crank.jpg",
     blurb: "A squarebill crankbait that deflects off cover and draws explosive bites.",
     video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    variants: [["Chartreuse Sexy Shad", 60, 12.5], ["Summer Craw", 60, 12.5]] },
-  { brand: "Z-Man", model: "Original ChatterBait", type: "bladed_jig", depth: [30, 240], action: :sinking, img: "bladed-chatter-jig.jpg",
+    variants: [ [ "Chartreuse Sexy Shad", 60, 12.5 ], [ "Summer Craw", 60, 12.5 ] ] },
+  { brand: "Z-Man", model: "Original ChatterBait", type: "bladed_jig", depth: [ 30, 240 ], action: :sinking, img: "bladed-chatter-jig.jpg",
     blurb: "The bladed swim jig that started it all — vibration that calls fish from afar.",
-    variants: [["Green Pumpkin", nil, 10.5], ["White", nil, 10.5]] },
-  { brand: "Berkley", model: "PowerBait Power Worm", type: "soft_plastic", depth: [60, 360], action: :sinking, img: "paddle-tail-perch.jpg",
+    variants: [ [ "Green Pumpkin", nil, 10.5 ], [ "White", nil, 10.5 ] ] },
+  { brand: "Berkley", model: "PowerBait Power Worm", type: "soft_plastic", depth: [ 60, 360 ], action: :sinking, img: "paddle-tail-perch.jpg",
     blurb: "A scented ribbon-tail worm that bass can't leave alone.",
-    variants: [["Black Blue Fleck", 178, nil], ["Watermelon", 178, nil]] },
-  { brand: "Booyah", model: "Pond Magic", type: "spinnerbait", depth: [30, 120], action: :none, img: "chartreuse-spinnerbait.jpg",
+    variants: [ [ "Black Blue Fleck", 178, nil ], [ "Watermelon", 178, nil ] ] },
+  { brand: "Booyah", model: "Pond Magic", type: "spinnerbait", depth: [ 30, 120 ], action: :none, img: "chartreuse-spinnerbait.jpg",
     blurb: "A compact spinnerbait sized for pressured ponds and panfish-eating bass.",
-    variants: [["Chartreuse Shad", nil, 5.0]] },
-  { brand: "Rapala", model: "Shadow Rap Deep", type: "jerkbait", depth: [150, 240], action: :suspending, img: "deep-diving-shad.jpg",
+    variants: [ [ "Chartreuse Shad", nil, 5.0 ] ] },
+  { brand: "Rapala", model: "Shadow Rap Deep", type: "jerkbait", depth: [ 150, 240 ], action: :suspending, img: "deep-diving-shad.jpg",
     blurb: "A deep-running jerkbait with a slow, fluttering kill.",
-    variants: [["Silver", 110, 15.0]] }, # unproven (no catches)
-  { brand: "Megabass", model: "Magdraft Swimbait", type: "swimbait", depth: [60, 240], action: :sinking, img: "jointed-trout-swimbait.jpg",
+    variants: [ [ "Silver", 110, 15.0 ] ] }, # unproven (no catches)
+  { brand: "Megabass", model: "Magdraft Swimbait", type: "swimbait", depth: [ 60, 240 ], action: :sinking, img: "jointed-trout-swimbait.jpg",
     blurb: "A line-through soft swimbait with a lifelike roll.",
-    variants: [["Rainbow Trout", 200, 56.0], ["Gizzard Shad", 200, 56.0]] },
-  { brand: "Strike King", model: "Rage Swimmer", type: "swimbait", depth: [30, 180], action: :sinking, img: "pearl-shad-swimbait.jpg",
+    variants: [ [ "Rainbow Trout", 200, 56.0 ], [ "Gizzard Shad", 200, 56.0 ] ] },
+  { brand: "Strike King", model: "Rage Swimmer", type: "swimbait", depth: [ 30, 180 ], action: :sinking, img: "pearl-shad-swimbait.jpg",
     blurb: "A paddle-tail swimbait with a hard thumping kick.",
-    variants: [["Pearl Flash", 95, 9.0]] },
-  { brand: "Z-Man", model: "DieZel MinnowZ", type: "swimbait", depth: [30, 150], action: :sinking, img: "rigged-paddle-swimbait.jpg",
+    variants: [ [ "Pearl Flash", 95, 9.0 ] ] },
+  { brand: "Z-Man", model: "DieZel MinnowZ", type: "swimbait", depth: [ 30, 150 ], action: :sinking, img: "rigged-paddle-swimbait.jpg",
     blurb: "Durable ElaZtech paddle-tail that survives toothy fish.",
-    variants: [["Redbone", 100, 8.0]] },
-  { brand: "Rapala", model: "Husky Jerk", type: "jerkbait", depth: [120, 240], action: :suspending, img: "suspending-minnow.jpg",
+    variants: [ [ "Redbone", 100, 8.0 ] ] },
+  { brand: "Rapala", model: "Husky Jerk", type: "jerkbait", depth: [ 120, 240 ], action: :suspending, img: "suspending-minnow.jpg",
     blurb: "A suspending minnow that hangs in the strike zone.",
-    variants: [["Glass Ghost", 100, 10.0]] },
-  { brand: "Booyah", model: "Prop Knocker", type: "topwater", depth: [0, 15], action: :floating, img: "topwater-prop-bait.jpg",
+    variants: [ [ "Glass Ghost", 100, 10.0 ] ] },
+  { brand: "Booyah", model: "Prop Knocker", type: "topwater", depth: [ 0, 15 ], action: :floating, img: "topwater-prop-bait.jpg",
     blurb: "A prop topwater that spits and sputters across the surface.",
-    variants: [["Bone", 95, 11.0]] },
-  { brand: "Strike King", model: "Flat Side Pro", type: "crankbait", depth: [90, 180], action: :floating, img: "flat-side-crank.jpg",
+    variants: [ [ "Bone", 95, 11.0 ] ] },
+  { brand: "Strike King", model: "Flat Side Pro", type: "crankbait", depth: [ 90, 180 ], action: :floating, img: "flat-side-crank.jpg",
     blurb: "A flat-sided crank with a tight wiggle for cold water.",
-    variants: [["Chartreuse Black Back", 55, 9.5]] }
+    variants: [ [ "Chartreuse Black Back", 55, 9.5 ] ] }
 ]
 
 lures = {}
@@ -159,7 +159,7 @@ shop_data.each do |attrs|
 end
 
 lures.values.each do |lure|
-  [shops["TackleDirect"], shops["Tackle Warehouse"], shops["Bass Pro Shops"]].each do |shop|
+  [ shops["TackleDirect"], shops["Tackle Warehouse"], shops["Bass Pro Shops"] ].each do |shop|
     BuyLink.find_or_create_by!(lure: lure, shop: shop) { |bl| bl.url = "#{shop.url}/#{lure.slug}" }
   end
 end
@@ -167,20 +167,20 @@ puts "  shops: #{Shop.count}, buy links: #{BuyLink.count}"
 
 # ---------------------------------------------------------------- Catches
 catch_specs = [
-  { lure: "Vision 110", variant: "GG Megabass Kanata Ayu", species: "largemouth_bass", user: members[0], season: :spring, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Fork, TX", len: 54.6, wt: 2359, up: 42, photos: [1] },
-  { lure: "Vision 110", variant: "Pro Blue", species: "smallmouth_bass", user: members[2], season: :summer, clarity: :clear, water_body: :river, wind: :calm, tod: :morning, loc: "Columbia River", len: 48.0, wt: 1800, up: 31, photos: [2, 3] },
-  { lure: "KVD 1.5 Squarebill", variant: "Chartreuse Sexy Shad", species: "largemouth_bass", user: members[1], season: :fall, clarity: :stained, water_body: :reservoir, wind: :moderate, tod: :afternoon, loc: "Lake Guntersville", len: 50.8, wt: 2100, up: 28, photos: [4] },
-  { lure: "Original ChatterBait", variant: "Green Pumpkin", species: "largemouth_bass", user: admin, season: :spring, clarity: :stained, water_body: :pond, wind: :light, tod: :dusk, loc: "Private pond, GA", len: 47.0, wt: 1700, up: 63, photos: [5] },
-  { lure: "Original ChatterBait", variant: "White", species: "northern_pike", user: members[3], season: :summer, clarity: :clear, water_body: :lake, wind: :moderate, tod: :midday, loc: "Lake of the Woods", len: 86.4, wt: 4500, up: 88, photos: [6] },
-  { lure: "PowerBait Power Worm", variant: "Black Blue Fleck", species: "largemouth_bass", user: members[4], season: :summer, clarity: :muddy, water_body: :pond, wind: :calm, tod: :night, loc: "Sofia reservoir", len: 44.0, wt: 1500, up: 19, photos: [7] },
-  { lure: "Pond Magic", variant: "Chartreuse Shad", species: "bluegill", user: members[0], season: :summer, clarity: :clear, water_body: :pond, wind: :calm, tod: :morning, loc: "Neighborhood pond", len: 22.0, wt: 280, up: 12, photos: [1] },
-  { lure: "Magdraft Swimbait", variant: "Rainbow Trout", species: "largemouth_bass", user: members[2], season: :winter, clarity: :clear, water_body: :reservoir, wind: :light, tod: :midday, loc: "Lake Casitas", len: 61.0, wt: 4200, up: 77, photos: [2] },
-  { lure: "Husky Jerk", variant: "Glass Ghost", species: "walleye", user: moderator, season: :fall, clarity: :stained, water_body: :river, wind: :light, tod: :dusk, loc: "Detroit River", len: 58.0, wt: 2600, up: 34, photos: [3] },
-  { lure: "Prop Knocker", variant: "Bone", species: "smallmouth_bass", user: members[1], season: :summer, clarity: :clear, water_body: :lake, wind: :calm, tod: :dawn, loc: "Lake St. Clair", len: 45.0, wt: 1600, up: 41, photos: [4, 5] },
-  { lure: "Rage Swimmer", variant: "Pearl Flash", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :morning, loc: "Hudson River", len: 70.0, wt: 5000, up: 52, photos: [6] },
-  { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: [7] },
-  { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: [1] },
-  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: [2, 3, 4] }
+  { lure: "Vision 110", variant: "GG Megabass Kanata Ayu", species: "largemouth_bass", user: members[0], season: :spring, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Fork, TX", len: 54.6, wt: 2359, up: 42, photos: [ 1 ] },
+  { lure: "Vision 110", variant: "Pro Blue", species: "smallmouth_bass", user: members[2], season: :summer, clarity: :clear, water_body: :river, wind: :calm, tod: :morning, loc: "Columbia River", len: 48.0, wt: 1800, up: 31, photos: [ 2, 3 ] },
+  { lure: "KVD 1.5 Squarebill", variant: "Chartreuse Sexy Shad", species: "largemouth_bass", user: members[1], season: :fall, clarity: :stained, water_body: :reservoir, wind: :moderate, tod: :afternoon, loc: "Lake Guntersville", len: 50.8, wt: 2100, up: 28, photos: [ 4 ] },
+  { lure: "Original ChatterBait", variant: "Green Pumpkin", species: "largemouth_bass", user: admin, season: :spring, clarity: :stained, water_body: :pond, wind: :light, tod: :dusk, loc: "Private pond, GA", len: 47.0, wt: 1700, up: 63, photos: [ 5 ] },
+  { lure: "Original ChatterBait", variant: "White", species: "northern_pike", user: members[3], season: :summer, clarity: :clear, water_body: :lake, wind: :moderate, tod: :midday, loc: "Lake of the Woods", len: 86.4, wt: 4500, up: 88, photos: [ 6 ] },
+  { lure: "PowerBait Power Worm", variant: "Black Blue Fleck", species: "largemouth_bass", user: members[4], season: :summer, clarity: :muddy, water_body: :pond, wind: :calm, tod: :night, loc: "Sofia reservoir", len: 44.0, wt: 1500, up: 19, photos: [ 7 ] },
+  { lure: "Pond Magic", variant: "Chartreuse Shad", species: "bluegill", user: members[0], season: :summer, clarity: :clear, water_body: :pond, wind: :calm, tod: :morning, loc: "Neighborhood pond", len: 22.0, wt: 280, up: 12, photos: [ 1 ] },
+  { lure: "Magdraft Swimbait", variant: "Rainbow Trout", species: "largemouth_bass", user: members[2], season: :winter, clarity: :clear, water_body: :reservoir, wind: :light, tod: :midday, loc: "Lake Casitas", len: 61.0, wt: 4200, up: 77, photos: [ 2 ] },
+  { lure: "Husky Jerk", variant: "Glass Ghost", species: "walleye", user: moderator, season: :fall, clarity: :stained, water_body: :river, wind: :light, tod: :dusk, loc: "Detroit River", len: 58.0, wt: 2600, up: 34, photos: [ 3 ] },
+  { lure: "Prop Knocker", variant: "Bone", species: "smallmouth_bass", user: members[1], season: :summer, clarity: :clear, water_body: :lake, wind: :calm, tod: :dawn, loc: "Lake St. Clair", len: 45.0, wt: 1600, up: 41, photos: [ 4, 5 ] },
+  { lure: "Rage Swimmer", variant: "Pearl Flash", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :morning, loc: "Hudson River", len: 70.0, wt: 5000, up: 52, photos: [ 6 ] },
+  { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: [ 7 ] },
+  { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: [ 1 ] },
+  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: [ 2, 3, 4 ] }
 ]
 
 notes = [
@@ -216,15 +216,15 @@ end
 
 catch_specs.each_with_index do |spec, i|
   c = catches[i]
-  voters = all_contributors.reject { |u| u == c.user }.first([spec[:up] / 12, 1].max.clamp(1, all_contributors.size - 1))
+  voters = all_contributors.reject { |u| u == c.user }.first([ spec[:up] / 12, 1 ].max.clamp(1, all_contributors.size - 1))
   voters.each { |u| Upvote.find_or_create_by!(user: u, catch: c) }
 end
 
 comments_seed = [
-  [0, members[1], "That GG finish is unreal in clear water."],
-  [0, members[3], "Lake Fork giants! Congrats."],
-  [4, admin, "Pike on a chatterbait — love it."],
-  [7, moderator, "Winter swimbait bite is the best kept secret."]
+  [ 0, members[1], "That GG finish is unreal in clear water." ],
+  [ 0, members[3], "Lake Fork giants! Congrats." ],
+  [ 4, admin, "Pike on a chatterbait — love it." ],
+  [ 7, moderator, "Winter swimbait bite is the best kept secret." ]
 ]
 comments_seed.each do |(idx, user, body)|
   catches[idx].comments.find_or_create_by!(user: user, body: body)
@@ -257,7 +257,7 @@ Claim.find_or_create_by!(claimable: brands["Strike King"], user: members[0]) do 
   c.status = :pending
 end
 
-[shops["TackleDirect"], shops["Tackle Warehouse"]].each do |shop|
+[ shops["TackleDirect"], shops["Tackle Warehouse"] ].each do |shop|
   cl = Claim.find_or_create_by!(claimable: shop, user: admin) { |c| c.email = "owner@#{shop.url}" }
   cl.verify! unless cl.status_verified?
 end

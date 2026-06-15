@@ -27,7 +27,7 @@ class LeaderboardQuery
       )
     end
 
-    rows.sort_by { |r| [-sort_value(r), -r.upvotes, r.user.name] }
+    rows.sort_by { |r| [ -sort_value(r), -r.upvotes, r.user.name ] }
   end
 
   private

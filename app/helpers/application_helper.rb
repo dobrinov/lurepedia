@@ -14,7 +14,7 @@ module ApplicationHelper
   }.freeze
 
   def available_locales_for_switcher
-    I18n.available_locales.map { |l| [l, LOCALE_NAMES.fetch(l, { native: l.to_s.upcase, country: "US" })] }
+    I18n.available_locales.map { |l| [ l, LOCALE_NAMES.fetch(l, { native: l.to_s.upcase, country: "US" }) ] }
   end
 
   def locale_native(locale)
@@ -34,6 +34,6 @@ module ApplicationHelper
   }.freeze
 
   def country_options
-    COUNTRIES.map { |code, name| ["#{name}", code] }
+    COUNTRIES.map { |code, name| [ "#{name}", code ] }
   end
 end

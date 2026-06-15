@@ -4,7 +4,7 @@ module SeoHelper
   def hreflang_tags
     safe_join(
       I18n.available_locales.map { |loc| alternate_tag(loc, loc.to_s) } +
-        [alternate_tag(I18n.default_locale, "x-default")]
+        [ alternate_tag(I18n.default_locale, "x-default") ]
     )
   end
 

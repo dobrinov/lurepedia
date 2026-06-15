@@ -64,6 +64,6 @@ class CatalogTest < ActiveSupport::TestCase
   test "shop promoted ordering" do
     a = Shop.create!(name: "Regular")
     b = Shop.create!(name: "Promo", promoted: true)
-    assert_equal [b, a], Shop.promoted_first.to_a
+    assert_equal [ b, a ], Shop.promoted_first.to_a
   end
 end

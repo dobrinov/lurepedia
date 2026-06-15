@@ -39,6 +39,6 @@ class Lure < ApplicationRecord
   private
 
   def slug_source
-    [brand&.name, model].compact.join(" ")
+    [ brand&.name, model ].compact.join(" ")
   end
 end

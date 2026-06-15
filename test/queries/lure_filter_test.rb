@@ -16,11 +16,11 @@ class LureFilterTest < ActiveSupport::TestCase
   end
 
   test "default sort by catch count desc" do
-    assert_equal [@vision, @kvd, @salt], LureFilter.new({}).results.to_a
+    assert_equal [ @vision, @kvd, @salt ], LureFilter.new({}).results.to_a
   end
 
   test "filter by type" do
-    assert_equal [@kvd], LureFilter.new(type: "crankbait").results.to_a
+    assert_equal [ @kvd ], LureFilter.new(type: "crankbait").results.to_a
   end
 
   test "filter by brand slug" do
@@ -30,16 +30,16 @@ class LureFilterTest < ActiveSupport::TestCase
   end
 
   test "text query matches model and brand" do
-    assert_equal [@kvd], LureFilter.new(q: "kvd").results.to_a
+    assert_equal [ @kvd ], LureFilter.new(q: "kvd").results.to_a
     assert_includes LureFilter.new(q: "megabass").results.to_a, @vision
   end
 
   test "filter by species via catches" do
-    assert_equal [@vision], LureFilter.new(species: @bass.slug).results.to_a
+    assert_equal [ @vision ], LureFilter.new(species: @bass.slug).results.to_a
   end
 
   test "saltwater only" do
-    assert_equal [@salt], LureFilter.new(saltwater: "1").results.to_a
+    assert_equal [ @salt ], LureFilter.new(saltwater: "1").results.to_a
   end
 
   test "active pills reflect filters" do

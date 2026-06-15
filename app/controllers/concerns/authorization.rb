@@ -45,7 +45,7 @@ module Authorization
   end
 
   def store_return_location
-    session[:return_to_after_authenticating] = request.fullpath if request.get?
+    session[:return_to_after_authenticating] = request.fullpath if request.get? || request.head?
   end
 
   def deny_access

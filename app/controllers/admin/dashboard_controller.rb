@@ -11,7 +11,7 @@ module Admin
     end
 
     def people
-      @users = User.order(:role => :desc, :name => :asc)
+      @users = User.order(role: :desc, name: :asc)
     end
 
     def activity
