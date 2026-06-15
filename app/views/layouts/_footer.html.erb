@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="<%= localized_root_path %>" class="wordmark"><span class="lure">lure</span><span class="pedia">pedia</span></a>
+        <p class="muted" style="margin-top:12px;max-width:280px"><%= t("home.tagline") %>. <%= t("home.hero_sub") %></p>
+      </div>
+      <div class="footer-col">
+        <h4><%= t("nav.species") %> &amp; more</h4>
+        <%= link_to t("nav.species"), species_index_path %>
+        <%= link_to t("nav.brands"), brands_path %>
+        <%= link_to t("nav.catches"), catches_path %>
+        <%= link_to t("nav.leaderboard"), leaderboard_path %>
+        <%= link_to t("nav.shops"), shops_path %>
+      </div>
+      <div class="footer-col">
+        <h4><%= t("contribute.suggest_edit") %></h4>
+        <%= link_to t("catch.add_title"), new_catch_path %>
+        <%= link_to t("lure.add"), new_lure_path %>
+        <%= link_to t("species.add"), new_species_path %>
+        <%= link_to t("brand.add"), new_brand_path %>
+        <%= link_to t("shop.add"), new_shop_path %>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="#">How it works</a>
+        <a href="#">Guidelines</a>
+        <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <%= Time.current.year %> Lurepedia</span>
+      <span><%= t("home.tagline") %></span>
+    </div>
+  </div>
+</footer>

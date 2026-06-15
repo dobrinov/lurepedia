@@ -1,0 +1,22 @@
+<div class="container" style="max-width:440px;margin:48px auto">
+  <div class="card card-pad">
+    <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px"><%= t("auth.welcome_back") %></h1>
+    <p class="muted" style="margin-bottom:20px"><%= t("auth.sign_in") %></p>
+
+    <%= form_with url: session_path, method: :post do |f| %>
+      <div class="field">
+        <%= f.label :email_address, t("auth.email") %>
+        <%= f.email_field :email_address, autofocus: true, autocomplete: "username", class: "input", required: true, value: params[:email_address] %>
+      </div>
+      <div class="field">
+        <%= f.label :password, t("auth.password") %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "input", required: true, maxlength: 72 %>
+      </div>
+      <%= f.submit t("auth.sign_in"), class: "btn btn-primary btn-block" %>
+    <% end %>
+
+    <p class="muted center" style="margin-top:18px;font-size:13px">
+      <%= t("auth.no_account") %> <%= link_to t("auth.create_account"), new_registration_path %>
+    </p>
+  </div>
+</div>

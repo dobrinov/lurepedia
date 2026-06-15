@@ -1,31 +1,422 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  common:
+    all: All
+    none: "—"
+    save: Save
+    cancel: Cancel
+    submit: Submit
+    edit: Edit
+    delete: Delete
+    add: Add
+    search: Search
+    loading: Loading…
+    showing: "Showing %{from}–%{to} of %{count}"
+    page: Page
+    next: Next
+    prev: Previous
+    by: by
+    on: on
+    yes: Yes
+    no: No
+    verified: Verified
+    promoted: Promoted
+    sponsored: Sponsored
+
+  home:
+    tagline: Every lure, proven by a catch
+    meta_description: Lurepedia is a crowdsourced encyclopedia of fishing lures — find lures and see real proof, by catch, that they work.
+    hero_title: Every lure, proven by a catch
+    hero_sub: A crowdsourced encyclopedia of fishing lures. Find what works — backed by real catches.
+    browse_lures: Browse lures
+    browse_another_way: Browse another way
+    add_a_catch: Add a catch
+
+  nav:
+    lures: Lures
+    species: Species
+    catches: Catches
+    brands: Brands
+    shops: Shops
+    leaderboard: Leaderboard
+    search_placeholder: Search lures — or filter by type, water, action…
+
+  auth:
+    sign_in: Sign in
+    sign_up: Create account
+    sign_out: Log out
+    email: Email
+    password: Password
+    name: Name
+    sign_in_required: Please sign in to contribute.
+    not_authorized: You don't have permission to do that.
+    sign_in_to_contribute: Sign in to contribute
+    create_account: Create account
+    have_account: Already have an account?
+    no_account: New to Lurepedia?
+    welcome_back: Welcome back
+    join: Join Lurepedia
+    choose_country: Your country
+    choose_language: Preferred language
+    continue_with_google: Continue with Google
+
+  units:
+    label: Units
+    auto: Auto (from language)
+    imperial: Imperial (ft, in, lb)
+    metric: Metric (m, cm, kg)
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Freshwater
+    salt: Saltwater
+    both: Fresh & salt
+
+  action:
+    suspending: Suspending
+    floating: Floating
+    sinking: Sinking
+    none: "—"
+
+  condition:
+    season:
+      label: Season
+      any: Any season
+      spring: Spring
+      summer: Summer
+      fall: Fall
+      winter: Winter
+    clarity:
+      label: Clarity
+      any: Any clarity
+      clear: Clear
+      stained: Stained
+      muddy: Muddy
+    water_body:
+      label: Water body
+      any: Any water body
+      lake: Lake
+      pond: Pond
+      river: River
+      reservoir: Reservoir
+      stream: Stream
+    wind:
+      label: Wind
+      any: Any wind
+      calm: Calm
+      light: Light (5–10 mph)
+      moderate: Moderate (10–20 mph)
+      strong: Strong (20+ mph)
+    time_of_day:
+      label: Time of day
+      any: Any time
+      dawn: Dawn
+      morning: Morning
+      midday: Midday
+      afternoon: Afternoon
+      dusk: Dusk
+      night: Night
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Soft Plastic
+    spinnerbait: Spinnerbait
+    bladed_jig: Bladed Jig
+    topwater: Topwater
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Spoon
+    lipless_crankbait: Lipless Crankbait
+
+  lure:
+    title: Lures
+    subtitle: Every lure, proven by a catch
+    add: Add a lure
+    add_title: Add a lure
+    type: Type
+    depth: Target depth
+    action: Action
+    water: Water
+    brand: Brand
+    variants: Variants
+    variant: Variant
+    proof: Proof it works
+    catches_count:
+      one: "%{count} catch"
+      other: "%{count} catches"
+    no_proof: No proof yet
+    be_first: Be the first to prove this lure works
+    be_first_short: Be the first to prove it works →
+    where_to_buy: Where to buy
+    quick_facts: Quick facts
+    action_video: Lure in action
+    add_video: Add an action video
+    watch_video: Watch video
+    suggest_edit: Suggest an edit
+    add_catch: Add a catch
+    proven_for: Proven for
+    no_matches: No lures match your filters
+    size: Size
+    weight: Weight
+
+  species:
+    title: Species
+    subtitle: The fish dictionary
+    add: Add a species
+    add_title: Add a species
+    scientific_name: Scientific name
+    habitat: Habitat
+    tab_lures: Lures
+    tab_catches: Catches
+    tab_leaderboard: Leaderboard
+    tab_history: History
+    proven_lures: Proven lures
+    lures_count:
+      one: "%{count} lure"
+      other: "%{count} lures"
+    no_proven_lures: No proven lures yet
+    be_first_lure: Be the first to prove a lure catches this fish
+
+  brand:
+    title: Brands
+    subtitle: The makers
+    add: Add a brand
+    add_title: Add a brand
+    founded: Founded
+    country: Country
+    website: Website
+    tab_lures: Lures
+    tab_history: History
+    claim: Claim this brand
+    claimed: Claimed
+    owned_by: Owned by
+
+  shop:
+    title: Shops
+    subtitle: Where to buy
+    add: Add a shop
+    add_title: Add a shop
+    promoted_section: Promoted
+    all_shops: All shops
+    visit: Visit shop
+    claim: Claim a shop
+    owned_by: Owned by
+    added_by: Added by
+    show_history: History
+    hide_history: Hide history
+
+  catch:
+    title: Catches
+    subtitle: Recent proof from the community
+    add: Add a catch
+    add_title: Report a catch
+    on_lure: "on %{lure}"
+    conditions: Conditions
+    location: Location
+    length: Length
+    weight: Weight
+    contributor: Contributor
+    comments: Comments
+    add_comment: Add a comment
+    upvote: Upvote
+    report: Report this catch
+    related: More catches of this species
+    photos: Photos
+    pick_lure: Pick a lure
+    pick_variant: Pick a variant
+    pick_species: What did you catch?
+    note: Notes
+    submitted: Submitted for review
+    submitted_body: Thanks! Your catch is in the moderation queue and will appear once approved.
+    add_another: Add another
+
+  search:
+    title: Search
+    filters: Filters
+    combine_free: Combine freely — results match all
+    results_for: "Results for “%{q}”"
+    no_results: No results found
+    section_lures: Lures
+    section_species: Species
+    section_brands: Brands
+    any_species: Any species
+    any_type: Any type
+    any_brand: Any brand
+    any_depth: Any depth
+    saltwater_only: Saltwater only
+    clear_all: Clear all
+    show_n_lures:
+      one: Show %{count} lure
+      other: Show %{count} lures
+    other: Other
+
+  leaderboard:
+    title: Leaderboard
+    subtitle: Top anglers by species
+    all_species: All species
+    rank_by: Rank by
+    metric_catches: Catches
+    metric_upvotes: Upvotes
+    metric_length: Fish length
+    rank: Rank
+    angler: Angler
+    catches: Catches
+    upvotes: Upvotes
+    best_length: Best length
+    specialist: specialist
+    species_count:
+      one: "%{count} species"
+      other: "%{count} species"
+    you: YOU
+    empty: No ranked anglers yet
+
+  contribute:
+    suggest_edit: Suggest an edit
+    suggest_title: "Suggest an edit to %{name}"
+    suggest_note: Your suggestion will be reviewed by a moderator.
+    suggested: Suggestion submitted
+    suggested_body: Thanks — a moderator will review your suggestion.
+    add_photos: Add photos
+    moderation_note: Submissions are reviewed before they go live.
+
+  claim:
+    title: "Claim %{name}"
+    intro: "Claim this %{kind} to manage its listing. We verify ownership via a DNS TXT record on your domain."
+    step_intro: Get started
+    step_dns: Add DNS record
+    step_verify: Verify
+    domain: Your domain
+    txt_record: Add this TXT record
+    copy: Copy
+    copied: Copied!
+    verify: Verify ownership
+    verified_title: Ownership verified
+    verified_body: You now manage this listing. Changes still go through moderation.
+    pending: Verification pending
+
+  report:
+    title: Report content
+    target: Reporting
+    reason: Reason
+    reason_inaccurate: Inaccurate or misleading
+    reason_fake: Not a real catch / faked photo
+    reason_wrong: Wrong species or lure
+    reason_spam: Spam or advertising
+    reason_offensive: Offensive or inappropriate
+    reason_other: Other
+    note: Additional details (optional)
+    submit: Submit report
+    submitted: Report submitted
+    submitted_body: Thanks — moderators will review this shortly.
+
+  moderation:
+    title: Moderation queue
+    subtitle: Review crowdsourced contributions
+    moderator_view: MODERATOR VIEW
+    all: All
+    reports: Reports
+    catches: Catches
+    edits: Edits
+    catalog: Catalog
+    claims: Claims
+    awaiting: "%{count} awaiting review"
+    approve: Approve
+    reject: Reject
+    undo: Undo
+    approved: Approved
+    rejected: Rejected
+    needs_admin: Needs admin
+    submitted_by: Submitted by
+    view_details: View details
+    kind:
+      catch: Catch
+      edit: Edit
+      catalog: Catalog
+      claim: Claim
+      report: Report
+
+  admin:
+    title: Admin console
+    overview: Overview
+    people: People & roles
+    activity: Activity log
+    pending: Pending review
+    catches_logged: Catches logged
+    contributors: Contributors
+    lures_catalogued: Lures catalogued
+    role: Role
+    member: Member
+    moderator: Moderator
+    admin: Admin
+    joined: Joined
+    you: YOU
+
+  settings:
+    title: Account settings
+    profile: Profile
+    country: Country
+    language: Language
+    units: Units
+    notifications: Notifications
+    saved: Settings saved
+
+  dashboard:
+    my_catches: My catches
+    total_upvotes: Total upvotes earned
+    no_catches: You haven't logged any catches yet.
+
+  provenance:
+    title: History & ownership
+    edits:
+      one: "%{count} edit"
+      other: "%{count} edits"
+    added_by: Added by
+    owned_by: Owned by
+    originally_added: "Originally added by %{name} · %{date}"
+    edit_history: Edit history
+    created: Created this entry
+
+  species_names:
+    largemouth_bass:
+      common: Largemouth Bass
+      habitat: Warm, vegetated lakes and ponds; ambush predator around cover.
+    smallmouth_bass:
+      common: Smallmouth Bass
+      habitat: Cool, clear rivers and rocky lakes; strong fighter.
+    northern_pike:
+      common: Northern Pike
+      habitat: Weedy bays and cool lakes; aggressive ambush predator.
+    walleye:
+      common: Walleye
+      habitat: Deep, cool lakes and rivers; low-light feeder.
+    yellow_perch:
+      common: Yellow Perch
+      habitat: Schooling fish of lakes and ponds; feeds near bottom.
+    muskellunge:
+      common: Muskellunge
+      habitat: Large clear lakes and rivers; apex freshwater predator.
+    bluegill:
+      common: Bluegill
+      habitat: Warm ponds and lake shallows; nests in colonies.
+    rainbow_trout:
+      common: Rainbow Trout
+      habitat: Cold streams, rivers and lakes; prized sport fish.
+    mahi_mahi:
+      common: Mahi-Mahi
+      habitat: Warm offshore surface waters; fast pelagic predator.
+    striped_bass:
+      common: Striped Bass
+      habitat: Coastal surf, estuaries and large rivers; migratory.
+    bonefish:
+      common: Bonefish
+      habitat: Tropical shallow flats; wary and fast.
+    chinook_salmon:
+      common: Chinook Salmon
+      habitat: Cold Pacific rivers and lakes; powerful migratory fish.

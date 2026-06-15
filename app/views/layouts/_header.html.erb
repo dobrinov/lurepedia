@@ -1,0 +1,100 @@
+<header class="site-header">
+  <div class="container">
+    <a href="<%= localized_root_path %>" class="wordmark"><span class="lure">lure</span><span class="pedia">pedia</span></a>
+
+    <div class="header-search" data-controller="header-search">
+      <span class="search-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      </span>
+      <%= form_with url: search_path, method: :get, data: { header_search_target: "form" } do |f| %>
+        <%= f.search_field :q, value: params[:q], placeholder: t("nav.search_placeholder"),
+              autocomplete: "off",
+              data: { header_search_target: "input", action: "focus->header-search#expand" } %>
+      <% end %>
+
+      <div class="search-panel" data-header-search-target="panel" hidden>
+        <div class="row" style="justify-content:space-between">
+          <strong style="display:flex;align-items:center;gap:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
+            <%= t("search.filters") %>
+          </strong>
+          <span class="muted" style="font-size:13px"><%= t("search.combine_free") %></span>
+        </div>
+        <%= form_with url: lures_path, method: :get, class: "filters-form" do %>
+          <div class="filters-grid">
+            <% { species: "search.any_species", type: "search.any_type", brand: "search.any_brand",
+                 season: "condition.season.any", water_body: "condition.water_body.any",
+                 clarity: "condition.clarity.any", wind: "condition.wind.any",
+                 action: "search.any_type", depth: "search.any_depth" }.each do |field, ph| %>
+              <div>
+                <div class="filter-label"><%= t("search.#{field}", default: field.to_s.humanize) %></div>
+                <%= select_tag field, options_for_select([]), include_blank: t(ph), class: "input" %>
+              </div>
+            <% end %>
+            <div>
+              <div class="filter-label"><%= t("search.other") %></div>
+              <label class="toggle"><%= check_box_tag :saltwater %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>
+            </div>
+          </div>
+          <div class="panel-foot">
+            <a href="<%= lures_path %>" class="muted" style="font-size:14px"><%= t("search.clear_all") %></a>
+            <button type="submit" class="btn btn-primary"><%= t("common.search") %></button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <%= link_to t("nav.lures"), lures_path, class: ("active" if controller_name == "lures") %>
+      <%= link_to t("nav.species"), species_index_path, class: ("active" if controller_name == "species") %>
+      <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
+    </nav>
+
+    <div class="header-right">
+      <!-- Language switcher -->
+      <div class="dropdown" data-controller="dropdown">
+        <button class="lang-pill" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false">
+          <%= country_flag(locale_country(I18n.locale), size: 22) %>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+        <div class="dropdown-menu" data-dropdown-target="menu" hidden>
+          <% available_locales_for_switcher.each do |loc, meta| %>
+            <%= link_to url_for(locale: loc), class: "lang-item #{'active' if loc == I18n.locale}" do %>
+              <%= country_flag(meta[:country], size: 22) %>
+              <span><%= meta[:native] %></span>
+              <% if loc == I18n.locale %><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="margin-left:auto"><path d="M20 6 9 17l-5-5"></path></svg><% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if signed_in? %>
+        <div class="dropdown" data-controller="dropdown">
+          <button class="avatar" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false" title="<%= current_user.name %>"><%= current_user.initials %></button>
+          <div class="dropdown-menu" data-dropdown-target="menu" hidden>
+            <div class="menu-head">
+              <span class="avatar"><%= current_user.initials %></span>
+              <div style="min-width:0">
+                <div class="row" style="gap:6px"><strong style="font-size:14px"><%= current_user.name %></strong><span class="role-badge role-<%= current_user.role %>"><%= t("admin.#{current_user.role}") %></span></div>
+                <div class="muted" style="font-size:12px"><%= current_user.email_address %></div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <%= link_to t("catch.add_title"), new_catch_path %>
+            <%= link_to t("dashboard.my_catches"), my_catches_path %>
+            <%= link_to t("settings.title"), edit_settings_path %>
+            <% if current_user.can_moderate? %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t("moderation.title"), moderation_index_path %>
+              <% if current_user.admin? %><%= link_to t("admin.title"), admin_root_path %><% end %>
+            <% end %>
+            <div class="dropdown-divider"></div>
+            <%= button_to t("auth.sign_out"), session_path, method: :delete, style: "color:var(--danger)" %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to t("auth.sign_in"), new_session_path, class: "btn btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+</header>
