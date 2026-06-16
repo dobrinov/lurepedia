@@ -96,6 +96,15 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_session_path(locale: :en)
   end
 
+  test "all add screens render for a signed-in user" do
+    sign_in_as(@member)
+    [ new_lure_path(locale: :en), new_species_path(locale: :en), new_brand_path(locale: :en),
+      new_shop_path(locale: :en), new_catch_path(locale: :en) ].each do |path|
+      get path
+      assert_response :success, "expected 200 for #{path}"
+    end
+  end
+
   test "signed-in member can create a catch" do
     sign_in_as(@member)
     assert_difference -> { Catch.count } => 1, -> { ModerationItem.count } => 1 do

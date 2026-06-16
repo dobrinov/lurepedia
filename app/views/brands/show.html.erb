@@ -14,11 +14,14 @@
         <% if @brand.blurb.present? %><p class="muted" style="max-width:520px"><%= @brand.blurb %></p><% end %>
       </div>
     </div>
-    <% unless @brand.claimed? %>
+    <div class="row">
       <% if signed_in? %>
-        <%= link_to t("brand.claim"), new_claim_path(type: "brand", slug: @brand.slug), class: "btn" %>
+        <%= link_to edit_affordance_label, edit_brand_path(@brand), class: "btn" %>
+        <% unless @brand.claimed? %>
+          <%= link_to t("brand.claim"), new_claim_path(type: "brand", slug: @brand.slug), class: "btn" %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
   <div data-controller="tabs">

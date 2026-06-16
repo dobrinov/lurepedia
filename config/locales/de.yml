@@ -279,6 +279,8 @@ de:
 
   contribute:
     suggest_edit: Änderung vorschlagen
+    edit_title: "%{name} bearbeiten"
+    edit_saved: "Änderungen gespeichert"
     suggest_title: "Änderung zu %{name} vorschlagen"
     suggest_note: Dein Vorschlag wird von einem Moderator geprüft.
     suggested: Vorschlag eingereicht

@@ -1,0 +1,20 @@
+<%# locals: brand, submit_label %>
+<%= form_with model: brand do |f| %>
+  <div class="field">
+    <%= f.label :name, t("auth.name") %>
+    <%= f.text_field :name, class: "input", required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :country, t("brand.country") %>
+    <%= f.text_field :country, class: "input", placeholder: "US, JP, DE…" %>
+  </div>
+  <div class="field">
+    <%= f.label :founded_year, t("brand.founded") %>
+    <%= f.number_field :founded_year, class: "input" %>
+  </div>
+  <div class="field">
+    <%= f.label :blurb, t("brand.title") %>
+    <%= f.text_area :blurb, class: "input" %>
+  </div>
+  <%= f.submit submit_label, class: "btn btn-primary" %>
+<% end %>

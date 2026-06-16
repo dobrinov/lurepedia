@@ -1,0 +1,12 @@
+<%# locals: species, submit_label %>
+<%= form_with model: species do |f| %>
+  <div class="field">
+    <%= f.label :scientific_name, t("species.scientific_name") %>
+    <%= f.text_field :scientific_name, class: "input", required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :water, t("lure.water") %>
+    <%= f.select :water, Species.waters.keys.map { |w| [water_name(w), w] }, {}, class: "input" %>
+  </div>
+  <%= f.submit submit_label, class: "btn btn-primary" %>
+<% end %>

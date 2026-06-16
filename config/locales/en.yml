@@ -279,6 +279,8 @@ en:
 
   contribute:
     suggest_edit: Suggest an edit
+    edit_title: "Edit %{name}"
+    edit_saved: "Changes saved"
     suggest_title: "Suggest an edit to %{name}"
     suggest_note: Your suggestion will be reviewed by a moderator.
     suggested: Suggestion submitted

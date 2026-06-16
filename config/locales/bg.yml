@@ -279,6 +279,8 @@ bg:
 
   contribute:
     suggest_edit: Предложи редакция
+    edit_title: "Редактирай %{name}"
+    edit_saved: "Промените са запазени"
     suggest_title: "Предложи редакция на %{name}"
     suggest_note: Предложението ти ще бъде прегледано от модератор.
     suggested: Предложението е изпратено

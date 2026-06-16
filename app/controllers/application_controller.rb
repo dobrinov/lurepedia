@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Authentication
   include Authorization
   include Paginatable
+  include Editable
 
   # Public browsing is the default; gate specific actions with require_login etc.
 

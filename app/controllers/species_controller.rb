@@ -1,5 +1,5 @@
 class SpeciesController < ApplicationController
-  before_action :require_login, only: %i[new create]
+  before_action :require_login, only: %i[new create edit update]
 
   def index
     @page = paginate(Species.alpha, per: 12)
@@ -16,6 +16,7 @@ class SpeciesController < ApplicationController
   end
 
   def new
+    @species = Species.new
   end
 
   def create
@@ -30,6 +31,15 @@ class SpeciesController < ApplicationController
       flash.now[:alert] = @species.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @species = Species.find_by!(slug: params[:id])
+  end
+
+  def update
+    @species = Species.find_by!(slug: params[:id])
+    commit_edit(@species, species_params, @species.common_name, species_path(@species))
   end
 
   private

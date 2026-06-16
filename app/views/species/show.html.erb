@@ -19,6 +19,13 @@
         <span class="tag"><%= t("lure.catches_count", count: @species.catches_count) %></span>
       </div>
       <% if @species.habitat.present? %><p class="muted"><%= @species.habitat %></p><% end %>
+      <div class="row">
+        <% if signed_in? %>
+          <%= link_to edit_affordance_label, edit_species_path(@species), class: "btn" %>
+        <% else %>
+          <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn" %>
+        <% end %>
+      </div>
     </div>
   </div>
 

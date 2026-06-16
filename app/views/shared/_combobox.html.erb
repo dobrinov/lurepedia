@@ -2,13 +2,15 @@
   locals: name (form field name), options (array of [label, value]),
           selected (value, optional), placeholder (string, optional), form (optional form builder)
 %>
-<% options ||= [] %>
-<% placeholder ||= t("common.search") %>
+<% options = local_assigns.fetch(:options, []) %>
+<% selected = local_assigns.fetch(:selected, nil) %>
+<% form = local_assigns.fetch(:form, nil) %>
+<% placeholder = local_assigns.fetch(:placeholder, t("common.search")) %>
 <% json = options.map { |label, value| { label: label, value: value } } %>
 <% selected_label = (options.find { |_l, v| v.to_s == selected.to_s } || []).first %>
 <div class="combobox" data-controller="combobox"
      data-combobox-options-value="<%= json.to_json %>">
-  <% if defined?(form) && form %>
+  <% if form %>
     <%= form.hidden_field name.to_s.split(/[\[\]]/).last, value: selected, data: { combobox_target: "hidden" } %>
   <% else %>
     <%= hidden_field_tag name, selected, data: { combobox_target: "hidden" } %>

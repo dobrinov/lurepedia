@@ -1,0 +1,41 @@
+<div class="site-search" data-controller="header-search">
+  <span class="search-icon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+  </span>
+  <%= form_with url: search_path, method: :get, data: { header_search_target: "form" } do |f| %>
+    <%= f.search_field :q, value: params[:q], placeholder: t("nav.search_placeholder"),
+          autocomplete: "off",
+          data: { header_search_target: "input", action: "focus->header-search#expand" } %>
+  <% end %>
+
+  <div class="search-panel" data-header-search-target="panel" hidden>
+    <div class="row" style="justify-content:space-between">
+      <strong style="display:flex;align-items:center;gap:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
+        <%= t("search.filters") %>
+      </strong>
+      <span class="muted" style="font-size:13px"><%= t("search.combine_free") %></span>
+    </div>
+    <%= form_with url: lures_path, method: :get, class: "filters-form" do %>
+      <div class="filters-grid">
+        <% { species: "search.any_species", type: "search.any_type", brand: "search.any_brand",
+             season: "condition.season.any", water_body: "condition.water_body.any",
+             clarity: "condition.clarity.any", wind: "condition.wind.any",
+             action: "search.any_type", depth: "search.any_depth" }.each do |field, ph| %>
+          <div>
+            <div class="filter-label"><%= t("search.#{field}", default: field.to_s.humanize) %></div>
+            <%= select_tag field, options_for_select([]), include_blank: t(ph), class: "input" %>
+          </div>
+        <% end %>
+        <div>
+          <div class="filter-label"><%= t("search.other") %></div>
+          <label class="toggle"><%= check_box_tag :saltwater %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>
+        </div>
+      </div>
+      <div class="panel-foot">
+        <a href="<%= lures_path %>" class="muted" style="font-size:14px"><%= t("search.clear_all") %></a>
+        <button type="submit" class="btn btn-primary"><%= t("common.search") %></button>
+      </div>
+    <% end %>
+  </div>
+</div>

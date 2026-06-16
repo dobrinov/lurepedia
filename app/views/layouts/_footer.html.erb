@@ -10,7 +10,6 @@
         <%= link_to t("nav.species"), species_index_path %>
         <%= link_to t("nav.brands"), brands_path %>
         <%= link_to t("nav.catches"), catches_path %>
-        <%= link_to t("nav.leaderboard"), leaderboard_path %>
         <%= link_to t("nav.shops"), shops_path %>
       </div>
       <div class="footer-col">
@@ -27,6 +26,9 @@
         <a href="#">Guidelines</a>
         <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
       </div>
+    </div>
+    <div class="footer-search-row">
+      <%= render "layouts/search" %>
     </div>
     <div class="footer-bottom">
       <span>© <%= Time.current.year %> Lurepedia</span>

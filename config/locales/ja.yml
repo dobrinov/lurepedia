@@ -279,6 +279,8 @@ ja:
 
   contribute:
     suggest_edit: 修正を提案
+    edit_title: "%{name} を編集"
+    edit_saved: "変更を保存しました"
     suggest_title: "%{name} の修正を提案"
     suggest_note: 提案はモデレーターが確認します。
     suggested: 提案を送信しました

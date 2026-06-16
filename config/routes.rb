@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     end
 
     # Catalog
-    resources :lures, only: %i[index show new create]
-    resources :species, only: %i[index show new create]
-    resources :brands, only: %i[index show new create]
+    resources :lures, only: %i[index show new create edit update]
+    resources :species, only: %i[index show new create edit update]
+    resources :brands, only: %i[index show new create edit update]
     resources :shops, only: %i[index new create]
     resources :catches, only: %i[index show new create] do
       resources :comments, only: :create
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     get "leaderboard", to: "leaderboard#index"
 
     # Contribution / community
-    resources :revisions, only: %i[new create]
     resources :claims, only: %i[new create] do
       member { post :verify }
     end

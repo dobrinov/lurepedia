@@ -62,11 +62,40 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     assert_match I18n.t("dashboard.total_upvotes"), response.body
   end
 
-  test "suggest edit creates revision and moderation item" do
+  test "member suggesting a lure edit files a reviewed suggestion without applying it" do
     sign_in_as(@member)
     assert_difference -> { Revision.count } => 1, -> { ModerationItem.where(kind: :edit).count } => 1 do
-      post revisions_path(locale: :en), params: { revision: { type: "lure", slug: @lure.slug, summary: "Fix depth" } }
+      patch lure_path(@lure, locale: :en), params: { lure: { model: "Vision 110 PROPOSED" } }
     end
+    assert_equal "Vision 110", @lure.reload.model # not applied for non-admin
+  end
+
+  test "admin editing a lure applies directly without moderation" do
+    sign_in_as(@admin)
+    assert_no_difference -> { ModerationItem.where(kind: :edit).count } do
+      patch lure_path(@lure, locale: :en), params: { lure: { model: "Vision 110 MkII" } }
+    end
+    assert_equal "Vision 110 MkII", @lure.reload.model
+  end
+
+  test "edit pages render with role-appropriate affordance" do
+    sign_in_as(@member)
+    get edit_species_path(@bass, locale: :en)
+    assert_response :success
+    assert_match I18n.t("contribute.suggest_edit"), response.body
+
+    sign_in_as(@admin)
+    get edit_brand_path(@brand, locale: :en)
+    assert_response :success
+    assert_match I18n.t("common.edit"), response.body
+  end
+
+  test "species detail shows an edit affordance" do
+    get species_path(@bass, locale: :en)
+    assert_match I18n.t("auth.sign_in_to_contribute"), response.body
+    sign_in_as(@member)
+    get species_path(@bass, locale: :en)
+    assert_match I18n.t("contribute.suggest_edit"), response.body
   end
 
   test "report creates report and moderation item" do

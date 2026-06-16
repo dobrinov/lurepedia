@@ -1,5 +1,5 @@
 class BrandsController < ApplicationController
-  before_action :require_login, only: %i[new create]
+  before_action :require_login, only: %i[new create edit update]
 
   def index
     @page = paginate(Brand.alpha, per: 12)
@@ -13,6 +13,7 @@ class BrandsController < ApplicationController
   end
 
   def new
+    @brand = Brand.new
   end
 
   def create
@@ -26,6 +27,15 @@ class BrandsController < ApplicationController
       flash.now[:alert] = @brand.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @brand = Brand.find_by!(slug: params[:id])
+  end
+
+  def update
+    @brand = Brand.find_by!(slug: params[:id])
+    commit_edit(@brand, brand_params, @brand.name, brand_path(@brand))
   end
 
   private
