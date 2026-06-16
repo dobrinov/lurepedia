@@ -5,12 +5,14 @@ export default class extends Controller {
   static targets = ["source", "button"]
 
   copy() {
-    navigator.clipboard.writeText(this.sourceTarget.value).then(() => {
+    navigator.clipboard?.writeText(this.sourceTarget.value).then(() => {
       const btn = this.hasButtonTarget ? this.buttonTarget : null
       if (!btn) return
-      const original = btn.textContent
+      // Capture the label once so rapid clicks don't latch on "Copied!".
+      this.originalLabel ??= btn.textContent
+      clearTimeout(this.resetTimer)
       btn.textContent = btn.dataset.copiedLabel || "Copied!"
-      setTimeout(() => { btn.textContent = original }, 1500)
+      this.resetTimer = setTimeout(() => { btn.textContent = this.originalLabel }, 1500)
     })
   }
 }
