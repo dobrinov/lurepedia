@@ -44,6 +44,9 @@ Rails.application.routes.draw do
       member { post :verify }
     end
     resources :reports, only: :create
+    resources :favorites, only: :create do
+      delete :destroy, on: :collection
+    end
 
     # Staff
     resources :moderation, only: %i[index update]
