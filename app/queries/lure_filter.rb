@@ -1,6 +1,9 @@
 # Filters lures by catalog attributes and (via catches) condition attributes.
 class LureFilter
-  ATTRS = %i[q type brand species action depth water_body season clarity wind saltwater sort].freeze
+  ATTRS = %i[q type brand species lure_action depth water_body season clarity wind saltwater sort].freeze
+
+  # Depth bands in centimetres, matched by overlap against a lure's [min, max] range.
+  DEPTH_BANDS = { "shallow" => [ 0, 150 ], "mid" => [ 150, 450 ], "deep" => [ 450, 100_000 ] }.freeze
 
   def initialize(params = {})
     @p = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h.symbolize_keys : params.symbolize_keys
@@ -20,7 +23,8 @@ class LureFilter
     pills << [ :type, lure_type_label(@p[:type]) ] if present?(:type)
     pills << [ :brand, brand_label(@p[:brand]) ] if present?(:brand)
     pills << [ :species, species_label(@p[:species]) ] if present?(:species)
-    pills << [ :action, @p[:action].to_s.titleize ] if present?(:action)
+    pills << [ :lure_action, @p[:lure_action].to_s.titleize ] if present?(:lure_action)
+    pills << [ :depth, I18n.t("search.depth_band.#{@p[:depth]}", default: @p[:depth].to_s.titleize) ] if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
     pills << [ :saltwater, I18n.t("search.saltwater_only") ] if truthy?(:saltwater)
     %i[season clarity water_body wind].each do |k|
       pills << [ k, I18n.t("condition.#{k}.#{@p[k]}", default: @p[k].to_s.titleize) ] if present?(k)
@@ -44,9 +48,15 @@ class LureFilter
   def apply_catalog(scope)
     scope = scope.joins(:lure_type).where(lure_types: { key: @p[:type] }) if present?(:type)
     scope = scope.joins(:brand).where(brands: { slug: @p[:brand] }) if present?(:brand)
-    scope = scope.where(action: @p[:action]) if present?(:action) && Lure.actions.key?(@p[:action].to_s)
+    scope = scope.where(action: @p[:lure_action]) if present?(:lure_action) && Lure.actions.key?(@p[:lure_action].to_s)
+    scope = apply_depth(scope) if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
     scope = scope.where(water: :salt) if truthy?(:saltwater)
     scope
+  end
+
+  def apply_depth(scope)
+    band_min, band_max = DEPTH_BANDS.fetch(@p[:depth].to_s)
+    scope.where("lures.depth_min_cm <= ? AND lures.depth_max_cm >= ?", band_max, band_min)
   end
 
   def apply_conditions(scope)

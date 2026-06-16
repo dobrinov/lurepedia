@@ -27,7 +27,7 @@
         <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
       </div>
     </div>
-    <div class="footer-search-row">
+    <div class="footer-search-row footer-only-search">
       <%= render "layouts/search" %>
     </div>
     <div class="footer-bottom">

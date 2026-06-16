@@ -8,6 +8,10 @@
       <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
     </nav>
 
+    <div class="header-search">
+      <%= render "layouts/search" %>
+    </div>
+
     <div class="header-right">
       <!-- Language switcher -->
       <div class="dropdown" data-controller="dropdown">

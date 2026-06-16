@@ -48,4 +48,34 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_includes keys, :type
     assert_includes keys, :saltwater
   end
+
+  test "filter by lure_action" do
+    suspending = Lure.create!(brand: @sk, lure_type: @jerk, model: "Pointer", action: :suspending)
+    results = LureFilter.new(lure_action: "suspending").results.to_a
+    assert_equal [ suspending ], results
+  end
+
+  test "lure_action ignores unknown values" do
+    assert_equal LureFilter.new({}).results.to_a, LureFilter.new(lure_action: "bogus").results.to_a
+  end
+
+  test "lure_action appears in active pills" do
+    keys = LureFilter.new(lure_action: "suspending").active_pills.map(&:first)
+    assert_includes keys, :lure_action
+  end
+
+  test "filter by depth band overlaps the lure depth range" do
+    shallow = Lure.create!(brand: @sk, lure_type: @crank, model: "Shallow Squarebill", depth_min_cm: 0, depth_max_cm: 100)
+    mid     = Lure.create!(brand: @sk, lure_type: @crank, model: "Medium Diver", depth_min_cm: 200, depth_max_cm: 400)
+    deep    = Lure.create!(brand: @sk, lure_type: @crank, model: "Deep Diver", depth_min_cm: 600, depth_max_cm: 900)
+
+    assert_equal [ shallow ], LureFilter.new(depth: "shallow").results.to_a
+    assert_equal [ mid ], LureFilter.new(depth: "mid").results.to_a
+    assert_equal [ deep ], LureFilter.new(depth: "deep").results.to_a
+  end
+
+  test "depth ignores unknown bands and appears in active pills" do
+    assert_equal LureFilter.new({}).results.to_a, LureFilter.new(depth: "bogus").results.to_a
+    assert_includes LureFilter.new(depth: "shallow").active_pills.map(&:first), :depth
+  end
 end

@@ -1,0 +1,24 @@
+<%#
+  Server-backed searchable select with infinite scroll.
+  locals: name (form field name), url (options endpoint),
+          selected (value, optional), selected_label (resolved label, optional),
+          placeholder (string, optional)
+%>
+<% selected = local_assigns.fetch(:selected, nil) %>
+<% selected_label = local_assigns.fetch(:selected_label, nil) %>
+<% placeholder = local_assigns.fetch(:placeholder, t("common.search")) %>
+<div class="combobox" data-controller="async-combobox"
+     data-async-combobox-url-value="<%= url %>">
+  <%= hidden_field_tag name, selected, data: { async_combobox_target: "hidden" } %>
+  <button type="button" class="combobox-trigger <%= 'placeholder' unless selected_label %>"
+          data-async-combobox-target="trigger" data-action="async-combobox#toggle" aria-expanded="false">
+    <span data-async-combobox-target="label"><%= selected_label || placeholder %></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+  </button>
+  <div class="combobox-panel" data-async-combobox-target="panel" hidden>
+    <div class="combobox-search">
+      <input type="text" placeholder="<%= placeholder %>" data-async-combobox-target="search" data-action="input->async-combobox#search">
+    </div>
+    <div class="combobox-options" data-async-combobox-target="options"></div>
+  </div>
+</div>

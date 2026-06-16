@@ -18,18 +18,32 @@
     </div>
     <%= form_with url: lures_path, method: :get, class: "filters-form" do %>
       <div class="filters-grid">
-        <% { species: "search.any_species", type: "search.any_type", brand: "search.any_brand",
-             season: "condition.season.any", water_body: "condition.water_body.any",
-             clarity: "condition.clarity.any", wind: "condition.wind.any",
-             action: "search.any_type", depth: "search.any_depth" }.each do |field, ph| %>
+        <%# Large collections: server-backed, paginated, infinite-scroll comboboxes %>
+        <div>
+          <div class="filter-label"><%= t("nav.species") %></div>
+          <%= render "shared/async_combobox", name: "species", url: species_options_path,
+                selected: params[:species], selected_label: selected_species_label(params[:species]),
+                placeholder: t("search.any_species") %>
+        </div>
+        <div>
+          <div class="filter-label"><%= t("lure.brand") %></div>
+          <%= render "shared/async_combobox", name: "brand", url: brand_options_path,
+                selected: params[:brand], selected_label: selected_brand_label(params[:brand]),
+                placeholder: t("search.any_brand") %>
+        </div>
+
+        <%# Small static enums: inline client-side combobox %>
+        <% static_filter_fields.each do |field, opts| %>
           <div>
-            <div class="filter-label"><%= t("search.#{field}", default: field.to_s.humanize) %></div>
-            <%= select_tag field, options_for_select([]), include_blank: t(ph), class: "input" %>
+            <div class="filter-label"><%= opts[:label] %></div>
+            <%= render "shared/combobox", name: field.to_s, options: opts[:options],
+                  selected: params[field], placeholder: opts[:placeholder] %>
           </div>
         <% end %>
+
         <div>
           <div class="filter-label"><%= t("search.other") %></div>
-          <label class="toggle"><%= check_box_tag :saltwater %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>
+          <label class="toggle"><%= check_box_tag :saltwater, "1", params[:saltwater].present? %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>
         </div>
       </div>
       <div class="panel-foot">

@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     get "search", to: "search#index"
     get "leaderboard", to: "leaderboard#index"
 
+    # Paginated, searchable options for the large filter dropdowns
+    get "options/species", to: "filter_options#species", as: :species_options
+    get "options/brands", to: "filter_options#brands", as: :brand_options
+
     # Contribution / community
     resources :claims, only: %i[new create] do
       member { post :verify }
