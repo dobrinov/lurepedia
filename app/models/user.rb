@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validate :username_not_taken_as_slug
 
   def self.find_by_handle!(handle)
-    find_by(username: handle) || find_by!(slug: handle)
+    (handle.present? && find_by(username: handle)) || find_by!(slug: handle)
   end
 
   def to_param

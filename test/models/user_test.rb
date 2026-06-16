@@ -56,6 +56,12 @@ class UserTest < ActiveSupport::TestCase
     assert_raises(ActiveRecord::RecordNotFound) { User.find_by_handle!("nope") }
   end
 
+  test "find_by_handle! raises on a nil or blank handle" do
+    User.create!(name: "Ima User", email_address: "ima@example.com", password: "secret123")
+    assert_raises(ActiveRecord::RecordNotFound) { User.find_by_handle!(nil) }
+    assert_raises(ActiveRecord::RecordNotFound) { User.find_by_handle!("") }
+  end
+
   test "username is downcased, unique, and format-validated" do
     User.create!(name: "A", email_address: "a@example.com", password: "secret123", username: "Taken")
     dup = User.new(name: "B", email_address: "b@example.com", password: "secret123", username: "TAKEN")
