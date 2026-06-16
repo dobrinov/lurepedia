@@ -15,11 +15,10 @@ class FavoritesController < ApplicationController
   private
 
   def set_favoritable
-    type = params[:favoritable_type].to_s
-    unless Favorite::FAVORITABLE_TYPES.include?(type)
-      head :unprocessable_entity and return
-    end
-    @favoritable = type.constantize.find(params[:favoritable_id])
+    klass = { "Species" => Species, "Lure" => Lure, "Shop" => Shop }[params[:favoritable_type].to_s]
+    return head :unprocessable_entity unless klass
+
+    @favoritable = klass.find(params[:favoritable_id])
   end
 
   # Fallback is only used when there's no referer. Shops have no show route,
