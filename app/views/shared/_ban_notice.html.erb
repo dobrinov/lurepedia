@@ -1,0 +1,18 @@
+<% ban = current_user&.active_ban %>
+<% if ban %>
+  <div class="ban-notice flash alert" role="alert">
+    <strong><%= t("bans.notice.title") %></strong>
+    <span><%= t("bans.notice.reason") %>: <%= ban.reason %></span>
+    <span>
+      <% if ban.permanent? %>
+        <%= t("bans.notice.permanent") %>
+      <% else %>
+        <%= t("bans.notice.until", date: l(ban.expires_at.to_date, format: :long)) %>
+      <% end %>
+    </span>
+    <span class="muted">
+      <%= t("bans.notice.scope") %>:
+      <%= ban.capabilities.map { |c| t("bans.capability.#{c}") }.to_sentence %>
+    </span>
+  </div>
+<% end %>

@@ -47,4 +47,17 @@ class ContributionBansTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "form[action*=?]", "favorites", count: 0
   end
+
+  test "banned user sees a persistent ban notice with reason" do
+    Ban.create!(user: @user, issued_by: @admin, reason: "Repeated spam", capabilities: %w[catalog catches], expires_at: 3.days.from_now)
+    sign_in_as(@user)
+    get lure_path(@lure, locale: :en)
+    assert_select ".ban-notice", text: /Repeated spam/
+  end
+
+  test "unbanned user sees no ban notice" do
+    sign_in_as(@user)
+    get lure_path(@lure, locale: :en)
+    assert_select ".ban-notice", count: 0
+  end
 end

@@ -24,6 +24,20 @@ en:
 
   bans:
     blocked: Your account is currently restricted from this action.
+    notice:
+      title: Your account is restricted.
+      reason: Reason
+      permanent: This restriction is permanent.
+      until: "In effect until %{date}."
+      scope: Restricted actions
+    capability:
+      catalog: catalog edits
+      claims: ownership claims
+      catches: logging catches
+      comments: comments
+      upvotes: upvotes
+      reports: reports
+      favorites: favorites
 
   favorites:
     add: Favorite
