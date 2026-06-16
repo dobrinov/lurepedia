@@ -57,7 +57,11 @@ Rails.application.routes.draw do
       root to: "dashboard#overview"
       get "people", to: "dashboard#people"
       get "activity", to: "dashboard#activity"
-      resources :users, only: :update
+      resources :users, only: :update do
+        resources :bans, only: %i[index create] do
+          member { patch :revoke }
+        end
+      end
     end
 
     root to: "lures#index", as: :localized_root

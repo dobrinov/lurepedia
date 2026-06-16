@@ -38,6 +38,31 @@ en:
       upvotes: upvotes
       reports: reports
       favorites: favorites
+    preset:
+      catalog_only: Catalog only
+      contributions: All contributions
+      full: Full (read-only account)
+    admin:
+      title: "Bans — %{name}"
+      title_short: Bans
+      new: Issue a ban
+      reason: Reason
+      preset: Preset
+      custom: Custom selection
+      capabilities: Restricted actions
+      capabilities_help: A preset pre-selects actions; check boxes to customize.
+      expires_at: Expires at
+      permanent_hint: Leave blank for a permanent ban.
+      issue: Issue ban
+      status: Status
+      scope: Scope
+      active: Active
+      lifted: Lifted
+      expired: Expired
+      lift: Lift ban
+      manage: Manage bans
+      created: Ban issued.
+      revoked: Ban lifted.
 
   favorites:
     add: Favorite
