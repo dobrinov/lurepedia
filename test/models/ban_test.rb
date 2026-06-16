@@ -20,6 +20,12 @@ class BanTest < ActiveSupport::TestCase
     assert_not b.valid?
   end
 
+  test "capabilities cannot be empty" do
+    b = Ban.new(user: @user, issued_by: @admin, reason: "x", capabilities: [])
+    assert_not b.valid?
+    assert_includes b.errors[:capabilities], "can't be blank"
+  end
+
   test "active scope excludes revoked and expired bans" do
     active = ban
     ban(revoked_at: Time.current)

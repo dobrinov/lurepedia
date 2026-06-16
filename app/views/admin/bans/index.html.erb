@@ -61,7 +61,7 @@
             </td>
             <td><%= ban.reason %></td>
             <td class="muted"><%= ban.capabilities.map { |c| t("bans.capability.#{c}") }.to_sentence %></td>
-            <td class="muted"><%= ban.permanent? ? t("bans.notice.permanent") : l(ban.expires_at, format: :long) %></td>
+            <td class="muted"><%= ban.permanent? ? t("bans.notice.permanent") : l(ban.expires_at.to_date, format: :long) %></td>
             <td class="muted"><%= l(ban.created_at.to_date, format: :long) %></td>
             <td>
               <% if ban.active? %>

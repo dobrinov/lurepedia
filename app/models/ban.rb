@@ -11,6 +11,7 @@ class Ban < ApplicationRecord
   }.freeze
 
   validates :reason, presence: true
+  validate :capabilities_present
   validate :capabilities_subset
 
   scope :active, -> { where(revoked_at: nil).where("expires_at IS NULL OR expires_at > ?", Time.current) }
@@ -29,6 +30,10 @@ class Ban < ApplicationRecord
   end
 
   private
+
+  def capabilities_present
+    errors.add(:capabilities, :blank) if Array(capabilities).reject(&:blank?).empty?
+  end
 
   def capabilities_subset
     extra = Array(capabilities).map(&:to_s) - CAPABILITIES
