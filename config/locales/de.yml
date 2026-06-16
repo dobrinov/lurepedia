@@ -373,6 +373,12 @@ de:
     units: Einheiten
     notifications: Benachrichtigungen
     saved: Einstellungen gespeichert
+    public_profile: Dein öffentliches Profil
+    copy: Kopieren
+    copied: Kopiert!
+    username: Benutzername
+    username_hint: z. B. casey-rivera
+    username_help: Optional. Kleinbuchstaben, Zahlen, Bindestriche. Wird in deiner Profil-URL verwendet.
 
   dashboard:
     my_catches: Meine Fänge
@@ -427,3 +433,62 @@ de:
     chinook_salmon:
       common: Königslachs
       habitat: Kalte pazifische Flüsse und Seen; kraftvoller Wanderfisch.
+
+  favorites:
+    add: Favorisieren
+    remove: Nicht mehr favorisieren
+    favorited: Favorisiert
+    sign_in_to_favorite: Zum Favorisieren anmelden
+
+  profile:
+    catches: Fänge
+    total_upvotes: Stimmen insgesamt
+    member_since: Mitglied seit
+    favorite_species: Lieblingsfischarten
+    favorite_lures: Lieblingsköder
+    favorite_shops: Lieblingsshops
+    no_favorites: Noch keine Favoriten.
+    no_catches: Noch keine Fänge.
+    your_profile: Das ist dein öffentliches Profil.
+
+  bans:
+    blocked: Dein Konto ist für diese Aktion derzeit gesperrt.
+    notice:
+      title: Dein Konto ist eingeschränkt.
+      reason: Grund
+      permanent: Diese Einschränkung ist dauerhaft.
+      until: "Gültig bis %{date}."
+      scope: Eingeschränkte Aktionen
+    capability:
+      catalog: Katalogänderungen
+      claims: Besitzansprüche
+      catches: Fänge erfassen
+      comments: Kommentare
+      upvotes: Stimmen
+      reports: Meldungen
+      favorites: Favoriten
+    preset:
+      catalog_only: Nur Katalog
+      contributions: Alle Beiträge
+      full: Vollständig (Nur-Lese-Konto)
+    admin:
+      title: "Sperren — %{name}"
+      title_short: Sperren
+      new: Sperre verhängen
+      reason: Grund
+      preset: Voreinstellung
+      custom: Benutzerdefinierte Auswahl
+      capabilities: Eingeschränkte Aktionen
+      capabilities_help: Eine Voreinstellung wählt Aktionen vor; aktiviere Kästchen zum Anpassen.
+      expires_at: Läuft ab am
+      permanent_hint: Für eine dauerhafte Sperre leer lassen.
+      issue: Sperre verhängen
+      status: Status
+      scope: Umfang
+      active: Aktiv
+      lifted: Aufgehoben
+      expired: Abgelaufen
+      lift: Sperre aufheben
+      manage: Sperren verwalten
+      created: Sperre verhängt.
+      revoked: Sperre aufgehoben.

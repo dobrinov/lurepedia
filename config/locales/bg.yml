@@ -365,6 +365,65 @@ bg:
     joined: Присъединил се
     you: ТИ
 
+  favorites:
+    add: Добави в любими
+    remove: Премахни от любими
+    favorited: В любими
+    sign_in_to_favorite: Влез, за да добавиш в любими
+
+  profile:
+    catches: Улови
+    total_upvotes: Общо гласове
+    member_since: Член от
+    favorite_species: Любими видове
+    favorite_lures: Любими примамки
+    favorite_shops: Любими магазини
+    no_favorites: Все още няма любими.
+    no_catches: Все още няма улови.
+    your_profile: Това е твоят публичен профил.
+
+  bans:
+    blocked: Профилът ти в момента е ограничен за това действие.
+    notice:
+      title: Профилът ти е ограничен.
+      reason: Причина
+      permanent: Това ограничение е постоянно.
+      until: "В сила до %{date}."
+      scope: Ограничени действия
+    capability:
+      catalog: редакции на каталога
+      claims: заявки за собственост
+      catches: регистриране на улови
+      comments: коментари
+      upvotes: гласове
+      reports: сигнали
+      favorites: любими
+    preset:
+      catalog_only: Само каталог
+      contributions: Всички приноси
+      full: Пълно (само за четене)
+    admin:
+      title: "Ограничения — %{name}"
+      title_short: Ограничения
+      new: Наложи ограничение
+      reason: Причина
+      preset: Шаблон
+      custom: Персонален избор
+      capabilities: Ограничени действия
+      capabilities_help: Шаблонът избира действия предварително; отметни полетата, за да персонализираш.
+      expires_at: Изтича на
+      permanent_hint: Остави празно за постоянно ограничение.
+      issue: Наложи ограничение
+      status: Статус
+      scope: Обхват
+      active: Активно
+      lifted: Отменено
+      expired: Изтекло
+      lift: Отмени ограничението
+      manage: Управление на ограниченията
+      created: Ограничението е наложено.
+      revoked: Ограничението е отменено.
+
   settings:
     title: Настройки на профила
     profile: Профил
@@ -373,6 +432,12 @@ bg:
     units: Мерни единици
     notifications: Известия
     saved: Настройките са запазени
+    public_profile: Твоят публичен профил
+    copy: Копирай
+    copied: Копирано!
+    username: Потребителско име
+    username_hint: напр. casey-rivera
+    username_help: По избор. Малки букви, цифри, тирета. Използва се в адреса на профила ти.
 
   dashboard:
     my_catches: Моите улови
