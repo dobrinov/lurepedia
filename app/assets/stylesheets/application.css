@@ -222,12 +222,10 @@ main { min-height: 60vh; }
 .dropdown-menu a:hover, .dropdown-menu button:hover { background: var(--surface-2); }
 .dropdown-divider { height: 1px; background: var(--surface-2); margin: 6px 0; }
 .menu-head { padding: 10px; display: flex; align-items: center; gap: 10px; }
-.lang-pill { display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 10px 0 6px; border: 1.5px solid var(--accent); border-radius: var(--r-pill); background: var(--white); cursor: pointer; transition: box-shadow .15s ease; }
-.lang-pill:hover { box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
-.lang-menu { min-width: 248px; padding: 8px; }
-.lang-menu a.lang-item { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--r-10); font-size: 15px; font-weight: 500; color: var(--ink-2); }
-.lang-menu a.lang-item:hover { background: var(--surface-2); }
-.lang-menu a.lang-item.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.lang-pill { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 8px; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--white); cursor: pointer; }
+.lang-pill[aria-expanded="true"] { border-color: var(--accent); }
+.lang-item { display: flex; align-items: center; gap: 10px; }
+.lang-item.active { background: var(--accent-bg); color: var(--accent); }
 
 /* Combobox ---------------------------------------------------------------- */
 .combobox { position: relative; }
