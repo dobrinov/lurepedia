@@ -53,16 +53,15 @@
     <div class="header-right">
       <!-- Language switcher -->
       <div class="dropdown" data-controller="dropdown">
-        <button class="lang-pill" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false">
-          <%= country_flag(locale_country(I18n.locale), size: 22) %>
+        <button class="lang-pill" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false" aria-label="<%= t("settings.language") %>">
+          <%= country_flag(locale_country(I18n.locale), size: 26) %>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg>
         </button>
-        <div class="dropdown-menu" data-dropdown-target="menu" hidden>
+        <div class="dropdown-menu lang-menu" data-dropdown-target="menu" hidden>
           <% available_locales_for_switcher.each do |loc, meta| %>
             <%= link_to url_for(locale: loc), class: "lang-item #{'active' if loc == I18n.locale}" do %>
-              <%= country_flag(meta[:country], size: 22) %>
+              <%= country_flag(meta[:country], size: 28) %>
               <span><%= meta[:native] %></span>
-              <% if loc == I18n.locale %><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="margin-left:auto"><path d="M20 6 9 17l-5-5"></path></svg><% end %>
             <% end %>
           <% end %>
         </div>

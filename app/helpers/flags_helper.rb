@@ -1,16 +1,29 @@
 module FlagsHelper
-  # Renders a circular flag using the regional-indicator emoji for the country code.
+  FLAG_DIR = Rails.root.join("app/assets/images/flags")
+
+  # Renders a circular flag. Uses the vendored circle-flags SVG when available,
+  # falling back to the regional-indicator emoji.
   def country_flag(code, size: 20)
-    code = code.to_s.upcase
-    emoji = flag_emoji(code)
-    tag.span(
-      emoji,
-      class: "flag",
-      title: code,
-      style: "display:inline-flex;align-items:center;justify-content:center;" \
-             "width:#{size}px;height:#{size}px;border-radius:999px;overflow:hidden;" \
-             "background:#f4f4f5;font-size:#{(size * 0.95).round}px;line-height:1;flex-shrink:0"
-    )
+    code = code.to_s.downcase
+    if flag_available?(code)
+      image_tag("flags/#{code}.svg", alt: code.upcase, width: size, height: size, loading: "lazy",
+                                     class: "flag", style: "border-radius:999px;display:block;flex-shrink:0;object-fit:cover")
+    else
+      tag.span(
+        flag_emoji(code),
+        class: "flag",
+        title: code.upcase,
+        style: "display:inline-flex;align-items:center;justify-content:center;" \
+               "width:#{size}px;height:#{size}px;border-radius:999px;overflow:hidden;" \
+               "background:#f4f4f5;font-size:#{(size * 0.95).round}px;line-height:1;flex-shrink:0"
+      )
+    end
+  end
+
+  def flag_available?(code)
+    @flag_cache ||= {}
+    @flag_cache[code] ||= File.exist?(FLAG_DIR.join("#{code.to_s.downcase}.svg")) ? :yes : :no
+    @flag_cache[code] == :yes
   end
 
   def flag_emoji(code)

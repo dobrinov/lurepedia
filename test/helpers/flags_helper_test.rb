@@ -13,9 +13,15 @@ class FlagsHelperTest < ActionView::TestCase
     assert_equal "🏳️", flag_emoji("ZZZ")
   end
 
-  test "country_flag renders a round span" do
+  test "country_flag renders a circular svg when available" do
     html = country_flag("DE", size: 20)
+    assert_includes html, "flags/de"
     assert_includes html, "border-radius:999px"
-    assert_includes html, "🇩🇪"
+  end
+
+  test "country_flag falls back to emoji span when no svg" do
+    html = country_flag("ZZ", size: 20)
+    assert_includes html, "border-radius:999px"
+    assert_includes html, flag_emoji("ZZ")
   end
 end

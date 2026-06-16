@@ -14,7 +14,9 @@ module ApplicationHelper
   }.freeze
 
   def available_locales_for_switcher
-    I18n.available_locales.map { |l| [ l, LOCALE_NAMES.fetch(l, { native: l.to_s.upcase, country: "US" }) ] }
+    # Display in the canonical order defined by LOCALE_NAMES, limited to enabled locales.
+    available = I18n.available_locales
+    LOCALE_NAMES.filter_map { |loc, meta| [ loc, meta ] if available.include?(loc) }
   end
 
   def locale_native(locale)

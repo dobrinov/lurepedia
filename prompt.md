@@ -1,11 +1,10 @@
-
-Languages
-I plan this application to be translated in a lot of languages. It should be optimised for SEO in multiple languages
-Everything is translated:
-- Fish names
-- Lure types
-
-Seeds
-- admin@example.com / password: "1"
-- moderator@example.com / password: "1"
-- 5 normal users @example.com / password: "1"
+- Clicking add lure does not work lures#new
+- Add spieces does not work spieces#new
+- Suggest an edit should be like an edit page - If the user is admin it shouldn't be "suggest an edit" but just "edit" because admin suggestions are not reviewed
+- There is no Edit/Suggest an edit on the spieces details page
+- Add a brand does not work brands#new
+- Add a shop does not work shops#new
+- Remove the leaderboard from the footer
+- Place the search in the footer after the menu items
+- I can open the language switcher dropdown and the accout dropdown at the same time
+- 
