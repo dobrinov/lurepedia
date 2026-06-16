@@ -249,7 +249,12 @@ ja:
     any_species: すべての魚種
     any_type: すべてのタイプ
     any_brand: すべてのブランド
+    any_action: すべてのアクション
     any_depth: すべてのレンジ
+    depth_band:
+      shallow: シャロー（0〜1.5m）
+      mid: ミディアム（1.5〜4.5m）
+      deep: ディープ（4.5m以上）
     saltwater_only: 海水のみ
     clear_all: すべてクリア
     show_n_lures:

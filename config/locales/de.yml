@@ -249,7 +249,12 @@ de:
     any_species: Alle Arten
     any_type: Alle Typen
     any_brand: Alle Marken
+    any_action: Jede Aktion
     any_depth: Jede Tiefe
+    depth_band:
+      shallow: Flach (0–1,5 m)
+      mid: Mittel (1,5–4,5 m)
+      deep: Tief (4,5 m+)
     saltwater_only: Nur Salzwasser
     clear_all: Alles zurücksetzen
     show_n_lures:

@@ -249,7 +249,12 @@ bg:
     any_species: Всички видове
     any_type: Всички типове
     any_brand: Всички марки
+    any_action: Всякакво движение
     any_depth: Всякаква дълбочина
+    depth_band:
+      shallow: Плитко (0–1.5 м)
+      mid: Средно (1.5–4.5 м)
+      deep: Дълбоко (4.5 м+)
     saltwater_only: Само солена вода
     clear_all: Изчисти всичко
     show_n_lures:
