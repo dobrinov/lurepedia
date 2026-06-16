@@ -1,0 +1,55 @@
+<% content_for :title, @user.name %>
+<div class="container" style="padding-top:24px">
+  <div class="page-head">
+    <div class="row" style="gap:12px;align-items:center">
+      <%= country_flag(@user.country, size: 22) %>
+      <div>
+        <h1><%= @user.name %></h1>
+        <% if @user.bio.present? %><p class="muted"><%= @user.bio %></p><% end %>
+        <div class="sub muted"><%= t("profile.member_since") %> <%= l(@user.created_at.to_date, format: :long) %></div>
+      </div>
+    </div>
+    <div class="row" style="gap:24px">
+      <div><strong><%= @catches.size %></strong> <span class="muted"><%= t("profile.catches") %></span></div>
+      <div><strong><%= @total_upvotes %></strong> <span class="muted"><%= t("profile.total_upvotes") %></span></div>
+    </div>
+  </div>
+
+  <% if @owner %><div class="flash notice"><%= t("profile.your_profile") %></div><% end %>
+
+  <section>
+    <div class="section-head"><h2><%= t("profile.catches") %></h2></div>
+    <% if @catches.any? %>
+      <div class="grid-catches">
+        <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+      </div>
+    <% else %>
+      <p class="muted"><%= t("profile.no_catches") %></p>
+    <% end %>
+  </section>
+
+  <% {
+       "profile.favorite_species" => @favorite_species,
+       "profile.favorite_lures"   => @favorite_lures,
+       "profile.favorite_shops"   => @favorite_shops
+     }.each do |label_key, records| %>
+    <section style="margin-top:32px">
+      <div class="section-head"><h2><%= t(label_key) %></h2></div>
+      <% if records.any? %>
+        <div class="grid-cards">
+          <% records.each do |record| %>
+            <% record_path = record.is_a?(Shop) ? shops_path : polymorphic_path(record) %>
+            <div class="row" style="justify-content:space-between;align-items:center;gap:12px">
+              <%= link_to (record.try(:title) || record.try(:common_name) || record.try(:name)), record_path %>
+              <% if @owner %>
+                <%= render "shared/favorite_button", favoritable: record %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="muted"><%= t("profile.no_favorites") %></p>
+      <% end %>
+    </section>
+  <% end %>
+</div>

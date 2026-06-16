@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     get "search", to: "search#index"
     get "leaderboard", to: "leaderboard#index"
 
+    # Public profiles
+    get "u/:handle", to: "profiles#show", as: :profile
+
     # Paginated, searchable options for the large filter dropdowns
     get "options/species", to: "filter_options#species", as: :species_options
     get "options/brands", to: "filter_options#brands", as: :brand_options

@@ -385,6 +385,17 @@ en:
     total_upvotes: Total upvotes earned
     no_catches: You haven't logged any catches yet.
 
+  profile:
+    catches: Catches
+    total_upvotes: Total upvotes
+    member_since: Member since
+    favorite_species: Favorite species
+    favorite_lures: Favorite lures
+    favorite_shops: Favorite shops
+    no_favorites: No favorites yet.
+    no_catches: No catches yet.
+    your_profile: This is your public profile.
+
   provenance:
     title: History & ownership
     edits:
