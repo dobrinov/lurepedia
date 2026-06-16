@@ -1,0 +1,60 @@
+<%= ds_section "Chips, tags & pills" do %>
+  <div class="ds-row">
+    <%= ds_example ".chip" do %><span class="chip">Chip</span><% end %>
+    <%= ds_example ".chip.active" do %><span class="chip active">Active chip</span><% end %>
+    <%= ds_example ".tag" do %><span class="tag">Crankbait</span><% end %>
+    <%= ds_example ".pill" do %><span class="pill">Largemouth bass</span><% end %>
+    <%= ds_example ".filter-pill" do %><span class="filter-pill">Strike King <a href="#">×</a></span><% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Badges" do %>
+  <div class="ds-row">
+    <%= ds_example ".badge-proof" do %><span class="badge badge-proof">14 catches</span><% end %>
+    <%= ds_example ".badge-noproof" do %><span class="badge badge-noproof">No proof yet</span><% end %>
+    <%= ds_example ".badge-promoted" do %><span class="badge badge-promoted">Promoted</span><% end %>
+    <%= ds_example ".badge-ok" do %><span class="badge badge-ok">Verified</span><% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Moderation kind badges" do %>
+  <div class="ds-row">
+    <% %w[catch edit catalog claim report].each do |kind| %>
+      <%= ds_example ".kind-#{kind}" do %><span class="badge-kind kind-<%= kind %>"><%= kind %></span><% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Role badges" do %>
+  <div class="ds-row">
+    <% %w[admin moderator member].each do |role| %>
+      <%= ds_example ".role-#{role}" do %><span class="role-badge role-<%= role %>"><%= role %></span><% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Medal ranks" do %>
+  <div class="ds-row">
+    <% (1..3).each do |n| %>
+      <%= ds_example ".rank-#{n}" do %><span class="rank-medal rank-<%= n %>"><%= n %></span><% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Flash messages" do %>
+  <div class="stack" style="gap:10px;max-width:360px">
+    <%= ds_example ".flash.notice" do %><div class="flash notice" style="position:static;box-shadow:none">Saved successfully.</div><% end %>
+    <%= ds_example ".flash.alert" do %><div class="flash alert" style="position:static;box-shadow:none">Something went wrong.</div><% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Empty state" do %>
+  <div style="max-width:480px">
+    <div class="empty-state">
+      <h3>Nothing here yet</h3>
+      <p>This is the empty state shown when a collection has no records.</p>
+      <a href="#" class="btn btn-primary">Add the first one</a>
+    </div>
+    <div class="ds-label" style="margin-top:8px">.empty-state</div>
+  </div>
+<% end %>

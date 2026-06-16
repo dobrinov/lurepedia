@@ -1,0 +1,59 @@
+<%= ds_section "Neutrals" do %>
+  <div class="ds-grid">
+    <% { "Ink" => "--ink", "Ink 2" => "--ink-2", "Ink 3" => "--ink-3", "Muted" => "--muted",
+         "Muted 2" => "--muted-2", "Line strong" => "--line-strong", "Line" => "--line",
+         "Surface 2" => "--surface-2", "Surface 1" => "--surface-1", "White" => "--white" }.each do |name, var| %>
+      <%= ds_swatch name, var %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Semantic" do %>
+  <div class="ds-grid">
+    <% { "Accent" => "--accent", "Accent bg" => "--accent-bg", "Accent border" => "--accent-border",
+         "Success" => "--ok", "Success bg" => "--ok-bg", "Success border" => "--ok-border",
+         "Amber" => "--amber", "Amber bg" => "--amber-bg", "Amber border" => "--amber-border",
+         "Danger" => "--danger", "Danger bg" => "--danger-bg", "Danger border" => "--danger-border" }.each do |name, var| %>
+      <%= ds_swatch name, var %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Medals" do %>
+  <div class="ds-grid">
+    <% { "Gold bg" => "--gold-bg", "Gold border" => "--gold-border", "Gold ink" => "--gold-ink",
+         "Silver bg" => "--silver-bg", "Silver border" => "--silver-border", "Silver ink" => "--silver-ink",
+         "Bronze bg" => "--bronze-bg", "Bronze border" => "--bronze-border", "Bronze ink" => "--bronze-ink" }.each do |name, var| %>
+      <%= ds_swatch name, var %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Typography" do %>
+  <div class="stack" style="gap:6px">
+    <div class="ds-type-row"><h1 style="font-size:44px;font-weight:700;letter-spacing:-.03em">Heading 1 — hero</h1><div class="ds-label">h1 / .hero h1</div></div>
+    <div class="ds-type-row"><h1>Heading 1 — page</h1><div class="ds-label">.page-head h1</div></div>
+    <div class="ds-type-row"><h2 style="font-size:22px;font-weight:700;letter-spacing:-.02em">Heading 2 — section</h2><div class="ds-label">.section-head h2</div></div>
+    <div class="ds-type-row"><h3 style="font-size:19px;font-weight:700">Heading 3</h3><div class="ds-label">h3</div></div>
+    <div class="ds-type-row"><h4>Heading 4</h4><div class="ds-label">h4</div></div>
+    <div class="ds-type-row"><p>Body text — the quick brown fox jumps over the lazy dog.</p><div class="ds-label">body · 15px / 1.5</div></div>
+    <div class="ds-type-row"><p class="muted">Muted text — secondary information.</p><div class="ds-label">.muted</div></div>
+  </div>
+<% end %>
+
+<%= ds_section "Radii" do %>
+  <div class="ds-row">
+    <% %w[--r-xs --r-sm --r-7 --r-md --r-10 --r-lg --r-xl --r-pill].each do |var| %>
+      <%= ds_example var do %><div class="ds-box" style="border-radius: var(<%= var %>)"></div><% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Shadows & focus" do %>
+  <div class="ds-row" style="gap:32px">
+    <% %w[--shadow-card-hover --shadow-pop --shadow-modal].each do |var| %>
+      <%= ds_example var do %><div class="ds-shadow" style="box-shadow: var(<%= var %>)"></div><% end %>
+    <% end %>
+    <%= ds_example "--focus-ring" do %><div class="ds-shadow" style="box-shadow: var(--focus-ring)"></div><% end %>
+  </div>
+<% end %>

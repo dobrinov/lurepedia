@@ -1,0 +1,49 @@
+<%= ds_section "Base card" do %>
+  <div class="ds-card-frame">
+    <div class="card"><div class="card-pad">
+      <div class="card-brand">Brand</div>
+      <div class="card-title">A plain card</div>
+      <p class="muted" style="font-size:13px;margin-top:6px">.card + .card-pad — the container most components build on.</p>
+    </div></div>
+  </div>
+  <div class="ds-label" style="margin-top:8px">.card / .card-pad</div>
+<% end %>
+
+<%= ds_section "Lure cards" do %>
+  <div class="ds-row">
+    <div class="ds-card-frame">
+      <%= render "shared/lure_card", lure: samples.proven_lure %>
+      <div class="ds-label" style="margin-top:8px">shared/lure_card — proven</div>
+    </div>
+    <div class="ds-card-frame">
+      <%= render "shared/lure_card", lure: samples.unproven_lure %>
+      <div class="ds-label" style="margin-top:8px">shared/lure_card — unproven</div>
+    </div>
+  </div>
+<% end %>
+
+<%= ds_section "Catch card" do %>
+  <div class="ds-card-frame">
+    <%= render "shared/catch_card", catch: samples.sample_catch %>
+    <div class="ds-label" style="margin-top:8px">shared/catch_card</div>
+  </div>
+<% end %>
+
+<%= ds_section "Leaderboard table" do %>
+  <%= render "shared/leaderboard_table", rows: samples.leaderboard_rows, metric: :catches %>
+  <div class="ds-label" style="margin-top:8px">shared/leaderboard_table</div>
+<% end %>
+
+<%= ds_section "Provenance" do %>
+  <div style="max-width:360px">
+    <%= render "shared/provenance", subject: samples.provenance_subject %>
+    <div class="ds-label" style="margin-top:8px">shared/provenance</div>
+  </div>
+<% end %>
+
+<%= ds_section "Glyphs" do %>
+  <div class="ds-row">
+    <%= ds_example "shared/lure_glyph" do %><span class="ph" style="width:96px;height:60px;border-radius:var(--r-md)"><%= render "shared/lure_glyph" %></span><% end %>
+    <%= ds_example "shared/fish_glyph" do %><span class="ph" style="width:96px;height:72px;border-radius:var(--r-md)"><%= render "shared/fish_glyph" %></span><% end %>
+  </div>
+<% end %>

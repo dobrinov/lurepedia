@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     get "options/species", to: "filter_options#species", as: :species_options
     get "options/brands", to: "filter_options#brands", as: :brand_options
 
+    # Living styleguide
+    get "design-system", to: "design_system#index", as: :design_system
+
     # Contribution / community
     resources :claims, only: %i[new create] do
       member { post :verify }

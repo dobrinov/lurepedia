@@ -1,0 +1,61 @@
+<%= ds_section "Tabs" do %>
+  <div data-controller="tabs" style="max-width:420px">
+    <div class="tabs">
+      <% %w[Overview Catches History].each_with_index do |label, i| %>
+        <button class="tab <%= 'active' if i.zero? %>" data-tab-name="ds_nav_<%= i %>" data-tabs-target="tab" data-action="tabs#select"><%= label %></button>
+      <% end %>
+    </div>
+    <% %w[Overview Catches History].each_with_index do |label, i| %>
+      <div class="tab-panel <%= 'active' if i.zero? %>" data-tab-panel="ds_nav_<%= i %>" data-tabs-target="panel">
+        <p class="muted"><%= label %> panel content.</p>
+      </div>
+    <% end %>
+  </div>
+  <div class="ds-label" style="margin-top:8px">.tabs / .tab — data-controller="tabs"</div>
+<% end %>
+
+<%= ds_section "Pagination" do %>
+  <div class="pager" style="margin-top:0;justify-content:flex-start">
+    <span class="disabled">‹</span>
+    <span class="current">1</span>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">›</a>
+  </div>
+  <div class="ds-label" style="margin-top:8px">.pager</div>
+<% end %>
+
+<%= ds_section "Avatar & dropdown menu" do %>
+  <div class="ds-row" style="gap:40px">
+    <%= ds_example ".avatar" do %><span class="avatar">AL</span><% end %>
+    <%= ds_example ".avatar-lg" do %><span class="avatar avatar-lg">AL</span><% end %>
+    <div>
+      <div class="dropdown" style="position:relative;height:280px">
+        <div class="dropdown-menu" style="position:static;display:block">
+          <div class="menu-head">
+            <span class="avatar">AL</span>
+            <div>
+              <div class="row" style="gap:6px"><strong style="font-size:14px">Ava Lindqvist</strong><span class="role-badge role-admin">admin</span></div>
+              <div class="muted" style="font-size:12px">ava@example.com</div>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a href="#">Add a catch</a>
+          <a href="#">My catches</a>
+          <a href="#">Settings</a>
+          <div class="dropdown-divider"></div>
+          <button type="button" style="color:var(--danger)">Sign out</button>
+        </div>
+      </div>
+      <div class="ds-label">.dropdown-menu</div>
+    </div>
+  </div>
+<% end %>
+
+<%= ds_section "Language switcher" do %>
+  <%= ds_example ".lang-pill" do %>
+    <button class="lang-pill"><%= country_flag("US", size: 22) %>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg>
+    </button>
+  <% end %>
+<% end %>

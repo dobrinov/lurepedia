@@ -1,0 +1,32 @@
+<% content_for :head, tag.meta(name: "robots", content: "noindex,nofollow") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1>Design system</h1>
+      <div class="sub">Every UI token and component used across Lurepedia, in one place — so we keep it consistent.</div>
+    </div>
+  </div>
+
+  <%
+    tabs = {
+      foundations: "Foundations",
+      buttons_forms: "Buttons & Forms",
+      indicators: "Indicators",
+      navigation: "Navigation",
+      components: "Components"
+    }
+  %>
+  <div data-controller="tabs">
+    <div class="tabs">
+      <% tabs.each_with_index do |(key, label), i| %>
+        <button class="tab <%= 'active' if i.zero? %>" data-tab-name="<%= key %>" data-tabs-target="tab" data-action="tabs#select"><%= label %></button>
+      <% end %>
+    </div>
+
+    <% tabs.keys.each_with_index do |key, i| %>
+      <div class="tab-panel <%= 'active' if i.zero? %>" data-tab-panel="<%= key %>" data-tabs-target="panel">
+        <%= render "design_system/#{key}", samples: @samples %>
+      </div>
+    <% end %>
+  </div>
+</div>

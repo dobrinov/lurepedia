@@ -1,0 +1,48 @@
+<%= ds_section "Buttons" do %>
+  <div class="ds-row">
+    <%= ds_example ".btn" do %><button class="btn">Button</button><% end %>
+    <%= ds_example ".btn-primary" do %><button class="btn btn-primary">Primary</button><% end %>
+    <%= ds_example ".btn-accent" do %><button class="btn btn-accent">Accent</button><% end %>
+    <%= ds_example ".btn-ghost" do %><button class="btn btn-ghost">Ghost</button><% end %>
+    <%= ds_example ".btn-sm" do %><button class="btn btn-sm">Small</button><% end %>
+    <%= ds_example ".btn:disabled" do %><button class="btn" disabled>Disabled</button><% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Text inputs" do %>
+  <div class="ds-row">
+    <%= ds_example ".input" do %><input class="input" style="width:220px" placeholder="Text input"><% end %>
+    <%= ds_example "textarea.input" do %><textarea class="input" style="width:220px" placeholder="Textarea"></textarea><% end %>
+    <%= ds_example ".field" do %>
+      <div class="field" style="width:220px"><label>Labeled field</label><input class="input" placeholder="With label"></div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ds_section "Selects" do %>
+  <div class="ds-row">
+    <div style="width:240px">
+      <%= render "shared/combobox", name: "ds_demo_type", placeholder: "Client-side combobox",
+            options: [["Crankbait", "crankbait"], ["Jerkbait", "jerkbait"], ["Spinnerbait", "spinnerbait"], ["Topwater", "topwater"]] %>
+      <div class="ds-label" style="margin-top:8px">shared/combobox</div>
+    </div>
+    <div style="width:240px">
+      <%= render "shared/async_combobox", name: "ds_demo_species", url: species_options_path, placeholder: "Server-backed combobox" %>
+      <div class="ds-label" style="margin-top:8px">shared/async_combobox</div>
+    </div>
+  </div>
+<% end %>
+
+<%= ds_section "Controls" do %>
+  <div class="ds-row" style="gap:28px">
+    <%= ds_example ".toggle (off)" do %>
+      <label class="toggle"><input type="checkbox"><span class="track"><span class="knob"></span></span>Off</label>
+    <% end %>
+    <%= ds_example ".toggle (on)" do %>
+      <label class="toggle"><input type="checkbox" checked><span class="track"><span class="knob"></span></span>On</label>
+    <% end %>
+    <%= ds_example "checkbox" do %>
+      <label class="row" style="gap:8px"><input type="checkbox" checked> Native checkbox</label>
+    <% end %>
+  </div>
+<% end %>
