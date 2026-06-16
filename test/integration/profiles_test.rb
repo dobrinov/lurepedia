@@ -47,4 +47,21 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     get my_catches_path(locale: :en)
     assert_redirected_to new_session_path(locale: :en)
   end
+
+  test "settings shows the public profile url and accepts a username" do
+    sign_in_as(@owner)
+    get edit_settings_path(locale: :en)
+    assert_response :success
+    assert_select "input[name=?]", "user[username]"
+
+    patch settings_path(locale: :en), params: { user: { username: "marcus-l" } }
+    assert_equal "marcus-l", @owner.reload.username
+  end
+
+  test "invalid username is rejected with an error" do
+    sign_in_as(@owner)
+    patch settings_path(locale: :en), params: { user: { username: "no spaces" } }
+    assert_response :unprocessable_entity
+    assert_nil @owner.reload.username
+  end
 end

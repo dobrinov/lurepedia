@@ -379,6 +379,12 @@ en:
     units: Units
     notifications: Notifications
     saved: Settings saved
+    public_profile: Your public profile
+    copy: Copy
+    copied: Copied!
+    username: Username
+    username_hint: e.g. casey-rivera
+    username_help: Optional. Lowercase letters, numbers, hyphens. Used in your profile URL.
 
   dashboard:
     my_catches: My catches
