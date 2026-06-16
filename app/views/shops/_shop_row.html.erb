@@ -9,6 +9,7 @@
       <% if shop.url.present? %><%= link_to shop.url, "https://#{shop.url.sub(%r{\Ahttps?://}, '')}", class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener nofollow" %><% end %>
     </div>
     <%= link_to t("shop.visit"), shop.url.present? ? "https://#{shop.url.sub(%r{\Ahttps?://}, '')}" : "#", class: "btn btn-sm", target: "_blank", rel: "noopener nofollow" %>
+    <%= render "shared/favorite_button", favoritable: shop %>
   </div>
   <% if shop.blurb.present? %><p class="muted" style="font-size:13.5px;margin:0"><%= shop.blurb %></p><% end %>
   <div class="row muted" style="justify-content:space-between;font-size:12.5px;border-top:1px solid var(--surface-2);padding-top:10px">

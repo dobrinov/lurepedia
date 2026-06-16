@@ -39,4 +39,16 @@ class FavoritesControllerTest < ActionDispatch::IntegrationTest
     post favorites_path(favoritable_type: "User", favoritable_id: @user.id)
     assert_response :unprocessable_entity
   end
+
+  test "lure show page renders the favorite button for signed-in users" do
+    sign_in_as(@user)
+    get lure_path(@lure, locale: :en)
+    assert_response :success
+    assert_select "form[action=?]", favorites_path(favoritable_type: "Lure", favoritable_id: @lure.id)
+  end
+
+  test "lure show page shows sign-in prompt to guests" do
+    get lure_path(@lure, locale: :en)
+    assert_select "a[href=?]", new_session_path, text: I18n.t("favorites.sign_in_to_favorite")
+  end
 end

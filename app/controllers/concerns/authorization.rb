@@ -6,6 +6,7 @@ module Authorization
   included do
     rescue_from NotAuthorized, with: :deny_access
     helper_method :policy if respond_to?(:helper_method)
+    helper_method :can_contribute? if respond_to?(:helper_method)
   end
 
   # Build a policy: policy(:catch) or policy(record) → infers <Class>Policy.
@@ -20,6 +21,11 @@ module Authorization
       end
     record = (target.is_a?(Symbol) || target.is_a?(String) || target.is_a?(Class)) ? nil : target
     klass.constantize.new(current_user, record)
+  end
+
+  # Replaced with ban-aware logic in the bans feature.
+  def can_contribute?(_capability)
+    signed_in?
   end
 
   private
