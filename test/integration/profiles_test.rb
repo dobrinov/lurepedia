@@ -36,4 +36,15 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_select ".grid-catches"
     assert_select "body", text: /#{@lure.model}/
   end
+
+  test "my/catches redirects to the owner's profile" do
+    sign_in_as(@owner)
+    get my_catches_path(locale: :en)
+    assert_redirected_to profile_path(@owner, locale: :en)
+  end
+
+  test "my/catches requires login" do
+    get my_catches_path(locale: :en)
+    assert_redirected_to new_session_path(locale: :en)
+  end
 end

@@ -3,8 +3,7 @@ module My
     before_action :require_login
 
     def index
-      @catches = current_user.catches.includes(:species, variant: :lure).recent
-      @total_upvotes = @catches.sum(&:upvotes_count)
+      redirect_to profile_path(current_user)
     end
   end
 end
