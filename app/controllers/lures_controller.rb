@@ -1,5 +1,6 @@
 class LuresController < ApplicationController
   before_action :require_login, only: %i[new create edit update]
+  before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
   before_action :load_form_collections, only: %i[new create edit update]
 
   def index

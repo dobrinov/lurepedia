@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :require_login, only: %i[new create]
+  before_action -> { require_contribution(:catalog) }, only: %i[new create]
 
   def index
     @promoted = Shop.promoted.order(:name)

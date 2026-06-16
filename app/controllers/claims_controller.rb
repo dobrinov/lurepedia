@@ -1,5 +1,6 @@
 class ClaimsController < ApplicationController
   before_action :require_login
+  before_action -> { require_contribution(:claims) }
 
   CLAIMABLES = { "brand" => Brand, "shop" => Shop }.freeze
 

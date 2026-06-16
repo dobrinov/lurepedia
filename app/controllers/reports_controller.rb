@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :require_login
+  before_action -> { require_contribution(:reports) }
 
   REPORTABLES = { "Catch" => Catch, "Lure" => Lure, "Comment" => Comment }.freeze
 

@@ -1,5 +1,6 @@
 class UpvotesController < ApplicationController
   before_action :require_login
+  before_action -> { require_contribution(:upvotes) }
 
   def create
     @catch = Catch.find(params[:catch_id])

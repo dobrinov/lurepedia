@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :require_login
+  before_action -> { require_contribution(:favorites) }
   before_action :set_favoritable
 
   def create

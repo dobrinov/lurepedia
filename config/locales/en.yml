@@ -22,6 +22,9 @@ en:
     promoted: Promoted
     sponsored: Sponsored
 
+  bans:
+    blocked: Your account is currently restricted from this action.
+
   favorites:
     add: Favorite
     remove: Unfavorite

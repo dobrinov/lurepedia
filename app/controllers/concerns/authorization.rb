@@ -23,9 +23,16 @@ module Authorization
     klass.constantize.new(current_user, record)
   end
 
-  # Replaced with ban-aware logic in the bans feature.
-  def can_contribute?(_capability)
-    signed_in?
+  def require_contribution(capability)
+    return false unless require_login
+    return true unless current_user.blocked_from?(capability)
+
+    redirect_to profile_path(current_user), alert: I18n.t("bans.blocked")
+    false
+  end
+
+  def can_contribute?(capability)
+    signed_in? && !current_user.blocked_from?(capability)
   end
 
   private
