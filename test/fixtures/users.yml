@@ -7,6 +7,7 @@ one:
   role: admin
   country: US
   locale: en
+  slug: casey-rivera-aaaa
 
 two:
   name: Marcus Lee
@@ -15,3 +16,4 @@ two:
   role: member
   country: SE
   locale: en
+  slug: marcus-lee-bbbb
