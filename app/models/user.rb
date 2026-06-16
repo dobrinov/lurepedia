@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :upvotes, dependent: :destroy
   has_many :reports, foreign_key: :user_id, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :bans, dependent: :destroy
 
   enum :role, { member: 0, moderator: 1, admin: 2 }, default: :member
   enum :units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: true
@@ -39,6 +40,14 @@ class User < ApplicationRecord
 
   def can_moderate?
     staff?
+  end
+
+  def active_ban
+    @active_ban ||= bans.active.newest_first.first
+  end
+
+  def blocked_from?(capability)
+    active_ban&.blocks?(capability) || false
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_16_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_16_000003) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -37,6 +37,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_16_000002) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bans", force: :cascade do |t|
+    t.json "capabilities", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at"
+    t.integer "issued_by_id", null: false
+    t.text "reason", null: false
+    t.datetime "revoked_at"
+    t.integer "revoked_by_id"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["issued_by_id"], name: "index_bans_on_issued_by_id"
+    t.index ["revoked_by_id"], name: "index_bans_on_revoked_by_id"
+    t.index ["user_id", "revoked_at", "expires_at"], name: "index_bans_on_user_id_and_revoked_at_and_expires_at"
+    t.index ["user_id"], name: "index_bans_on_user_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -262,6 +278,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_16_000002) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bans", "users"
+  add_foreign_key "bans", "users", column: "issued_by_id"
+  add_foreign_key "bans", "users", column: "revoked_by_id"
   add_foreign_key "buy_links", "lures"
   add_foreign_key "buy_links", "shops"
   add_foreign_key "catches", "species"
