@@ -1,5 +1,6 @@
 class Species < ApplicationRecord
   include Sluggable
+  include Favoritable
 
   self.table_name = "species"
 

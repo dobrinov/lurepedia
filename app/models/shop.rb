@@ -1,5 +1,6 @@
 class Shop < ApplicationRecord
   include Sluggable
+  include Favoritable
 
   has_many :buy_links, dependent: :destroy
   has_many :lures, through: :buy_links

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_16_000001) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -106,6 +106,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
     t.integer "user_id", null: false
     t.index ["catch_id"], name: "index_comments_on_catch_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "favoritable_id", null: false
+    t.string "favoritable_type", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
+    t.index ["user_id", "favoritable_type", "favoritable_id"], name: "index_favorites_on_user_and_favoritable", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "lure_types", force: :cascade do |t|
@@ -255,6 +266,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
   add_foreign_key "claims", "users"
   add_foreign_key "comments", "catches"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "users"
   add_foreign_key "lures", "brands"
   add_foreign_key "lures", "lure_types"
   add_foreign_key "moderation_items", "users", column: "reviewer_id"

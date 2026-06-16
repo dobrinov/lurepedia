@@ -1,5 +1,6 @@
 class Lure < ApplicationRecord
   include Sluggable
+  include Favoritable
 
   belongs_to :brand, counter_cache: :lures_count
   belongs_to :lure_type
