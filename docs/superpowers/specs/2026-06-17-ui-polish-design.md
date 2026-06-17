@@ -35,7 +35,11 @@ The controllers read `params[:tab]`, validate it against the known set (falling 
 
 ### Why server-rendered links over the current JS toggle
 
-The species page currently toggles panels client-side via `tabs_controller.js` with no URL change — tabs aren't linkable. Converting to links gives real URLs, works without JS, and is SEO-visible. The `tabs_controller.js` Stimulus controller is removed (no remaining consumers after this change).
+The species and brand pages currently toggle panels client-side via `tabs_controller.js` with no URL change — tabs aren't linkable. Converting to links gives real URLs, works without JS, and is SEO-visible.
+
+**Tab footprint.** Content pages with tabs today: **species** (lures/catches/leaderboard/history) and **brands** (lures/history). This change adds tabs to **lures** and converts species and brands to path URLs as well — per the rule "wherever tabs are available, they should be separate URLs."
+
+**`tabs_controller.js` is kept**, not removed: the `/design-system` living styleguide uses it for its own in-page section navigation (a developer reference, not user-facing content that needs shareable URLs). After this change the three content pages no longer reference it; the styleguide remains its sole consumer.
 
 ---
 
@@ -58,11 +62,15 @@ Tab labels use new i18n keys (`lure.tab_caught`, `lure.tab_buy`, `lure.tab_histo
 
 ---
 
-## C. Species page
+## C. Species & brand pages
 
-- Convert the four existing tabs (lures / catches / leaderboard / history) from JS toggles to path-segment links: `/species/:slug` (lures, default), `/species/:slug/catches`, `/species/:slug/leaderboard`, `/species/:slug/history`. Reuse the shared `_tabs` partial.
+**Species** — convert the four existing tabs (lures / catches / leaderboard / history) from JS toggles to path-segment links: `/species/:slug` (lures, default), `/species/:slug/catches`, `/species/:slug/leaderboard`, `/species/:slug/history`. Reuse the shared `_tabs` partial. The leaderboard's `?metric=` switch stays a query param layered on the leaderboard path (`/species/:slug/leaderboard?metric=upvotes`).
 - **History card full width**: remove the `max-width:420px` wrapper around the history provenance panel (item #8) so it spans the column.
 - Existing `species.tab_*` i18n keys are reused.
+
+**Brands** — convert the two existing tabs (lures / history) the same way: `/brands/:slug` (lures, default), `/brands/:slug/history`. Reuse `_tabs`. Existing `brand.tab_*` keys are reused.
+
+Both controllers keep loading each tab's data (cheap, already done today) and validate `params[:tab]` against their known set, defaulting to `lures`. Only the rendered panel switches.
 
 ---
 
@@ -94,7 +102,8 @@ Reduce the hero to **title, subtitle, and a single "Add lure" button** (`new_lur
 
 ## Testing
 
-- **Routing/controller**: request specs asserting `/lures/:slug`, `/lures/:slug/buy`, `/lures/:slug/history` each render the right panel (e.g. buy page shows a buy link, history shows a revision); that `/lures/:slug/edit` still hits edit; and an unknown tab segment falls back to the default. Same for species' four tab paths.
+- **Routing/controller**: request specs asserting `/lures/:slug`, `/lures/:slug/buy`, `/lures/:slug/history` each render the right panel (e.g. buy page shows a buy link, history shows a revision); that `/lures/:slug/edit` still hits edit and `/lures/new` still hits new; and an unknown tab segment falls back to the default. Same for species' four tab paths and brands' two.
+- **Styleguide unaffected**: `design_system_test.rb` (which asserts the styleguide's own `.tab[data-tab-name]` markup) must stay green — `tabs_controller.js` and the styleguide are untouched.
 - **Views**: the lure page renders the variants table with a thumbnail; the "Proven for" tile is gone; upvote button carries `is-upvoted` when the viewer has upvoted.
 - **i18n**: extend the existing `locale_parity_test` coverage — new `footer.*`, `lure.tab_*`, `catch.upvote*` keys must exist in de/bg/ja (the parity test already enforces full key parity for those locales, so it will fail until they're translated).
 - Update existing lure/species view tests that assert on the old single-page markup or the JS-tab structure.
