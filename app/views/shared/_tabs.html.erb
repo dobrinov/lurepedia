@@ -1,6 +1,6 @@
 <%# locals: tabs  (array of [label, path, active?]) %>
 <div class="tabs">
   <% tabs.each do |label, path, is_active| %>
-    <%= link_to label, path, class: "tab #{'active' if is_active}" %>
+    <%= link_to label, path, class: [ "tab", ("active" if is_active) ] %>
   <% end %>
 </div>
