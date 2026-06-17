@@ -14,8 +14,8 @@ class LuresController < ApplicationController
     @lure = Lure.includes(:brand, :lure_type, variants: { photo_attachment: :blob }).find_by!(slug: params[:id])
     @variants = @lure.variants
     @catches = @lure.catches.includes(:user, :species).recent.limit(8)
-    @proven_species = @lure.proven_species
     @buy_links = @lure.buy_links.includes(:shop).sort_by { |b| b.shop.promoted? ? 0 : 1 }
+    @tab = %w[caught buy history].include?(params[:tab].to_s) ? params[:tab] : "caught"
   end
 
   def new

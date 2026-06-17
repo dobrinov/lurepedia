@@ -24,23 +24,22 @@
     </div>
   </div>
 
-  <div data-controller="tabs">
-    <div class="tabs">
-      <% %w[lures history].each do |tab| %>
-        <button class="tab <%= 'active' if @tab == tab %>" data-tab-name="<%= tab %>" data-tabs-target="tab" data-action="tabs#select"><%= t("brand.tab_#{tab}") %></button>
-      <% end %>
-    </div>
-    <div class="tab-panel <%= 'active' if @tab == 'lures' %>" data-tab-panel="lures" data-tabs-target="panel">
-      <% if @lures.any? %>
-        <div class="grid-cards">
-          <% @lures.each do |lure| %><%= render "shared/lure_card", lure: lure %><% end %>
-        </div>
-      <% else %>
-        <div class="empty-state"><p><%= t("lure.no_matches") %></p></div>
-      <% end %>
-    </div>
-    <div class="tab-panel <%= 'active' if @tab == 'history' %>" data-tab-panel="history" data-tabs-target="panel">
-      <div style="max-width:420px"><%= render "shared/provenance", subject: @brand %></div>
-    </div>
-  </div>
+  <% tabs = [
+       [ t("brand.tab_lures"), brand_path(@brand), @tab == "lures" ],
+       [ t("brand.tab_history"), brand_path(@brand, tab: "history"), @tab == "history" ]
+     ] %>
+  <%= render "shared/tabs", tabs: tabs %>
+
+  <% case @tab %>
+  <% when "lures" %>
+    <% if @lures.any? %>
+      <div class="grid-cards">
+        <% @lures.each do |lure| %><%= render "shared/lure_card", lure: lure %><% end %>
+      </div>
+    <% else %>
+      <div class="empty-state"><p><%= t("lure.no_matches") %></p></div>
+    <% end %>
+  <% when "history" %>
+    <%= render "shared/provenance", subject: @brand %>
+  <% end %>
 </div>

@@ -147,6 +147,9 @@ bg:
     brand: Марка
     variants: Варианти
     variant: Вариант
+    tab_caught: Уловено с нея
+    tab_buy: Къде да купя
+    tab_history: История
     proof: Доказателство, че работи
     catches_count:
       one: "%{count} улов"
@@ -226,6 +229,8 @@ bg:
     comments: Коментари
     add_comment: Добави коментар
     upvote: Гласувай
+    upvoted: Гласувано
+    remove_upvote: Натисни отново, за да премахнеш гласа си
     report: Докладвай този улов
     related: Още улови от този вид
     photos: Снимки
@@ -370,6 +375,12 @@ bg:
     remove: Премахни от любими
     favorited: В любими
     sign_in_to_favorite: Влез, за да добавиш в любими
+
+  footer:
+    explore: Разгледай
+    about: За нас
+    how_it_works: Как работи
+    guidelines: Правила
 
   profile:
     catches: Улови

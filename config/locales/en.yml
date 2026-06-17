@@ -70,6 +70,12 @@ en:
     favorited: Favorited
     sign_in_to_favorite: Sign in to favorite
 
+  footer:
+    explore: Explore
+    about: About
+    how_it_works: How it works
+    guidelines: Guidelines
+
   home:
     tagline: Every lure, proven by a catch
     meta_description: Lurepedia is a crowdsourced encyclopedia of fishing lures — find lures and see real proof, by catch, that they work.
@@ -195,6 +201,9 @@ en:
     brand: Brand
     variants: Variants
     variant: Variant
+    tab_caught: Caught on it
+    tab_buy: Where to buy
+    tab_history: History
     proof: Proof it works
     catches_count:
       one: "%{count} catch"
@@ -274,6 +283,8 @@ en:
     comments: Comments
     add_comment: Add a comment
     upvote: Upvote
+    upvoted: Upvoted
+    remove_upvote: Click again to remove your upvote
     report: Report this catch
     related: More catches of this species
     photos: Photos

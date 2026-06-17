@@ -36,6 +36,36 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_select ".badge-proof"
   end
 
+  test "lure tabs are separate URLs and variants stay visible" do
+    Catch.create!(user: @member, variant: @variant, species: @bass)
+    BuyLink.create!(lure: @lure, shop: @shop, url: "https://example.com/buy")
+
+    get lure_path(@lure.reload, locale: :en)
+    assert_response :success
+    assert_select ".tabs a", minimum: 3
+    assert_match "Sexy Shad", response.body
+    assert_select ".grid-catches"
+
+    get lure_path(@lure, tab: "buy", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("lure.tab_buy")
+    assert_match "TackleDirect", response.body
+
+    get lure_path(@lure, tab: "history", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("lure.tab_history")
+
+    sign_in_as(@member)
+    get edit_lure_path(@lure, locale: :en)
+    assert_response :success
+  end
+
+  test "proven-for tile is gone from the lure page" do
+    get lure_path(@lure, locale: :en)
+    assert_response :success
+    assert_no_match I18n.t("lure.proven_for"), response.body
+  end
+
   test "type filter chips filter lures" do
     jerk = LureType.create!(key: "jerkbait")
     Lure.create!(brand: @brand, lure_type: jerk, model: "Vision 110")
@@ -55,6 +85,16 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_match I18n.t("species.tab_leaderboard"), response.body
   end
 
+  test "species tabs are separate URLs" do
+    sp = Species.create!(key: "walleye", scientific_name: "Sander vitreus")
+    get species_path(sp, locale: :en)
+    assert_response :success
+    assert_select ".tabs a", minimum: 4
+    get species_path(sp, tab: "history", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("species.tab_history")
+  end
+
   test "brand index and detail tabs" do
     get brands_path(locale: :en)
     assert_response :success
@@ -63,6 +103,17 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     get brand_path(@brand, locale: :en)
     assert_response :success
     assert_select ".tabs"
+  end
+
+  test "brand tabs are separate URLs" do
+    brand = Brand.create!(name: "Megabass")
+    brand.revisions.create!(user: users(:two), summary: "Created")
+    get brand_path(brand, locale: :en)
+    assert_response :success
+    assert_select ".tabs a", minimum: 2
+    get brand_path(brand, tab: "history", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("brand.tab_history")
   end
 
   test "shops index pins promoted" do
@@ -118,5 +169,15 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   test "guest sees sign-in CTA on lure detail" do
     get lure_path(@lure, locale: :en)
     assert_match I18n.t("auth.sign_in_to_contribute"), response.body
+  end
+
+  test "lure index hero shows only the add-lure CTA" do
+    get lures_path(locale: :en)
+    assert_response :success
+    assert_select "section.hero" do
+      assert_select "a.btn", count: 1
+      assert_select "a[href=?]", new_lure_path(locale: :en)
+    end
+    assert_select "section.hero a[href=?]", new_catch_path(locale: :en), count: 0
   end
 end

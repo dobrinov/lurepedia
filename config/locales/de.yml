@@ -147,6 +147,9 @@ de:
     brand: Marke
     variants: Varianten
     variant: Variante
+    tab_caught: Damit gefangen
+    tab_buy: Wo kaufen
+    tab_history: Verlauf
     proof: Beweis, dass es funktioniert
     catches_count:
       one: "%{count} Fang"
@@ -226,6 +229,8 @@ de:
     comments: Kommentare
     add_comment: Kommentar hinzufügen
     upvote: Hochstimmen
+    upvoted: Hochgestimmt
+    remove_upvote: Erneut klicken, um die Stimme zu entfernen
     report: Diesen Fang melden
     related: Weitere Fänge dieser Art
     photos: Fotos
@@ -439,6 +444,12 @@ de:
     remove: Nicht mehr favorisieren
     favorited: Favorisiert
     sign_in_to_favorite: Zum Favorisieren anmelden
+
+  footer:
+    explore: Entdecken
+    about: Über uns
+    how_it_works: "So funktioniert's"
+    guidelines: Richtlinien
 
   profile:
     catches: Fänge

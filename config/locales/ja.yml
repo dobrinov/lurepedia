@@ -147,6 +147,9 @@ ja:
     brand: ブランド
     variants: バリエーション
     variant: バリエーション
+    tab_caught: 釣果
+    tab_buy: 購入先
+    tab_history: 履歴
     proof: 効果の証拠
     catches_count:
       one: "%{count} 釣果"
@@ -225,7 +228,9 @@ ja:
     contributor: 投稿者
     comments: コメント
     add_comment: コメントを追加
-    upvote: いいね
+    upvote: 高評価
+    upvoted: 高評価済み
+    remove_upvote: もう一度クリックで高評価を取り消す
     report: この釣果を報告
     related: この魚種の他の釣果
     photos: 写真
@@ -390,6 +395,12 @@ ja:
     remove: お気に入りを解除
     favorited: お気に入り登録済み
     sign_in_to_favorite: ログインしてお気に入りに追加
+
+  footer:
+    explore: 探す
+    about: 概要
+    how_it_works: 使い方
+    guidelines: ガイドライン
 
   profile:
     catches: 釣果

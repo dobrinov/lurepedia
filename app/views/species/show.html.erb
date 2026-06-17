@@ -30,43 +30,38 @@
     </div>
   </div>
 
-  <div data-controller="tabs">
-    <div class="tabs">
-      <% %w[lures catches leaderboard history].each do |tab| %>
-        <button class="tab <%= 'active' if @tab == tab %>" data-tab-name="<%= tab %>" data-tabs-target="tab" data-action="tabs#select"><%= t("species.tab_#{tab}") %></button>
-      <% end %>
-    </div>
+  <% tabs = [
+       [ t("species.tab_lures"), species_path(@species), @tab == "lures" ],
+       [ t("species.tab_catches"), species_path(@species, tab: "catches"), @tab == "catches" ],
+       [ t("species.tab_leaderboard"), species_path(@species, tab: "leaderboard"), @tab == "leaderboard" ],
+       [ t("species.tab_history"), species_path(@species, tab: "history"), @tab == "history" ]
+     ] %>
+  <%= render "shared/tabs", tabs: tabs %>
 
-    <div class="tab-panel <%= 'active' if @tab == 'lures' %>" data-tab-panel="lures" data-tabs-target="panel">
-      <% if @lures.any? %>
-        <div class="grid-cards">
-          <% @lures.each do |lure| %><%= render "shared/lure_card", lure: lure %><% end %>
-        </div>
-      <% else %>
-        <div class="empty-state">
-          <h3><%= t("species.no_proven_lures") %></h3>
-          <p><%= t("species.be_first_lure") %></p>
-          <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="tab-panel <%= 'active' if @tab == 'catches' %>" data-tab-panel="catches" data-tabs-target="panel">
-      <% if @catches.any? %>
-        <div class="grid-catches">
-          <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
-        </div>
-      <% else %>
-        <div class="empty-state"><p><%= t("species.be_first_lure") %></p></div>
-      <% end %>
-    </div>
-
-    <div class="tab-panel <%= 'active' if @tab == 'leaderboard' %>" data-tab-panel="leaderboard" data-tabs-target="panel">
-      <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
-    </div>
-
-    <div class="tab-panel <%= 'active' if @tab == 'history' %>" data-tab-panel="history" data-tabs-target="panel">
-      <div style="max-width:420px"><%= render "shared/provenance", subject: @species %></div>
-    </div>
-  </div>
+  <% case @tab %>
+  <% when "lures" %>
+    <% if @lures.any? %>
+      <div class="grid-cards">
+        <% @lures.each do |lure| %><%= render "shared/lure_card", lure: lure %><% end %>
+      </div>
+    <% else %>
+      <div class="empty-state">
+        <h3><%= t("species.no_proven_lures") %></h3>
+        <p><%= t("species.be_first_lure") %></p>
+        <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
+      </div>
+    <% end %>
+  <% when "catches" %>
+    <% if @catches.any? %>
+      <div class="grid-catches">
+        <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+      </div>
+    <% else %>
+      <div class="empty-state"><p><%= t("species.be_first_lure") %></p></div>
+    <% end %>
+  <% when "leaderboard" %>
+    <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
+  <% when "history" %>
+    <%= render "shared/provenance", subject: @species %>
+  <% end %>
 </div>

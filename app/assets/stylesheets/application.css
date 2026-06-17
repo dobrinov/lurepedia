@@ -154,6 +154,8 @@ main { min-height: 60vh; }
 .btn-sm { height: 32px; padding: 0 10px; font-size: 13px; }
 .btn-block { width: 100%; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.is-upvoted { background: var(--ink); color: var(--surface-1); border-color: var(--ink); }
+.btn.is-upvoted:hover { background: #000; color: #fff; }
 
 /* Cards ------------------------------------------------------------------- */
 .card {
@@ -267,7 +269,7 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 
 /* Tabs -------------------------------------------------------------------- */
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
-.tab { padding: 10px 14px; font-size: 14px; font-weight: 600; color: var(--muted); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tab { padding: 10px 14px; font-size: 14px; font-weight: 600; color: var(--muted); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; text-decoration: none; display: inline-block; }
 .tab.active { color: var(--ink); border-bottom-color: var(--ink); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }

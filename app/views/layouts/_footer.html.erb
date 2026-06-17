@@ -6,7 +6,7 @@
         <p class="muted" style="margin-top:12px;max-width:280px"><%= t("home.tagline") %>. <%= t("home.hero_sub") %></p>
       </div>
       <div class="footer-col">
-        <h4><%= t("nav.species") %> &amp; more</h4>
+        <h4><%= t("footer.explore") %></h4>
         <%= link_to t("nav.species"), species_index_path %>
         <%= link_to t("nav.brands"), brands_path %>
         <%= link_to t("nav.catches"), catches_path %>
@@ -21,9 +21,9 @@
         <%= link_to t("shop.add"), new_shop_path %>
       </div>
       <div class="footer-col">
-        <h4>About</h4>
-        <a href="#">How it works</a>
-        <a href="#">Guidelines</a>
+        <h4><%= t("footer.about") %></h4>
+        <a href="#"><%= t("footer.how_it_works") %></a>
+        <a href="#"><%= t("footer.guidelines") %></a>
         <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
       </div>
     </div>
@@ -31,7 +31,6 @@
       <%= render "layouts/search" %>
     </div>
     <div class="footer-bottom">
-      <span>© <%= Time.current.year %> Lurepedia</span>
       <span><%= t("home.tagline") %></span>
     </div>
   </div>

@@ -157,4 +157,31 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     patch admin_user_path(@member, locale: :en), params: { user: { role: "moderator" } }
     assert @member.reload.moderator?
   end
+
+  test "upvote button reflects upvoted state" do
+    type = LureType.create!(key: "spinnerbait")
+    brand = Brand.create!(name: "Booyah")
+    lure = Lure.create!(brand: brand, lure_type: type, model: "Pond Magic")
+    variant = lure.variants.create!(name: "Shad")
+    species = Species.create!(key: "smallmouth_bass")
+    voter = User.create!(name: "Vic Voter", email_address: "vic@example.com", password: "secret123")
+    catch = Catch.create!(user: voter, variant: variant, species: species)
+    Upvote.create!(user: voter, catch: catch)
+
+    sign_in_as(voter)
+    get catch_path(catch, locale: :en)
+    assert_response :success
+    assert_select ".btn.is-upvoted"
+  end
+
+  test "footer uses translated labels and no copyright" do
+    get "/en"
+    assert_response :success
+    assert_select "footer.site-footer" do
+      assert_select "h4", text: I18n.t("footer.explore")
+      assert_select "a", text: I18n.t("footer.how_it_works")
+    end
+    assert_no_match(/©/, response.body)
+    assert_no_match(/&amp; more/, response.body)
+  end
 end

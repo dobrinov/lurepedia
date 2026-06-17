@@ -4,15 +4,12 @@
     <h1><%= t("home.hero_title") %></h1>
     <p><%= t("home.hero_sub") %></p>
     <div class="row" style="margin-top:18px">
-      <%= link_to t("home.add_a_catch"), new_catch_path, class: "btn btn-primary" %>
-      <%= link_to t("nav.species"), species_index_path, class: "btn" %>
-      <%= link_to t("nav.leaderboard"), leaderboard_path, class: "btn" %>
+      <%= link_to t("lure.add"), new_lure_path, class: "btn btn-primary" %>
     </div>
   </section>
 
   <div class="section-head">
     <h2><%= t("home.browse_lures") %></h2>
-    <%= link_to t("lure.add"), new_lure_path, class: "btn btn-sm" %>
   </div>
 
   <!-- Type filter chips -->
