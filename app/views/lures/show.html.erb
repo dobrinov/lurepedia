@@ -48,6 +48,7 @@
               <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %>
             <% end %>
             <% if signed_in? %><%= link_to edit_affordance_label, edit_lure_path(@lure), class: "btn" %><% end %>
+            <%= render "shared/favorite_button", favoritable: @lure %>
           </div>
           <% if @lure.action_video_url.present? %>
             <%= link_to t("lure.watch_video"), @lure.action_video_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %>

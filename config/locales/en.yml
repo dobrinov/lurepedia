@@ -22,6 +22,54 @@ en:
     promoted: Promoted
     sponsored: Sponsored
 
+  bans:
+    blocked: Your account is currently restricted from this action.
+    notice:
+      title: Your account is restricted.
+      reason: Reason
+      permanent: This restriction is permanent.
+      until: "In effect until %{date}."
+      scope: Restricted actions
+    capability:
+      catalog: catalog edits
+      claims: ownership claims
+      catches: logging catches
+      comments: comments
+      upvotes: upvotes
+      reports: reports
+      favorites: favorites
+    preset:
+      catalog_only: Catalog only
+      contributions: All contributions
+      full: Full (read-only account)
+    admin:
+      title: "Bans — %{name}"
+      title_short: Bans
+      new: Issue a ban
+      reason: Reason
+      preset: Preset
+      custom: Custom selection
+      capabilities: Restricted actions
+      capabilities_help: A preset pre-selects actions; check boxes to customize.
+      expires_at: Expires at
+      permanent_hint: Leave blank for a permanent ban.
+      issue: Issue ban
+      status: Status
+      scope: Scope
+      active: Active
+      lifted: Lifted
+      expired: Expired
+      lift: Lift ban
+      manage: Manage bans
+      created: Ban issued.
+      revoked: Ban lifted.
+
+  favorites:
+    add: Favorite
+    remove: Unfavorite
+    favorited: Favorited
+    sign_in_to_favorite: Sign in to favorite
+
   home:
     tagline: Every lure, proven by a catch
     meta_description: Lurepedia is a crowdsourced encyclopedia of fishing lures — find lures and see real proof, by catch, that they work.
@@ -373,11 +421,28 @@ en:
     units: Units
     notifications: Notifications
     saved: Settings saved
+    public_profile: Your public profile
+    copy: Copy
+    copied: Copied!
+    username: Username
+    username_hint: e.g. casey-rivera
+    username_help: Optional. Lowercase letters, numbers, hyphens. Used in your profile URL.
 
   dashboard:
     my_catches: My catches
     total_upvotes: Total upvotes earned
     no_catches: You haven't logged any catches yet.
+
+  profile:
+    catches: Catches
+    total_upvotes: Total upvotes
+    member_since: Member since
+    favorite_species: Favorite species
+    favorite_lures: Favorite lures
+    favorite_shops: Favorite shops
+    no_favorites: No favorites yet.
+    no_catches: No catches yet.
+    your_profile: This is your public profile.
 
   provenance:
     title: History & ownership

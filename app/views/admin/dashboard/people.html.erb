@@ -5,7 +5,7 @@
   <div class="card" style="overflow-x:auto">
     <table class="lb-table">
       <thead>
-        <tr><th><%= t("leaderboard.angler") %></th><th><%= t("auth.email") %></th><th><%= t("admin.joined") %></th><th><%= t("nav.catches") %></th><th><%= t("admin.role") %></th></tr>
+        <tr><th><%= t("leaderboard.angler") %></th><th><%= t("auth.email") %></th><th><%= t("admin.joined") %></th><th><%= t("nav.catches") %></th><th><%= t("admin.role") %></th><th><%= t("bans.admin.title_short") %></th></tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
@@ -24,6 +24,10 @@
               <%= form_with model: user, url: admin_user_path(user), method: :patch do |f| %>
                 <%= f.select :role, User.roles.keys.map { |r| [t("admin.#{r}"), r] }, { selected: user.role }, class: "input", style: "height:34px", onchange: "this.form.requestSubmit()" %>
               <% end %>
+            </td>
+            <td>
+              <% if user.active_ban %><span class="role-badge role-admin"><%= t("bans.admin.active") %></span><% end %>
+              <%= link_to t("bans.admin.manage"), admin_user_bans_path(user), class: "btn btn-sm" %>
             </td>
           </tr>
         <% end %>

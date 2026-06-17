@@ -373,11 +373,76 @@ ja:
     units: 単位
     notifications: 通知
     saved: 設定を保存しました
+    public_profile: 公開プロフィール
+    copy: コピー
+    copied: コピーしました！
+    username: ユーザー名
+    username_hint: "例: casey-rivera"
+    username_help: 任意。小文字・数字・ハイフンが使えます。プロフィールURLに使用されます。
 
   dashboard:
     my_catches: 自分の釣果
     total_upvotes: 獲得した総いいね数
     no_catches: まだ釣果を登録していません。
+
+  favorites:
+    add: お気に入りに追加
+    remove: お気に入りを解除
+    favorited: お気に入り登録済み
+    sign_in_to_favorite: ログインしてお気に入りに追加
+
+  profile:
+    catches: 釣果
+    total_upvotes: 総いいね数
+    member_since: 登録日
+    favorite_species: お気に入りの魚種
+    favorite_lures: お気に入りのルアー
+    favorite_shops: お気に入りのショップ
+    no_favorites: まだお気に入りがありません。
+    no_catches: まだ釣果がありません。
+    your_profile: これはあなたの公開プロフィールです。
+
+  bans:
+    blocked: お使いのアカウントは現在この操作を制限されています。
+    notice:
+      title: お使いのアカウントは制限されています。
+      reason: 理由
+      permanent: この制限は無期限です。
+      until: "%{date} まで有効です。"
+      scope: 制限されている操作
+    capability:
+      catalog: カタログの編集
+      claims: 所有権の申請
+      catches: 釣果の登録
+      comments: コメント
+      upvotes: いいね
+      reports: 報告
+      favorites: お気に入り
+    preset:
+      catalog_only: カタログのみ
+      contributions: すべての投稿
+      full: 全機能（閲覧のみのアカウント）
+    admin:
+      title: "アカウント停止 — %{name}"
+      title_short: アカウント停止
+      new: 停止措置を発行
+      reason: 理由
+      preset: プリセット
+      custom: カスタム選択
+      capabilities: 制限する操作
+      capabilities_help: プリセットで操作があらかじめ選択されます。チェックボックスでカスタマイズできます。
+      expires_at: 有効期限
+      permanent_hint: 無期限の停止にする場合は空欄のままにしてください。
+      issue: 停止措置を発行
+      status: ステータス
+      scope: 範囲
+      active: 有効
+      lifted: 解除済み
+      expired: 期限切れ
+      lift: 停止を解除
+      manage: 停止措置を管理
+      created: 停止措置を発行しました。
+      revoked: 停止措置を解除しました。
 
   provenance:
     title: 履歴と所有

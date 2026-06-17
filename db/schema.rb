@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_16_000003) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -37,6 +37,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bans", force: :cascade do |t|
+    t.json "capabilities", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at"
+    t.integer "issued_by_id", null: false
+    t.text "reason", null: false
+    t.datetime "revoked_at"
+    t.integer "revoked_by_id"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["issued_by_id"], name: "index_bans_on_issued_by_id"
+    t.index ["revoked_by_id"], name: "index_bans_on_revoked_by_id"
+    t.index ["user_id", "revoked_at", "expires_at"], name: "index_bans_on_user_id_and_revoked_at_and_expires_at"
+    t.index ["user_id"], name: "index_bans_on_user_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -106,6 +122,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
     t.integer "user_id", null: false
     t.index ["catch_id"], name: "index_comments_on_catch_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "favoritable_id", null: false
+    t.string "favoritable_type", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
+    t.index ["user_id", "favoritable_type", "favoritable_id"], name: "index_favorites_on_user_and_favoritable", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "lure_types", force: :cascade do |t|
@@ -228,9 +255,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
     t.string "name", default: "", null: false
     t.string "password_digest", null: false
     t.integer "role", default: 0, null: false
+    t.string "slug", null: false
     t.integer "units", default: 0, null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "variants", force: :cascade do |t|
@@ -247,6 +278,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bans", "users"
+  add_foreign_key "bans", "users", column: "issued_by_id"
+  add_foreign_key "bans", "users", column: "revoked_by_id"
   add_foreign_key "buy_links", "lures"
   add_foreign_key "buy_links", "shops"
   add_foreign_key "catches", "species"
@@ -255,6 +289,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_15_182600) do
   add_foreign_key "claims", "users"
   add_foreign_key "comments", "catches"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "users"
   add_foreign_key "lures", "brands"
   add_foreign_key "lures", "lure_types"
   add_foreign_key "moderation_items", "users", column: "reviewer_id"

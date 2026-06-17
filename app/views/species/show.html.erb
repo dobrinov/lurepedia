@@ -25,6 +25,7 @@
         <% else %>
           <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn" %>
         <% end %>
+        <%= render "shared/favorite_button", favoritable: @species %>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class SpeciesController < ApplicationController
   before_action :require_login, only: %i[new create edit update]
+  before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
     @page = paginate(Species.alpha, per: 12)

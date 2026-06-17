@@ -55,11 +55,10 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     assert_equal "ca", @member.country.downcase
   end
 
-  test "my catches lists user catches" do
+  test "my catches redirects to the member's profile" do
     sign_in_as(@member)
     get my_catches_path(locale: :en)
-    assert_response :success
-    assert_match I18n.t("dashboard.total_upvotes"), response.body
+    assert_redirected_to profile_path(@member, locale: :en)
   end
 
   test "member suggesting a lure edit files a reviewed suggestion without applying it" do

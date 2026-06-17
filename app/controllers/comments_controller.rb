@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_login
+  before_action -> { require_contribution(:comments) }
 
   def create
     @catch = Catch.find(params[:catch_id])

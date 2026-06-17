@@ -1,0 +1,16 @@
+<%# locals: favoritable %>
+<% if can_contribute?(:favorites) %>
+  <% if favoritable.favorited_by?(current_user) %>
+    <%= button_to favorites_path(favoritable_type: favoritable.class.name, favoritable_id: favoritable.id),
+          method: :delete, class: "btn btn-fav is-fav" do %>
+      ★ <%= t("favorites.favorited") %>
+    <% end %>
+  <% else %>
+    <%= button_to favorites_path(favoritable_type: favoritable.class.name, favoritable_id: favoritable.id),
+          method: :post, class: "btn btn-fav" do %>
+      ☆ <%= t("favorites.add") %>
+    <% end %>
+  <% end %>
+<% elsif !signed_in? %>
+  <%= link_to t("favorites.sign_in_to_favorite"), new_session_path, class: "btn btn-fav" %>
+<% end %>

@@ -1,5 +1,6 @@
 class CatchesController < ApplicationController
   before_action :require_login, only: %i[new create]
+  before_action -> { require_contribution(:catches) }, only: %i[new create]
 
   def index
     @page = paginate(Catch.includes(:user, :species, variant: :lure).recent, per: 12)

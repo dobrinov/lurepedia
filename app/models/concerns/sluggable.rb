@@ -18,6 +18,9 @@ module Sluggable
     base = slug_source.to_s.parameterize
     return if base.blank?
 
+    suffix = slug_suffix
+    base = "#{base}-#{suffix}" if suffix.present?
+
     candidate = base
     i = 2
     while self.class.where(slug: candidate).where.not(id: id).exists?
@@ -25,6 +28,11 @@ module Sluggable
       i += 1
     end
     self.slug = candidate
+  end
+
+  # Optional per-model token appended to the slug base (nil = none).
+  def slug_suffix
+    nil
   end
 
   # Override in models to choose what the slug is generated from.

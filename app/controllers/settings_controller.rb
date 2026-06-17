@@ -19,6 +19,6 @@ class SettingsController < ApplicationController
   private
 
   def settings_params
-    params.require(:user).permit(:name, :bio, :country, :locale, :units)
+    params.require(:user).permit(:name, :bio, :country, :locale, :units, :username)
   end
 end

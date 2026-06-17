@@ -9,6 +9,8 @@ module Editable
 
   # Admins edit directly (no review); everyone else files a reviewed suggestion.
   def commit_edit(record, attrs, name, redirect_path)
+    return unless require_contribution(:catalog)
+
     if current_user&.admin?
       if record.update(attrs)
         record.revisions.create!(user: current_user, summary: "Edited #{name}")
