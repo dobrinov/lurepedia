@@ -10,8 +10,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal({ "member" => 0, "moderator" => 1, "admin" => 2 }, User.roles)
   end
 
-  test "units enum values" do
-    assert_equal({ "auto" => 0, "imperial" => 1, "metric" => 2 }, User.units)
+  test "per-measurement units enum values" do
+    expected = { "auto" => 0, "imperial" => 1, "metric" => 2 }
+    assert_equal expected, User.length_units
+    assert_equal expected, User.weight_units
+    assert_equal expected, User.depth_units
   end
 
   test "has secure password" do

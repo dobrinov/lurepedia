@@ -181,21 +181,21 @@ SPECIES_PHOTOS = {
 }.freeze
 
 catch_specs = [
-  { lure: "Vision 110", variant: "GG Megabass Kanata Ayu", species: "largemouth_bass", user: members[0], season: :spring, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Fork, TX", len: 54.6, wt: 2359, up: 42, photos: 1 },
-  { lure: "Vision 110", variant: "Pro Blue", species: "smallmouth_bass", user: members[2], season: :summer, clarity: :clear, water_body: :river, wind: :calm, tod: :morning, loc: "Columbia River", len: 48.0, wt: 1800, up: 31, photos: 2 },
-  { lure: "KVD 1.5 Squarebill", variant: "Chartreuse Sexy Shad", species: "largemouth_bass", user: members[1], season: :fall, clarity: :stained, water_body: :reservoir, wind: :moderate, tod: :afternoon, loc: "Lake Guntersville", len: 50.8, wt: 2100, up: 28, photos: 1 },
-  { lure: "Original ChatterBait", variant: "Green Pumpkin", species: "largemouth_bass", user: admin, season: :spring, clarity: :stained, water_body: :pond, wind: :light, tod: :dusk, loc: "Private pond, GA", len: 47.0, wt: 1700, up: 63, photos: 1 },
-  { lure: "Original ChatterBait", variant: "White", species: "northern_pike", user: members[3], season: :summer, clarity: :clear, water_body: :lake, wind: :moderate, tod: :midday, loc: "Lake of the Woods", len: 86.4, wt: 4500, up: 88, photos: 1 },
-  { lure: "PowerBait Power Worm", variant: "Black Blue Fleck", species: "largemouth_bass", user: members[4], season: :summer, clarity: :muddy, water_body: :pond, wind: :calm, tod: :night, loc: "Sofia reservoir", len: 44.0, wt: 1500, up: 19, photos: 1 },
-  { lure: "Pond Magic", variant: "Chartreuse Shad", species: "bluegill", user: members[0], season: :summer, clarity: :clear, water_body: :pond, wind: :calm, tod: :morning, loc: "Neighborhood pond", len: 22.0, wt: 280, up: 12, photos: 2 },
-  { lure: "Husky Jerk", variant: "Glass Ghost", species: "rainbow_trout", user: members[2], season: :spring, clarity: :clear, water_body: :stream, wind: :calm, tod: :morning, loc: "Gunnison River, CO", len: 46.0, wt: 1200, up: 71, photos: 2 },
-  { lure: "Husky Jerk", variant: "Glass Ghost", species: "walleye", user: moderator, season: :fall, clarity: :stained, water_body: :river, wind: :light, tod: :dusk, loc: "Detroit River", len: 58.0, wt: 2600, up: 34, photos: 1 },
-  { lure: "Prop Knocker", variant: "Bone", species: "smallmouth_bass", user: members[1], season: :summer, clarity: :clear, water_body: :lake, wind: :calm, tod: :dawn, loc: "Lake St. Clair", len: 45.0, wt: 1600, up: 41, photos: 2 },
-  { lure: "Rage Swimmer", variant: "Pearl Flash", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :morning, loc: "Hudson River", len: 70.0, wt: 5000, up: 52, photos: 2 },
-  { lure: "Magdraft Swimbait", variant: "Gizzard Shad", species: "chinook_salmon", user: members[2], season: :fall, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, loc: "Lake Michigan", len: 92.0, wt: 8200, up: 84, photos: 2 },
-  { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: 2 },
-  { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: 1 },
-  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: 3 }
+  { lure: "Vision 110", variant: "GG Megabass Kanata Ayu", species: "largemouth_bass", user: members[0], season: :spring, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, plat: :boat, ret: :jerk, loc: "Lake Fork, TX", len: 54.6, wt: 2359, up: 42, photos: 1 },
+  { lure: "Vision 110", variant: "Pro Blue", species: "smallmouth_bass", user: members[2], season: :summer, clarity: :clear, water_body: :river, wind: :calm, tod: :morning, plat: :boat, ret: :twitch, loc: "Columbia River", len: 48.0, wt: 1800, up: 31, photos: 2 },
+  { lure: "KVD 1.5 Squarebill", variant: "Chartreuse Sexy Shad", species: "largemouth_bass", user: members[1], season: :fall, clarity: :stained, water_body: :reservoir, wind: :moderate, tod: :afternoon, plat: :boat, ret: :steady, loc: "Lake Guntersville", len: 50.8, wt: 2100, up: 28, photos: 1 },
+  { lure: "Original ChatterBait", variant: "Green Pumpkin", species: "largemouth_bass", user: admin, season: :spring, clarity: :stained, water_body: :pond, wind: :light, tod: :dusk, plat: :shore, ret: :burn, loc: "Private pond, GA", len: 47.0, wt: 1700, up: 63, photos: 1 },
+  { lure: "Original ChatterBait", variant: "White", species: "northern_pike", user: members[3], season: :summer, clarity: :clear, water_body: :lake, wind: :moderate, tod: :midday, plat: :boat, ret: :steady, loc: "Lake of the Woods", len: 86.4, wt: 4500, up: 88, photos: 1 },
+  { lure: "PowerBait Power Worm", variant: "Black Blue Fleck", species: "largemouth_bass", user: members[4], season: :summer, clarity: :muddy, water_body: :pond, wind: :calm, tod: :night, plat: :shore, ret: :dead_stick, loc: "Sofia reservoir", len: 44.0, wt: 1500, up: 19, photos: 1 },
+  { lure: "Pond Magic", variant: "Chartreuse Shad", species: "bluegill", user: members[0], season: :summer, clarity: :clear, water_body: :pond, wind: :calm, tod: :morning, plat: :shore, ret: :stop_and_go, loc: "Neighborhood pond", len: 22.0, wt: 280, up: 12, photos: 2 },
+  { lure: "Husky Jerk", variant: "Glass Ghost", species: "rainbow_trout", user: members[2], season: :spring, clarity: :clear, water_body: :stream, wind: :calm, tod: :morning, plat: :shore, ret: :twitch, loc: "Gunnison River, CO", len: 46.0, wt: 1200, up: 71, photos: 2 },
+  { lure: "Husky Jerk", variant: "Glass Ghost", species: "walleye", user: moderator, season: :fall, clarity: :stained, water_body: :river, wind: :light, tod: :dusk, plat: :boat, ret: :jerk, loc: "Detroit River", len: 58.0, wt: 2600, up: 34, photos: 1 },
+  { lure: "Prop Knocker", variant: "Bone", species: "smallmouth_bass", user: members[1], season: :summer, clarity: :clear, water_body: :lake, wind: :calm, tod: :dawn, plat: :boat, ret: :stop_and_go, loc: "Lake St. Clair", len: 45.0, wt: 1600, up: 41, photos: 2 },
+  { lure: "Rage Swimmer", variant: "Pearl Flash", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :morning, plat: :kayak, ret: :slow_roll, loc: "Hudson River", len: 70.0, wt: 5000, up: 52, photos: 2 },
+  { lure: "Magdraft Swimbait", variant: "Gizzard Shad", species: "chinook_salmon", user: members[2], season: :fall, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, plat: :boat, ret: :slow_roll, loc: "Lake Michigan", len: 92.0, wt: 8200, up: 84, photos: 2 },
+  { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, plat: :boat, ret: :steady, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: 2 },
+  { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, plat: :shore, ret: :twitch, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: 1 },
+  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, plat: :boat, ret: :jerk, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: 3 }
 ]
 
 notes = [
@@ -216,6 +216,8 @@ catch_specs.each_with_index do |spec, i|
     catch_rec.water_body = spec[:water_body]
     catch_rec.wind = spec[:wind]
     catch_rec.time_of_day = spec[:tod]
+    catch_rec.platform = spec[:plat]
+    catch_rec.retrieve = spec[:ret]
     catch_rec.length_cm = spec[:len]
     catch_rec.weight_g = spec[:wt]
     catch_rec.note = notes[i % notes.size]

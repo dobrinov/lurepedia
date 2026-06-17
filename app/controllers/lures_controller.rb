@@ -5,7 +5,6 @@ class LuresController < ApplicationController
 
   def index
     @filter = LureFilter.new(params)
-    @lure_types = LureType.all
     @page = paginate(@filter.results, per: 12)
     @lures = @page.records
   end

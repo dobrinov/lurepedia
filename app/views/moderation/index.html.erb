@@ -2,10 +2,9 @@
 <div class="container">
   <div class="page-head">
     <div>
-      <h1><%= t("moderation.title") %></h1>
-      <div class="sub">
-        <%= t("moderation.subtitle") %>
-        <% unless current_user.admin? %><span class="role-badge role-moderator" style="margin-left:8px"><%= t("moderation.moderator_view") %></span><% end %>
+      <div class="row" style="gap:8px;align-items:center">
+        <h1><%= t("moderation.title") %></h1>
+        <% unless current_user.admin? %><span class="role-badge role-moderator"><%= t("moderation.moderator_view") %></span><% end %>
       </div>
     </div>
     <span class="muted"><%= t("moderation.awaiting", count: @pending_total) %></span>

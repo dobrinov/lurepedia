@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   stale_when_importmap_changes
 
   around_action :switch_locale
+  before_action :canonicalize_root_locale
 
   helper_method :current_user, :signed_in?
 
@@ -32,7 +33,23 @@ class ApplicationController < ActionController::Base
     I18n.with_locale(locale, &action)
   end
 
+  # Anonymous visitors get canonical, locale-prefixed URLs, so a bare "/" is
+  # redirected to the localized home. Signed-in users keep locale-free URLs and
+  # are served at "/" directly. Runs inside switch_locale, so I18n.locale is set.
+  def canonicalize_root_locale
+    return if signed_in? || params[:locale].present?
+    return unless request.get? && request.path == "/"
+
+    redirect_to localized_root_path(locale: I18n.locale), status: :moved_permanently
+  end
+
   def default_url_options
+    # Signed-in users get clean, locale-free URLs (their locale comes from their
+    # account preference); anonymous visitors keep the locale in the path.
+    # `locale: nil` omits the optional segment while still claiming it, so
+    # positional path args (e.g. profile_path(user)) fill the right segment.
+    return { locale: nil } if signed_in?
+
     { locale: I18n.locale }
   end
 end

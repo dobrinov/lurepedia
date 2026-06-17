@@ -21,15 +21,25 @@ class UnitsTest < ActiveSupport::TestCase
     assert_equal "0.9–1.5 m", Units.format_depth(91, 152, :metric)
   end
 
-  test "auto resolves from locale" do
-    assert_equal :imperial, Units.system(:auto, locale: :en)
-    assert_equal :metric, Units.system(:auto, locale: :de)
-    assert_equal :metric, Units.system(:auto, locale: :bg)
-    assert_equal :metric, Units.system(:auto, locale: :ja)
+  test "auto resolves from country, not language" do
+    assert_equal :imperial, Units.system(:auto, country: "US")
+    assert_equal :metric, Units.system(:auto, country: "DE")
+    assert_equal :metric, Units.system(:auto, country: "GB")
+    assert_equal :metric, Units.system(:auto, country: "JP")
+    assert_equal :metric, Units.system(:auto, country: nil)
   end
 
-  test "explicit setting overrides locale" do
-    assert_equal :metric, Units.system(:metric, locale: :en)
-    assert_equal :imperial, Units.system(:imperial, locale: :de)
+  test "country matching is case-insensitive" do
+    assert_equal :imperial, Units.system(:auto, country: "us")
+  end
+
+  test "explicit setting overrides country" do
+    assert_equal :metric, Units.system(:metric, country: "US")
+    assert_equal :imperial, Units.system(:imperial, country: "DE")
+  end
+
+  test "auto applies per measurement against country" do
+    assert_equal "21.5 in", Units.format_length(54.6, :auto, country: "US")
+    assert_equal "54.6 cm", Units.format_length(54.6, :auto, country: "DE")
   end
 end

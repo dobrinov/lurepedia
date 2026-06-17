@@ -21,7 +21,8 @@ class ContributionBansTest < ActionDispatch::IntegrationTest
     assert_no_difference -> { Catch.count } do
       post catches_path(locale: :en), params: { catch: { variant_id: @variant.id, species_id: @species.id, season: "spring" } }
     end
-    assert_redirected_to profile_path(@user, locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_redirected_to profile_path(@user)
   end
 
   test "banned-from-favorites user is blocked from favoriting" do

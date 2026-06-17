@@ -6,6 +6,25 @@ class LocaleRoutingTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/en"
   end
 
+  test "signed-in users are served at the bare root without a locale segment" do
+    user = User.create!(name: "Locale User", email_address: "loc@example.com", password: "secret123", country: "US")
+    sign_in_as(user)
+
+    get "/"
+    assert_response :success
+  end
+
+  test "signed-in users get locale-free generated links" do
+    user = User.create!(name: "Locale User", email_address: "loc@example.com", password: "secret123", country: "US", locale: "de")
+    sign_in_as(user)
+
+    get "/"
+    assert_response :success
+    assert_select "html[lang=?]", "de"
+    # The wordmark links home with no locale prefix.
+    assert_select "a.wordmark[href=?]", "/"
+  end
+
   test "localized root renders with html lang" do
     get "/en"
     assert_response :success

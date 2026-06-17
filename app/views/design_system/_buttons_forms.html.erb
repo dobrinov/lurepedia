@@ -16,6 +16,9 @@
     <%= ds_example ".field" do %>
       <div class="field" style="width:220px"><label>Labeled field</label><input class="input" placeholder="With label"></div>
     <% end %>
+    <%= ds_example "shared/copy_field" do %>
+      <div style="width:260px"><%= render "shared/copy_field", value: "http://localhost:3003/u/casey-rivera-2ncs" %></div>
+    <% end %>
   </div>
 <% end %>
 

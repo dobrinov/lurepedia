@@ -61,9 +61,12 @@ bg:
 
   units:
     label: Мерни единици
-    auto: Автоматично (по език)
-    imperial: Имперски (ft, in, lb)
-    metric: Метрични (m, cm, kg)
+    auto: Автоматично (по държава)
+    imperial: Имперски
+    metric: Метрични
+    length: Дължина
+    weight: Тегло
+    depth: Дълбочина
     cm: см
     in: in
     g: г
@@ -122,6 +125,22 @@ bg:
       afternoon: Следобед
       dusk: Здрач
       night: Нощ
+    platform:
+      label: Откъде
+      any: Отвсякъде
+      shore: От брега
+      boat: От лодка
+      kayak: От каяк
+    retrieve:
+      label: Стил на водене
+      any: Всякакъв стил
+      steady: Равномерно
+      stop_and_go: Спиране и движение
+      twitch: Потрепване
+      jerk: Дръпване
+      slow_roll: Бавно водене
+      burn: Бързо водене
+      dead_stick: Без движение
 
   lure_type:
     crankbait: Воблер
@@ -175,8 +194,11 @@ bg:
     add: Добави вид
     add_title: Добави вид
     scientific_name: Научно име
+    wikipedia_url: URL в Уикипедия
+    wikipedia: Виж в Уикипедия
+    wikipedia_url_invalid: трябва да е URL на статия в Уикипедия (напр. https://bg.wikipedia.org/wiki/...)
     habitat: Местообитание
-    tab_lures: Примамки
+    tab_lures: Хваната на
     tab_catches: Улови
     tab_leaderboard: Класация
     tab_history: История
@@ -219,7 +241,7 @@ bg:
     title: Улови
     subtitle: Скорошни доказателства от общността
     add: Добави улов
-    add_title: Докладвай улов
+    add_title: Добави улов
     on_lure: "с %{lure}"
     conditions: Условия
     location: Локация
@@ -391,7 +413,6 @@ bg:
     favorite_shops: Любими магазини
     no_favorites: Все още няма любими.
     no_catches: Все още няма улови.
-    your_profile: Това е твоят публичен профил.
 
   bans:
     blocked: Профилът ти в момента е ограничен за това действие.
@@ -452,6 +473,7 @@ bg:
 
   dashboard:
     my_catches: Моите улови
+    my_profile: Моят профил
     total_upvotes: Общо получени гласове
     no_catches: Все още нямаш регистрирани улови.
 

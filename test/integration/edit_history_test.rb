@@ -35,8 +35,9 @@ class EditHistoryTest < ActionDispatch::IntegrationTest
 
     get lure_path(@lure, tab: "history", locale: :en)
     assert_response :success
-    assert_select "a[href=?]", revision_path(rev, locale: :en), text: "edited"
-    assert_select "a[href=?]", profile_path(@admin, locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_select "a[href=?]", revision_path(rev), text: "edited"
+    assert_select "a[href=?]", profile_path(@admin)
     assert_select "td", { text: /Vision 110/, count: 0 }, "history row should not repeat the lure name"
   end
 

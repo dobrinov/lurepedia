@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_17_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -85,6 +85,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000002) do
     t.decimal "length_cm", precision: 8, scale: 2
     t.string "location"
     t.text "note"
+    t.integer "platform"
+    t.integer "retrieve"
     t.integer "season"
     t.integer "species_id", null: false
     t.integer "time_of_day"
@@ -235,6 +237,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000002) do
     t.string "slug", null: false
     t.datetime "updated_at", null: false
     t.integer "water", default: 0, null: false
+    t.string "wikipedia_url"
     t.index ["key"], name: "index_species_on_key", unique: true
     t.index ["slug"], name: "index_species_on_slug", unique: true
   end
@@ -253,15 +256,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000002) do
     t.text "bio"
     t.string "country", default: "US", null: false
     t.datetime "created_at", null: false
+    t.integer "depth_units", default: 0, null: false
     t.string "email_address", null: false
+    t.integer "length_units", default: 0, null: false
     t.string "locale", default: "en", null: false
     t.string "name", default: "", null: false
     t.string "password_digest", null: false
     t.integer "role", default: 0, null: false
     t.string "slug", null: false
-    t.integer "units", default: 0, null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.integer "weight_units", default: 0, null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

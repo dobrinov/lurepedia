@@ -22,7 +22,7 @@
   </button>
   <div class="combobox-panel" data-combobox-target="panel" hidden>
     <div class="combobox-search">
-      <input type="text" placeholder="<%= placeholder %>" data-combobox-target="search" data-action="input->combobox#filter">
+      <input type="text" placeholder="<%= placeholder %>" data-combobox-target="search" data-action="input->combobox#filter keydown->combobox#keydown">
     </div>
     <div class="combobox-options" data-combobox-target="options"></div>
   </div>

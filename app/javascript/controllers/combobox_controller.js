@@ -9,6 +9,7 @@ export default class extends Controller {
 
   connect() {
     this.onDocClick = this.onDocClick.bind(this)
+    this.activeIndex = -1
     this.render("")
   }
 
@@ -32,6 +33,48 @@ export default class extends Controller {
     this.panelTarget.hidden = true
     this.triggerTarget.setAttribute("aria-expanded", "false")
     document.removeEventListener("click", this.onDocClick)
+  }
+
+  // Arrow keys move the highlight, Enter picks it, Escape closes the panel.
+  keydown(event) {
+    switch (event.key) {
+      case "ArrowDown":
+        event.preventDefault()
+        this.setActive(this.activeIndex + 1)
+        break
+      case "ArrowUp":
+        event.preventDefault()
+        this.setActive(this.activeIndex - 1)
+        break
+      case "Enter": {
+        const option = this.optionElements()[this.activeIndex]
+        if (option) {
+          event.preventDefault()
+          option.click()
+        }
+        break
+      }
+      case "Escape":
+        event.preventDefault()
+        this.close()
+        this.triggerTarget.focus()
+        break
+    }
+  }
+
+  optionElements() {
+    return Array.from(this.optionsTarget.querySelectorAll(".combobox-option"))
+  }
+
+  setActive(index) {
+    const options = this.optionElements()
+    if (options.length === 0) {
+      this.activeIndex = -1
+      return
+    }
+    this.activeIndex = Math.max(0, Math.min(index, options.length - 1))
+    options.forEach((el, i) => el.classList.toggle("highlighted", i === this.activeIndex))
+    options[this.activeIndex].scrollIntoView({ block: "nearest" })
   }
 
   filter() {
@@ -62,6 +105,7 @@ export default class extends Controller {
       btn.addEventListener("click", () => this.pick(o))
       this.optionsTarget.appendChild(btn)
     })
+    this.setActive(0)
   }
 
   pick(o) {

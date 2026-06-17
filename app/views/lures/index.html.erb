@@ -1,23 +1,10 @@
 <% content_for :head, tag.meta(name: "robots", content: "index,follow") %>
 <div class="container">
-  <section class="hero">
-    <h1><%= t("home.hero_title") %></h1>
-    <p><%= t("home.hero_sub") %></p>
-    <div class="row" style="margin-top:18px">
-      <%= link_to t("lure.add"), new_lure_path, class: "btn btn-primary" %>
+  <div class="page-head">
+    <div>
+      <h1><%= t("lure.title") %></h1>
     </div>
-  </section>
-
-  <div class="section-head">
-    <h2><%= t("home.browse_lures") %></h2>
-  </div>
-
-  <!-- Type filter chips -->
-  <div class="chips" style="margin-bottom:18px">
-    <%= link_to t("common.all"), lures_path, class: "chip #{'active' unless params[:type].present?}" %>
-    <% @lure_types.each do |lt| %>
-      <%= link_to lure_type_name(lt), lures_path(type: lt.key), class: "chip #{'active' if params[:type] == lt.key}" %>
-    <% end %>
+    <%= link_to t("lure.add"), new_lure_path, class: "btn btn-sm" %>
   </div>
 
   <!-- Active filter pills -->

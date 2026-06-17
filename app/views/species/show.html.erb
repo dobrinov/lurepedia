@@ -19,6 +19,9 @@
         <span class="tag"><%= t("lure.catches_count", count: @species.catches_count) %></span>
       </div>
       <% if @species.habitat.present? %><p class="muted"><%= @species.habitat %></p><% end %>
+      <% if @species.wikipedia_url.present? %>
+        <p><%= link_to t("species.wikipedia"), @species.wikipedia_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %></p>
+      <% end %>
       <div class="row">
         <% if signed_in? %>
           <%= link_to edit_affordance_label, edit_species_path(@species), class: "btn" %>
@@ -57,11 +60,46 @@
         <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
       </div>
     <% else %>
-      <div class="empty-state"><p><%= t("species.be_first_lure") %></p></div>
+      <div class="empty-state">
+        <p><%= t("species.be_first_lure") %></p>
+        <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
+      </div>
     <% end %>
   <% when "leaderboard" %>
     <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
   <% when "history" %>
-    <%= render "shared/provenance", subject: @species %>
+    <% revisions = @species.revisions.newest_first.to_a %>
+    <% if revisions.any? %>
+      <div class="card">
+        <table class="lb-table">
+          <thead><tr><th><%= t("provenance.col_change") %></th><th><%= t("provenance.col_contributor") %></th><th><%= t("provenance.col_date") %></th></tr></thead>
+          <tbody>
+            <% revisions.each do |rev| %>
+              <tr>
+                <td>
+                  <% if rev.edit? %>
+                    <%= link_to t("provenance.edited"), revision_path(rev), style: "font-weight:600" %>
+                  <% else %>
+                    <%= rev.summary %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if rev.user %>
+                    <%= link_to rev.user.name, profile_path(rev.user) %>
+                  <% else %>
+                    <%= t("common.none") %>
+                  <% end %>
+                </td>
+                <td style="white-space:nowrap"><%= l(rev.created_at, format: :long) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="card card-pad">
+        <p class="muted" style="font-size:13px"><%= t("provenance.created") %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>

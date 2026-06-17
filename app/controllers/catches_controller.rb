@@ -39,7 +39,7 @@ class CatchesController < ApplicationController
 
   def catch_params
     params.require(:catch).permit(
-      :variant_id, :species_id, :season, :clarity, :water_body, :wind, :time_of_day,
+      :variant_id, :species_id, :season, :clarity, :water_body, :wind, :time_of_day, :platform, :retrieve,
       :location, :note, :length_cm, :weight_g, photos: []
     )
   end

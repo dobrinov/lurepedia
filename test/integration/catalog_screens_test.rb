@@ -132,12 +132,13 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   end
 
   test "catch detail shows conditions and contributor" do
+    sign_in_as(@member) # US member → units resolved imperial from country
     c = Catch.create!(user: @member, variant: @variant, species: @bass, season: :spring, location: "Lake Fork", length_cm: 54.6)
     get catch_path(c, locale: :en)
     assert_response :success
     assert_match "Lake Fork", response.body
     assert_match @member.name, response.body
-    assert_match "21.5 in", response.body # length formatted imperial for en
+    assert_match "21.5 in", response.body # length formatted imperial for a US viewer
   end
 
   test "add screens require login" do

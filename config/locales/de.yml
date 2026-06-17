@@ -61,9 +61,12 @@ de:
 
   units:
     label: Einheiten
-    auto: Automatisch (nach Sprache)
-    imperial: Imperial (ft, in, lb)
-    metric: Metrisch (m, cm, kg)
+    auto: Automatisch (nach Land)
+    imperial: Imperial
+    metric: Metrisch
+    length: Länge
+    weight: Gewicht
+    depth: Tiefe
     cm: cm
     in: in
     g: g
@@ -122,6 +125,22 @@ de:
       afternoon: Nachmittag
       dusk: Abenddämmerung
       night: Nacht
+    platform:
+      label: Angeln von
+      any: Überall
+      shore: Vom Ufer
+      boat: Vom Boot
+      kayak: Vom Kajak
+    retrieve:
+      label: Einholstil
+      any: Beliebiger Stil
+      steady: Gleichmäßig
+      stop_and_go: Stop-and-go
+      twitch: Zupfen
+      jerk: Jerken
+      slow_roll: Langsames Einholen
+      burn: Schnelles Einholen
+      dead_stick: Totes Treiben
 
   lure_type:
     crankbait: Wobbler
@@ -175,8 +194,11 @@ de:
     add: Fischart hinzufügen
     add_title: Fischart hinzufügen
     scientific_name: Wissenschaftlicher Name
+    wikipedia_url: Wikipedia-URL
+    wikipedia: Auf Wikipedia ansehen
+    wikipedia_url_invalid: muss eine Wikipedia-Artikel-URL sein (z. B. https://de.wikipedia.org/wiki/...)
     habitat: Lebensraum
-    tab_lures: Köder
+    tab_lures: Gefangen mit
     tab_catches: Fänge
     tab_leaderboard: Bestenliste
     tab_history: Verlauf
@@ -219,7 +241,7 @@ de:
     title: Fänge
     subtitle: Aktuelle Beweise der Community
     add: Fang hinzufügen
-    add_title: Fang melden
+    add_title: Fang hinzufügen
     on_lure: "mit %{lure}"
     conditions: Bedingungen
     location: Ort
@@ -387,6 +409,7 @@ de:
 
   dashboard:
     my_catches: Meine Fänge
+    my_profile: Mein Profil
     total_upvotes: Erhaltene Stimmen insgesamt
     no_catches: Du hast noch keine Fänge erfasst.
 
@@ -468,7 +491,6 @@ de:
     favorite_shops: Lieblingsshops
     no_favorites: Noch keine Favoriten.
     no_catches: Noch keine Fänge.
-    your_profile: Das ist dein öffentliches Profil.
 
   bans:
     blocked: Dein Konto ist für diese Aktion derzeit gesperrt.

@@ -36,7 +36,8 @@ class AdminBansTest < ActionDispatch::IntegrationTest
   test "non-admin cannot reach ban management" do
     sign_in_as(@user)
     get admin_user_bans_path(@user, locale: :en)
-    assert_redirected_to localized_root_path(locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_redirected_to localized_root_path
   end
 
   test "ban history lists all bans for the user" do

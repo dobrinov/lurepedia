@@ -61,9 +61,12 @@ ja:
 
   units:
     label: 単位
-    auto: 自動（言語に応じる）
-    imperial: ヤード・ポンド法（ft, in, lb）
-    metric: メートル法（m, cm, kg）
+    auto: 自動（国に応じる）
+    imperial: ヤード・ポンド法
+    metric: メートル法
+    length: 長さ
+    weight: 重さ
+    depth: 水深
     cm: cm
     in: in
     g: g
@@ -122,6 +125,22 @@ ja:
       afternoon: 午後
       dusk: 夕暮れ
       night: 夜
+    platform:
+      label: 釣り場所
+      any: どこでも
+      shore: 岸
+      boat: ボート
+      kayak: カヤック
+    retrieve:
+      label: リトリーブ
+      any: すべて
+      steady: ただ巻き
+      stop_and_go: ストップ＆ゴー
+      twitch: トゥイッチ
+      jerk: ジャーク
+      slow_roll: スローロール
+      burn: 早巻き
+      dead_stick: デッドスティック
 
   lure_type:
     crankbait: クランクベイト
@@ -175,8 +194,11 @@ ja:
     add: 魚種を追加
     add_title: 魚種を追加
     scientific_name: 学名
+    wikipedia_url: ウィキペディアのURL
+    wikipedia: ウィキペディアで見る
+    wikipedia_url_invalid: "ウィキペディアの記事URLを入力してください（例: https://ja.wikipedia.org/wiki/...）"
     habitat: 生息地
-    tab_lures: ルアー
+    tab_lures: 釣れたルアー
     tab_catches: 釣果
     tab_leaderboard: ランキング
     tab_history: 履歴
@@ -219,7 +241,7 @@ ja:
     title: 釣果
     subtitle: コミュニティの最新の証拠
     add: 釣果を追加
-    add_title: 釣果を報告
+    add_title: 釣果を追加
     on_lure: "使用ルアー: %{lure}"
     conditions: コンディション
     location: 場所
@@ -387,6 +409,7 @@ ja:
 
   dashboard:
     my_catches: 自分の釣果
+    my_profile: 自分のプロフィール
     total_upvotes: 獲得した総いいね数
     no_catches: まだ釣果を登録していません。
 
@@ -411,7 +434,6 @@ ja:
     favorite_shops: お気に入りのショップ
     no_favorites: まだお気に入りがありません。
     no_catches: まだ釣果がありません。
-    your_profile: これはあなたの公開プロフィールです。
 
   bans:
     blocked: お使いのアカウントは現在この操作を制限されています。

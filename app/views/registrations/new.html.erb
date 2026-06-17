@@ -25,10 +25,6 @@
         <%= f.label :locale, t("auth.choose_language") %>
         <%= f.select :locale, available_locales_for_switcher.map { |loc, meta| [meta[:native], loc] }, {}, class: "input" %>
       </div>
-      <div class="field">
-        <%= f.label :units, t("units.label") %>
-        <%= f.select :units, User.units.keys.map { |u| [t("units.#{u}"), u] }, {}, class: "input" %>
-      </div>
       <%= f.submit t("auth.create_account"), class: "btn btn-primary btn-block" %>
     <% end %>
 

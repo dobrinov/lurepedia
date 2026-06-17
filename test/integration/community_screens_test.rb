@@ -39,7 +39,7 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
   test "registration creates a member and signs in" do
     assert_difference -> { User.count }, 1 do
       post registration_path(locale: :en), params: {
-        user: { name: "New Angler", email_address: "new@example.com", password: "secret123", country: "DE", locale: "de", units: "metric" }
+        user: { name: "New Angler", email_address: "new@example.com", password: "secret123", country: "DE", locale: "de" }
       }
     end
     assert User.find_by(email_address: "new@example.com").member?
@@ -50,15 +50,18 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_session_path(locale: :en)
 
     sign_in_as(@member)
-    patch settings_path(locale: :en), params: { user: { units: "metric", locale: "de", country: "CA" } }
-    assert_equal "metric", @member.reload.units
+    patch settings_path(locale: :en), params: { user: { weight_units: "metric", length_units: "imperial", locale: "de", country: "CA" } }
+    @member.reload
+    assert_equal "metric", @member.weight_units
+    assert_equal "imperial", @member.length_units
     assert_equal "ca", @member.country.downcase
   end
 
   test "my catches redirects to the member's profile" do
     sign_in_as(@member)
     get my_catches_path(locale: :en)
-    assert_redirected_to profile_path(@member, locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_redirected_to profile_path(@member)
   end
 
   test "member suggesting a lure edit files a reviewed suggestion without applying it" do
@@ -120,7 +123,8 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
 
     sign_in_as(@member)
     get moderation_index_path(locale: :en)
-    assert_redirected_to localized_root_path(locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_redirected_to localized_root_path
 
     sign_in_as(@moderator)
     get moderation_index_path(locale: :en)
@@ -143,7 +147,8 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
   test "admin console gated to admins" do
     sign_in_as(@moderator)
     get admin_root_path(locale: :en)
-    assert_redirected_to localized_root_path(locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_redirected_to localized_root_path
 
     sign_in_as(@admin)
     get admin_root_path(locale: :en)

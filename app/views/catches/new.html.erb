@@ -29,7 +29,7 @@
     </div>
 
     <div class="row" style="gap:12px;flex-wrap:wrap">
-      <% { season: Catch.seasons, clarity: Catch.clarities, water_body: Catch.water_bodies, wind: Catch.winds, time_of_day: Catch.time_of_days }.each do |group, enum| %>
+      <% { season: Catch.seasons, clarity: Catch.clarities, water_body: Catch.water_bodies, wind: Catch.winds, time_of_day: Catch.time_of_days, platform: Catch.platforms, retrieve: Catch.retrieves }.each do |group, enum| %>
         <div class="field" style="flex:1;min-width:180px">
           <%= f.label group, t("condition.#{group}.label") %>
           <%= f.select group, enum.keys.map { |k| [condition_name(group, k), k] }, { include_blank: t("condition.#{group}.any") }, class: "input" %>

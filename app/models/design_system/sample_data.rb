@@ -62,7 +62,7 @@ module DesignSystem
 
     def build_catch
       catch = Catch.new(season: :summer, clarity: :stained, water_body: :lake,
-                        wind: :light, upvotes_count: 23, length_cm: 47)
+                        wind: :light, platform: :boat, retrieve: :jerk, upvotes_count: 23, length_cm: 47)
       catch.species = Species.new(key: "largemouth_bass")
       catch.user = user("Ava Lindqvist", "SE")
       lure = proven_lure

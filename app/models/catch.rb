@@ -15,6 +15,8 @@ class Catch < ApplicationRecord
   enum :water_body, { lake: 0, pond: 1, river: 2, reservoir: 3, stream: 4 }, prefix: :water_body
   enum :wind, { calm: 0, light: 1, moderate: 2, strong: 3 }, prefix: :wind
   enum :time_of_day, { dawn: 0, morning: 1, midday: 2, afternoon: 3, dusk: 4, night: 5 }, prefix: :tod
+  enum :platform, { shore: 0, boat: 1, kayak: 2 }, prefix: :platform
+  enum :retrieve, { steady: 0, stop_and_go: 1, twitch: 2, jerk: 3, slow_roll: 4, burn: 5, dead_stick: 6 }, prefix: :retrieve
 
   scope :recent, -> { order(created_at: :desc) }
 
@@ -28,8 +30,8 @@ class Catch < ApplicationRecord
   # Condition values present, as [group, value] pairs for chip rendering.
   def condition_pairs
     {
-      season: season, clarity: clarity, water_body: water_body,
-      wind: wind, time_of_day: time_of_day
+      season: season, water_body: water_body, platform: platform,
+      retrieve: retrieve, clarity: clarity, wind: wind, time_of_day: time_of_day
     }.compact
   end
 

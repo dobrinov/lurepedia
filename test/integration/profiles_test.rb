@@ -40,7 +40,8 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "my/catches redirects to the owner's profile" do
     sign_in_as(@owner)
     get my_catches_path(locale: :en)
-    assert_redirected_to profile_path(@owner, locale: :en)
+    # Signed-in users get locale-free URLs.
+    assert_redirected_to profile_path(@owner)
   end
 
   test "my/catches requires login" do

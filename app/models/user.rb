@@ -11,7 +11,9 @@ class User < ApplicationRecord
   has_many :bans, dependent: :destroy
 
   enum :role, { member: 0, moderator: 1, admin: 2 }, default: :member
-  enum :units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: true
+  enum :length_units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: :length
+  enum :weight_units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: :weight
+  enum :depth_units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: :depth
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
   normalizes :username, with: ->(u) { u.to_s.strip.downcase.presence }

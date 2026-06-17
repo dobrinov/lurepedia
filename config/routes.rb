@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   # Sitemap (locale-independent)
   get "sitemap.xml" => "sitemaps#index", defaults: { format: "xml" }, as: :sitemap
 
-  # Bare root → default locale (must precede the optional-locale scope)
-  root to: redirect("/#{I18n.default_locale}")
+  # Bare root: served here for everyone, but anonymous visitors are redirected
+  # to a canonical locale-prefixed home by Application#canonicalize_root_locale.
+  # Signed-in visitors stay on "/" and get locale-free URLs.
+  # (Must precede the optional-locale scope.)
+  root to: "lures#index"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     # Auth

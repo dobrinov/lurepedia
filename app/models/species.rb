@@ -11,6 +11,9 @@ class Species < ApplicationRecord
   enum :water, { fresh: 0, salt: 1, both: 2 }, prefix: :water
 
   validates :key, presence: true, uniqueness: true
+  validates :wikipedia_url,
+            format: { with: %r{\Ahttps://[a-z]{2,}\.(m\.)?wikipedia\.org/wiki/.+\z}i, message: ->(*) { I18n.t("species.wikipedia_url_invalid") } },
+            allow_blank: true
 
   scope :alpha, -> { order(:key) }
   scope :proven, -> { where("catches_count > 0") }

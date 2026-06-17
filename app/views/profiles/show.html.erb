@@ -9,13 +9,14 @@
         <div class="sub muted"><%= t("profile.member_since") %> <%= l(@user.created_at.to_date, format: :long) %></div>
       </div>
     </div>
-    <div class="row" style="gap:24px">
+    <div class="row" style="gap:24px;align-items:center">
       <div><strong><%= @catches.size %></strong> <span class="muted"><%= t("profile.catches") %></span></div>
       <div><strong><%= @total_upvotes %></strong> <span class="muted"><%= t("profile.total_upvotes") %></span></div>
+      <% if @owner %>
+        <%= link_to t("settings.title"), edit_settings_path, class: "btn" %>
+      <% end %>
     </div>
   </div>
-
-  <% if @owner %><div class="flash notice"><%= t("profile.your_profile") %></div><% end %>
 
   <section>
     <div class="section-head"><h2><%= t("profile.catches") %></h2></div>

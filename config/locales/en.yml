@@ -115,9 +115,12 @@ en:
 
   units:
     label: Units
-    auto: Auto (from language)
-    imperial: Imperial (ft, in, lb)
-    metric: Metric (m, cm, kg)
+    auto: Auto (from country)
+    imperial: Imperial
+    metric: Metric
+    length: Length
+    weight: Weight
+    depth: Depth
     cm: cm
     in: in
     g: g
@@ -176,6 +179,22 @@ en:
       afternoon: Afternoon
       dusk: Dusk
       night: Night
+    platform:
+      label: Fishing from
+      any: Anywhere
+      shore: Shore
+      boat: Boat
+      kayak: Kayak
+    retrieve:
+      label: Retrieval style
+      any: Any style
+      steady: Steady
+      stop_and_go: Stop-and-go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow roll
+      burn: Burning
+      dead_stick: Dead-sticking
 
   lure_type:
     crankbait: Crankbait
@@ -229,8 +248,11 @@ en:
     add: Add a species
     add_title: Add a species
     scientific_name: Scientific name
+    wikipedia_url: Wikipedia URL
+    wikipedia: View on Wikipedia
+    wikipedia_url_invalid: must be a Wikipedia article URL (e.g. https://en.wikipedia.org/wiki/...)
     habitat: Habitat
-    tab_lures: Lures
+    tab_lures: Caught on
     tab_catches: Catches
     tab_leaderboard: Leaderboard
     tab_history: History
@@ -273,7 +295,7 @@ en:
     title: Catches
     subtitle: Recent proof from the community
     add: Add a catch
-    add_title: Report a catch
+    add_title: Add a catch
     on_lure: "on %{lure}"
     conditions: Conditions
     location: Location
@@ -441,6 +463,7 @@ en:
 
   dashboard:
     my_catches: My catches
+    my_profile: My profile
     total_upvotes: Total upvotes earned
     no_catches: You haven't logged any catches yet.
 
@@ -453,7 +476,6 @@ en:
     favorite_shops: Favorite shops
     no_favorites: No favorites yet.
     no_catches: No catches yet.
-    your_profile: This is your public profile.
 
   provenance:
     title: History & ownership

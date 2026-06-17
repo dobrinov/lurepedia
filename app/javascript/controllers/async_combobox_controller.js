@@ -15,6 +15,7 @@ export default class extends Controller {
     this.nextPage = null
     this.query = ""
     this.debounce = null
+    this.activeIndex = -1
   }
 
   toggle(event) {
@@ -34,6 +35,48 @@ export default class extends Controller {
     this.panelTarget.hidden = true
     this.triggerTarget.setAttribute("aria-expanded", "false")
     document.removeEventListener("click", this.onDocClick)
+  }
+
+  // Arrow keys move the highlight, Enter picks it, Escape closes the panel.
+  keydown(event) {
+    switch (event.key) {
+      case "ArrowDown":
+        event.preventDefault()
+        this.setActive(this.activeIndex + 1)
+        break
+      case "ArrowUp":
+        event.preventDefault()
+        this.setActive(this.activeIndex - 1)
+        break
+      case "Enter": {
+        const option = this.optionElements()[this.activeIndex]
+        if (option) {
+          event.preventDefault()
+          option.click()
+        }
+        break
+      }
+      case "Escape":
+        event.preventDefault()
+        this.close()
+        this.triggerTarget.focus()
+        break
+    }
+  }
+
+  optionElements() {
+    return Array.from(this.optionsTarget.querySelectorAll(".combobox-option"))
+  }
+
+  setActive(index) {
+    const options = this.optionElements()
+    if (options.length === 0) {
+      this.activeIndex = -1
+      return
+    }
+    this.activeIndex = Math.max(0, Math.min(index, options.length - 1))
+    options.forEach((el, i) => el.classList.toggle("highlighted", i === this.activeIndex))
+    options[this.activeIndex].scrollIntoView({ block: "nearest" })
   }
 
   search() {
@@ -93,6 +136,7 @@ export default class extends Controller {
       this.optionsTarget.appendChild(btn)
     })
     if (this.nextPage != null) this.addSentinel()
+    if (reset) this.setActive(0)
   }
 
   // A zero-height marker at the bottom of the list; when it scrolls into view we

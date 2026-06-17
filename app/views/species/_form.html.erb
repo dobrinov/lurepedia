@@ -8,5 +8,9 @@
     <%= f.label :water, t("lure.water") %>
     <%= f.select :water, Species.waters.keys.map { |w| [water_name(w), w] }, {}, class: "input" %>
   </div>
+  <div class="field">
+    <%= f.label :wikipedia_url, t("species.wikipedia_url") %>
+    <%= f.url_field :wikipedia_url, class: "input", placeholder: "https://en.wikipedia.org/wiki/..." %>
+  </div>
   <%= f.submit submit_label, class: "btn btn-primary" %>
 <% end %>
