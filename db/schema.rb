@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_16_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_17_000002) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -168,12 +168,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_16_000003) do
     t.boolean "mod_actionable", default: true, null: false
     t.datetime "reviewed_at"
     t.integer "reviewer_id"
+    t.integer "revision_id"
     t.integer "status", default: 0, null: false
     t.integer "subject_id", null: false
     t.string "subject_type", null: false
     t.integer "submitter_id"
     t.datetime "updated_at", null: false
     t.index ["reviewer_id"], name: "index_moderation_items_on_reviewer_id"
+    t.index ["revision_id"], name: "index_moderation_items_on_revision_id"
     t.index ["subject_type", "subject_id"], name: "index_moderation_items_on_subject"
     t.index ["submitter_id"], name: "index_moderation_items_on_submitter_id"
   end
@@ -191,6 +193,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_16_000003) do
   end
 
   create_table "revisions", force: :cascade do |t|
+    t.json "changeset"
     t.datetime "created_at", null: false
     t.integer "subject_id", null: false
     t.string "subject_type", null: false
@@ -292,6 +295,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_16_000003) do
   add_foreign_key "favorites", "users"
   add_foreign_key "lures", "brands"
   add_foreign_key "lures", "lure_types"
+  add_foreign_key "moderation_items", "revisions"
   add_foreign_key "moderation_items", "users", column: "reviewer_id"
   add_foreign_key "moderation_items", "users", column: "submitter_id"
   add_foreign_key "reports", "users"

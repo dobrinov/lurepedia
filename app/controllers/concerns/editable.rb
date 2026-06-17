@@ -11,18 +11,35 @@ module Editable
   def commit_edit(record, attrs, name, redirect_path)
     return unless require_contribution(:catalog)
 
+    changeset = build_changeset(record, attrs)
+
     if current_user&.admin?
       if record.update(attrs)
-        record.revisions.create!(user: current_user, summary: "Edited #{name}")
+        record.revisions.create!(user: current_user, summary: "Edited #{name}", changeset: changeset)
         redirect_to redirect_path, notice: t("contribute.edit_saved")
       else
         flash.now[:alert] = record.errors.full_messages.to_sentence
         render :edit, status: :unprocessable_entity
       end
     else
-      record.revisions.create!(user: current_user, summary: "Suggested an edit to #{name}")
-      ModerationItem.create!(subject: record, kind: :edit, submitter: current_user)
+      revision = record.revisions.create!(user: current_user, summary: "Suggested an edit to #{name}", changeset: changeset)
+      ModerationItem.create!(subject: record, kind: :edit, submitter: current_user, revision: revision)
       redirect_to redirect_path, notice: t("contribute.suggested")
+    end
+  end
+
+  # Field-level before/after map for the proposed attrs, keyed by attribute:
+  # { "field" => [ old_value, new_value ] }. Only genuinely changed fields are
+  # kept, and values are cast to the column's type so a "100" param compares
+  # equal to an integer 100.
+  def build_changeset(record, attrs)
+    attrs.to_h.each_with_object({}) do |(key, value), diff|
+      next unless record.respond_to?(key)
+
+      type = record.class.type_for_attribute(key.to_s)
+      old_value = record.public_send(key)
+      new_value = type ? type.cast(value) : value
+      diff[key.to_s] = [ old_value, new_value ] unless old_value == new_value
     end
   end
 

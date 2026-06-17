@@ -1,0 +1,25 @@
+<% subject = @revision.subject %>
+<% content_for :title, t("revision.title") %>
+
+<div class="container" style="padding-top:24px;max-width:760px">
+  <nav class="muted" style="font-size:13px;margin-bottom:16px">
+    <% if (path = revision_subject_path(subject)) %>
+      <%= link_to revision_subject_label(subject), path %> ›
+    <% else %>
+      <span><%= revision_subject_label(subject) %></span> ›
+    <% end %>
+    <span><%= t("revision.title") %></span>
+  </nav>
+
+  <div class="stack" style="gap:6px;margin-bottom:18px">
+    <h1 style="font-size:22px;font-weight:700;letter-spacing:-.01em"><%= @revision.summary %></h1>
+    <div class="muted" style="font-size:13px">
+      <% if @revision.user %>
+        <%= t("common.by") %> <%= link_to @revision.user.name, profile_path(@revision.user) %>
+      <% end %>
+      · <%= l(@revision.created_at, format: :long) %>
+    </div>
+  </div>
+
+  <%= render "shared/diff", revision: @revision %>
+</div>

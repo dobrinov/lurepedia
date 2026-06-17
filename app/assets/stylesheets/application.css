@@ -294,6 +294,16 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .pager .current { background: var(--ink); color: var(--surface-1); border-color: var(--ink); }
 .pager .disabled { opacity: .4; pointer-events: none; }
 
+/* Diff (git-style before/after) ------------------------------------------- */
+.diff { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+.diff-field { border-bottom: 1px solid var(--line); }
+.diff-field:last-child { border-bottom: 0; }
+.diff-field-name { font-family: var(--font-sans, inherit); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--surface-2); padding: 6px 12px; }
+.diff-line { display: flex; gap: 8px; padding: 4px 12px; white-space: pre-wrap; word-break: break-word; }
+.diff-gutter { flex-shrink: 0; width: 12px; text-align: center; font-weight: 700; user-select: none; }
+.diff-del { background: var(--danger-bg); color: var(--danger); }
+.diff-ins { background: var(--ok-bg); color: var(--ok); }
+
 /* Tables ------------------------------------------------------------------ */
 .lb-table { width: 100%; border-collapse: collapse; }
 .lb-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); }

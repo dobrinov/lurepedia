@@ -465,6 +465,14 @@ ja:
     originally_added: "最初の追加者 %{name} · %{date}"
     edit_history: 編集履歴
     created: このエントリを作成
+    edited: 編集済み
+    col_change: 変更
+    col_contributor: 投稿者
+    col_date: 日付
+
+  revision:
+    title: リビジョン
+    no_changes: この編集にはフィールドレベルの変更が記録されていません。
 
   species_names:
     largemouth_bass:

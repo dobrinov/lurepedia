@@ -465,6 +465,14 @@ en:
     originally_added: "Originally added by %{name} · %{date}"
     edit_history: Edit history
     created: Created this entry
+    edited: edited
+    col_change: Change
+    col_contributor: Contributor
+    col_date: Date
+
+  revision:
+    title: Revision
+    no_changes: No field-level changes were recorded for this edit.
 
   species_names:
     largemouth_bass:

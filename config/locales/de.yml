@@ -400,6 +400,14 @@ de:
     originally_added: "Ursprünglich hinzugefügt von %{name} · %{date}"
     edit_history: Änderungsverlauf
     created: Diesen Eintrag erstellt
+    edited: bearbeitet
+    col_change: Änderung
+    col_contributor: Mitwirkender
+    col_date: Datum
+
+  revision:
+    title: Revision
+    no_changes: Für diese Bearbeitung wurden keine Feldänderungen aufgezeichnet.
 
   species_names:
     largemouth_bass:

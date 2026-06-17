@@ -116,26 +116,65 @@
         </div>
       <% end %>
     <% when "buy" %>
-      <div class="card card-pad">
-        <h3 style="font-size:14px;margin-bottom:12px"><%= t("lure.where_to_buy") %></h3>
-        <% if @buy_links.any? %>
-          <div class="stack" style="gap:10px">
-            <% @buy_links.each do |bl| %>
-              <div class="row" style="justify-content:space-between">
-                <span class="row" style="gap:8px">
-                  <%= link_to bl.shop.name, bl.url.presence || shops_path, target: "_blank", rel: "noopener nofollow", style: "font-weight:600" %>
-                  <% if bl.shop.promoted? %><span class="badge badge-promoted"><%= t("common.promoted") %></span><% end %>
-                </span>
-                <%= link_to t("shop.visit"), bl.url.presence || shops_path, class: "btn btn-sm", target: "_blank", rel: "noopener nofollow" %>
-              </div>
-            <% end %>
-          </div>
-        <% else %>
+      <% if @buy_links.any? %>
+        <div class="card">
+          <table class="lb-table">
+            <tbody>
+              <% @buy_links.each do |bl| %>
+                <tr>
+                  <td>
+                    <span class="row" style="gap:8px">
+                      <%= link_to bl.shop.name, bl.url.presence || shops_path, target: "_blank", rel: "noopener nofollow", style: "font-weight:600" %>
+                      <% if bl.shop.promoted? %><span class="badge badge-promoted"><%= t("common.promoted") %></span><% end %>
+                    </span>
+                  </td>
+                  <td style="text-align:right;width:1%;white-space:nowrap">
+                    <%= link_to t("shop.visit"), bl.url.presence || shops_path, class: "btn btn-sm", target: "_blank", rel: "noopener nofollow" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <div class="card card-pad">
           <p class="muted" style="font-size:13px"><%= t("shop.add") %></p>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% when "history" %>
-      <%= render "shared/provenance", subject: @lure %>
+      <% revisions = @lure.revisions.newest_first.to_a %>
+      <% if revisions.any? %>
+        <div class="card">
+          <table class="lb-table">
+            <thead><tr><th><%= t("provenance.col_change") %></th><th><%= t("provenance.col_contributor") %></th><th><%= t("provenance.col_date") %></th></tr></thead>
+            <tbody>
+              <% revisions.each do |rev| %>
+                <tr>
+                  <td>
+                    <% if rev.edit? %>
+                      <%= link_to t("provenance.edited"), revision_path(rev), style: "font-weight:600" %>
+                    <% else %>
+                      <%= rev.summary %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rev.user %>
+                      <%= link_to rev.user.name, profile_path(rev.user) %>
+                    <% else %>
+                      <%= t("common.none") %>
+                    <% end %>
+                  </td>
+                  <td style="white-space:nowrap"><%= l(rev.created_at.to_date, format: :long) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% else %>
+        <div class="card card-pad">
+          <p class="muted" style="font-size:13px"><%= t("provenance.created") %></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

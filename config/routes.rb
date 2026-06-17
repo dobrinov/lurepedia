@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     # Public profiles
     get "u/:handle", to: "profiles#show", as: :profile
 
+    # Edit history detail (git-style diff of a single revision)
+    resources :revisions, only: :show
+
     # Paginated, searchable options for the large filter dropdowns
     get "options/species", to: "filter_options#species", as: :species_options
     get "options/brands", to: "filter_options#brands", as: :brand_options

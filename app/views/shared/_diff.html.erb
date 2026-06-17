@@ -1,0 +1,15 @@
+<%# locals: revision %>
+<% changes = revision.field_changes %>
+<% if changes.any? %>
+  <div class="diff">
+    <% changes.each do |change| %>
+      <div class="diff-field">
+        <div class="diff-field-name"><%= diff_field_label(change[:field]) %></div>
+        <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><%= diff_value(change[:old]) %></span></div>
+        <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><%= diff_value(change[:new]) %></span></div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="muted" style="font-size:13px"><%= t("revision.no_changes") %></p>
+<% end %>

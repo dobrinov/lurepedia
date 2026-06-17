@@ -465,6 +465,14 @@ bg:
     originally_added: "Първоначално добавено от %{name} · %{date}"
     edit_history: История на редакциите
     created: Създаде този запис
+    edited: редактирано
+    col_change: Промяна
+    col_contributor: Сътрудник
+    col_date: Дата
+
+  revision:
+    title: Редакция
+    no_changes: За тази промяна не са записани промени по полета.
 
   species_names:
     largemouth_bass:
