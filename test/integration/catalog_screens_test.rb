@@ -119,4 +119,14 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     get lure_path(@lure, locale: :en)
     assert_match I18n.t("auth.sign_in_to_contribute"), response.body
   end
+
+  test "lure index hero shows only the add-lure CTA" do
+    get lures_path(locale: :en)
+    assert_response :success
+    assert_select "section.hero" do
+      assert_select "a.btn", count: 1
+      assert_select "a[href=?]", new_lure_path(locale: :en)
+    end
+    assert_select "section.hero a[href=?]", new_catch_path(locale: :en), count: 0
+  end
 end
