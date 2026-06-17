@@ -10,7 +10,7 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find_by!(slug: params[:id])
     @lures = @brand.lures.includes(:lure_type).by_catch_count
-    @tab = params[:tab].presence || "lures"
+    @tab = %w[lures history].include?(params[:tab]) ? params[:tab] : "lures"
   end
 
   def new

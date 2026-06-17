@@ -75,6 +75,17 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_select ".tabs"
   end
 
+  test "brand tabs are separate URLs" do
+    brand = Brand.create!(name: "Megabass")
+    brand.revisions.create!(user: users(:two), summary: "Created")
+    get brand_path(brand, locale: :en)
+    assert_response :success
+    assert_select ".tabs a", minimum: 2
+    get brand_path(brand, tab: "history", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("brand.tab_history")
+  end
+
   test "shops index pins promoted" do
     get shops_path(locale: :en)
     assert_response :success
