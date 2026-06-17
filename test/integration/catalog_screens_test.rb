@@ -55,6 +55,16 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_match I18n.t("species.tab_leaderboard"), response.body
   end
 
+  test "species tabs are separate URLs" do
+    sp = Species.create!(key: "walleye", scientific_name: "Sander vitreus")
+    get species_path(sp, locale: :en)
+    assert_response :success
+    assert_select ".tabs a", minimum: 4
+    get species_path(sp, tab: "history", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("species.tab_history")
+  end
+
   test "brand index and detail tabs" do
     get brands_path(locale: :en)
     assert_response :success

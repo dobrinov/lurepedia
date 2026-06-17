@@ -269,7 +269,7 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 
 /* Tabs -------------------------------------------------------------------- */
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
-.tab { padding: 10px 14px; font-size: 14px; font-weight: 600; color: var(--muted); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tab { padding: 10px 14px; font-size: 14px; font-weight: 600; color: var(--muted); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; text-decoration: none; display: inline-block; }
 .tab.active { color: var(--ink); border-bottom-color: var(--ink); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }

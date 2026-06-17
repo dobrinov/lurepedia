@@ -13,7 +13,7 @@ class SpeciesController < ApplicationController
     @catches = @species.catches.includes(:user, variant: :lure).recent.limit(12)
     @metric = (params[:metric] || "catches").to_sym
     @rows = LeaderboardQuery.new(species: @species, metric: @metric).rows
-    @tab = params[:tab].presence || "lures"
+    @tab = %w[lures catches leaderboard history].include?(params[:tab]) ? params[:tab] : "lures"
   end
 
   def new

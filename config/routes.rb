@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
     # Catalog
     resources :lures, only: %i[index show new create edit update]
-    resources :species, only: %i[index show new create edit update]
+    resources :species, only: %i[index new create edit]
+    get   "species/:id(/:tab)", to: "species#show", as: :species, constraints: { tab: /catches|leaderboard|history/ }
+    patch "species/:id", to: "species#update"
     resources :brands, only: %i[index show new create edit update]
     resources :shops, only: %i[index new create]
     resources :catches, only: %i[index show new create] do
