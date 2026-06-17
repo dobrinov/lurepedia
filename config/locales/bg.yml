@@ -371,6 +371,12 @@ bg:
     favorited: В любими
     sign_in_to_favorite: Влез, за да добавиш в любими
 
+  footer:
+    explore: Разгледай
+    about: За нас
+    how_it_works: Как работи
+    guidelines: Правила
+
   profile:
     catches: Улови
     total_upvotes: Общо гласове

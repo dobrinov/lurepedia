@@ -440,6 +440,12 @@ de:
     favorited: Favorisiert
     sign_in_to_favorite: Zum Favorisieren anmelden
 
+  footer:
+    explore: Entdecken
+    about: Über uns
+    how_it_works: "So funktioniert's"
+    guidelines: Richtlinien
+
   profile:
     catches: Fänge
     total_upvotes: Stimmen insgesamt

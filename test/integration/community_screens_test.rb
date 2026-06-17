@@ -157,4 +157,15 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     patch admin_user_path(@member, locale: :en), params: { user: { role: "moderator" } }
     assert @member.reload.moderator?
   end
+
+  test "footer uses translated labels and no copyright" do
+    get "/en"
+    assert_response :success
+    assert_select "footer.site-footer" do
+      assert_select "h4", text: I18n.t("footer.explore")
+      assert_select "a", text: I18n.t("footer.how_it_works")
+    end
+    assert_no_match(/©/, response.body)
+    assert_no_match(/&amp; more/, response.body)
+  end
 end

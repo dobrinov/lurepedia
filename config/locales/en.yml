@@ -70,6 +70,12 @@ en:
     favorited: Favorited
     sign_in_to_favorite: Sign in to favorite
 
+  footer:
+    explore: Explore
+    about: About
+    how_it_works: How it works
+    guidelines: Guidelines
+
   home:
     tagline: Every lure, proven by a catch
     meta_description: Lurepedia is a crowdsourced encyclopedia of fishing lures — find lures and see real proof, by catch, that they work.

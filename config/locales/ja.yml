@@ -391,6 +391,12 @@ ja:
     favorited: お気に入り登録済み
     sign_in_to_favorite: ログインしてお気に入りに追加
 
+  footer:
+    explore: 探す
+    about: 概要
+    how_it_works: 使い方
+    guidelines: ガイドライン
+
   profile:
     catches: 釣果
     total_upvotes: 総いいね数
