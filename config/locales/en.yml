@@ -280,6 +280,8 @@ en:
     comments: Comments
     add_comment: Add a comment
     upvote: Upvote
+    upvoted: Upvoted
+    remove_upvote: Click again to remove your upvote
     report: Report this catch
     related: More catches of this species
     photos: Photos

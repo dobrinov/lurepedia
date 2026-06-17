@@ -225,7 +225,9 @@ ja:
     contributor: 投稿者
     comments: コメント
     add_comment: コメントを追加
-    upvote: いいね
+    upvote: 高評価
+    upvoted: 高評価済み
+    remove_upvote: もう一度クリックで高評価を取り消す
     report: この釣果を報告
     related: この魚種の他の釣果
     photos: 写真

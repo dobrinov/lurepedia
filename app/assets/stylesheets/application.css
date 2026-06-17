@@ -154,6 +154,8 @@ main { min-height: 60vh; }
 .btn-sm { height: 32px; padding: 0 10px; font-size: 13px; }
 .btn-block { width: 100%; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.is-upvoted { background: var(--ink); color: var(--surface-1); border-color: var(--ink); }
+.btn.is-upvoted:hover { background: #000; color: #fff; }
 
 /* Cards ------------------------------------------------------------------- */
 .card {

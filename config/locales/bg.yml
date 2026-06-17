@@ -226,6 +226,8 @@ bg:
     comments: Коментари
     add_comment: Добави коментар
     upvote: Гласувай
+    upvoted: Гласувано
+    remove_upvote: Натисни отново, за да премахнеш гласа си
     report: Докладвай този улов
     related: Още улови от този вид
     photos: Снимки
