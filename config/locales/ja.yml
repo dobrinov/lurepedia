@@ -147,6 +147,9 @@ ja:
     brand: ブランド
     variants: バリエーション
     variant: バリエーション
+    tab_caught: 釣果
+    tab_buy: 購入先
+    tab_history: 履歴
     proof: 効果の証拠
     catches_count:
       one: "%{count} 釣果"

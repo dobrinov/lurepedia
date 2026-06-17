@@ -13,109 +13,109 @@
     <span><%= @lure.model %></span>
   </nav>
 
-  <div class="detail-grid">
-    <div class="stack">
-      <!-- Hero -->
-      <div class="detail-hero">
-        <div class="card ph ph-lure" style="aspect-ratio:4/3">
-          <% variant_photo = @variants.detect { |v| v.photo.attached? } %>
-          <% if variant_photo %>
-            <%= image_tag variant_photo.photo.variant(resize_to_fill: [720, 540]), alt: @lure.title %>
-          <% else %>
-            <%= render "shared/lure_glyph" %>
-          <% end %>
-        </div>
-        <div class="stack" style="gap:12px">
-          <div class="card-brand"><%= @lure.brand.name %></div>
-          <h1 style="font-size:30px;font-weight:700;letter-spacing:-.02em"><%= @lure.model %></h1>
-          <div class="chips">
-            <span class="tag"><%= lure_type_name(@lure.lure_type) %></span>
-            <% if (d = fmt_depth(@lure.depth_min_cm, @lure.depth_max_cm)) %><span class="tag"><%= d %></span><% end %>
-            <span class="tag"><%= lure_action_label(@lure.action) %></span>
-            <span class="tag"><%= water_name(@lure.water) %></span>
-          </div>
-          <% if @lure.proven? %>
-            <span class="badge badge-proof" style="align-self:flex-start">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg>
-              <%= t("lure.catches_count", count: @lure.catches_count) %>
-            </span>
-          <% end %>
-          <% if @lure.blurb.present? %><p class="muted"><%= @lure.blurb %></p><% end %>
-          <div class="row">
-            <% if signed_in? %>
-              <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %>
-            <% end %>
-            <% if signed_in? %><%= link_to edit_affordance_label, edit_lure_path(@lure), class: "btn" %><% end %>
-            <%= render "shared/favorite_button", favoritable: @lure %>
-          </div>
-          <% if @lure.action_video_url.present? %>
-            <%= link_to t("lure.watch_video"), @lure.action_video_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %>
-          <% end %>
-        </div>
-      </div>
-
-      <!-- Variants -->
-      <div>
-        <div class="section-head"><h2><%= t("lure.variants") %></h2></div>
-        <% if @variants.any? %>
-          <div class="card">
-            <table class="lb-table">
-              <thead><tr><th><%= t("lure.variant") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.action") %></th><th><%= t("nav.catches") %></th></tr></thead>
-              <tbody>
-                <% @variants.each do |v| %>
-                  <tr>
-                    <td style="font-weight:600"><%= v.name %></td>
-                    <td><%= v.size_mm ? "#{v.size_mm} mm" : t("common.none") %></td>
-                    <td><%= fmt_weight(v.weight_g) || t("common.none") %></td>
-                    <td><%= lure_action_label(v.effective_action) %></td>
-                    <td><%= v.catches_count %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        <% else %>
-          <div class="empty-state">
-            <h3><%= t("lure.be_first") %></h3>
-            <% if signed_in? %><%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %><% end %>
-          </div>
-        <% end %>
-      </div>
-
-      <!-- Proof -->
-      <div>
-        <div class="section-head"><h2><%= t("lure.proof") %></h2></div>
-        <% if @catches.any? %>
-          <div class="grid-catches">
-            <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
-          </div>
-        <% else %>
-          <div class="empty-state">
-            <h3><%= t("lure.be_first") %></h3>
-            <p><%= t("home.hero_sub") %></p>
-            <% if signed_in? %>
-              <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+  <!-- Hero -->
+  <div class="detail-hero">
+    <div class="card ph ph-lure" style="aspect-ratio:4/3">
+      <% variant_photo = @variants.detect { |v| v.photo.attached? } %>
+      <% if variant_photo %>
+        <%= image_tag variant_photo.photo.variant(resize_to_fill: [720, 540]), alt: @lure.title %>
+      <% else %>
+        <%= render "shared/lure_glyph" %>
+      <% end %>
     </div>
+    <div class="stack" style="gap:12px">
+      <div class="card-brand"><%= @lure.brand.name %></div>
+      <h1 style="font-size:30px;font-weight:700;letter-spacing:-.02em"><%= @lure.model %></h1>
+      <div class="chips">
+        <span class="tag"><%= lure_type_name(@lure.lure_type) %></span>
+        <% if (d = fmt_depth(@lure.depth_min_cm, @lure.depth_max_cm)) %><span class="tag"><%= d %></span><% end %>
+        <span class="tag"><%= lure_action_label(@lure.action) %></span>
+        <span class="tag"><%= water_name(@lure.water) %></span>
+      </div>
+      <% if @lure.proven? %>
+        <span class="badge badge-proof" style="align-self:flex-start">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg>
+          <%= t("lure.catches_count", count: @lure.catches_count) %>
+        </span>
+      <% end %>
+      <% if @lure.blurb.present? %><p class="muted"><%= @lure.blurb %></p><% end %>
+      <div class="row">
+        <% if signed_in? %>
+          <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %>
+        <% end %>
+        <% if signed_in? %><%= link_to edit_affordance_label, edit_lure_path(@lure), class: "btn" %><% end %>
+        <%= render "shared/favorite_button", favoritable: @lure %>
+      </div>
+      <% if @lure.action_video_url.present? %>
+        <%= link_to t("lure.watch_video"), @lure.action_video_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %>
+      <% end %>
+    </div>
+  </div>
 
-    <!-- Sidebar -->
-    <aside class="stack">
-      <% if @proven_species.any? %>
-        <div class="card card-pad">
-          <h3 style="font-size:14px;margin-bottom:12px"><%= t("lure.proven_for") %></h3>
-          <div class="chips">
-            <% @proven_species.each do |sp| %><%= link_to species_common_name(sp), species_path(sp), class: "pill" %><% end %>
-          </div>
+  <!-- Variants (always visible, with thumbnails) -->
+  <div style="margin-top:28px">
+    <div class="section-head"><h2><%= t("lure.variants") %></h2></div>
+    <% if @variants.any? %>
+      <div class="card">
+        <table class="lb-table">
+          <thead><tr><th></th><th><%= t("lure.variant") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.action") %></th><th><%= t("nav.catches") %></th></tr></thead>
+          <tbody>
+            <% @variants.each do |v| %>
+              <tr>
+                <td style="width:56px">
+                  <% if v.photo.attached? %>
+                    <%= image_tag v.photo.variant(resize_to_fill: [48, 48]), alt: v.name, style: "width:48px;height:48px;object-fit:cover;border-radius:6px;display:block" %>
+                  <% else %>
+                    <span class="ph ph-lure" style="width:48px;height:48px;display:inline-flex;border-radius:6px"><%= render "shared/lure_glyph" %></span>
+                  <% end %>
+                </td>
+                <td style="font-weight:600"><%= v.name %></td>
+                <td><%= v.size_mm ? "#{v.size_mm} mm" : t("common.none") %></td>
+                <td><%= fmt_weight(v.weight_g) || t("common.none") %></td>
+                <td><%= lure_action_label(v.effective_action) %></td>
+                <td><%= v.catches_count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="empty-state">
+        <h3><%= t("lure.be_first") %></h3>
+        <% if signed_in? %><%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %><% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Tabs -->
+  <div style="margin-top:28px">
+    <% tabs = [
+         [ t("lure.tab_caught"), lure_path(@lure), @tab == "caught" ],
+         [ t("lure.tab_buy"), lure_path(@lure, tab: "buy"), @tab == "buy" ],
+         [ t("lure.tab_history"), lure_path(@lure, tab: "history"), @tab == "history" ]
+       ] %>
+    <%= render "shared/tabs", tabs: tabs %>
+
+    <% case @tab %>
+    <% when "caught" %>
+      <% if @catches.any? %>
+        <div class="grid-catches">
+          <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+        </div>
+      <% else %>
+        <div class="empty-state">
+          <h3><%= t("lure.be_first") %></h3>
+          <p><%= t("home.hero_sub") %></p>
+          <% if signed_in? %>
+            <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %>
+          <% end %>
         </div>
       <% end %>
-
+    <% when "buy" %>
       <div class="card card-pad">
         <h3 style="font-size:14px;margin-bottom:12px"><%= t("lure.where_to_buy") %></h3>
         <% if @buy_links.any? %>
@@ -134,8 +134,8 @@
           <p class="muted" style="font-size:13px"><%= t("shop.add") %></p>
         <% end %>
       </div>
-
+    <% when "history" %>
       <%= render "shared/provenance", subject: @lure %>
-    </aside>
+    <% end %>
   </div>
 </div>

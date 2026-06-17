@@ -201,6 +201,9 @@ en:
     brand: Brand
     variants: Variants
     variant: Variant
+    tab_caught: Caught on it
+    tab_buy: Where to buy
+    tab_history: History
     proof: Proof it works
     catches_count:
       one: "%{count} catch"

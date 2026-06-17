@@ -147,6 +147,9 @@ de:
     brand: Marke
     variants: Varianten
     variant: Variante
+    tab_caught: Damit gefangen
+    tab_buy: Wo kaufen
+    tab_history: Verlauf
     proof: Beweis, dass es funktioniert
     catches_count:
       one: "%{count} Fang"

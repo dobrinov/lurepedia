@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     end
 
     # Catalog
-    resources :lures, only: %i[index show new create edit update]
+    resources :lures, only: %i[index new create edit]
+    get   "lures/:id(/:tab)", to: "lures#show", as: :lure, constraints: { tab: /buy|history/ }
+    patch "lures/:id", to: "lures#update"
     resources :species, only: %i[index new create edit]
     get   "species/:id(/:tab)", to: "species#show", as: :species, constraints: { tab: /catches|leaderboard|history/ }
     patch "species/:id", to: "species#update"

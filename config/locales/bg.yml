@@ -147,6 +147,9 @@ bg:
     brand: Марка
     variants: Варианти
     variant: Вариант
+    tab_caught: Уловено с нея
+    tab_buy: Къде да купя
+    tab_history: История
     proof: Доказателство, че работи
     catches_count:
       one: "%{count} улов"

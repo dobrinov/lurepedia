@@ -36,6 +36,36 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_select ".badge-proof"
   end
 
+  test "lure tabs are separate URLs and variants stay visible" do
+    Catch.create!(user: @member, variant: @variant, species: @bass)
+    BuyLink.create!(lure: @lure, shop: @shop, url: "https://example.com/buy")
+
+    get lure_path(@lure.reload, locale: :en)
+    assert_response :success
+    assert_select ".tabs a", minimum: 3
+    assert_match "Sexy Shad", response.body
+    assert_select ".grid-catches"
+
+    get lure_path(@lure, tab: "buy", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("lure.tab_buy")
+    assert_match "TackleDirect", response.body
+
+    get lure_path(@lure, tab: "history", locale: :en)
+    assert_response :success
+    assert_select ".tabs a.active", text: I18n.t("lure.tab_history")
+
+    sign_in_as(@member)
+    get edit_lure_path(@lure, locale: :en)
+    assert_response :success
+  end
+
+  test "proven-for tile is gone from the lure page" do
+    get lure_path(@lure, locale: :en)
+    assert_response :success
+    assert_no_match I18n.t("lure.proven_for"), response.body
+  end
+
   test "type filter chips filter lures" do
     jerk = LureType.create!(key: "jerkbait")
     Lure.create!(brand: @brand, lure_type: jerk, model: "Vision 110")
