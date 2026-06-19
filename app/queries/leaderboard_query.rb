@@ -2,11 +2,11 @@
 class LeaderboardQuery
   Row = Struct.new(:user, :catches, :upvotes, :best_length_cm, :species_count, keyword_init: true)
 
-  METRICS = %i[catches upvotes length].freeze
+  METRICS = %i[length catches upvotes].freeze
 
-  def initialize(species: nil, metric: :catches)
+  def initialize(species: nil, metric: :length)
     @species = species
-    @metric = METRICS.include?(metric.to_sym) ? metric.to_sym : :catches
+    @metric = METRICS.include?(metric.to_sym) ? metric.to_sym : :length
   end
 
   attr_reader :metric

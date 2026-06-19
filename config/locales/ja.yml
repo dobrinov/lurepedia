@@ -14,10 +14,12 @@ ja:
     page: ページ
     next: 次へ
     prev: 前へ
+    back: "戻る"
+    close: "閉じる"
     by: 投稿者
     on: 使用
-    yes: はい
-    no: いいえ
+    "yes": "はい"
+    "no": "いいえ"
     verified: 認証済み
     promoted: 広告
     sponsored: 提供
@@ -49,7 +51,6 @@ ja:
     name: 名前
     sign_in_required: 投稿するにはログインしてください。
     not_authorized: この操作の権限がありません。
-    sign_in_to_contribute: ログインして投稿
     create_account: アカウント作成
     have_account: すでにアカウントをお持ちですか？
     no_account: Lurepediaは初めてですか？
@@ -162,11 +163,14 @@ ja:
     type: タイプ
     depth: 狙うレンジ
     action: アクション
+    buoyancy: "浮力"
+    action_varies: "様々"
     water: 水域
     brand: ブランド
     variants: バリエーション
     variant: バリエーション
     tab_caught: 釣果
+    tab_variations: "バリエーション"
     tab_buy: 購入先
     tab_history: 履歴
     proof: 効果の証拠
@@ -186,7 +190,25 @@ ja:
     proven_for: 実績あり
     no_matches: 条件に合うルアーがありません
     size: サイズ
-    weight: 重さ
+    weight: "重さ"
+    color: "カラー"
+    colors: "カラー"
+    colors_count:
+      one: "%{count} カラー"
+      other: "%{count} カラー"
+    build: "ビルド"
+    builds: "ビルド"
+    browse_colors: "カラーを見る"
+    common_attributes: "共通の特性 · ファミリー全体"
+    this_variation: "このバリエーション"
+    default_variation: "デフォルトのバリエーション"
+    uv_glow: "UVグロー"
+    best_for: "最適な対象"
+    manage_variations: "バリエーションとビルド"
+    add_color: "カラーを追加"
+    add_build: "ビルドを追加"
+    color_name: "カラー名"
+    availability: "利用可能なビルド"
 
   species:
     title: 魚種
@@ -230,7 +252,15 @@ ja:
     add_title: ショップを追加
     promoted_section: 広告
     all_shops: すべてのショップ
+    tab_lures: ルアー
+    tab_history: 履歴
+    no_lures: このショップにはまだルアーがありません。
     visit: ショップへ
+    ships_to: 配送先
+    ships_to_unknown: "—"
+    ships_worldwide: 世界中へ配送
+    ships_to_hint: ショップが世界中へ配送する場合は空欄にしてください。
+    worldwide: 世界中
     claim: ショップを申請
     owned_by: 所有者
     added_by: 追加者
@@ -256,9 +286,22 @@ ja:
     report: この釣果を報告
     related: この魚種の他の釣果
     photos: 写真
+    pick_brand: ブランドを選択
     pick_lure: ルアーを選択
     pick_variant: バリエーションを選択
+    color: カラー
     pick_species: 何が釣れましたか？
+    pick_color: "釣れたカラーを選択"
+    pick_build: "ビルドを選択"
+    log_title: "釣果を記録"
+    log_this: "この釣果を記録"
+    modal_step1: "ステップ 1/2 · 釣れたカラーを選択"
+    modal_step2: "ステップ 2/2 · ビルドと深度を選択"
+    builds_in: "利用可能なビルド:"
+    no_builds: "このカラーにはまだビルドがありません。"
+    variation: "バリエーション"
+    choose_variation: "バリエーションを選択"
+    change: "変更"
     note: メモ
     submitted: 審査に送信しました
     submitted_body: ありがとうございます！釣果は審査待ちで、承認後に表示されます。
@@ -394,6 +437,8 @@ ja:
 
   settings:
     title: アカウント設定
+    tab_profile: プロフィール
+    tab_preferences: 環境設定
     profile: プロフィール
     country: 国
     language: 言語
@@ -406,6 +451,13 @@ ja:
     username: ユーザー名
     username_hint: "例: casey-rivera"
     username_help: 任意。小文字・数字・ハイフンが使えます。プロフィールURLに使用されます。
+    avatar: プロフィール写真
+    avatar_help: PNG、JPEG、WEBP、またはGIF。5MBまで。
+    choose_image: 画像を選択
+    no_file: 画像が選択されていません
+    remove_avatar: 現在の写真を削除
+    avatar_too_large: が大きすぎます（最大5MB）
+    avatar_invalid_type: はPNG、JPEG、WEBP、またはGIF画像である必要があります
 
   dashboard:
     my_catches: 自分の釣果
@@ -417,7 +469,6 @@ ja:
     add: お気に入りに追加
     remove: お気に入りを解除
     favorited: お気に入り登録済み
-    sign_in_to_favorite: ログインしてお気に入りに追加
 
   footer:
     explore: 探す
@@ -427,6 +478,7 @@ ja:
 
   profile:
     catches: 釣果
+    view_picture: プロフィール写真を表示
     total_upvotes: 総いいね数
     member_since: 登録日
     favorite_species: お気に入りの魚種

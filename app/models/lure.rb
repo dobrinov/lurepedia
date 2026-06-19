@@ -4,15 +4,14 @@ class Lure < ApplicationRecord
 
   belongs_to :brand, counter_cache: :lures_count
   belongs_to :lure_type
+  belongs_to :default_variant, class_name: "Variant", optional: true
   has_many :variants, dependent: :destroy
+  has_many :builds, dependent: :destroy
   has_many :catches, through: :variants
   has_many :buy_links, dependent: :destroy
   has_many :shops, through: :buy_links
   has_one :claim, as: :claimable, dependent: :destroy
   has_many :revisions, as: :subject, dependent: :destroy
-
-  enum :water, { fresh: 0, salt: 1, both: 2 }, prefix: :water
-  enum :action, { none: 0, suspending: 1, floating: 2, sinking: 3 }, prefix: :action
 
   validates :model, presence: true
 
@@ -24,8 +23,33 @@ class Lure < ApplicationRecord
     catches_count.positive?
   end
 
+  # The color shown across catalogs: the explicit pick, else the first-added.
+  def default_variant
+    super || variants.order(:id).first
+  end
+
+  # Family-wide depth window, spanning every build's range.
   def depth_range
-    { min_cm: depth_min_cm, max_cm: depth_max_cm }
+    mins = builds.filter_map(&:depth_min_cm)
+    maxes = builds.filter_map(&:depth_max_cm)
+    { min_cm: mins.min, max_cm: maxes.max }
+  end
+
+  # Water suitability across builds: a single type if uniform, else "both".
+  def water_summary
+    kinds = builds.map(&:water).uniq
+    return "fresh" if kinds.empty?
+    return kinds.first if kinds.size == 1
+
+    "both"
+  end
+
+  # The most common buoyancy across builds — used for the family-level tag.
+  def dominant_action
+    actions = builds.filter_map { |b| b.action unless b.action_none? }
+    return "none" if actions.empty?
+
+    actions.tally.max_by { |_action, count| count }.first
   end
 
   # Distinct species this lure has caught.

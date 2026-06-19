@@ -15,7 +15,7 @@
     <% end %>
   <% end %>
 <% elsif !signed_in? %>
-  <%= link_to (icon_only ? "☆" : t("favorites.sign_in_to_favorite")), new_session_path,
-        class: "btn btn-fav#{' btn-fav-icon' if icon_only}", title: t("favorites.sign_in_to_favorite"),
-        aria: { label: t("favorites.sign_in_to_favorite") } %>
+  <%= link_to (icon_only ? "☆" : "☆ #{t('favorites.add')}"), new_session_path,
+        class: "btn btn-fav#{' btn-fav-icon' if icon_only}", title: t("favorites.add"),
+        aria: { label: t("favorites.add") } %>
 <% end %>

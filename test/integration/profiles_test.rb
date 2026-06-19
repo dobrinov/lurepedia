@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
+
   def setup
     @owner = users(:two)
     brand = Brand.create!(name: "Rapala")
@@ -8,7 +10,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     @lure = Lure.create!(brand: brand, lure_type: type, model: "DT-6")
     variant = @lure.variants.create!(name: "Firetiger")
     species = Species.create!(key: "largemouth_bass")
-    @catch = Catch.create!(user: @owner, variant: variant, species: species, season: :spring, clarity: :clear)
+    @catch = create_catch(user: @owner, variant: variant, species: species, season: :spring, clarity: :clear)
     Favorite.create!(user: @owner, favoritable: @lure)
   end
 
@@ -64,5 +66,34 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     patch settings_path(locale: :en), params: { user: { username: "no spaces" } }
     assert_response :unprocessable_entity
     assert_nil @owner.reload.username
+  end
+
+  test "uploading an avatar attaches it and shows it on the profile" do
+    sign_in_as(@owner)
+    avatar = fixture_file_upload("avatar.png", "image/png")
+    patch settings_path(locale: :en), params: { user: { avatar: avatar } }
+    assert @owner.reload.avatar.attached?
+
+    get profile_path(@owner, locale: :en)
+    assert_select ".avatar img"
+  end
+
+  test "rejects a non-image avatar" do
+    sign_in_as(@owner)
+    bogus = fixture_file_upload("not_an_image.txt", "text/plain")
+    patch settings_path(locale: :en), params: { user: { avatar: bogus } }
+    assert_response :unprocessable_entity
+    assert_not @owner.reload.avatar.attached?
+  end
+
+  test "removing an avatar purges it" do
+    sign_in_as(@owner)
+    @owner.avatar.attach(fixture_file_upload("avatar.png", "image/png"))
+    assert @owner.avatar.attached?
+
+    perform_enqueued_jobs do
+      patch settings_path(locale: :en), params: { user: { remove_avatar: "1" } }
+    end
+    assert_not @owner.reload.avatar.attached?
   end
 end

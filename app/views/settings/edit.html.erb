@@ -3,43 +3,79 @@
   <h1 style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:24px"><%= t("settings.title") %></h1>
 
   <%= form_with model: @user, url: settings_path, method: :patch do |f| %>
-    <div class="field">
-      <%= f.label :name, t("auth.name") %>
-      <%= f.text_field :name, class: "input" %>
-    </div>
-    <div class="field">
-      <label><%= t("settings.public_profile") %></label>
-      <%= render "shared/copy_field", value: profile_url(@user) %>
+    <div data-controller="tabs">
+      <div class="tabs">
+        <button type="button" class="tab active" data-tab-name="profile" data-tabs-target="tab" data-action="tabs#select"><%= t("settings.tab_profile") %></button>
+        <button type="button" class="tab" data-tab-name="preferences" data-tabs-target="tab" data-action="tabs#select"><%= t("settings.tab_preferences") %></button>
+      </div>
+
+      <div class="tab-panel active" data-tab-panel="profile" data-tabs-target="panel">
+        <div class="field">
+          <%= f.label :name, t("auth.name") %>
+          <%= f.text_field :name, class: "input" %>
+        </div>
+        <div class="field">
+          <%= f.label :avatar, t("settings.avatar") %>
+          <div class="row" style="gap:14px;align-items:center"
+               data-controller="avatar-field" data-avatar-field-placeholder-value="<%= t('settings.no_file') %>">
+            <span class="avatar avatar-xl" data-avatar-field-target="preview"><%= user_avatar(@user, size: 72) %></span>
+            <div class="stack" style="gap:8px;flex:1;min-width:0">
+              <%= f.file_field :avatar, accept: "image/*", style: "display:none",
+                    data: { avatar_field_target: "input", action: "avatar-field#change" } %>
+              <div class="file-picker">
+                <button type="button" class="btn btn-sm" data-action="avatar-field#browse"><%= t("settings.choose_image") %></button>
+                <span class="file-picker-name" data-avatar-field-target="filename"><%= t("settings.no_file") %></span>
+                <button type="button" class="file-picker-clear" hidden
+                        data-avatar-field-target="clear" data-action="avatar-field#clear"
+                        aria-label="<%= t("common.close") %>">&times;</button>
+              </div>
+              <span class="muted" style="font-size:13px"><%= t("settings.avatar_help") %></span>
+              <% if @user.avatar.attached? %>
+                <label class="muted row" style="font-size:13px;gap:6px;align-items:center">
+                  <%= check_box_tag "user[remove_avatar]", "1", false, data: { avatar_field_target: "remove" } %> <%= t("settings.remove_avatar") %>
+                </label>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label><%= t("settings.public_profile") %></label>
+          <%= render "shared/copy_field", value: profile_url(@user) %>
+        </div>
+        <div class="field">
+          <%= f.label :username, t("settings.username") %>
+          <%= f.text_field :username, class: "input", placeholder: t("settings.username_hint") %>
+          <span class="muted" style="font-size:13px"><%= t("settings.username_help") %></span>
+        </div>
+        <div class="field">
+          <%= f.label :bio, t("settings.profile") %>
+          <%= f.text_area :bio, class: "input" %>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-tab-panel="preferences" data-tabs-target="panel">
+        <div class="field">
+          <%= f.label :country, t("settings.country") %>
+          <%= render "shared/combobox", name: "user[country]", options: country_options, selected: @user.country, form: f %>
+        </div>
+        <div class="field">
+          <%= f.label :locale, t("settings.language") %>
+          <%= render "shared/combobox", name: "user[locale]", options: available_locales_for_switcher.map { |loc, meta| [meta[:native], loc] }, selected: @user.locale, form: f %>
+        </div>
+        <fieldset class="field" style="border:0;padding:0;margin:0">
+          <legend style="font-weight:600;margin-bottom:8px"><%= t("settings.units") %></legend>
+          <% %i[length weight depth].each do |measurement| %>
+            <div class="field">
+              <%= f.label "#{measurement}_units", t("units.#{measurement}") %>
+              <%= f.select "#{measurement}_units",
+                    User.send("#{measurement}_units").keys.map { |u| [ t("units.#{u}"), u ] },
+                    { selected: @user.public_send("#{measurement}_units") }, class: "input" %>
+            </div>
+          <% end %>
+        </fieldset>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :username, t("settings.username") %>
-      <%= f.text_field :username, class: "input", placeholder: t("settings.username_hint") %>
-      <span class="muted" style="font-size:13px"><%= t("settings.username_help") %></span>
-    </div>
-    <div class="field">
-      <%= f.label :bio, t("settings.profile") %>
-      <%= f.text_area :bio, class: "input" %>
-    </div>
-    <div class="field">
-      <%= f.label :country, t("settings.country") %>
-      <%= render "shared/combobox", name: "user[country]", options: country_options, selected: @user.country, form: f %>
-    </div>
-    <div class="field">
-      <%= f.label :locale, t("settings.language") %>
-      <%= render "shared/combobox", name: "user[locale]", options: available_locales_for_switcher.map { |loc, meta| [meta[:native], loc] }, selected: @user.locale, form: f %>
-    </div>
-    <fieldset class="field" style="border:0;padding:0;margin:0">
-      <legend style="font-weight:600;margin-bottom:8px"><%= t("settings.units") %></legend>
-      <% %i[length weight depth].each do |measurement| %>
-        <div class="field">
-          <%= f.label "#{measurement}_units", t("units.#{measurement}") %>
-          <%= f.select "#{measurement}_units",
-                User.send("#{measurement}_units").keys.map { |u| [ t("units.#{u}"), u ] },
-                { selected: @user.public_send("#{measurement}_units") }, class: "input" %>
-        </div>
-      <% end %>
-    </fieldset>
     <%= f.submit t("common.save"), class: "btn btn-primary" %>
   <% end %>
 </div>

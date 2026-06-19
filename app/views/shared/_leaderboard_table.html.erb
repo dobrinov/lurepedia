@@ -6,9 +6,9 @@
         <tr>
           <th><%= t("leaderboard.rank") %></th>
           <th><%= t("leaderboard.angler") %></th>
+          <th class="<%= 'metric-active' if metric == :length %>"><%= t("leaderboard.best_length") %></th>
           <th class="<%= 'metric-active' if metric == :catches %>"><%= t("leaderboard.catches") %></th>
           <th class="<%= 'metric-active' if metric == :upvotes %>"><%= t("leaderboard.upvotes") %></th>
-          <th class="<%= 'metric-active' if metric == :length %>"><%= t("leaderboard.best_length") %></th>
         </tr>
       </thead>
       <tbody>
@@ -24,9 +24,9 @@
                 <% if signed_in? && row.user == current_user %><span class="role-badge role-admin"><%= t("leaderboard.you") %></span><% end %>
               </span>
             </td>
+            <td class="<%= 'metric-active' if metric == :length %>"><%= row.best_length_cm ? fmt_length(row.best_length_cm) : t("common.none") %></td>
             <td class="<%= 'metric-active' if metric == :catches %>"><%= row.catches %></td>
             <td class="<%= 'metric-active' if metric == :upvotes %>"><%= row.upvotes %></td>
-            <td class="<%= 'metric-active' if metric == :length %>"><%= row.best_length_cm ? fmt_length(row.best_length_cm) : t("common.none") %></td>
           </tr>
         <% end %>
       </tbody>

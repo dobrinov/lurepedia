@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Sluggable
 
   has_secure_password
+  has_one_attached :avatar
   has_many :sessions, dependent: :destroy
   has_many :catches, foreign_key: :user_id, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -23,6 +24,10 @@ class User < ApplicationRecord
                        format: { with: /\A[a-z0-9_-]{3,30}\z/ },
                        allow_nil: true
   validate :username_not_taken_as_slug
+  validate :acceptable_avatar
+
+  AVATAR_TYPES = %w[ image/png image/jpeg image/webp image/gif ].freeze
+  AVATAR_MAX_SIZE = 5.megabytes
 
   def self.find_by_handle!(handle)
     (handle.present? && find_by(username: handle)) || find_by!(slug: handle)
@@ -67,6 +72,18 @@ class User < ApplicationRecord
 
     if User.where.not(id: id).exists?(slug: username)
       errors.add(:username, :taken)
+    end
+  end
+
+  def acceptable_avatar
+    return unless avatar.attached?
+
+    unless avatar.blob.byte_size <= AVATAR_MAX_SIZE
+      errors.add(:avatar, I18n.t("settings.avatar_too_large"))
+    end
+
+    unless AVATAR_TYPES.include?(avatar.blob.content_type)
+      errors.add(:avatar, I18n.t("settings.avatar_invalid_type"))
     end
   end
 end

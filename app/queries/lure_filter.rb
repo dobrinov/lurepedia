@@ -48,15 +48,21 @@ class LureFilter
   def apply_catalog(scope)
     scope = scope.joins(:lure_type).where(lure_types: { key: @p[:type] }) if present?(:type)
     scope = scope.joins(:brand).where(brands: { slug: @p[:brand] }) if present?(:brand)
-    scope = scope.where(action: @p[:lure_action]) if present?(:lure_action) && Lure.actions.key?(@p[:lure_action].to_s)
+    scope = apply_action(scope) if present?(:lure_action) && Build.actions.key?(@p[:lure_action].to_s)
     scope = apply_depth(scope) if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
-    scope = scope.where(water: :salt) if truthy?(:saltwater)
+    scope = scope.where(id: Build.where(water: [ :salt, :both ]).select(:lure_id)) if truthy?(:saltwater)
     scope
+  end
+
+  # Buoyancy, depth and water now live on builds — a lure matches if any build does.
+  def apply_action(scope)
+    scope.where(id: Build.where(action: @p[:lure_action]).select(:lure_id))
   end
 
   def apply_depth(scope)
     band_min, band_max = DEPTH_BANDS.fetch(@p[:depth].to_s)
-    scope.where("lures.depth_min_cm <= ? AND lures.depth_max_cm >= ?", band_max, band_min)
+    builds = Build.where("builds.depth_min_cm <= ? AND builds.depth_max_cm >= ?", band_max, band_min)
+    scope.where(id: builds.select(:lure_id))
   end
 
   def apply_conditions(scope)

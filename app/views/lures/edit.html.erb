@@ -1,9 +1,96 @@
 <% admin = current_user&.admin? %>
 <% content_for :title, admin ? t("contribute.edit_title", name: @lure.title) : t("contribute.suggest_title", name: @lure.title) %>
-<div class="container" style="max-width:640px;margin:32px auto">
+<div class="container" style="max-width:760px;margin:32px auto">
   <h1 style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px">
     <%= admin ? t("contribute.edit_title", name: @lure.title) : t("contribute.suggest_title", name: @lure.title) %>
   </h1>
   <p class="muted" style="margin-bottom:24px"><%= admin ? t("admin.title") : t("contribute.suggest_note") %></p>
-  <%= render "form", lure: @lure, submit_label: admin ? t("common.save") : t("common.submit") %>
+
+  <div style="max-width:560px">
+    <%= render "form", lure: @lure, submit_label: admin ? t("common.save") : t("common.submit") %>
+  </div>
+
+  <!-- Variations & builds management -->
+  <div style="margin-top:40px">
+    <div class="section-head"><h2 style="font-size:20px"><%= t("lure.manage_variations") %></h2></div>
+
+    <!-- Default variation selector -->
+    <% if @variants.any? %>
+      <%= form_with model: @lure, method: :patch do |f| %>
+        <div class="field" style="max-width:360px">
+          <label><%= t("lure.default_variation") %></label>
+          <%= f.select :default_variant_id,
+                @variants.map { |v| [ v.name, v.id ] },
+                { selected: @lure.default_variant&.id },
+                class: "input", onchange: "this.form.requestSubmit()" %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <!-- Colors -->
+    <div class="card card-pad" style="margin-bottom:18px">
+      <div class="section-head" style="margin-bottom:12px">
+        <h3 style="font-size:15px"><%= t("lure.colors") %></h3>
+        <%= link_to t("lure.add_color"), new_variant_path(@lure), class: "btn btn-sm" %>
+      </div>
+      <% if @variants.any? %>
+        <table class="lb-table">
+          <tbody>
+            <% @variants.each do |v| %>
+              <tr>
+                <td style="width:52px">
+                  <% if v.photo.attached? %>
+                    <%= image_tag v.photo.variant(resize_to_fill: [ 44, 44 ]), style: "width:44px;height:44px;object-fit:cover;border-radius:6px;display:block", alt: v.name %>
+                  <% else %>
+                    <span class="ph ph-lure" style="width:44px;height:44px;display:inline-flex;border-radius:6px"><%= render "shared/lure_glyph" %></span>
+                  <% end %>
+                </td>
+                <td style="font-weight:600">
+                  <%= v.name %>
+                  <% if v.uv_glow %><span class="uv-badge">UV</span><% end %>
+                  <% if v == @lure.default_variant %><span class="tag"><%= t("lure.default_variation") %></span><% end %>
+                </td>
+                <td class="muted"><%= v.best_for %></td>
+                <td style="text-align:right;width:1%;white-space:nowrap">
+                  <%= link_to edit_affordance_label, edit_variant_path(@lure, v), class: "btn btn-sm" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="muted" style="font-size:13px"><%= t("lure.variants") %> —</p>
+      <% end %>
+    </div>
+
+    <!-- Builds -->
+    <div class="card card-pad">
+      <div class="section-head" style="margin-bottom:12px">
+        <h3 style="font-size:15px"><%= t("lure.builds") %></h3>
+        <%= link_to t("lure.add_build"), new_build_path(@lure), class: "btn btn-sm" %>
+      </div>
+      <% if @builds.any? %>
+        <table class="lb-table">
+          <thead><tr><th><%= t("lure.build") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.depth") %></th><th><%= t("lure.buoyancy") %></th><th><%= t("lure.water") %></th><th></th></tr></thead>
+          <tbody>
+            <% @builds.each do |b| %>
+              <tr>
+                <td style="font-weight:600"><%= b.name %></td>
+                <td><%= fmt_size_mm(b.length_mm) || t("common.none") %></td>
+                <td><%= fmt_weight(b.weight_g) || t("common.none") %></td>
+                <td><%= fmt_depth(b.depth_min_cm, b.depth_max_cm) || t("common.none") %></td>
+                <td><%= lure_action_label(b.action) %></td>
+                <td><%= water_name(b.water) %></td>
+                <td style="text-align:right;width:1%;white-space:nowrap">
+                  <%= link_to edit_affordance_label, edit_build_path(@lure, b), class: "btn btn-sm" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="muted" style="font-size:13px"><%= t("lure.builds") %> —</p>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -20,13 +20,14 @@
       </div>
       <% if @species.habitat.present? %><p class="muted"><%= @species.habitat %></p><% end %>
       <% if @species.wikipedia_url.present? %>
-        <p><%= link_to t("species.wikipedia"), @species.wikipedia_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %></p>
+        <p><%= link_to safe_join([ t("species.wikipedia"), external_link_icon ]), @species.wikipedia_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %></p>
       <% end %>
       <div class="row">
+        <%= link_to t("catch.add_title"), (signed_in? ? new_catch_path(species: @species.slug) : new_session_path), class: "btn btn-primary" %>
         <% if signed_in? %>
           <%= link_to edit_affordance_label, edit_species_path(@species), class: "btn" %>
         <% else %>
-          <%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn" %>
+          <%= link_to edit_affordance_label, new_session_path, class: "btn" %>
         <% end %>
         <%= render "shared/favorite_button", favoritable: @species %>
       </div>
@@ -51,20 +52,14 @@
       <div class="empty-state">
         <h3><%= t("species.no_proven_lures") %></h3>
         <p><%= t("species.be_first_lure") %></p>
-        <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
+        <%= link_to t("catch.add_title"), (signed_in? ? new_catch_path(species: @species.slug) : new_session_path), class: "btn btn-primary" %>
       </div>
     <% end %>
   <% when "catches" %>
-    <% if @catches.any? %>
-      <div class="grid-catches">
-        <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
-      </div>
-    <% else %>
-      <div class="empty-state">
-        <p><%= t("species.be_first_lure") %></p>
-        <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
-      </div>
-    <% end %>
+    <div class="grid-catches">
+      <%= render "shared/add_catch_card", prefill: { species: @species.slug } %>
+      <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+    </div>
   <% when "leaderboard" %>
     <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
   <% when "history" %>

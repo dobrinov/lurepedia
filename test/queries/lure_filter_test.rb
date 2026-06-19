@@ -8,11 +8,12 @@ class LureFilterTest < ActiveSupport::TestCase
     @mb = Brand.create!(name: "Megabass")
     @kvd = Lure.create!(brand: @sk, lure_type: @crank, model: "KVD 1.5", catches_count: 5)
     @vision = Lure.create!(brand: @mb, lure_type: @jerk, model: "Vision 110", catches_count: 9)
-    @salt = Lure.create!(brand: @mb, lure_type: @jerk, model: "Saltwater Special", water: :salt)
+    @salt = Lure.create!(brand: @mb, lure_type: @jerk, model: "Saltwater Special")
+    @salt.builds.create!(name: "SW", water: :salt)
     @bass = Species.create!(key: "largemouth_bass")
     user = User.create!(name: "A", email_address: "a@example.com", password: "secret123")
     variant = @vision.variants.create!(name: "GG")
-    Catch.create!(user: user, variant: variant, species: @bass, season: :spring)
+    create_catch(user: user, variant: variant, species: @bass, season: :spring)
   end
 
   test "default sort by catch count desc" do
@@ -50,7 +51,8 @@ class LureFilterTest < ActiveSupport::TestCase
   end
 
   test "filter by lure_action" do
-    suspending = Lure.create!(brand: @sk, lure_type: @jerk, model: "Pointer", action: :suspending)
+    suspending = Lure.create!(brand: @sk, lure_type: @jerk, model: "Pointer")
+    suspending.builds.create!(name: "SP", action: :suspending)
     results = LureFilter.new(lure_action: "suspending").results.to_a
     assert_equal [ suspending ], results
   end
@@ -65,9 +67,12 @@ class LureFilterTest < ActiveSupport::TestCase
   end
 
   test "filter by depth band overlaps the lure depth range" do
-    shallow = Lure.create!(brand: @sk, lure_type: @crank, model: "Shallow Squarebill", depth_min_cm: 0, depth_max_cm: 100)
-    mid     = Lure.create!(brand: @sk, lure_type: @crank, model: "Medium Diver", depth_min_cm: 200, depth_max_cm: 400)
-    deep    = Lure.create!(brand: @sk, lure_type: @crank, model: "Deep Diver", depth_min_cm: 600, depth_max_cm: 900)
+    shallow = Lure.create!(brand: @sk, lure_type: @crank, model: "Shallow Squarebill")
+    shallow.builds.create!(name: "S", depth_min_cm: 0, depth_max_cm: 100)
+    mid     = Lure.create!(brand: @sk, lure_type: @crank, model: "Medium Diver")
+    mid.builds.create!(name: "M", depth_min_cm: 200, depth_max_cm: 400)
+    deep    = Lure.create!(brand: @sk, lure_type: @crank, model: "Deep Diver")
+    deep.builds.create!(name: "D", depth_min_cm: 600, depth_max_cm: 900)
 
     assert_equal [ shallow ], LureFilter.new(depth: "shallow").results.to_a
     assert_equal [ mid ], LureFilter.new(depth: "mid").results.to_a

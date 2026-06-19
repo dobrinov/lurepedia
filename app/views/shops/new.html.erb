@@ -10,7 +10,19 @@
     </div>
     <div class="field">
       <%= f.label :url, t("brand.website") %>
-      <%= f.text_field :url, class: "input", placeholder: "example.com" %>
+      <%= f.text_field :url, class: "input", placeholder: "example.com", required: true %>
+    </div>
+    <div data-controller="ships-worldwide">
+      <div class="field">
+        <label class="row" style="gap:8px;align-items:center">
+          <%= f.check_box :ships_worldwide, data: { ships_worldwide_target: "toggle", action: "ships-worldwide#sync" } %> <%= t("shop.ships_worldwide") %>
+        </label>
+      </div>
+      <div class="field">
+        <%= f.label :ships_to, t("shop.ships_to") %>
+        <%= f.text_field :ships_to, class: "input", placeholder: "US, CA, GB…", data: { ships_worldwide_target: "countries" } %>
+        <p class="muted" style="font-size:12.5px;margin-top:4px"><%= t("shop.ships_to_hint") %></p>
+      </div>
     </div>
     <div class="field">
       <%= f.label :blurb, t("shop.title") %>

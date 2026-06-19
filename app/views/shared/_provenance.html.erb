@@ -15,7 +15,7 @@
     <span class="muted" style="font-size:12px"><%= t("provenance.edits", count: revisions.size) %></span>
   </div>
   <div class="card-pad row" style="gap:11px;border-bottom:1px solid var(--surface-2)">
-    <span class="avatar" style="background:<%= owned ? 'var(--ink)' : 'var(--line)' %>;color:<%= owned ? 'var(--surface-1)' : 'var(--ink-2)' %>"><%= primary_initials %></span>
+    <span class="avatar" style="background:<%= owned ? 'var(--ink)' : 'var(--line)' %>;color:<%= owned ? 'var(--surface-1)' : 'var(--ink-2)' %>"><%= primary_user ? user_avatar(primary_user) : primary_initials %></span>
     <div style="min-width:0;flex:1">
       <div class="row" style="gap:6px">
         <span class="muted" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em"><%= owned ? t("provenance.owned_by") : t("provenance.added_by") %></span>

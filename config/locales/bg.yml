@@ -14,10 +14,12 @@ bg:
     page: Страница
     next: Напред
     prev: Назад
+    back: "Назад"
+    close: "Затвори"
     by: от
     on: с
-    yes: Да
-    no: Не
+    "yes": "Да"
+    "no": "Не"
     verified: Потвърден
     promoted: Промотиран
     sponsored: Спонсориран
@@ -49,7 +51,6 @@ bg:
     name: Име
     sign_in_required: Моля, влез, за да допринесеш.
     not_authorized: Нямаш права за това действие.
-    sign_in_to_contribute: Влез, за да допринесеш
     create_account: Създай профил
     have_account: Вече имаш профил?
     no_account: Нов в Lurepedia?
@@ -162,11 +163,14 @@ bg:
     type: Тип
     depth: Целева дълбочина
     action: Движение
+    buoyancy: "Плаваемост"
+    action_varies: "Различно"
     water: Вода
     brand: Марка
     variants: Варианти
     variant: Вариант
     tab_caught: Уловено с нея
+    tab_variations: "Варианти"
     tab_buy: Къде да купя
     tab_history: История
     proof: Доказателство, че работи
@@ -186,7 +190,25 @@ bg:
     proven_for: Доказана за
     no_matches: Няма примамки по тези филтри
     size: Размер
-    weight: Тегло
+    weight: "Тегло"
+    color: "Цвят"
+    colors: "Цветове"
+    colors_count:
+      one: "%{count} цвят"
+      other: "%{count} цвята"
+    build: "Модел"
+    builds: "Модели"
+    browse_colors: "Разгледай цветовете"
+    common_attributes: "Общи характеристики · цялото семейство"
+    this_variation: "Този вариант"
+    default_variation: "Вариант по подразбиране"
+    uv_glow: "UV сияние"
+    best_for: "Най-добър за"
+    manage_variations: "Варианти и модели"
+    add_color: "Добави цвят"
+    add_build: "Добави модел"
+    color_name: "Име на цвят"
+    availability: "Налични модели"
 
   species:
     title: Видове
@@ -230,7 +252,15 @@ bg:
     add_title: Добави магазин
     promoted_section: Промотирани
     all_shops: Всички магазини
+    tab_lures: Примамки
+    tab_history: История
+    no_lures: Все още няма примамки в този магазин.
     visit: Посети магазина
+    ships_to: Доставя до
+    ships_to_unknown: "—"
+    ships_worldwide: Доставка по целия свят
+    ships_to_hint: Оставете празно, ако магазинът доставя по целия свят.
+    worldwide: Целият свят
     claim: Заяви магазин
     owned_by: Собственост на
     added_by: Добавен от
@@ -256,9 +286,22 @@ bg:
     report: Докладвай този улов
     related: Още улови от този вид
     photos: Снимки
+    pick_brand: Избери марка
     pick_lure: Избери примамка
     pick_variant: Избери вариант
+    color: Цвят
     pick_species: Какво улови?
+    pick_color: "Избери цвета, с който улови"
+    pick_build: "Избери модел"
+    log_title: "Запиши улов"
+    log_this: "Запиши този улов"
+    modal_step1: "Стъпка 1 от 2 · Избери цвета, с който улови"
+    modal_step2: "Стъпка 2 от 2 · Избери модел и дълбочина"
+    builds_in: "Налични модели за"
+    no_builds: "Този цвят все още няма модели."
+    variation: "Вариант"
+    choose_variation: "Избери вариант"
+    change: "Промени"
     note: Бележки
     submitted: Изпратено за преглед
     submitted_body: Благодарим! Уловът ти е в опашката за модерация и ще се появи след одобрение.
@@ -396,7 +439,6 @@ bg:
     add: Добави в любими
     remove: Премахни от любими
     favorited: В любими
-    sign_in_to_favorite: Влез, за да добавиш в любими
 
   footer:
     explore: Разгледай
@@ -406,6 +448,7 @@ bg:
 
   profile:
     catches: Улови
+    view_picture: Преглед на профилната снимка
     total_upvotes: Общо гласове
     member_since: Член от
     favorite_species: Любими видове
@@ -458,6 +501,8 @@ bg:
 
   settings:
     title: Настройки на профила
+    tab_profile: Профил
+    tab_preferences: Предпочитания
     profile: Профил
     country: Държава
     language: Език
@@ -470,6 +515,13 @@ bg:
     username: Потребителско име
     username_hint: напр. casey-rivera
     username_help: По избор. Малки букви, цифри, тирета. Използва се в адреса на профила ти.
+    avatar: Профилна снимка
+    avatar_help: PNG, JPEG, WEBP или GIF. До 5 MB.
+    choose_image: Избор на изображение
+    no_file: Няма избрано изображение
+    remove_avatar: Премахване на текущата снимка
+    avatar_too_large: е твърде голяма (максимум 5 MB)
+    avatar_invalid_type: трябва да е PNG, JPEG, WEBP или GIF изображение
 
   dashboard:
     my_catches: Моите улови

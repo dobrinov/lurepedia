@@ -28,7 +28,7 @@ module SearchFiltersHelper
     when :type
       LureType.all.sort_by(&:key).map { |lt| [ lure_type_name(lt), lt.key ] }
     when :lure_action
-      Lure.actions.keys.excluding("none").map { |k| [ lure_action_label(k), k ] }
+      Build.actions.keys.excluding("none").map { |k| [ lure_action_label(k), k ] }
     when :depth
       LureFilter::DEPTH_BANDS.keys.map { |k| [ t("search.depth_band.#{k}", default: k.titleize), k ] }
     else # season, water_body, clarity, wind
@@ -39,7 +39,7 @@ module SearchFiltersHelper
   def filter_label(field)
     case field
     when :type then t("lure.type")
-    when :lure_action then t("lure.action")
+    when :lure_action then t("lure.buoyancy")
     when :depth then t("lure.depth")
     else t("search.#{field}", default: field.to_s.humanize) # season, water_body, clarity, wind
     end

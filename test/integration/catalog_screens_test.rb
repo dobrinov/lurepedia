@@ -4,13 +4,14 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   def setup
     @type = LureType.create!(key: "crankbait")
     @brand = Brand.create!(name: "Strike King")
-    @lure = Lure.create!(brand: @brand, lure_type: @type, model: "KVD 1.5", catches_count: 0, depth_min_cm: 90, depth_max_cm: 150)
+    @lure = Lure.create!(brand: @brand, lure_type: @type, model: "KVD 1.5", catches_count: 0)
+    @build = @lure.builds.create!(name: "Standard", depth_min_cm: 90, depth_max_cm: 150, action: :floating)
     @variant = @lure.variants.create!(name: "Sexy Shad")
     @bass = Species.create!(key: "largemouth_bass", scientific_name: "Micropterus salmoides")
     @member = User.create!(name: "Mia Member", email_address: "mia@example.com", password: "secret123", country: "US")
     @lure.revisions.create!(user: @member, summary: "Created")
-    @shop = Shop.create!(name: "TackleDirect", promoted: true)
-    @reg_shop = Shop.create!(name: "Karls Tackle")
+    @shop = Shop.create!(name: "TackleDirect", url: "tackledirect.com", promoted: true)
+    @reg_shop = Shop.create!(name: "Karls Tackle", url: "karlstackle.com")
     @reg_shop.revisions.create!(user: @member, summary: "Created")
   end
 
@@ -22,7 +23,7 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   end
 
   test "lure detail rich vs sparse" do
-    get lure_path(@lure, locale: :en)
+    get lure_path(@lure, tab: "caught", locale: :en)
     assert_response :success
     assert_match "KVD 1.5", response.body
     # Sparse: no catches yet → be-first prompt
@@ -30,17 +31,17 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   end
 
   test "lure detail shows proof when catches exist" do
-    Catch.create!(user: @member, variant: @variant, species: @bass)
+    create_catch(user: @member, variant: @variant, species: @bass, build: @build)
     get lure_path(@lure.reload, locale: :en)
     assert_response :success
     assert_select ".badge-proof"
   end
 
   test "lure tabs are separate URLs and variants stay visible" do
-    Catch.create!(user: @member, variant: @variant, species: @bass)
+    create_catch(user: @member, variant: @variant, species: @bass, build: @build)
     BuyLink.create!(lure: @lure, shop: @shop, url: "https://example.com/buy")
 
-    get lure_path(@lure.reload, locale: :en)
+    get lure_path(@lure.reload, tab: "caught", locale: :en)
     assert_response :success
     assert_select ".tabs a", minimum: 3
     assert_match "Sexy Shad", response.body
@@ -85,6 +86,21 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_match I18n.t("species.tab_leaderboard"), response.body
   end
 
+  test "species detail offers add-a-catch shortcuts that preselect the species" do
+    sign_in_as(@member)
+    target = "catches/new?species=#{@bass.slug}"
+
+    # Hero CTA
+    get species_path(@bass, locale: :en)
+    assert_response :success
+    assert_select "a.btn-primary[href*=?]", target
+
+    # Add-a-catch card in the Catches tab
+    get species_path(@bass, tab: "catches", locale: :en)
+    assert_response :success
+    assert_select "a.add-card[href*=?]", target
+  end
+
   test "species tabs are separate URLs" do
     sp = Species.create!(key: "walleye", scientific_name: "Sander vitreus")
     get species_path(sp, locale: :en)
@@ -125,7 +141,7 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   end
 
   test "catches index" do
-    Catch.create!(user: @member, variant: @variant, species: @bass)
+    create_catch(user: @member, variant: @variant, species: @bass, build: @build)
     get catches_path(locale: :en)
     assert_response :success
     assert_match "Largemouth Bass", response.body
@@ -133,7 +149,7 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
 
   test "catch detail shows conditions and contributor" do
     sign_in_as(@member) # US member → units resolved imperial from country
-    c = Catch.create!(user: @member, variant: @variant, species: @bass, season: :spring, location: "Lake Fork", length_cm: 54.6)
+    c = create_catch(user: @member, variant: @variant, species: @bass, build: @build, season: :spring, location: "Lake Fork", length_cm: 54.6)
     get catch_path(c, locale: :en)
     assert_response :success
     assert_match "Lake Fork", response.body
@@ -161,7 +177,7 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     sign_in_as(@member)
     assert_difference -> { Catch.count } => 1, -> { ModerationItem.count } => 1 do
       post catches_path(locale: :en), params: {
-        catch: { variant_id: @variant.id, species_id: @bass.id, season: "spring", location: "Pond" }
+        catch: { variant_id: @variant.id, build_id: @build.id, species_id: @bass.id, season: "spring", location: "Pond" }
       }
     end
     assert_response :redirect
@@ -169,7 +185,8 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
 
   test "guest sees sign-in CTA on lure detail" do
     get lure_path(@lure, locale: :en)
-    assert_match I18n.t("auth.sign_in_to_contribute"), response.body
+    assert_match I18n.t("lure.add_catch"), response.body
+    assert_select "a[href=?]", new_session_path(locale: :en)
   end
 
   test "lure index hero shows only the add-lure CTA" do

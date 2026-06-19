@@ -8,6 +8,12 @@ class ShopsController < ApplicationController
     @shops = @page.records
   end
 
+  def show
+    @shop = Shop.find_by!(slug: params[:id])
+    @lures = @shop.lures.includes(:lure_type).by_catch_count
+    @tab = %w[lures history].include?(params[:tab]) ? params[:tab] : "lures"
+  end
+
   def new
     @shop = Shop.new
   end
@@ -28,6 +34,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :url, :blurb)
+    params.require(:shop).permit(:name, :url, :blurb, :ships_to, :ships_worldwide)
   end
 end

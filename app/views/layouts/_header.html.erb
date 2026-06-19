@@ -34,10 +34,10 @@
 
       <% if signed_in? %>
         <div class="dropdown" data-controller="dropdown">
-          <button class="avatar" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false" title="<%= current_user.name %>"><%= current_user.initials %></button>
+          <button class="avatar" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false" title="<%= current_user.name %>"><%= user_avatar(current_user) %></button>
           <div class="dropdown-menu" data-dropdown-target="menu" hidden>
             <div class="menu-head">
-              <span class="avatar"><%= current_user.initials %></span>
+              <span class="avatar"><%= user_avatar(current_user) %></span>
               <div style="min-width:0">
                 <div class="row" style="gap:6px"><strong style="font-size:14px"><%= current_user.name %></strong><span class="role-badge role-<%= current_user.role %>"><%= t("admin.#{current_user.role}") %></span></div>
                 <div class="muted" style="font-size:12px"><%= current_user.email_address %></div>

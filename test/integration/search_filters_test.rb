@@ -8,7 +8,8 @@ class SearchFiltersTest < ActionDispatch::IntegrationTest
     LureType.create!(key: "crankbait")
     b = Brand.create!(name: "Strike King")
     lt = LureType.first
-    Lure.create!(brand: b, lure_type: lt, model: "KVD 1.5", depth_min_cm: 0, depth_max_cm: 100)
+    lure = Lure.create!(brand: b, lure_type: lt, model: "KVD 1.5")
+    lure.builds.create!(name: "Standard", depth_min_cm: 0, depth_max_cm: 100)
     Species.create!(key: "largemouth_bass")
 
     get lures_path

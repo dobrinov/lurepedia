@@ -7,6 +7,7 @@ class SettingsController < ApplicationController
 
   def update
     @user = current_user
+    @user.avatar.purge_later if params.dig(:user, :remove_avatar) == "1"
     if @user.update(settings_params)
       cookies[:locale] = @user.locale
       redirect_to edit_settings_path(locale: @user.locale), notice: t("settings.saved")
@@ -19,6 +20,6 @@ class SettingsController < ApplicationController
   private
 
   def settings_params
-    params.require(:user).permit(:name, :bio, :country, :locale, :length_units, :weight_units, :depth_units, :username)
+    params.require(:user).permit(:name, :bio, :country, :locale, :length_units, :weight_units, :depth_units, :username, :avatar)
   end
 end

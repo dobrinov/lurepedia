@@ -18,6 +18,24 @@ export default class extends Controller {
     this.activeIndex = -1
   }
 
+  // When the endpoint is re-scoped (e.g. lures filtered by a newly picked brand),
+  // drop the cached results so the next open re-fetches from page 1.
+  urlValueChanged(_value, previous) {
+    if (previous === undefined) return
+    this.loaded = false
+    this.nextPage = null
+    this.query = ""
+    if (this.hasOptionsTarget) this.optionsTarget.innerHTML = ""
+  }
+
+  // Reset the current selection back to the placeholder (no change event).
+  clear() {
+    this.hiddenTarget.value = ""
+    this.labelTarget.textContent = this.placeholderValue || this.labelTarget.textContent
+    this.triggerTarget.classList.add("placeholder")
+    if (this.hasSearchTarget) this.searchTarget.value = ""
+  }
+
   toggle(event) {
     event.preventDefault()
     this.panelTarget.hidden ? this.open() : this.close()

@@ -6,17 +6,17 @@ class EditHistoryTest < ActionDispatch::IntegrationTest
     @member = users(:two)
     brand = Brand.create!(name: "Z-Man")
     type = LureType.create!(key: "jerkbait")
-    @lure = Lure.create!(brand: brand, lure_type: type, model: "Vision 110", water: :fresh, blurb: "Original blurb")
+    @lure = Lure.create!(brand: brand, lure_type: type, model: "Vision 110", blurb: "Original blurb")
   end
 
   test "admin edit records a field-level changeset on the revision" do
     sign_in_as(@admin)
-    patch lure_path(@lure, locale: :en), params: { lure: { blurb: "New blurb", water: "salt" } }
+    patch lure_path(@lure, locale: :en), params: { lure: { blurb: "New blurb", action_video_url: "https://example.com/v" } }
 
     rev = @lure.revisions.newest_first.first
     assert rev.edit?
     assert_equal [ "Original blurb", "New blurb" ], rev.changeset["blurb"]
-    assert_equal [ "fresh", "salt" ], rev.changeset["water"]
+    assert_equal [ nil, "https://example.com/v" ], rev.changeset["action_video_url"]
   end
 
   test "member suggestion links the moderation item to the proposed-change revision" do

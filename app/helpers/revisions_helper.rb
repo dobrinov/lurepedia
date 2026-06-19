@@ -4,7 +4,7 @@ module RevisionsHelper
     key = field.to_s
     return t("revision.field.#{key}") if I18n.exists?("revision.field.#{key}")
 
-    key.sub(/_id\z/, "").sub(/_cm\z/, " (cm)").sub(/_g\z/, " (g)").humanize
+    key.sub(/_ids\z/, "s").sub(/_id\z/, "").sub(/_cm\z/, " (cm)").sub(/_mm\z/, " (mm)").sub(/_g\z/, " (g)").humanize
   end
 
   # Path to the record a revision belongs to (nil for subjects with no show page).
@@ -14,6 +14,7 @@ module RevisionsHelper
     when Brand then brand_path(subject)
     when Species then species_path(subject)
     when Catch then catch_path(subject)
+    when Variant, Build then edit_lure_path(subject.lure)
     end
   end
 
@@ -23,6 +24,7 @@ module RevisionsHelper
     when Lure then subject.title
     when Brand, Shop then subject.name
     when Species then subject.common_name
+    when Variant, Build then "#{subject.lure.title} — #{subject.name}"
     else subject.class.name
     end
   end

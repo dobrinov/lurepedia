@@ -1,13 +1,22 @@
 class Variant < ApplicationRecord
   belongs_to :lure
   has_many :catches, dependent: :destroy
+  has_many :variant_builds, dependent: :destroy
+  has_many :builds, through: :variant_builds
+  has_many :revisions, as: :subject, dependent: :destroy
   has_one_attached :photo
-
-  enum :action, { none: 0, suspending: 1, floating: 2, sinking: 3 }, prefix: :action
 
   validates :name, presence: true
 
-  def effective_action
-    action_none? ? lure.action : action
+  # Human-readable, shareable identifier used in the lure URL (?color=ghost-shad)
+  # in place of the opaque numeric id.
+  def to_color_param
+    name.parameterize
+  end
+
+  # A color is the lure's default when it is explicitly set, or — absent an
+  # explicit choice — when it is the first-added color. Mirrors Lure#default_variant.
+  def default?
+    lure.default_variant&.id == id
   end
 end

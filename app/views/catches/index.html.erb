@@ -15,7 +15,7 @@
   <% else %>
     <div class="empty-state">
       <h3><%= t("catch.subtitle") %></h3>
-      <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("auth.sign_in_to_contribute"), new_session_path, class: "btn btn-primary" %><% end %>
+      <% if signed_in? %><%= link_to t("catch.add_title"), new_catch_path, class: "btn btn-primary" %><% else %><%= link_to t("catch.add_title"), new_session_path, class: "btn btn-primary" %><% end %>
     </div>
   <% end %>
 </div>

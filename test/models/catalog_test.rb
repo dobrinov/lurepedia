@@ -29,25 +29,26 @@ class CatalogTest < ActiveSupport::TestCase
   test "lure belongs to brand and type and reaches catches through variants" do
     variant = @lure.variants.create!(name: "Sexy Shad")
     assert_equal [], @lure.catches.to_a
-    Catch.create!(user: @user, variant: variant, species: @species)
+    create_catch(user: @user, variant: variant, species: @species)
     assert_equal 1, @lure.catches.count
   end
 
-  test "depth range" do
-    @lure.update!(depth_min_cm: 90, depth_max_cm: 150)
-    assert_equal({ min_cm: 90, max_cm: 150 }, @lure.depth_range)
+  test "depth range spans the lure's builds" do
+    @lure.builds.create!(name: "Shallow", depth_min_cm: 90, depth_max_cm: 150)
+    @lure.builds.create!(name: "Deep", depth_min_cm: 120, depth_max_cm: 220)
+    assert_equal({ min_cm: 90, max_cm: 220 }, @lure.reload.depth_range)
   end
 
   test "lure proven scope and counter" do
     variant = @lure.variants.create!(name: "Shad")
-    Catch.create!(user: @user, variant: variant, species: @species)
+    create_catch(user: @user, variant: variant, species: @species)
     assert @lure.reload.proven?
     assert_includes Lure.proven, @lure
   end
 
   test "species proven lures" do
     variant = @lure.variants.create!(name: "Shad")
-    Catch.create!(user: @user, variant: variant, species: @species)
+    create_catch(user: @user, variant: variant, species: @species)
     assert_includes @species.proven_lures, @lure
     assert_equal 1, @species.reload.catches_count
   end
@@ -62,8 +63,8 @@ class CatalogTest < ActiveSupport::TestCase
   end
 
   test "shop promoted ordering" do
-    a = Shop.create!(name: "Regular")
-    b = Shop.create!(name: "Promo", promoted: true)
+    a = Shop.create!(name: "Regular", url: "regular.com")
+    b = Shop.create!(name: "Promo", url: "promo.com", promoted: true)
     assert_equal [ b, a ], Shop.promoted_first.to_a
   end
 end

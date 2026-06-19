@@ -10,7 +10,7 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     @member = User.create!(name: "Mia Member", email_address: "mia@example.com", password: "secret123", role: :member, country: "US")
     @moderator = User.create!(name: "Mod Max", email_address: "max@example.com", password: "secret123", role: :moderator)
     @admin = User.create!(name: "Ada Admin", email_address: "ada@example.com", password: "secret123", role: :admin)
-    @catch = Catch.create!(user: @member, variant: @variant, species: @bass, upvotes_count: 3, length_cm: 50)
+    @catch = create_catch(user: @member, variant: @variant, species: @bass, upvotes_count: 3, length_cm: 50)
   end
 
   test "search finds lures species brands" do
@@ -94,7 +94,8 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
 
   test "species detail shows an edit affordance" do
     get species_path(@bass, locale: :en)
-    assert_match I18n.t("auth.sign_in_to_contribute"), response.body
+    assert_match I18n.t("contribute.suggest_edit"), response.body
+    assert_select "a[href=?]", new_session_path(locale: :en)
     sign_in_as(@member)
     get species_path(@bass, locale: :en)
     assert_match I18n.t("contribute.suggest_edit"), response.body
@@ -170,7 +171,7 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     variant = lure.variants.create!(name: "Shad")
     species = Species.create!(key: "smallmouth_bass")
     voter = User.create!(name: "Vic Voter", email_address: "vic@example.com", password: "secret123")
-    catch = Catch.create!(user: voter, variant: variant, species: species)
+    catch = create_catch(user: voter, variant: variant, species: species)
     Upvote.create!(user: voter, catch: catch)
 
     sign_in_as(voter)

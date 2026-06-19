@@ -12,24 +12,6 @@
     <label><%= t("lure.type") %></label>
     <%= render "shared/combobox", name: "lure[lure_type_id]", options: @lure_types.map { |lt| [lure_type_name(lt), lt.id] }, selected: lure.lure_type_id, placeholder: t("search.any_type") %>
   </div>
-  <div class="row" style="gap:12px">
-    <div class="field" style="flex:1">
-      <%= f.label :depth_min_cm, "#{t('lure.depth')} (cm) — min" %>
-      <%= f.number_field :depth_min_cm, class: "input" %>
-    </div>
-    <div class="field" style="flex:1">
-      <%= f.label :depth_max_cm, "#{t('lure.depth')} (cm) — max" %>
-      <%= f.number_field :depth_max_cm, class: "input" %>
-    </div>
-  </div>
-  <div class="field">
-    <%= f.label :action, t("lure.action") %>
-    <%= f.select :action, Lure.actions.keys.map { |a| [lure_action_label(a), a] }, {}, class: "input" %>
-  </div>
-  <div class="field">
-    <%= f.label :water, t("lure.water") %>
-    <%= f.select :water, Lure.waters.keys.map { |w| [water_name(w), w] }, {}, class: "input" %>
-  </div>
   <div class="field">
     <%= f.label :blurb, t("lure.title") %>
     <%= f.text_area :blurb, class: "input" %>

@@ -44,17 +44,21 @@ module DesignSystem
     private
 
     def build_lure(model:, brand:, type:, action:, depth_min:, depth_max:, catches_count:, species:)
-      lure = Lure.new(model: model, action: action, depth_min_cm: depth_min,
-                      depth_max_cm: depth_max, catches_count: catches_count)
+      lure = Lure.new(model: model, catches_count: catches_count)
       lure.brand = Brand.new(name: brand, slug: brand.parameterize)
       lure.lure_type = LureType.new(key: type)
 
       proven = species.map { |k| Species.new(key: k) }
       proven.define_singleton_method(:limit) { |n| first(n) }
 
+      # Depth and buoyancy now live on builds; the catalog reads them through these.
+      default_color = Variant.new(name: "Natural")
       revs = sample_revisions
       lure.define_singleton_method(:to_param) { model.parameterize }
       lure.define_singleton_method(:proven_species) { proven }
+      lure.define_singleton_method(:default_variant) { default_color }
+      lure.define_singleton_method(:depth_range) { { min_cm: depth_min, max_cm: depth_max } }
+      lure.define_singleton_method(:dominant_action) { action.to_s }
       lure.define_singleton_method(:claim) { nil }
       lure.define_singleton_method(:revisions) { revs }
       lure
@@ -66,8 +70,12 @@ module DesignSystem
       catch.species = Species.new(key: "largemouth_bass")
       catch.user = user("Ava Lindqvist", "SE")
       lure = proven_lure
+      color = Variant.new(name: "Sexy Shad")
+      build = Build.new(name: "110 SP")
       catch.define_singleton_method(:to_param) { "sample-catch" }
       catch.define_singleton_method(:lure) { lure }
+      catch.define_singleton_method(:variant) { color }
+      catch.define_singleton_method(:build) { build }
       catch
     end
 

@@ -7,9 +7,11 @@
 <% selected = local_assigns.fetch(:selected, nil) %>
 <% selected_label = local_assigns.fetch(:selected_label, nil) %>
 <% placeholder = local_assigns.fetch(:placeholder, t("common.search")) %>
+<% hidden_data = local_assigns.fetch(:hidden_data, {}) %>
 <div class="combobox" data-controller="async-combobox"
-     data-async-combobox-url-value="<%= url %>">
-  <%= hidden_field_tag name, selected, data: { async_combobox_target: "hidden" } %>
+     data-async-combobox-url-value="<%= url %>"
+     data-async-combobox-placeholder-value="<%= placeholder %>">
+  <%= hidden_field_tag name, selected, data: { async_combobox_target: "hidden" }.merge(hidden_data) %>
   <button type="button" class="combobox-trigger <%= 'placeholder' unless selected_label %>"
           data-async-combobox-target="trigger" data-action="async-combobox#toggle" aria-expanded="false">
     <span data-async-combobox-target="label"><%= selected_label || placeholder %></span>

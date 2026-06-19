@@ -1,0 +1,15 @@
+<% admin = current_user&.admin? %>
+<% content_for :title, "#{@lure.title} — #{@build.name}" %>
+<div class="container" style="max-width:560px;margin:32px auto">
+  <nav class="muted" style="font-size:13px;margin-bottom:16px">
+    <%= link_to @lure.title, edit_lure_path(@lure) %> › <span><%= @build.name %></span>
+  </nav>
+  <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:20px"><%= @build.name %></h1>
+  <%= render "form", build: @build, submit_label: admin ? t("common.save") : t("common.submit") %>
+
+  <% if current_user&.can_moderate? %>
+    <%= button_to t("common.delete"), build_path(@lure, @build), method: :delete,
+          class: "btn btn-sm", style: "margin-top:20px;color:var(--danger)",
+          form: { data: { turbo_confirm: t("common.delete") } } %>
+  <% end %>
+</div>

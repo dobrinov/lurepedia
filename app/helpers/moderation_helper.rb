@@ -5,6 +5,7 @@ module ModerationHelper
     when Catch
       "#{species_common_name(subject.species)} — #{subject.lure.title}"
     when Lure then subject.title
+    when Variant, Build then "#{subject.lure.title} — #{subject.name}"
     when Brand, Shop then subject.name
     when Species then subject.common_name
     when Report

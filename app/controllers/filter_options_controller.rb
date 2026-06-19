@@ -18,6 +18,16 @@ class FilterOptionsController < ApplicationController
     render_page(scope.offset(offset).limit(PER + 1).to_a) { |b| { value: b.slug, label: b.name } }
   end
 
+  def lures
+    scope = Lure.includes(:brand).by_catch_count
+    scope = scope.joins(:brand) if params[:brand].present? || query.present?
+    scope = scope.where(brands: { slug: params[:brand] }) if params[:brand].present?
+    if query.present?
+      scope = scope.where("LOWER(lures.model) LIKE :q OR LOWER(brands.name) LIKE :q", q: "%#{query}%")
+    end
+    render_page(scope.offset(offset).limit(PER + 1).to_a) { |l| { value: l.slug, label: l.title } }
+  end
+
   private
 
   def query

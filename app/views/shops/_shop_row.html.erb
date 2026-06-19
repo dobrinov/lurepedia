@@ -3,12 +3,12 @@
   <div class="row" style="justify-content:space-between">
     <div class="stack" style="gap:4px">
       <div class="row" style="gap:8px">
-        <span class="card-title" style="font-size:17px"><%= shop.name %></span>
+        <%= link_to shop.name, shop_path(shop), class: "card-title", style: "font-size:17px" %>
         <% if shop.promoted? %><span class="badge badge-promoted"><%= t("common.promoted") %></span><% end %>
       </div>
-      <% if shop.url.present? %><%= link_to shop.url, "https://#{shop.url.sub(%r{\Ahttps?://}, '')}", class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener nofollow" %><% end %>
+      <% if shop.url.present? %><%= link_to safe_join([ shop.url, external_link_icon ]), "https://#{shop.url.sub(%r{\Ahttps?://}, '')}", class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener nofollow" %><% end %>
     </div>
-    <%= link_to t("shop.visit"), shop.url.present? ? "https://#{shop.url.sub(%r{\Ahttps?://}, '')}" : "#", class: "btn btn-sm", target: "_blank", rel: "noopener nofollow" %>
+    <%= link_to safe_join([ t("shop.visit"), external_link_icon ]), shop.url.present? ? "https://#{shop.url.sub(%r{\Ahttps?://}, '')}" : "#", class: "btn btn-sm", target: "_blank", rel: "noopener nofollow" %>
     <%= render "shared/favorite_button", favoritable: shop, icon_only: true %>
   </div>
   <% if shop.blurb.present? %><p class="muted" style="font-size:13.5px;margin:0"><%= shop.blurb %></p><% end %>

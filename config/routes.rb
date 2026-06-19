@@ -23,7 +23,15 @@ Rails.application.routes.draw do
 
     # Catalog
     resources :lures, only: %i[index new create edit]
-    get   "lures/:id(/:tab)", to: "lures#show", as: :lure, constraints: { tab: /buy|history/ }
+    get   "lures/:id/variation-options", to: "lures#variations", as: :lure_variation_options, defaults: { format: :json }
+    scope "lures/:lure_id" do
+      resources :variants, only: %i[new create edit update destroy]
+      resources :builds, only: %i[new create edit update destroy]
+    end
+    get   "lures/:id(/:tab)(/:color)", to: "lures#show", as: :lure, constraints: { tab: /caught|buy|history|variations/ }
+    # A bare trailing segment that is not a tab is a color on the default tab:
+    # /lures/<slug>/<color>. Tab+color is /lures/<slug>/<tab>/<color> above.
+    get   "lures/:id/:color", to: "lures#show", as: :lure_color
     patch "lures/:id", to: "lures#update"
     resources :species, only: %i[index new create edit]
     get   "species/:id(/:tab)", to: "species#show", as: :species, constraints: { tab: /catches|leaderboard|history/ }
@@ -31,7 +39,7 @@ Rails.application.routes.draw do
     resources :brands, only: %i[index new create edit]
     get   "brands/:id(/:tab)", to: "brands#show", as: :brand, constraints: { tab: /history/ }
     patch "brands/:id", to: "brands#update"
-    resources :shops, only: %i[index new create]
+    resources :shops, only: %i[index show new create]
     resources :catches, only: %i[index show new create] do
       resources :comments, only: :create
       resource :upvote, only: %i[create destroy]
@@ -50,6 +58,7 @@ Rails.application.routes.draw do
     # Paginated, searchable options for the large filter dropdowns
     get "options/species", to: "filter_options#species", as: :species_options
     get "options/brands", to: "filter_options#brands", as: :brand_options
+    get "options/lures", to: "filter_options#lures", as: :lure_options
 
     # Living styleguide
     get "design-system", to: "design_system#index", as: :design_system

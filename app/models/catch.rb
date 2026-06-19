@@ -3,6 +3,7 @@ class Catch < ApplicationRecord
 
   belongs_to :user
   belongs_to :variant, counter_cache: :catches_count
+  belongs_to :build, counter_cache: :catches_count
   belongs_to :species, counter_cache: :catches_count
   has_one :lure, through: :variant
   has_many :comments, dependent: :destroy

@@ -49,6 +49,6 @@ class FavoritesControllerTest < ActionDispatch::IntegrationTest
 
   test "lure show page shows sign-in prompt to guests" do
     get lure_path(@lure, locale: :en)
-    assert_select "a[href=?]", new_session_path, text: I18n.t("favorites.sign_in_to_favorite")
+    assert_select "a[href=?]", new_session_path, text: /#{Regexp.escape(I18n.t("favorites.add"))}/
   end
 end

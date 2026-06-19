@@ -11,7 +11,7 @@ class SpeciesController < ApplicationController
     @species = Species.find_by!(slug: params[:id])
     @lures = @species.proven_lures.includes(:brand, :lure_type)
     @catches = @species.catches.includes(:user, variant: :lure).recent.limit(12)
-    @metric = (params[:metric] || "catches").to_sym
+    @metric = (params[:metric] || "length").to_sym
     @rows = LeaderboardQuery.new(species: @species, metric: @metric).rows
     @tab = %w[lures catches leaderboard history].include?(params[:tab]) ? params[:tab] : "lures"
   end

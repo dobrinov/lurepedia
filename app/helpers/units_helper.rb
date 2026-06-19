@@ -11,6 +11,12 @@ module UnitsHelper
     Units.format_depth(min_cm, max_cm, user_units_setting(:depth), country: viewer_country)
   end
 
+  # Lure body size is conventionally quoted in millimetres (the "110" in a
+  # "110mm jerkbait"); shown as-is rather than converted like fish lengths.
+  def fmt_size_mm(mm)
+    mm.present? ? "#{mm} mm" : nil
+  end
+
   private
 
   def user_units_setting(measurement)

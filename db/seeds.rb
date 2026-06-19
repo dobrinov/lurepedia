@@ -48,7 +48,8 @@ brand_data = [
   { name: "Strike King", country: "US", founded_year: 1966, claimed: false, blurb: "Tournament-proven baits at an everyday price." },
   { name: "Z-Man", country: "US", founded_year: 1985, claimed: false, blurb: "ElaZtech soft plastics and the original ChatterBait." },
   { name: "Booyah", country: "US", founded_year: 2003, claimed: false, blurb: "Spinnerbaits and buzzbaits built for big bites." },
-  { name: "Berkley", country: "US", founded_year: 1937, claimed: true, blurb: "Science-driven soft plastics and PowerBait scents." }
+  { name: "Berkley", country: "US", founded_year: 1937, claimed: true, blurb: "Science-driven soft plastics and PowerBait scents." },
+  { name: "Shimano", country: "JP", founded_year: 1921, claimed: false, blurb: "Saltwater tackle and offshore metal jigs built for the deep." }
 ]
 brands = {}
 brand_data.each do |attrs|
@@ -118,39 +119,84 @@ lure_specs = [
     variants: [ [ "Bone", 95, 11.0 ] ] },
   { brand: "Strike King", model: "Flat Side Pro", type: "crankbait", depth: [ 90, 180 ], action: :floating, img: "flat-side-crank.jpg",
     blurb: "A flat-sided crank with a tight wiggle for cold water.",
-    variants: [ [ "Chartreuse Black Back", 55, 9.5 ] ] }
+    variants: [ [ "Chartreuse Black Back", 55, 9.5 ] ] },
+  { brand: "Shimano", model: "Coltsniper Deep Sea Jig", type: "jig", depth: [ 3000, 8000 ], action: :sinking, water: :salt, img: "metal-jig-deep-sea.jpg",
+    blurb: "A 160g knife-edge metal jig that plummets to the strike zone and flutters on the fall for offshore predators.",
+    variants: [ [ "Blue Sardine", 170, 160.0 ] ] }
 ]
 
 lures = {}
 lure_specs.each do |spec|
   lure = Lure.find_or_create_by!(brand: brands.fetch(spec[:brand]), model: spec[:model]) do |l|
     l.lure_type = types.fetch(spec[:type])
-    l.depth_min_cm = spec[:depth][0]
-    l.depth_max_cm = spec[:depth][1]
-    l.action = spec[:action]
     l.blurb = spec[:blurb]
     l.action_video_url = spec[:video]
-    l.water = :fresh
   end
-  spec[:variants].each do |(vname, size, weight)|
-    v = lure.variants.find_or_create_by!(name: vname) do |variant|
-      variant.size_mm = size
-      variant.weight_g = weight
-      variant.action = :none
-    end
+
+  # One physical build per lure, derived from the spec; colors (variants) carry
+  # the photo and catch the fish, and each is offered in that build. Buoyancy and
+  # water suitability live on the build, so versions can differ (fresh vs. salt).
+  rep_size = spec[:variants].filter_map { |(_n, size, _w)| size }.first
+  rep_weight = spec[:variants].filter_map { |(_n, _s, weight)| weight }.first
+  build = lure.builds.find_or_create_by!(name: "Standard") do |b|
+    b.length_mm = rep_size
+    b.weight_g = rep_weight
+    b.depth_min_cm = spec[:depth][0]
+    b.depth_max_cm = spec[:depth][1]
+    b.action = spec[:action]
+    b.water = spec[:water] || :fresh
+  end
+
+  colors = spec[:variants].map do |(vname, _size, _weight)|
+    v = lure.variants.find_or_create_by!(name: vname)
+    VariantBuild.find_or_create_by!(variant: v, build: build)
     attach_once(v, :photo, LURE_IMG.join(spec[:img]), spec[:img], "image/jpeg")
+    v
   end
+
+  lure.update!(default_variant: colors.first) unless lure.default_variant_id
   lures[spec[:model]] = lure
 end
-puts "  lures: #{Lure.count}, variants: #{Variant.count}"
+
+# Showcase the two-axis model on Vision 110: extra builds, per-color metadata,
+# and color×build availability matching the design exploration.
+vision = lures["Vision 110"]
+if vision
+  extra_builds = {
+    "110 +1 SP" => [ 110, 18.4, 150, 220, :suspending, :fresh ],
+    "110 Jr SP"  => [ 88, 11.3, 90, 130, :suspending, :fresh ],
+    "110 F"      => [ 110, 15.6, 30, 90, :floating, :fresh ],
+    "110 SW"     => [ 110, 19.2, 60, 150, :suspending, :salt ]
+  }
+  extra_builds.each_with_index do |(name, (len, wt, dmin, dmax, act, wat)), i|
+    vision.builds.find_or_create_by!(name: name) do |b|
+      b.length_mm = len; b.weight_g = wt; b.depth_min_cm = dmin; b.depth_max_cm = dmax
+      b.action = act; b.water = wat; b.position = i + 1
+    end
+  end
+  all_vision_builds = vision.builds.ordered.to_a
+  color_meta = {
+    "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true, all_vision_builds ],
+    "Sexy French Pearl"      => [ "Smallmouth Bass · Stained water", false, all_vision_builds.first(3) ],
+    "Pro Blue"               => [ "Smallmouth Bass · Cold, clear", true, all_vision_builds ]
+  }
+  vision.variants.each do |v|
+    best_for, uv, avail = color_meta[v.name]
+    next unless best_for
+
+    v.update!(best_for: best_for, uv_glow: uv)
+    avail.each { |b| VariantBuild.find_or_create_by!(variant: v, build: b) }
+  end
+end
+puts "  lures: #{Lure.count}, variants: #{Variant.count}, builds: #{Build.count}"
 
 # ---------------------------------------------------------------- Shops + buy links
 # No promoted shops are seeded — the "Promoted" placement is left empty.
 shop_data = [
-  { name: "Bass Pro Shops", url: "basspro.com", promoted: false, claimed: false, blurb: "Outdoor retail giant." },
-  { name: "FishUSA", url: "fishusa.com", promoted: false, claimed: false, blurb: "Great Lakes and freshwater focus." },
-  { name: "Karls Bait and Tackle", url: "karlsbait.com", promoted: false, claimed: false, blurb: "Community-driven tackle shop." },
-  { name: "The Tackle Box", url: "thetacklebox.com", promoted: false, claimed: false, blurb: "Independent local shop, online." }
+  { name: "Bass Pro Shops", url: "basspro.com", promoted: false, claimed: false, ships_to: "US, CA, MX", blurb: "Outdoor retail giant." },
+  { name: "FishUSA", url: "fishusa.com", promoted: false, claimed: false, ships_to: "US, CA", blurb: "Great Lakes and freshwater focus." },
+  { name: "Karls Bait and Tackle", url: "karlsbait.com", promoted: false, claimed: false, ships_worldwide: true, blurb: "Community-driven tackle shop." },
+  { name: "The Tackle Box", url: "thetacklebox.com", promoted: false, claimed: false, ships_to: "US", blurb: "Independent local shop, online." }
 ]
 shops = {}
 shop_data.each do |attrs|
@@ -195,7 +241,8 @@ catch_specs = [
   { lure: "Magdraft Swimbait", variant: "Gizzard Shad", species: "chinook_salmon", user: members[2], season: :fall, clarity: :clear, water_body: :lake, wind: :light, tod: :dawn, plat: :boat, ret: :slow_roll, loc: "Lake Michigan", len: 92.0, wt: 8200, up: 84, photos: 2 },
   { lure: "DieZel MinnowZ", variant: "Redbone", species: "yellow_perch", user: members[4], season: :winter, clarity: :clear, water_body: :lake, wind: :calm, tod: :midday, plat: :boat, ret: :steady, loc: "Lake Erie", len: 30.0, wt: 450, up: 15, photos: 2 },
   { lure: "Flat Side Pro", variant: "Chartreuse Black Back", species: "smallmouth_bass", user: admin, season: :spring, clarity: :clear, water_body: :stream, wind: :light, tod: :afternoon, plat: :shore, ret: :twitch, loc: "Ozark creek", len: 40.0, wt: 1100, up: 23, photos: 1 },
-  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, plat: :boat, ret: :jerk, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: 3 }
+  { lure: "Vision 110", variant: "Sexy French Pearl", species: "muskellunge", user: members[0], season: :fall, clarity: :stained, water_body: :lake, wind: :strong, tod: :midday, plat: :boat, ret: :jerk, loc: "Lake St. Clair", len: 110.0, wt: 9000, up: 95, photos: 3 },
+  { lure: "Coltsniper Deep Sea Jig", variant: "Blue Sardine", species: "striped_bass", user: members[3], season: :fall, clarity: :clear, water_body: :river, wind: :moderate, tod: :dawn, plat: :boat, ret: :jerk, loc: "Cape Cod Canal", len: 88.0, wt: 7200, up: 58, photos: 2 }
 ]
 
 notes = [
@@ -210,7 +257,8 @@ catches = []
 catch_specs.each_with_index do |spec, i|
   lure = lures.fetch(spec[:lure])
   variant = lure.variants.find_by!(name: spec[:variant])
-  c = Catch.find_or_create_by!(user: spec[:user], variant: variant, species: species.fetch(spec[:species]), location: spec[:loc]) do |catch_rec|
+  build = variant.builds.first || lure.builds.first
+  c = Catch.find_or_create_by!(user: spec[:user], variant: variant, build: build, species: species.fetch(spec[:species]), location: spec[:loc]) do |catch_rec|
     catch_rec.season = spec[:season]
     catch_rec.clarity = spec[:clarity]
     catch_rec.water_body = spec[:water_body]

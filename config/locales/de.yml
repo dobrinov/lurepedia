@@ -14,10 +14,12 @@ de:
     page: Seite
     next: Weiter
     prev: Zurück
+    back: "Zurück"
+    close: "Schließen"
     by: von
     on: an
-    yes: Ja
-    no: Nein
+    "yes": "Ja"
+    "no": "Nein"
     verified: Verifiziert
     promoted: Gesponsert
     sponsored: Gesponsert
@@ -49,7 +51,6 @@ de:
     name: Name
     sign_in_required: Bitte melde dich an, um beizutragen.
     not_authorized: Dazu hast du keine Berechtigung.
-    sign_in_to_contribute: Zum Beitragen anmelden
     create_account: Konto erstellen
     have_account: Hast du schon ein Konto?
     no_account: Neu bei Lurepedia?
@@ -162,11 +163,14 @@ de:
     type: Typ
     depth: Zieltiefe
     action: Aktion
+    buoyancy: "Auftrieb"
+    action_varies: "Variiert"
     water: Wasser
     brand: Marke
     variants: Varianten
     variant: Variante
     tab_caught: Damit gefangen
+    tab_variations: "Varianten"
     tab_buy: Wo kaufen
     tab_history: Verlauf
     proof: Beweis, dass es funktioniert
@@ -186,7 +190,25 @@ de:
     proven_for: Bewährt für
     no_matches: Keine Köder entsprechen deinen Filtern
     size: Größe
-    weight: Gewicht
+    weight: "Gewicht"
+    color: "Farbe"
+    colors: "Farben"
+    colors_count:
+      one: "%{count} Farbe"
+      other: "%{count} Farben"
+    build: "Bauform"
+    builds: "Bauformen"
+    browse_colors: "Farben durchstöbern"
+    common_attributes: "Gemeinsame Merkmale · ganze Familie"
+    this_variation: "Diese Variante"
+    default_variation: "Standardvariante"
+    uv_glow: "UV-Leuchten"
+    best_for: "Am besten für"
+    manage_variations: "Varianten & Bauformen"
+    add_color: "Farbe hinzufügen"
+    add_build: "Bauform hinzufügen"
+    color_name: "Farbname"
+    availability: "Verfügbare Bauformen"
 
   species:
     title: Fischarten
@@ -230,7 +252,15 @@ de:
     add_title: Shop hinzufügen
     promoted_section: Gesponsert
     all_shops: Alle Shops
+    tab_lures: Köder
+    tab_history: Verlauf
+    no_lures: Noch keine Köder in diesem Shop gelistet.
     visit: Shop besuchen
+    ships_to: Liefert nach
+    ships_to_unknown: "—"
+    ships_worldwide: Weltweiter Versand
+    ships_to_hint: Leer lassen, wenn der Shop weltweit liefert.
+    worldwide: Weltweit
     claim: Shop beanspruchen
     owned_by: Im Besitz von
     added_by: Hinzugefügt von
@@ -256,9 +286,22 @@ de:
     report: Diesen Fang melden
     related: Weitere Fänge dieser Art
     photos: Fotos
+    pick_brand: Marke wählen
     pick_lure: Köder wählen
     pick_variant: Variante wählen
+    color: Farbe
     pick_species: Was hast du gefangen?
+    pick_color: "Wähle die Farbe, mit der du gefangen hast"
+    pick_build: "Bauform wählen"
+    log_title: "Fang eintragen"
+    log_this: "Diesen Fang eintragen"
+    modal_step1: "Schritt 1 von 2 · Wähle die Farbe, mit der du gefangen hast"
+    modal_step2: "Schritt 2 von 2 · Wähle Bauform & Tiefe"
+    builds_in: "Verfügbare Bauformen in"
+    no_builds: "Diese Farbe hat noch keine Bauformen."
+    variation: "Variante"
+    choose_variation: "Variante wählen"
+    change: "Ändern"
     note: Notizen
     submitted: Zur Prüfung eingereicht
     submitted_body: Danke! Dein Fang ist in der Moderationswarteschlange und erscheint nach Freigabe.
@@ -394,6 +437,8 @@ de:
 
   settings:
     title: Kontoeinstellungen
+    tab_profile: Profil
+    tab_preferences: Präferenzen
     profile: Profil
     country: Land
     language: Sprache
@@ -406,6 +451,13 @@ de:
     username: Benutzername
     username_hint: z. B. casey-rivera
     username_help: Optional. Kleinbuchstaben, Zahlen, Bindestriche. Wird in deiner Profil-URL verwendet.
+    avatar: Profilbild
+    avatar_help: PNG, JPEG, WEBP oder GIF. Bis zu 5 MB.
+    choose_image: Bild auswählen
+    no_file: Kein Bild ausgewählt
+    remove_avatar: Aktuelles Bild entfernen
+    avatar_too_large: ist zu groß (maximal 5 MB)
+    avatar_invalid_type: muss ein PNG-, JPEG-, WEBP- oder GIF-Bild sein
 
   dashboard:
     my_catches: Meine Fänge
@@ -474,7 +526,6 @@ de:
     add: Favorisieren
     remove: Nicht mehr favorisieren
     favorited: Favorisiert
-    sign_in_to_favorite: Zum Favorisieren anmelden
 
   footer:
     explore: Entdecken
@@ -484,6 +535,7 @@ de:
 
   profile:
     catches: Fänge
+    view_picture: Profilbild ansehen
     total_upvotes: Stimmen insgesamt
     member_since: Mitglied seit
     favorite_species: Lieblingsfischarten

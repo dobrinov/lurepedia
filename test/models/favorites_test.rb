@@ -7,7 +7,7 @@ class FavoritesTest < ActiveSupport::TestCase
     @type = LureType.create!(key: "crankbait")
     @lure = Lure.create!(brand: @brand, lure_type: @type, model: "DT-6")
     @species = Species.create!(key: "northern_pike")
-    @shop = Shop.create!(name: "Tackle Town")
+    @shop = Shop.create!(name: "Tackle Town", url: "tackletown.com")
   end
 
   test "user can favorite a lure, species and shop" do

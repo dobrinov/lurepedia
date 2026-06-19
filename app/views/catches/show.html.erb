@@ -6,8 +6,9 @@
       <!-- Gallery -->
       <div data-controller="gallery">
         <div class="gallery-main">
-          <% if @catch.photos.attached? %>
-            <%= image_tag @catch.photos.first.variant(resize_to_fill: [960, 720]), data: { gallery_target: "main" }, alt: species_common_name(@catch.species) %>
+          <% main_photo = catch_display_photo(@catch) %>
+          <% if main_photo %>
+            <%= image_tag main_photo.variant(resize_to_fill: [ 960, 720 ]), data: { gallery_target: "main" }, alt: species_common_name(@catch.species) %>
           <% else %>
             <div class="ph ph-catch" style="height:100%"><%= render "shared/fish_glyph" %></div>
           <% end %>
@@ -29,7 +30,7 @@
         <div class="stack" style="gap:14px">
           <% @comments.each do |comment| %>
             <div class="row" style="gap:10px;align-items:flex-start">
-              <span class="avatar" style="background:var(--surface-2);color:var(--ink-2)"><%= comment.user.initials %></span>
+              <span class="avatar" style="background:var(--surface-2);color:var(--ink-2)"><%= user_avatar(comment.user) %></span>
               <div>
                 <div class="row" style="gap:8px"><strong style="font-size:13px"><%= comment.user.name %></strong><span class="muted" style="font-size:12px"><%= l(comment.created_at.to_date, format: :long) %></span></div>
                 <div style="font-size:14px"><%= comment.body %></div>
@@ -44,7 +45,7 @@
             <%= f.submit t("catch.add_comment"), class: "btn btn-primary", style: "align-self:flex-start" %>
           <% end %>
         <% else %>
-          <p class="muted" style="margin-top:16px"><%= link_to t("auth.sign_in_to_contribute"), new_session_path %></p>
+          <p class="muted" style="margin-top:16px"><%= link_to t("catch.add_comment"), new_session_path %></p>
         <% end %>
       </div>
 
@@ -66,6 +67,10 @@
           <div class="muted" style="font-size:12px"><%= t("catch.title") %></div>
           <h1 style="font-size:22px;font-weight:700"><%= link_to species_common_name(@catch.species), species_path(@catch.species) %></h1>
           <div class="muted"><%= t("catch.on_lure", lure: "") %> <%= link_to @catch.lure.title, lure_path(@catch.lure) %></div>
+          <div class="chips" style="margin-top:6px">
+            <span class="tag"><%= @catch.variant.name %></span>
+            <span class="tag"><%= @catch.build.name %></span>
+          </div>
         </div>
         <div class="row" style="gap:8px">
           <% upvoted = @catch.upvoted_by?(current_user) %>
@@ -79,7 +84,7 @@
       <div class="card card-pad">
         <h3 style="font-size:14px;margin-bottom:12px"><%= t("catch.contributor") %></h3>
         <div class="row" style="gap:10px">
-          <span class="avatar" style="background:var(--ink);color:var(--surface-1)"><%= @catch.user.initials %></span>
+          <span class="avatar" style="background:var(--ink);color:var(--surface-1)"><%= user_avatar(@catch.user) %></span>
           <div>
             <div class="row" style="gap:6px"><%= country_flag(@catch.user.country, size: 18) %><strong style="font-size:14px"><%= @catch.user.name %></strong><% unless @catch.user.member? %><span class="role-badge role-<%= @catch.user.role %>"><%= t("admin.#{@catch.user.role}") %></span><% end %></div>
             <div class="muted" style="font-size:12px"><%= l(@catch.created_at.to_date, format: :long) %></div>

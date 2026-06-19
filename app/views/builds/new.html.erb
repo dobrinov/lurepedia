@@ -1,0 +1,8 @@
+<% content_for :title, t("lure.add_build") %>
+<div class="container" style="max-width:560px;margin:32px auto">
+  <nav class="muted" style="font-size:13px;margin-bottom:16px">
+    <%= link_to @lure.title, edit_lure_path(@lure) %> › <span><%= t("lure.add_build") %></span>
+  </nav>
+  <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:20px"><%= t("lure.add_build") %></h1>
+  <%= render "form", build: @build, submit_label: t("common.submit") %>
+</div>

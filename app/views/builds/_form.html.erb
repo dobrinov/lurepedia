@@ -1,0 +1,35 @@
+<%# locals: build, submit_label %>
+<% url = build.persisted? ? build_path(@lure, build) : builds_path(@lure) %>
+<%= form_with model: build, url: url, method: (build.persisted? ? :patch : :post) do |f| %>
+  <div class="field">
+    <%= f.label :name, t("lure.build") %>
+    <%= f.text_field :name, class: "input", required: true, placeholder: "110 SP" %>
+  </div>
+  <div class="field">
+    <%= f.label :length_mm, "#{t('lure.size')} (mm)" %>
+    <%= f.number_field :length_mm, class: "input" %>
+  </div>
+  <div class="field">
+    <%= f.label :weight_g, "#{t('lure.weight')} (g)" %>
+    <%= f.number_field :weight_g, step: :any, class: "input" %>
+  </div>
+  <div class="row" style="gap:12px">
+    <div class="field" style="flex:1">
+      <%= f.label :depth_min_cm, "#{t('lure.depth')} (cm) — min" %>
+      <%= f.number_field :depth_min_cm, class: "input" %>
+    </div>
+    <div class="field" style="flex:1">
+      <%= f.label :depth_max_cm, "#{t('lure.depth')} (cm) — max" %>
+      <%= f.number_field :depth_max_cm, class: "input" %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :action, t("lure.buoyancy") %>
+    <%= f.select :action, Build.actions.keys.map { |a| [ lure_action_label(a), a ] }, {}, class: "input" %>
+  </div>
+  <div class="field">
+    <%= f.label :water, t("lure.water") %>
+    <%= f.select :water, Build.waters.keys.map { |w| [ water_name(w), w ] }, {}, class: "input" %>
+  </div>
+  <%= f.submit submit_label, class: "btn btn-primary" %>
+<% end %>

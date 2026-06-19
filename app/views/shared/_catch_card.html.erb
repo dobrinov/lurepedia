@@ -1,8 +1,9 @@
 <%# locals: catch %>
 <%= link_to catch_path(catch), class: "card catch-card" do %>
   <div class="ph ph-catch">
-    <% if catch.photos.attached? %>
-      <%= image_tag catch.photos.first.variant(resize_to_fill: [480, 360]), alt: species_common_name(catch.species), loading: "lazy" %>
+    <% display_photo = catch_display_photo(catch) %>
+    <% if display_photo %>
+      <%= image_tag display_photo.variant(resize_to_fill: [ 480, 360 ]), alt: species_common_name(catch.species), loading: "lazy" %>
     <% else %>
       <%= render "shared/fish_glyph" %>
     <% end %>
@@ -12,11 +13,12 @@
         <%= catch.photos.size %>
       </span>
     <% end %>
-    <span style="position:absolute;bottom:9px;left:9px;background:rgba(255,255,255,.92);color:var(--ink-2);font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px"><%= catch.user.initials %></span>
+    <span class="avatar avatar-sm" style="position:absolute;bottom:9px;left:9px;box-shadow:0 0 0 2px rgba(255,255,255,.7)"><%= user_avatar(catch.user, size: 24) %></span>
   </div>
   <div class="card-body">
     <div style="font-weight:600;font-size:14.5px"><%= species_common_name(catch.species) %></div>
     <div class="muted" style="font-size:12.5px"><%= t("catch.on_lure", lure: catch.lure.title) %></div>
+    <div class="muted" style="font-size:11.5px"><%= catch.variant.name %> · <%= catch.build.name %></div>
     <div class="chips">
       <% catch.condition_pairs.first(4).each do |group, value| %><span class="tag"><%= condition_name(group, value) %></span><% end %>
     </div>

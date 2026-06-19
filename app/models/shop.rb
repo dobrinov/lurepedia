@@ -8,6 +8,7 @@ class Shop < ApplicationRecord
   has_many :revisions, as: :subject, dependent: :destroy
 
   validates :name, presence: true
+  validates :url, presence: true
 
   scope :promoted_first, -> { order(promoted: :desc, name: :asc) }
   scope :promoted, -> { where(promoted: true) }
@@ -15,6 +16,12 @@ class Shop < ApplicationRecord
 
   def claimed?
     claimed
+  end
+
+  # Country codes (uppercased) this shop ships to, parsed from the
+  # comma-separated `ships_to` string.
+  def ships_to_countries
+    ships_to.to_s.split(",").map { |c| c.strip.upcase }.reject(&:blank?)
   end
 
   private

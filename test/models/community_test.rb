@@ -9,7 +9,7 @@ class CommunityTest < ActiveSupport::TestCase
     @species = Species.create!(key: "largemouth_bass")
     @user = User.create!(name: "Marcus Lee", email_address: "m@example.com", password: "secret123")
     @other = User.create!(name: "Dana Powell", email_address: "d@example.com", password: "secret123")
-    @catch = Catch.create!(user: @user, variant: @variant, species: @species, season: :spring, clarity: :clear)
+    @catch = create_catch(user: @user, variant: @variant, species: @species, season: :spring, clarity: :clear)
   end
 
   test "catch counters bump variant, species and lure" do

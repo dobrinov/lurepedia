@@ -11,7 +11,7 @@
     <div>
       <div class="filter-label"><%= t("leaderboard.rank_by") %></div>
       <div class="chips">
-        <% { catches: "metric_catches", upvotes: "metric_upvotes", length: "metric_length" }.each do |metric, key| %>
+        <% { length: "metric_length", catches: "metric_catches", upvotes: "metric_upvotes" }.each do |metric, key| %>
           <%= link_to t("leaderboard.#{key}"), leaderboard_path(metric: metric, species: params[:species]), class: "chip #{'active' if @metric == metric}" %>
         <% end %>
       </div>

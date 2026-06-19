@@ -12,5 +12,18 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    # Ensure a lure has a build (catches require a color + a build).
+    def ensure_build(lure, **attrs)
+      lure.builds.first || lure.builds.create!({ name: "Standard" }.merge(attrs))
+    end
+
+    # Create a catch against a (color, build) pair, defaulting the build to the
+    # lure's standard one and recording its availability for the color.
+    def create_catch(variant:, species:, user:, build: nil, **attrs)
+      build ||= ensure_build(variant.lure)
+      VariantBuild.find_or_create_by!(variant: variant, build: build)
+      Catch.create!(user: user, variant: variant, build: build, species: species, **attrs)
+    end
   end
 end

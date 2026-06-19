@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_18_000010) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -68,6 +68,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
     t.index ["slug"], name: "index_brands_on_slug", unique: true
   end
 
+  create_table "builds", force: :cascade do |t|
+    t.integer "action", default: 0, null: false
+    t.integer "catches_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.integer "depth_max_cm"
+    t.integer "depth_min_cm"
+    t.integer "length_mm"
+    t.integer "lure_id", null: false
+    t.string "name", null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.integer "water", default: 0, null: false
+    t.decimal "weight_g", precision: 8, scale: 2
+    t.index ["lure_id"], name: "index_builds_on_lure_id"
+  end
+
   create_table "buy_links", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "lure_id", null: false
@@ -79,6 +95,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
   end
 
   create_table "catches", force: :cascade do |t|
+    t.integer "build_id", null: false
     t.integer "clarity"
     t.integer "comments_count", default: 0, null: false
     t.datetime "created_at", null: false
@@ -97,6 +114,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
     t.integer "water_body"
     t.decimal "weight_g", precision: 8, scale: 2
     t.integer "wind"
+    t.index ["build_id"], name: "index_catches_on_build_id"
     t.index ["species_id"], name: "index_catches_on_species_id"
     t.index ["user_id"], name: "index_catches_on_user_id"
     t.index ["variant_id"], name: "index_catches_on_variant_id"
@@ -146,20 +164,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
   end
 
   create_table "lures", force: :cascade do |t|
-    t.integer "action", default: 0, null: false
     t.string "action_video_url"
     t.text "blurb"
     t.integer "brand_id", null: false
     t.integer "catches_count", default: 0, null: false
     t.datetime "created_at", null: false
-    t.integer "depth_max_cm"
-    t.integer "depth_min_cm"
+    t.integer "default_variant_id"
     t.integer "lure_type_id", null: false
     t.string "model", null: false
     t.string "slug", null: false
     t.datetime "updated_at", null: false
-    t.integer "water", default: 0, null: false
     t.index ["brand_id"], name: "index_lures_on_brand_id"
+    t.index ["default_variant_id"], name: "index_lures_on_default_variant_id"
     t.index ["lure_type_id"], name: "index_lures_on_lure_type_id"
     t.index ["slug"], name: "index_lures_on_slug", unique: true
   end
@@ -222,6 +238,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
     t.integer "lure_count", default: 0, null: false
     t.string "name", null: false
     t.boolean "promoted", default: false, null: false
+    t.string "ships_to"
+    t.boolean "ships_worldwide", default: false, null: false
     t.string "slug", null: false
     t.datetime "updated_at", null: false
     t.string "url"
@@ -272,15 +290,23 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_000006) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "variant_builds", force: :cascade do |t|
+    t.integer "build_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "variant_id", null: false
+    t.index ["build_id"], name: "index_variant_builds_on_build_id"
+    t.index ["variant_id", "build_id"], name: "index_variant_builds_on_variant_id_and_build_id", unique: true
+  end
+
   create_table "variants", force: :cascade do |t|
-    t.integer "action", default: 0, null: false
+    t.string "best_for"
     t.integer "catches_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.integer "lure_id", null: false
     t.string "name", null: false
-    t.integer "size_mm"
     t.datetime "updated_at", null: false
-    t.decimal "weight_g", precision: 8, scale: 2
+    t.boolean "uv_glow", default: false, null: false
     t.index ["lure_id"], name: "index_variants_on_lure_id"
   end
 

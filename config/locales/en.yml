@@ -14,10 +14,12 @@ en:
     page: Page
     next: Next
     prev: Previous
+    back: Back
+    close: Close
     by: by
     on: on
-    yes: Yes
-    no: No
+    "yes": "Yes"
+    "no": "No"
     verified: Verified
     promoted: Promoted
     sponsored: Sponsored
@@ -68,7 +70,6 @@ en:
     add: Favorite
     remove: Unfavorite
     favorited: Favorited
-    sign_in_to_favorite: Sign in to favorite
 
   footer:
     explore: Explore
@@ -103,7 +104,6 @@ en:
     name: Name
     sign_in_required: Please sign in to contribute.
     not_authorized: You don't have permission to do that.
-    sign_in_to_contribute: Sign in to contribute
     create_account: Create account
     have_account: Already have an account?
     no_account: New to Lurepedia?
@@ -216,11 +216,14 @@ en:
     type: Type
     depth: Target depth
     action: Action
+    buoyancy: "Buoyancy"
+    action_varies: "Varies"
     water: Water
     brand: Brand
     variants: Variants
     variant: Variant
     tab_caught: Caught on it
+    tab_variations: "Variations"
     tab_buy: Where to buy
     tab_history: History
     proof: Proof it works
@@ -241,6 +244,24 @@ en:
     no_matches: No lures match your filters
     size: Size
     weight: Weight
+    color: Color
+    colors: Colors
+    colors_count:
+      one: "%{count} color"
+      other: "%{count} colors"
+    build: Build
+    builds: Builds
+    browse_colors: Browse colors
+    common_attributes: Common attributes · whole family
+    this_variation: This variation
+    default_variation: Default variation
+    uv_glow: UV glow
+    best_for: Best for
+    manage_variations: Variations & builds
+    add_color: Add a color
+    add_build: Add a build
+    color_name: Color name
+    availability: Available builds
 
   species:
     title: Species
@@ -284,7 +305,15 @@ en:
     add_title: Add a shop
     promoted_section: Promoted
     all_shops: All shops
+    tab_lures: Lures
+    tab_history: History
+    no_lures: No lures listed at this shop yet.
     visit: Visit shop
+    ships_to: Ships to
+    ships_to_unknown: "—"
+    ships_worldwide: Ships worldwide
+    ships_to_hint: Leave blank if the shop ships worldwide.
+    worldwide: Worldwide
     claim: Claim a shop
     owned_by: Owned by
     added_by: Added by
@@ -310,9 +339,22 @@ en:
     report: Report this catch
     related: More catches of this species
     photos: Photos
+    pick_brand: Pick a brand
     pick_lure: Pick a lure
     pick_variant: Pick a variant
+    color: Color
+    pick_color: Pick the color you caught on
+    pick_build: Pick a build
     pick_species: What did you catch?
+    log_title: Log a catch
+    log_this: Log this catch
+    modal_step1: "Step 1 of 2 · Choose the color you caught on"
+    modal_step2: "Step 2 of 2 · Choose the build & depth"
+    builds_in: "Builds available in"
+    no_builds: This color has no builds yet.
+    variation: Variation
+    choose_variation: Choose a variation
+    change: Change
     note: Notes
     submitted: Submitted for review
     submitted_body: Thanks! Your catch is in the moderation queue and will appear once approved.
@@ -448,6 +490,8 @@ en:
 
   settings:
     title: Account settings
+    tab_profile: Profile
+    tab_preferences: Preferences
     profile: Profile
     country: Country
     language: Language
@@ -460,6 +504,13 @@ en:
     username: Username
     username_hint: e.g. casey-rivera
     username_help: Optional. Lowercase letters, numbers, hyphens. Used in your profile URL.
+    avatar: Profile picture
+    avatar_help: PNG, JPEG, WEBP, or GIF. Up to 5 MB.
+    choose_image: Choose image
+    no_file: No image selected
+    remove_avatar: Remove current picture
+    avatar_too_large: is too large (5 MB maximum)
+    avatar_invalid_type: must be a PNG, JPEG, WEBP, or GIF image
 
   dashboard:
     my_catches: My catches
@@ -469,6 +520,7 @@ en:
 
   profile:
     catches: Catches
+    view_picture: View profile picture
     total_upvotes: Total upvotes
     member_since: Member since
     favorite_species: Favorite species

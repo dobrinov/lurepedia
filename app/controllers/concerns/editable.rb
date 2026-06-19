@@ -36,9 +36,14 @@ module Editable
     attrs.to_h.each_with_object({}) do |(key, value), diff|
       next unless record.respond_to?(key)
 
-      type = record.class.type_for_attribute(key.to_s)
-      old_value = record.public_send(key)
-      new_value = type ? type.cast(value) : value
+      if key.to_s.end_with?("_ids")
+        old_value = Array(record.public_send(key)).map(&:to_i).sort
+        new_value = Array(value).reject(&:blank?).map(&:to_i).sort
+      else
+        type = record.class.type_for_attribute(key.to_s)
+        old_value = record.public_send(key)
+        new_value = type ? type.cast(value) : value
+      end
       diff[key.to_s] = [ old_value, new_value ] unless old_value == new_value
     end
   end

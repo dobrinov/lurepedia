@@ -1,10 +1,22 @@
 <% content_for :title, @user.name %>
 <div class="container" style="padding-top:24px">
   <div class="page-head">
-    <div class="row" style="gap:12px;align-items:center">
-      <%= country_flag(@user.country, size: 22) %>
+    <div class="row" style="gap:16px;align-items:center">
+      <% if @user.avatar.attached? && @user.avatar.variable? %>
+        <div data-controller="modal">
+          <button type="button" class="avatar avatar-xl" data-action="modal#open" title="<%= t("profile.view_picture") %>"><%= user_avatar(@user, size: 72) %></button>
+          <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
+            <div class="lightbox">
+              <button type="button" class="lightbox-close" data-action="modal#close" aria-label="<%= t("common.close") %>">&times;</button>
+              <%= image_tag @user.avatar.variant(resize_to_limit: [ 960, 960 ]), alt: @user.name %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <span class="avatar avatar-xl"><%= user_avatar(@user, size: 72) %></span>
+      <% end %>
       <div>
-        <h1><%= @user.name %></h1>
+        <div class="row" style="gap:8px;align-items:center"><%= country_flag(@user.country, size: 22) %><h1><%= @user.name %></h1></div>
         <% if @user.bio.present? %><p class="muted"><%= @user.bio %></p><% end %>
         <div class="sub muted"><%= t("profile.member_since") %> <%= l(@user.created_at.to_date, format: :long) %></div>
       </div>

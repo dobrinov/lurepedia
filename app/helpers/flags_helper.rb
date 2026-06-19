@@ -20,6 +20,20 @@ module FlagsHelper
     end
   end
 
+  # Circular globe badge used to mark shops that ship worldwide.
+  def worldwide_flag(size: 20)
+    raw(
+      %(<span class="flag" title="#{t("shop.worldwide")}" style="display:inline-flex;align-items:center;) +
+      %(justify-content:center;width:#{size}px;height:#{size}px;border-radius:999px;background:#e0f2fe;) +
+      %(color:#0369a1;flex-shrink:0">) +
+      %(<svg width="#{(size * 0.78).round}" height="#{(size * 0.78).round}" viewBox="0 0 24 24" fill="none" ) +
+      %(stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">) +
+      %(<circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path>) +
+      %(<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>) +
+      %(</svg></span>)
+    )
+  end
+
   def flag_available?(code)
     @flag_cache ||= {}
     @flag_cache[code] ||= File.exist?(FLAG_DIR.join("#{code.to_s.downcase}.svg")) ? :yes : :no
