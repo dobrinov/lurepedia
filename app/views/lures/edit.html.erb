@@ -52,7 +52,7 @@
                 </td>
                 <td class="muted"><%= v.best_for %></td>
                 <td style="text-align:right;width:1%;white-space:nowrap">
-                  <%= link_to edit_affordance_label, edit_variant_path(@lure, v), class: "btn btn-sm" %>
+                  <%= link_to edit_affordance_label(v), edit_variant_path(@lure, v), class: "btn btn-sm" %>
                 </td>
               </tr>
             <% end %>
@@ -82,7 +82,7 @@
                 <td><%= lure_action_label(b.action) %></td>
                 <td><%= water_name(b.water) %></td>
                 <td style="text-align:right;width:1%;white-space:nowrap">
-                  <%= link_to edit_affordance_label, edit_build_path(@lure, b), class: "btn btn-sm" %>
+                  <%= link_to edit_affordance_label(b), edit_build_path(@lure, b), class: "btn btn-sm" %>
                 </td>
               </tr>
             <% end %>

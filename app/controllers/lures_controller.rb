@@ -61,8 +61,12 @@ class LuresController < ApplicationController
 
     if brand && @lure.save
       @lure.revisions.create!(user: current_user, summary: t("provenance.created"))
-      ModerationItem.create!(subject: @lure, kind: :catalog, submitter: current_user)
-      redirect_to lure_path(@lure), notice: t("catch.submitted")
+      if can_add_directly?(brand)
+        redirect_to lure_path(@lure), notice: t("contribute.added")
+      else
+        ModerationItem.create!(subject: @lure, kind: :catalog, submitter: current_user)
+        redirect_to lure_path(@lure), notice: t("catch.submitted")
+      end
     else
       flash.now[:alert] = @lure.errors.full_messages.to_sentence.presence || t("brand.title")
       render :new, status: :unprocessable_entity

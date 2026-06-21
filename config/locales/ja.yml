@@ -357,12 +357,14 @@ ja:
     suggest_edit: 修正を提案
     edit_title: "%{name} を編集"
     edit_saved: "変更を保存しました"
+    added: "カタログに追加しました"
     suggest_title: "%{name} の修正を提案"
     suggest_note: 提案はモデレーターが確認します。
     suggested: 提案を送信しました
     suggested_body: ありがとうございます — モデレーターが提案を確認します。
     add_photos: 写真を追加
     moderation_note: 投稿は公開前に審査されます。
+    direct_note: ブランド所有者として、これは審査なしで即時公開されます。
 
   claim:
     title: "%{name} を申請"

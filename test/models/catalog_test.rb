@@ -62,6 +62,19 @@ class CatalogTest < ActiveSupport::TestCase
     assert_equal "Largemouth Bass", @species.common_name
   end
 
+  test "brand managed_by? only the holder of a verified claim" do
+    owner = users(:two)
+    assert_not @brand.managed_by?(owner), "unclaimed brand has no manager"
+
+    claim = @brand.create_claim!(user: owner, email: owner.email_address)
+    assert_not @brand.reload.managed_by?(owner), "a pending claim does not confer management"
+
+    claim.verify!
+    assert @brand.reload.managed_by?(owner)
+    assert_not @brand.managed_by?(@user), "a different user does not manage the brand"
+    assert_not @brand.managed_by?(nil)
+  end
+
   test "shop promoted ordering" do
     a = Shop.create!(name: "Regular", url: "regular.com")
     b = Shop.create!(name: "Promo", url: "promo.com", promoted: true)

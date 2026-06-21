@@ -410,12 +410,14 @@ en:
     suggest_edit: Suggest an edit
     edit_title: "Edit %{name}"
     edit_saved: "Changes saved"
+    added: "Added to the catalog"
     suggest_title: "Suggest an edit to %{name}"
     suggest_note: Your suggestion will be reviewed by a moderator.
     suggested: Suggestion submitted
     suggested_body: Thanks — a moderator will review your suggestion.
     add_photos: Add photos
     moderation_note: Submissions are reviewed before they go live.
+    direct_note: As the brand owner, this goes live immediately — no review needed.
 
   claim:
     title: "Claim %{name}"

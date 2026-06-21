@@ -7,13 +7,14 @@ module Editable
 
   private
 
-  # Admins edit directly (no review); everyone else files a reviewed suggestion.
+  # Admins and verified brand owners edit directly (no review); everyone else
+  # files a reviewed suggestion.
   def commit_edit(record, attrs, name, redirect_path)
     return unless require_contribution(:catalog)
 
     changeset = build_changeset(record, attrs)
 
-    if current_user&.admin?
+    if can_edit_directly?(record)
       if record.update(attrs)
         record.revisions.create!(user: current_user, summary: "Edited #{name}", changeset: changeset)
         redirect_to redirect_path, notice: t("contribute.edit_saved")
@@ -48,8 +49,41 @@ module Editable
     end
   end
 
-  # Label shown on edit affordances: admins "Edit", others "Suggest an edit".
-  def edit_affordance_label
-    current_user&.admin? ? t("common.edit") : t("contribute.suggest_edit")
+  # Direct, unreviewed edits are reserved for admins and the verified owner of
+  # the brand the record belongs to.
+  def can_edit_directly?(record)
+    return false unless current_user
+    return true if current_user.admin?
+
+    owning_brand(record)&.managed_by?(current_user) || false
+  end
+
+  # Whether the current user may publish a NEW catalog record under this brand
+  # without review — admins and the brand's verified owner. Mirrors
+  # can_edit_directly? for records that don't exist yet.
+  def can_add_directly?(brand)
+    return false unless current_user
+    return true if current_user.admin?
+
+    brand&.managed_by?(current_user) || false
+  end
+
+  # The brand whose ownership confers direct-edit rights over this record, if
+  # any. Shared catalog records (e.g. species) have no owning brand.
+  def owning_brand(record)
+    case record
+    when Brand then record
+    when Lure then record.brand
+    when Variant, Build then record.lure&.brand
+    end
+  end
+
+  # Label shown on edit affordances: "Edit" for those who can edit the record
+  # directly (admins, brand owners), "Suggest an edit" for everyone else.
+  # Without a record it falls back to the admin check for non record-specific
+  # affordances.
+  def edit_affordance_label(record = nil)
+    direct = record ? can_edit_directly?(record) : current_user&.admin?
+    direct ? t("common.edit") : t("contribute.suggest_edit")
   end
 end

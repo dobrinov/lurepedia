@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :bans, dependent: :destroy
   has_many :revisions, dependent: :nullify
+  has_many :claims, dependent: :destroy
 
   enum :role, { member: 0, moderator: 1, admin: 2 }, default: :member
   enum :length_units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: :length
@@ -44,6 +45,12 @@ class User < ApplicationRecord
 
   def staff?
     moderator? || admin?
+  end
+
+  # Brand ids this user owns through a verified claim — submissions to these
+  # brands skip review (see Editable#can_add_directly?).
+  def owned_brand_ids
+    claims.where(status: :verified, claimable_type: "Brand").pluck(:claimable_id)
   end
 
   def can_moderate?

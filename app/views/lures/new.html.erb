@@ -1,6 +1,12 @@
 <% content_for :title, t("lure.add_title") %>
-<div class="container" style="max-width:640px;margin:32px auto">
+<div class="container" style="max-width:640px;margin:32px auto"
+     data-controller="catalog-review-note"
+     data-catalog-review-note-owned-ids-value="<%= current_user.owned_brand_ids.to_json %>"
+     data-catalog-review-note-admin-value="<%= current_user.admin? %>"
+     data-catalog-review-note-reviewed-value="<%= t("contribute.moderation_note") %>"
+     data-catalog-review-note-direct-value="<%= t("contribute.direct_note") %>"
+     data-action="change->catalog-review-note#update">
   <h1 style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px"><%= t("lure.add_title") %></h1>
-  <p class="muted" style="margin-bottom:24px"><%= t("contribute.moderation_note") %></p>
+  <p class="muted" style="margin-bottom:24px" data-catalog-review-note-target="note"><%= current_user.admin? ? t("contribute.direct_note") : t("contribute.moderation_note") %></p>
   <%= render "form", lure: @lure, submit_label: t("common.submit") %>
 </div>

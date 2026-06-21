@@ -357,12 +357,14 @@ de:
     suggest_edit: Änderung vorschlagen
     edit_title: "%{name} bearbeiten"
     edit_saved: "Änderungen gespeichert"
+    added: "Zum Katalog hinzugefügt"
     suggest_title: "Änderung zu %{name} vorschlagen"
     suggest_note: Dein Vorschlag wird von einem Moderator geprüft.
     suggested: Vorschlag eingereicht
     suggested_body: Danke — ein Moderator prüft deinen Vorschlag.
     add_photos: Fotos hinzufügen
     moderation_note: Beiträge werden vor der Veröffentlichung geprüft.
+    direct_note: Als Markeninhaber wird dies sofort veröffentlicht — ohne Prüfung.
 
   claim:
     title: "%{name} beanspruchen"

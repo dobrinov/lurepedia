@@ -74,7 +74,7 @@
 
       <div class="row" style="flex-wrap:wrap;gap:10px">
         <% if signed_in? %>
-          <%= link_to edit_affordance_label, edit_lure_path(@lure), class: "btn" %>
+          <%= link_to edit_affordance_label(@lure), edit_lure_path(@lure), class: "btn" %>
         <% else %>
           <%= link_to edit_affordance_label, new_session_path, class: "btn" %>
         <% end %>
