@@ -48,6 +48,7 @@ de:
     sign_out: Abmelden
     email: E-Mail
     password: Passwort
+    password_confirmation: Passwort bestätigen
     name: Name
     sign_in_required: Bitte melde dich an, um beizutragen.
     not_authorized: Dazu hast du keine Berechtigung.
@@ -436,7 +437,7 @@ de:
     you: DU
 
   settings:
-    title: Kontoeinstellungen
+    title: Einstellungen
     tab_profile: Profil
     tab_preferences: Präferenzen
     profile: Profil
@@ -535,7 +536,13 @@ de:
 
   profile:
     catches: Fänge
+    tab_catches: Fänge
+    tab_favorites: Favoriten
+    tab_contributions: Beiträge
+    contributions: Beiträge
+    no_contributions: Noch keine Beiträge.
     view_picture: Profilbild ansehen
+    change_picture: Profilbild hochladen/ändern
     total_upvotes: Stimmen insgesamt
     member_since: Mitglied seit
     favorite_species: Lieblingsfischarten
@@ -585,3 +592,30 @@ de:
       manage: Sperren verwalten
       created: Sperre verhängt.
       revoked: Sperre aufgehoben.
+  country:
+    US: Vereinigte Staaten
+    CA: Kanada
+    GB: Vereinigtes Königreich
+    DE: Deutschland
+    FR: Frankreich
+    ES: Spanien
+    IT: Italien
+    NL: Niederlande
+    SE: Schweden
+    NO: Norwegen
+    PL: Polen
+    RU: Russland
+    BG: Bulgarien
+    GR: Griechenland
+    JP: Japan
+    CN: China
+    BR: Brasilien
+    MX: Mexiko
+  activerecord:
+    attributes:
+      user:
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+    errors:
+      messages:
+        confirmation: stimmt nicht mit %{attribute} überein

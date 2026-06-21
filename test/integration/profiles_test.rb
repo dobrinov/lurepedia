@@ -39,6 +39,19 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_select "body", text: /#{@lure.model}/
   end
 
+  test "favorites tab lists favorited records" do
+    get profile_path(@owner, tab: "favorites", locale: :en)
+    assert_response :success
+    assert_select "body", text: /#{@lure.model}/
+  end
+
+  test "contributions tab lists the user's revisions" do
+    @lure.revisions.create!(user: @owner, summary: "Suggested an edit to DT-6", changeset: { "model" => [ "DT-6", "DT-7" ] })
+    get profile_path(@owner, tab: "contributions", locale: :en)
+    assert_response :success
+    assert_select "body", text: /Suggested an edit to DT-6/
+  end
+
   test "my/catches redirects to the owner's profile" do
     sign_in_as(@owner)
     get my_catches_path(locale: :en)
@@ -58,7 +71,39 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_select "input[name=?]", "user[username]"
 
     patch settings_path(locale: :en), params: { user: { username: "marcus-l" } }
-    assert_equal "marcus-l", @owner.reload.username
+    @owner.reload
+    assert_redirected_to profile_path(@owner, tab: "settings", locale: @owner.locale)
+    assert_equal "marcus-l", @owner.username
+  end
+
+  test "owner settings tab merges account and preference fields" do
+    sign_in_as(@owner)
+    get profile_path(@owner, tab: "settings", locale: :en)
+    assert_response :success
+    assert_select "input[name=?]", "user[username]"
+    assert_select "select[name=?]", "user[length_units]"
+  end
+
+  test "non-owner cannot reach the settings tab and falls back to catches" do
+    get profile_path(@owner, tab: "settings", locale: :en)
+    assert_response :success
+    assert_select "input[name=?]", "user[username]", count: 0
+    assert_select ".grid-catches"
+  end
+
+  test "saving from the sidebar returns to the originating tab" do
+    sign_in_as(@owner)
+    patch settings_path(locale: :en), params: { return_tab: "contributions", user: { depth_units: "metric" } }
+    @owner.reload
+    assert_redirected_to profile_path(@owner, tab: "contributions", locale: @owner.locale)
+    assert @owner.depth_metric?
+  end
+
+  test "owner can change the avatar from the sidebar" do
+    sign_in_as(@owner)
+    get profile_path(@owner, tab: "catches", locale: :en)
+    assert_select "form .profile-photo-overlay"
+    assert_select "form input[type=file][name=?]", "user[avatar]"
   end
 
   test "invalid username is rejected with an error" do
@@ -75,7 +120,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert @owner.reload.avatar.attached?
 
     get profile_path(@owner, locale: :en)
-    assert_select ".avatar img"
+    assert_select ".profile-photo-edit img"
   end
 
   test "rejects a non-image avatar" do

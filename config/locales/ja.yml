@@ -48,6 +48,7 @@ ja:
     sign_out: ログアウト
     email: メール
     password: パスワード
+    password_confirmation: パスワードの確認
     name: 名前
     sign_in_required: 投稿するにはログインしてください。
     not_authorized: この操作の権限がありません。
@@ -436,7 +437,7 @@ ja:
     you: あなた
 
   settings:
-    title: アカウント設定
+    title: 設定
     tab_profile: プロフィール
     tab_preferences: 環境設定
     profile: プロフィール
@@ -478,7 +479,13 @@ ja:
 
   profile:
     catches: 釣果
+    tab_catches: 釣果
+    tab_favorites: お気に入り
+    tab_contributions: 貢献
+    contributions: 貢献
+    no_contributions: まだ貢献がありません。
     view_picture: プロフィール写真を表示
+    change_picture: プロフィール写真をアップロード/変更
     total_upvotes: 総いいね数
     member_since: 登録日
     favorite_species: お気に入りの魚種
@@ -585,3 +592,30 @@ ja:
     chinook_salmon:
       common: キングサーモン
       habitat: 冷たい太平洋の川や湖。力強い回遊魚。
+  country:
+    US: アメリカ合衆国
+    CA: カナダ
+    GB: イギリス
+    DE: ドイツ
+    FR: フランス
+    ES: スペイン
+    IT: イタリア
+    NL: オランダ
+    SE: スウェーデン
+    NO: ノルウェー
+    PL: ポーランド
+    RU: ロシア
+    BG: ブルガリア
+    GR: ギリシャ
+    JP: 日本
+    CN: 中国
+    BR: ブラジル
+    MX: メキシコ
+  activerecord:
+    attributes:
+      user:
+        password: パスワード
+        password_confirmation: パスワードの確認
+    errors:
+      messages:
+        confirmation: が%{attribute}と一致しません

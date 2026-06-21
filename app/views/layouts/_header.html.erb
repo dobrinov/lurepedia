@@ -46,7 +46,7 @@
             <div class="dropdown-divider"></div>
             <%= link_to t("catch.add_title"), new_catch_path %>
             <%= link_to t("dashboard.my_profile"), profile_path(current_user) %>
-            <%= link_to t("settings.title"), edit_settings_path %>
+            <%= link_to t("settings.title"), profile_path(current_user, tab: "settings") %>
             <% if current_user.can_moderate? %>
               <div class="dropdown-divider"></div>
               <%= link_to t("moderation.title"), moderation_index_path %>

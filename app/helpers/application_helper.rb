@@ -36,12 +36,14 @@ module ApplicationHelper
   }.freeze
 
   def country_options
-    COUNTRIES.map { |code, name| [ "#{name}", code ] }
+    COUNTRIES.keys.map { |code| [ country_name(code), code ] }.sort_by { |name, _| name }
   end
 
-  # Full country name for a code, falling back to the code itself.
+  # Translated country name for a code, falling back to the English name and
+  # then the code itself.
   def country_name(code)
-    COUNTRIES[code.to_s.upcase] || code.to_s.upcase
+    code = code.to_s.upcase
+    I18n.t("country.#{code}", default: COUNTRIES[code] || code)
   end
 
   # Inner content for an `.avatar` element: the user's uploaded picture when

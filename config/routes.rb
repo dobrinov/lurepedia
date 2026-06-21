@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     get "leaderboard", to: "leaderboard#index"
 
     # Public profiles
-    get "u/:handle", to: "profiles#show", as: :profile
+    get "u/:handle(/:tab)", to: "profiles#show", as: :profile, constraints: { tab: /catches|favorites|contributions|settings/ }
 
     # Edit history detail (git-style diff of a single revision)
     resources :revisions, only: :show

@@ -2,99 +2,113 @@
 <% content_for :head, tag.meta(name: "description", content: "#{@species.common_name} (#{@species.scientific_name}): #{@species.habitat}".truncate(155)) %>
 
 <div class="container" style="padding-top:24px">
-  <div class="detail-hero">
-    <div class="card ph ph-lure" style="aspect-ratio:4/3">
-      <% if @species.photo.attached? %>
-        <%= image_tag @species.photo.variant(resize_to_fill: [720, 540]), alt: @species.common_name %>
-      <% else %>
-        <%= render "shared/fish_glyph" %>
-      <% end %>
-    </div>
-    <div class="stack" style="gap:12px">
-      <h1 style="font-size:30px;font-weight:700;letter-spacing:-.02em"><%= @species.common_name %></h1>
-      <div class="muted" style="font-style:italic"><%= @species.scientific_name %></div>
+  <div class="profile-grid">
+    <!-- Left column: identity -->
+    <aside class="profile-aside stack" style="gap:14px">
+      <div class="card ph ph-lure" style="aspect-ratio:4/3">
+        <% if @species.photo.attached? %>
+          <%= image_tag @species.photo.variant(resize_to_fill: [ 720, 540 ]), alt: @species.common_name %>
+        <% else %>
+          <%= render "shared/fish_glyph" %>
+        <% end %>
+      </div>
+
+      <div class="stack" style="gap:6px">
+        <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em"><%= @species.common_name %></h1>
+        <div class="muted" style="font-style:italic"><%= @species.scientific_name %></div>
+      </div>
+
       <div class="chips">
         <span class="tag"><%= water_name(@species.water) %></span>
         <span class="tag"><%= t("species.lures_count", count: @species.lures_count) %></span>
         <span class="tag"><%= t("lure.catches_count", count: @species.catches_count) %></span>
       </div>
+
       <% if @species.habitat.present? %><p class="muted"><%= @species.habitat %></p><% end %>
       <% if @species.wikipedia_url.present? %>
         <p><%= link_to safe_join([ t("species.wikipedia"), external_link_icon ]), @species.wikipedia_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %></p>
       <% end %>
-      <div class="row">
+
+      <div class="stack" style="gap:10px">
         <%= link_to t("catch.add_title"), (signed_in? ? new_catch_path(species: @species.slug) : new_session_path), class: "btn btn-primary" %>
-        <% if signed_in? %>
-          <%= link_to edit_affordance_label, edit_species_path(@species), class: "btn" %>
-        <% else %>
-          <%= link_to edit_affordance_label, new_session_path, class: "btn" %>
+        <div class="row" style="gap:10px">
+          <% if signed_in? %>
+            <%= link_to edit_affordance_label, edit_species_path(@species), class: "btn" %>
+          <% else %>
+            <%= link_to edit_affordance_label, new_session_path, class: "btn" %>
+          <% end %>
+          <%= render "shared/favorite_button", favoritable: @species %>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right column: tabbed content -->
+    <div>
+      <% tabs = [
+           [ t("species.tab_lures"), species_path(@species), @tab == "lures" ],
+           [ t("species.tab_catches"), species_path(@species, tab: "catches"), @tab == "catches" ],
+           [ t("species.tab_leaderboard"), species_path(@species, tab: "leaderboard"), @tab == "leaderboard" ],
+           [ t("species.tab_history"), species_path(@species, tab: "history"), @tab == "history" ]
+         ] %>
+      <%= render "shared/tabs", tabs: tabs %>
+
+      <div style="margin-top:24px">
+        <% case @tab %>
+        <% when "lures" %>
+          <% if @lures.any? %>
+            <div class="grid-cards">
+              <% @lures.each do |lure| %><%= render "shared/lure_card", lure: lure %><% end %>
+            </div>
+          <% else %>
+            <div class="empty-state">
+              <h3><%= t("species.no_proven_lures") %></h3>
+              <p><%= t("species.be_first_lure") %></p>
+              <%= link_to t("catch.add_title"), (signed_in? ? new_catch_path(species: @species.slug) : new_session_path), class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        <% when "catches" %>
+          <div class="grid-catches">
+            <%= render "shared/add_catch_card", prefill: { species: @species.slug } %>
+            <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+          </div>
+        <% when "leaderboard" %>
+          <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
+        <% when "history" %>
+          <% revisions = @species.revisions.newest_first.to_a %>
+          <% if revisions.any? %>
+            <div class="card">
+              <table class="lb-table">
+                <thead><tr><th><%= t("provenance.col_change") %></th><th><%= t("provenance.col_contributor") %></th><th><%= t("provenance.col_date") %></th></tr></thead>
+                <tbody>
+                  <% revisions.each do |rev| %>
+                    <tr>
+                      <td>
+                        <% if rev.edit? %>
+                          <%= link_to t("provenance.edited"), revision_path(rev), style: "font-weight:600" %>
+                        <% else %>
+                          <%= rev.summary %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if rev.user %>
+                          <%= link_to rev.user.name, profile_path(rev.user) %>
+                        <% else %>
+                          <%= t("common.none") %>
+                        <% end %>
+                      </td>
+                      <td style="white-space:nowrap"><%= l(rev.created_at, format: :long) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="card card-pad">
+              <p class="muted" style="font-size:13px"><%= t("provenance.created") %></p>
+            </div>
+          <% end %>
         <% end %>
-        <%= render "shared/favorite_button", favoritable: @species %>
       </div>
     </div>
   </div>
-
-  <% tabs = [
-       [ t("species.tab_lures"), species_path(@species), @tab == "lures" ],
-       [ t("species.tab_catches"), species_path(@species, tab: "catches"), @tab == "catches" ],
-       [ t("species.tab_leaderboard"), species_path(@species, tab: "leaderboard"), @tab == "leaderboard" ],
-       [ t("species.tab_history"), species_path(@species, tab: "history"), @tab == "history" ]
-     ] %>
-  <%= render "shared/tabs", tabs: tabs %>
-
-  <% case @tab %>
-  <% when "lures" %>
-    <% if @lures.any? %>
-      <div class="grid-cards">
-        <% @lures.each do |lure| %><%= render "shared/lure_card", lure: lure %><% end %>
-      </div>
-    <% else %>
-      <div class="empty-state">
-        <h3><%= t("species.no_proven_lures") %></h3>
-        <p><%= t("species.be_first_lure") %></p>
-        <%= link_to t("catch.add_title"), (signed_in? ? new_catch_path(species: @species.slug) : new_session_path), class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  <% when "catches" %>
-    <div class="grid-catches">
-      <%= render "shared/add_catch_card", prefill: { species: @species.slug } %>
-      <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
-    </div>
-  <% when "leaderboard" %>
-    <%= render "shared/leaderboard_table", rows: @rows, metric: @metric %>
-  <% when "history" %>
-    <% revisions = @species.revisions.newest_first.to_a %>
-    <% if revisions.any? %>
-      <div class="card">
-        <table class="lb-table">
-          <thead><tr><th><%= t("provenance.col_change") %></th><th><%= t("provenance.col_contributor") %></th><th><%= t("provenance.col_date") %></th></tr></thead>
-          <tbody>
-            <% revisions.each do |rev| %>
-              <tr>
-                <td>
-                  <% if rev.edit? %>
-                    <%= link_to t("provenance.edited"), revision_path(rev), style: "font-weight:600" %>
-                  <% else %>
-                    <%= rev.summary %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if rev.user %>
-                    <%= link_to rev.user.name, profile_path(rev.user) %>
-                  <% else %>
-                    <%= t("common.none") %>
-                  <% end %>
-                </td>
-                <td style="white-space:nowrap"><%= l(rev.created_at, format: :long) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
-      <div class="card card-pad">
-        <p class="muted" style="font-size:13px"><%= t("provenance.created") %></p>
-      </div>
-    <% end %>
-  <% end %>
 </div>

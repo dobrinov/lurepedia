@@ -48,6 +48,7 @@ bg:
     sign_out: Изход
     email: Имейл
     password: Парола
+    password_confirmation: Потвърди паролата
     name: Име
     sign_in_required: Моля, влез, за да допринесеш.
     not_authorized: Нямаш права за това действие.
@@ -448,7 +449,13 @@ bg:
 
   profile:
     catches: Улови
+    tab_catches: Улови
+    tab_favorites: Любими
+    tab_contributions: Приноси
+    contributions: Приноси
+    no_contributions: Все още няма приноси.
     view_picture: Преглед на профилната снимка
+    change_picture: Качване/смяна на профилна снимка
     total_upvotes: Общо гласове
     member_since: Член от
     favorite_species: Любими видове
@@ -500,7 +507,7 @@ bg:
       revoked: Ограничението е отменено.
 
   settings:
-    title: Настройки на профила
+    title: Настройки
     tab_profile: Профил
     tab_preferences: Предпочитания
     profile: Профил
@@ -585,3 +592,30 @@ bg:
     chinook_salmon:
       common: Чинук
       habitat: Студени тихоокеански реки и езера; мощна мигрираща риба.
+  country:
+    US: Съединени щати
+    CA: Канада
+    GB: Обединено кралство
+    DE: Германия
+    FR: Франция
+    ES: Испания
+    IT: Италия
+    NL: Нидерландия
+    SE: Швеция
+    NO: Норвегия
+    PL: Полша
+    RU: Русия
+    BG: България
+    GR: Гърция
+    JP: Япония
+    CN: Китай
+    BR: Бразилия
+    MX: Мексико
+  activerecord:
+    attributes:
+      user:
+        password: Парола
+        password_confirmation: Потвърждение на паролата
+    errors:
+      messages:
+        confirmation: не съвпада с %{attribute}

@@ -1,0 +1,23 @@
+<%# locals: user %>
+<%= form_with model: user, url: settings_path, method: :patch do |f| %>
+  <%= hidden_field_tag :return_tab, "settings" %>
+  <div class="field">
+    <%= f.label :name, t("auth.name") %>
+    <%= f.text_field :name, class: "input" %>
+  </div>
+  <div class="field">
+    <label><%= t("settings.public_profile") %></label>
+    <%= render "shared/copy_field", value: profile_url(user) %>
+  </div>
+  <div class="field">
+    <%= f.label :username, t("settings.username") %>
+    <%= f.text_field :username, class: "input", placeholder: t("settings.username_hint") %>
+    <span class="muted" style="font-size:13px"><%= t("settings.username_help") %></span>
+  </div>
+  <div class="field">
+    <%= f.label :bio, t("settings.profile") %>
+    <%= f.text_area :bio, class: "input" %>
+  </div>
+
+  <%= f.submit t("common.save"), class: "btn btn-primary" %>
+<% end %>

@@ -12,8 +12,11 @@ class ModerationItem < ApplicationRecord
   scope :of_kind, ->(k) { where(kind: k) }
 
   # Moderators can act on most items; claims & new catalog entries need an admin.
+  # Nobody can action their own submission — admins' edits skip the queue entirely.
   def actionable_by?(user)
     return false unless user&.can_moderate?
+    return false if submitter_id == user.id
+
     return true if user.admin?
 
     mod_actionable?

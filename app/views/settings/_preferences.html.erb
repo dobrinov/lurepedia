@@ -1,0 +1,25 @@
+<%# locals: user %>
+<%= form_with model: user, url: settings_path, method: :patch do |f| %>
+  <%= hidden_field_tag :return_tab, "settings" %>
+  <div class="field">
+    <%= f.label :country, t("settings.country") %>
+    <%= render "shared/combobox", name: "user[country]", options: country_options, selected: user.country, form: f %>
+  </div>
+  <div class="field">
+    <%= f.label :locale, t("settings.language") %>
+    <%= render "shared/combobox", name: "user[locale]", options: available_locales_for_switcher.map { |loc, meta| [meta[:native], loc] }, selected: user.locale, form: f %>
+  </div>
+  <fieldset class="field" style="border:0;padding:0;margin:0">
+    <legend style="font-weight:600;margin-bottom:8px"><%= t("settings.units") %></legend>
+    <% %i[length weight depth].each do |measurement| %>
+      <div class="field">
+        <%= f.label "#{measurement}_units", t("units.#{measurement}") %>
+        <%= f.select "#{measurement}_units",
+              User.send("#{measurement}_units").keys.map { |u| [ t("units.#{u}"), u ] },
+              { selected: user.public_send("#{measurement}_units") }, class: "input" %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit t("common.save"), class: "btn btn-primary" %>
+<% end %>

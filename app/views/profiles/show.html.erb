@@ -1,10 +1,27 @@
 <% content_for :title, @user.name %>
 <div class="container" style="padding-top:24px">
-  <div class="page-head">
-    <div class="row" style="gap:16px;align-items:center">
-      <% if @user.avatar.attached? && @user.avatar.variable? %>
+  <div class="profile-grid">
+    <!-- Left column: identity -->
+    <aside class="profile-aside stack" style="gap:14px">
+      <% if @owner %>
+        <%= form_with model: @user, url: settings_path, method: :patch, data: { controller: "inline-upload" } do |f| %>
+          <%= hidden_field_tag :return_tab, @tab %>
+          <div class="card ph ph-lure profile-photo-edit" style="aspect-ratio:4/3">
+            <% if @user.avatar.attached? && @user.avatar.variable? %>
+              <%= image_tag @user.avatar.variant(resize_to_fill: [ 720, 540 ]), alt: @user.name %>
+            <% else %>
+              <span class="profile-photo-initials"><%= @user.initials %></span>
+            <% end %>
+            <button type="button" class="profile-photo-overlay" data-action="inline-upload#browse"><%= t("profile.change_picture") %></button>
+            <%= f.file_field :avatar, accept: "image/*", style: "display:none",
+                  data: { inline_upload_target: "input", action: "change->inline-upload#submit" } %>
+          </div>
+        <% end %>
+      <% elsif @user.avatar.attached? && @user.avatar.variable? %>
         <div data-controller="modal">
-          <button type="button" class="avatar avatar-xl" data-action="modal#open" title="<%= t("profile.view_picture") %>"><%= user_avatar(@user, size: 72) %></button>
+          <button type="button" class="card ph ph-lure profile-photo" style="aspect-ratio:4/3" data-action="modal#open" title="<%= t("profile.view_picture") %>">
+            <%= image_tag @user.avatar.variant(resize_to_fill: [ 720, 540 ]), alt: @user.name %>
+          </button>
           <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
             <div class="lightbox">
               <button type="button" class="lightbox-close" data-action="modal#close" aria-label="<%= t("common.close") %>">&times;</button>
@@ -13,56 +30,112 @@
           </div>
         </div>
       <% else %>
-        <span class="avatar avatar-xl"><%= user_avatar(@user, size: 72) %></span>
+        <div class="card ph ph-lure" style="aspect-ratio:4/3">
+          <span class="profile-photo-initials"><%= @user.initials %></span>
+        </div>
       <% end %>
-      <div>
-        <div class="row" style="gap:8px;align-items:center"><%= country_flag(@user.country, size: 22) %><h1><%= @user.name %></h1></div>
+
+      <div class="stack" style="gap:6px">
+        <div class="row" style="gap:8px;align-items:center"><%= country_flag(@user.country, size: 22) %><h1 style="font-size:24px"><%= @user.name %></h1></div>
         <% if @user.bio.present? %><p class="muted"><%= @user.bio %></p><% end %>
         <div class="sub muted"><%= t("profile.member_since") %> <%= l(@user.created_at.to_date, format: :long) %></div>
       </div>
-    </div>
-    <div class="row" style="gap:24px;align-items:center">
-      <div><strong><%= @catches.size %></strong> <span class="muted"><%= t("profile.catches") %></span></div>
-      <div><strong><%= @total_upvotes %></strong> <span class="muted"><%= t("profile.total_upvotes") %></span></div>
-      <% if @owner %>
-        <%= link_to t("settings.title"), edit_settings_path, class: "btn" %>
-      <% end %>
+
+      <div class="stack" style="gap:8px">
+        <div><strong><%= @catches.size %></strong> <span class="muted"><%= t("profile.catches") %></span></div>
+        <div><strong><%= @total_upvotes %></strong> <span class="muted"><%= t("profile.total_upvotes") %></span></div>
+        <div><strong><%= @contributions_count %></strong> <span class="muted"><%= t("profile.contributions") %></span></div>
+      </div>
+
+    </aside>
+
+    <!-- Right column: tabbed content -->
+    <div>
+      <% tabs = [
+           [ t("profile.tab_catches"), profile_path(@user, tab: "catches"), @tab == "catches" ],
+           [ t("profile.tab_favorites"), profile_path(@user, tab: "favorites"), @tab == "favorites" ],
+           [ t("profile.tab_contributions"), profile_path(@user, tab: "contributions"), @tab == "contributions" ]
+         ]
+         tabs << [ t("settings.title"), profile_path(@user, tab: "settings"), @tab == "settings" ] if @owner %>
+      <%= render "shared/tabs", tabs: tabs %>
+
+      <div style="margin-top:24px">
+        <% case @tab %>
+        <% when "catches" %>
+          <% if @catches.any? %>
+            <div class="grid-catches">
+              <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
+            </div>
+          <% else %>
+            <p class="muted"><%= t("profile.no_catches") %></p>
+          <% end %>
+
+        <% when "favorites" %>
+          <% {
+               "profile.favorite_species" => @favorite_species,
+               "profile.favorite_lures"   => @favorite_lures,
+               "profile.favorite_shops"   => @favorite_shops
+             }.each do |label_key, records| %>
+            <section style="margin-bottom:32px">
+              <div class="section-head"><h2><%= t(label_key) %></h2></div>
+              <% if records.any? %>
+                <div class="grid-cards">
+                  <% records.each do |record| %>
+                    <% record_path = record.is_a?(Shop) ? shops_path : polymorphic_path(record) %>
+                    <div class="row" style="justify-content:space-between;align-items:center;gap:12px">
+                      <%= link_to (record.try(:title) || record.try(:common_name) || record.try(:name)), record_path %>
+                      <% if @owner %>
+                        <%= render "shared/favorite_button", favoritable: record %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <p class="muted"><%= t("profile.no_favorites") %></p>
+              <% end %>
+            </section>
+          <% end %>
+
+        <% when "contributions" %>
+          <% if @contributions.any? %>
+            <div class="card">
+              <table class="lb-table">
+                <thead><tr><th><%= t("provenance.col_change") %></th><th><%= t("provenance.col_date") %></th></tr></thead>
+                <tbody>
+                  <% @contributions.each do |rev| %>
+                    <tr>
+                      <td>
+                        <% if rev.edit? %>
+                          <%= link_to rev.summary, revision_path(rev), style: "font-weight:600" %>
+                        <% else %>
+                          <span style="font-weight:600"><%= rev.summary %></span>
+                        <% end %>
+                        <% if rev.subject && (path = revision_subject_path(rev.subject)) %>
+                          <div class="muted" style="font-size:12px"><%= link_to revision_subject_label(rev.subject), path %></div>
+                        <% elsif rev.subject %>
+                          <div class="muted" style="font-size:12px"><%= revision_subject_label(rev.subject) %></div>
+                        <% end %>
+                      </td>
+                      <td style="white-space:nowrap"><%= l(rev.created_at, format: :long) %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <p class="muted"><%= t("profile.no_contributions") %></p>
+          <% end %>
+
+        <% when "settings" %>
+          <div class="stack" style="max-width:560px;gap:36px">
+            <%= render "settings/account", user: @user %>
+            <div>
+              <h2 style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px"><%= t("settings.tab_preferences") %></h2>
+              <%= render "settings/preferences", user: @user %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <section>
-    <div class="section-head"><h2><%= t("profile.catches") %></h2></div>
-    <% if @catches.any? %>
-      <div class="grid-catches">
-        <% @catches.each do |c| %><%= render "shared/catch_card", catch: c %><% end %>
-      </div>
-    <% else %>
-      <p class="muted"><%= t("profile.no_catches") %></p>
-    <% end %>
-  </section>
-
-  <% {
-       "profile.favorite_species" => @favorite_species,
-       "profile.favorite_lures"   => @favorite_lures,
-       "profile.favorite_shops"   => @favorite_shops
-     }.each do |label_key, records| %>
-    <section style="margin-top:32px">
-      <div class="section-head"><h2><%= t(label_key) %></h2></div>
-      <% if records.any? %>
-        <div class="grid-cards">
-          <% records.each do |record| %>
-            <% record_path = record.is_a?(Shop) ? shops_path : polymorphic_path(record) %>
-            <div class="row" style="justify-content:space-between;align-items:center;gap:12px">
-              <%= link_to (record.try(:title) || record.try(:common_name) || record.try(:name)), record_path %>
-              <% if @owner %>
-                <%= render "shared/favorite_button", favoritable: record %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <p class="muted"><%= t("profile.no_favorites") %></p>
-      <% end %>
-    </section>
-  <% end %>
 </div>

@@ -67,6 +67,16 @@ class CommunityTest < ActiveSupport::TestCase
     assert_not catch_item.actionable_by?(member)
   end
 
+  test "nobody can action their own submission" do
+    mod = User.create!(name: "ModSub", email_address: "modsub@example.com", password: "secret123", role: :moderator)
+    admin = User.create!(name: "AdminSub", email_address: "adminsub@example.com", password: "secret123", role: :admin)
+    mod_item = ModerationItem.create!(subject: @catch, kind: :edit, submitter: mod, mod_actionable: true)
+    admin_item = ModerationItem.create!(subject: @catch, kind: :edit, submitter: admin, mod_actionable: true)
+
+    assert_not mod_item.actionable_by?(mod)
+    assert_not admin_item.actionable_by?(admin)
+  end
+
   test "moderation approve and undo" do
     admin = User.create!(name: "Admin", email_address: "a2@example.com", password: "secret123", role: :admin)
     item = ModerationItem.create!(subject: @catch, kind: :catch, submitter: @user)

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :reports, foreign_key: :user_id, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bans, dependent: :destroy
+  has_many :revisions, dependent: :nullify
 
   enum :role, { member: 0, moderator: 1, admin: 2 }, default: :member
   enum :length_units, { auto: 0, imperial: 1, metric: 2 }, default: :auto, prefix: :length

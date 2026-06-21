@@ -101,6 +101,7 @@ en:
     sign_out: Log out
     email: Email
     password: Password
+    password_confirmation: Confirm password
     name: Name
     sign_in_required: Please sign in to contribute.
     not_authorized: You don't have permission to do that.
@@ -489,7 +490,7 @@ en:
     you: YOU
 
   settings:
-    title: Account settings
+    title: Settings
     tab_profile: Profile
     tab_preferences: Preferences
     profile: Profile
@@ -520,7 +521,13 @@ en:
 
   profile:
     catches: Catches
+    tab_catches: Catches
+    tab_favorites: Favorites
+    tab_contributions: Contributions
+    contributions: Contributions
+    no_contributions: No contributions yet.
     view_picture: View profile picture
+    change_picture: Upload/change profile picture
     total_upvotes: Total upvotes
     member_since: Member since
     favorite_species: Favorite species
@@ -585,3 +592,30 @@ en:
     chinook_salmon:
       common: Chinook Salmon
       habitat: Cold Pacific rivers and lakes; powerful migratory fish.
+  country:
+    US: United States
+    CA: Canada
+    GB: United Kingdom
+    DE: Germany
+    FR: France
+    ES: Spain
+    IT: Italy
+    NL: Netherlands
+    SE: Sweden
+    NO: Norway
+    PL: Poland
+    RU: Russia
+    BG: Bulgaria
+    GR: Greece
+    JP: Japan
+    CN: China
+    BR: Brazil
+    MX: Mexico
+  activerecord:
+    attributes:
+      user:
+        password: Password
+        password_confirmation: Password confirmation
+    errors:
+      messages:
+        confirmation: doesn't match %{attribute}

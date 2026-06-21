@@ -18,6 +18,10 @@
         <%= f.password_field :password, class: "input", required: true, autocomplete: "new-password" %>
       </div>
       <div class="field">
+        <%= f.label :password_confirmation, t("auth.password_confirmation") %>
+        <%= f.password_field :password_confirmation, class: "input", required: true, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
         <%= f.label :country, t("auth.choose_country") %>
         <%= f.select :country, country_options, {}, class: "input" %>
       </div>
