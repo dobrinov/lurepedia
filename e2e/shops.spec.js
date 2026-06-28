@@ -26,4 +26,12 @@ test.describe("Shop shipping-country multi-select", () => {
     await expect(ms.locator(".ms-chip")).toHaveCount(1)
     await expect(hidden).not.toHaveValue(/CA/)
   })
+
+  test("the country multi-select appears in the design system", async ({ page }) => {
+    await page.goto("/en/design-system")
+    await page.getByRole("button", { name: "Buttons & Forms" }).click()
+    const ms = page.locator(".country-multiselect")
+    await expect(ms).toBeVisible()
+    await expect(ms.locator(".ms-chip")).toHaveCount(3) // US, CA, GB preselected
+  })
 })
