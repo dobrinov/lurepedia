@@ -24,8 +24,8 @@ module Lurepedia
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Use ImageMagick (mini_magick) for Active Storage variants — libvips is not
-    # installed in this environment.
+    # Use ImageMagick (mini_magick) for Active Storage variants. ImageMagick is
+    # installed in the production image (see Dockerfile) and on dev machines.
     config.active_storage.variant_processor = :mini_magick
 
     # Internationalization
