@@ -9,12 +9,11 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     @lure = Lure.create!(brand: @brand, lure_type: @type, model: "Vision 110")
     @color = @lure.variants.create!(name: "GG Ayu", uv_glow: true)
     @build = @lure.builds.create!(name: "110 SP", depth_min_cm: 120, depth_max_cm: 180, action: :suspending)
-    VariantBuild.create!(variant: @color, build: @build)
     @member = User.create!(name: "Mia", email_address: "mia@example.com", password: "secret123", role: :member)
     @admin = User.create!(name: "Ada", email_address: "ada@example.com", password: "secret123", role: :admin)
   end
 
-  test "variations endpoint returns colors, builds and availability" do
+  test "variations endpoint returns colors and builds independently" do
     get lure_variation_options_path(@lure, locale: :en)
     assert_response :success
     body = JSON.parse(response.body)
@@ -22,7 +21,7 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     color = body["colors"].first
     assert_equal "GG Ayu", color["name"]
     assert color["uv_glow"]
-    assert_includes color["build_ids"], @build.id
+    assert_not color.key?("build_ids"), "colors no longer carry per-color build availability"
     assert_equal "110 SP", body["builds"].first["name"]
   end
 

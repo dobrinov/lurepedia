@@ -1,8 +1,6 @@
 class Variant < ApplicationRecord
   belongs_to :lure
   has_many :catches, dependent: :destroy
-  has_many :variant_builds, dependent: :destroy
-  has_many :builds, through: :variant_builds
   has_many :revisions, as: :subject, dependent: :destroy
   has_one_attached :photo
 

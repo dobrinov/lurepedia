@@ -18,11 +18,10 @@ module ActiveSupport
       lure.builds.first || lure.builds.create!({ name: "Standard" }.merge(attrs))
     end
 
-    # Create a catch against a (color, build) pair, defaulting the build to the
-    # lure's standard one and recording its availability for the color.
+    # Create a catch against a color, defaulting the build to the lure's standard
+    # one (both belong to the same lure, as the catch validation requires).
     def create_catch(variant:, species:, user:, build: nil, **attrs)
       build ||= ensure_build(variant.lure)
-      VariantBuild.find_or_create_by!(variant: variant, build: build)
       Catch.create!(user: user, variant: variant, build: build, species: species, **attrs)
     end
   end

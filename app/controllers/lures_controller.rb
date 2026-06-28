@@ -15,9 +15,6 @@ class LuresController < ApplicationController
     @builds = @lure.builds.ordered.to_a
     @default_variant = @lure.primary_variant
     @selected_variant = @variants.detect { |v| v.to_color_param == params[:color].to_s } || @default_variant
-    @availability = VariantBuild.where(variant_id: @variants.map(&:id))
-      .pluck(:variant_id, :build_id)
-      .each_with_object(Hash.new { |h, k| h[k] = [] }) { |(v, b), acc| acc[v] << b }
     @catches = @lure.catches.includes(:user, :species, :build).recent.limit(8)
     @buy_links = @lure.buy_links.includes(:shop).sort_by { |b| b.shop.promoted? ? 0 : 1 }
     @tab = %w[caught variations buy history].include?(params[:tab].to_s) ? params[:tab] : "variations"
@@ -26,8 +23,6 @@ class LuresController < ApplicationController
   # JSON consumed by the variation-picker modal (lure page + catch form).
   def variations
     lure = Lure.includes(:builds, variants: { photo_attachment: :blob }).find_by!(slug: params[:id])
-    availability = VariantBuild.where(variant_id: lure.variants.map(&:id)).pluck(:variant_id, :build_id)
-      .each_with_object(Hash.new { |h, k| h[k] = [] }) { |(v, b), acc| acc[v] << b }
 
     render json: {
       lure: { slug: lure.slug, title: lure.title },
@@ -35,8 +30,7 @@ class LuresController < ApplicationController
         {
           id: v.id, name: v.name, best_for: v.best_for, uv_glow: v.uv_glow,
           catches_count: v.catches_count, default: v.id == lure.primary_variant&.id,
-          photo_url: v.photo.attached? ? url_for(v.photo.variant(resize_to_fill: [ 160, 160 ])) : nil,
-          build_ids: availability[v.id]
+          photo_url: v.photo.attached? ? url_for(v.photo.variant(resize_to_fill: [ 160, 160 ])) : nil
         }
       },
       builds: lure.builds.ordered.map { |b|

@@ -1,14 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Cascading picker for the log-a-catch form: brand → lure → color → build.
+// Cascading picker for the log-a-catch form: brand → lure → (color, build).
 //
 //   brand  scopes the lure combobox to that brand's lures
 //   lure   loads its colors (variants) and builds from the /variation-options JSON
-//   color  filters the build select to the builds offered in that color
 //
-// Brand and lure are async comboboxes (large lists); color and build are native
-// selects (a handful per lure). Any level can be preselected from query params —
-// the matching *-value attributes are restored once the data loads.
+// Color and build are independent axes of the chosen lure — a catch records a
+// color plus an optional build. Brand and lure are async comboboxes (large
+// lists); color and build are native selects (a handful per lure). Any level can
+// be preselected from query params — the matching *-value attributes are restored
+// once the data loads.
 export default class extends Controller {
   static targets = [ "lureCombobox", "colorSelect", "buildSelect" ]
   static values = {
@@ -25,7 +26,7 @@ export default class extends Controller {
     if (this.lureSlugValue) {
       this.loadVariations(this.lureSlugValue)
     } else {
-      this.resetColors()
+      this.resetPickers()
     }
   }
 
@@ -40,7 +41,7 @@ export default class extends Controller {
     }
     this.lureSlugValue = ""
     this.variations = null
-    this.resetColors()
+    this.resetPickers()
   }
 
   // Lure picked: load its colors and builds.
@@ -50,25 +51,19 @@ export default class extends Controller {
     this.loadVariations(event.target.value)
   }
 
-  // Color picked: filter the build select to that color's builds.
-  colorChanged() {
-    const id = this.colorSelectTarget.value
-    const color = this.variations?.colors.find((c) => String(c.id) === String(id))
-    this.populateBuilds(color)
-  }
-
   async loadVariations(slug) {
     this.variations = null
-    if (!slug) return this.resetColors()
+    if (!slug) return this.resetPickers()
     const url = this.variationsUrlTemplateValue.replace("__SLUG__", encodeURIComponent(slug))
     try {
       const resp = await fetch(url, { headers: { Accept: "application/json" } })
-      if (!resp.ok) return this.resetColors()
+      if (!resp.ok) return this.resetPickers()
       this.variations = await resp.json()
     } catch (_e) {
-      return this.resetColors()
+      return this.resetPickers()
     }
     this.populateColors()
+    this.populateBuilds()
   }
 
   populateColors() {
@@ -80,19 +75,13 @@ export default class extends Controller {
     const want = String(this.selectedVariantValue || "")
     if (want && this.variations.colors.some((c) => String(c.id) === want)) sel.value = want
     this.selectedVariantValue = ""
-    this.colorChanged()
   }
 
-  populateBuilds(color) {
+  // Every build of the lure is offered, independent of the chosen color.
+  populateBuilds() {
     const sel = this.buildSelectTarget
     sel.innerHTML = ""
-    if (!color) {
-      sel.appendChild(this.option("", this.label("choose_build")))
-      sel.disabled = true
-      return
-    }
-    const allowed = new Set(color.build_ids || [])
-    const builds = this.variations.builds.filter((b) => allowed.has(b.id))
+    const builds = this.variations?.builds || []
     if (builds.length === 0) {
       sel.appendChild(this.option("", this.label("no_builds")))
       sel.disabled = true
@@ -109,11 +98,13 @@ export default class extends Controller {
     this.selectedBuildValue = ""
   }
 
-  resetColors() {
-    this.colorSelectTarget.innerHTML = ""
+  resetPickers() {
+    for (const sel of [ this.colorSelectTarget, this.buildSelectTarget ]) {
+      sel.innerHTML = ""
+      sel.disabled = true
+    }
     this.colorSelectTarget.appendChild(this.option("", this.label("choose_color")))
-    this.colorSelectTarget.disabled = true
-    this.populateBuilds(null)
+    this.buildSelectTarget.appendChild(this.option("", this.label("choose_build")))
   }
 
   // The async-combobox controller instance backing the lure field.

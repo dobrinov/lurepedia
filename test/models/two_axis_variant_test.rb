@@ -38,12 +38,6 @@ class TwoAxisVariantTest < ActiveSupport::TestCase
     assert_equal "suspending", @lure.dominant_action
   end
 
-  test "a build is offered in a subset of colors via variant_builds" do
-    VariantBuild.create!(variant: @color_a, build: @build)
-    assert_includes @color_a.builds, @build
-    assert_equal [ @color_a ], @build.variants.to_a
-  end
-
   test "catch bumps the build counter and reaches the lure" do
     catch = Catch.create!(user: @user, variant: @color_a, build: @build, species: @species)
     assert_equal 1, @build.reload.catches_count

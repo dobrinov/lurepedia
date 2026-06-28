@@ -119,14 +119,13 @@
     <% when "variations" %>
       <% if @variants.any? %>
         <% @variants.each do |v| %>
-          <% own = @builds.select { |b| (@availability[v.id] || []).include?(b.id) } %>
           <div class="variation-table" data-variant-stage-target="buildsTable" data-color-id="<%= v.id %>" <%= "hidden" unless v == @selected_variant %>>
-            <% if own.any? %>
+            <% if @builds.any? %>
               <div class="card">
                 <table class="lb-table">
                   <thead><tr><th><%= t("lure.build") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.depth") %></th><th><%= t("lure.buoyancy") %></th><th><%= t("lure.water") %></th><th></th></tr></thead>
                   <tbody>
-                    <% own.each do |b| %>
+                    <% @builds.each do |b| %>
                       <tr>
                         <td style="font-weight:600"><%= b.name %></td>
                         <td><%= fmt_size_mm(b.length_mm) || t("common.none") %></td>

@@ -149,7 +149,6 @@ lure_specs.each do |spec|
 
   colors = spec[:variants].map do |(vname, _size, _weight)|
     v = lure.variants.find_or_create_by!(name: vname)
-    VariantBuild.find_or_create_by!(variant: v, build: build)
     attach_once(v, :photo, LURE_IMG.join(spec[:img]), spec[:img], "image/jpeg")
     v
   end
@@ -158,8 +157,7 @@ lure_specs.each do |spec|
   lures[spec[:model]] = lure
 end
 
-# Showcase the two-axis model on Vision 110: extra builds, per-color metadata,
-# and color×build availability matching the design exploration.
+# Showcase the two-axis model on Vision 110: extra builds and per-color metadata.
 vision = lures["Vision 110"]
 if vision
   extra_builds = {
@@ -174,18 +172,16 @@ if vision
       b.action = act; b.water = wat; b.position = i + 1
     end
   end
-  all_vision_builds = vision.builds.ordered.to_a
   color_meta = {
-    "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true, all_vision_builds ],
-    "Sexy French Pearl"      => [ "Smallmouth Bass · Stained water", false, all_vision_builds.first(3) ],
-    "Pro Blue"               => [ "Smallmouth Bass · Cold, clear", true, all_vision_builds ]
+    "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true ],
+    "Sexy French Pearl"      => [ "Smallmouth Bass · Stained water", false ],
+    "Pro Blue"               => [ "Smallmouth Bass · Cold, clear", true ]
   }
   vision.variants.each do |v|
-    best_for, uv, avail = color_meta[v.name]
+    best_for, uv = color_meta[v.name]
     next unless best_for
 
     v.update!(best_for: best_for, uv_glow: uv)
-    avail.each { |b| VariantBuild.find_or_create_by!(variant: v, build: b) }
   end
 end
 puts "  lures: #{Lure.count}, variants: #{Variant.count}, builds: #{Build.count}"
@@ -257,7 +253,7 @@ catches = []
 catch_specs.each_with_index do |spec, i|
   lure = lures.fetch(spec[:lure])
   variant = lure.variants.find_by!(name: spec[:variant])
-  build = variant.builds.first || lure.builds.first
+  build = lure.builds.first
   c = Catch.find_or_create_by!(user: spec[:user], variant: variant, build: build, species: species.fetch(spec[:species]), location: spec[:loc]) do |catch_rec|
     catch_rec.season = spec[:season]
     catch_rec.clarity = spec[:clarity]
