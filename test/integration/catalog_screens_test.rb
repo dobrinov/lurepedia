@@ -18,7 +18,7 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
   test "home/lures index renders lure" do
     get "/en"
     assert_response :success
-    assert_select "h1", text: I18n.t("home.hero_title")
+    assert_select ".page-head h1", text: I18n.t("lure.title")
     assert_match "KVD 1.5", response.body
   end
 
@@ -30,11 +30,12 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_match I18n.t("lure.be_first"), response.body
   end
 
-  test "lure detail shows proof when catches exist" do
+  test "lure detail caught tab shows logged catches when they exist" do
     create_catch(user: @member, variant: @variant, species: @bass, build: @build)
-    get lure_path(@lure.reload, locale: :en)
+    get lure_path(@lure.reload, tab: "caught", locale: :en)
     assert_response :success
-    assert_select ".badge-proof"
+    assert_select ".catch-card"
+    assert_no_match I18n.t("lure.be_first"), response.body
   end
 
   test "lure tabs are separate URLs and variants stay visible" do
@@ -189,13 +190,13 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", new_session_path(locale: :en)
   end
 
-  test "lure index hero shows only the add-lure CTA" do
+  test "lure index header offers only the add-lure CTA" do
     get lures_path(locale: :en)
     assert_response :success
-    assert_select "section.hero" do
+    assert_select ".page-head" do
       assert_select "a.btn", count: 1
       assert_select "a[href=?]", new_lure_path(locale: :en)
     end
-    assert_select "section.hero a[href=?]", new_catch_path(locale: :en), count: 0
+    assert_select ".page-head a[href=?]", new_catch_path(locale: :en), count: 0
   end
 end
