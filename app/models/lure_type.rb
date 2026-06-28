@@ -1,7 +1,9 @@
 class LureType < ApplicationRecord
+  include WaterClassified
+
   has_many :lures, dependent: :restrict_with_error
 
-  enum :water_default, { fresh: 0, salt: 1, both: 2 }, prefix: :water
+  water_enum(:water_default)
 
   validates :key, presence: true, uniqueness: true
 

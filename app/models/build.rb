@@ -1,4 +1,6 @@
 class Build < ApplicationRecord
+  include WaterClassified
+
   belongs_to :lure
   has_many :catches, dependent: :destroy
   has_many :variant_builds, dependent: :destroy
@@ -6,7 +8,7 @@ class Build < ApplicationRecord
   has_many :revisions, as: :subject, dependent: :destroy
 
   enum :action, { none: 0, suspending: 1, floating: 2, sinking: 3 }, prefix: :action
-  enum :water, { fresh: 0, salt: 1, both: 2 }, prefix: :water
+  water_enum
 
   validates :name, presence: true
 

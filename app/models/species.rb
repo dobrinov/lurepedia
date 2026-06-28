@@ -1,6 +1,7 @@
 class Species < ApplicationRecord
   include Sluggable
   include Favoritable
+  include WaterClassified
 
   self.table_name = "species"
 
@@ -8,7 +9,7 @@ class Species < ApplicationRecord
   has_many :revisions, as: :subject, dependent: :destroy
   has_one_attached :photo
 
-  enum :water, { fresh: 0, salt: 1, both: 2 }, prefix: :water
+  water_enum
 
   validates :key, presence: true, uniqueness: true
   validates :wikipedia_url,
