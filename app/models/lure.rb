@@ -24,8 +24,10 @@ class Lure < ApplicationRecord
   end
 
   # The color shown across catalogs: the explicit pick, else the first-added.
-  def default_variant
-    super || variants.order(:id).first
+  # Kept distinct from the `default_variant` association (the explicit choice
+  # alone, possibly nil) so the association isn't shadowed and stays eager-loadable.
+  def primary_variant
+    default_variant || variants.order(:id).first
   end
 
   # Family-wide depth window, spanning every build's range.

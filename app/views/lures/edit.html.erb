@@ -30,7 +30,7 @@
           <label><%= t("lure.default_variation") %></label>
           <%= f.select :default_variant_id,
                 @variants.map { |v| [ v.name, v.id ] },
-                { selected: @lure.default_variant&.id },
+                { selected: @lure.primary_variant&.id },
                 class: "input", onchange: "this.form.requestSubmit()" %>
         </div>
       <% end %>
@@ -57,7 +57,7 @@
                 <td style="font-weight:600">
                   <%= v.name %>
                   <% if v.uv_glow %><span class="uv-badge">UV</span><% end %>
-                  <% if v == @lure.default_variant %><span class="tag"><%= t("lure.default_variation") %></span><% end %>
+                  <% if v == @lure.primary_variant %><span class="tag"><%= t("lure.default_variation") %></span><% end %>
                 </td>
                 <td class="muted"><%= v.best_for %></td>
                 <td style="text-align:right;width:1%;white-space:nowrap">

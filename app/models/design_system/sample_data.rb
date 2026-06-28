@@ -56,7 +56,7 @@ module DesignSystem
       revs = sample_revisions
       lure.define_singleton_method(:to_param) { model.parameterize }
       lure.define_singleton_method(:proven_species) { proven }
-      lure.define_singleton_method(:default_variant) { default_color }
+      lure.define_singleton_method(:primary_variant) { default_color }
       lure.define_singleton_method(:depth_range) { { min_cm: depth_min, max_cm: depth_max } }
       lure.define_singleton_method(:dominant_action) { action.to_s }
       lure.define_singleton_method(:claim) { nil }

@@ -1,6 +1,6 @@
 <%# locals: record, changeset %>
 <% lure = record %>
-<% dv = lure.default_variant || lure.variants.detect { |v| v.photo.attached? } %>
+<% dv = lure.primary_variant || lure.variants.detect { |v| v.photo.attached? } %>
 <div class="lure-hero">
   <div class="lure-stage">
     <% if dv&.photo&.attached? %>

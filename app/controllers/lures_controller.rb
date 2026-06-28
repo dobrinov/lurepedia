@@ -13,7 +13,7 @@ class LuresController < ApplicationController
     @lure = Lure.includes(:brand, :lure_type, variants: { photo_attachment: :blob }).find_by!(slug: params[:id])
     @variants = @lure.variants.to_a
     @builds = @lure.builds.ordered.to_a
-    @default_variant = @lure.default_variant
+    @default_variant = @lure.primary_variant
     @selected_variant = @variants.detect { |v| v.to_color_param == params[:color].to_s } || @default_variant
     @availability = VariantBuild.where(variant_id: @variants.map(&:id))
       .pluck(:variant_id, :build_id)
@@ -34,7 +34,7 @@ class LuresController < ApplicationController
       colors: lure.variants.map { |v|
         {
           id: v.id, name: v.name, best_for: v.best_for, uv_glow: v.uv_glow,
-          catches_count: v.catches_count, default: v.id == lure.default_variant&.id,
+          catches_count: v.catches_count, default: v.id == lure.primary_variant&.id,
           photo_url: v.photo.attached? ? url_for(v.photo.variant(resize_to_fill: [ 160, 160 ])) : nil,
           build_ids: availability[v.id]
         }

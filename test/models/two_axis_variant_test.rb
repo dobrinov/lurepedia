@@ -14,13 +14,15 @@ class TwoAxisVariantTest < ActiveSupport::TestCase
     @user = User.create!(name: "Ann", email_address: "ann@example.com", password: "secret123")
   end
 
-  test "default_variant falls back to the first-added color" do
-    assert_equal @color_a, @lure.default_variant
+  test "primary_variant falls back to the first-added color" do
+    assert_nil @lure.default_variant, "no explicit pick yet"
+    assert_equal @color_a, @lure.primary_variant
   end
 
-  test "default_variant honours an explicit choice" do
+  test "primary_variant honours an explicit choice" do
     @lure.update!(default_variant: @color_b)
     assert_equal @color_b, @lure.reload.default_variant
+    assert_equal @color_b, @lure.primary_variant
     assert @color_b.default?
     assert_not @color_a.default?
   end

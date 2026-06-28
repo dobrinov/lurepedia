@@ -15,8 +15,8 @@ class Variant < ApplicationRecord
   end
 
   # A color is the lure's default when it is explicitly set, or — absent an
-  # explicit choice — when it is the first-added color. Mirrors Lure#default_variant.
+  # explicit choice — when it is the first-added color. Mirrors Lure#primary_variant.
   def default?
-    lure.default_variant&.id == id
+    lure.primary_variant&.id == id
   end
 end
