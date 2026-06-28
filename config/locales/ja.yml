@@ -41,6 +41,7 @@ ja:
     shops: ショップ
     leaderboard: ランキング
     search_placeholder: ルアーを検索 — タイプ・水域・アクションで絞り込み…
+    menu: メニュー
 
   auth:
     sign_in: ログイン

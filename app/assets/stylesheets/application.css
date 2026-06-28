@@ -135,6 +135,8 @@ main { min-height: 60vh; }
 }
 .filter-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 6px; }
 .search-panel .panel-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--surface-2); }
+/* The panel's close control only applies to the mobile full-screen overlay */
+.panel-close { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: none; border-radius: var(--r-pill); background: var(--surface-2); color: var(--ink); cursor: pointer; }
 
 /* Buttons ----------------------------------------------------------------- */
 .btn {
@@ -269,6 +271,10 @@ button.avatar:focus-visible, button.avatar[aria-expanded="true"] { outline: 2px 
 .menu-head { padding: 10px; display: flex; align-items: center; gap: 10px; }
 .lang-pill { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 8px; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--white); cursor: pointer; }
 .lang-pill[aria-expanded="true"] { border-color: var(--accent); }
+
+.nav-toggle { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--white); color: var(--ink); cursor: pointer; }
+.nav-toggle[aria-expanded="true"] { border-color: var(--accent); }
+.nav-menu .dropdown-menu a.active { background: var(--surface-2); color: var(--ink); }
 .lang-item { display: flex; align-items: center; gap: 10px; }
 .lang-item.active { background: var(--accent-bg); color: var(--accent); }
 
@@ -554,9 +560,21 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
   .main-nav { display: flex; }
   .header-search { display: block; }
   .footer-only-search { display: none; }
+  .nav-menu { display: none; }
 }
 @media (max-width: 880px) {
+  /* Below the header-search breakpoint the filters open from the footer; make
+     them a full-screen overlay that covers the page and scrolls internally,
+     instead of an absolutely-positioned box that scrolls with the page. */
+  .search-panel {
+    position: fixed; inset: 0; width: 100vw; max-width: none;
+    border: none; border-radius: 0; box-shadow: none;
+    padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+    overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 200;
+  }
   .search-panel .filters-grid { grid-template-columns: repeat(2, 1fr); }
+  .panel-close { display: inline-flex; }
+  .panel-hint { display: none; }
 }
 @media (max-width: 780px) {
   .detail-grid, .detail-hero, .lure-hero, .profile-grid { grid-template-columns: 1fr; }

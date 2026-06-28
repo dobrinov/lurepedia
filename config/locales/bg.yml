@@ -41,6 +41,7 @@ bg:
     shops: Магазини
     leaderboard: Класация
     search_placeholder: Търси примамки, риби, марки…
+    menu: Меню
 
   auth:
     sign_in: Вход

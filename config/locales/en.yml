@@ -91,6 +91,7 @@ en:
     shops: Shops
     leaderboard: Leaderboard
     search_placeholder: Search lures — or filter by type, water, action…
+    menu: Menu
 
   auth:
     sign_in: Sign in

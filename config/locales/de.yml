@@ -41,6 +41,7 @@ de:
     shops: Shops
     leaderboard: Bestenliste
     search_placeholder: Köder suchen — oder nach Typ, Wasser, Aktion filtern…
+    menu: Menü
 
   auth:
     sign_in: Anmelden

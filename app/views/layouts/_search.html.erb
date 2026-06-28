@@ -14,7 +14,10 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
         <%= t("search.filters") %>
       </strong>
-      <span class="muted" style="font-size:13px"><%= t("search.combine_free") %></span>
+      <span class="muted panel-hint" style="font-size:13px"><%= t("search.combine_free") %></span>
+      <button type="button" class="panel-close" data-action="header-search#collapse" aria-label="<%= t("common.close") %>">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
     </div>
     <%= form_with url: lures_path, method: :get, class: "filters-form" do %>
       <div class="filters-grid">
