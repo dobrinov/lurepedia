@@ -40,7 +40,7 @@ primary_region = "lhr"
 
 [[vm]]
   size = "shared-cpu-1x"
-  memory = "512mb"
+  memory = "1gb"
 
 # Persistent storage for the SQLite databases (primary, cache, queue, cable)
 # and any local Active Storage uploads. Without this, the database is wiped on
