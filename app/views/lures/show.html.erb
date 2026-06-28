@@ -160,7 +160,8 @@
           <table class="lb-table">
             <tbody>
               <% @buy_links.each do |bl| %>
-                <% href = bl.url.presence ? "https://#{bl.url.sub(%r{\Ahttps?://}, '')}" : shops_path %>
+                <% target_url = bl.url.presence || bl.shop.url.presence %>
+                <% href = target_url ? "https://#{target_url.sub(%r{\Ahttps?://}, '')}" : shops_path %>
                 <% countries = bl.shop.ships_to_countries %>
                 <tr>
                   <td>

@@ -62,6 +62,26 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "buy link without its own url falls back to the shop website" do
+    BuyLink.create!(lure: @lure, shop: @reg_shop, url: nil)
+
+    get lure_path(@lure, tab: "buy", locale: :en)
+    assert_response :success
+    # Falls back to the shop's own url, not the shops index page.
+    assert_select ".card-tooltips" do
+      assert_select "a[href=?]", "https://karlstackle.com"
+      assert_select "a[href=?]", shops_path(locale: :en), count: 0
+    end
+  end
+
+  test "buy link prefers its own product url over the shop website" do
+    BuyLink.create!(lure: @lure, shop: @reg_shop, url: "https://karlstackle.com/products/kvd")
+
+    get lure_path(@lure, tab: "buy", locale: :en)
+    assert_response :success
+    assert_select "a[href=?]", "https://karlstackle.com/products/kvd"
+  end
+
   test "proven-for tile is gone from the lure page" do
     get lure_path(@lure, locale: :en)
     assert_response :success
