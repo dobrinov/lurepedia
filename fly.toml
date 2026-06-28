@@ -1,0 +1,47 @@
+# fly.toml — Lurepedia on Fly.io
+# Single always-on machine backed by a persistent volume for the SQLite databases.
+# SQLite cannot be shared across machines: do NOT scale this app above 1 machine.
+
+app = "lurepedia"
+primary_region = "lhr"
+
+[build]
+
+[env]
+  RAILS_ENV = "production"
+  # Solid Queue runs inside Puma, so the machine must stay up for jobs to run.
+  SOLID_QUEUE_IN_PUMA = "true"
+
+[http_service]
+  internal_port = 80          # Thruster (bin/thrust) listens on 80
+  force_https = true
+  auto_start_machines = true
+  auto_stop_machines = "off"  # always-on so background jobs keep processing
+  min_machines_running = 1
+  processes = ["app"]
+
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 200
+    soft_limit = 150
+
+[checks]
+  [checks.health]
+    type = "http"
+    port = 80
+    path = "/up"
+    interval = "15s"
+    timeout = "5s"
+    grace_period = "20s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
+
+# Persistent storage for the SQLite databases (primary, cache, queue, cable)
+# and any local Active Storage uploads. Without this, the database is wiped on
+# every deploy. Create it once with:
+#   fly volumes create lurepedia_data --region lhr --size 1
+[mounts]
+  source = "lurepedia_data"
+  destination = "/rails/storage"
