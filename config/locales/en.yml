@@ -73,9 +73,6 @@ en:
 
   footer:
     explore: Explore
-    about: About
-    how_it_works: How it works
-    guidelines: Guidelines
 
   home:
     tagline: Every lure, proven by a catch
@@ -245,6 +242,8 @@ en:
     add_catch: Add a catch
     proven_for: Proven for
     no_matches: No lures match your filters
+    no_matches_sub: Looking for a specific lure? Add it if it's missing.
+    empty_title: No lures yet
     size: Size
     weight: Weight
     color: Color
@@ -287,6 +286,8 @@ en:
       other: "%{count} lures"
     no_proven_lures: No proven lures yet
     be_first_lure: Be the first to prove a lure catches this fish
+    empty_title: No species yet
+    empty_sub: Be the first to add a fish species.
 
   brand:
     title: Brands
@@ -294,6 +295,8 @@ en:
     add: Add a brand
     add_title: Add a brand
     founded: Founded
+    empty_title: No brands yet
+    empty_sub: Be the first to add a lure brand.
     country: Country
     website: Website
     tab_lures: Lures
@@ -321,6 +324,8 @@ en:
     add_title: Add a shop
     promoted_section: Promoted
     all_shops: All shops
+    empty_title: No shops yet
+    empty_sub: Be the first to add a shop that sells lures.
     tab_lures: Lures
     tab_history: History
     no_lures: No lures listed at this shop yet.

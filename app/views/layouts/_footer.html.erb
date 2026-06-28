@@ -11,6 +11,7 @@
         <%= link_to t("nav.brands"), brands_path %>
         <%= link_to t("nav.catches"), catches_path %>
         <%= link_to t("nav.shops"), shops_path %>
+        <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
       </div>
       <div class="footer-col">
         <h4><%= t("contribute.suggest_edit") %></h4>
@@ -19,12 +20,6 @@
         <%= link_to t("species.add"), new_species_path %>
         <%= link_to t("brand.add"), new_brand_path %>
         <%= link_to t("shop.add"), new_shop_path %>
-      </div>
-      <div class="footer-col">
-        <h4><%= t("footer.about") %></h4>
-        <a href="#"><%= t("footer.how_it_works") %></a>
-        <a href="#"><%= t("footer.guidelines") %></a>
-        <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
       </div>
     </div>
     <div class="footer-search-row footer-only-search">

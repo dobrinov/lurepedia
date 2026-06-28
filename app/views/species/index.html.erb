@@ -7,27 +7,35 @@
     <%= link_to t("species.add"), new_species_path, class: "btn btn-sm" %>
   </div>
 
-  <div class="grid-cards">
-    <% @species.each do |sp| %>
-      <%= link_to species_path(sp), class: "card" do %>
-        <div class="ph ph-lure" style="aspect-ratio:16/10">
-          <% if sp.photo.attached? %>
-            <%= image_tag sp.photo.variant(resize_to_fill: [560, 350]), alt: sp.common_name, loading: "lazy" %>
-          <% else %>
-            <%= render "shared/fish_glyph" %>
-          <% end %>
-        </div>
-        <div class="card-body">
-          <div class="card-title" style="font-size:16px"><%= sp.common_name %></div>
-          <div class="muted" style="font-size:12.5px;font-style:italic"><%= sp.scientific_name %></div>
-          <div class="chips" style="margin-top:auto;padding-top:6px">
-            <span class="tag"><%= water_name(sp.water) %></span>
-            <span class="tag"><%= t("species.lures_count", count: @proven_lure_counts.fetch(sp.id, 0)) %></span>
-            <span class="tag"><%= t("lure.catches_count", count: sp.catches_count) %></span>
+  <% if @species.any? %>
+    <div class="grid-cards">
+      <% @species.each do |sp| %>
+        <%= link_to species_path(sp), class: "card" do %>
+          <div class="ph ph-lure" style="aspect-ratio:16/10">
+            <% if sp.photo.attached? %>
+              <%= image_tag sp.photo.variant(resize_to_fill: [560, 350]), alt: sp.common_name, loading: "lazy" %>
+            <% else %>
+              <%= render "shared/fish_glyph" %>
+            <% end %>
           </div>
-        </div>
+          <div class="card-body">
+            <div class="card-title" style="font-size:16px"><%= sp.common_name %></div>
+            <div class="muted" style="font-size:12.5px;font-style:italic"><%= sp.scientific_name %></div>
+            <div class="chips" style="margin-top:auto;padding-top:6px">
+              <span class="tag"><%= water_name(sp.water) %></span>
+              <span class="tag"><%= t("species.lures_count", count: @proven_lure_counts.fetch(sp.id, 0)) %></span>
+              <span class="tag"><%= t("lure.catches_count", count: sp.catches_count) %></span>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <%= render "shared/pagination", page: @page %>
+    </div>
+    <%= render "shared/pagination", page: @page %>
+  <% else %>
+    <div class="empty-state">
+      <h3><%= t("species.empty_title") %></h3>
+      <p><%= t("species.empty_sub") %></p>
+      <%= link_to t("species.add"), new_species_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>

@@ -29,4 +29,20 @@ class SearchFiltersTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match "Largemouth Bass", response.body
   end
+
+  test "a search with no matches offers to clear filters and add the missing lure" do
+    get lures_path(q: "zzz-no-such-lure-anywhere")
+    assert_response :success
+    assert_select ".empty-state h3", text: I18n.t("lure.no_matches")
+    assert_select ".empty-state a", text: I18n.t("search.clear_all")
+    assert_select ".empty-state a", text: I18n.t("lure.add")
+  end
+
+  test "an empty catalog shows the empty state, not the no-matches filter state" do
+    Lure.destroy_all
+    get lures_path
+    assert_response :success
+    assert_select ".empty-state h3", text: I18n.t("lure.empty_title")
+    assert_no_match(/#{Regexp.escape(I18n.t("lure.no_matches"))}/, response.body)
+  end
 end

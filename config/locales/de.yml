@@ -192,6 +192,8 @@ de:
     add_catch: Fang hinzufügen
     proven_for: Bewährt für
     no_matches: Keine Köder entsprechen deinen Filtern
+    no_matches_sub: Suchst du einen bestimmten Köder? Füge ihn hinzu, wenn er fehlt.
+    empty_title: Noch keine Köder
     size: Größe
     weight: "Gewicht"
     color: "Farbe"
@@ -234,6 +236,8 @@ de:
       other: "%{count} Köder"
     no_proven_lures: Noch keine bewährten Köder
     be_first_lure: Sei der Erste, der einen Köder für diesen Fisch beweist
+    empty_title: Noch keine Arten
+    empty_sub: Füge als Erster eine Fischart hinzu.
 
   brand:
     title: Marken
@@ -241,6 +245,8 @@ de:
     add: Marke hinzufügen
     add_title: Marke hinzufügen
     founded: Gegründet
+    empty_title: Noch keine Marken
+    empty_sub: Füge als Erster eine Ködermarke hinzu.
     country: Land
     website: Website
     tab_lures: Köder
@@ -268,6 +274,8 @@ de:
     add_title: Shop hinzufügen
     promoted_section: Gesponsert
     all_shops: Alle Shops
+    empty_title: Noch keine Shops
+    empty_sub: Füge als Erster einen Shop hinzu, der Köder verkauft.
     tab_lures: Köder
     tab_history: Verlauf
     no_lures: Noch keine Köder in diesem Shop gelistet.
@@ -550,9 +558,6 @@ de:
 
   footer:
     explore: Entdecken
-    about: Über uns
-    how_it_works: "So funktioniert's"
-    guidelines: Richtlinien
 
   profile:
     catches: Fänge

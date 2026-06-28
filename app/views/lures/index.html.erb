@@ -26,11 +26,20 @@
       <% end %>
     </div>
     <%= render "shared/pagination", page: @page %>
-  <% else %>
+  <% elsif @filter.any? %>
     <div class="empty-state">
       <h3><%= t("lure.no_matches") %></h3>
+      <p><%= t("lure.no_matches_sub") %></p>
+      <div class="empty-state-actions">
+        <%= link_to t("search.clear_all"), lures_path, class: "btn" %>
+        <%= link_to t("lure.add"), new_lure_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <h3><%= t("lure.empty_title") %></h3>
       <p><%= t("home.hero_sub") %></p>
-      <%= link_to t("search.clear_all"), lures_path, class: "btn" %>
+      <%= link_to t("lure.add"), new_lure_path, class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

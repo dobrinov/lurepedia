@@ -198,7 +198,7 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "footer.site-footer" do
       assert_select "h4", text: I18n.t("footer.explore")
-      assert_select "a", text: I18n.t("footer.how_it_works")
+      assert_select "a", text: I18n.t("nav.species")
     end
     assert_no_match(/©/, response.body)
     assert_no_match(/&amp; more/, response.body)

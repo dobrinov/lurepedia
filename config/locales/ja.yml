@@ -192,6 +192,8 @@ ja:
     add_catch: 釣果を追加
     proven_for: 実績あり
     no_matches: 条件に合うルアーがありません
+    no_matches_sub: 特定のルアーをお探しですか？見つからない場合は追加してください。
+    empty_title: まだルアーがありません
     size: サイズ
     weight: "重さ"
     color: "カラー"
@@ -234,6 +236,8 @@ ja:
       other: "%{count} ルアー"
     no_proven_lures: まだ実績のあるルアーがありません
     be_first_lure: この魚に効くルアーを最初に証明しよう
+    empty_title: まだ魚種がありません
+    empty_sub: 最初の魚種を追加しましょう。
 
   brand:
     title: ブランド
@@ -241,6 +245,8 @@ ja:
     add: ブランドを追加
     add_title: ブランドを追加
     founded: 設立
+    empty_title: まだブランドがありません
+    empty_sub: 最初のルアーブランドを追加しましょう。
     country: 国
     website: ウェブサイト
     tab_lures: ルアー
@@ -268,6 +274,8 @@ ja:
     add_title: ショップを追加
     promoted_section: 広告
     all_shops: すべてのショップ
+    empty_title: まだショップがありません
+    empty_sub: ルアーを販売するショップを最初に追加しましょう。
     tab_lures: ルアー
     tab_history: 履歴
     no_lures: このショップにはまだルアーがありません。
@@ -491,9 +499,6 @@ ja:
 
   footer:
     explore: 探す
-    about: 概要
-    how_it_works: 使い方
-    guidelines: ガイドライン
 
   profile:
     catches: 釣果

@@ -192,6 +192,8 @@ bg:
     add_catch: Добави улов
     proven_for: Доказана за
     no_matches: Няма примамки по тези филтри
+    no_matches_sub: Търсите конкретна примамка? Добавете я, ако липсва.
+    empty_title: Все още няма примамки
     size: Размер
     weight: "Тегло"
     color: "Цвят"
@@ -234,6 +236,8 @@ bg:
       other: "%{count} примамки"
     no_proven_lures: Все още без доказани примамки
     be_first_lure: Бъди първият, който докаже примамка за тази риба
+    empty_title: Все още няма видове
+    empty_sub: Бъдете първият, който добавя вид риба.
 
   brand:
     title: Марки
@@ -241,6 +245,8 @@ bg:
     add: Добави марка
     add_title: Добави марка
     founded: Основана
+    empty_title: Все още няма марки
+    empty_sub: Бъдете първият, който добавя марка примамки.
     country: Държава
     website: Уебсайт
     tab_lures: Примамки
@@ -268,6 +274,8 @@ bg:
     add_title: Добави магазин
     promoted_section: Промотирани
     all_shops: Всички магазини
+    empty_title: Все още няма магазини
+    empty_sub: Бъдете първият, който добавя магазин за примамки.
     tab_lures: Примамки
     tab_history: История
     no_lures: Все още няма примамки в този магазин.
@@ -461,9 +469,6 @@ bg:
 
   footer:
     explore: Разгледай
-    about: За нас
-    how_it_works: Как работи
-    guidelines: Правила
 
   profile:
     catches: Улови
