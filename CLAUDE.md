@@ -24,6 +24,10 @@ bin/brakeman             # security static analysis
 
 Tests run in parallel and load `fixtures :all`. There is no separate JS test suite or asset build — importmap serves JS directly.
 
+### Browser research & automation
+
+When a task needs a real browser — researching live web pages, rendering JS-heavy sites, or verifying built features in the running app — run `agent-browser skills get core` first to load the browser skill, then drive the browser through it.
+
 ## Architecture
 
 ### Domain model
