@@ -293,10 +293,14 @@ button.avatar:focus-visible, button.avatar[aria-expanded="true"] { outline: 2px 
 .combobox-option:hover, .combobox-option.active, .combobox-option.highlighted { background: var(--surface-2); }
 .combobox-empty { padding: 12px; font-size: 13px; color: var(--muted-2); text-align: center; }
 
-/* Multi-select (country picker): selected items show as removable chips above
-   the trigger; the dropdown itself reuses the combobox styles above. */
-.ms-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.ms-chips:not(:empty) { margin-bottom: 8px; }
+/* Multi-select (country picker): selected items show as removable flag tags
+   inside the trigger, which grows to hold them and wraps alongside the
+   placeholder; the chevron stays pinned to the right. The dropdown itself
+   reuses the combobox styles above. */
+.country-multiselect .combobox-trigger { height: auto; min-height: 42px; gap: 8px; padding: 6px 12px; cursor: pointer; }
+.ms-trigger-content { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ms-placeholder { color: var(--muted-2); }
+.ms-chips { display: contents; }
 .ms-chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 6px 3px 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-pill); font-size: 13px; }
 .ms-chip-x { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; padding: 0; border: none; border-radius: var(--r-pill); background: transparent; color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; }
 .ms-chip-x:hover { background: var(--line-strong); color: var(--ink); }

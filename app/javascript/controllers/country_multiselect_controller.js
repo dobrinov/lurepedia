@@ -5,7 +5,7 @@ import { Controller } from "@hotwired/stimulus"
 // a comma-separated string (e.g. "US,CA,GB"), so the server still receives a
 // plain ships_to string. The panel stays open while picking several countries.
 export default class extends Controller {
-  static targets = [ "hidden", "panel", "search", "options", "chips", "trigger" ]
+  static targets = [ "hidden", "panel", "search", "options", "chips", "trigger", "placeholder" ]
   static values = { options: Array, selected: Array }
 
   connect() {
@@ -19,6 +19,10 @@ export default class extends Controller {
   toggle(event) {
     event.preventDefault()
     this.panelTarget.hidden ? this.open() : this.close()
+  }
+
+  triggerKeydown(event) {
+    if (event.key === "Enter" || event.key === " ") this.toggle(event)
   }
 
   open() {
@@ -58,6 +62,9 @@ export default class extends Controller {
 
   render(q) {
     const matches = this.optionsValue.filter((o) => !q || String(o.label).toLowerCase().includes(q))
+    // Selected countries float to the top of the list (stable sort keeps each
+    // group in its original alphabetical order).
+    matches.sort((a, b) => (this.selected.has(String(a.value)) ? 0 : 1) - (this.selected.has(String(b.value)) ? 0 : 1))
     this.optionsTarget.innerHTML = ""
     if (matches.length === 0) {
       const empty = document.createElement("div")
@@ -89,6 +96,7 @@ export default class extends Controller {
   }
 
   remove(event) {
+    event.stopPropagation() // don't let the click bubble to the trigger and toggle the panel
     this.selected.delete(String(event.currentTarget.dataset.value))
     this.updateHidden()
     this.renderChips()
@@ -111,6 +119,11 @@ export default class extends Controller {
         chip.appendChild(x)
         this.chipsTarget.appendChild(chip)
       })
+
+    // Hide the placeholder once anything is selected.
+    const empty = this.selected.size === 0
+    if (this.hasPlaceholderTarget) this.placeholderTarget.hidden = !empty
+    this.triggerTarget.classList.toggle("placeholder", empty)
   }
 
   updateHidden() {

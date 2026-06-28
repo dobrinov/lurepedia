@@ -1,6 +1,8 @@
 <%#
   Multi-select country picker. Submits the chosen ISO codes as a single
-  comma-separated string under `name` (e.g. "US,CA,GB").
+  comma-separated string under `name` (e.g. "US,CA,GB"). Selected countries
+  show as removable flag tags inside the control itself; in the dropdown the
+  selected ones float to the top.
   locals: name (form field name), selected (array of codes), placeholder (optional)
 %>
 <% selected = Array(local_assigns.fetch(:selected, [])).map { |c| c.to_s.upcase } %>
@@ -12,12 +14,15 @@
      data-country-multiselect-options-value="<%= options.to_json %>"
      data-country-multiselect-selected-value="<%= selected.to_json %>">
   <%= hidden_field_tag name, selected.join(","), data: { country_multiselect_target: "hidden" } %>
-  <div class="ms-chips" data-country-multiselect-target="chips"></div>
-  <button type="button" class="combobox-trigger placeholder" data-country-multiselect-target="trigger"
-          data-action="country-multiselect#toggle" aria-expanded="false">
-    <span><%= placeholder %></span>
+  <div class="combobox-trigger placeholder" data-country-multiselect-target="trigger"
+       role="button" tabindex="0" aria-expanded="false"
+       data-action="click->country-multiselect#toggle keydown->country-multiselect#triggerKeydown">
+    <div class="ms-trigger-content">
+      <div class="ms-chips" data-country-multiselect-target="chips"></div>
+      <span class="ms-placeholder" data-country-multiselect-target="placeholder"><%= placeholder %></span>
+    </div>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
-  </button>
+  </div>
   <div class="combobox-panel" data-country-multiselect-target="panel" hidden>
     <div class="combobox-search">
       <input type="text" placeholder="<%= t("common.search") %>" data-country-multiselect-target="search"
