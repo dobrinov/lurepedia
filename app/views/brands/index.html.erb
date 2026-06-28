@@ -12,7 +12,7 @@
       <% @brands.each do |brand| %>
         <%= link_to brand_path(brand), class: "card card-pad stack" do %>
           <div class="row" style="justify-content:space-between">
-            <span class="avatar avatar-lg" style="background:var(--surface-2);color:var(--ink-2)"><%= brand.initials %></span>
+            <%= render "brands/avatar", brand: brand %>
             <% if brand.claimed? %><span class="badge badge-ok"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg><%= t("brand.claimed") %></span><% end %>
           </div>
           <div class="card-title" style="font-size:17px"><%= brand.name %></div>

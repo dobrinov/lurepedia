@@ -1,0 +1,7 @@
+<%# locals: brand, klass: "avatar-lg" %>
+<% klass = local_assigns.fetch(:klass, "avatar-lg") %>
+<% if brand.logo.attached? %>
+  <span class="avatar <%= klass %>"><%= image_tag brand.logo.variant(resize_to_fill: [ 120, 120 ]), alt: brand.name %></span>
+<% else %>
+  <span class="avatar <%= klass %>" style="background:var(--surface-2);color:var(--ink-2)"><%= brand.initials %></span>
+<% end %>

@@ -13,8 +13,29 @@
     <%= f.number_field :founded_year, class: "input" %>
   </div>
   <div class="field">
+    <%= f.label :website, t("brand.website") %>
+    <%= f.url_field :website, class: "input", placeholder: "https://…" %>
+  </div>
+  <div class="field">
     <%= f.label :blurb, t("brand.title") %>
     <%= f.text_area :blurb, class: "input" %>
+  </div>
+  <div class="field">
+    <%= f.label :logo, t("brand.logo") %>
+    <div data-controller="image-upload">
+      <% if brand.logo.attached? %>
+        <div class="upload-thumb" style="margin-bottom:10px">
+          <%= image_tag brand.logo.variant(resize_to_fill: [ 88, 88 ]), alt: brand.name %>
+        </div>
+      <% end %>
+      <div class="upload-drop" data-image-upload-target="drop"
+           data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
+        <%= t("contribute.add_photos") %>
+      </div>
+      <%= f.file_field :logo, accept: "image/*", style: "display:none",
+            data: { image_upload_target: "input", action: "image-upload#add" } %>
+      <div class="upload-previews" data-image-upload-target="previews"></div>
+    </div>
   </div>
   <%= f.submit submit_label, class: "btn btn-primary" %>
 <% end %>

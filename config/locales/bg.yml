@@ -249,6 +249,8 @@ bg:
     empty_sub: Бъдете първият, който добавя марка примамки.
     country: Държава
     website: Уебсайт
+    website_invalid: Въведете валиден URL адрес, започващ с http:// или https://
+    logo: Лого
     tab_lures: Примамки
     tab_history: История
     claim: Заяви тази марка

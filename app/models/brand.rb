@@ -7,6 +7,9 @@ class Brand < ApplicationRecord
   has_one_attached :logo
 
   validates :name, presence: true
+  validates :website,
+            format: { with: %r{\Ahttps?://.+\..+\z}i, message: ->(*) { I18n.t("brand.website_invalid") } },
+            allow_blank: true
 
   scope :alpha, -> { order(:name) }
 

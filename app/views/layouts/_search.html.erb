@@ -22,13 +22,13 @@
         <div>
           <div class="filter-label"><%= t("nav.species") %></div>
           <%= render "shared/async_combobox", name: "species", url: species_options_path,
-                selected: params[:species], selected_label: selected_species_label(params[:species]),
+                selected: selected_filter_value(:species), selected_label: selected_species_label(selected_filter_value(:species)),
                 placeholder: t("search.any_species") %>
         </div>
         <div>
           <div class="filter-label"><%= t("lure.brand") %></div>
           <%= render "shared/async_combobox", name: "brand", url: brand_options_path,
-                selected: params[:brand], selected_label: selected_brand_label(params[:brand]),
+                selected: selected_filter_value(:brand), selected_label: selected_brand_label(selected_filter_value(:brand)),
                 placeholder: t("search.any_brand") %>
         </div>
 

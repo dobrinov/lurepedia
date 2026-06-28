@@ -13,12 +13,20 @@ module SearchFiltersHelper
     end
   end
 
+  # A query param read as a scalar filter value. Guards against the param name
+  # colliding with a nested form body (e.g. brands#create posts brand[...] as a
+  # hash), which the global search bar would otherwise try to cast to a slug.
+  def selected_filter_value(key)
+    value = params[key]
+    value if value.is_a?(String) && value.present?
+  end
+
   def selected_species_label(slug)
-    Species.find_by(slug: slug)&.common_name if slug.present?
+    Species.find_by(slug: slug)&.common_name if slug.is_a?(String) && slug.present?
   end
 
   def selected_brand_label(slug)
-    Brand.find_by(slug: slug)&.name if slug.present?
+    Brand.find_by(slug: slug)&.name if slug.is_a?(String) && slug.present?
   end
 
   private

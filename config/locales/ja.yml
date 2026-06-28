@@ -249,6 +249,8 @@ ja:
     empty_sub: 最初のルアーブランドを追加しましょう。
     country: 国
     website: ウェブサイト
+    website_invalid: http:// または https:// で始まる有効なURLを入力してください
+    logo: ロゴ
     tab_lures: ルアー
     tab_history: 履歴
     claim: このブランドを申請

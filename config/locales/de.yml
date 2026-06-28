@@ -249,6 +249,8 @@ de:
     empty_sub: Füge als Erster eine Ködermarke hinzu.
     country: Land
     website: Website
+    website_invalid: Gib eine gültige URL ein, die mit http:// oder https:// beginnt
+    logo: Logo
     tab_lures: Köder
     tab_history: Verlauf
     claim: Diese Marke beanspruchen

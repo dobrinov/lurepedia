@@ -299,6 +299,8 @@ en:
     empty_sub: Be the first to add a lure brand.
     country: Country
     website: Website
+    website_invalid: Enter a valid URL starting with http:// or https://
+    logo: Logo
     tab_lures: Lures
     tab_history: History
     claim: Claim this brand
