@@ -11,7 +11,8 @@ export default class extends Controller {
 
   sync() {
     const worldwide = this.toggleTarget.checked
-    this.countriesTarget.disabled = worldwide
-    this.countriesTarget.closest(".field").style.opacity = worldwide ? "0.5" : ""
+    // countriesTarget is the field wrapper around the country multi-select.
+    this.countriesTarget.style.opacity = worldwide ? "0.5" : ""
+    this.countriesTarget.style.pointerEvents = worldwide ? "none" : ""
   }
 }

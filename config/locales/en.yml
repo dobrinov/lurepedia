@@ -317,6 +317,7 @@ en:
     ships_to_unknown: "—"
     ships_worldwide: Ships worldwide
     ships_to_hint: Leave blank if the shop ships worldwide.
+    add_country: Add a country
     worldwide: Worldwide
     claim: Claim a shop
     owned_by: Owned by

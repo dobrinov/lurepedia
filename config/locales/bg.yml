@@ -264,6 +264,7 @@ bg:
     ships_to_unknown: "—"
     ships_worldwide: Доставка по целия свят
     ships_to_hint: Оставете празно, ако магазинът доставя по целия свят.
+    add_country: Добави държава
     worldwide: Целият свят
     claim: Заяви магазин
     owned_by: Собственост на

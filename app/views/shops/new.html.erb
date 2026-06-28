@@ -18,9 +18,9 @@
           <%= f.check_box :ships_worldwide, data: { ships_worldwide_target: "toggle", action: "ships-worldwide#sync" } %> <%= t("shop.ships_worldwide") %>
         </label>
       </div>
-      <div class="field">
+      <div class="field" data-ships-worldwide-target="countries">
         <%= f.label :ships_to, t("shop.ships_to") %>
-        <%= f.text_field :ships_to, class: "input", placeholder: "US, CA, GB…", data: { ships_worldwide_target: "countries" } %>
+        <%= render "shared/country_multiselect", name: "shop[ships_to]", selected: @shop.ships_to_countries %>
         <p class="muted" style="font-size:12.5px;margin-top:4px"><%= t("shop.ships_to_hint") %></p>
       </div>
     </div>

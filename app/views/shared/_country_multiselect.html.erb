@@ -1,0 +1,28 @@
+<%#
+  Multi-select country picker. Submits the chosen ISO codes as a single
+  comma-separated string under `name` (e.g. "US,CA,GB").
+  locals: name (form field name), selected (array of codes), placeholder (optional)
+%>
+<% selected = Array(local_assigns.fetch(:selected, [])).map { |c| c.to_s.upcase } %>
+<% placeholder = local_assigns.fetch(:placeholder, t("shop.add_country")) %>
+<% options = country_options.map { |label, code|
+     { value: code, label: label, flag: (flag_available?(code.downcase) ? image_path("flags/#{code.downcase}.svg") : nil) }
+   } %>
+<div class="combobox country-multiselect" data-controller="country-multiselect"
+     data-country-multiselect-options-value="<%= options.to_json %>"
+     data-country-multiselect-selected-value="<%= selected.to_json %>">
+  <%= hidden_field_tag name, selected.join(","), data: { country_multiselect_target: "hidden" } %>
+  <div class="ms-chips" data-country-multiselect-target="chips"></div>
+  <button type="button" class="combobox-trigger placeholder" data-country-multiselect-target="trigger"
+          data-action="country-multiselect#toggle" aria-expanded="false">
+    <span><%= placeholder %></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+  </button>
+  <div class="combobox-panel" data-country-multiselect-target="panel" hidden>
+    <div class="combobox-search">
+      <input type="text" placeholder="<%= t("common.search") %>" data-country-multiselect-target="search"
+             data-action="input->country-multiselect#filter keydown->country-multiselect#keydown">
+    </div>
+    <div class="combobox-options" data-country-multiselect-target="options"></div>
+  </div>
+</div>

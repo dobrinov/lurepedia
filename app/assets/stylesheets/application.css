@@ -292,6 +292,14 @@ button.avatar:focus-visible, button.avatar[aria-expanded="true"] { outline: 2px 
 .combobox-option { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; background: none; border: none; border-radius: var(--r-7); font-size: 13.5px; cursor: pointer; text-align: left; color: var(--ink); }
 .combobox-option:hover, .combobox-option.active, .combobox-option.highlighted { background: var(--surface-2); }
 .combobox-empty { padding: 12px; font-size: 13px; color: var(--muted-2); text-align: center; }
+
+/* Multi-select (country picker): selected items show as removable chips above
+   the trigger; the dropdown itself reuses the combobox styles above. */
+.ms-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ms-chips:not(:empty) { margin-bottom: 8px; }
+.ms-chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 6px 3px 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-pill); font-size: 13px; }
+.ms-chip-x { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; padding: 0; border: none; border-radius: var(--r-pill); background: transparent; color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; }
+.ms-chip-x:hover { background: var(--line-strong); color: var(--ink); }
 [hidden] { display: none !important; }
 
 /* Inputs ------------------------------------------------------------------ */

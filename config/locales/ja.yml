@@ -264,6 +264,7 @@ ja:
     ships_to_unknown: "—"
     ships_worldwide: 世界中へ配送
     ships_to_hint: ショップが世界中へ配送する場合は空欄にしてください。
+    add_country: 国を追加
     worldwide: 世界中
     claim: ショップを申請
     owned_by: 所有者
