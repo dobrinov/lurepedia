@@ -41,15 +41,15 @@ class EditHistoryTest < ActionDispatch::IntegrationTest
     assert_select "td", { text: /Vision 110/, count: 0 }, "history row should not repeat the lure name"
   end
 
-  test "revision page renders a git-style diff with old and new values" do
+  test "revision page renders a detail-style diff with old and new values" do
     sign_in_as(@admin)
     patch lure_path(@lure, locale: :en), params: { lure: { blurb: "New blurb" } }
     rev = @lure.revisions.newest_first.first
 
     get revision_path(rev, locale: :en)
     assert_response :success
-    assert_select ".diff-del .diff-text", text: "Original blurb"
-    assert_select ".diff-ins .diff-text", text: "New blurb"
+    assert_select ".diff-preview .diff-old", text: "Original blurb"
+    assert_select ".diff-preview .diff-new", text: "New blurb"
   end
 
   test "moderation queue renders the diff inline for an edit suggestion" do
@@ -60,7 +60,7 @@ class EditHistoryTest < ActionDispatch::IntegrationTest
     sign_in_as(@admin)
     get moderation_index_path(locale: :en)
     assert_response :success
-    assert_select ".diff-del .diff-text", text: "Original blurb"
-    assert_select ".diff-ins .diff-text", text: "Suggested blurb"
+    assert_select ".diff-preview .diff-old", text: "Original blurb"
+    assert_select ".diff-preview .diff-new", text: "Suggested blurb"
   end
 end

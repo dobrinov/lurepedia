@@ -376,6 +376,14 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .diff-del { background: var(--danger-bg); color: var(--danger); }
 .diff-ins { background: var(--ok-bg); color: var(--ok); }
 
+/* Detail-style diff preview (record rendered like its show page, changes inline) */
+.diff-preview { border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; background: var(--surface); }
+.diff-legend { display: flex; gap: 8px; margin-bottom: 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.diff-old { background: var(--danger-bg); color: var(--danger); text-decoration: line-through; padding: 0 5px; border-radius: 4px; }
+.diff-new { background: var(--ok-bg); color: var(--ok); padding: 0 5px; border-radius: 4px; }
+.diff-old + .diff-new { margin-left: 6px; }
+.diff-legend .diff-old, .diff-legend .diff-new { text-decoration: none; }
+
 /* Tables ------------------------------------------------------------------ */
 .lb-table { width: 100%; border-collapse: collapse; }
 .lb-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); }

@@ -84,7 +84,11 @@ class LuresController < ApplicationController
     attrs = lure_params
     attrs[:brand_id] = params.dig(:lure, :brand_id) if params.dig(:lure, :brand_id).present?
     attrs[:lure_type_id] = params.dig(:lure, :lure_type_id) if params.dig(:lure, :lure_type_id).present?
-    commit_edit(@lure, attrs, @lure.title, lure_path(@lure))
+    # The default-variation selector lives in the catalog-management UI on the
+    # edit page; keep the contributor there afterwards instead of bouncing them
+    # to the public show page, matching VariantsController/BuildsController.
+    redirect_target = params[:return_to] == "edit" ? edit_lure_path(@lure) : lure_path(@lure)
+    commit_edit(@lure, attrs, @lure.title, redirect_target)
   end
 
   private

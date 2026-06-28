@@ -1,0 +1,25 @@
+<%# locals: record, changeset %>
+<% lure = record %>
+<% dv = lure.default_variant || lure.variants.detect { |v| v.photo.attached? } %>
+<div class="lure-hero">
+  <div class="lure-stage">
+    <% if dv&.photo&.attached? %>
+      <%= image_tag dv.photo.variant(resize_to_fill: [ 760, 580 ]), alt: lure.title %>
+    <% else %>
+      <div class="lure-stage-glyph"><%= render "shared/lure_glyph" %></div>
+    <% end %>
+  </div>
+
+  <div class="stack" style="gap:14px">
+    <div class="card-brand"><%= diff_field(changeset, lure, :brand_id) { |v| Brand.find_by(id: v)&.name } %></div>
+    <h1 style="font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1"><%= diff_field(changeset, lure, :model) %></h1>
+
+    <div class="chips">
+      <span class="tag"><%= diff_field(changeset, lure, :lure_type_id) { |v| lure_type_name(LureType.find_by(id: v)) } %></span>
+      <span class="tag"><%= lure_action_label(lure.dominant_action) %></span>
+      <span class="tag"><%= water_name(lure.water_summary) %></span>
+    </div>
+
+    <p class="muted" style="margin-top:4px"><%= diff_field(changeset, lure, :blurb) %></p>
+  </div>
+</div>

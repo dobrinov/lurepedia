@@ -1,0 +1,17 @@
+<%# locals: revision %>
+<% subject = revision.subject %>
+<% changeset = revision.changeset || {} %>
+<% partial = diff_preview_partial(subject) %>
+<% if partial %>
+  <div class="diff-preview">
+    <% if changeset.any? %>
+      <div class="diff-legend">
+        <span class="diff-old"><%= t("revision.removed") %></span>
+        <span class="diff-new"><%= t("revision.added") %></span>
+      </div>
+    <% end %>
+    <%= render partial, record: subject, changeset: changeset %>
+  </div>
+<% else %>
+  <%= render "shared/diff", revision: revision %>
+<% end %>

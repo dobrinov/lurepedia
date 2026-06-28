@@ -206,6 +206,7 @@ de:
     uv_glow: "UV-Leuchten"
     best_for: "Am besten für"
     manage_variations: "Varianten & Bauformen"
+    tab_details: Allgemeine Details
     add_color: "Farbe hinzufügen"
     add_build: "Bauform hinzufügen"
     color_name: "Farbname"
@@ -486,6 +487,8 @@ de:
   revision:
     title: Revision
     no_changes: Für diese Bearbeitung wurden keine Feldänderungen aufgezeichnet.
+    removed: Entfernt
+    added: Hinzugefügt
 
   species_names:
     largemouth_bass:

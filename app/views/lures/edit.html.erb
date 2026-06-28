@@ -6,17 +6,26 @@
   </h1>
   <p class="muted" style="margin-bottom:24px"><%= admin ? t("admin.title") : t("contribute.suggest_note") %></p>
 
-  <div style="max-width:560px">
-    <%= render "form", lure: @lure, submit_label: admin ? t("common.save") : t("common.submit") %>
-  </div>
+  <div data-controller="tabs">
+    <div class="tabs">
+      <button type="button" class="tab active" data-tab-name="details" data-tabs-target="tab" data-action="tabs#select"><%= t("lure.tab_details") %></button>
+      <button type="button" class="tab" data-tab-name="variations" data-tabs-target="tab" data-action="tabs#select"><%= t("lure.manage_variations") %></button>
+    </div>
+
+    <!-- General details -->
+    <div class="tab-panel active" data-tab-panel="details" data-tabs-target="panel">
+      <div style="max-width:560px">
+        <%= render "form", lure: @lure, submit_label: admin ? t("common.save") : t("common.submit") %>
+      </div>
+    </div>
 
   <!-- Variations & builds management -->
-  <div style="margin-top:40px">
-    <div class="section-head"><h2 style="font-size:20px"><%= t("lure.manage_variations") %></h2></div>
+  <div class="tab-panel" data-tab-panel="variations" data-tabs-target="panel">
 
     <!-- Default variation selector -->
     <% if @variants.any? %>
       <%= form_with model: @lure, method: :patch do |f| %>
+        <%= hidden_field_tag :return_to, "edit" %>
         <div class="field" style="max-width:360px">
           <label><%= t("lure.default_variation") %></label>
           <%= f.select :default_variant_id,
@@ -92,5 +101,6 @@
         <p class="muted" style="font-size:13px"><%= t("lure.builds") %> —</p>
       <% end %>
     </div>
+  </div>
   </div>
 </div>

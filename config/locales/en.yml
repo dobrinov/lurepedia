@@ -259,6 +259,7 @@ en:
     uv_glow: UV glow
     best_for: Best for
     manage_variations: Variations & builds
+    tab_details: General details
     add_color: Add a color
     add_build: Add a build
     color_name: Color name
@@ -556,6 +557,8 @@ en:
   revision:
     title: Revision
     no_changes: No field-level changes were recorded for this edit.
+    removed: Removed
+    added: Added
 
   species_names:
     largemouth_bass:

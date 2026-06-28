@@ -206,6 +206,7 @@ bg:
     uv_glow: "UV сияние"
     best_for: "Най-добър за"
     manage_variations: "Варианти и модели"
+    tab_details: Общи данни
     add_color: "Добави цвят"
     add_build: "Добави модел"
     color_name: "Име на цвят"
@@ -556,6 +557,8 @@ bg:
   revision:
     title: Редакция
     no_changes: За тази промяна не са записани промени по полета.
+    removed: Премахнато
+    added: Добавено
 
   species_names:
     largemouth_bass:

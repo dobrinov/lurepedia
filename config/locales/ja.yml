@@ -206,6 +206,7 @@ ja:
     uv_glow: "UVグロー"
     best_for: "最適な対象"
     manage_variations: "バリエーションとビルド"
+    tab_details: 基本情報
     add_color: "カラーを追加"
     add_build: "ビルドを追加"
     color_name: "カラー名"
@@ -556,6 +557,8 @@ ja:
   revision:
     title: リビジョン
     no_changes: この編集にはフィールドレベルの変更が記録されていません。
+    removed: 削除
+    added: 追加
 
   species_names:
     largemouth_bass:

@@ -29,6 +29,41 @@ module RevisionsHelper
     end
   end
 
+  # The detail-style preview partial for a revision subject, or nil for subjects
+  # that fall back to the plain field-by-field diff (Variant, Build, Catch…).
+  def diff_preview_partial(record)
+    case record
+    when Lure then "lures/diff_preview"
+    when Species then "species/diff_preview"
+    when Brand then "brands/diff_preview"
+    when Shop then "shops/diff_preview"
+    end
+  end
+
+  # Whether a changeset touched a given field.
+  def diff_changed?(changeset, field)
+    changeset.present? && changeset.key?(field.to_s)
+  end
+
+  # Renders a record field inside a detail-style preview. When the field is part
+  # of the changeset, the old value (red, struck through) and the new value
+  # (green) are shown together so the change reads in context; otherwise the
+  # record's current value is shown plainly. The optional block formats a raw
+  # stored value (e.g. an id or enum) into display text.
+  def diff_field(changeset, record, field, &block)
+    fmt = ->(raw) { ((block ? block.call(raw) : raw).presence || t("common.none")).to_s }
+
+    if diff_changed?(changeset, field)
+      old_raw, new_raw = changeset[field.to_s]
+      safe_join([
+        tag.span(fmt.call(old_raw), class: "diff-old"),
+        tag.span(fmt.call(new_raw), class: "diff-new")
+      ])
+    else
+      fmt.call(record.public_send(field))
+    end
+  end
+
   # Display form of a stored diff value (raw attribute value from the changeset).
   def diff_value(value)
     case value

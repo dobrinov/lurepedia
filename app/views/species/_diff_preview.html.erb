@@ -1,0 +1,25 @@
+<%# locals: record, changeset %>
+<% species = record %>
+<div class="profile-grid">
+  <aside class="profile-aside stack" style="gap:14px">
+    <div class="card ph ph-lure" style="aspect-ratio:4/3">
+      <% if species.photo.attached? %>
+        <%= image_tag species.photo.variant(resize_to_fill: [ 720, 540 ]), alt: species.common_name %>
+      <% else %>
+        <%= render "shared/fish_glyph" %>
+      <% end %>
+    </div>
+
+    <div class="stack" style="gap:6px">
+      <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em"><%= species.common_name %></h1>
+      <div class="muted" style="font-style:italic"><%= diff_field(changeset, species, :scientific_name) %></div>
+    </div>
+
+    <div class="chips">
+      <span class="tag"><%= diff_field(changeset, species, :water) { |v| water_name(v) } %></span>
+    </div>
+
+    <% if species.habitat.present? %><p class="muted"><%= species.habitat %></p><% end %>
+    <p class="muted" style="font-size:13px"><%= diff_field(changeset, species, :wikipedia_url) %></p>
+  </aside>
+</div>
