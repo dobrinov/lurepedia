@@ -47,6 +47,6 @@ class SpeciesController < ApplicationController
   private
 
   def species_params
-    params.require(:species).permit(:scientific_name, :water, :wikipedia_url)
+    params.require(:species).permit(:scientific_name, :water, :wikipedia_url, :photo)
   end
 end

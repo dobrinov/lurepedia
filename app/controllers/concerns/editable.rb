@@ -12,6 +12,7 @@ module Editable
   def commit_edit(record, attrs, name, redirect_path)
     return unless require_contribution(:catalog)
 
+    attrs = persist_attachments(record, attrs)
     changeset = build_changeset(record, attrs)
 
     if can_edit_directly?(record)
@@ -37,7 +38,11 @@ module Editable
     attrs.to_h.each_with_object({}) do |(key, value), diff|
       next unless record.respond_to?(key)
 
-      if key.to_s.end_with?("_ids")
+      if record.class.attachment_reflections.key?(key.to_s)
+        attachment = record.public_send(key)
+        old_value = attachment.attached? ? attachment.blob.signed_id : nil
+        new_value = value.presence
+      elsif key.to_s.end_with?("_ids")
         old_value = Array(record.public_send(key)).map(&:to_i).sort
         new_value = Array(value).reject(&:blank?).map(&:to_i).sort
       else
@@ -47,6 +52,31 @@ module Editable
       end
       diff[key.to_s] = [ old_value, new_value ] unless old_value == new_value
     end
+  end
+
+  # Uploaded files can't survive in a JSON changeset, so persist each uploaded
+  # attachment to its own blob now and pass the blob's signed id forward in
+  # place of the raw file. The signed id round-trips through the changeset, so a
+  # suggested photo edit can be attached when a moderator approves it — long
+  # after the upload's tempfile is gone — and rolled back on undo. A blank
+  # attachment param is dropped so an untouched file field doesn't clear the
+  # existing image.
+  def persist_attachments(record, attrs)
+    attrs = attrs.to_h
+    record.class.attachment_reflections.each_key do |name|
+      next unless attrs.key?(name)
+
+      value = attrs[name]
+      if value.blank?
+        attrs.delete(name)
+      elsif value.respond_to?(:open)
+        blob = ActiveStorage::Blob.create_and_upload!(
+          io: value.open, filename: value.original_filename, content_type: value.content_type
+        )
+        attrs[name] = blob.signed_id
+      end
+    end
+    attrs
   end
 
   # Direct, unreviewed edits are reserved for admins and the verified owner of

@@ -2,13 +2,33 @@
 <% species = record %>
 <div class="profile-grid">
   <aside class="profile-aside stack" style="gap:14px">
-    <div class="card ph ph-lure" style="aspect-ratio:4/3">
-      <% if species.photo.attached? %>
-        <%= image_tag species.photo.variant(resize_to_fill: [ 720, 540 ]), alt: species.common_name %>
-      <% else %>
-        <%= render "shared/fish_glyph" %>
-      <% end %>
-    </div>
+    <% if diff_changed?(changeset, :photo) %>
+      <% new_blob = diff_blob(changeset["photo"][1]); old_blob = diff_blob(changeset["photo"][0]) %>
+      <div class="stack" style="gap:8px">
+        <div class="card ph ph-lure" style="aspect-ratio:4/3">
+          <% if new_blob %>
+            <%= image_tag new_blob.variant(resize_to_fill: [ 720, 540 ]), alt: species.common_name %>
+          <% else %>
+            <%= render "shared/fish_glyph" %>
+          <% end %>
+        </div>
+        <span class="diff-new" style="align-self:flex-start"><%= t("revision.added") %></span>
+        <% if old_blob %>
+          <div class="row" style="gap:8px;align-items:center">
+            <div class="upload-thumb" style="opacity:.55"><%= image_tag old_blob.variant(resize_to_fill: [ 88, 88 ]), alt: "" %></div>
+            <span class="diff-old"><%= t("revision.removed") %></span>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="card ph ph-lure" style="aspect-ratio:4/3">
+        <% if species.photo.attached? %>
+          <%= image_tag species.photo.variant(resize_to_fill: [ 720, 540 ]), alt: species.common_name %>
+        <% else %>
+          <%= render "shared/fish_glyph" %>
+        <% end %>
+      </div>
+    <% end %>
 
     <div class="stack" style="gap:6px">
       <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em"><%= species.common_name %></h1>

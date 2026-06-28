@@ -64,6 +64,15 @@ module RevisionsHelper
     end
   end
 
+  # Resolve a changeset attachment value (a stored blob signed id) to its blob,
+  # so a proposed photo can be previewed before it's applied. Returns nil for a
+  # blank side or an id that no longer resolves (e.g. a purged blob).
+  def diff_blob(signed_id)
+    return nil if signed_id.blank?
+
+    ActiveStorage::Blob.find_signed(signed_id)
+  end
+
   # Display form of a stored diff value (raw attribute value from the changeset).
   def diff_value(value)
     case value

@@ -1,12 +1,19 @@
 <%# locals: revision %>
 <% changes = revision.field_changes %>
+<% attachments = revision.subject.class.attachment_reflections %>
 <% if changes.any? %>
   <div class="diff">
     <% changes.each do |change| %>
       <div class="diff-field">
         <div class="diff-field-name"><%= diff_field_label(change[:field]) %></div>
-        <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><%= diff_value(change[:old]) %></span></div>
-        <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><%= diff_value(change[:new]) %></span></div>
+        <% if attachments.key?(change[:field].to_s) %>
+          <% old_blob = diff_blob(change[:old]); new_blob = diff_blob(change[:new]) %>
+          <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><% if old_blob %><%= image_tag old_blob.variant(resize_to_fill: [ 88, 88 ]), alt: "" %><% else %><%= t("common.none") %><% end %></span></div>
+          <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><% if new_blob %><%= image_tag new_blob.variant(resize_to_fill: [ 88, 88 ]), alt: "" %><% else %><%= t("common.none") %><% end %></span></div>
+        <% else %>
+          <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><%= diff_value(change[:old]) %></span></div>
+          <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><%= diff_value(change[:new]) %></span></div>
+        <% end %>
       </div>
     <% end %>
   </div>
