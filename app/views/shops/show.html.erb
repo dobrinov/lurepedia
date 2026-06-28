@@ -1,6 +1,8 @@
 <% content_for :title, @shop.name %>
 <% content_for :head, tag.meta(name: "description", content: "#{@shop.name}: #{@shop.blurb}".truncate(155)) %>
 
+<%= render "shared/pending_review", record: @shop %>
+
 <div class="container" style="padding-top:24px">
   <nav class="muted" style="font-size:13px;margin-bottom:16px">
     <%= link_to t("shop.title"), shops_path %> ›

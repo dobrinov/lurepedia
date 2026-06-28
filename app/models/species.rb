@@ -2,6 +2,7 @@ class Species < ApplicationRecord
   include Sluggable
   include Favoritable
   include WaterClassified
+  include Publishable
 
   self.table_name = "species"
 

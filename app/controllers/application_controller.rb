@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
+  # Narrows a catalog scope (variants, builds, …) to what the viewer may see:
+  # moderators see everything for review, everyone else sees only published
+  # entries. Pending entries stay reachable to their submitter via the edit
+  # screens they're redirected to on creation.
+  def visible_catalog(scope)
+    current_user&.can_moderate? ? scope : scope.published
+  end
+
   def switch_locale(&action)
     locale = params[:locale]
     locale = nil unless I18n.available_locales.map(&:to_s).include?(locale)

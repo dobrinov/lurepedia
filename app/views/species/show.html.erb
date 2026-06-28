@@ -1,6 +1,8 @@
 <% content_for :title, @species.common_name %>
 <% content_for :head, tag.meta(name: "description", content: "#{@species.common_name} (#{@species.scientific_name}): #{@species.habitat}".truncate(155)) %>
 
+<%= render "shared/pending_review", record: @species %>
+
 <div class="container" style="padding-top:24px">
   <div class="profile-grid">
     <!-- Left column: identity -->

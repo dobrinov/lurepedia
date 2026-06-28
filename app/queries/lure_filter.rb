@@ -10,7 +10,7 @@ class LureFilter
   end
 
   def results
-    scope = Lure.includes(:brand, :lure_type).all
+    scope = Lure.includes(:brand, :lure_type).published
     scope = apply_text(scope)
     scope = apply_catalog(scope)
     scope = apply_conditions(scope)

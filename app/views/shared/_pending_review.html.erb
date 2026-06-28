@@ -1,0 +1,6 @@
+<%# locals: record %>
+<% unless record.published? %>
+  <div class="container" style="padding-top:16px">
+    <div class="flash notice" role="status"><%= t("contribute.pending_review") %></div>
+  </div>
+<% end %>

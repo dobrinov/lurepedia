@@ -15,8 +15,12 @@ class BuildsController < ApplicationController
 
     if @build.save
       @build.revisions.create!(user: current_user, summary: t("provenance.created"))
-      ModerationItem.create!(subject: @build, kind: :catalog, submitter: current_user)
-      redirect_to edit_lure_path(@lure), notice: t("catch.submitted")
+      if can_add_directly?(owning_brand(@build))
+        redirect_to edit_lure_path(@lure), notice: t("contribute.added")
+      else
+        ModerationItem.create!(subject: @build, kind: :catalog, submitter: current_user)
+        redirect_to edit_lure_path(@lure), notice: t("catch.submitted")
+      end
     else
       flash.now[:alert] = @build.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity

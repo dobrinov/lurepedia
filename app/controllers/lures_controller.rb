@@ -11,8 +11,10 @@ class LuresController < ApplicationController
 
   def show
     @lure = Lure.includes(:brand, :lure_type, variants: { photo_attachment: :blob }).find_by!(slug: params[:id])
-    @variants = @lure.variants.to_a
-    @builds = @lure.builds.ordered.to_a
+    raise ActiveRecord::RecordNotFound unless @lure.visible_to?(current_user)
+
+    @variants = visible_catalog(@lure.variants).to_a
+    @builds = visible_catalog(@lure.builds.ordered).to_a
     @default_variant = @lure.primary_variant
     @selected_variant = @variants.detect { |v| v.to_color_param == params[:color].to_s } || @default_variant
     @catches = @lure.catches.includes(:user, :species, :build).recent.limit(8)

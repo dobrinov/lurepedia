@@ -7,19 +7,19 @@ class FilterOptionsController < ApplicationController
   # and pagination happen in Ruby over the full, bounded species set. Brands are
   # paginated at the database level since they can grow large.
   def species
-    records = Species.alpha.to_a
+    records = Species.alpha.published.to_a
     records = records.select { |s| s.common_name.downcase.include?(query) } if query.present?
     render_page(records[offset, PER + 1] || []) { |s| { value: s.slug, label: s.common_name } }
   end
 
   def brands
-    scope = Brand.alpha
+    scope = Brand.alpha.published
     scope = scope.where("LOWER(name) LIKE ?", "%#{query}%") if query.present?
     render_page(scope.offset(offset).limit(PER + 1).to_a) { |b| { value: b.slug, label: b.name } }
   end
 
   def lures
-    scope = Lure.includes(:brand).by_catch_count
+    scope = Lure.published.includes(:brand).by_catch_count
     scope = scope.joins(:brand) if params[:brand].present? || query.present?
     scope = scope.where(brands: { slug: params[:brand] }) if params[:brand].present?
     if query.present?
@@ -29,7 +29,7 @@ class FilterOptionsController < ApplicationController
   end
 
   def shops
-    scope = Shop.promoted_first
+    scope = Shop.promoted_first.published
     scope = scope.where("LOWER(name) LIKE ?", "%#{query}%") if query.present?
     render_page(scope.offset(offset).limit(PER + 1).to_a) { |s| { value: s.slug, label: s.name } }
   end

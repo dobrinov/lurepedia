@@ -391,6 +391,7 @@ ja:
     add_photos: 写真を追加
     moderation_note: 投稿は公開前に審査されます。
     direct_note: ブランド所有者として、これは審査なしで即時公開されます。
+    pending_review: この項目は審査待ちで、まだ公開されていません。
 
   claim:
     title: "%{name} を申請"

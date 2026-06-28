@@ -1,6 +1,8 @@
 <% content_for :title, @brand.name %>
 <% content_for :head, tag.meta(name: "description", content: "#{@brand.name}: #{@brand.blurb}".truncate(155)) %>
 
+<%= render "shared/pending_review", record: @brand %>
+
 <div class="container" style="padding-top:24px">
   <div class="row" style="justify-content:space-between;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap;gap:16px">
     <div class="row" style="gap:16px">

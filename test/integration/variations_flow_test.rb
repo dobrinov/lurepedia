@@ -47,12 +47,27 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     assert_match @brand.name, response.body
   end
 
-  test "admin adds a color directly and it is queued for review" do
+  test "admin adds a color directly without review" do
     sign_in_as(@admin)
-    assert_difference -> { @lure.variants.count } => 1, -> { ModerationItem.count } => 1 do
+    assert_difference -> { @lure.variants.count } => 1, -> { ModerationItem.count } => 0 do
       post variants_path(@lure, locale: :en), params: { variant: { name: "Pro Blue", uv_glow: "0" } }
     end
     assert_redirected_to edit_lure_path(@lure)
+    assert @lure.variants.order(:id).last.published?, "an admin's color is published immediately"
+  end
+
+  test "a member's new color is queued and hidden from the public lure page until approved" do
+    sign_in_as(@member)
+    assert_difference -> { @lure.variants.count } => 1, -> { ModerationItem.where(kind: :catalog).count } => 1 do
+      post variants_path(@lure, locale: :en), params: { variant: { name: "Member Blue", uv_glow: "0" } }
+    end
+    variant = @lure.variants.order(:id).last
+    assert_not variant.published?
+
+    sign_out
+    get lure_path(@lure, locale: :en)
+    assert_response :success
+    assert_no_match "Member Blue", response.body, "a pending color must not show publicly"
   end
 
   test "member suggesting a color edit files a revision and moderation item" do

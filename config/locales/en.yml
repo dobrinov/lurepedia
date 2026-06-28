@@ -441,6 +441,7 @@ en:
     add_photos: Add photos
     moderation_note: Submissions are reviewed before they go live.
     direct_note: As the brand owner, this goes live immediately — no review needed.
+    pending_review: This entry is awaiting review and isn't public yet.
 
   claim:
     title: "Claim %{name}"

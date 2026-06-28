@@ -391,6 +391,7 @@ de:
     add_photos: Fotos hinzufügen
     moderation_note: Beiträge werden vor der Veröffentlichung geprüft.
     direct_note: Als Markeninhaber wird dies sofort veröffentlicht — ohne Prüfung.
+    pending_review: Dieser Eintrag wartet auf die Prüfung und ist noch nicht öffentlich.
 
   claim:
     title: "%{name} beanspruchen"

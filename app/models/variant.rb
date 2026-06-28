@@ -1,4 +1,6 @@
 class Variant < ApplicationRecord
+  include Publishable
+
   belongs_to :lure
   has_many :catches, dependent: :destroy
   has_many :revisions, as: :subject, dependent: :destroy

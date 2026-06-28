@@ -1,5 +1,6 @@
 class Build < ApplicationRecord
   include WaterClassified
+  include Publishable
 
   belongs_to :lure
   has_many :catches, dependent: :destroy

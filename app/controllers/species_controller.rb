@@ -3,14 +3,16 @@ class SpeciesController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
-    @page = paginate(Species.alpha, per: 12)
+    @page = paginate(Species.alpha.published, per: 12)
     @species = @page.records
     @proven_lure_counts = Species.proven_lure_counts(@species)
   end
 
   def show
     @species = Species.find_by!(slug: params[:id])
-    @lures = @species.proven_lures.includes(:brand, :lure_type)
+    raise ActiveRecord::RecordNotFound unless @species.visible_to?(current_user)
+
+    @lures = @species.proven_lures.published.includes(:brand, :lure_type)
     @catches = @species.catches.includes(:user, variant: :lure).recent.limit(12)
     @metric = (params[:metric] || "length").to_sym
     @rows = LeaderboardQuery.new(species: @species, metric: @metric).rows
@@ -27,8 +29,12 @@ class SpeciesController < ApplicationController
 
     if @species.save
       @species.revisions.create!(user: current_user, summary: t("provenance.created"))
-      ModerationItem.create!(subject: @species, kind: :catalog, submitter: current_user)
-      redirect_to species_path(@species), notice: t("catch.submitted")
+      if can_add_directly?(owning_brand(@species))
+        redirect_to species_path(@species), notice: t("contribute.added")
+      else
+        ModerationItem.create!(subject: @species, kind: :catalog, submitter: current_user)
+        redirect_to species_path(@species), notice: t("catch.submitted")
+      end
     else
       flash.now[:alert] = @species.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity

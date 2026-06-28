@@ -15,8 +15,12 @@ class VariantsController < ApplicationController
 
     if @variant.save
       @variant.revisions.create!(user: current_user, summary: t("provenance.created"))
-      ModerationItem.create!(subject: @variant, kind: :catalog, submitter: current_user)
-      redirect_to edit_lure_path(@lure), notice: t("catch.submitted")
+      if can_add_directly?(owning_brand(@variant))
+        redirect_to edit_lure_path(@lure), notice: t("contribute.added")
+      else
+        ModerationItem.create!(subject: @variant, kind: :catalog, submitter: current_user)
+        redirect_to edit_lure_path(@lure), notice: t("catch.submitted")
+      end
     else
       flash.now[:alert] = @variant.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity

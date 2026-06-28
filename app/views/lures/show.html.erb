@@ -8,6 +8,8 @@
 
 <% dv = @selected_variant %>
 
+<%= render "shared/pending_review", record: @lure %>
+
 <div class="container" style="padding-top:24px"
      data-controller="variant-stage"
      data-variant-stage-base-path-value="<%= lure_path(@lure) %>"
