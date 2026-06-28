@@ -50,23 +50,24 @@
           <div class="overline" style="margin-bottom:8px"><%= t("lure.browse_colors") %></div>
           <div class="color-tiles">
             <% @variants.each do |v| %>
-              <button type="button" class="color-tile"
-                      title="<%= v.name %>"
-                      data-variant-stage-target="chip"
-                      data-action="variant-stage#select"
-                      data-default="<%= v == @selected_variant %>"
-                      data-color-id="<%= v.id %>"
-                      data-color-slug="<%= v.to_color_param %>"
-                      data-name="<%= v.name %>"
-                      data-uv="<%= v.uv_glow %>"
-                      <% if v.photo.attached? %>data-photo-url="<%= url_for(v.photo.variant(resize_to_fill: [ 760, 580 ])) %>"<% end %>>
-                <% if v.photo.attached? %>
-                  <%= image_tag v.photo.variant(resize_to_fill: [ 120, 120 ]), alt: v.name %>
-                <% else %>
-                  <span class="color-tile-empty"><%= render "shared/lure_glyph" %></span>
-                <% end %>
-                <% if v.uv_glow %><span class="uv-badge color-tile-uv">UV</span><% end %>
-              </button>
+              <span class="tooltip color-tile-tip" data-tooltip="<%= v.name %>">
+                <button type="button" class="color-tile"
+                        data-variant-stage-target="chip"
+                        data-action="variant-stage#select"
+                        data-default="<%= v == @selected_variant %>"
+                        data-color-id="<%= v.id %>"
+                        data-color-slug="<%= v.to_color_param %>"
+                        data-name="<%= v.name %>"
+                        data-uv="<%= v.uv_glow %>"
+                        <% if v.photo.attached? %>data-photo-url="<%= url_for(v.photo.variant(resize_to_fill: [ 760, 580 ])) %>"<% end %>>
+                  <% if v.photo.attached? %>
+                    <%= image_tag v.photo.variant(resize_to_fill: [ 120, 120 ]), alt: v.name %>
+                  <% else %>
+                    <span class="color-tile-empty"><%= render "shared/lure_glyph" %></span>
+                  <% end %>
+                  <% if v.uv_glow %><span class="uv-badge color-tile-uv">UV</span><% end %>
+                </button>
+              </span>
             <% end %>
           </div>
         </div>
@@ -175,7 +176,7 @@
                       </span>
                     <% elsif countries.any? %>
                       <span class="row" style="gap:5px;justify-content:flex-end;flex-wrap:wrap">
-                        <% countries.each do |code| %><span title="<%= country_name(code) %>" style="display:inline-flex"><%= country_flag(code, size: 18) %></span><% end %>
+                        <% countries.each do |code| %><span class="tooltip" data-tooltip="<%= country_name(code) %>" tabindex="0" style="display:inline-flex"><%= country_flag(code, size: 18) %></span><% end %>
                       </span>
                     <% else %>
                       <span class="muted" style="font-size:12.5px"><%= t("shop.ships_to_unknown") %></span>

@@ -16,10 +16,20 @@
   </div>
   <div class="field">
     <%= f.label :photo, t("catch.photos") %>
-    <% if variant.photo.attached? %>
-      <%= image_tag variant.photo.variant(resize_to_fill: [ 88, 88 ]), style: "border-radius:8px;margin-bottom:8px", alt: variant.name %>
-    <% end %>
-    <%= f.file_field :photo, accept: "image/*", class: "input" %>
+    <div data-controller="image-upload">
+      <% if variant.photo.attached? %>
+        <div class="upload-thumb" style="margin-bottom:10px">
+          <%= image_tag variant.photo.variant(resize_to_fill: [ 88, 88 ]), alt: variant.name %>
+        </div>
+      <% end %>
+      <div class="upload-drop" data-image-upload-target="drop"
+           data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
+        <%= t("contribute.add_photos") %>
+      </div>
+      <%= f.file_field :photo, accept: "image/*", style: "display:none",
+            data: { image_upload_target: "input", action: "image-upload#add" } %>
+      <div class="upload-previews" data-image-upload-target="previews"></div>
+    </div>
   </div>
 
   <%= f.submit submit_label, class: "btn btn-primary" %>

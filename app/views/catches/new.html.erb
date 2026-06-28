@@ -58,7 +58,8 @@
     <div class="field">
       <label><%= t("catch.photos") %></label>
       <div data-controller="image-upload">
-        <div class="upload-drop" data-action="click->image-upload#browse"><%= t("contribute.add_photos") %></div>
+        <div class="upload-drop" data-image-upload-target="drop"
+             data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop"><%= t("contribute.add_photos") %></div>
         <%= f.file_field :photos, multiple: true, accept: "image/*", style: "display:none",
               data: { image_upload_target: "input", action: "image-upload#add" } %>
         <div class="upload-previews" data-image-upload-target="previews"></div>
