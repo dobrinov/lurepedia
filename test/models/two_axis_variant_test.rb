@@ -53,8 +53,16 @@ class TwoAxisVariantTest < ActiveSupport::TestCase
     assert_equal 0, @build.reload.catches_count
   end
 
-  test "a catch requires a build" do
+  test "a catch may omit a build" do
     catch = Catch.new(user: @user, variant: @color_a, species: @species)
+    assert catch.valid?, catch.errors.full_messages.to_sentence
+  end
+
+  test "a catch rejects a build from a different lure" do
+    other_lure = Lure.create!(brand: @brand, lure_type: @type, model: "Vision 95")
+    other_build = other_lure.builds.create!(name: "95 SP")
+    catch = Catch.new(user: @user, variant: @color_a, build: other_build, species: @species)
+
     assert_not catch.valid?
     assert catch.errors[:build].any?
   end

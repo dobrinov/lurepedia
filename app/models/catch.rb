@@ -3,7 +3,7 @@ class Catch < ApplicationRecord
 
   belongs_to :user
   belongs_to :variant, counter_cache: :catches_count
-  belongs_to :build, counter_cache: :catches_count
+  belongs_to :build, counter_cache: :catches_count, optional: true
   belongs_to :species, counter_cache: :catches_count
   has_one :lure, through: :variant
   has_many :comments, dependent: :destroy
@@ -20,6 +20,8 @@ class Catch < ApplicationRecord
   enum :retrieve, { steady: 0, stop_and_go: 1, twitch: 2, jerk: 3, slow_roll: 4, burn: 5, dead_stick: 6 }, prefix: :retrieve
 
   scope :recent, -> { order(created_at: :desc) }
+
+  validate :build_belongs_to_variants_lure
 
   after_create :bump_lure_counter
   after_destroy :drop_lure_counter
@@ -43,6 +45,14 @@ class Catch < ApplicationRecord
   end
 
   private
+
+  # A catch's optional build must belong to the same lure as its color, so the
+  # two foreign keys can't describe a configuration that doesn't exist.
+  def build_belongs_to_variants_lure
+    return if build.nil? || variant.nil?
+
+    errors.add(:build, :invalid) if build.lure_id != variant.lure_id
+  end
 
   def bump_lure_counter
     Lure.where(id: variant.lure_id).update_counters(catches_count: 1)
