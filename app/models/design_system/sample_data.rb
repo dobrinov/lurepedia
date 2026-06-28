@@ -88,6 +88,8 @@ module DesignSystem
       ]
       revs.define_singleton_method(:newest_first) { sort_by(&:created_at).reverse }
       revs.define_singleton_method(:chronological) { sort_by(&:created_at) }
+      # The provenance partial reads .applied (sample revisions are all applied).
+      revs.define_singleton_method(:applied) { self }
       revs
     end
 

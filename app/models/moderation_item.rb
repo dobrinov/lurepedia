@@ -22,15 +22,45 @@ class ModerationItem < ApplicationRecord
     mod_actionable?
   end
 
+  # Approving a suggested edit is what actually lands it on the record: the
+  # proposed changeset is applied and its revision becomes part of the public
+  # history. Rejecting or undoing an already-applied edit rolls it back.
   def approve!(reviewer)
-    update!(status: :approved, reviewer: reviewer, reviewed_at: Time.current)
+    transaction do
+      apply_edit!(:new) if edits_a_record?
+      update!(status: :approved, reviewer: reviewer, reviewed_at: Time.current)
+    end
   end
 
   def reject!(reviewer)
-    update!(status: :rejected, reviewer: reviewer, reviewed_at: Time.current)
+    transaction do
+      apply_edit!(:old) if edits_a_record? && status_approved?
+      update!(status: :rejected, reviewer: reviewer, reviewed_at: Time.current)
+    end
   end
 
   def undo!
-    update!(status: :pending, reviewer: nil, reviewed_at: nil)
+    transaction do
+      apply_edit!(:old) if edits_a_record? && status_approved?
+      update!(status: :pending, reviewer: nil, reviewed_at: nil)
+    end
+  end
+
+  private
+
+  # Only edit suggestions carry a changeset to apply; catches, new catalog
+  # entries, claims and reports are acted on live and just flip status.
+  def edits_a_record?
+    kind_edit? && revision&.changeset.present?
+  end
+
+  # Writes one side of the changeset (:new to apply, :old to roll back) onto the
+  # subject and keeps the revision's `applied` flag in step, so it appears in —
+  # or disappears from — the public history accordingly.
+  def apply_edit!(side)
+    index = side == :new ? 1 : 0
+    attrs = revision.changeset.transform_values { |pair| pair[index] }
+    revision.subject.update!(attrs)
+    revision.update!(applied: side == :new)
   end
 end

@@ -193,7 +193,7 @@
         </div>
       <% end %>
     <% when "history" %>
-      <% revisions = @lure.revisions.newest_first.to_a %>
+      <% revisions = @lure.revisions.applied.newest_first.to_a %>
       <% if revisions.any? %>
         <div class="card">
           <table class="lb-table">

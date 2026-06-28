@@ -14,8 +14,9 @@ class Shop < ApplicationRecord
   scope :promoted, -> { where(promoted: true) }
   scope :regular, -> { where(promoted: false) }
 
+  # Claimed means a verified ownership claim exists (single source of truth).
   def claimed?
-    claimed
+    claim&.status_verified? || false
   end
 
   # Country codes (uppercased) this shop ships to, parsed from the

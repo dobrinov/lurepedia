@@ -10,8 +10,10 @@ class Brand < ApplicationRecord
 
   scope :alpha, -> { order(:name) }
 
+  # Claimed means a verified ownership claim exists — the single source of
+  # truth, shared with #managed_by?.
   def claimed?
-    claimed
+    claim&.status_verified? || false
   end
 
   # The brand's verified owner manages it: their edits to the brand and its

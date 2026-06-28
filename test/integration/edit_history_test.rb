@@ -28,6 +28,41 @@ class EditHistoryTest < ActionDispatch::IntegrationTest
     assert_equal [ "Original blurb", "Suggested blurb" ], item.revision.changeset["blurb"]
   end
 
+  test "a pending suggestion is neither applied nor shown in public history" do
+    sign_in_as(@member)
+    patch lure_path(@lure, locale: :en), params: { lure: { blurb: "Suggested blurb" } }
+    rev = ModerationItem.where(subject: @lure, kind: :edit).last.revision
+
+    assert_equal "Original blurb", @lure.reload.blurb, "suggestion must not touch the record yet"
+    assert_not rev.applied?
+    assert_not_includes @lure.revisions.applied, rev
+  end
+
+  test "approving a suggestion applies it to the record and reveals it in history" do
+    sign_in_as(@member)
+    patch lure_path(@lure, locale: :en), params: { lure: { blurb: "Suggested blurb" } }
+    item = ModerationItem.where(subject: @lure, kind: :edit).last
+
+    item.approve!(@admin)
+
+    assert_equal "Suggested blurb", @lure.reload.blurb
+    assert item.reload.status_approved?
+    assert item.revision.reload.applied?
+    assert_includes @lure.revisions.applied, item.revision
+  end
+
+  test "rejecting an approved suggestion rolls the record back" do
+    sign_in_as(@member)
+    patch lure_path(@lure, locale: :en), params: { lure: { blurb: "Suggested blurb" } }
+    item = ModerationItem.where(subject: @lure, kind: :edit).last
+    item.approve!(@admin)
+
+    item.reject!(@admin)
+
+    assert_equal "Original blurb", @lure.reload.blurb
+    assert_not item.revision.reload.applied?
+  end
+
   test "history tab shows a generic 'edited' link, not the lure name, and links the contributor" do
     sign_in_as(@admin)
     patch lure_path(@lure, locale: :en), params: { lure: { blurb: "New blurb" } }

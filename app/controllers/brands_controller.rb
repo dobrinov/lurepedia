@@ -3,7 +3,7 @@ class BrandsController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
-    @page = paginate(Brand.alpha, per: 12)
+    @page = paginate(Brand.alpha.includes(:claim), per: 12)
     @brands = @page.records
   end
 

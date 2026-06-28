@@ -16,10 +16,10 @@ class Claim < ApplicationRecord
   end
 
   # Simulated DNS-TXT verification: in production this would query DNS for the
-  # token. Here we trust the stored token and mark ownership verified.
+  # token. Here we trust the stored token and mark ownership verified. The
+  # claimable's #claimed? derives from this status — nothing else to update.
   def verify!
     update!(status: :verified, dns_verified_at: Time.current)
-    claimable.update!(claimed: true) if claimable.respond_to?(:claimed)
   end
 
   private

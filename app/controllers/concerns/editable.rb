@@ -23,7 +23,7 @@ module Editable
         render :edit, status: :unprocessable_entity
       end
     else
-      revision = record.revisions.create!(user: current_user, summary: "Suggested an edit to #{name}", changeset: changeset)
+      revision = record.revisions.create!(user: current_user, summary: "Suggested an edit to #{name}", changeset: changeset, applied: false)
       ModerationItem.create!(subject: record, kind: :edit, submitter: current_user, revision: revision)
       redirect_to redirect_path, notice: t("contribute.suggested")
     end

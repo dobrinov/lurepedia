@@ -43,13 +43,13 @@ puts "  lure types: #{LureType.count}"
 
 # ---------------------------------------------------------------- Brands
 brand_data = [
-  { name: "Megabass", country: "JP", founded_year: 1986, claimed: true, blurb: "High-end Japanese tackle with cult-favorite finishes." },
-  { name: "Rapala", country: "FI", founded_year: 1936, claimed: true, blurb: "Finnish balsa pioneers; the original wounded-minnow wobble." },
-  { name: "Strike King", country: "US", founded_year: 1966, claimed: false, blurb: "Tournament-proven baits at an everyday price." },
-  { name: "Z-Man", country: "US", founded_year: 1985, claimed: false, blurb: "ElaZtech soft plastics and the original ChatterBait." },
-  { name: "Booyah", country: "US", founded_year: 2003, claimed: false, blurb: "Spinnerbaits and buzzbaits built for big bites." },
-  { name: "Berkley", country: "US", founded_year: 1937, claimed: true, blurb: "Science-driven soft plastics and PowerBait scents." },
-  { name: "Shimano", country: "JP", founded_year: 1921, claimed: false, blurb: "Saltwater tackle and offshore metal jigs built for the deep." }
+  { name: "Megabass", country: "JP", founded_year: 1986, blurb: "High-end Japanese tackle with cult-favorite finishes." },
+  { name: "Rapala", country: "FI", founded_year: 1936, blurb: "Finnish balsa pioneers; the original wounded-minnow wobble." },
+  { name: "Strike King", country: "US", founded_year: 1966, blurb: "Tournament-proven baits at an everyday price." },
+  { name: "Z-Man", country: "US", founded_year: 1985, blurb: "ElaZtech soft plastics and the original ChatterBait." },
+  { name: "Booyah", country: "US", founded_year: 2003, blurb: "Spinnerbaits and buzzbaits built for big bites." },
+  { name: "Berkley", country: "US", founded_year: 1937, blurb: "Science-driven soft plastics and PowerBait scents." },
+  { name: "Shimano", country: "JP", founded_year: 1921, blurb: "Saltwater tackle and offshore metal jigs built for the deep." }
 ]
 brands = {}
 brand_data.each do |attrs|
@@ -193,10 +193,10 @@ puts "  lures: #{Lure.count}, variants: #{Variant.count}, builds: #{Build.count}
 # ---------------------------------------------------------------- Shops + buy links
 # No promoted shops are seeded — the "Promoted" placement is left empty.
 shop_data = [
-  { name: "Bass Pro Shops", url: "basspro.com", promoted: false, claimed: false, ships_to: "US, CA, MX", blurb: "Outdoor retail giant." },
-  { name: "FishUSA", url: "fishusa.com", promoted: false, claimed: false, ships_to: "US, CA", blurb: "Great Lakes and freshwater focus." },
-  { name: "Karls Bait and Tackle", url: "karlsbait.com", promoted: false, claimed: false, ships_worldwide: true, blurb: "Community-driven tackle shop." },
-  { name: "The Tackle Box", url: "thetacklebox.com", promoted: false, claimed: false, ships_to: "US", blurb: "Independent local shop, online." }
+  { name: "Bass Pro Shops", url: "basspro.com", promoted: false, ships_to: "US, CA, MX", blurb: "Outdoor retail giant." },
+  { name: "FishUSA", url: "fishusa.com", promoted: false, ships_to: "US, CA", blurb: "Great Lakes and freshwater focus." },
+  { name: "Karls Bait and Tackle", url: "karlsbait.com", promoted: false, ships_worldwide: true, blurb: "Community-driven tackle shop." },
+  { name: "The Tackle Box", url: "thetacklebox.com", promoted: false, ships_to: "US", blurb: "Independent local shop, online." }
 ]
 shops = {}
 shop_data.each do |attrs|
@@ -317,8 +317,11 @@ seed_revision(lures["Vision 110"], members[1], "Added a variant", 90.days.ago)
 seed_revision(lures["Vision 110"], admin, "Corrected target depth", 30.days.ago)
 
 # ---------------------------------------------------------------- Claims
-megabass_claim = Claim.find_or_create_by!(claimable: brands["Megabass"], user: admin) { |c| c.email = "team@megabass.co.jp" }
-megabass_claim.verify! unless megabass_claim.status_verified?
+# Verified ownership claims — these are what make a brand show as "claimed".
+{ "Megabass" => "team@megabass.co.jp", "Rapala" => "owner@rapala.com", "Berkley" => "owner@berkley.com" }.each do |brand_name, email|
+  claim = Claim.find_or_create_by!(claimable: brands[brand_name], user: admin) { |c| c.email = email }
+  claim.verify! unless claim.status_verified?
+end
 
 Claim.find_or_create_by!(claimable: brands["Strike King"], user: members[0]) do |c|
   c.email = "owner@strikeking.com"
@@ -349,7 +352,7 @@ puts "  moderation items: #{ModerationItem.count}, claims: #{Claim.count}, revis
 
 # ---------------------------------------------------------------- Recompute counters
 Brand.find_each { |b| Brand.reset_counters(b.id, :lures) }
-Species.find_each { |s| s.update_columns(catches_count: Catch.where(species_id: s.id).count, lures_count: s.proven_lures.count) }
+Species.find_each { |s| s.update_columns(catches_count: Catch.where(species_id: s.id).count) }
 Lure.find_each { |l| l.update_columns(catches_count: l.catches.count) }
 Variant.find_each { |v| v.update_columns(catches_count: v.catches.count) }
 Catch.find_each { |c| c.update_columns(upvotes_count: c.upvotes.count, comments_count: c.comments.count) }

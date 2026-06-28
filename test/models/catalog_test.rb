@@ -53,6 +53,25 @@ class CatalogTest < ActiveSupport::TestCase
     assert_equal 1, @species.reload.catches_count
   end
 
+  test "proven_lures_count counts each lure once regardless of how many catches" do
+    variant = @lure.variants.create!(name: "Shad")
+    2.times { create_catch(user: @user, variant: variant, species: @species) }
+    other = Lure.create!(brand: @brand, lure_type: @type, model: "KVD 2.5")
+    create_catch(user: @user, variant: other.variants.create!(name: "Chartreuse"), species: @species)
+
+    assert_equal 2, @species.proven_lures_count
+  end
+
+  test "proven_lure_counts batches the per-species count in one map" do
+    variant = @lure.variants.create!(name: "Shad")
+    create_catch(user: @user, variant: variant, species: @species)
+    empty = Species.create!(key: "perch", scientific_name: "Perca fluviatilis")
+
+    counts = Species.proven_lure_counts([ @species, empty ])
+    assert_equal @species.proven_lures_count, counts.fetch(@species.id)
+    assert_nil counts[empty.id], "species with no catches is absent from the map"
+  end
+
   test "lure type name via i18n" do
     assert_equal "Crankbait", @type.name
     I18n.with_locale(:de) { assert_equal "Wobbler", @type.name }

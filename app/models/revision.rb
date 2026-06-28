@@ -6,6 +6,9 @@ class Revision < ApplicationRecord
 
   scope :chronological, -> { order(:created_at) }
   scope :newest_first, -> { order(created_at: :desc) }
+  # Revisions that have actually landed on the record — the public edit history.
+  # A pending suggestion's revision is excluded until a moderator approves it.
+  scope :applied, -> { where(applied: true) }
 
   # A field-level edit (has a recorded before/after changeset), as opposed to a
   # creation entry or a legacy revision recorded before changesets were tracked.

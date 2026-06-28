@@ -5,6 +5,7 @@ class SpeciesController < ApplicationController
   def index
     @page = paginate(Species.alpha, per: 12)
     @species = @page.records
+    @proven_lure_counts = Species.proven_lure_counts(@species)
   end
 
   def show

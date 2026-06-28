@@ -1,7 +1,7 @@
 <%# locals: subject (responds to :revisions, optionally :claim/:claimed?) %>
 <%
-  revisions = subject.revisions.newest_first.to_a
-  creator_rev = subject.revisions.chronological.first
+  revisions = subject.revisions.applied.newest_first.to_a
+  creator_rev = subject.revisions.applied.chronological.first
   creator = creator_rev&.user
   claim = subject.respond_to?(:claim) ? subject.claim : nil
   owned = claim&.status_verified?

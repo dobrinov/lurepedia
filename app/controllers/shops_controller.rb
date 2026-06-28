@@ -3,8 +3,8 @@ class ShopsController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create]
 
   def index
-    @promoted = Shop.promoted.order(:name)
-    @page = paginate(Shop.regular.order(:name), per: 9)
+    @promoted = Shop.promoted.includes(:claim).order(:name)
+    @page = paginate(Shop.regular.includes(:claim).order(:name), per: 9)
     @shops = @page.records
   end
 
