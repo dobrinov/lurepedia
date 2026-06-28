@@ -212,6 +212,8 @@ en:
   lure:
     title: Lures
     subtitle: Every lure, proven by a catch
+    model: Model
+    description: Description
     add: Add a lure
     add_title: Add a lure
     type: Type

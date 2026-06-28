@@ -159,6 +159,8 @@ bg:
   lure:
     title: Примамки
     subtitle: Всяка примамка, доказана с улов
+    model: Модел
+    description: Описание
     add: Добави примамка
     add_title: Добави примамка
     type: Тип

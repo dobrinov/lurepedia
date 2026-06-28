@@ -159,6 +159,8 @@ de:
   lure:
     title: Köder
     subtitle: Jeder Köder, bewiesen durch einen Fang
+    model: Modell
+    description: Beschreibung
     add: Köder hinzufügen
     add_title: Köder hinzufügen
     type: Typ

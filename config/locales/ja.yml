@@ -159,6 +159,8 @@ ja:
   lure:
     title: ルアー
     subtitle: すべてのルアーを、釣果で証明
+    model: モデル
+    description: 説明
     add: ルアーを追加
     add_title: ルアーを追加
     type: タイプ
