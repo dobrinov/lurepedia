@@ -34,4 +34,17 @@ test.describe("Shop shipping-country multi-select", () => {
     await expect(ms).toBeVisible()
     await expect(ms.locator(".ms-chip")).toHaveCount(3) // US, CA, GB preselected
   })
+
+  test("the add-a-shop modal uses the country multi-select", async ({ page }) => {
+    await signIn(page)
+    await page.goto("/en/lures/megabass-vision-110/buy")
+    await page.getByRole("button", { name: /add a place to buy/i }).click()
+    await page.getByText("New shop", { exact: true }).click()
+
+    const ms = page.locator(".modal .country-multiselect")
+    await ms.locator(".combobox-trigger").click()
+    await ms.locator(".combobox-search input").fill("germany")
+    await ms.getByRole("button", { name: /Germany/i }).click()
+    await expect(ms.locator("input[name='new_shop[ships_to]']")).toHaveValue(/DE/)
+  })
 })
