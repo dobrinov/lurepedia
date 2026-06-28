@@ -1,5 +1,14 @@
 # Lurepedia seed data — realistic catalog + community content.
 # Idempotent-ish: uses find_or_create_by on natural keys. Safe to re-run.
+#
+# This is DEMO data for local development and tests only. It creates fake
+# accounts that all share the password "1" (including an admin), so it must
+# never touch a real database. `db:prepare` runs seeds on first create, so
+# guard here rather than relying on how the task is invoked.
+unless Rails.env.local?
+  warn "Skipping db/seeds.rb: demo seed data only runs in development and test."
+  return
+end
 
 LURE_IMG = Rails.root.join("db/seeds/lure_images")
 CATCH_IMG = Rails.root.join("db/seeds/catch_images")
