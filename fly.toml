@@ -11,9 +11,13 @@ primary_region = "lhr"
   RAILS_ENV = "production"
   # Solid Queue runs inside Puma, so the machine must stay up for jobs to run.
   SOLID_QUEUE_IN_PUMA = "true"
+  # The container runs as non-root (uid 1000) and cannot bind the privileged
+  # port 80, so have Thruster listen on a high port. It still proxies to Puma
+  # on TARGET_PORT (3000) under the hood.
+  HTTP_PORT = "8080"
 
 [http_service]
-  internal_port = 80          # Thruster (bin/thrust) listens on 80
+  internal_port = 8080        # Thruster (bin/thrust) listens here
   force_https = true
   auto_start_machines = true
   auto_stop_machines = "off"  # always-on so background jobs keep processing
@@ -28,7 +32,7 @@ primary_region = "lhr"
 [checks]
   [checks.health]
     type = "http"
-    port = 80
+    port = 8080
     path = "/up"
     interval = "15s"
     timeout = "5s"
