@@ -28,6 +28,27 @@ Tests run in parallel and load `fixtures :all`. There is no separate JS test sui
 
 When a task needs a real browser — researching live web pages, rendering JS-heavy sites, or verifying built features in the running app — run `agent-browser skills get core` first to load the browser skill, then drive the browser through it.
 
+## Deployment
+
+Production runs on **Fly.io** (app `lurepedia`, region `lhr`), served at `https://lurepedia.com` / `www.lurepedia.com` (TLS via Fly certs) and `https://lurepedia.fly.dev`. Config lives in `fly.toml`. Kamal is **not** used — there is no `config/deploy.yml` or `.kamal/`.
+
+```bash
+fly deploy -a lurepedia --ha=false     # build + release (ha=false keeps it to one machine)
+fly logs -a lurepedia                  # tail logs
+fly ssh console -a lurepedia           # shell on the machine
+fly machine exec <id> "<cmd>" -a lurepedia   # one-off command; pass --timeout for slow Rails boots
+```
+
+Key facts to respect:
+
+- **Single always-on machine.** SQLite can't be shared across machines, so the app must stay at **one** machine (`min_machines_running = 1`, `auto_stop_machines = "off"`). Solid Queue runs inside Puma (`SOLID_QUEUE_IN_PUMA=true`), so a stopped machine runs no jobs — never enable auto-stop or scale count > 1.
+- **The database is a Fly volume** (`lurepedia_data` mounted at `/rails/storage`) holding all four SQLite DBs (primary, cache, queue, cable). It survives deploys; destroying the volume wipes prod. Fly volume snapshots are on (5-day retention) as the backup.
+- **Migrations** run automatically on boot via `bin/docker-entrypoint` (`db:prepare`). Note `db:prepare` runs `db/seeds.rb` on first DB creation — seeds are guarded to a no-op outside development/test (`Rails.env.local?`), so prod stays clean.
+- **TLS terminates at Fly's edge**; the container speaks plain HTTP. `production.rb` sets `assume_ssl` + `force_ssl` (secure cookies, HSTS) and pins `config.hosts`. Thruster listens on **8080** (`HTTP_PORT`), not the privileged port 80, because the container runs as non-root — `fly.toml`'s `internal_port` and health check must match.
+- **Image variants need ImageMagick** (`variant_processor = :mini_magick`); the Dockerfile installs `imagemagick` alongside `libvips`.
+- `RAILS_MASTER_KEY` is a Fly secret (`fly secrets set`), never committed.
+- **DNS** is on Namecheap (BasicDNS); apex + `www` use A/AAAA records to the app's Fly IPs.
+
 ## Architecture
 
 ### Domain model
