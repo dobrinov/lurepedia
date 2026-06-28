@@ -22,6 +22,21 @@ class CatalogTest < ActiveSupport::TestCase
     assert_not_equal @lure.slug, dup.slug
   end
 
+  test "blank slug source reports only the source error, not a leaky slug error" do
+    brand = Brand.new(name: "")
+    assert_not brand.valid?
+    assert_includes brand.errors.full_messages, "Name can't be blank"
+    assert_not_includes brand.errors.full_messages, "Slug can't be blank"
+  end
+
+  test "a present-but-unsluggable source still fails validation" do
+    # "!!!" parameterizes to an empty string, so no slug can be derived — guard
+    # against silently saving a blank slug.
+    brand = Brand.new(name: "!!!")
+    assert_not brand.valid?
+    assert_includes brand.errors.full_messages, "Slug can't be blank"
+  end
+
   test "brand counter cache tracks lures" do
     assert_equal 1, @brand.reload.lures_count
   end

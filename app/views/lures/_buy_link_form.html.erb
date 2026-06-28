@@ -1,0 +1,67 @@
+<%#
+  "Add a place to buy" modal on the lure buy tab. A signed-in contributor can
+  either pick an existing shop or create a brand-new one inline, then (optionally)
+  add a product link — all without leaving the lure.
+  locals: lure
+%>
+<div data-controller="modal" style="margin-top:16px">
+  <button type="button" class="btn btn-sm" data-action="modal#open"><%= t("buy_link.add") %></button>
+
+  <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
+    <div class="modal modal-overflow" style="text-align:left">
+      <h3><%= t("buy_link.add") %></h3>
+      <p class="muted" style="font-size:13px;margin-bottom:16px"><%= t("contribute.moderation_note") %></p>
+
+      <%= form_with url: buy_links_path(lure), method: :post, class: "stack", html: { style: "gap:14px" } do %>
+        <div data-controller="shop-source">
+          <div class="row" style="gap:18px">
+            <label class="row" style="gap:6px;cursor:pointer">
+              <%= radio_button_tag "shop_source", "existing", true, data: { action: "shop-source#switch" } %>
+              <%= t("buy_link.existing_shop") %>
+            </label>
+            <label class="row" style="gap:6px;cursor:pointer">
+              <%= radio_button_tag "shop_source", "new", false, data: { action: "shop-source#switch" } %>
+              <%= t("buy_link.new_shop") %>
+            </label>
+          </div>
+
+          <div data-shop-source-target="existing" style="margin-top:12px">
+            <%= render "shared/async_combobox", name: "shop", url: shop_options_path,
+                  placeholder: t("buy_link.choose_shop_placeholder") %>
+          </div>
+
+          <div data-shop-source-target="new" hidden style="margin-top:12px" data-controller="ships-worldwide">
+            <div class="field">
+              <%= label_tag "new_shop[name]", t("auth.name") %>
+              <%= text_field_tag "new_shop[name]", nil, class: "input" %>
+            </div>
+            <div class="field">
+              <%= label_tag "new_shop[url]", t("brand.website") %>
+              <%= text_field_tag "new_shop[url]", nil, class: "input", placeholder: "example.com" %>
+            </div>
+            <div class="field">
+              <label class="row" style="gap:8px;align-items:center">
+                <%= check_box_tag "new_shop[ships_worldwide]", "1", false, data: { ships_worldwide_target: "toggle", action: "ships-worldwide#sync" } %>
+                <%= t("shop.ships_worldwide") %>
+              </label>
+            </div>
+            <div class="field" data-ships-worldwide-target="countries">
+              <%= label_tag "new_shop[ships_to]", t("shop.ships_to") %>
+              <%= render "shared/country_multiselect", name: "new_shop[ships_to]", selected: [] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= label_tag :url, t("buy_link.product_url") %>
+          <%= text_field_tag :url, nil, class: "input", placeholder: "example.com/product" %>
+        </div>
+
+        <div class="row" style="justify-content:flex-end;gap:8px">
+          <button type="button" class="btn" data-action="modal#close"><%= t("common.cancel") %></button>
+          <%= submit_tag t("buy_link.submit"), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

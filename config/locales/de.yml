@@ -249,6 +249,18 @@ de:
     claimed: Beansprucht
     owned_by: Im Besitz von
 
+  buy_link:
+    add: Bezugsquelle hinzufügen
+    empty: Noch keine Shops gelistet – füge die erste Bezugsquelle für diesen Köder hinzu.
+    choose_shop: Shop
+    choose_shop_placeholder: Shops suchen…
+    existing_shop: Vorhandener Shop
+    new_shop: Neuer Shop
+    product_url: Produktlink (optional)
+    submit: Hinzufügen
+    shop_required: Bitte wähle einen Shop.
+    already_listed: Dieser Shop ist für diesen Köder bereits eingetragen.
+
   shop:
     title: Shops
     subtitle: Wo kaufen

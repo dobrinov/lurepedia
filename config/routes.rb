@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     scope "lures/:lure_id" do
       resources :variants, only: %i[new create edit update destroy]
       resources :builds, only: %i[new create edit update destroy]
+      resources :buy_links, only: :create
     end
     get   "lures/:id(/:tab)(/:color)", to: "lures#show", as: :lure, constraints: { tab: /caught|buy|history|variations/ }
     # A bare trailing segment that is not a tab is a color on the default tab:
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
     get "options/species", to: "filter_options#species", as: :species_options
     get "options/brands", to: "filter_options#brands", as: :brand_options
     get "options/lures", to: "filter_options#lures", as: :lure_options
+    get "options/shops", to: "filter_options#shops", as: :shop_options
 
     # Living styleguide
     get "design-system", to: "design_system#index", as: :design_system

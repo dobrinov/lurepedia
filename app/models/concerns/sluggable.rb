@@ -3,7 +3,8 @@ module Sluggable
 
   included do
     before_validation :ensure_slug
-    validates :slug, presence: true, uniqueness: true
+    validates :slug, uniqueness: true
+    validate :slug_present
   end
 
   def to_param
@@ -11,6 +12,17 @@ module Sluggable
   end
 
   private
+
+  # The slug is auto-derived from `slug_source` (see ensure_slug). When it comes
+  # out blank the cause is a blank source, which the model reports through its
+  # own presence validation (e.g. "Name can't be blank") — so we only flag the
+  # slug itself when the source had content yet still produced no slug, avoiding
+  # a redundant, internal-sounding "Slug can't be blank".
+  def slug_present
+    return if slug.present?
+
+    errors.add(:slug, :blank) if slug_source.present?
+  end
 
   def ensure_slug
     return if slug.present?

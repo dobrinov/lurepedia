@@ -33,6 +33,10 @@
       <%= render "shared/async_combobox", name: "ds_demo_species", url: species_options_path, placeholder: "Server-backed combobox" %>
       <div class="ds-label" style="margin-top:8px">shared/async_combobox</div>
     </div>
+    <div style="width:240px">
+      <%= render "shared/country_multiselect", name: "ds_demo_countries", selected: [ "US", "CA", "GB" ] %>
+      <div class="ds-label" style="margin-top:8px">shared/country_multiselect</div>
+    </div>
   </div>
 <% end %>
 

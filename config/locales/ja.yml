@@ -249,6 +249,18 @@ ja:
     claimed: 申請済み
     owned_by: 所有者
 
+  buy_link:
+    add: 購入先を追加
+    empty: まだショップがありません。このルアーの購入先を最初に追加しましょう。
+    choose_shop: ショップ
+    choose_shop_placeholder: ショップを検索…
+    existing_shop: 既存のショップ
+    new_shop: 新しいショップ
+    product_url: 商品リンク（任意）
+    submit: 追加
+    shop_required: ショップを選択してください。
+    already_listed: このショップはこのルアーにすでに登録されています。
+
   shop:
     title: ショップ
     subtitle: 購入先

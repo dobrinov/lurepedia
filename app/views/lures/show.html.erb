@@ -189,8 +189,13 @@
         </div>
       <% else %>
         <div class="card card-pad">
-          <p class="muted" style="font-size:13px"><%= t("shop.add") %></p>
+          <p class="muted" style="font-size:13px"><%= t("buy_link.empty") %></p>
         </div>
+      <% end %>
+      <% if signed_in? %>
+        <%= render "lures/buy_link_form", lure: @lure %>
+      <% else %>
+        <p class="muted" style="font-size:13px;margin-top:16px"><%= link_to t("buy_link.add"), new_session_path %></p>
       <% end %>
     <% when "history" %>
       <% revisions = @lure.revisions.applied.newest_first.to_a %>

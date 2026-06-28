@@ -365,6 +365,9 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 /* Modal ------------------------------------------------------------------- */
 .modal-backdrop { position: fixed; inset: 0; background: rgba(24,24,27,.45); backdrop-filter: blur(3px); z-index: 80; display: flex; align-items: center; justify-content: center; padding: 20px; }
 .modal { background: var(--white); border-radius: var(--r-xl); box-shadow: var(--shadow-modal); width: 100%; max-width: 440px; padding: 24px; max-height: 90vh; overflow-y: auto; }
+/* Opt out of the modal's scroll-clipping so a combobox/popover inside it can
+   overflow past the modal edge instead of being cut off (short forms only). */
+.modal.modal-overflow { overflow: visible; }
 .modal h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 6px; }
 
 .lightbox { position: relative; max-width: min(90vw, 520px); }

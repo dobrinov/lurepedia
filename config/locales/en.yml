@@ -302,6 +302,18 @@ en:
     claimed: Claimed
     owned_by: Owned by
 
+  buy_link:
+    add: Add a place to buy
+    empty: No shops listed yet — add the first place to buy this lure.
+    choose_shop: Shop
+    choose_shop_placeholder: Search shops…
+    existing_shop: Existing shop
+    new_shop: New shop
+    product_url: Product link (optional)
+    submit: Add
+    shop_required: Please choose a shop.
+    already_listed: That shop is already listed for this lure.
+
   shop:
     title: Shops
     subtitle: Where to buy

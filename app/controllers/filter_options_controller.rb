@@ -28,6 +28,12 @@ class FilterOptionsController < ApplicationController
     render_page(scope.offset(offset).limit(PER + 1).to_a) { |l| { value: l.slug, label: l.title } }
   end
 
+  def shops
+    scope = Shop.promoted_first
+    scope = scope.where("LOWER(name) LIKE ?", "%#{query}%") if query.present?
+    render_page(scope.offset(offset).limit(PER + 1).to_a) { |s| { value: s.slug, label: s.name } }
+  end
+
   private
 
   def query
