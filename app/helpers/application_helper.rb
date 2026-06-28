@@ -32,7 +32,12 @@ module ApplicationHelper
     "DE" => "Germany", "FR" => "France", "ES" => "Spain", "IT" => "Italy",
     "NL" => "Netherlands", "SE" => "Sweden", "NO" => "Norway", "PL" => "Poland",
     "RU" => "Russia", "BG" => "Bulgaria", "GR" => "Greece", "JP" => "Japan",
-    "CN" => "China", "BR" => "Brazil", "MX" => "Mexico"
+    "CN" => "China", "BR" => "Brazil", "MX" => "Mexico", "FI" => "Finland",
+    "AU" => "Australia", "NZ" => "New Zealand", "DK" => "Denmark", "IE" => "Ireland",
+    "PT" => "Portugal", "KR" => "South Korea", "TH" => "Thailand", "ZA" => "South Africa",
+    "IN" => "India", "AR" => "Argentina", "CL" => "Chile", "UA" => "Ukraine",
+    "TR" => "Turkey", "AT" => "Austria", "BE" => "Belgium", "CH" => "Switzerland",
+    "CZ" => "Czechia", "HU" => "Hungary", "RO" => "Romania"
   }.freeze
 
   def country_options

@@ -17,6 +17,18 @@
   </div>
 <% end %>
 
+<%= ds_section "Tooltip" do %>
+  <p class="muted" style="font-size:13px;margin-bottom:14px">Hover or keyboard-focus an element to reveal its <code>data-tooltip</code>. Used for copy buttons, color swatches, and shipping-country flags.</p>
+  <div class="ds-row" style="padding-top:34px">
+    <%= ds_example ".tooltip" do %>
+      <span class="tooltip" data-tooltip="I'm a tooltip" tabindex="0" style="border-bottom:1px dashed var(--line-strong)">Hover me</span>
+    <% end %>
+    <%= ds_example ".tooltip on a flag" do %>
+      <span class="tooltip" data-tooltip="United States" tabindex="0" style="display:inline-flex"><%= country_flag("US", size: 18) %></span>
+    <% end %>
+  </div>
+<% end %>
+
 <%= ds_section "Moderation kind badges" do %>
   <div class="ds-row">
     <% %w[catch edit catalog claim report].each do |kind| %>

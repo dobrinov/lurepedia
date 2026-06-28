@@ -25,7 +25,7 @@
           <%= worldwide_flag(size: 18) %><span class="muted"><%= t("shop.worldwide") %></span>
         <% elsif @shop.ships_to_countries.any? %>
           <span class="row" style="gap:5px;flex-wrap:wrap">
-            <% @shop.ships_to_countries.each do |code| %><span title="<%= country_name(code) %>" style="display:inline-flex"><%= country_flag(code, size: 18) %></span><% end %>
+            <% @shop.ships_to_countries.each do |code| %><span class="tooltip" data-tooltip="<%= country_name(code) %>" tabindex="0" style="display:inline-flex"><%= country_flag(code, size: 18) %></span><% end %>
           </span>
         <% else %>
           <span class="muted"><%= t("shop.ships_to_unknown") %></span>

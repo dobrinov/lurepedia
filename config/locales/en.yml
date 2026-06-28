@@ -618,6 +618,26 @@ en:
     CN: China
     BR: Brazil
     MX: Mexico
+    FI: Finland
+    AU: Australia
+    NZ: New Zealand
+    DK: Denmark
+    IE: Ireland
+    PT: Portugal
+    KR: South Korea
+    TH: Thailand
+    ZA: South Africa
+    IN: India
+    AR: Argentina
+    CL: Chile
+    UA: Ukraine
+    TR: Turkey
+    AT: Austria
+    BE: Belgium
+    CH: Switzerland
+    CZ: Czechia
+    HU: Hungary
+    RO: Romania
   activerecord:
     attributes:
       user:

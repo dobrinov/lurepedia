@@ -165,6 +165,10 @@ main { min-height: 60vh; }
   overflow: hidden;
 }
 .card-pad { padding: 16px; }
+/* Opt out of overflow clipping so flag tooltips can escape the card; keep the
+   rounded corners clean by dropping the last row's bottom border. */
+.card-tooltips { overflow: visible; }
+.card-tooltips .lb-table tr:last-child td { border-bottom: none; }
 .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
 .grid-catches { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
 

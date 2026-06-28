@@ -618,6 +618,26 @@ ja:
     CN: 中国
     BR: ブラジル
     MX: メキシコ
+    FI: フィンランド
+    AU: オーストラリア
+    NZ: ニュージーランド
+    DK: デンマーク
+    IE: アイルランド
+    PT: ポルトガル
+    KR: 韓国
+    TH: タイ
+    ZA: 南アフリカ
+    IN: インド
+    AR: アルゼンチン
+    CL: チリ
+    UA: ウクライナ
+    TR: トルコ
+    AT: オーストリア
+    BE: ベルギー
+    CH: スイス
+    CZ: チェコ
+    HU: ハンガリー
+    RO: ルーマニア
   activerecord:
     attributes:
       user:
