@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Boots an isolated Rails server for the Playwright e2e suite: a dedicated SQLite
+# database (storage/e2e.sqlite3), seeded, served on port 3201 — so e2e runs never
+# touch the development database. Idempotent; safe to re-run.
+set -e
+cd "$(dirname "$0")/.."
+
+export DATABASE_URL="${DATABASE_URL:-sqlite3:storage/e2e.sqlite3}"
+export RAILS_ENV="${RAILS_ENV:-development}"
+
+bin/rails db:prepare >/dev/null
+bin/rails db:seed >/dev/null
+
+# Dedicated pidfile so this never clashes with a running dev server's.
+exec bin/rails server -p "${E2E_PORT:-3201}" -b 127.0.0.1 -P tmp/pids/e2e.pid

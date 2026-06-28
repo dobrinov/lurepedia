@@ -33,3 +33,9 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+
+# Node / Playwright e2e tooling (the app itself has no Node build step)
+/node_modules
+/playwright-report
+/test-results
+/e2e/.auth
