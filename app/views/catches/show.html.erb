@@ -31,16 +31,16 @@
           <% @comments.each do |comment| %>
             <div class="row" style="gap:10px;align-items:flex-start">
               <span class="avatar" style="background:var(--surface-2);color:var(--ink-2)"><%= user_avatar(comment.user) %></span>
-              <div>
+              <div style="flex:1;min-width:0">
                 <div class="row" style="gap:8px"><strong style="font-size:13px"><%= comment.user.name %></strong><span class="muted" style="font-size:12px"><%= l(comment.created_at.to_date, format: :long) %></span></div>
-                <div style="font-size:14px"><%= comment.body %></div>
+                <div style="font-size:14px;overflow-wrap:anywhere"><%= comment.body %></div>
               </div>
             </div>
           <% end %>
           <% if @comments.empty? %><p class="muted" style="font-size:14px"><%= t("catch.comments") %> —</p><% end %>
         </div>
         <% if signed_in? %>
-          <%= form_with url: catch_comments_path(@catch), method: :post, class: "stack", style: "margin-top:24px;padding-top:20px;border-top:1px solid var(--line);gap:8px" do |f| %>
+          <%= form_with url: catch_comments_path(@catch), method: :post, class: "stack", html: { style: "margin-top:32px;padding-top:24px;border-top:1px solid var(--line);gap:12px" } do |f| %>
             <%= f.text_area "comment[body]", class: "input", placeholder: t("catch.add_comment"), required: true %>
             <%= f.submit t("catch.add_comment"), class: "btn btn-primary", style: "align-self:flex-start" %>
           <% end %>
