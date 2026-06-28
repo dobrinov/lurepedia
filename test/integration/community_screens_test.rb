@@ -13,6 +13,19 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     @catch = create_catch(user: @member, variant: @variant, species: @bass, upvotes_count: 3, length_cm: 50)
   end
 
+  # A catch may be logged without a build (the size is optional); the detail
+  # page and the shared catch card must not assume one is present.
+  test "a catch without a build renders on its page and in listings" do
+    buildless = Catch.create!(user: @member, variant: @variant, species: @bass)
+    assert_nil buildless.build
+
+    get catch_path(buildless, locale: :en)
+    assert_response :success
+
+    get catches_path(locale: :en)
+    assert_response :success
+  end
+
   test "search finds lures species brands" do
     get search_path(locale: :en, q: "Vision")
     assert_response :success

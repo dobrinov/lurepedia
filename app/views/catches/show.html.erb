@@ -69,7 +69,7 @@
           <div class="muted"><%= t("catch.on_lure", lure: "") %> <%= link_to @catch.lure.title, lure_path(@catch.lure) %></div>
           <div class="chips" style="margin-top:6px">
             <span class="tag"><%= @catch.variant.name %></span>
-            <span class="tag"><%= @catch.build.name %></span>
+            <% if @catch.build %><span class="tag"><%= @catch.build.name %></span><% end %>
           </div>
         </div>
         <div class="row" style="gap:8px">
