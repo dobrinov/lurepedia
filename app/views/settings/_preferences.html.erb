@@ -9,6 +9,10 @@
     <%= f.label :locale, t("settings.language") %>
     <%= render "shared/combobox", name: "user[locale]", options: available_locales_for_switcher.map { |loc, meta| [meta[:native], loc] }, selected: user.locale, form: f %>
   </div>
+  <div class="field">
+    <%= f.label :time_zone, t("settings.time_zone") %>
+    <%= f.time_zone_select :time_zone, nil, { include_blank: t("settings.time_zone_auto") }, class: "input" %>
+  </div>
   <fieldset class="field" style="border:0;padding:0;margin:0">
     <legend style="font-weight:600;margin-bottom:8px"><%= t("settings.units") %></legend>
     <% %i[length weight depth].each do |measurement| %>

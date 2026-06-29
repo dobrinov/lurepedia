@@ -523,6 +523,8 @@ en:
     profile: Profile
     country: Country
     language: Language
+    time_zone: Time zone
+    time_zone_auto: "Automatic (UTC)"
     units: Units
     notifications: Notifications
     saved: Settings saved

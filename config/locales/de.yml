@@ -473,6 +473,8 @@ de:
     profile: Profil
     country: Land
     language: Sprache
+    time_zone: Zeitzone
+    time_zone_auto: "Automatisch (UTC)"
     units: Einheiten
     notifications: Benachrichtigungen
     saved: Einstellungen gespeichert

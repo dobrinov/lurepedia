@@ -540,6 +540,8 @@ bg:
     profile: Профил
     country: Държава
     language: Език
+    time_zone: Часова зона
+    time_zone_auto: "Автоматично (UTC)"
     units: Мерни единици
     notifications: Известия
     saved: Настройките са запазени

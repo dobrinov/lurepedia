@@ -22,6 +22,7 @@ class User < ApplicationRecord
   normalizes :username, with: ->(u) { u.to_s.strip.downcase.presence }
 
   validates :name, presence: true
+  validates :time_zone, inclusion: { in: ->(*) { ActiveSupport::TimeZone.all.map(&:name) } }, allow_blank: true
   validates :username, uniqueness: { case_sensitive: false },
                        format: { with: /\A[a-z0-9_-]{3,30}\z/ },
                        allow_nil: true

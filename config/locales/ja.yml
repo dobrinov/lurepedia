@@ -473,6 +473,8 @@ ja:
     profile: プロフィール
     country: 国
     language: 言語
+    time_zone: タイムゾーン
+    time_zone_auto: "自動 (UTC)"
     units: 単位
     notifications: 通知
     saved: 設定を保存しました

@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   stale_when_importmap_changes
 
   around_action :switch_locale
+  around_action :use_time_zone
   before_action :canonicalize_root_locale
 
   helper_method :current_user, :signed_in?
@@ -39,6 +40,16 @@ class ApplicationController < ActionController::Base
     locale ||= cookies[:locale]
     locale = I18n.default_locale unless I18n.available_locales.map(&:to_s).include?(locale.to_s)
     I18n.with_locale(locale, &action)
+  end
+
+  # Render timestamps in the signed-in user's preferred zone. Active Record's
+  # time-zone-aware attributes are read in Time.zone, so wrapping the request
+  # makes every `created_at` etc. localize without per-view conversion. Falls
+  # back to the app default zone for guests or an unset/invalid preference.
+  def use_time_zone(&action)
+    zone = current_user&.time_zone
+    zone = nil unless zone.present? && ActiveSupport::TimeZone[zone]
+    zone ? Time.use_zone(zone, &action) : action.call
   end
 
   # Anonymous visitors get canonical, locale-prefixed URLs, so a bare "/" is
