@@ -223,6 +223,8 @@ bg:
     add: Добави вид
     add_title: Добави вид
     scientific_name: Научно име
+    local_names: Местни имена
+    local_names_hint: Популярното име на всеки език. Показва се на читателите на техния език, с резервен вариант английски.
     wikipedia_url: URL в Уикипедия
     wikipedia: Виж в Уикипедия
     wikipedia_url_invalid: трябва да е URL на статия в Уикипедия (напр. https://bg.wikipedia.org/wiki/...)

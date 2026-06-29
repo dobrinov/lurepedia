@@ -53,6 +53,6 @@ class SpeciesController < ApplicationController
   private
 
   def species_params
-    params.require(:species).permit(:scientific_name, :water, :wikipedia_url, :photo)
+    params.require(:species).permit(:scientific_name, :water, :wikipedia_url, :photo, local_names: I18n.available_locales.map(&:to_s))
   end
 end

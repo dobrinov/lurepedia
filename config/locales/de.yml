@@ -223,6 +223,8 @@ de:
     add: Fischart hinzufügen
     add_title: Fischart hinzufügen
     scientific_name: Wissenschaftlicher Name
+    local_names: Lokale Namen
+    local_names_hint: Der gebräuchliche Name in jeder Sprache. Wird Lesern in ihrer Sprache angezeigt, ersatzweise auf Englisch.
     wikipedia_url: Wikipedia-URL
     wikipedia: Auf Wikipedia ansehen
     wikipedia_url_invalid: muss eine Wikipedia-Artikel-URL sein (z. B. https://de.wikipedia.org/wiki/...)

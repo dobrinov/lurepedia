@@ -41,5 +41,21 @@
 
     <% if species.habitat.present? %><p class="muted"><%= species.habitat %></p><% end %>
     <p class="muted" style="font-size:13px"><%= diff_field(changeset, species, :wikipedia_url) %></p>
+
+    <% if diff_changed?(changeset, :local_names) %>
+      <% old_names, new_names = changeset["local_names"] %>
+      <div class="stack" style="gap:4px">
+        <div class="filter-label"><%= t("species.local_names") %></div>
+        <% ((old_names || {}).keys | (new_names || {}).keys).each do |loc| %>
+          <% was = (old_names || {})[loc].to_s; now = (new_names || {})[loc].to_s %>
+          <% next if was == now %>
+          <div style="font-size:13px">
+            <span class="muted"><%= loc %>:</span>
+            <% if was.present? %><span class="diff-old"><%= was %></span><% end %>
+            <% if now.present? %><span class="diff-new"><%= now %></span><% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </aside>
 </div>

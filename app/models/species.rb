@@ -20,8 +20,20 @@ class Species < ApplicationRecord
   scope :alpha, -> { order(:key) }
   scope :proven, -> { where("catches_count > 0") }
 
+  # Contributor-supplied common names keyed by locale. Stored compacted so a
+  # blank field never shadows a fallback.
+  def local_names=(value)
+    super((value || {}).to_h.transform_values { |v| v.to_s.strip }.reject { |_, v| v.blank? })
+  end
+
+  # The display name in the viewer's locale: a contributor's local name first,
+  # then their English one, then the bundled translation, then the key.
   def common_name
-    I18n.t("species_names.#{key}.common", default: key.to_s.titleize)
+    names = local_names || {}
+    names[I18n.locale.to_s].presence ||
+      names["en"].presence ||
+      I18n.t("species_names.#{key}.common", default: nil).presence ||
+      key.to_s.titleize
   end
 
   def habitat

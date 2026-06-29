@@ -12,6 +12,17 @@
     <%= f.label :wikipedia_url, t("species.wikipedia_url") %>
     <%= f.url_field :wikipedia_url, class: "input", placeholder: "https://en.wikipedia.org/wiki/..." %>
   </div>
+  <fieldset class="field" style="border:0;padding:0;margin:0">
+    <legend style="font-weight:600;margin-bottom:4px"><%= t("species.local_names") %></legend>
+    <p class="muted" style="font-size:13px;margin-bottom:8px"><%= t("species.local_names_hint") %></p>
+    <% names = species.local_names || {} %>
+    <% available_locales_for_switcher.each do |loc, meta| %>
+      <div class="field">
+        <%= label_tag "species_local_names_#{loc}", meta[:native] %>
+        <%= text_field_tag "species[local_names][#{loc}]", names[loc.to_s], id: "species_local_names_#{loc}", class: "input" %>
+      </div>
+    <% end %>
+  </fieldset>
   <div class="field">
     <%= f.label :photo, t("catch.photos") %>
     <div data-controller="image-upload">
