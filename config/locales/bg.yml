@@ -443,6 +443,7 @@ bg:
     approved: Одобрено
     rejected: Отхвърлено
     needs_admin: Изисква админ
+    own_submission: Вие подадохте това
     submitted_by: Изпратено от
     view_details: Виж детайли
     kind:

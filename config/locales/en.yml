@@ -493,6 +493,7 @@ en:
     approved: Approved
     rejected: Rejected
     needs_admin: Needs admin
+    own_submission: You submitted this
     submitted_by: Submitted by
     view_details: View details
     kind:

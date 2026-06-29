@@ -38,6 +38,8 @@
             <% if item.actionable_by?(current_user) %>
               <%= button_to t("moderation.approve"), moderation_path(item, decision: "approve", filter: @filter), method: :patch, class: "btn btn-sm btn-primary" %>
               <%= button_to t("moderation.reject"), moderation_path(item, decision: "reject", filter: @filter), method: :patch, class: "btn btn-sm" %>
+            <% elsif item.submitter_id == current_user.id %>
+              <span class="badge badge-noproof"><%= t("moderation.own_submission") %></span>
             <% else %>
               <span class="badge badge-noproof"><%= t("moderation.needs_admin") %></span>
             <% end %>

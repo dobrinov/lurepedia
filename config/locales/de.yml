@@ -443,6 +443,7 @@ de:
     approved: Freigegeben
     rejected: Abgelehnt
     needs_admin: Admin erforderlich
+    own_submission: Von dir eingereicht
     submitted_by: Eingereicht von
     view_details: Details ansehen
     kind:

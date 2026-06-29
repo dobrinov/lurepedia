@@ -443,6 +443,7 @@ ja:
     approved: 承認済み
     rejected: 却下済み
     needs_admin: 管理者が必要
+    own_submission: あなたが投稿しました
     submitted_by: 投稿者
     view_details: 詳細を表示
     kind:
