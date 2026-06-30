@@ -304,6 +304,7 @@ en:
     website: Website
     website_invalid: Enter a valid URL starting with http:// or https://
     logo: Logo
+    blurb: About
     tab_lures: Lures
     tab_history: History
     claim: Claim this brand

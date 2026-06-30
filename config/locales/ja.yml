@@ -254,6 +254,7 @@ ja:
     website: ウェブサイト
     website_invalid: http:// または https:// で始まる有効なURLを入力してください
     logo: ロゴ
+    blurb: 説明
     tab_lures: ルアー
     tab_history: 履歴
     claim: このブランドを申請
