@@ -47,7 +47,6 @@ Rails.application.routes.draw do
     end
 
     # Discovery
-    get "search", to: "search#index"
     get "leaderboard", to: "leaderboard#index"
 
     # Public profiles

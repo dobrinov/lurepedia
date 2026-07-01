@@ -7,6 +7,10 @@
     <%= link_to t("lure.add"), new_lure_path, class: "btn btn-sm" %>
   </div>
 
+  <div class="page-search-row">
+    <%= render "lures/search" %>
+  </div>
+
   <!-- Active filter pills -->
   <% if @filter.active_pills.any? %>
     <div class="chips" style="margin-bottom:18px">

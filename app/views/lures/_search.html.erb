@@ -1,25 +1,31 @@
-<div class="site-search" data-controller="header-search">
+<div class="site-search page-search" data-controller="search-bar">
   <span class="search-icon">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
   </span>
-  <%= form_with url: search_path, method: :get, data: { header_search_target: "form" } do |f| %>
-    <%= f.search_field :q, value: params[:q], placeholder: t("nav.search_placeholder"),
+  <%= form_with url: lures_path, method: :get do |f| %>
+    <%# Keep the active filters when submitting a free-text query %>
+    <% request.query_parameters.except("q", "page").each do |key, value| %>
+      <%= hidden_field_tag key, value if value.is_a?(String) %>
+    <% end %>
+    <%= f.search_field :q, value: params[:q], placeholder: t("lure.search_placeholder"),
           autocomplete: "off",
-          data: { header_search_target: "input", action: "focus->header-search#expand" } %>
+          data: { action: "focus->search-bar#expand" } %>
   <% end %>
 
-  <div class="search-panel" data-header-search-target="panel" hidden>
+  <div class="search-panel" data-search-bar-target="panel" hidden>
     <div class="row" style="justify-content:space-between">
       <strong style="display:flex;align-items:center;gap:8px">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
         <%= t("search.filters") %>
       </strong>
       <span class="muted panel-hint" style="font-size:13px"><%= t("search.combine_free") %></span>
-      <button type="button" class="panel-close" data-action="header-search#collapse" aria-label="<%= t("common.close") %>">
+      <button type="button" class="panel-close" data-action="search-bar#collapse" aria-label="<%= t("common.close") %>">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
       </button>
     </div>
     <%= form_with url: lures_path, method: :get, class: "filters-form" do %>
+      <%# Keep the free-text query when applying filters %>
+      <%= hidden_field_tag :q, params[:q] if selected_filter_value(:q) %>
       <div class="filters-grid">
         <%# Large collections: server-backed, paginated, infinite-scroll comboboxes %>
         <div>

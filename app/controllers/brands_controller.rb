@@ -3,7 +3,10 @@ class BrandsController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
-    @page = paginate(Brand.alpha.published.includes(:claim), per: 12)
+    @q = params[:q].to_s.strip
+    scope = Brand.alpha.published.includes(:claim)
+    scope = scope.where("LOWER(name) LIKE ?", "%#{@q.downcase}%") if @q.present?
+    @page = paginate(scope, per: 12)
     @brands = @page.records
   end
 

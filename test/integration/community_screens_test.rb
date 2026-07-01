@@ -26,16 +26,33 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "search finds lures species brands" do
-    get search_path(locale: :en, q: "Vision")
+  test "each catalog index searches its own records" do
+    get lures_path(locale: :en, q: "Vision")
     assert_response :success
     assert_match "Vision 110", response.body
-    get search_path(locale: :en, q: "Largemouth")
+
+    get species_index_path(locale: :en, q: "Largemouth")
+    assert_response :success
     assert_match "Largemouth Bass", response.body
+
+    get brands_path(locale: :en, q: "Megabass")
+    assert_response :success
+    assert_match "Megabass", response.body
+
+    shop = Shop.create!(name: "Tackle Warehouse", url: "https://example.com")
+    get shops_path(locale: :en, q: "Warehouse")
+    assert_response :success
+    assert_match shop.name, response.body
   end
 
-  test "search empty state" do
-    get search_path(locale: :en, q: "zzzznotfound")
+  test "catalog searches with no matches show an empty state" do
+    get species_index_path(locale: :en, q: "zzzznotfound")
+    assert_match I18n.t("search.no_results"), response.body
+
+    get brands_path(locale: :en, q: "zzzznotfound")
+    assert_match I18n.t("search.no_results"), response.body
+
+    get shops_path(locale: :en, q: "zzzznotfound")
     assert_match I18n.t("search.no_results"), response.body
   end
 

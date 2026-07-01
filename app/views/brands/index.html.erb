@@ -7,6 +7,10 @@
     <%= link_to t("brand.add"), new_brand_path, class: "btn btn-sm" %>
   </div>
 
+  <div class="page-search-row">
+    <%= render "shared/search_bar", url: brands_path, placeholder: t("brand.search_placeholder") %>
+  </div>
+
   <% if @brands.any? %>
     <div class="grid-cards">
       <% @brands.each do |brand| %>
@@ -25,6 +29,11 @@
       <% end %>
     </div>
     <%= render "shared/pagination", page: @page %>
+  <% elsif @q.present? %>
+    <div class="empty-state">
+      <h3><%= t("search.no_results") %></h3>
+      <%= link_to t("search.clear_all"), brands_path, class: "btn" %>
+    </div>
   <% else %>
     <div class="empty-state">
       <h3><%= t("brand.empty_title") %></h3>

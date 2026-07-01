@@ -10,12 +10,23 @@
     </div>
   </div>
 
+  <div class="page-search-row">
+    <%= render "shared/search_bar", url: shops_path, placeholder: t("shop.search_placeholder") %>
+  </div>
+
   <% if @promoted.empty? && @shops.empty? %>
-    <div class="empty-state">
-      <h3><%= t("shop.empty_title") %></h3>
-      <p><%= t("shop.empty_sub") %></p>
-      <%= link_to t("shop.add"), new_shop_path, class: "btn btn-primary" %>
-    </div>
+    <% if @q.present? %>
+      <div class="empty-state">
+        <h3><%= t("search.no_results") %></h3>
+        <%= link_to t("search.clear_all"), shops_path, class: "btn" %>
+      </div>
+    <% else %>
+      <div class="empty-state">
+        <h3><%= t("shop.empty_title") %></h3>
+        <p><%= t("shop.empty_sub") %></p>
+        <%= link_to t("shop.add"), new_shop_path, class: "btn btn-primary" %>
+      </div>
+    <% end %>
   <% else %>
     <% if @promoted.any? %>
       <div class="section-head"><h2 style="font-size:16px"><%= t("shop.promoted_section") %></h2></div>

@@ -7,6 +7,10 @@
     <%= link_to t("species.add"), new_species_path, class: "btn btn-sm" %>
   </div>
 
+  <div class="page-search-row">
+    <%= render "shared/search_bar", url: species_index_path, placeholder: t("species.search_placeholder") %>
+  </div>
+
   <% if @species.any? %>
     <div class="grid-cards">
       <% @species.each do |sp| %>
@@ -31,6 +35,11 @@
       <% end %>
     </div>
     <%= render "shared/pagination", page: @page %>
+  <% elsif @q.present? %>
+    <div class="empty-state">
+      <h3><%= t("search.no_results") %></h3>
+      <%= link_to t("search.clear_all"), species_index_path, class: "btn" %>
+    </div>
   <% else %>
     <div class="empty-state">
       <h3><%= t("species.empty_title") %></h3>

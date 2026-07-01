@@ -8,10 +8,6 @@
       <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
     </nav>
 
-    <div class="header-search">
-      <%= render "layouts/search" %>
-    </div>
-
     <div class="header-right">
       <!-- Primary nav as a menu on small screens, where .main-nav is hidden -->
       <div class="dropdown nav-menu" data-controller="dropdown">

@@ -90,7 +90,6 @@ en:
     brands: Brands
     shops: Shops
     leaderboard: Leaderboard
-    search_placeholder: Search lures — or filter by type, water, action…
     menu: Menu
 
   auth:
@@ -210,6 +209,7 @@ en:
   lure:
     title: Lures
     subtitle: Every lure, proven by a catch
+    search_placeholder: Search lures — or filter by type, water, action…
     model: Model
     description: Description
     add: Add a lure
@@ -270,6 +270,7 @@ en:
   species:
     title: Species
     subtitle: The fish dictionary
+    search_placeholder: Search species…
     add: Add a species
     add_title: Add a species
     scientific_name: Scientific name
@@ -295,6 +296,7 @@ en:
   brand:
     title: Brands
     subtitle: The makers
+    search_placeholder: Search brands…
     add: Add a brand
     add_title: Add a brand
     founded: Founded
@@ -326,6 +328,7 @@ en:
   shop:
     title: Shops
     subtitle: Where to buy
+    search_placeholder: Search shops…
     add: Add a shop
     add_title: Add a shop
     promoted_section: Promoted
@@ -389,14 +392,9 @@ en:
     add_another: Add another
 
   search:
-    title: Search
     filters: Filters
     combine_free: Combine freely — results match all
-    results_for: "Results for “%{q}”"
     no_results: No results found
-    section_lures: Lures
-    section_species: Species
-    section_brands: Brands
     any_species: Any species
     any_type: Any type
     any_brand: Any brand

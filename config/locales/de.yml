@@ -40,7 +40,6 @@ de:
     brands: Marken
     shops: Shops
     leaderboard: Bestenliste
-    search_placeholder: Köder suchen — oder nach Typ, Wasser, Aktion filtern…
     menu: Menü
 
   auth:
@@ -160,6 +159,7 @@ de:
   lure:
     title: Köder
     subtitle: Jeder Köder, bewiesen durch einen Fang
+    search_placeholder: Köder suchen — oder nach Typ, Wasser, Aktion filtern…
     model: Modell
     description: Beschreibung
     add: Köder hinzufügen
@@ -220,6 +220,7 @@ de:
   species:
     title: Fischarten
     subtitle: Das Fischlexikon
+    search_placeholder: Fischarten suchen…
     add: Fischart hinzufügen
     add_title: Fischart hinzufügen
     scientific_name: Wissenschaftlicher Name
@@ -245,6 +246,7 @@ de:
   brand:
     title: Marken
     subtitle: Die Hersteller
+    search_placeholder: Marken suchen…
     add: Marke hinzufügen
     add_title: Marke hinzufügen
     founded: Gegründet
@@ -276,6 +278,7 @@ de:
   shop:
     title: Shops
     subtitle: Wo kaufen
+    search_placeholder: Shops suchen…
     add: Shop hinzufügen
     add_title: Shop hinzufügen
     promoted_section: Gesponsert
@@ -339,14 +342,9 @@ de:
     add_another: Weiteren hinzufügen
 
   search:
-    title: Suche
     filters: Filter
     combine_free: Frei kombinieren — Ergebnisse passen auf alle
-    results_for: "Ergebnisse für „%{q}“"
     no_results: Keine Ergebnisse gefunden
-    section_lures: Köder
-    section_species: Fischarten
-    section_brands: Marken
     any_species: Alle Arten
     any_type: Alle Typen
     any_brand: Alle Marken

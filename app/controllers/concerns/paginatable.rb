@@ -9,14 +9,21 @@ module Paginatable
     end
   end
 
+  # Accepts a relation or a plain Array (for collections filtered in Ruby,
+  # e.g. species matched on their locale-resolved common names).
   def paginate(scope, per: 12, param: :page)
-    total = scope.count
+    total = scope.is_a?(Array) ? scope.size : scope.count
     total = total.size if total.is_a?(Hash) # grouped counts
     total_pages = [ (total.to_f / per).ceil, 1 ].max
     current = params[param].to_i
     current = 1 if current < 1
     current = total_pages if current > total_pages
-    records = scope.limit(per).offset((current - 1) * per)
+    records =
+      if scope.is_a?(Array)
+        scope[(current - 1) * per, per] || []
+      else
+        scope.limit(per).offset((current - 1) * per)
+      end
     Page.new(records: records, current: current, total_pages: total_pages, total_count: total, per: per)
   end
 end

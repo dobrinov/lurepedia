@@ -40,7 +40,6 @@ ja:
     brands: ブランド
     shops: ショップ
     leaderboard: ランキング
-    search_placeholder: ルアーを検索 — タイプ・水域・アクションで絞り込み…
     menu: メニュー
 
   auth:
@@ -160,6 +159,7 @@ ja:
   lure:
     title: ルアー
     subtitle: すべてのルアーを、釣果で証明
+    search_placeholder: ルアーを検索 — タイプ・水域・アクションで絞り込み…
     model: モデル
     description: 説明
     add: ルアーを追加
@@ -220,6 +220,7 @@ ja:
   species:
     title: 魚種
     subtitle: 魚の図鑑
+    search_placeholder: 魚種を検索…
     add: 魚種を追加
     add_title: 魚種を追加
     scientific_name: 学名
@@ -245,6 +246,7 @@ ja:
   brand:
     title: ブランド
     subtitle: メーカー
+    search_placeholder: ブランドを検索…
     add: ブランドを追加
     add_title: ブランドを追加
     founded: 設立
@@ -276,6 +278,7 @@ ja:
   shop:
     title: ショップ
     subtitle: 購入先
+    search_placeholder: ショップを検索…
     add: ショップを追加
     add_title: ショップを追加
     promoted_section: 広告
@@ -339,14 +342,9 @@ ja:
     add_another: 続けて追加
 
   search:
-    title: 検索
     filters: フィルター
     combine_free: 自由に組み合わせ — すべてに一致
-    results_for: "「%{q}」の結果"
     no_results: 結果が見つかりません
-    section_lures: ルアー
-    section_species: 魚種
-    section_brands: ブランド
     any_species: すべての魚種
     any_type: すべてのタイプ
     any_brand: すべてのブランド

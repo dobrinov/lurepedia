@@ -3,7 +3,15 @@ class SpeciesController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
-    @page = paginate(Species.alpha.published, per: 12)
+    @q = params[:q].to_s.strip
+    scope = Species.alpha.published
+    if @q.present?
+      # Common names are locale-resolved in Ruby (local_names JSON + bundled
+      # translations), so search happens over the full, bounded species set —
+      # same approach as FilterOptionsController#species.
+      scope = scope.to_a.select { |s| s.common_name.downcase.include?(@q.downcase) }
+    end
+    @page = paginate(scope, per: 12)
     @species = @page.records
     @proven_lure_counts = Species.proven_lure_counts(@species)
   end

@@ -3,8 +3,16 @@ class ShopsController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create]
 
   def index
-    @promoted = Shop.promoted.published.includes(:claim).order(:name)
-    @page = paginate(Shop.regular.published.includes(:claim).order(:name), per: 9)
+    @q = params[:q].to_s.strip
+    promoted = Shop.promoted.published.includes(:claim).order(:name)
+    regular = Shop.regular.published.includes(:claim).order(:name)
+    if @q.present?
+      like = "%#{@q.downcase}%"
+      promoted = promoted.where("LOWER(name) LIKE ?", like)
+      regular = regular.where("LOWER(name) LIKE ?", like)
+    end
+    @promoted = promoted
+    @page = paginate(regular, per: 9)
     @shops = @page.records
   end
 

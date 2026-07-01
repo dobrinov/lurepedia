@@ -40,7 +40,6 @@ bg:
     brands: Марки
     shops: Магазини
     leaderboard: Класация
-    search_placeholder: Търси примамки, риби, марки…
     menu: Меню
 
   auth:
@@ -160,6 +159,7 @@ bg:
   lure:
     title: Примамки
     subtitle: Всяка примамка, доказана с улов
+    search_placeholder: Търси примамки — или филтрирай по тип, вода, движение…
     model: Модел
     description: Описание
     add: Добави примамка
@@ -220,6 +220,7 @@ bg:
   species:
     title: Видове
     subtitle: Речник на рибите
+    search_placeholder: Търси видове…
     add: Добави вид
     add_title: Добави вид
     scientific_name: Научно име
@@ -245,6 +246,7 @@ bg:
   brand:
     title: Марки
     subtitle: Производителите
+    search_placeholder: Търси марки…
     add: Добави марка
     add_title: Добави марка
     founded: Основана
@@ -276,6 +278,7 @@ bg:
   shop:
     title: Магазини
     subtitle: Откъде да купя
+    search_placeholder: Търси магазини…
     add: Добави магазин
     add_title: Добави магазин
     promoted_section: Промотирани
@@ -339,14 +342,9 @@ bg:
     add_another: Добави още един
 
   search:
-    title: Търсене
     filters: Филтри
     combine_free: Комбинирай свободно — резултатите отговарят на всички
-    results_for: "Резултати за „%{q}“"
     no_results: Няма намерени резултати
-    section_lures: Примамки
-    section_species: Видове
-    section_brands: Марки
     any_species: Всички видове
     any_type: Всички типове
     any_brand: Всички марки
