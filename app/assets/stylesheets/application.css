@@ -192,6 +192,11 @@ main { min-height: 60vh; }
   background: linear-gradient(135deg, #f1f2f4, #e2e5e9); overflow: hidden;
 }
 .ph img { width: 100%; height: 100%; object-fit: cover; }
+/* Species photos: fish are long — letterbox instead of cropping head/tail off */
+.ph-contain img { object-fit: contain; }
+/* Click-to-zoom photo (species page) */
+.zoomable { width: 100%; padding: 0; border: 0; cursor: zoom-in; }
+.lightbox-img { max-width: min(1200px, 94vw); max-height: 88vh; width: auto; height: auto; border-radius: var(--r-lg); box-shadow: var(--shadow-modal); cursor: zoom-out; }
 .ph-lure { aspect-ratio: 16/10; }
 .ph-catch { aspect-ratio: 4/3; }
 .card-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 9px; flex: 1; }

@@ -36,12 +36,55 @@ class Species < ApplicationRecord
       key.to_s.titleize
   end
 
-  # True when the query matches the locale-resolved common name or the
-  # scientific name. Name search happens in Ruby because common names are
-  # not stored as a plain column (local_names JSON + bundled translations).
+  # Every name this species is known by, for search: contributor local names
+  # in all locales, the bundled translations (viewer's locale and English),
+  # the key fallback, and the scientific name.
+  def searchable_names
+    names = (local_names || {}).values
+    names << I18n.t("species_names.#{key}.common", default: nil)
+    names << I18n.t("species_names.#{key}.common", locale: :en, default: nil)
+    names << key.to_s.titleize
+    names << scientific_name
+    names.compact_blank.uniq
+  end
+
+  # True when the query matches any known name — as a substring, or (for
+  # queries of 4+ characters) as a word prefix within one typo, two for long
+  # queries, so "bara" still finds "Barracuda". Name search happens in Ruby
+  # because common names are not stored as a plain column (local_names JSON
+  # + bundled translations).
   def name_matches?(query)
-    q = query.to_s.downcase
-    common_name.downcase.include?(q) || scientific_name.to_s.downcase.include?(q)
+    q = query.to_s.downcase.strip
+    return false if q.blank?
+
+    searchable_names.any? do |name|
+      name = name.downcase
+      next true if name.include?(q)
+      next false if q.length < 4
+
+      tolerance = q.length >= 8 ? 2 : 1
+      name.split(/[^[:alnum:]]+/).any? { |word| self.class.prefix_distance(word, q) <= tolerance }
+    end
+  end
+
+  # Smallest edit distance between the query and a same-length-ish prefix of
+  # the word (one shorter through one longer, so an inserted or dropped letter
+  # doesn't shift the whole comparison).
+  def self.prefix_distance(word, query)
+    (-1..1).map { |d| edit_distance(word[0, [ query.length + d, 0 ].max].to_s, query) }.min
+  end
+
+  # Plain Levenshtein distance; inputs are short (query-length) strings.
+  def self.edit_distance(a, b)
+    prev = (0..b.length).to_a
+    a.each_char.with_index(1) do |ca, i|
+      curr = [ i ]
+      b.each_char.with_index(1) do |cb, j|
+        curr << [ prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + (ca == cb ? 0 : 1) ].min
+      end
+      prev = curr
+    end
+    prev.last
   end
 
   def habitat

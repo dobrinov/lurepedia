@@ -7,13 +7,20 @@
   <div class="profile-grid">
     <!-- Left column: identity -->
     <aside class="profile-aside stack" style="gap:14px">
-      <div class="card ph ph-lure" style="aspect-ratio:4/3">
-        <% if @species.photo.attached? %>
-          <%= image_tag @species.photo.variant(resize_to_fill: [ 720, 540 ]), alt: @species.common_name %>
-        <% else %>
+      <% if @species.photo.attached? %>
+        <div data-controller="modal">
+          <button type="button" class="card ph ph-lure ph-contain zoomable" style="aspect-ratio:4/3" data-action="modal#open" aria-label="<%= @species.common_name %>">
+            <%= image_tag @species.photo.variant(resize_to_limit: [ 720, 540 ]), alt: @species.common_name %>
+          </button>
+          <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
+            <%= image_tag @species.photo.variant(resize_to_limit: [ 1600, 1200 ]), class: "lightbox-img", alt: @species.common_name, loading: "lazy", data: { action: "click->modal#close" } %>
+          </div>
+        </div>
+      <% else %>
+        <div class="card ph ph-lure" style="aspect-ratio:4/3">
           <%= render "shared/fish_glyph" %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <div class="stack" style="gap:6px">
         <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em"><%= @species.common_name %></h1>
