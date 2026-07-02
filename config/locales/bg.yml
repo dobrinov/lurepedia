@@ -221,6 +221,10 @@ bg:
     title: Видове
     subtitle: Речник на рибите
     search_placeholder: Търси видове — обичайно или научно име…
+    venomous: Отровна при допир
+    venomous_hint: Има отровни бодли или жила — внимавайте при боравене.
+    poisonous: Отровна за консумация
+    poisonous_hint: Токсична при консумация.
     add: Добави вид
     add_title: Добави вид
     scientific_name: Научно име

@@ -26,6 +26,7 @@
             <div class="card-title" style="font-size:16px"><%= sp.common_name %></div>
             <div class="muted" style="font-size:12.5px;font-style:italic"><%= sp.scientific_name %></div>
             <div class="chips" style="margin-top:auto;padding-top:6px">
+              <%= render "species/hazard_tags", species: sp %>
               <span class="tag"><%= water_name(sp.water) %></span>
               <span class="tag"><%= t("species.lures_count", count: @proven_lure_counts.fetch(sp.id, 0)) %></span>
               <span class="tag"><%= t("lure.catches_count", count: sp.catches_count) %></span>

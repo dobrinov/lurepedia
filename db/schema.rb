@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_29_082601) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_02_000000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -250,9 +250,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_29_082601) do
     t.datetime "created_at", null: false
     t.string "key", null: false
     t.json "local_names", default: {}, null: false
+    t.boolean "poisonous", default: false, null: false
     t.string "scientific_name"
     t.string "slug", null: false
     t.datetime "updated_at", null: false
+    t.boolean "venomous", default: false, null: false
     t.integer "water", default: 0, null: false
     t.string "wikipedia_url"
     t.index ["key"], name: "index_species_on_key", unique: true

@@ -1,0 +1,7 @@
+<%# locals: species — warning chips, rendered only when a hazard flag is set %>
+<% if species.venomous? %>
+  <span class="tag tag-danger"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3 2 21h20L12 3z"></path><path d="M12 10v5m0 3h.01"></path></svg><%= t("species.venomous") %></span>
+<% end %>
+<% if species.poisonous? %>
+  <span class="tag tag-warn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3 2 21h20L12 3z"></path><path d="M12 10v5m0 3h.01"></path></svg><%= t("species.poisonous") %></span>
+<% end %>

@@ -78,13 +78,17 @@ species_data = [
   { key: "rainbow_trout", sci: "Oncorhynchus mykiss", water: :fresh },     # unproven
   { key: "mahi_mahi", sci: "Coryphaena hippurus", water: :salt },
   { key: "striped_bass", sci: "Morone saxatilis", water: :salt },
-  { key: "chinook_salmon", sci: "Oncorhynchus tshawytscha", water: :fresh }
+  { key: "chinook_salmon", sci: "Oncorhynchus tshawytscha", water: :fresh },
+  { key: "red_lionfish", sci: "Pterois volitans", water: :salt, venomous: true },     # unproven
+  { key: "northern_puffer", sci: "Sphoeroides maculatus", water: :salt, poisonous: true } # unproven
 ]
 species = {}
 species_data.each do |attrs|
   species[attrs[:key]] = Species.find_or_create_by!(key: attrs[:key]) do |sp|
     sp.scientific_name = attrs[:sci]
     sp.water = attrs[:water]
+    sp.venomous = attrs.fetch(:venomous, false)
+    sp.poisonous = attrs.fetch(:poisonous, false)
   end
 end
 puts "  species: #{Species.count}"

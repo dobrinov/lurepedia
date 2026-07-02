@@ -221,6 +221,10 @@ de:
     title: Fischarten
     subtitle: Das Fischlexikon
     search_placeholder: Fischarten suchen — Trivial- oder wissenschaftlicher Name…
+    venomous: Giftige Stacheln
+    venomous_hint: Hat giftige Stacheln oder Flossenstrahlen — Vorsicht beim Anfassen.
+    poisonous: Giftig beim Verzehr
+    poisonous_hint: Das Fleisch ist giftig — nicht essen.
     add: Fischart hinzufügen
     add_title: Fischart hinzufügen
     scientific_name: Wissenschaftlicher Name

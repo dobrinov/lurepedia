@@ -221,6 +221,10 @@ ja:
     title: 魚種
     subtitle: 魚の図鑑
     search_placeholder: 魚種を検索 — 和名または学名…
+    venomous: 毒棘あり
+    venomous_hint: 毒のある棘やヒレを持つため、取り扱いに注意。
+    poisonous: 食用不可（毒）
+    poisonous_hint: 食べると中毒の危険がある。
     add: 魚種を追加
     add_title: 魚種を追加
     scientific_name: 学名

@@ -21,6 +21,7 @@
       </div>
 
       <div class="chips">
+        <%= render "species/hazard_tags", species: @species %>
         <span class="tag"><%= water_name(@species.water) %></span>
         <span class="tag"><%= t("species.lures_count", count: @species.proven_lures_count) %></span>
         <span class="tag"><%= t("lure.catches_count", count: @species.catches_count) %></span>

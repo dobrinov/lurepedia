@@ -37,6 +37,10 @@
 
     <div class="chips">
       <span class="tag"><%= diff_field(changeset, species, :water) { |v| water_name(v) } %></span>
+      <% %i[venomous poisonous].each do |flag| %>
+        <% next unless diff_changed?(changeset, flag) || species.public_send("#{flag}?") %>
+        <span class="tag"><%= t("species.#{flag}") %>: <%= diff_field(changeset, species, flag) { |v| v ? t("common.yes") : t("common.no") } %></span>
+      <% end %>
     </div>
 
     <% if species.habitat.present? %><p class="muted"><%= species.habitat %></p><% end %>
