@@ -8,7 +8,7 @@ class FilterOptionsController < ApplicationController
   # paginated at the database level since they can grow large.
   def species
     records = Species.alpha.published.to_a
-    records = records.select { |s| s.common_name.downcase.include?(query) } if query.present?
+    records = records.select { |s| s.name_matches?(query) } if query.present?
     render_page(records[offset, PER + 1] || []) { |s| { value: s.slug, label: s.common_name } }
   end
 

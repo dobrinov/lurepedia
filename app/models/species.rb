@@ -36,6 +36,14 @@ class Species < ApplicationRecord
       key.to_s.titleize
   end
 
+  # True when the query matches the locale-resolved common name or the
+  # scientific name. Name search happens in Ruby because common names are
+  # not stored as a plain column (local_names JSON + bundled translations).
+  def name_matches?(query)
+    q = query.to_s.downcase
+    common_name.downcase.include?(q) || scientific_name.to_s.downcase.include?(q)
+  end
+
   def habitat
     I18n.t("species_names.#{key}.habitat", default: "")
   end

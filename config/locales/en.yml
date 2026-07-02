@@ -270,7 +270,7 @@ en:
   species:
     title: Species
     subtitle: The fish dictionary
-    search_placeholder: Search species…
+    search_placeholder: Search species — common or scientific name…
     add: Add a species
     add_title: Add a species
     scientific_name: Scientific name

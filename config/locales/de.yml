@@ -220,7 +220,7 @@ de:
   species:
     title: Fischarten
     subtitle: Das Fischlexikon
-    search_placeholder: Fischarten suchen…
+    search_placeholder: Fischarten suchen — Trivial- oder wissenschaftlicher Name…
     add: Fischart hinzufügen
     add_title: Fischart hinzufügen
     scientific_name: Wissenschaftlicher Name

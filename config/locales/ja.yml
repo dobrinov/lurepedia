@@ -220,7 +220,7 @@ ja:
   species:
     title: 魚種
     subtitle: 魚の図鑑
-    search_placeholder: 魚種を検索…
+    search_placeholder: 魚種を検索 — 和名または学名…
     add: 魚種を追加
     add_title: 魚種を追加
     scientific_name: 学名

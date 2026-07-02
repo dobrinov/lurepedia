@@ -54,4 +54,15 @@ class FilterOptionsControllerTest < ActionDispatch::IntegrationTest
     assert_includes labels, "Largemouth Bass"
     assert_not_includes labels, "Northern Pike"
   end
+
+  test "species search matches scientific name" do
+    Species.create!(key: "largemouth_bass", scientific_name: "Micropterus salmoides")
+    Species.create!(key: "northern_pike", scientific_name: "Esox lucius")
+
+    get species_options_path(format: :json, q: "micropterus")
+    body = JSON.parse(response.body)
+    labels = body["results"].map { |o| o["label"] }
+    assert_includes labels, "Largemouth Bass"
+    assert_not_includes labels, "Northern Pike"
+  end
 end

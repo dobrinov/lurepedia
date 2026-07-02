@@ -220,7 +220,7 @@ bg:
   species:
     title: Видове
     subtitle: Речник на рибите
-    search_placeholder: Търси видове…
+    search_placeholder: Търси видове — обичайно или научно име…
     add: Добави вид
     add_title: Добави вид
     scientific_name: Научно име

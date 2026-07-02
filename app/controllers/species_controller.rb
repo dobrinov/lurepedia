@@ -6,10 +6,9 @@ class SpeciesController < ApplicationController
     @q = params[:q].to_s.strip
     scope = Species.alpha.published
     if @q.present?
-      # Common names are locale-resolved in Ruby (local_names JSON + bundled
-      # translations), so search happens over the full, bounded species set —
-      # same approach as FilterOptionsController#species.
-      scope = scope.to_a.select { |s| s.common_name.downcase.include?(@q.downcase) }
+      # Ruby-side over the full, bounded species set — same approach as
+      # FilterOptionsController#species.
+      scope = scope.to_a.select { |s| s.name_matches?(@q) }
     end
     @page = paginate(scope, per: 12)
     @species = @page.records

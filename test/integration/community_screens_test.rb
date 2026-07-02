@@ -35,6 +35,10 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match "Largemouth Bass", response.body
 
+    get species_index_path(locale: :en, q: "salmoides")
+    assert_response :success
+    assert_match "Largemouth Bass", response.body
+
     get brands_path(locale: :en, q: "Megabass")
     assert_response :success
     assert_match "Megabass", response.body
