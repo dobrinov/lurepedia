@@ -29,7 +29,7 @@
         <span class="uv-badge" data-variant-stage-target="chipUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>
       </span>
       <% if dv&.photo&.attached? %>
-        <img data-variant-stage-target="stageImage" src="<%= url_for(dv.photo.variant(resize_to_fill: [ 760, 580 ])) %>" alt="<%= @lure.title %>">
+        <img data-variant-stage-target="stageImage" src="<%= url_for(dv.photo.variant(resize_to_limit: [ 760, 580 ])) %>" alt="<%= @lure.title %>">
         <div class="lure-stage-glyph" data-variant-stage-target="stageGlyph" hidden><%= render "shared/lure_glyph" %></div>
       <% else %>
         <img data-variant-stage-target="stageImage" hidden alt="<%= @lure.title %>">
@@ -61,7 +61,7 @@
                         data-color-slug="<%= v.to_color_param %>"
                         data-name="<%= v.name %>"
                         data-uv="<%= v.uv_glow %>"
-                        <% if v.photo.attached? %>data-photo-url="<%= url_for(v.photo.variant(resize_to_fill: [ 760, 580 ])) %>"<% end %>>
+                        <% if v.photo.attached? %>data-photo-url="<%= url_for(v.photo.variant(resize_to_limit: [ 760, 580 ])) %>"<% end %>>
                   <% if v.photo.attached? %>
                     <%= image_tag v.photo.variant(resize_to_fill: [ 120, 120 ]), alt: v.name %>
                   <% else %>

@@ -519,7 +519,8 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 
 .lure-hero { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 40px; align-items: start; margin-bottom: 8px; }
 .lure-stage { position: relative; border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; background: linear-gradient(155deg, #f6f6f7, #ececee); aspect-ratio: 1 / .92; display: flex; align-items: center; justify-content: center; }
-.lure-stage img { width: 100%; height: 100%; object-fit: cover; }
+/* Lure photos are long and thin — letterbox on the stage background instead of cropping the ends off */
+.lure-stage img { width: 100%; height: 100%; object-fit: contain; }
 .lure-stage-glyph { width: 60%; opacity: .5; }
 .lure-stage-chip { position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(255,255,255,.9); backdrop-filter: blur(6px); border-radius: var(--r-pill); font-size: 13px; font-weight: 700; }
 /* Color selector (hero, right side): square image tiles */

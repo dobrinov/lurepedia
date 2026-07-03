@@ -4,7 +4,7 @@
 <div class="lure-hero">
   <div class="lure-stage">
     <% if dv&.photo&.attached? %>
-      <%= image_tag dv.photo.variant(resize_to_fill: [ 760, 580 ]), alt: lure.title %>
+      <%= image_tag dv.photo.variant(resize_to_limit: [ 760, 580 ]), alt: lure.title %>
     <% else %>
       <div class="lure-stage-glyph"><%= render "shared/lure_glyph" %></div>
     <% end %>

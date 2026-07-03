@@ -1,9 +1,9 @@
 <%# locals: lure %>
 <%= link_to lure_path(lure), class: "card lure-card" do %>
-  <div class="ph ph-lure">
+  <div class="ph ph-lure ph-contain">
     <% default_variant = lure.primary_variant %>
     <% if default_variant&.photo&.attached? %>
-      <%= image_tag default_variant.photo.variant(resize_to_fill: [ 560, 350 ]), alt: lure.title, loading: "lazy" %>
+      <%= image_tag default_variant.photo.variant(resize_to_limit: [ 560, 350 ]), alt: lure.title, loading: "lazy" %>
     <% else %>
       <%= render "shared/lure_glyph" %>
     <% end %>
