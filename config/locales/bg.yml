@@ -162,6 +162,9 @@ bg:
     search_placeholder: Търси примамки — или филтрирай по тип, вода, движение…
     model: Модел
     description: Описание
+    descriptions: Описания
+    translations: Преводи
+    translations_hint: Описанието на примамката на всеки език. Читателите виждат своя език, с резервен вариант английски.
     add: Добави примамка
     add_title: Добави примамка
     type: Тип
@@ -265,6 +268,10 @@ bg:
     website_invalid: Въведете валиден URL адрес, започващ с http:// или https://
     logo: Лого
     blurb: Описание
+    description: Описание
+    descriptions: Описания
+    translations: Преводи
+    translations_hint: Описанието на марката на всеки език. Читателите виждат своя език, с резервен вариант английски.
     tab_lures: Примамки
     tab_history: История
     claim: Заяви тази марка

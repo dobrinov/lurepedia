@@ -51,6 +51,7 @@ class BrandsController < ApplicationController
   private
 
   def brand_params
-    params.require(:brand).permit(:name, :country, :founded_year, :blurb, :website, :logo)
+    params.require(:brand).permit(:name, :country, :founded_year, :blurb, :website, :logo,
+                                  local_descriptions: I18n.available_locales.map(&:to_s))
   end
 end

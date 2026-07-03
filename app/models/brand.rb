@@ -1,6 +1,7 @@
 class Brand < ApplicationRecord
   include Sluggable
   include Publishable
+  include LocalizedDescriptions
 
   has_many :lures, dependent: :destroy
   has_one :claim, as: :claimable, dependent: :destroy

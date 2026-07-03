@@ -2,6 +2,7 @@ class Lure < ApplicationRecord
   include Sluggable
   include Favoritable
   include Publishable
+  include LocalizedDescriptions
 
   belongs_to :brand, counter_cache: :lures_count
   belongs_to :lure_type

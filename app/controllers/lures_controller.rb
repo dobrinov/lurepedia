@@ -95,6 +95,7 @@ class LuresController < ApplicationController
   end
 
   def lure_params
-    params.require(:lure).permit(:model, :blurb, :action_video_url, :default_variant_id)
+    params.require(:lure).permit(:model, :blurb, :action_video_url, :default_variant_id,
+                                 local_descriptions: I18n.available_locales.map(&:to_s))
   end
 end

@@ -1,8 +1,8 @@
 <% content_for :title, @lure.title %>
 <% content_for :head do %>
-  <meta name="description" content="<%= "#{@lure.title}: #{@lure.blurb}".truncate(155) %>">
+  <meta name="description" content="<%= "#{@lure.title}: #{@lure.description}".truncate(155) %>">
   <%= tag.script type: "application/ld+json" do %>
-    <%= raw({ "@context": "https://schema.org", "@type": "Product", name: @lure.title, brand: @lure.brand.name, category: lure_type_name(@lure.lure_type), description: @lure.blurb }.to_json) %>
+    <%= raw({ "@context": "https://schema.org", "@type": "Product", name: @lure.title, brand: @lure.brand.name, category: lure_type_name(@lure.lure_type), description: @lure.description }.to_json) %>
   <% end %>
 <% end %>
 
@@ -87,7 +87,7 @@
         <% end %>
       </div>
 
-      <% if @lure.blurb.present? %><p class="muted" style="margin-top:4px"><%= @lure.blurb %></p><% end %>
+      <% if @lure.description.present? %><p class="muted" style="margin-top:4px;white-space:pre-line"><%= @lure.description %></p><% end %>
     </div>
   </div>
 

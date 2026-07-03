@@ -16,10 +16,7 @@
     <%= f.label :website, t("brand.website") %>
     <%= f.url_field :website, class: "input", placeholder: "https://…" %>
   </div>
-  <div class="field">
-    <%= f.label :blurb, t("brand.blurb") %>
-    <%= f.text_area :blurb, class: "input" %>
-  </div>
+  <%= render "shared/description_translations", record: brand, scope: "brand" %>
   <div class="field">
     <%= f.label :logo, t("brand.logo") %>
     <div data-controller="image-upload">

@@ -162,6 +162,9 @@ ja:
     search_placeholder: ルアーを検索 — タイプ・水域・アクションで絞り込み…
     model: モデル
     description: 説明
+    descriptions: 説明
+    translations: 翻訳
+    translations_hint: 各言語でのルアーの説明。読者の言語で表示され、なければ英語にフォールバックします。
     add: ルアーを追加
     add_title: ルアーを追加
     type: タイプ
@@ -265,6 +268,10 @@ ja:
     website_invalid: http:// または https:// で始まる有効なURLを入力してください
     logo: ロゴ
     blurb: 説明
+    description: 説明
+    descriptions: 説明
+    translations: 翻訳
+    translations_hint: 各言語でのブランドの説明。読者の言語で表示され、なければ英語にフォールバックします。
     tab_lures: ルアー
     tab_history: 履歴
     claim: このブランドを申請

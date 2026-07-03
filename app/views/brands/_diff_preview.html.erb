@@ -16,6 +16,11 @@
     <% if diff_changed?(changeset, :website) || brand.website.present? %>
       <div class="muted" style="font-size:13px"><%= t("brand.website") %>: <%= diff_field(changeset, brand, :website) %></div>
     <% end %>
-    <p class="muted" style="max-width:520px"><%= diff_field(changeset, brand, :blurb) %></p>
+    <% if diff_changed?(changeset, :blurb) %>
+      <p class="muted" style="max-width:520px"><%= diff_field(changeset, brand, :blurb) %></p>
+    <% elsif brand.description.present? %>
+      <p class="muted" style="max-width:520px"><%= brand.description %></p>
+    <% end %>
+    <%= render "shared/locale_hash_diff", changeset: changeset, field: :local_descriptions, label: t("brand.descriptions") %>
   </div>
 </div>

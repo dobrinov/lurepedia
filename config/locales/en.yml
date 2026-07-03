@@ -212,6 +212,9 @@ en:
     search_placeholder: Search lures — or filter by type, water, action…
     model: Model
     description: Description
+    descriptions: Descriptions
+    translations: Translations
+    translations_hint: The lure description in each language. Readers see their own language, falling back to English.
     add: Add a lure
     add_title: Add a lure
     type: Type
@@ -315,6 +318,10 @@ en:
     website_invalid: Enter a valid URL starting with http:// or https://
     logo: Logo
     blurb: About
+    description: Description
+    descriptions: Descriptions
+    translations: Translations
+    translations_hint: The brand description in each language. Readers see their own language, falling back to English.
     tab_lures: Lures
     tab_history: History
     claim: Claim this brand

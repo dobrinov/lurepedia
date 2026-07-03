@@ -1,5 +1,5 @@
 <% content_for :title, @brand.name %>
-<% content_for :head, tag.meta(name: "description", content: "#{@brand.name}: #{@brand.blurb}".truncate(155)) %>
+<% content_for :head, tag.meta(name: "description", content: "#{@brand.name}: #{@brand.description}".truncate(155)) %>
 
 <%= render "shared/pending_review", record: @brand %>
 
@@ -16,7 +16,7 @@
         <% if @brand.website.present? %>
           <%= link_to safe_join([ t("brand.website"), external_link_icon ]), @brand.website, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener nofollow" %>
         <% end %>
-        <% if @brand.blurb.present? %><p class="muted" style="max-width:520px"><%= @brand.blurb %></p><% end %>
+        <% if @brand.description.present? %><p class="muted" style="max-width:520px;white-space:pre-line"><%= @brand.description %></p><% end %>
       </div>
     </div>
     <div class="row">

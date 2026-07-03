@@ -1,0 +1,23 @@
+<%# locals: record, scope -%>
+<%# Tabbed per-locale editor for a LocalizedDescriptions model. `scope` is the
+    param key and i18n section ("brand", "lure"). %>
+<fieldset class="field" style="border:0;padding:0;margin:0">
+  <legend style="font-weight:600;margin-bottom:4px"><%= t("#{scope}.translations") %></legend>
+  <p class="muted" style="font-size:13px;margin-bottom:8px"><%= t("#{scope}.translations_hint") %></p>
+  <% descriptions = record.local_descriptions || {} %>
+  <div data-controller="tabs">
+    <div class="tabs" style="flex-wrap:wrap">
+      <% available_locales_for_switcher.each do |loc, meta| %>
+        <button type="button" class="tab<%= " active" if loc == I18n.locale %>" data-tab-name="<%= loc %>" data-tabs-target="tab" data-action="tabs#select"><%= meta[:native] %></button>
+      <% end %>
+    </div>
+    <% available_locales_for_switcher.each do |loc, _meta| %>
+      <div class="tab-panel<%= " active" if loc == I18n.locale %>" data-tab-panel="<%= loc %>" data-tabs-target="panel">
+        <div class="field">
+          <%= label_tag "#{scope}_local_descriptions_#{loc}", t("#{scope}.description") %>
+          <%= text_area_tag "#{scope}[local_descriptions][#{loc}]", descriptions[loc.to_s], id: "#{scope}_local_descriptions_#{loc}", class: "input", rows: 4 %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</fieldset>

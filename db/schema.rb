@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_02_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_03_000001) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_02_000001) do
     t.string "country"
     t.datetime "created_at", null: false
     t.integer "founded_year"
+    t.json "local_descriptions", default: {}, null: false
     t.integer "lures_count", default: 0, null: false
     t.string "name", null: false
     t.string "slug", null: false
@@ -170,6 +171,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_02_000001) do
     t.integer "catches_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.integer "default_variant_id"
+    t.json "local_descriptions", default: {}, null: false
     t.integer "lure_type_id", null: false
     t.string "model", null: false
     t.string "slug", null: false

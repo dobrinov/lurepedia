@@ -12,9 +12,6 @@
     <label><%= t("lure.type") %></label>
     <%= render "shared/combobox", name: "lure[lure_type_id]", options: @lure_types.map { |lt| [lure_type_name(lt), lt.id] }, selected: lure.lure_type_id, placeholder: t("search.any_type") %>
   </div>
-  <div class="field">
-    <%= f.label :blurb, t("lure.description") %>
-    <%= f.text_area :blurb, class: "input" %>
-  </div>
+  <%= render "shared/description_translations", record: lure, scope: "lure" %>
   <%= f.submit submit_label, class: "btn btn-primary" %>
 <% end %>

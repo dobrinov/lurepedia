@@ -62,7 +62,10 @@ brand_data = [
 ]
 brands = {}
 brand_data.each do |attrs|
-  brands[attrs[:name]] = Brand.find_or_create_by!(name: attrs[:name]) { |brand| brand.assign_attributes(attrs) }
+  brands[attrs[:name]] = Brand.find_or_create_by!(name: attrs[:name]) do |brand|
+    brand.assign_attributes(attrs.except(:blurb))
+    brand.local_descriptions = { "en" => attrs[:blurb] }
+  end
 end
 puts "  brands: #{Brand.count}"
 
@@ -142,7 +145,7 @@ lures = {}
 lure_specs.each do |spec|
   lure = Lure.find_or_create_by!(brand: brands.fetch(spec[:brand]), model: spec[:model]) do |l|
     l.lure_type = types.fetch(spec[:type])
-    l.blurb = spec[:blurb]
+    l.local_descriptions = { "en" => spec[:blurb] }
     l.action_video_url = spec[:video]
   end
 
