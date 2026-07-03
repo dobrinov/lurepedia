@@ -26,6 +26,19 @@ class Species < ApplicationRecord
     super((value || {}).to_h.transform_values { |v| v.to_s.strip }.reject { |_, v| v.blank? })
   end
 
+  # Contributor-supplied descriptions keyed by locale, compacted like
+  # local_names so a blank field never shadows a fallback.
+  def local_descriptions=(value)
+    super((value || {}).to_h.transform_values { |v| v.to_s.strip }.reject { |_, v| v.blank? })
+  end
+
+  # The description in the viewer's locale, falling back to English. Nil when
+  # neither exists — unlike common_name there is no further fallback.
+  def description
+    descriptions = local_descriptions || {}
+    descriptions[I18n.locale.to_s].presence || descriptions["en"].presence
+  end
+
   # The display name in the viewer's locale: a contributor's local name first,
   # then their English one, then the bundled translation, then the key.
   def common_name

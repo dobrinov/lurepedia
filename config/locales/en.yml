@@ -279,7 +279,11 @@ en:
     add_title: Add a species
     scientific_name: Scientific name
     local_names: Local names
-    local_names_hint: The common name in each language. Shown to readers in their own language, falling back to English.
+    translations: Translations
+    translations_hint: The common name and description in each language. Readers see their own language, falling back to English.
+    local_name: Common name
+    description: Description
+    descriptions: Descriptions
     wikipedia_url: Wikipedia URL
     wikipedia: View on Wikipedia
     wikipedia_url_invalid: must be a Wikipedia article URL (e.g. https://en.wikipedia.org/wiki/...)

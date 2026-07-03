@@ -1,5 +1,5 @@
 <% content_for :title, @species.common_name %>
-<% content_for :head, tag.meta(name: "description", content: "#{@species.common_name} (#{@species.scientific_name}): #{@species.habitat}".truncate(155)) %>
+<% content_for :head, tag.meta(name: "description", content: "#{@species.common_name} (#{@species.scientific_name}): #{@species.description.presence || @species.habitat}".truncate(155)) %>
 
 <%= render "shared/pending_review", record: @species %>
 
@@ -34,6 +34,7 @@
         <span class="tag"><%= t("lure.catches_count", count: @species.catches_count) %></span>
       </div>
 
+      <% if @species.description.present? %><p class="muted" style="white-space:pre-line"><%= @species.description %></p><% end %>
       <% if @species.habitat.present? %><p class="muted"><%= @species.habitat %></p><% end %>
       <% if @species.wikipedia_url.present? %>
         <p><%= link_to safe_join([ t("species.wikipedia"), external_link_icon ]), @species.wikipedia_url, class: "muted", style: "font-size:13px", target: "_blank", rel: "noopener" %></p>

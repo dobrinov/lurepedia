@@ -229,7 +229,11 @@ ja:
     add_title: 魚種を追加
     scientific_name: 学名
     local_names: 現地名
-    local_names_hint: 各言語での一般名。読者の言語で表示され、なければ英語にフォールバックします。
+    translations: 翻訳
+    translations_hint: 各言語での一般名と説明。読者の言語で表示され、なければ英語にフォールバックします。
+    local_name: 一般名
+    description: 説明
+    descriptions: 説明
     wikipedia_url: ウィキペディアのURL
     wikipedia: ウィキペディアで見る
     wikipedia_url_invalid: "ウィキペディアの記事URLを入力してください（例: https://ja.wikipedia.org/wiki/...）"
