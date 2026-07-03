@@ -46,6 +46,7 @@ Key facts to respect:
 - **Migrations** run automatically on boot via `bin/docker-entrypoint` (`db:prepare`). Note `db:prepare` runs `db/seeds.rb` on first DB creation — seeds are guarded to a no-op outside development/test (`Rails.env.local?`), so prod stays clean.
 - **TLS terminates at Fly's edge**; the container speaks plain HTTP. `production.rb` sets `assume_ssl` + `force_ssl` (secure cookies, HSTS) and pins `config.hosts`. Thruster listens on **8080** (`HTTP_PORT`), not the privileged port 80, because the container runs as non-root — `fly.toml`'s `internal_port` and health check must match.
 - **Image variants need ImageMagick** (`variant_processor = :mini_magick`); the Dockerfile installs `imagemagick` alongside `libvips`.
+- **`fly ssh console` runs as root, but Puma runs as `rails` (uid 1000).** Any console/runner work that writes to Active Storage creates `root:root` shard dirs under `/rails/storage` that the web process can't mkdir into. Uploads then fail `Errno::EACCES` *after* the DB row commits, leaving blob/variant records with no file — images 302 then 404, and the breakage looks random. Run such maintenance as the rails user (`su rails -c '...'`) or finish with `chown -R rails:rails /rails/storage`; to repair, chown then destroy the record-without-file blobs/variant records so they regenerate.
 - `RAILS_MASTER_KEY` is a Fly secret (`fly secrets set`), never committed.
 - **DNS** is on Namecheap (BasicDNS); apex + `www` use A/AAAA records to the app's Fly IPs.
 
