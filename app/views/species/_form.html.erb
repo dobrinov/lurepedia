@@ -48,9 +48,7 @@
   <div class="field">
     <%= f.label :photo, t("catch.photos") %>
     <div data-controller="image-upload">
-      <% if species.photo.attached? %>
-        <%= render "shared/image_cropper", f: f, record: species %>
-      <% end %>
+      <%= render "shared/image_cropper", f: f, record: species %>
       <div class="upload-drop" data-image-upload-target="drop"
            data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
         <%= t("contribute.add_photos") %>

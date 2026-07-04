@@ -1,6 +1,11 @@
 <% admin = current_user&.admin? %>
 <% content_for :title, admin ? t("contribute.edit_title", name: @lure.title) : t("contribute.suggest_title", name: @lure.title) %>
 <div class="container" style="max-width:760px;margin:32px auto">
+  <nav class="muted" style="font-size:13px;margin-bottom:16px">
+    <%= link_to t("nav.lures"), lures_path %> ›
+    <%= link_to @lure.title, lure_path(@lure) %> ›
+    <span><%= admin ? t("common.edit") : t("contribute.suggest_edit") %></span>
+  </nav>
   <h1 style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px">
     <%= admin ? t("contribute.edit_title", name: @lure.title) : t("contribute.suggest_title", name: @lure.title) %>
   </h1>

@@ -505,6 +505,8 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .crop-handle-se { bottom: -7px; right: -7px; cursor: nwse-resize; }
 .crop-actions .btn.is-active { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
 .tile-color-picker { width: 34px; height: 32px; padding: 2px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--white); cursor: pointer; }
+.crop-stage.is-sampling { cursor: crosshair; }
+.crop-stage.is-sampling .crop-box { pointer-events: none; }
 
 /* Stepper ----------------------------------------------------------------- */
 .stepper { display: flex; gap: 8px; margin-bottom: 24px; }

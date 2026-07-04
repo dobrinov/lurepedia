@@ -468,6 +468,7 @@ en:
     aspect_square: "Square"
     bg_label: "Tile background"
     bg_auto: "Auto"
+    bg_pick: "Pick from the photo"
     hint: "Drag to reposition; drag the corners to resize. The crop is applied when you save."
     invalid: "The crop rectangle is invalid"
   claim:

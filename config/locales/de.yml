@@ -418,6 +418,7 @@ de:
     aspect_square: "Quadrat"
     bg_label: "Kachel-Hintergrund"
     bg_auto: "Auto"
+    bg_pick: "Aus dem Foto wählen"
     hint: "Ziehen zum Verschieben; an den Ecken ziehen zum Ändern der Größe. Der Zuschnitt wird beim Speichern übernommen."
     invalid: "Der Zuschnittsbereich ist ungültig"
   claim:

@@ -418,6 +418,7 @@ ja:
     aspect_square: "正方形"
     bg_label: "タイルの背景"
     bg_auto: "自動"
+    bg_pick: "写真から選択"
     hint: "ドラッグで移動、四隅をドラッグでサイズ変更。保存時に適用されます。"
     invalid: "切り抜き範囲が無効です"
   claim:

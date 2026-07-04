@@ -1,27 +1,57 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Inline crop editor for an already-uploaded photo. The stage shows the
-// original image; a draggable/resizable box selects the crop, which is written
-// into hidden photo_crop_* fields in ORIGINAL-image pixel coordinates (display
-// coords scaled by naturalWidth/clientWidth), so the stored geometry is
-// independent of how large the editor happens to render. Picking a new file in
-// the same form clears the crop — it described the previous image.
+// Crop + tile-background tools for a photo. The stage shows the original
+// image (or a freshly picked local file, before upload); a draggable/
+// resizable box selects the crop, written into hidden photo_crop_* fields in
+// ORIGINAL-image pixel coordinates (display coords scaled by naturalWidth /
+// clientWidth), so the stored geometry is independent of the editor's
+// rendered size. The background override lives in the hidden photo_bg_color
+// field — blank means "auto" (the analyzer's measured color, shown as the
+// picker default) — and can be sampled straight off the image (eyedropper).
 export default class extends Controller {
-  static targets = ["editor", "stage", "image", "box", "fieldX", "fieldY", "fieldW", "fieldH", "aspect"]
+  static targets = ["editor", "stage", "image", "box",
+    "fieldX", "fieldY", "fieldW", "fieldH", "aspect",
+    "bgField", "bgPicker", "bgAuto"]
+  static values = { detected: String }
 
   MIN_SIZE = 24 // px, display coordinates
+  FALLBACK_COLOR = "#f4f4f5" // --surface-2, the default tile background
 
   connect() {
     this.aspect = null
     this.crop = null // {x, y, w, h} in display coordinates
-    // A newly selected photo invalidates the stored crop of the old one.
+    this.sampling = false
+    this.objectUrl = null
     this.fileInput = this.element.closest("form")?.querySelector('input[type="file"]')
-    this.onFileChange = () => this.disable()
+    this.onFileChange = (event) => this.newFile(event.target.files[0])
     this.fileInput?.addEventListener("change", this.onFileChange)
   }
 
   disconnect() {
     this.fileInput?.removeEventListener("change", this.onFileChange)
+    if (this.objectUrl) URL.revokeObjectURL(this.objectUrl)
+  }
+
+  // A newly picked file replaces whatever the editor showed: stale crop and
+  // background override are cleared, the stage points at the local file, and
+  // the editor opens so the image can be processed before upload.
+  newFile(file) {
+    if (!file || !file.type.startsWith("image/")) return
+
+    if (this.objectUrl) URL.revokeObjectURL(this.objectUrl)
+    this.objectUrl = URL.createObjectURL(file)
+    this.crop = null
+    this.aspect = null
+    this.markAspect(null)
+    this.cropFields.forEach((f) => (f.value = ""))
+    this.bgFieldTarget.value = ""
+    this.bgPickerTarget.value = this.FALLBACK_COLOR
+    this.bgAutoTarget.hidden = true
+    this.stopSampling()
+    this.imageTarget.src = this.objectUrl
+    this.element.hidden = false
+    this.editorTarget.hidden = false
+    this.whenBoxReady(() => {})
   }
 
   toggle() {
@@ -30,11 +60,13 @@ export default class extends Controller {
       this.whenBoxReady(() => {})
     } else {
       this.editorTarget.hidden = true
+      this.stopSampling()
     }
   }
 
   close() {
     this.editorTarget.hidden = true
+    this.stopSampling()
   }
 
   // Clear the crop: full frame again, back to free aspect.
@@ -70,7 +102,76 @@ export default class extends Controller {
     this.beginGesture(event, event.currentTarget.dataset.handle)
   }
 
-  // --- internals ---
+  // --- tile background ---
+
+  pickColor() {
+    this.bgFieldTarget.value = this.bgPickerTarget.value
+    this.bgAutoTarget.hidden = false
+  }
+
+  autoColor() {
+    this.bgFieldTarget.value = ""
+    this.bgPickerTarget.value = this.detectedValue || this.FALLBACK_COLOR
+    this.bgAutoTarget.hidden = true
+  }
+
+  // Eyedropper: opens the editor and arms a one-shot click-to-sample on the
+  // stage image. Clicking the button again cancels.
+  startSample() {
+    if (this.sampling) {
+      this.stopSampling()
+      return
+    }
+    if (this.element.hidden || !this.imageTarget.getAttribute("src")) return
+
+    this.editorTarget.hidden = false
+    this.whenBoxReady(() => {
+      this.sampling = true
+      this.stageTarget.classList.add("is-sampling")
+    })
+  }
+
+  stageClick(event) {
+    if (!this.sampling) return
+
+    const img = this.imageTarget
+    const rect = img.getBoundingClientRect()
+    const x = Math.floor((event.clientX - rect.left) * (img.naturalWidth / rect.width))
+    const y = Math.floor((event.clientY - rect.top) * (img.naturalHeight / rect.height))
+    const color = this.colorAt(x, y)
+    if (color) {
+      this.bgFieldTarget.value = color
+      this.bgPickerTarget.value = color
+      this.bgAutoTarget.hidden = false
+    }
+    this.stopSampling()
+  }
+
+  stopSampling() {
+    this.sampling = false
+    if (this.hasStageTarget) this.stageTarget.classList.remove("is-sampling")
+  }
+
+  colorAt(x, y) {
+    const img = this.imageTarget
+    const canvas = document.createElement("canvas")
+    canvas.width = img.naturalWidth
+    canvas.height = img.naturalHeight
+    const ctx = canvas.getContext("2d")
+    ctx.drawImage(img, 0, 0)
+    try {
+      const [r, g, b] = ctx.getImageData(x, y, 1, 1).data
+      return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`
+    } catch {
+      return null // tainted canvas (cross-origin image) — sampling unavailable
+    }
+  }
+
+  // --- crop internals ---
+
+  get cropFields() {
+    return [this.fieldXTarget, this.fieldYTarget, this.fieldWTarget, this.fieldHTarget]
+  }
 
   // Run fn once the stage image has loaded and the box has been initialised —
   // every interaction needs both, and clicks can arrive before the (original,
@@ -91,7 +192,7 @@ export default class extends Controller {
   // Box from the stored fields (converted to display px), or the full image.
   initBox() {
     const s = this.scale()
-    const px = [this.fieldXTarget, this.fieldYTarget, this.fieldWTarget, this.fieldHTarget].map((f) => parseInt(f.value, 10))
+    const px = this.cropFields.map((f) => parseInt(f.value, 10))
     if (px.every((v) => Number.isFinite(v))) {
       this.crop = { x: px[0] / s, y: px[1] / s, w: px[2] / s, h: px[3] / s }
       this.clamp()
@@ -114,6 +215,8 @@ export default class extends Controller {
   }
 
   beginGesture(event, mode) {
+    if (this.sampling) return
+
     const start = { x: event.clientX, y: event.clientY, crop: { ...this.crop } }
     const move = (e) => {
       const dx = e.clientX - start.x
@@ -192,17 +295,10 @@ export default class extends Controller {
 
     const fullFrame = x === 0 && y === 0 && w >= W - 1 && h >= H - 1
     const values = fullFrame ? ["", "", "", ""] : [x, y, w, h]
-    ;[this.fieldXTarget, this.fieldYTarget, this.fieldWTarget, this.fieldHTarget].forEach((f, i) => (f.value = values[i]))
+    this.cropFields.forEach((f, i) => (f.value = values[i]))
   }
 
   markAspect(active) {
     this.aspectTargets.forEach((b) => b.classList.toggle("is-active", b === active))
-  }
-
-  // Hide the whole tool and drop the crop — the photo it described is being
-  // replaced by a new upload.
-  disable() {
-    ;[this.fieldXTarget, this.fieldYTarget, this.fieldWTarget, this.fieldHTarget].forEach((f) => (f.value = ""))
-    this.element.hidden = true
   }
 }

@@ -1,32 +1,40 @@
-<%# locals: f, record — thumb + inline crop editor for a Croppable record's attached photo %>
-<div class="crop-tool" data-controller="image-crop" style="margin-bottom:10px">
+<%# locals: f, record — crop + tile-background tools for the record's photo.
+    Renders the editor for an attached photo; for a freshly selected file the
+    controller points the stage at the local file (object URL) and opens the
+    editor, so the image can be processed before it is uploaded. %>
+<% attached = record.photo.attached? %>
+<% detected = attached ? photo_background_color(record.photo) : nil %>
+<div class="crop-tool" data-controller="image-crop" data-image-crop-detected-value="<%= detected %>"
+     style="margin-bottom:10px" <%= "hidden" unless attached %>>
   <%= f.hidden_field :photo_crop_x, data: { image_crop_target: "fieldX" } %>
   <%= f.hidden_field :photo_crop_y, data: { image_crop_target: "fieldY" } %>
   <%= f.hidden_field :photo_crop_w, data: { image_crop_target: "fieldW" } %>
   <%= f.hidden_field :photo_crop_h, data: { image_crop_target: "fieldH" } %>
+  <%= f.hidden_field :photo_bg_color, data: { image_crop_target: "bgField" } %>
 
-  <div class="row" style="gap:10px;align-items:center">
-    <div class="upload-thumb">
-      <%= image_tag cropped_photo(record, resize_to_fill: [ 88, 88 ]), alt: "" %>
-    </div>
+  <div class="row" style="gap:6px;align-items:center;flex-wrap:wrap">
+    <% if attached %>
+      <div class="upload-thumb">
+        <%= image_tag cropped_photo(record, resize_to_fill: [ 88, 88 ]), alt: "" %>
+      </div>
+    <% end %>
     <button type="button" class="btn btn-sm" data-action="image-crop#toggle"><%= t("crop.adjust") %></button>
-    <% detected = photo_background_color(record.photo) %>
-    <div class="row" style="gap:6px;align-items:center;margin-left:auto"
-         data-controller="tile-color" data-tile-color-detected-value="<%= detected %>">
-      <%= f.hidden_field :photo_bg_color, data: { tile_color_target: "field" } %>
-      <label class="muted" style="font-size:12px" for="<%= f.object_name %>_photo_bg_color_picker"><%= t("crop.bg_label") %></label>
-      <input type="color" class="tile-color-picker" id="<%= f.object_name %>_photo_bg_color_picker"
-             value="<%= record.photo_bg_color.presence || detected || "#f4f4f5" %>"
-             data-tile-color-target="picker" data-action="input->tile-color#pick">
-      <button type="button" class="btn btn-sm" data-tile-color-target="status" data-action="tile-color#auto" <%= "hidden" if record.photo_bg_color.blank? %>><%= t("crop.bg_auto") %></button>
-    </div>
+    <span style="flex:1"></span>
+    <label class="muted" style="font-size:12px" for="<%= f.object_name %>_photo_bg_color_picker"><%= t("crop.bg_label") %></label>
+    <input type="color" class="tile-color-picker" id="<%= f.object_name %>_photo_bg_color_picker"
+           value="<%= record.photo_bg_color.presence || detected || "#f4f4f5" %>"
+           data-image-crop-target="bgPicker" data-action="input->image-crop#pickColor">
+    <button type="button" class="btn btn-sm" data-action="image-crop#startSample" title="<%= t("crop.bg_pick") %>" aria-label="<%= t("crop.bg_pick") %>">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z"/></svg>
+    </button>
+    <button type="button" class="btn btn-sm" data-image-crop-target="bgAuto" data-action="image-crop#autoColor" <%= "hidden" if record.photo_bg_color.blank? %>><%= t("crop.bg_auto") %></button>
   </div>
 
   <div class="crop-editor" data-image-crop-target="editor" hidden>
-    <div class="crop-stage" data-image-crop-target="stage">
+    <div class="crop-stage" data-image-crop-target="stage" data-action="click->image-crop#stageClick">
       <%# The ORIGINAL image, not a resized variant: the controller's pixel math
-          relies on naturalWidth matching the stored blob's dimensions. %>
-      <img src="<%= url_for(record.photo) %>" data-image-crop-target="image" draggable="false" alt="">
+          relies on naturalWidth matching the stored file's dimensions. %>
+      <img src="<%= url_for(record.photo) if attached %>" data-image-crop-target="image" draggable="false" alt="">
       <div class="crop-box" data-image-crop-target="box" data-action="pointerdown->image-crop#startMove">
         <% %w[nw ne sw se].each do |corner| %>
           <span class="crop-handle crop-handle-<%= corner %>" data-handle="<%= corner %>" data-action="pointerdown->image-crop#startResize"></span>
