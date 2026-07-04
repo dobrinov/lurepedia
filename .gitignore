@@ -39,3 +39,6 @@
 /playwright-report
 /test-results
 /e2e/.auth
+
+# Personal scratch notes
+/prompt.md
