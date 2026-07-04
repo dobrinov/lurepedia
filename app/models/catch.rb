@@ -9,6 +9,7 @@ class Catch < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :upvotes, dependent: :destroy
   has_many :reports, as: :reportable, dependent: :destroy
+  has_many :moderation_items, as: :subject, dependent: :destroy
   has_many_attached :photos
 
   enum :season, { spring: 0, summer: 1, fall: 2, winter: 3 }, prefix: :season

@@ -105,12 +105,17 @@
         <% if @catch.note.present? %><p class="muted" style="font-size:13.5px"><%= @catch.note %></p><% end %>
       </div>
 
-      <div class="card-pad center">
+      <div class="card-pad center row" style="justify-content:center;gap:8px">
         <% if signed_in? %>
           <div data-controller="modal">
             <button class="btn btn-sm" data-action="modal#open" style="color:var(--danger)"><%= t("catch.report") %></button>
             <%= render "reports/modal", reportable: @catch, label: "#{species_common_name(@catch.species)} — #{@catch.lure.title}" %>
           </div>
+        <% end %>
+        <% if current_user&.can_moderate? %>
+          <%= button_to t("common.delete"), catch_path(@catch), method: :delete,
+                class: "btn btn-sm", style: "color:var(--danger)",
+                form: { data: { turbo_confirm: t("common.delete") } } %>
         <% end %>
       </div>
     </aside>

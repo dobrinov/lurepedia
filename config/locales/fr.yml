@@ -398,6 +398,7 @@ fr:
     note: Notes
     submitted: Soumis pour vérification
     logged: Prise enregistrée
+    removed: Prise supprimée
     submitted_body: Merci ! Votre prise est dans la file de modération et apparaîtra une fois approuvée.
     add_another: En ajouter une autre
 

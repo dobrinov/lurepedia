@@ -398,6 +398,7 @@ en:
     modal_step2: "Step 2 of 2 · Choose the build & depth"
     builds_in: "Builds available in"
     logged: Catch logged
+    removed: Catch removed
     no_builds: This color has no builds yet.
     variation: Variation
     choose_variation: Choose a variation

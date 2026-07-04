@@ -1,6 +1,7 @@
 class CatchesController < ApplicationController
   before_action :require_login, only: %i[new create]
   before_action -> { require_contribution(:catches) }, only: %i[new create]
+  before_action :require_moderator, only: :destroy
 
   def index
     @page = paginate(Catch.includes(:user, :species, :build, variant: :lure).recent, per: 12)
@@ -38,6 +39,12 @@ class CatchesController < ApplicationController
       flash.now[:alert] = @catch.errors.full_messages.to_sentence.presence || t("catch.add_title")
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    catch = Catch.find(params[:id])
+    catch.destroy
+    redirect_to catches_path, notice: t("catch.removed")
   end
 
   private

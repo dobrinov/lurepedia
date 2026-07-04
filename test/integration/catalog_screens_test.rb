@@ -215,6 +215,25 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  test "moderator can delete a catch along with its queue item" do
+    the_catch = Catch.create!(user: @member, variant: @variant, species: @bass, season: :spring)
+    ModerationItem.create!(subject: the_catch, kind: :catch, submitter: @member)
+    moderator = User.create!(name: "Mo Mod", email_address: "mo@example.com", password: "secret123", country: "US", role: :moderator)
+    sign_in_as(moderator)
+    assert_difference -> { Catch.count } => -1, -> { ModerationItem.count } => -1 do
+      delete catch_path(the_catch, locale: :en)
+    end
+    assert_response :redirect
+  end
+
+  test "member cannot delete a catch" do
+    the_catch = Catch.create!(user: @member, variant: @variant, species: @bass, season: :spring)
+    sign_in_as(@member)
+    assert_no_difference -> { Catch.count } do
+      delete catch_path(the_catch, locale: :en)
+    end
+  end
+
   test "guest sees sign-in CTA on lure detail" do
     get lure_path(@lure, locale: :en)
     assert_match I18n.t("lure.add_catch"), response.body

@@ -348,6 +348,7 @@ ja:
     modal_step2: "ステップ 2/2 · ビルドと深度を選択"
     builds_in: "利用可能なビルド:"
     logged: 釣果を記録しました
+    removed: 釣果を削除しました
     no_builds: "このカラーにはまだビルドがありません。"
     variation: "バリエーション"
     choose_variation: "バリエーションを選択"
