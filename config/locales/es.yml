@@ -397,6 +397,7 @@ es:
     change: Cambiar
     note: Notas
     submitted: Enviado para revisión
+    logged: Captura registrada
     submitted_body: ¡Gracias! Tu captura está en la cola de moderación y aparecerá cuando se apruebe.
     add_another: Añadir otra
 

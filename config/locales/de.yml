@@ -347,6 +347,7 @@ de:
     modal_step1: "Schritt 1 von 2 · Wähle die Farbe, mit der du gefangen hast"
     modal_step2: "Schritt 2 von 2 · Wähle Bauform & Tiefe"
     builds_in: "Verfügbare Bauformen in"
+    logged: Fang eingetragen
     no_builds: "Diese Farbe hat noch keine Bauformen."
     variation: "Variante"
     choose_variation: "Variante wählen"

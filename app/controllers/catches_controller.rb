@@ -24,8 +24,14 @@ class CatchesController < ApplicationController
     @catch.user = current_user
 
     if @catch.save
-      ModerationItem.create!(subject: @catch, kind: :catch, submitter: current_user)
-      redirect_to catch_path(@catch), notice: t("catch.submitted")
+      # Admins skip the review queue — actionable_by? blocks self-review, so an
+      # admin's own catch would otherwise sit in a queue nobody can process.
+      if current_user.admin?
+        redirect_to catch_path(@catch), notice: t("catch.logged")
+      else
+        ModerationItem.create!(subject: @catch, kind: :catch, submitter: current_user)
+        redirect_to catch_path(@catch), notice: t("catch.submitted")
+      end
     else
       @species = Species.alpha
       load_prefill

@@ -204,6 +204,17 @@ class CatalogScreensTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  test "admin catch skips the moderation queue" do
+    admin = User.create!(name: "Ada Admin", email_address: "ada@example.com", password: "secret123", country: "US", role: :admin)
+    sign_in_as(admin)
+    assert_difference -> { Catch.count } => 1, -> { ModerationItem.count } => 0 do
+      post catches_path(locale: :en), params: {
+        catch: { variant_id: @variant.id, build_id: @build.id, species_id: @bass.id, season: "spring", location: "Pond" }
+      }
+    end
+    assert_response :redirect
+  end
+
   test "guest sees sign-in CTA on lure detail" do
     get lure_path(@lure, locale: :en)
     assert_match I18n.t("lure.add_catch"), response.body
