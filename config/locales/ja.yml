@@ -298,14 +298,12 @@ ja:
     search_placeholder: ショップを検索…
     add: ショップを追加
     add_title: ショップを追加
-    promoted_section: 広告
-    all_shops: すべてのショップ
-    empty_title: まだショップがありません
-    empty_sub: ルアーを販売するショップを最初に追加しましょう。
+    ships_to_you: "%{country}へ配送するショップ"
+    other_shops: その他のショップ
+    none_ship: "%{country}へ配送するショップはまだありません。ご存じですか？"
     tab_lures: ルアー
     tab_history: 履歴
     no_lures: このショップにはまだルアーがありません。
-    visit: ショップへ
     ships_to: 配送先
     ships_to_unknown: "—"
     ships_worldwide: 世界中へ配送
@@ -313,10 +311,6 @@ ja:
     add_country: 国を追加
     worldwide: 世界中
     claim: ショップを申請
-    owned_by: 所有者
-    added_by: 追加者
-    show_history: 履歴
-    hide_history: 履歴を隠す
 
   catch:
     title: 釣果

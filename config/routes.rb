@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :brands, only: %i[index new create edit]
     get   "brands/:id(/:tab)", to: "brands#show", as: :brand, constraints: { tab: /history/ }
     patch "brands/:id", to: "brands#update"
-    resources :shops, only: %i[index show new create]
+    resources :shops, only: %i[index show new create edit update]
     resources :catches, only: %i[index show new create destroy] do
       resources :comments, only: :create
       resource :upvote, only: %i[create destroy]

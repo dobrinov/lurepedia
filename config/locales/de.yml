@@ -298,14 +298,12 @@ de:
     search_placeholder: Shops suchen…
     add: Shop hinzufügen
     add_title: Shop hinzufügen
-    promoted_section: Gesponsert
-    all_shops: Alle Shops
-    empty_title: Noch keine Shops
-    empty_sub: Füge als Erster einen Shop hinzu, der Köder verkauft.
+    ships_to_you: Shops mit Lieferung nach %{country}
+    other_shops: Weitere Shops
+    none_ship: Noch keine Shops mit Lieferung nach %{country}. Kennst du einen?
     tab_lures: Köder
     tab_history: Verlauf
     no_lures: Noch keine Köder in diesem Shop gelistet.
-    visit: Shop besuchen
     ships_to: Liefert nach
     ships_to_unknown: "—"
     ships_worldwide: Weltweiter Versand
@@ -313,10 +311,6 @@ de:
     add_country: Land hinzufügen
     worldwide: Weltweit
     claim: Shop beanspruchen
-    owned_by: Im Besitz von
-    added_by: Hinzugefügt von
-    show_history: Verlauf
-    hide_history: Verlauf ausblenden
 
   catch:
     title: Fänge

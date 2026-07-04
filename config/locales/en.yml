@@ -348,14 +348,12 @@ en:
     search_placeholder: Search shops…
     add: Add a shop
     add_title: Add a shop
-    promoted_section: Promoted
-    all_shops: All shops
-    empty_title: No shops yet
-    empty_sub: Be the first to add a shop that sells lures.
+    ships_to_you: Shops that deliver to %{country}
+    other_shops: Other shops
+    none_ship: No shops deliver to %{country} yet. Know one?
     tab_lures: Lures
     tab_history: History
     no_lures: No lures listed at this shop yet.
-    visit: Visit shop
     ships_to: Ships to
     ships_to_unknown: "—"
     ships_worldwide: Ships worldwide
@@ -363,10 +361,6 @@ en:
     add_country: Add a country
     worldwide: Worldwide
     claim: Claim a shop
-    owned_by: Owned by
-    added_by: Added by
-    show_history: History
-    hide_history: Hide history
 
   catch:
     title: Catches

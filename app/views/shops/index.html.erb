@@ -14,31 +14,28 @@
     <%= render "shared/search_bar", url: shops_path, placeholder: t("shop.search_placeholder") %>
   </div>
 
-  <% if @promoted.empty? && @shops.empty? %>
-    <% if @q.present? %>
-      <div class="empty-state">
-        <h3><%= t("search.no_results") %></h3>
-        <%= link_to t("search.clear_all"), shops_path, class: "btn" %>
+  <% if @q.present? && @local_shops.empty? && @other_shops.empty? %>
+    <div class="empty-state">
+      <h3><%= t("search.no_results") %></h3>
+      <%= link_to t("search.clear_all"), shops_path, class: "btn" %>
+    </div>
+  <% else %>
+    <div class="section-head"><h2 style="font-size:16px"><%= t("shop.ships_to_you", country: country_name(@country)) %></h2></div>
+    <% if @local_shops.any? %>
+      <div class="grid-cards" style="margin-bottom:32px">
+        <% @local_shops.each do |shop| %><%= render "shops/shop_row", shop: shop %><% end %>
       </div>
     <% else %>
-      <div class="empty-state">
-        <h3><%= t("shop.empty_title") %></h3>
-        <p><%= t("shop.empty_sub") %></p>
+      <div class="empty-state" style="margin-bottom:32px">
+        <p><%= t("shop.none_ship", country: country_name(@country)) %></p>
         <%= link_to t("shop.add"), new_shop_path, class: "btn btn-primary" %>
       </div>
     <% end %>
-  <% else %>
-    <% if @promoted.any? %>
-      <div class="section-head"><h2 style="font-size:16px"><%= t("shop.promoted_section") %></h2></div>
-      <div class="grid-cards" style="margin-bottom:32px">
-        <% @promoted.each do |shop| %><%= render "shops/shop_row", shop: shop %><% end %>
-      </div>
-    <% end %>
 
-    <% if @shops.any? %>
-      <div class="section-head"><h2 style="font-size:16px"><%= t("shop.all_shops") %></h2></div>
+    <% if @other_shops.any? %>
+      <div class="section-head"><h2 style="font-size:16px"><%= t("shop.other_shops") %></h2></div>
       <div class="grid-cards">
-        <% @shops.each do |shop| %><%= render "shops/shop_row", shop: shop %><% end %>
+        <% @other_shops.each do |shop| %><%= render "shops/shop_row", shop: shop %><% end %>
       </div>
       <%= render "shared/pagination", page: @page %>
     <% end %>

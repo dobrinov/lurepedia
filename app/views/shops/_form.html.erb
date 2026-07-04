@@ -1,0 +1,28 @@
+<%# locals: shop, submit_label %>
+<%= form_with model: shop, url: shop.persisted? ? shop_path(shop) : shops_path, method: shop.persisted? ? :patch : :post do |f| %>
+  <div class="field">
+    <%= f.label :name, t("auth.name") %>
+    <%= f.text_field :name, class: "input", required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :url, t("brand.website") %>
+    <%= f.text_field :url, class: "input", placeholder: "example.com", required: true %>
+  </div>
+  <div data-controller="ships-worldwide">
+    <div class="field">
+      <label class="row" style="gap:8px;align-items:center">
+        <%= f.check_box :ships_worldwide, data: { ships_worldwide_target: "toggle", action: "ships-worldwide#sync" } %> <%= t("shop.ships_worldwide") %>
+      </label>
+    </div>
+    <div class="field" data-ships-worldwide-target="countries">
+      <%= f.label :ships_to, t("shop.ships_to") %>
+      <%= render "shared/country_multiselect", name: "shop[ships_to]", selected: shop.ships_to_countries %>
+      <p class="muted" style="font-size:12.5px;margin-top:4px"><%= t("shop.ships_to_hint") %></p>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :blurb, t("shop.title") %>
+    <%= f.text_area :blurb, class: "input" %>
+  </div>
+  <%= f.submit submit_label, class: "btn btn-primary" %>
+<% end %>

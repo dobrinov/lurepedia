@@ -85,12 +85,13 @@ module Editable
   end
 
   # Direct, unreviewed edits are reserved for admins and the verified owner of
-  # the brand the record belongs to.
+  # the brand or shop the record belongs to.
   def can_edit_directly?(record)
     return false unless current_user
     return true if current_user.admin?
 
-    owning_brand(record)&.managed_by?(current_user) || false
+    manager = record.is_a?(Shop) ? record : owning_brand(record)
+    manager&.managed_by?(current_user) || false
   end
 
   # Whether the current user may publish a NEW catalog record under this brand

@@ -298,14 +298,12 @@ bg:
     search_placeholder: Търси магазини…
     add: Добави магазин
     add_title: Добави магазин
-    promoted_section: Промотирани
-    all_shops: Всички магазини
-    empty_title: Все още няма магазини
-    empty_sub: Бъдете първият, който добавя магазин за примамки.
+    ships_to_you: Магазини с доставка до %{country}
+    other_shops: Други магазини
+    none_ship: Все още няма магазини с доставка до %{country}. Знаете ли такъв?
     tab_lures: Примамки
     tab_history: История
     no_lures: Все още няма примамки в този магазин.
-    visit: Посети магазина
     ships_to: Доставя до
     ships_to_unknown: "—"
     ships_worldwide: Доставка по целия свят
@@ -313,10 +311,6 @@ bg:
     add_country: Добави държава
     worldwide: Целият свят
     claim: Заяви магазин
-    owned_by: Собственост на
-    added_by: Добавен от
-    show_history: История
-    hide_history: Скрий историята
 
   catch:
     title: Улови

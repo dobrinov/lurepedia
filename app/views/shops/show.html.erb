@@ -15,7 +15,7 @@
         <h1 style="font-size:28px;font-weight:700;letter-spacing:-.02em"><%= @shop.name %></h1>
         <% if @shop.promoted? %><span class="badge badge-promoted"><%= t("common.promoted") %></span><% end %>
         <% if @shop.claimed? %>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg>
+          <span class="badge badge-ok"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg><%= t("claim.managed_badge") %></span>
         <% end %>
       </div>
       <% if @shop.url.present? %>
@@ -37,8 +37,11 @@
     </div>
     <div class="row">
       <%= render "shared/favorite_button", favoritable: @shop %>
-      <% if signed_in? && !@shop.claimed? %>
-        <%= link_to t("shop.claim"), new_claim_path(type: "shop", slug: @shop.slug), class: "btn" %>
+      <% if signed_in? %>
+        <%= link_to edit_affordance_label(@shop), edit_shop_path(@shop), class: "btn" %>
+        <% unless @shop.claimed? %>
+          <%= link_to t("shop.claim"), new_claim_path(type: "shop", slug: @shop.slug), class: "btn" %>
+        <% end %>
       <% end %>
     </div>
   </div>

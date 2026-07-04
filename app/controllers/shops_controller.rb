@@ -1,19 +1,16 @@
 class ShopsController < ApplicationController
-  before_action :require_login, only: %i[new create]
-  before_action -> { require_contribution(:catalog) }, only: %i[new create]
+  before_action :require_login, only: %i[new create edit update]
+  before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
     @q = params[:q].to_s.strip
-    promoted = Shop.promoted.published.includes(:claim).order(:name)
-    regular = Shop.regular.published.includes(:claim).order(:name)
-    if @q.present?
-      like = "%#{@q.downcase}%"
-      promoted = promoted.where("LOWER(name) LIKE ?", like)
-      regular = regular.where("LOWER(name) LIKE ?", like)
-    end
-    @promoted = promoted
-    @page = paginate(regular, per: 9)
-    @shops = @page.records
+    shops = Shop.published.includes(:claim).promoted_first
+    shops = shops.where("LOWER(name) LIKE ?", "%#{@q.downcase}%") if @q.present?
+    @country = helpers.viewer_country
+    local, other = shops.partition { |shop| shop.ships_to_country?(@country) }
+    @local_shops = local
+    @page = paginate(other, per: 9)
+    @other_shops = @page.records
   end
 
   def show
@@ -43,6 +40,15 @@ class ShopsController < ApplicationController
       flash.now[:alert] = @shop.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @shop = Shop.find_by!(slug: params[:id])
+  end
+
+  def update
+    @shop = Shop.find_by!(slug: params[:id])
+    commit_edit(@shop, shop_params, @shop.name, shop_path(@shop))
   end
 
   private

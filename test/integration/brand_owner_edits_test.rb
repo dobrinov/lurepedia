@@ -57,6 +57,29 @@ class BrandOwnerEditsTest < ActionDispatch::IntegrationTest
     assert_equal "Original blurb", @lure.reload.blurb
   end
 
+  test "verified shop owner edits the shop directly without moderation" do
+    shop = Shop.create!(name: "Tackle Direct", url: "tackledirect.com")
+    shop.create_claim!(user: @owner, email: @owner.email_address, message: "I run this shop.").approve!
+
+    sign_in_as(@owner)
+    assert_no_difference -> { ModerationItem.where(kind: :edit).count } do
+      patch shop_path(shop, locale: :en), params: { shop: { blurb: "Owner blurb" } }
+    end
+
+    assert_equal "Owner blurb", shop.reload.blurb
+  end
+
+  test "a member without a shop claim suggests shop edits through moderation" do
+    shop = Shop.create!(name: "Other Tackle", url: "othertackle.com", blurb: "Original blurb")
+
+    sign_in_as(@owner)
+    assert_difference -> { ModerationItem.where(kind: :edit).count }, 1 do
+      patch shop_path(shop, locale: :en), params: { shop: { blurb: "Suggested blurb" } }
+    end
+
+    assert_equal "Original blurb", shop.reload.blurb
+  end
+
   test "verified brand owner adds a lure to their brand without moderation" do
     sign_in_as(@owner)
     assert_no_difference -> { ModerationItem.where(kind: :catalog).count } do
