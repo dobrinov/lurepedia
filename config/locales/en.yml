@@ -269,6 +269,7 @@ en:
     add_build: Add a build
     color_name: Color name
     availability: Available builds
+    availability_hint: Tick the builds this color is confirmed to come in. Leave all unticked if unknown — the color is shown under every build.
 
   species:
     title: Species
@@ -615,6 +616,8 @@ en:
     no_changes: No field-level changes were recorded for this edit.
     removed: Removed
     added: Added
+    field:
+      build_ids: Available builds
 
   species_names:
     largemouth_bass:

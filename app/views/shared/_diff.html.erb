@@ -10,6 +10,9 @@
           <% old_blob = diff_blob(change[:old]); new_blob = diff_blob(change[:new]) %>
           <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><% if old_blob %><%= image_tag old_blob.variant(resize_to_fill: [ 88, 88 ]), alt: "" %><% else %><%= t("common.none") %><% end %></span></div>
           <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><% if new_blob %><%= image_tag new_blob.variant(resize_to_fill: [ 88, 88 ]), alt: "" %><% else %><%= t("common.none") %><% end %></span></div>
+        <% elsif change[:field].to_s == "build_ids" %>
+          <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><%= diff_build_names(change[:old]) %></span></div>
+          <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><%= diff_build_names(change[:new]) %></span></div>
         <% else %>
           <div class="diff-line diff-del"><span class="diff-gutter">−</span><span class="diff-text"><%= diff_value(change[:old]) %></span></div>
           <div class="diff-line diff-ins"><span class="diff-gutter">+</span><span class="diff-text"><%= diff_value(change[:new]) %></span></div>

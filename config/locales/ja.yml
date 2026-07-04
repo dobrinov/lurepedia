@@ -219,6 +219,7 @@ ja:
     add_build: "ビルドを追加"
     color_name: "カラー名"
     availability: "利用可能なビルド"
+    availability_hint: "このカラーが確認済みのビルドにチェックを入れてください。不明な場合はすべて未チェックのままにしてください — カラーはすべてのビルドに表示されます。"
 
   species:
     title: 魚種
@@ -615,6 +616,8 @@ ja:
     no_changes: この編集にはフィールドレベルの変更が記録されていません。
     removed: 削除
     added: 追加
+    field:
+      build_ids: "利用可能なビルド"
 
   species_names:
     largemouth_bass:

@@ -269,6 +269,7 @@ nl:
     add_build: "Uitvoering toevoegen"
     color_name: "Kleurnaam"
     availability: "Beschikbare uitvoeringen"
+    availability_hint: "Vink de uitvoeringen aan waarin deze kleur bevestigd verkrijgbaar is. Laat alles leeg indien onbekend — de kleur wordt dan bij elke uitvoering getoond."
 
   species:
     title: Vissoorten
@@ -610,6 +611,8 @@ nl:
     no_changes: Voor deze bewerking zijn geen veldwijzigingen vastgelegd.
     removed: Verwijderd
     added: Toegevoegd
+    field:
+      build_ids: "Beschikbare uitvoeringen"
 
   species_names:
     largemouth_bass:

@@ -80,6 +80,53 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     assert_equal :edit, ModerationItem.last.kind.to_sym
   end
 
+  test "admin confirms a color's builds directly, with the change recorded in the revision" do
+    other = @lure.builds.create!(name: "110 F")
+    sign_in_as(@admin)
+
+    patch variant_path(@lure, @color, locale: :en),
+          params: { variant: { name: @color.name, build_ids: [ "", @build.id.to_s ] } }
+
+    assert_equal [ @build.id ], @color.reload.build_ids
+    assert_equal [ [], [ @build.id ] ], Revision.last.changeset["build_ids"]
+    assert_not_includes @color.build_ids, other.id
+  end
+
+  test "a member's build_ids suggestion applies on approval and rolls back on undo" do
+    sign_in_as(@member)
+    assert_difference -> { Revision.count } => 1, -> { ModerationItem.count } => 1 do
+      patch variant_path(@lure, @color, locale: :en),
+            params: { variant: { name: @color.name, build_ids: [ "", @build.id.to_s ] } }
+    end
+    assert_not @color.reload.availability_known?, "a suggestion must not touch the record"
+
+    item = ModerationItem.last
+    item.approve!(@admin)
+    assert_equal [ @build.id ], @color.reload.build_ids
+
+    item.undo!
+    assert_not @color.reload.availability_known?, "undo restores the open-world unknown state"
+  end
+
+  test "a new color can be born with confirmed builds" do
+    sign_in_as(@admin)
+    post variants_path(@lure, locale: :en),
+         params: { variant: { name: "Pro Blue", build_ids: [ "", @build.id.to_s ] } }
+
+    assert_equal [ @build.id ], @lure.variants.order(:id).last.build_ids
+  end
+
+  test "moderation queue shows build names, not raw ids, for a build_ids suggestion" do
+    sign_in_as(@member)
+    patch variant_path(@lure, @color, locale: :en),
+          params: { variant: { name: @color.name, build_ids: [ "", @build.id.to_s ] } }
+
+    sign_in_as(@admin)
+    get moderation_index_path(locale: :en)
+    assert_response :success
+    assert_match "110 SP", response.body
+  end
+
   test "admin edits a build directly" do
     sign_in_as(@admin)
     patch build_path(@lure, @build, locale: :en), params: { build: { depth_max_cm: 200 } }

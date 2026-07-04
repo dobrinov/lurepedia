@@ -73,6 +73,17 @@ module RevisionsHelper
     ActiveStorage::Blob.find_signed(signed_id)
   end
 
+  # Changeset build_ids arrays are opaque in review — render build names
+  # instead, falling back to the raw id for a since-deleted build. An empty
+  # array is the open-world "unknown" state, shown as none.
+  def diff_build_names(ids)
+    ids = Array(ids)
+    return t("common.none") if ids.empty?
+
+    names = Build.where(id: ids).pluck(:id, :name).to_h
+    ids.map { |id| names[id] || "##{id}" }.join(" · ")
+  end
+
   # Display form of a stored diff value (raw attribute value from the changeset).
   def diff_value(value)
     case value

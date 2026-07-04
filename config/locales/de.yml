@@ -219,6 +219,7 @@ de:
     add_build: "Bauform hinzufügen"
     color_name: "Farbname"
     availability: "Verfügbare Bauformen"
+    availability_hint: "Bauformen ankreuzen, in denen diese Farbe bestätigt erhältlich ist. Alle frei lassen, wenn unbekannt — die Farbe wird dann bei jeder Bauform angezeigt."
 
   species:
     title: Fischarten
@@ -548,6 +549,8 @@ de:
     no_changes: Für diese Bearbeitung wurden keine Feldänderungen aufgezeichnet.
     removed: Entfernt
     added: Hinzugefügt
+    field:
+      build_ids: "Verfügbare Bauformen"
 
   species_names:
     largemouth_bass:

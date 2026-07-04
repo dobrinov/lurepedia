@@ -269,6 +269,7 @@ zh:
     add_build: 添加规格
     color_name: 颜色名称
     availability: 可选规格
+    availability_hint: "勾选已确认提供此颜色的规格。如不确定请全部留空 — 该颜色将显示在所有规格下。"
 
   species:
     title: 鱼种
@@ -610,6 +611,8 @@ zh:
     no_changes: 此次编辑没有记录字段级变更。
     removed: 已删除
     added: 已添加
+    field:
+      build_ids: 可选规格
 
   species_names:
     largemouth_bass:

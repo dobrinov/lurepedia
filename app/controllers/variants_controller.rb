@@ -50,7 +50,10 @@ class VariantsController < ApplicationController
   end
 
   def variant_params
-    params.require(:variant).permit(:name, :best_for, :uv_glow, :photo,
-                                    :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_bg_color)
+    permitted = params.require(:variant).permit(:name, :best_for, :uv_glow, :photo,
+                                    :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_bg_color,
+                                    build_ids: [])
+    permitted[:build_ids] = permitted[:build_ids].reject(&:blank?) if permitted[:build_ids]
+    permitted
   end
 end

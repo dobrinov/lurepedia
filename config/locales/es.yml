@@ -269,6 +269,7 @@ es:
     add_build: Añadir una versión
     color_name: Nombre del color
     availability: Versiones disponibles
+    availability_hint: "Marca las versiones en las que este color está confirmado. Deja todo sin marcar si no se sabe — el color se muestra en todas las versiones."
 
   species:
     title: Especies
@@ -610,6 +611,8 @@ es:
     no_changes: No se registraron cambios de campos para esta edición.
     removed: Eliminado
     added: Añadido
+    field:
+      build_ids: Versiones disponibles
 
   species_names:
     largemouth_bass:
