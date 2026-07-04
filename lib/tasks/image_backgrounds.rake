@@ -1,9 +1,11 @@
 namespace :images do
-  desc "Re-analyze image blobs that don't have a tile background color yet"
+  desc "Re-analyze image blobs the tile background analyzer hasn't seen yet"
   task backfill_backgrounds: :environment do
     scope = ActiveStorage::Blob.where("content_type LIKE 'image/%'")
     scope.find_each do |blob|
-      next if blob.metadata["background_color"].present?
+      # The analyzer stores false for "analyzed, no usable color" (transparent
+      # edges), so key presence — not value — marks a blob as done.
+      next if blob.metadata.key?("background_color")
 
       blob.analyze
       puts "#{blob.filename}: #{blob.metadata["background_color"] || "no color (transparent edges?)"}"

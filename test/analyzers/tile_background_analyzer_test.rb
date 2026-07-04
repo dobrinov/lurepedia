@@ -39,10 +39,11 @@ class TileBackgroundAnalyzerTest < ActiveSupport::TestCase
     assert_equal "#ff0000", blob.metadata["background_color"]
   end
 
-  test "transparent edges yield no color" do
+  test "transparent edges store false so reruns can skip the blob" do
     blob = blob_for("canvas:transparent")
     blob.analyze
 
-    assert_nil blob.metadata["background_color"]
+    assert blob.metadata.key?("background_color")
+    assert_equal false, blob.metadata["background_color"]
   end
 end

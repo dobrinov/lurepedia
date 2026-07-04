@@ -12,8 +12,12 @@ class TileBackgroundAnalyzer < ActiveStorage::Analyzer::ImageAnalyzer::ImageMagi
   SAMPLE = 24 # px — the whole image is resampled to SAMPLE×SAMPLE first
   PIXEL = /^(\d+),(\d+):\s+\((\d+),(\d+),(\d+)(?:,(\d+))?\)/
 
+  # A colorless outcome (transparent edges, unreadable image) is stored as
+  # `false` rather than omitted, so the backfill task can tell "analyzed, no
+  # color" apart from "never analyzed" and skip it on reruns. Readers treat
+  # false as absent (it is .blank?).
   def metadata
-    super.merge(background_color: background_color).compact
+    super.merge(background_color: background_color || false)
   end
 
   private

@@ -59,6 +59,11 @@ class CroppableTest < ActiveSupport::TestCase
     assert_equal "#ff8800", @variant.photo_background_color
   end
 
+  test "a colorless analysis result reads as no background" do
+    @variant.photo.blob.update!(metadata: @variant.photo.blob.metadata.merge("background_color" => false))
+    assert_nil @variant.photo_background_color
+  end
+
   test "background color must be a hex color" do
     @variant.photo_bg_color = "red"
     assert_not @variant.valid?

@@ -35,9 +35,10 @@ module Croppable
 
   # The color to paint behind letterboxed renders of the photo: the manual
   # override when set, otherwise the border color measured at analysis time.
+  # The analyzer stores false for "no usable color" — .presence maps it to nil.
   def photo_background_color
     photo_bg_color.presence ||
-      (photo.blob&.metadata&.[]("background_color") if photo.attached?)
+      (photo.blob&.metadata&.[]("background_color") if photo.attached?).presence
   end
 
   private

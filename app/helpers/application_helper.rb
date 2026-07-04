@@ -83,7 +83,7 @@ module ApplicationHelper
     return source.photo_background_color if source.respond_to?(:photo_background_color)
     return if source.respond_to?(:attached?) && !source.attached?
 
-    (source.try(:blob) || source)&.metadata&.[]("background_color")
+    (source.try(:blob) || source)&.metadata&.[]("background_color").presence
   end
 
   # Inline style painting a contain-fit tile with the photo's own border
