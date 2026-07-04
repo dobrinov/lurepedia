@@ -15,9 +15,9 @@
     <div class="grid-cards">
       <% @species.each do |sp| %>
         <%= link_to species_path(sp), class: "card" do %>
-          <div class="ph ph-lure ph-contain" style="aspect-ratio:16/10">
+          <div class="ph ph-lure ph-contain" style="<%= photo_frame_style(sp.photo) %>">
             <% if sp.photo.attached? %>
-              <%= image_tag sp.photo.variant(resize_to_limit: [ 560, 350 ]), alt: sp.common_name, loading: "lazy" %>
+              <%= image_tag cropped_photo(sp, resize_to_limit: [ 560, 560 ]), alt: sp.common_name, loading: "lazy" %>
             <% else %>
               <%= render "shared/fish_glyph" %>
             <% end %>

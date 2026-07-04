@@ -9,15 +9,15 @@
     <aside class="profile-aside stack" style="gap:14px">
       <% if @species.photo.attached? %>
         <div data-controller="modal">
-          <button type="button" class="card ph ph-lure ph-contain zoomable" style="aspect-ratio:4/3" data-action="modal#open" aria-label="<%= @species.common_name %>">
-            <%= image_tag @species.photo.variant(resize_to_limit: [ 720, 540 ]), alt: @species.common_name %>
+          <button type="button" class="card ph ph-lure ph-contain zoomable" style="<%= photo_frame_style(@species.photo) %>" data-action="modal#open" aria-label="<%= @species.common_name %>">
+            <%= image_tag cropped_photo(@species, resize_to_limit: [ 720, 720 ]), alt: @species.common_name %>
           </button>
           <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
-            <%= image_tag @species.photo.variant(resize_to_limit: [ 1600, 1200 ]), class: "lightbox-img", alt: @species.common_name, loading: "lazy", data: { action: "click->modal#close" } %>
+            <%= image_tag @species.photo.variant(resize_to_limit: [ 1600, 1600 ]), class: "lightbox-img", alt: @species.common_name, loading: "lazy", data: { action: "click->modal#close" } %>
           </div>
         </div>
       <% else %>
-        <div class="card ph ph-lure" style="aspect-ratio:4/3">
+        <div class="card ph ph-lure">
           <%= render "shared/fish_glyph" %>
         </div>
       <% end %>

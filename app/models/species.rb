@@ -4,6 +4,7 @@ class Species < ApplicationRecord
   include WaterClassified
   include Publishable
   include LocalizedDescriptions
+  include Croppable
 
   self.table_name = "species"
 

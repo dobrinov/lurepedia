@@ -460,6 +460,14 @@ en:
     direct_note: As the brand owner, this goes live immediately — no review needed.
     pending_review: This entry is awaiting review and isn't public yet.
 
+  crop:
+    adjust: "Adjust crop"
+    done: "Done"
+    reset: "Reset crop"
+    aspect_free: "Free"
+    aspect_square: "Square"
+    hint: "Drag to reposition; drag the corners to resize. The crop is applied when you save."
+    invalid: "The crop rectangle is invalid"
   claim:
     title: "Claim %{name}"
     intro: "Claim this %{kind} to manage its listing. We verify ownership via a DNS TXT record on your domain."

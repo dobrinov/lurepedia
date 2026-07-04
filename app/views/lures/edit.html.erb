@@ -49,7 +49,7 @@
               <tr>
                 <td style="width:52px">
                   <% if v.photo.attached? %>
-                    <%= image_tag v.photo.variant(resize_to_fill: [ 44, 44 ]), style: "width:44px;height:44px;object-fit:cover;border-radius:6px;display:block", alt: v.name %>
+                    <%= image_tag cropped_photo(v, resize_to_fill: [ 44, 44 ]), style: "width:44px;height:44px;object-fit:cover;border-radius:6px;display:block", alt: v.name %>
                   <% else %>
                     <span class="ph ph-lure" style="width:44px;height:44px;display:inline-flex;border-radius:6px"><%= render "shared/lure_glyph" %></span>
                   <% end %>

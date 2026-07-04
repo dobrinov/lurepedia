@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_03_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_04_000001) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -253,6 +253,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_000001) do
     t.string "key", null: false
     t.json "local_descriptions", default: {}, null: false
     t.json "local_names", default: {}, null: false
+    t.integer "photo_crop_h"
+    t.integer "photo_crop_w"
+    t.integer "photo_crop_x"
+    t.integer "photo_crop_y"
     t.boolean "poisonous", default: false, null: false
     t.string "scientific_name"
     t.string "slug", null: false
@@ -301,6 +305,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_000001) do
     t.datetime "created_at", null: false
     t.integer "lure_id", null: false
     t.string "name", null: false
+    t.integer "photo_crop_h"
+    t.integer "photo_crop_w"
+    t.integer "photo_crop_x"
+    t.integer "photo_crop_y"
     t.datetime "updated_at", null: false
     t.boolean "uv_glow", default: false, null: false
     t.index ["lure_id"], name: "index_variants_on_lure_id"

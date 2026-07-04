@@ -6,7 +6,7 @@ import { Controller } from "@hotwired/stimulus"
 // default "variations" tab is implicit (/lures/<slug>/<color>); other tabs carry
 // their name (/lures/<slug>/<tab>/<color>).
 export default class extends Controller {
-  static targets = [ "chip", "stageImage", "stageGlyph", "chipName", "chipUv", "buildsTable" ]
+  static targets = [ "chip", "stage", "stageImage", "stageGlyph", "chipName", "chipUv", "buildsTable" ]
   static values = { basePath: String, tabs: Array } // basePath: "/en/lures/<slug>"
 
   connect() {
@@ -34,6 +34,10 @@ export default class extends Controller {
         if (this.hasStageGlyphTarget) this.stageGlyphTarget.hidden = false
       }
     }
+
+    // Paint the stage with the photo's border color (blank restores the CSS
+    // default) so letterbox bars blend into the image.
+    if (this.hasStageTarget) this.stageTarget.style.background = d.photoBg || ""
 
     if (this.hasChipNameTarget) this.chipNameTarget.textContent = d.name || ""
     if (this.hasChipUvTarget) this.chipUvTarget.hidden = d.uv !== "true"

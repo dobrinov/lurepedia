@@ -2,9 +2,9 @@
 <% lure = record %>
 <% dv = lure.primary_variant || lure.variants.detect { |v| v.photo.attached? } %>
 <div class="lure-hero">
-  <div class="lure-stage">
+  <div class="lure-stage" style="<%= photo_frame_style(dv&.photo) %>">
     <% if dv&.photo&.attached? %>
-      <%= image_tag dv.photo.variant(resize_to_limit: [ 760, 580 ]), alt: lure.title %>
+      <%= image_tag cropped_photo(dv, resize_to_limit: [ 760, 760 ]), alt: lure.title %>
     <% else %>
       <div class="lure-stage-glyph"><%= render "shared/lure_glyph" %></div>
     <% end %>

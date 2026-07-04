@@ -1,5 +1,6 @@
 class Variant < ApplicationRecord
   include Publishable
+  include Croppable
 
   belongs_to :lure
   has_many :catches, dependent: :destroy

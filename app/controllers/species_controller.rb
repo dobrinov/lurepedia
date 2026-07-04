@@ -61,6 +61,7 @@ class SpeciesController < ApplicationController
 
   def species_params
     params.require(:species).permit(:scientific_name, :water, :venomous, :poisonous, :wikipedia_url, :photo,
+                                    :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h,
                                     local_names: I18n.available_locales.map(&:to_s),
                                     local_descriptions: I18n.available_locales.map(&:to_s))
   end

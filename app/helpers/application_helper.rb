@@ -64,6 +64,34 @@ module ApplicationHelper
     end
   end
 
+  # Variant of a Croppable record's photo with the stored crop (if any)
+  # applied before the requested transformations. `+repage` drops the virtual
+  # canvas offset ImageMagick keeps after -crop.
+  def cropped_photo(record, **transformations)
+    if (geometry = record.photo_crop_geometry)
+      record.photo.variant(crop: geometry, append: "+repage", **transformations)
+    else
+      record.photo.variant(**transformations)
+    end
+  end
+
+  # The photo's border color as measured by TileBackgroundAnalyzer, or nil
+  # when the photo is missing or not yet analyzed. Takes an attachment or a
+  # bare blob.
+  def photo_background_color(attachment)
+    return if attachment.respond_to?(:attached?) && !attachment.attached?
+
+    (attachment.try(:blob) || attachment)&.metadata&.[]("background_color")
+  end
+
+  # Inline style painting a contain-fit tile with the photo's own border
+  # color, so letterbox bars blend into the image. Blank (keep the default
+  # tile background) when no color is known.
+  def photo_frame_style(attachment)
+    color = photo_background_color(attachment)
+    "background:#{color}" if color
+  end
+
   # Small "opens in a new tab" glyph appended to external links.
   def external_link_icon(size: 12)
     raw(

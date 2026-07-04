@@ -6,9 +6,9 @@
       <% if @owner %>
         <%= form_with model: @user, url: settings_path, method: :patch, data: { controller: "inline-upload" } do |f| %>
           <%= hidden_field_tag :return_tab, @tab %>
-          <div class="card ph ph-lure profile-photo-edit" style="aspect-ratio:4/3">
+          <div class="card ph ph-lure profile-photo-edit">
             <% if @user.avatar.attached? && @user.avatar.variable? %>
-              <%= image_tag @user.avatar.variant(resize_to_fill: [ 720, 540 ]), alt: @user.name %>
+              <%= image_tag @user.avatar.variant(resize_to_fill: [ 720, 720 ]), alt: @user.name %>
             <% else %>
               <span class="profile-photo-initials"><%= @user.initials %></span>
             <% end %>
@@ -19,8 +19,8 @@
         <% end %>
       <% elsif @user.avatar.attached? && @user.avatar.variable? %>
         <div data-controller="modal">
-          <button type="button" class="card ph ph-lure profile-photo" style="aspect-ratio:4/3" data-action="modal#open" title="<%= t("profile.view_picture") %>">
-            <%= image_tag @user.avatar.variant(resize_to_fill: [ 720, 540 ]), alt: @user.name %>
+          <button type="button" class="card ph ph-lure profile-photo" data-action="modal#open" title="<%= t("profile.view_picture") %>">
+            <%= image_tag @user.avatar.variant(resize_to_fill: [ 720, 720 ]), alt: @user.name %>
           </button>
           <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
             <div class="lightbox">
@@ -30,7 +30,7 @@
           </div>
         </div>
       <% else %>
-        <div class="card ph ph-lure" style="aspect-ratio:4/3">
+        <div class="card ph ph-lure">
           <span class="profile-photo-initials"><%= @user.initials %></span>
         </div>
       <% end %>

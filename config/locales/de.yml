@@ -410,6 +410,14 @@ de:
     direct_note: Als Markeninhaber wird dies sofort veröffentlicht — ohne Prüfung.
     pending_review: Dieser Eintrag wartet auf die Prüfung und ist noch nicht öffentlich.
 
+  crop:
+    adjust: "Zuschnitt anpassen"
+    done: "Fertig"
+    reset: "Zuschnitt zurücksetzen"
+    aspect_free: "Frei"
+    aspect_square: "Quadrat"
+    hint: "Ziehen zum Verschieben; an den Ecken ziehen zum Ändern der Größe. Der Zuschnitt wird beim Speichern übernommen."
+    invalid: "Der Zuschnittsbereich ist ungültig"
   claim:
     title: "%{name} beanspruchen"
     intro: "Beanspruche diesen %{kind}, um den Eintrag zu verwalten. Wir bestätigen den Besitz über einen DNS-TXT-Eintrag."

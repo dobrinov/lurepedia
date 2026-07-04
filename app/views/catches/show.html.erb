@@ -8,7 +8,7 @@
         <div class="gallery-main">
           <% main_photo = catch_display_photo(@catch) %>
           <% if main_photo %>
-            <%= image_tag main_photo.variant(resize_to_fill: [ 960, 720 ]), data: { gallery_target: "main" }, alt: species_common_name(@catch.species) %>
+            <%= image_tag main_photo.variant(resize_to_fill: [ 960, 960 ]), data: { gallery_target: "main" }, alt: species_common_name(@catch.species) %>
           <% else %>
             <div class="ph ph-catch" style="height:100%"><%= render "shared/fish_glyph" %></div>
           <% end %>
@@ -16,7 +16,7 @@
         <% if @catch.photos.attached? && @catch.photos.size > 1 %>
           <div class="gallery-thumbs">
             <% @catch.photos.each_with_index do |photo, i| %>
-              <button class="gallery-thumb <%= 'active' if i.zero? %>" data-gallery-target="thumb" data-action="gallery#select" data-src="<%= url_for(photo.variant(resize_to_fill: [960, 720])) %>">
+              <button class="gallery-thumb <%= 'active' if i.zero? %>" data-gallery-target="thumb" data-action="gallery#select" data-src="<%= url_for(photo.variant(resize_to_fill: [ 960, 960 ])) %>">
                 <%= image_tag photo.variant(resize_to_fill: [112, 112]), alt: "Photo #{i + 1}" %>
               </button>
             <% end %>

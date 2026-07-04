@@ -3,7 +3,7 @@
   <div class="ph ph-catch">
     <% display_photo = catch_display_photo(catch) %>
     <% if display_photo %>
-      <%= image_tag display_photo.variant(resize_to_fill: [ 480, 360 ]), alt: species_common_name(catch.species), loading: "lazy" %>
+      <%= image_tag display_photo.variant(resize_to_fill: [ 480, 480 ]), alt: species_common_name(catch.species), loading: "lazy" %>
     <% else %>
       <%= render "shared/fish_glyph" %>
     <% end %>

@@ -1,0 +1,35 @@
+<%# locals: f, record — thumb + inline crop editor for a Croppable record's attached photo %>
+<div class="crop-tool" data-controller="image-crop" style="margin-bottom:10px">
+  <%= f.hidden_field :photo_crop_x, data: { image_crop_target: "fieldX" } %>
+  <%= f.hidden_field :photo_crop_y, data: { image_crop_target: "fieldY" } %>
+  <%= f.hidden_field :photo_crop_w, data: { image_crop_target: "fieldW" } %>
+  <%= f.hidden_field :photo_crop_h, data: { image_crop_target: "fieldH" } %>
+
+  <div class="row" style="gap:10px;align-items:center">
+    <div class="upload-thumb">
+      <%= image_tag cropped_photo(record, resize_to_fill: [ 88, 88 ]), alt: "" %>
+    </div>
+    <button type="button" class="btn btn-sm" data-action="image-crop#toggle"><%= t("crop.adjust") %></button>
+  </div>
+
+  <div class="crop-editor" data-image-crop-target="editor" hidden>
+    <div class="crop-stage" data-image-crop-target="stage">
+      <%# The ORIGINAL image, not a resized variant: the controller's pixel math
+          relies on naturalWidth matching the stored blob's dimensions. %>
+      <img src="<%= url_for(record.photo) %>" data-image-crop-target="image" draggable="false" alt="">
+      <div class="crop-box" data-image-crop-target="box" data-action="pointerdown->image-crop#startMove">
+        <% %w[nw ne sw se].each do |corner| %>
+          <span class="crop-handle crop-handle-<%= corner %>" data-handle="<%= corner %>" data-action="pointerdown->image-crop#startResize"></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="row crop-actions" style="gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap">
+      <button type="button" class="btn btn-sm" data-image-crop-target="aspect" data-aspect="" data-action="image-crop#setAspect"><%= t("crop.aspect_free") %></button>
+      <button type="button" class="btn btn-sm" data-image-crop-target="aspect" data-aspect="1" data-action="image-crop#setAspect"><%= t("crop.aspect_square") %></button>
+      <span style="flex:1"></span>
+      <button type="button" class="btn btn-sm" data-action="image-crop#reset"><%= t("crop.reset") %></button>
+      <button type="button" class="btn btn-sm btn-primary" data-action="image-crop#close"><%= t("crop.done") %></button>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:6px"><%= t("crop.hint") %></p>
+  </div>
+</div>

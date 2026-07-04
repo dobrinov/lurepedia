@@ -410,6 +410,14 @@ ja:
     direct_note: ブランド所有者として、これは審査なしで即時公開されます。
     pending_review: この項目は審査待ちで、まだ公開されていません。
 
+  crop:
+    adjust: "切り抜きを調整"
+    done: "完了"
+    reset: "切り抜きをリセット"
+    aspect_free: "フリー"
+    aspect_square: "正方形"
+    hint: "ドラッグで移動、四隅をドラッグでサイズ変更。保存時に適用されます。"
+    invalid: "切り抜き範囲が無効です"
   claim:
     title: "%{name} を申請"
     intro: "この%{kind}を申請して掲載を管理できます。DNS TXTレコードで所有権を確認します。"

@@ -5,9 +5,9 @@
     <% if diff_changed?(changeset, :photo) %>
       <% new_blob = diff_blob(changeset["photo"][1]); old_blob = diff_blob(changeset["photo"][0]) %>
       <div class="stack" style="gap:8px">
-        <div class="card ph ph-lure ph-contain" style="aspect-ratio:4/3">
+        <div class="card ph ph-lure ph-contain" style="<%= photo_frame_style(new_blob) %>">
           <% if new_blob %>
-            <%= image_tag new_blob.variant(resize_to_limit: [ 720, 540 ]), alt: species.common_name %>
+            <%= image_tag new_blob.variant(resize_to_limit: [ 720, 720 ]), alt: species.common_name %>
           <% else %>
             <%= render "shared/fish_glyph" %>
           <% end %>
@@ -21,9 +21,9 @@
         <% end %>
       </div>
     <% else %>
-      <div class="card ph ph-lure ph-contain" style="aspect-ratio:4/3">
+      <div class="card ph ph-lure ph-contain" style="<%= photo_frame_style(species.photo) %>">
         <% if species.photo.attached? %>
-          <%= image_tag species.photo.variant(resize_to_limit: [ 720, 540 ]), alt: species.common_name %>
+          <%= image_tag cropped_photo(species, resize_to_limit: [ 720, 720 ]), alt: species.common_name %>
         <% else %>
           <%= render "shared/fish_glyph" %>
         <% end %>
