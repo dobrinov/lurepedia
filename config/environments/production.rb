@@ -21,8 +21,10 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # Store uploaded files in Tigris (S3-compatible, see config/storage.yml).
+  # Blobs uploaded before the Tigris migration keep service_name "local" and
+  # continue to be served from the Fly volume until storage:migrate_local_to_tigris moves them.
+  config.active_storage.service = :tigris
 
   # Fly.io terminates TLS at its edge and forwards plain HTTP to the container,
   # so trust the proxy's X-Forwarded-Proto to mark session cookies as Secure.
