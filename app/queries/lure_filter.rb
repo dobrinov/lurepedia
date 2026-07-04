@@ -84,7 +84,8 @@ class LureFilter
     case @p[:sort].to_s
     when "newest" then scope.order(created_at: :desc)
     when "name" then scope.order(:model)
-    else scope.by_catch_count
+    when "proven" then scope.by_catch_count
+    else scope.order(updated_at: :desc)
     end
   end
 

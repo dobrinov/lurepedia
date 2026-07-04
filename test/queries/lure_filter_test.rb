@@ -16,8 +16,13 @@ class LureFilterTest < ActiveSupport::TestCase
     create_catch(user: user, variant: variant, species: @bass, season: :spring)
   end
 
-  test "default sort by catch count desc" do
-    assert_equal [ @vision, @kvd, @salt ], LureFilter.new({}).results.to_a
+  test "default sort by most recently edited" do
+    @kvd.update!(model: "KVD 1.5 Pro")
+    assert_equal [ @kvd, @salt, @vision ], LureFilter.new({}).results.to_a
+  end
+
+  test "proven sort by catch count desc" do
+    assert_equal [ @vision, @kvd, @salt ], LureFilter.new(sort: "proven").results.to_a
   end
 
   test "filter by type" do
