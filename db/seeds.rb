@@ -199,6 +199,14 @@ if vision
 
     v.update!(best_for: best_for, uv_glow: uv)
   end
+
+  # Availability is open-world: colors with no confirmed builds show under every
+  # build. Confirm one color to the Standard build only, so dev exercises both
+  # the filtered table/caption and the unknown fallback.
+  if (kanata = vision.variants.find_by(name: "GG Megabass Kanata Ayu")) &&
+     (standard = vision.builds.find_by(name: "Standard"))
+    VariantBuild.find_or_create_by!(variant: kanata, build: standard)
+  end
 end
 puts "  lures: #{Lure.count}, variants: #{Variant.count}, builds: #{Build.count}"
 

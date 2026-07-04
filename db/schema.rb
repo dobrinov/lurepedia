@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_04_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_04_000004) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -125,12 +125,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_04_000002) do
     t.integer "claimable_id", null: false
     t.string "claimable_type", null: false
     t.datetime "created_at", null: false
-    t.datetime "dns_verified_at"
     t.string "email"
+    t.text "message"
     t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.string "verification_token", null: false
     t.index ["claimable_type", "claimable_id"], name: "index_claims_on_claimable"
     t.index ["user_id"], name: "index_claims_on_user_id"
   end
@@ -300,6 +299,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_04_000002) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "variant_builds", force: :cascade do |t|
+    t.integer "build_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "variant_id", null: false
+    t.index ["build_id"], name: "index_variant_builds_on_build_id"
+    t.index ["variant_id", "build_id"], name: "index_variant_builds_on_variant_id_and_build_id", unique: true
+    t.index ["variant_id"], name: "index_variant_builds_on_variant_id"
+  end
+
   create_table "variants", force: :cascade do |t|
     t.string "best_for"
     t.integer "catches_count", default: 0, null: false
@@ -340,5 +349,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_04_000002) do
   add_foreign_key "sessions", "users"
   add_foreign_key "upvotes", "catches"
   add_foreign_key "upvotes", "users"
+  add_foreign_key "variant_builds", "builds"
+  add_foreign_key "variant_builds", "variants"
   add_foreign_key "variants", "lures"
 end

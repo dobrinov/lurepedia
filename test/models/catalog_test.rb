@@ -54,6 +54,49 @@ class CatalogTest < ActiveSupport::TestCase
     assert_equal({ min_cm: 90, max_cm: 220 }, @lure.reload.depth_range)
   end
 
+  test "color availability is open-world: unknown shows every build, in order" do
+    shallow = @lure.builds.create!(name: "Shallow", position: 1)
+    deep = @lure.builds.create!(name: "Deep", position: 0)
+    color = @lure.variants.create!(name: "Sexy Shad")
+
+    assert_not color.availability_known?
+    assert_equal [ deep, shallow ], color.available_builds.to_a
+  end
+
+  test "confirmed color stays limited to its builds; a new build widens only unknown colors" do
+    shallow = @lure.builds.create!(name: "Shallow")
+    confirmed = @lure.variants.create!(name: "Sexy Shad")
+    unknown = @lure.variants.create!(name: "Bone")
+    VariantBuild.create!(variant: confirmed, build: shallow)
+
+    deep = @lure.builds.create!(name: "Deep")
+
+    assert confirmed.availability_known?
+    assert_equal [ shallow ], confirmed.available_builds.to_a
+    assert_equal [ shallow, deep ], unknown.available_builds.to_a
+  end
+
+  test "destroying a build removes its rows; a color confirmed only there reverts to unknown" do
+    shallow = @lure.builds.create!(name: "Shallow")
+    deep = @lure.builds.create!(name: "Deep")
+    color = @lure.variants.create!(name: "Sexy Shad")
+    VariantBuild.create!(variant: color, build: shallow)
+
+    shallow.destroy
+
+    assert_equal 0, VariantBuild.count
+    assert_not color.reload.availability_known?
+    assert_equal [ deep ], color.available_builds.to_a
+  end
+
+  test "a color cannot confirm the same build twice" do
+    build = @lure.builds.create!(name: "Standard")
+    color = @lure.variants.create!(name: "Sexy Shad")
+    VariantBuild.create!(variant: color, build: build)
+
+    assert_not VariantBuild.new(variant: color, build: build).valid?
+  end
+
   test "lure proven scope and counter" do
     variant = @lure.variants.create!(name: "Shad")
     create_catch(user: @user, variant: variant, species: @species)
