@@ -18,6 +18,11 @@
     <%= f.label :photo, t("catch.photos") %>
     <div data-controller="image-upload">
       <%= render "shared/image_cropper", f: f, record: variant %>
+      <% if variant.persisted? && @lure.variants.many? && can_edit_directly?(variant) %>
+        <label class="row" style="gap:8px;align-items:center;margin-bottom:10px;font-size:13px">
+          <%= check_box_tag :apply_bg_to_all %> <%= t("crop.bg_apply_all") %>
+        </label>
+      <% end %>
       <div class="upload-drop" data-image-upload-target="drop"
            data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
         <%= t("contribute.add_photos") %>

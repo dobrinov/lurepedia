@@ -473,6 +473,7 @@ en:
     bg_label: "Tile background"
     bg_auto: "Auto"
     bg_pick: "Pick from the photo"
+    bg_apply_all: "Apply this background to all colors of this lure"
     hint: "Drag to reposition; drag the corners to resize. The crop is applied when you save."
     invalid: "The crop rectangle is invalid"
   claim:

@@ -423,6 +423,7 @@ de:
     bg_label: "Kachel-Hintergrund"
     bg_auto: "Auto"
     bg_pick: "Aus dem Foto wählen"
+    bg_apply_all: "Diesen Hintergrund auf alle Farben dieses Köders anwenden"
     hint: "Ziehen zum Verschieben; an den Ecken ziehen zum Ändern der Größe. Der Zuschnitt wird beim Speichern übernommen."
     invalid: "Der Zuschnittsbereich ist ungültig"
   claim:

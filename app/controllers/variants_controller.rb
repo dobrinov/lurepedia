@@ -30,7 +30,8 @@ class VariantsController < ApplicationController
   def edit; end
 
   def update
-    commit_edit(@variant, variant_params, "#{@lure.title} — #{@variant.name}", edit_lure_path(@lure))
+    saved = commit_edit(@variant, variant_params, "#{@lure.title} — #{@variant.name}", edit_lure_path(@lure))
+    propagate_bg_color_to_siblings if saved && propagate_bg_color?
   end
 
   def destroy
@@ -55,5 +56,25 @@ class VariantsController < ApplicationController
                                     build_ids: [])
     permitted[:build_ids] = permitted[:build_ids].reject(&:blank?) if permitted[:build_ids]
     permitted
+  end
+
+  # "Apply the background to all colors" is offered only to direct editors
+  # (admins, verified brand owners) — a member checking it would otherwise
+  # spawn a moderation item per sibling color.
+  def propagate_bg_color?
+    params[:apply_bg_to_all].present? && can_edit_directly?(@variant)
+  end
+
+  # Copy this color's tile background to the lure's other colors, with a
+  # revision per changed sibling so the propagation shows up in history.
+  def propagate_bg_color_to_siblings
+    color = variant_params[:photo_bg_color].presence
+    @lure.variants.where.not(id: @variant.id).find_each do |sibling|
+      next if sibling.photo_bg_color == color
+
+      changeset = { "photo_bg_color" => [ sibling.photo_bg_color, color ] }
+      sibling.update!(photo_bg_color: color)
+      sibling.revisions.create!(user: current_user, summary: "Edited #{@lure.title} — #{sibling.name}", changeset: changeset)
+    end
   end
 end

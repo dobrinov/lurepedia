@@ -2,15 +2,17 @@ module Editable
   extend ActiveSupport::Concern
 
   included do
-    helper_method :edit_affordance_label
+    helper_method :edit_affordance_label, :can_edit_directly?
   end
 
   private
 
   # Admins and verified brand owners edit directly (no review); everyone else
-  # files a reviewed suggestion.
+  # files a reviewed suggestion. Returns true when the edit was applied or
+  # suggested, false when validation failed — so callers can chain follow-up
+  # work on success.
   def commit_edit(record, attrs, name, redirect_path)
-    return unless require_contribution(:catalog)
+    return false unless require_contribution(:catalog)
 
     attrs = persist_attachments(record, attrs)
     changeset = build_changeset(record, attrs)
@@ -19,14 +21,17 @@ module Editable
       if record.update(attrs)
         record.revisions.create!(user: current_user, summary: "Edited #{name}", changeset: changeset)
         redirect_to redirect_path, notice: t("contribute.edit_saved")
+        true
       else
         flash.now[:alert] = record.errors.full_messages.to_sentence
         render :edit, status: :unprocessable_entity
+        false
       end
     else
       revision = record.revisions.create!(user: current_user, summary: "Suggested an edit to #{name}", changeset: changeset, applied: false)
       ModerationItem.create!(subject: record, kind: :edit, submitter: current_user, revision: revision)
       redirect_to redirect_path, notice: t("contribute.suggested")
+      true
     end
   end
 

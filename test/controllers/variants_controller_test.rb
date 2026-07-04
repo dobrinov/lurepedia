@@ -37,6 +37,28 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
     assert_equal [ nil, 300 ], revision.changeset["photo_crop_w"]
   end
 
+  test "admin applies a background color to all colors" do
+    sibling = @lure.variants.create!(name: "Firetiger", photo_bg_color: "#111111")
+    sign_in_as @admin
+
+    patch variant_path(lure_id: @lure, id: @variant),
+          params: { variant: { photo_bg_color: "#aabbcc" }, apply_bg_to_all: "1" }
+
+    assert_equal "#aabbcc", @variant.reload.photo_bg_color
+    assert_equal "#aabbcc", sibling.reload.photo_bg_color
+    assert sibling.revisions.applied.any? { |r| r.changeset&.key?("photo_bg_color") }
+  end
+
+  test "member's apply-to-all flag is ignored" do
+    sibling = @lure.variants.create!(name: "Firetiger", photo_bg_color: "#111111")
+    sign_in_as @member
+
+    patch variant_path(lure_id: @lure, id: @variant),
+          params: { variant: { photo_bg_color: "#aabbcc" }, apply_bg_to_all: "1" }
+
+    assert_equal "#111111", sibling.reload.photo_bg_color
+  end
+
   test "clearing crop fields removes the crop" do
     @variant.update!(CROP)
     sign_in_as @admin
