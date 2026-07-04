@@ -1,4 +1,695 @@
 zh:
   common:
-    # UI strings fall back to English (config.i18n.fallbacks = [:en]).
-    all: All
+    all: 全部
+    none: "—"
+    save: 保存
+    cancel: 取消
+    submit: 提交
+    edit: 编辑
+    delete: 删除
+    add: 添加
+    search: 搜索
+    loading: 加载中…
+    showing: "第 %{from}–%{to} 条，共 %{count} 条"
+    page: 页
+    next: 下一页
+    prev: 上一页
+    back: 返回
+    close: 关闭
+    by: 来自
+    on: 使用
+    "yes": "是"
+    "no": "否"
+    verified: 已认证
+    promoted: 推广
+    sponsored: 赞助
+
+  bans:
+    blocked: 您的账号目前被限制执行此操作。
+    notice:
+      title: 您的账号已被限制。
+      reason: 原因
+      permanent: 此限制为永久性。
+      until: "有效期至 %{date}。"
+      scope: 受限操作
+    capability:
+      catalog: 图鉴编辑
+      claims: 所有权认领
+      catches: 记录渔获
+      comments: 评论
+      upvotes: 点赞
+      reports: 举报
+      favorites: 收藏
+    preset:
+      catalog_only: 仅图鉴
+      contributions: 全部投稿
+      full: 完全限制（只读账号）
+    admin:
+      title: "封禁 — %{name}"
+      title_short: 封禁
+      new: 发布封禁
+      reason: 原因
+      preset: 预设
+      custom: 自定义选择
+      capabilities: 受限操作
+      capabilities_help: 预设会预先勾选操作；可通过复选框自定义。
+      expires_at: 到期时间
+      permanent_hint: 留空表示永久封禁。
+      issue: 发布封禁
+      status: 状态
+      scope: 范围
+      active: 生效中
+      lifted: 已解除
+      expired: 已过期
+      lift: 解除封禁
+      manage: 管理封禁
+      created: 封禁已发布。
+      revoked: 封禁已解除。
+
+  favorites:
+    add: 收藏
+    remove: 取消收藏
+    favorited: 已收藏
+
+  footer:
+    explore: 探索
+
+  home:
+    tagline: 每一款路亚饵，都有渔获证明
+    meta_description: Lurepedia 是一部由社区共建的路亚饵百科全书 — 查找路亚饵，并通过真实渔获验证它们的效果。
+    hero_title: 每一款路亚饵，都有渔获证明
+    hero_sub: 由社区共建的路亚饵百科全书。找到真正有效的饵 — 以真实渔获为证。
+    browse_lures: 浏览路亚饵
+    browse_another_way: 换个方式浏览
+    add_a_catch: 添加渔获
+
+  nav:
+    lures: 路亚饵
+    species: 鱼种
+    catches: 渔获
+    brands: 品牌
+    shops: 商店
+    leaderboard: 排行榜
+    menu: 菜单
+
+  auth:
+    sign_in: 登录
+    sign_up: 注册账号
+    sign_out: 退出登录
+    email: 邮箱
+    password: 密码
+    password_confirmation: 确认密码
+    name: 名字
+    sign_in_required: 请登录后再投稿。
+    not_authorized: 您没有权限执行此操作。
+    create_account: 注册账号
+    have_account: 已有账号？
+    no_account: 第一次使用 Lurepedia？
+    welcome_back: 欢迎回来
+    join: 加入 Lurepedia
+    choose_country: 您所在的国家/地区
+    choose_language: 首选语言
+    continue_with_google: 使用 Google 继续
+
+  units:
+    label: 单位
+    auto: 自动（按国家/地区）
+    imperial: 英制
+    metric: 公制
+    length: 长度
+    weight: 重量
+    depth: 水深
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: 淡水
+    salt: 海水
+    both: 淡海两用
+
+  action:
+    suspending: 悬浮
+    floating: 浮水
+    sinking: 沉水
+    none: "—"
+
+  condition:
+    season:
+      label: 季节
+      any: 不限季节
+      spring: 春季
+      summer: 夏季
+      fall: 秋季
+      winter: 冬季
+    clarity:
+      label: 水色
+      any: 不限水色
+      clear: 清澈
+      stained: 微浑
+      muddy: 浑浊
+    water_body:
+      label: 水域类型
+      any: 不限水域
+      lake: 湖泊
+      pond: 池塘
+      river: 河流
+      reservoir: 水库
+      stream: 溪流
+    wind:
+      label: 风力
+      any: 不限风力
+      calm: 无风
+      light: 微风（5–10 英里/小时）
+      moderate: 中等（10–20 英里/小时）
+      strong: 强风（20 英里/小时以上）
+    time_of_day:
+      label: 时间段
+      any: 不限时间
+      dawn: 黎明
+      morning: 上午
+      midday: 中午
+      afternoon: 下午
+      dusk: 黄昏
+      night: 夜晚
+    platform:
+      label: 作钓方式
+      any: 不限
+      shore: 岸钓
+      boat: 船钓
+      kayak: 皮划艇
+    retrieve:
+      label: 收线手法
+      any: 不限手法
+      steady: 匀速收线
+      stop_and_go: 收停结合
+      twitch: 轻抽
+      jerk: 抽杀
+      slow_roll: 慢速匀收
+      burn: 快速回收
+      dead_stick: 静置守钓
+
+  lure_type:
+    crankbait: 克朗克
+    jerkbait: 米诺
+    soft_plastic: 软饵
+    spinnerbait: 复合亮片
+    bladed_jig: 震颤饵
+    topwater: 水面系
+    swimbait: 游水饵
+    jig: 铅头钩
+    spoon: 勺形亮片
+    lipless_crankbait: VIB
+
+  lure:
+    title: 路亚饵
+    subtitle: 每一款路亚饵，都有渔获证明
+    search_placeholder: 搜索路亚饵 — 或按类型、水域、动作筛选…
+    model: 型号
+    description: 描述
+    descriptions: 描述
+    translations: 翻译
+    translations_hint: 各语言版本的路亚饵描述。读者会看到自己语言的版本，缺失时回退到英语。
+    add: 添加路亚饵
+    add_title: 添加路亚饵
+    type: 类型
+    depth: 目标泳层
+    action: 动作
+    buoyancy: "浮性"
+    action_varies: "视款式而定"
+    water: 水域
+    brand: 品牌
+    variants: 款式
+    variant: 款式
+    tab_caught: 渔获实证
+    tab_variations: "款式"
+    tab_buy: 购买渠道
+    tab_history: 历史
+    proof: 有效证明
+    catches_count:
+      one: "%{count} 条渔获"
+      other: "%{count} 条渔获"
+    no_proof: 暂无证明
+    be_first: 成为第一个证明这款饵有效的人
+    be_first_short: 第一个来证明它有效 →
+    where_to_buy: 购买渠道
+    quick_facts: 速览
+    action_video: 泳姿视频
+    add_video: 添加泳姿视频
+    watch_video: 观看视频
+    suggest_edit: 建议修改
+    add_catch: 添加渔获
+    proven_for: 已验证对象
+    no_matches: 没有符合筛选条件的路亚饵
+    no_matches_sub: 在找某款路亚饵？如果没有收录，欢迎添加。
+    empty_title: 暂无路亚饵
+    size: 尺寸
+    weight: 重量
+    color: 颜色
+    colors: 颜色
+    colors_count:
+      one: "%{count} 种颜色"
+      other: "%{count} 种颜色"
+    build: 规格
+    builds: 规格
+    browse_colors: 浏览颜色
+    common_attributes: 通用属性 · 整个系列
+    this_variation: 当前款式
+    default_variation: 默认款式
+    uv_glow: UV 夜光
+    best_for: 最适合
+    manage_variations: 款式与规格
+    tab_details: 基本信息
+    add_color: 添加颜色
+    add_build: 添加规格
+    color_name: 颜色名称
+    availability: 可选规格
+
+  species:
+    title: 鱼种
+    subtitle: 鱼类图鉴
+    search_placeholder: 搜索鱼种 — 俗名或学名…
+    venomous: 有毒棘
+    venomous_hint: 长有毒棘或毒刺 — 处理时请小心。
+    poisonous: 有毒
+    poisonous_hint: 食用有毒。
+    add: 添加鱼种
+    add_title: 添加鱼种
+    scientific_name: 学名
+    local_names: 各地俗名
+    translations: 翻译
+    translations_hint: 各语言版本的俗名和描述。读者会看到自己语言的版本，缺失时回退到英语。
+    local_name: 俗名
+    description: 描述
+    descriptions: 描述
+    wikipedia_url: 维基百科链接
+    wikipedia: 在维基百科查看
+    wikipedia_url_invalid: "必须是维基百科条目链接（例如 https://zh.wikipedia.org/wiki/...）"
+    habitat: 栖息环境
+    tab_lures: 有效路亚饵
+    tab_catches: 渔获
+    tab_leaderboard: 排行榜
+    tab_history: 历史
+    proven_lures: 经过验证的路亚饵
+    lures_count:
+      one: "%{count} 款路亚饵"
+      other: "%{count} 款路亚饵"
+    no_proven_lures: 暂无经过验证的路亚饵
+    be_first_lure: 成为第一个证明有饵能钓到这种鱼的人
+    empty_title: 暂无鱼种
+    empty_sub: 来添加第一个鱼种吧。
+
+  brand:
+    title: 品牌
+    subtitle: 制造商
+    search_placeholder: 搜索品牌…
+    add: 添加品牌
+    add_title: 添加品牌
+    founded: 创立于
+    empty_title: 暂无品牌
+    empty_sub: 来添加第一个路亚品牌吧。
+    country: 国家/地区
+    website: 官网
+    website_invalid: "请输入以 http:// 或 https:// 开头的有效网址"
+    logo: 标志
+    blurb: 简介
+    description: 描述
+    descriptions: 描述
+    translations: 翻译
+    translations_hint: 各语言版本的品牌描述。读者会看到自己语言的版本，缺失时回退到英语。
+    tab_lures: 路亚饵
+    tab_history: 历史
+    claim: 认领此品牌
+    claimed: 已认领
+    owned_by: 所有者
+
+  buy_link:
+    add: 添加购买渠道
+    empty: 暂无商店 — 来添加这款饵的第一个购买渠道吧。
+    choose_shop: 商店
+    choose_shop_placeholder: 搜索商店…
+    existing_shop: 已有商店
+    new_shop: 新商店
+    product_url: 商品链接（可选）
+    submit: 添加
+    shop_required: 请选择一家商店。
+    already_listed: 该商店已收录此路亚饵。
+
+  shop:
+    title: 商店
+    subtitle: 购买渠道
+    search_placeholder: 搜索商店…
+    add: 添加商店
+    add_title: 添加商店
+    ships_to_you: "可配送至%{country}的商店"
+    other_shops: 其他商店
+    none_ship: "暂无可配送至%{country}的商店。知道哪家可以吗？"
+    tab_lures: 路亚饵
+    tab_history: 历史
+    no_lures: 此商店暂未收录路亚饵。
+    ships_to: 配送范围
+    ships_to_unknown: "—"
+    ships_worldwide: 全球配送
+    ships_to_hint: 如商店支持全球配送，请留空。
+    add_country: 添加国家/地区
+    worldwide: 全球
+    claim: 认领商店
+
+  catch:
+    title: 渔获
+    subtitle: 来自社区的最新实证
+    add: 添加渔获
+    add_title: 添加渔获
+    on_lure: "使用 %{lure}"
+    conditions: 环境条件
+    location: 地点
+    length: 长度
+    weight: 重量
+    contributor: 投稿者
+    comments: 评论
+    add_comment: 添加评论
+    upvote: 点赞
+    upvoted: 已点赞
+    remove_upvote: 再次点击可取消点赞
+    report: 举报此渔获
+    related: 该鱼种的更多渔获
+    photos: 照片
+    pick_brand: 选择品牌
+    pick_lure: 选择路亚饵
+    pick_variant: 选择款式
+    color: 颜色
+    pick_color: 选择中鱼时使用的颜色
+    pick_build: 选择规格
+    pick_species: 您钓到了什么鱼？
+    log_title: 记录渔获
+    log_this: 记录这条渔获
+    modal_step1: "第 1 步（共 2 步）· 选择中鱼时使用的颜色"
+    modal_step2: "第 2 步（共 2 步）· 选择规格和泳层"
+    builds_in: "可选规格"
+    no_builds: 该颜色暂无规格。
+    variation: 款式
+    choose_variation: 选择款式
+    change: 更改
+    note: 备注
+    submitted: 已提交审核
+    submitted_body: 感谢！您的渔获已进入审核队列，通过后即会显示。
+    add_another: 再添加一条
+
+  search:
+    filters: 筛选
+    combine_free: 可自由组合 — 结果同时满足所有条件
+    no_results: 未找到结果
+    any_species: 不限鱼种
+    any_type: 不限类型
+    any_brand: 不限品牌
+    any_action: 不限动作
+    any_depth: 不限泳层
+    depth_band:
+      shallow: 浅层（0–1.5 米）
+      mid: 中层（1.5–4.5 米）
+      deep: 深层（4.5 米以上）
+    saltwater_only: 仅海水
+    clear_all: 清除全部
+    show_n_lures:
+      one: "显示 %{count} 款路亚饵"
+      other: "显示 %{count} 款路亚饵"
+    other: 其他
+
+  leaderboard:
+    title: 排行榜
+    subtitle: 各鱼种顶尖钓手
+    all_species: 全部鱼种
+    rank_by: 排名依据
+    metric_catches: 渔获数
+    metric_upvotes: 点赞数
+    metric_length: 鱼体长度
+    rank: 名次
+    angler: 钓手
+    catches: 渔获数
+    upvotes: 点赞数
+    best_length: 最长纪录
+    specialist: 专精
+    species_count:
+      one: "%{count} 个鱼种"
+      other: "%{count} 个鱼种"
+    you: 您
+    empty: 暂无上榜钓手
+
+  contribute:
+    suggest_edit: 建议修改
+    edit_title: "编辑 %{name}"
+    edit_saved: "更改已保存"
+    added: "已添加到图鉴"
+    suggest_title: "对 %{name} 提出修改建议"
+    suggest_note: 您的建议将由版主审核。
+    suggested: 建议已提交
+    suggested_body: 感谢 — 版主将审核您的建议。
+    add_photos: 添加照片
+    moderation_note: 投稿会先经审核再发布。
+    direct_note: 作为品牌所有者，您的修改无需审核即刻生效。
+    pending_review: 此条目正在等待审核，尚未公开。
+
+  crop:
+    adjust: "调整裁剪"
+    done: "完成"
+    reset: "重置裁剪"
+    aspect_free: "自由"
+    aspect_square: "正方形"
+    bg_label: "卡片背景"
+    bg_auto: "自动"
+    bg_pick: "从照片中取色"
+    bg_apply_all: "将此背景应用到这款饵的所有颜色"
+    hint: "拖动可移动位置；拖动四角可调整大小。保存时应用裁剪。"
+    invalid: "裁剪区域无效"
+  claim:
+    title: "认领 %{name}"
+    page_title: 认领条目
+    intro: "认领此%{kind}即可管理其条目。告诉我们您是谁，我们会通过邮件与您跟进。"
+    message_label: 您是谁？与此条目有什么关系？
+    message_hint: "例如：我是创始人 / 我负责该品牌的市场推广…"
+    submit: 提交认领
+    submitted_title: 已收到认领申请
+    submitted_body: "感谢 — 我们会审核您的申请并通过邮件回复您。"
+    rejected_title: 认领未通过
+    rejected_body: "此认领经审核未获通过。如果您认为这是错误，请与我们联系。"
+    verified_title: 所有权已验证
+    verified_body: 您现在可以管理此条目。您的编辑无需审核即可发布。
+    managed_badge: 所有者管理
+
+  report:
+    title: 举报内容
+    target: 举报对象
+    reason: 原因
+    reason_inaccurate: 不准确或有误导性
+    reason_fake: 并非真实渔获 / 照片造假
+    reason_wrong: 鱼种或路亚饵有误
+    reason_spam: 垃圾信息或广告
+    reason_offensive: 冒犯或不当内容
+    reason_other: 其他
+    note: 补充说明（可选）
+    submit: 提交举报
+    submitted: 举报已提交
+    submitted_body: 感谢 — 版主会尽快处理。
+
+  moderation:
+    title: 审核队列
+    subtitle: 审核社区投稿
+    moderator_view: 版主视图
+    all: 全部
+    reports: 举报
+    catches: 渔获
+    edits: 修改
+    catalog: 图鉴
+    claims: 认领
+    awaiting: "%{count} 条待审核"
+    approve: 通过
+    reject: 驳回
+    undo: 撤销
+    approved: 已通过
+    rejected: 已驳回
+    needs_admin: 需要管理员
+    own_submission: 这是您提交的
+    submitted_by: 提交者
+    view_details: 查看详情
+    kind:
+      catch: 渔获
+      edit: 修改
+      catalog: 图鉴
+      claim: 认领
+      report: 举报
+
+  admin:
+    title: 管理控制台
+    overview: 概览
+    people: 用户与角色
+    activity: 活动日志
+    pending: 待审核
+    catches_logged: 已记录渔获
+    contributors: 投稿者
+    lures_catalogued: 已收录路亚饵
+    role: 角色
+    member: 会员
+    moderator: 版主
+    admin: 管理员
+    joined: 加入时间
+    you: 您
+
+  settings:
+    title: 设置
+    tab_profile: 个人资料
+    tab_preferences: 偏好设置
+    profile: 个人资料
+    country: 国家/地区
+    language: 语言
+    time_zone: 时区
+    time_zone_auto: "自动（UTC）"
+    units: 单位
+    notifications: 通知
+    saved: 设置已保存
+    public_profile: 您的公开主页
+    copy: 复制
+    copied: 已复制！
+    username: 用户名
+    username_hint: 例如 casey-rivera
+    username_help: 可选。小写字母、数字和连字符。用于您的主页链接。
+    avatar: 头像
+    avatar_help: PNG、JPEG、WEBP 或 GIF，最大 5 MB。
+    choose_image: 选择图片
+    no_file: 未选择图片
+    remove_avatar: 移除当前头像
+    avatar_too_large: 过大（最大 5 MB）
+    avatar_invalid_type: 必须是 PNG、JPEG、WEBP 或 GIF 图片
+
+  dashboard:
+    my_catches: 我的渔获
+    my_profile: 我的主页
+    total_upvotes: 获得的总点赞数
+    no_catches: 您还没有记录任何渔获。
+
+  profile:
+    catches: 渔获
+    tab_catches: 渔获
+    tab_favorites: 收藏
+    tab_contributions: 贡献
+    contributions: 贡献
+    no_contributions: 暂无贡献。
+    view_picture: 查看头像
+    change_picture: 上传/更换头像
+    total_upvotes: 总点赞数
+    member_since: 注册时间
+    favorite_species: 收藏的鱼种
+    favorite_lures: 收藏的路亚饵
+    favorite_shops: 收藏的商店
+    no_favorites: 暂无收藏。
+    no_catches: 暂无渔获。
+
+  provenance:
+    title: 历史与所有权
+    edits:
+      one: "%{count} 次编辑"
+      other: "%{count} 次编辑"
+    added_by: 添加者
+    owned_by: 所有者
+    originally_added: "最初由 %{name} 添加 · %{date}"
+    edit_history: 编辑历史
+    created: 创建了此条目
+    edited: 编辑了
+    col_change: 变更
+    col_contributor: 投稿者
+    col_date: 日期
+
+  revision:
+    title: 修订
+    no_changes: 此次编辑没有记录字段级变更。
+    removed: 已删除
+    added: 已添加
+
+  species_names:
+    largemouth_bass:
+      common: 大口黑鲈
+      habitat: 温暖多水草的湖泊和池塘；喜在障碍物附近伏击猎物。
+    smallmouth_bass:
+      common: 小口黑鲈
+      habitat: 清凉澄澈的河流和多岩石的湖泊；搏击力强。
+    northern_pike:
+      common: 白斑狗鱼
+      habitat: 多水草的湖湾和冷水湖泊；凶猛的伏击型掠食者。
+    walleye:
+      common: 大眼狮鲈
+      habitat: 幽深清凉的湖泊和河流；喜在弱光时觅食。
+    yellow_perch:
+      common: 黄鲈
+      habitat: 湖泊和池塘中的群游鱼；在近底层觅食。
+    muskellunge:
+      common: 北美狗鱼
+      habitat: 大型清澈的湖泊和河流；淡水中的顶级掠食者。
+    bluegill:
+      common: 蓝鳃太阳鱼
+      habitat: 温暖的池塘和湖泊浅水区；群体筑巢。
+    rainbow_trout:
+      common: 虹鳟
+      habitat: 寒冷的溪流、河流和湖泊；备受青睐的游钓鱼种。
+    mahi_mahi:
+      common: 鲯鳅
+      habitat: 温暖的近海表层水域；速度极快的大洋掠食者。
+    striped_bass:
+      common: 条纹鲈
+      habitat: 沿岸拍岸浪区、河口和大河；洄游性鱼类。
+    bonefish:
+      common: 北梭鱼
+      habitat: 热带浅滩；警觉且迅捷。
+    chinook_salmon:
+      common: 帝王鲑
+      habitat: 寒冷的太平洋水系河流和湖泊；力量强劲的洄游鱼。
+  country:
+    US: 美国
+    CA: 加拿大
+    GB: 英国
+    DE: 德国
+    FR: 法国
+    ES: 西班牙
+    IT: 意大利
+    NL: 荷兰
+    SE: 瑞典
+    "NO": 挪威
+    PL: 波兰
+    RU: 俄罗斯
+    BG: 保加利亚
+    GR: 希腊
+    JP: 日本
+    CN: 中国
+    BR: 巴西
+    MX: 墨西哥
+    FI: 芬兰
+    AU: 澳大利亚
+    NZ: 新西兰
+    DK: 丹麦
+    IE: 爱尔兰
+    PT: 葡萄牙
+    KR: 韩国
+    TH: 泰国
+    ZA: 南非
+    IN: 印度
+    AR: 阿根廷
+    CL: 智利
+    UA: 乌克兰
+    TR: 土耳其
+    AT: 奥地利
+    BE: 比利时
+    CH: 瑞士
+    CZ: 捷克
+    HU: 匈牙利
+    RO: 罗马尼亚
+  activerecord:
+    attributes:
+      user:
+        password: 密码
+        password_confirmation: 确认密码
+    errors:
+      messages:
+        confirmation: 与%{attribute}不一致

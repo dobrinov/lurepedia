@@ -1,4 +1,695 @@
 ru:
   common:
-    # UI strings fall back to English (config.i18n.fallbacks = [:en]).
-    all: All
+    all: Все
+    none: "—"
+    save: Сохранить
+    cancel: Отмена
+    submit: Отправить
+    edit: Редактировать
+    delete: Удалить
+    add: Добавить
+    search: Поиск
+    loading: Загрузка…
+    showing: "Показано %{from}–%{to} из %{count}"
+    page: Страница
+    next: Вперёд
+    prev: Назад
+    back: Назад
+    close: Закрыть
+    by: от
+    on: на
+    "yes": "Да"
+    "no": "Нет"
+    verified: Подтверждено
+    promoted: Продвигается
+    sponsored: Спонсировано
+
+  bans:
+    blocked: Для вашего аккаунта это действие сейчас ограничено.
+    notice:
+      title: Ваш аккаунт ограничен.
+      reason: Причина
+      permanent: Это ограничение постоянное.
+      until: "Действует до %{date}."
+      scope: Ограниченные действия
+    capability:
+      catalog: правки каталога
+      claims: заявки на владение
+      catches: запись уловов
+      comments: комментарии
+      upvotes: голоса
+      reports: жалобы
+      favorites: избранное
+    preset:
+      catalog_only: Только каталог
+      contributions: Весь вклад
+      full: Полное (аккаунт только для чтения)
+    admin:
+      title: "Ограничения — %{name}"
+      title_short: Ограничения
+      new: Наложить ограничение
+      reason: Причина
+      preset: Шаблон
+      custom: Свой выбор
+      capabilities: Ограниченные действия
+      capabilities_help: Шаблон предварительно отмечает действия; отметьте флажки, чтобы настроить.
+      expires_at: Истекает
+      permanent_hint: Оставьте пустым для постоянного ограничения.
+      issue: Наложить ограничение
+      status: Статус
+      scope: Охват
+      active: Активно
+      lifted: Снято
+      expired: Истекло
+      lift: Снять ограничение
+      manage: Управление ограничениями
+      created: Ограничение наложено.
+      revoked: Ограничение снято.
+
+  favorites:
+    add: В избранное
+    remove: Убрать из избранного
+    favorited: В избранном
+
+  footer:
+    explore: Обзор
+
+  home:
+    tagline: Каждая приманка, доказанная уловом
+    meta_description: Lurepedia — народная энциклопедия рыболовных приманок. Находите приманки и смотрите реальные доказательства уловами, что они работают.
+    hero_title: Каждая приманка, доказанная уловом
+    hero_sub: Народная энциклопедия рыболовных приманок. Найдите то, что работает — подтверждено реальными уловами.
+    browse_lures: Смотреть приманки
+    browse_another_way: Смотреть по-другому
+    add_a_catch: Добавить улов
+
+  nav:
+    lures: Приманки
+    species: Виды
+    catches: Уловы
+    brands: Бренды
+    shops: Магазины
+    leaderboard: Рейтинг
+    menu: Меню
+
+  auth:
+    sign_in: Войти
+    sign_up: Создать аккаунт
+    sign_out: Выйти
+    email: Эл. почта
+    password: Пароль
+    password_confirmation: Подтвердите пароль
+    name: Имя
+    sign_in_required: Пожалуйста, войдите, чтобы внести вклад.
+    not_authorized: У вас нет прав для этого действия.
+    create_account: Создать аккаунт
+    have_account: Уже есть аккаунт?
+    no_account: Впервые на Lurepedia?
+    welcome_back: С возвращением
+    join: Присоединяйтесь к Lurepedia
+    choose_country: Ваша страна
+    choose_language: Предпочитаемый язык
+    continue_with_google: Продолжить с Google
+
+  units:
+    label: Единицы измерения
+    auto: Автоматически (по стране)
+    imperial: Имперские
+    metric: Метрические
+    length: Длина
+    weight: Вес
+    depth: Глубина
+    cm: см
+    in: in
+    g: г
+    kg: кг
+    oz: oz
+    lb: lb
+    ft: ft
+    m: м
+
+  water:
+    fresh: Пресная вода
+    salt: Солёная вода
+    both: Пресная и солёная
+
+  action:
+    suspending: Суспендер
+    floating: Плавающий
+    sinking: Тонущий
+    none: "—"
+
+  condition:
+    season:
+      label: Сезон
+      any: Любой сезон
+      spring: Весна
+      summer: Лето
+      fall: Осень
+      winter: Зима
+    clarity:
+      label: Прозрачность воды
+      any: Любая прозрачность
+      clear: Прозрачная
+      stained: Слегка мутная
+      muddy: Мутная
+    water_body:
+      label: Водоём
+      any: Любой водоём
+      lake: Озеро
+      pond: Пруд
+      river: Река
+      reservoir: Водохранилище
+      stream: Ручей
+    wind:
+      label: Ветер
+      any: Любой ветер
+      calm: Штиль
+      light: Слабый (5–10 mph)
+      moderate: Умеренный (10–20 mph)
+      strong: Сильный (20+ mph)
+    time_of_day:
+      label: Время суток
+      any: Любое время
+      dawn: Рассвет
+      morning: Утро
+      midday: Полдень
+      afternoon: День
+      dusk: Сумерки
+      night: Ночь
+    platform:
+      label: Откуда ловили
+      any: Откуда угодно
+      shore: С берега
+      boat: С лодки
+      kayak: С каяка
+    retrieve:
+      label: Стиль проводки
+      any: Любой стиль
+      steady: Равномерная
+      stop_and_go: Стоп-энд-гоу
+      twitch: Твичинг
+      jerk: Джеркинг
+      slow_roll: Медленная проводка
+      burn: Быстрая проводка
+      dead_stick: Без движения
+
+  lure_type:
+    crankbait: Кренк
+    jerkbait: Джеркбейт
+    soft_plastic: Силикон
+    spinnerbait: Спиннербейт
+    bladed_jig: Чаттербейт
+    topwater: Поверхностная
+    swimbait: Свимбейт
+    jig: Джиг
+    spoon: Колебалка
+    lipless_crankbait: Раттлин
+
+  lure:
+    title: Приманки
+    subtitle: Каждая приманка, доказанная уловом
+    search_placeholder: Поиск приманок — или фильтр по типу, воде, плавучести…
+    model: Модель
+    description: Описание
+    descriptions: Описания
+    translations: Переводы
+    translations_hint: Описание приманки на каждом языке. Читатели видят свой язык, а при его отсутствии — английский.
+    add: Добавить приманку
+    add_title: Добавить приманку
+    type: Тип
+    depth: Рабочая глубина
+    action: Плавучесть
+    buoyancy: "Плавучесть"
+    action_varies: "Различается"
+    water: Вода
+    brand: Бренд
+    variants: Варианты
+    variant: Вариант
+    tab_caught: Поймано на неё
+    tab_variations: "Вариации"
+    tab_buy: Где купить
+    tab_history: История
+    proof: Доказательства, что работает
+    catches_count:
+      one: "%{count} улов"
+      other: "%{count} уловов"
+    no_proof: Пока без доказательств
+    be_first: Станьте первым, кто докажет, что эта приманка работает
+    be_first_short: Станьте первым, кто это докажет →
+    where_to_buy: Где купить
+    quick_facts: Кратко о главном
+    action_video: Приманка в действии
+    add_video: Добавить видео в действии
+    watch_video: Смотреть видео
+    suggest_edit: Предложить правку
+    add_catch: Добавить улов
+    proven_for: Доказана для
+    no_matches: Нет приманок по вашим фильтрам
+    no_matches_sub: Ищете конкретную приманку? Добавьте её, если её нет.
+    empty_title: Приманок пока нет
+    size: Размер
+    weight: Вес
+    color: Цвет
+    colors: Цвета
+    colors_count:
+      one: "%{count} цвет"
+      other: "%{count} цветов"
+    build: Исполнение
+    builds: Исполнения
+    browse_colors: Смотреть цвета
+    common_attributes: Общие характеристики · вся серия
+    this_variation: Эта вариация
+    default_variation: Вариация по умолчанию
+    uv_glow: UV-свечение
+    best_for: Лучше всего для
+    manage_variations: Вариации и исполнения
+    tab_details: Общие сведения
+    add_color: Добавить цвет
+    add_build: Добавить исполнение
+    color_name: Название цвета
+    availability: Доступные исполнения
+
+  species:
+    title: Виды
+    subtitle: Словарь рыб
+    search_placeholder: Поиск видов — по обычному или научному названию…
+    venomous: Ядовитая при уколе
+    venomous_hint: Имеет ядовитые шипы или жала — обращайтесь осторожно.
+    poisonous: Ядовитая в пищу
+    poisonous_hint: Токсична при употреблении в пищу.
+    add: Добавить вид
+    add_title: Добавить вид
+    scientific_name: Научное название
+    local_names: Местные названия
+    translations: Переводы
+    translations_hint: Обычное название и описание на каждом языке. Читатели видят свой язык, а при его отсутствии — английский.
+    local_name: Обычное название
+    description: Описание
+    descriptions: Описания
+    wikipedia_url: Ссылка на Википедию
+    wikipedia: Смотреть в Википедии
+    wikipedia_url_invalid: должна быть ссылкой на статью Википедии (напр. https://ru.wikipedia.org/wiki/...)
+    habitat: Среда обитания
+    tab_lures: Ловится на
+    tab_catches: Уловы
+    tab_leaderboard: Рейтинг
+    tab_history: История
+    proven_lures: Проверенные приманки
+    lures_count:
+      one: "%{count} приманка"
+      other: "%{count} приманок"
+    no_proven_lures: Пока нет проверенных приманок
+    be_first_lure: Станьте первым, кто докажет, что приманка ловит эту рыбу
+    empty_title: Видов пока нет
+    empty_sub: Станьте первым, кто добавит вид рыбы.
+
+  brand:
+    title: Бренды
+    subtitle: Производители
+    search_placeholder: Поиск брендов…
+    add: Добавить бренд
+    add_title: Добавить бренд
+    founded: Основан
+    empty_title: Брендов пока нет
+    empty_sub: Станьте первым, кто добавит бренд приманок.
+    country: Страна
+    website: Сайт
+    website_invalid: Введите корректный URL, начинающийся с http:// или https://
+    logo: Логотип
+    blurb: О бренде
+    description: Описание
+    descriptions: Описания
+    translations: Переводы
+    translations_hint: Описание бренда на каждом языке. Читатели видят свой язык, а при его отсутствии — английский.
+    tab_lures: Приманки
+    tab_history: История
+    claim: Заявить права на бренд
+    claimed: Права заявлены
+    owned_by: Владелец
+
+  buy_link:
+    add: Добавить место покупки
+    empty: Магазинов пока нет — добавьте первое место, где можно купить эту приманку.
+    choose_shop: Магазин
+    choose_shop_placeholder: Поиск магазинов…
+    existing_shop: Существующий магазин
+    new_shop: Новый магазин
+    product_url: Ссылка на товар (необязательно)
+    submit: Добавить
+    shop_required: Пожалуйста, выберите магазин.
+    already_listed: Этот магазин уже добавлен для этой приманки.
+
+  shop:
+    title: Магазины
+    subtitle: Где купить
+    search_placeholder: Поиск магазинов…
+    add: Добавить магазин
+    add_title: Добавить магазин
+    ships_to_you: Магазины с доставкой в %{country}
+    other_shops: Другие магазины
+    none_ship: Магазинов с доставкой в %{country} пока нет. Знаете такой?
+    tab_lures: Приманки
+    tab_history: История
+    no_lures: В этом магазине пока нет приманок.
+    ships_to: Доставляет в
+    ships_to_unknown: "—"
+    ships_worldwide: Доставка по всему миру
+    ships_to_hint: Оставьте пустым, если магазин доставляет по всему миру.
+    add_country: Добавить страну
+    worldwide: Весь мир
+    claim: Заявить права на магазин
+
+  catch:
+    title: Уловы
+    subtitle: Свежие доказательства от сообщества
+    add: Добавить улов
+    add_title: Добавить улов
+    on_lure: "на %{lure}"
+    conditions: Условия
+    location: Место
+    length: Длина
+    weight: Вес
+    contributor: Автор
+    comments: Комментарии
+    add_comment: Добавить комментарий
+    upvote: Голосовать
+    upvoted: Голос учтён
+    remove_upvote: Нажмите ещё раз, чтобы убрать голос
+    report: Пожаловаться на этот улов
+    related: Ещё уловы этого вида
+    photos: Фото
+    pick_brand: Выберите бренд
+    pick_lure: Выберите приманку
+    pick_variant: Выберите вариант
+    color: Цвет
+    pick_color: Выберите цвет, на который поймали
+    pick_build: Выберите исполнение
+    pick_species: Кого вы поймали?
+    log_title: Записать улов
+    log_this: Записать этот улов
+    modal_step1: "Шаг 1 из 2 · Выберите цвет, на который поймали"
+    modal_step2: "Шаг 2 из 2 · Выберите исполнение и глубину"
+    builds_in: "Доступные исполнения для"
+    no_builds: У этого цвета пока нет исполнений.
+    variation: Вариация
+    choose_variation: Выберите вариацию
+    change: Изменить
+    note: Заметки
+    submitted: Отправлено на проверку
+    submitted_body: Спасибо! Ваш улов в очереди на модерацию и появится после одобрения.
+    add_another: Добавить ещё один
+
+  search:
+    filters: Фильтры
+    combine_free: Комбинируйте свободно — результаты соответствуют всем фильтрам
+    no_results: Ничего не найдено
+    any_species: Любой вид
+    any_type: Любой тип
+    any_brand: Любой бренд
+    any_action: Любая плавучесть
+    any_depth: Любая глубина
+    depth_band:
+      shallow: Мелко (0–1,5 м)
+      mid: Средне (1,5–4,5 м)
+      deep: Глубоко (4,5 м+)
+    saltwater_only: Только солёная вода
+    clear_all: Сбросить всё
+    show_n_lures:
+      one: Показать %{count} приманку
+      other: Показать %{count} приманок
+    other: Другое
+
+  leaderboard:
+    title: Рейтинг
+    subtitle: Лучшие рыболовы по видам
+    all_species: Все виды
+    rank_by: Сортировать по
+    metric_catches: Уловы
+    metric_upvotes: Голоса
+    metric_length: Длина рыбы
+    rank: Место
+    angler: Рыболов
+    catches: Уловы
+    upvotes: Голоса
+    best_length: Лучшая длина
+    specialist: специалист
+    species_count:
+      one: "%{count} вид"
+      other: "%{count} видов"
+    you: ВЫ
+    empty: Пока нет рыболовов в рейтинге
+
+  contribute:
+    suggest_edit: Предложить правку
+    edit_title: "Редактировать %{name}"
+    edit_saved: "Изменения сохранены"
+    added: "Добавлено в каталог"
+    suggest_title: "Предложить правку для %{name}"
+    suggest_note: Ваше предложение будет рассмотрено модератором.
+    suggested: Предложение отправлено
+    suggested_body: Спасибо — модератор рассмотрит ваше предложение.
+    add_photos: Добавить фото
+    moderation_note: Материалы проверяются перед публикацией.
+    direct_note: Как владелец бренда, вы публикуете это сразу — без проверки.
+    pending_review: Эта запись ожидает проверки и пока не опубликована.
+
+  crop:
+    adjust: "Настроить кадрирование"
+    done: "Готово"
+    reset: "Сбросить кадрирование"
+    aspect_free: "Свободно"
+    aspect_square: "Квадрат"
+    bg_label: "Фон плитки"
+    bg_auto: "Авто"
+    bg_pick: "Выбрать с фото"
+    bg_apply_all: "Применить этот фон ко всем цветам этой приманки"
+    hint: "Перетаскивайте, чтобы переместить; тяните за углы, чтобы изменить размер. Кадрирование применяется при сохранении."
+    invalid: "Область кадрирования недопустима"
+  claim:
+    title: "Заявить права на %{name}"
+    page_title: Заявка на владение
+    intro: "Заявите права на %{kind}, чтобы управлять этой карточкой. Расскажите, кто вы, и мы продолжим по электронной почте."
+    message_label: Кто вы и как вы связаны с этой карточкой?
+    message_hint: "напр. Я основатель / я занимаюсь маркетингом бренда…"
+    submit: Отправить заявку
+    submitted_title: Заявка получена
+    submitted_body: "Спасибо — мы рассмотрим вашу заявку и ответим по электронной почте."
+    rejected_title: Заявка не одобрена
+    rejected_body: "Заявка была рассмотрена и отклонена. Если считаете это ошибкой, свяжитесь с нами."
+    verified_title: Владение подтверждено
+    verified_body: Теперь вы управляете этой карточкой. Ваши правки публикуются без проверки.
+    managed_badge: Управляется владельцем
+
+  report:
+    title: Пожаловаться на контент
+    target: Жалоба на
+    reason: Причина
+    reason_inaccurate: Неточно или вводит в заблуждение
+    reason_fake: Не настоящий улов / поддельное фото
+    reason_wrong: Неверный вид или приманка
+    reason_spam: Спам или реклама
+    reason_offensive: Оскорбительно или неуместно
+    reason_other: Другое
+    note: Дополнительные детали (необязательно)
+    submit: Отправить жалобу
+    submitted: Жалоба отправлена
+    submitted_body: Спасибо — модераторы скоро её рассмотрят.
+
+  moderation:
+    title: Очередь модерации
+    subtitle: Проверка вкладов сообщества
+    moderator_view: РЕЖИМ МОДЕРАТОРА
+    all: Все
+    reports: Жалобы
+    catches: Уловы
+    edits: Правки
+    catalog: Каталог
+    claims: Заявки
+    awaiting: "%{count} ожидают проверки"
+    approve: Одобрить
+    reject: Отклонить
+    undo: Отменить
+    approved: Одобрено
+    rejected: Отклонено
+    needs_admin: Требуется админ
+    own_submission: Вы отправили это
+    submitted_by: Отправил
+    view_details: Подробнее
+    kind:
+      catch: Улов
+      edit: Правка
+      catalog: Каталог
+      claim: Заявка
+      report: Жалоба
+
+  admin:
+    title: Панель администратора
+    overview: Обзор
+    people: Люди и роли
+    activity: Журнал активности
+    pending: Ожидают проверки
+    catches_logged: Записано уловов
+    contributors: Участники
+    lures_catalogued: Приманок в каталоге
+    role: Роль
+    member: Участник
+    moderator: Модератор
+    admin: Админ
+    joined: Регистрация
+    you: ВЫ
+
+  settings:
+    title: Настройки
+    tab_profile: Профиль
+    tab_preferences: Предпочтения
+    profile: Профиль
+    country: Страна
+    language: Язык
+    time_zone: Часовой пояс
+    time_zone_auto: "Автоматически (UTC)"
+    units: Единицы измерения
+    notifications: Уведомления
+    saved: Настройки сохранены
+    public_profile: Ваш публичный профиль
+    copy: Копировать
+    copied: Скопировано!
+    username: Имя пользователя
+    username_hint: напр. casey-rivera
+    username_help: Необязательно. Строчные буквы, цифры, дефисы. Используется в адресе вашего профиля.
+    avatar: Фото профиля
+    avatar_help: PNG, JPEG, WEBP или GIF. До 5 МБ.
+    choose_image: Выбрать изображение
+    no_file: Изображение не выбрано
+    remove_avatar: Удалить текущее фото
+    avatar_too_large: слишком большое (максимум 5 МБ)
+    avatar_invalid_type: должно быть изображением PNG, JPEG, WEBP или GIF
+
+  dashboard:
+    my_catches: Мои уловы
+    my_profile: Мой профиль
+    total_upvotes: Всего получено голосов
+    no_catches: Вы ещё не записали ни одного улова.
+
+  profile:
+    catches: Уловы
+    tab_catches: Уловы
+    tab_favorites: Избранное
+    tab_contributions: Вклад
+    contributions: Вклад
+    no_contributions: Вклада пока нет.
+    view_picture: Посмотреть фото профиля
+    change_picture: Загрузить/сменить фото профиля
+    total_upvotes: Всего голосов
+    member_since: Участник с
+    favorite_species: Любимые виды
+    favorite_lures: Любимые приманки
+    favorite_shops: Любимые магазины
+    no_favorites: В избранном пока пусто.
+    no_catches: Уловов пока нет.
+
+  provenance:
+    title: История и владение
+    edits:
+      one: "%{count} правка"
+      other: "%{count} правок"
+    added_by: Добавил
+    owned_by: Владелец
+    originally_added: "Изначально добавил %{name} · %{date}"
+    edit_history: История правок
+    created: Создал эту запись
+    edited: отредактировано
+    col_change: Изменение
+    col_contributor: Участник
+    col_date: Дата
+
+  revision:
+    title: Правка
+    no_changes: Для этой правки не записаны изменения полей.
+    removed: Удалено
+    added: Добавлено
+
+  species_names:
+    largemouth_bass:
+      common: Большеротый окунь
+      habitat: Тёплые заросшие озёра и пруды; хищник-засадчик у укрытий.
+    smallmouth_bass:
+      common: Малоротый окунь
+      habitat: Прохладные прозрачные реки и каменистые озёра; сильный боец.
+    northern_pike:
+      common: Щука
+      habitat: Заросшие заливы и прохладные озёра; агрессивный засадный хищник.
+    walleye:
+      common: Светлопёрый судак
+      habitat: Глубокие прохладные озёра и реки; кормится при слабом освещении.
+    yellow_perch:
+      common: Жёлтый окунь
+      habitat: Стайная рыба озёр и прудов; кормится у дна.
+    muskellunge:
+      common: Маскинонг
+      habitat: Крупные прозрачные озёра и реки; высший пресноводный хищник.
+    bluegill:
+      common: Синежаберный солнечник
+      habitat: Тёплые пруды и озёрные мелководья; гнездится колониями.
+    rainbow_trout:
+      common: Радужная форель
+      habitat: Холодные ручьи, реки и озёра; ценная спортивная рыба.
+    mahi_mahi:
+      common: Махи-махи
+      habitat: Тёплые поверхностные воды открытого океана; быстрый пелагический хищник.
+    striped_bass:
+      common: Полосатый лаврак
+      habitat: Прибрежный прибой, эстуарии и крупные реки; мигрирующий вид.
+    bonefish:
+      common: Альбула
+      habitat: Тропические мелководные отмели; осторожная и быстрая.
+    chinook_salmon:
+      common: Чавыча
+      habitat: Холодные тихоокеанские реки и озёра; мощная проходная рыба.
+  country:
+    US: США
+    CA: Канада
+    GB: Великобритания
+    DE: Германия
+    FR: Франция
+    ES: Испания
+    IT: Италия
+    NL: Нидерланды
+    SE: Швеция
+    "NO": Норвегия
+    PL: Польша
+    RU: Россия
+    BG: Болгария
+    GR: Греция
+    JP: Япония
+    CN: Китай
+    BR: Бразилия
+    MX: Мексика
+    FI: Финляндия
+    AU: Австралия
+    NZ: Новая Зеландия
+    DK: Дания
+    IE: Ирландия
+    PT: Португалия
+    KR: Южная Корея
+    TH: Таиланд
+    ZA: ЮАР
+    IN: Индия
+    AR: Аргентина
+    CL: Чили
+    UA: Украина
+    TR: Турция
+    AT: Австрия
+    BE: Бельгия
+    CH: Швейцария
+    CZ: Чехия
+    HU: Венгрия
+    RO: Румыния
+  activerecord:
+    attributes:
+      user:
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+    errors:
+      messages:
+        confirmation: не совпадает с %{attribute}

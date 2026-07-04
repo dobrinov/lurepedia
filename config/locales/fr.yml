@@ -1,4 +1,695 @@
 fr:
   common:
-    # UI strings fall back to English (config.i18n.fallbacks = [:en]).
-    all: All
+    all: Tout
+    none: "—"
+    save: Enregistrer
+    cancel: Annuler
+    submit: Envoyer
+    edit: Modifier
+    delete: Supprimer
+    add: Ajouter
+    search: Rechercher
+    loading: Chargement…
+    showing: "Affichage de %{from}–%{to} sur %{count}"
+    page: Page
+    next: Suivant
+    prev: Précédent
+    back: Retour
+    close: Fermer
+    by: par
+    on: sur
+    "yes": "Oui"
+    "no": "Non"
+    verified: Vérifié
+    promoted: Mis en avant
+    sponsored: Sponsorisé
+
+  bans:
+    blocked: Votre compte est actuellement restreint pour cette action.
+    notice:
+      title: Votre compte est restreint.
+      reason: Motif
+      permanent: Cette restriction est permanente.
+      until: "En vigueur jusqu'au %{date}."
+      scope: Actions restreintes
+    capability:
+      catalog: modifications du catalogue
+      claims: revendications de propriété
+      catches: enregistrement de prises
+      comments: commentaires
+      upvotes: votes
+      reports: signalements
+      favorites: favoris
+    preset:
+      catalog_only: Catalogue uniquement
+      contributions: Toutes les contributions
+      full: Complète (compte en lecture seule)
+    admin:
+      title: "Bannissements — %{name}"
+      title_short: Bannissements
+      new: Prononcer un bannissement
+      reason: Motif
+      preset: Préréglage
+      custom: Sélection personnalisée
+      capabilities: Actions restreintes
+      capabilities_help: Un préréglage présélectionne des actions ; cochez les cases pour personnaliser.
+      expires_at: Expire le
+      permanent_hint: Laissez vide pour un bannissement permanent.
+      issue: Prononcer le bannissement
+      status: Statut
+      scope: Portée
+      active: Actif
+      lifted: Levé
+      expired: Expiré
+      lift: Lever le bannissement
+      manage: Gérer les bannissements
+      created: Bannissement prononcé.
+      revoked: Bannissement levé.
+
+  favorites:
+    add: Ajouter aux favoris
+    remove: Retirer des favoris
+    favorited: Dans les favoris
+
+  footer:
+    explore: Explorer
+
+  home:
+    tagline: Chaque leurre, prouvé par une prise
+    meta_description: Lurepedia est une encyclopédie collaborative des leurres de pêche — trouvez des leurres et voyez la preuve, par des prises réelles, qu'ils fonctionnent.
+    hero_title: Chaque leurre, prouvé par une prise
+    hero_sub: Une encyclopédie collaborative des leurres de pêche. Trouvez ce qui marche — appuyé par de vraies prises.
+    browse_lures: Parcourir les leurres
+    browse_another_way: Explorer autrement
+    add_a_catch: Ajouter une prise
+
+  nav:
+    lures: Leurres
+    species: Espèces
+    catches: Prises
+    brands: Marques
+    shops: Boutiques
+    leaderboard: Classement
+    menu: Menu
+
+  auth:
+    sign_in: Se connecter
+    sign_up: Créer un compte
+    sign_out: Se déconnecter
+    email: E-mail
+    password: Mot de passe
+    password_confirmation: Confirmer le mot de passe
+    name: Nom
+    sign_in_required: Veuillez vous connecter pour contribuer.
+    not_authorized: Vous n'avez pas la permission de faire cela.
+    create_account: Créer un compte
+    have_account: Vous avez déjà un compte ?
+    no_account: Nouveau sur Lurepedia ?
+    welcome_back: Bon retour parmi nous
+    join: Rejoindre Lurepedia
+    choose_country: Votre pays
+    choose_language: Langue préférée
+    continue_with_google: Continuer avec Google
+
+  units:
+    label: Unités
+    auto: Auto (selon le pays)
+    imperial: Impérial
+    metric: Métrique
+    length: Longueur
+    weight: Poids
+    depth: Profondeur
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Eau douce
+    salt: Eau salée
+    both: Eau douce & salée
+
+  action:
+    suspending: Suspending
+    floating: Flottant
+    sinking: Coulant
+    none: "—"
+
+  condition:
+    season:
+      label: Saison
+      any: Toute saison
+      spring: Printemps
+      summer: Été
+      fall: Automne
+      winter: Hiver
+    clarity:
+      label: Clarté de l'eau
+      any: Toute clarté
+      clear: Claire
+      stained: Teintée
+      muddy: Trouble
+    water_body:
+      label: Plan d'eau
+      any: Tout plan d'eau
+      lake: Lac
+      pond: Étang
+      river: Rivière
+      reservoir: Réservoir
+      stream: Ruisseau
+    wind:
+      label: Vent
+      any: Tout vent
+      calm: Calme
+      light: Léger (5–10 mph)
+      moderate: Modéré (10–20 mph)
+      strong: Fort (20+ mph)
+    time_of_day:
+      label: Moment de la journée
+      any: À toute heure
+      dawn: Aube
+      morning: Matin
+      midday: Midi
+      afternoon: Après-midi
+      dusk: Crépuscule
+      night: Nuit
+    platform:
+      label: Pêche depuis
+      any: N'importe où
+      shore: Le bord
+      boat: Le bateau
+      kayak: Le kayak
+    retrieve:
+      label: Style de récupération
+      any: Tout style
+      steady: Linéaire
+      stop_and_go: Stop-and-go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow rolling
+      burn: Récupération rapide
+      dead_stick: Dead sticking
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Leurre souple
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Leurre de surface
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Cuillère
+    lipless_crankbait: Lipless
+
+  lure:
+    title: Leurres
+    subtitle: Chaque leurre, prouvé par une prise
+    search_placeholder: Rechercher des leurres — ou filtrer par type, eau, densité…
+    model: Modèle
+    description: Description
+    descriptions: Descriptions
+    translations: Traductions
+    translations_hint: La description du leurre dans chaque langue. Les lecteurs voient leur propre langue, avec l'anglais en repli.
+    add: Ajouter un leurre
+    add_title: Ajouter un leurre
+    type: Type
+    depth: Profondeur cible
+    action: Densité
+    buoyancy: "Flottabilité"
+    action_varies: "Variable"
+    water: Eau
+    brand: Marque
+    variants: Variantes
+    variant: Variante
+    tab_caught: Pris avec
+    tab_variations: "Variantes"
+    tab_buy: Où acheter
+    tab_history: Historique
+    proof: La preuve que ça marche
+    catches_count:
+      one: "%{count} prise"
+      other: "%{count} prises"
+    no_proof: Pas encore de preuve
+    be_first: Soyez le premier à prouver que ce leurre fonctionne
+    be_first_short: Soyez le premier à le prouver →
+    where_to_buy: Où acheter
+    quick_facts: En bref
+    action_video: Le leurre en action
+    add_video: Ajouter une vidéo de nage
+    watch_video: Voir la vidéo
+    suggest_edit: Suggérer une modification
+    add_catch: Ajouter une prise
+    proven_for: Éprouvé pour
+    no_matches: Aucun leurre ne correspond à vos filtres
+    no_matches_sub: Vous cherchez un leurre précis ? Ajoutez-le s'il manque.
+    empty_title: Pas encore de leurres
+    size: Taille
+    weight: Poids
+    color: Couleur
+    colors: Couleurs
+    colors_count:
+      one: "%{count} couleur"
+      other: "%{count} couleurs"
+    build: Version
+    builds: Versions
+    browse_colors: Parcourir les couleurs
+    common_attributes: Attributs communs · toute la famille
+    this_variation: Cette variante
+    default_variation: Variante par défaut
+    uv_glow: Brillance UV
+    best_for: Idéal pour
+    manage_variations: Variantes & versions
+    tab_details: Informations générales
+    add_color: Ajouter une couleur
+    add_build: Ajouter une version
+    color_name: Nom de la couleur
+    availability: Versions disponibles
+
+  species:
+    title: Espèces
+    subtitle: Le dictionnaire des poissons
+    search_placeholder: Rechercher une espèce — nom commun ou scientifique…
+    venomous: Venimeux
+    venomous_hint: Possède des épines ou aiguillons venimeux — à manipuler avec précaution.
+    poisonous: Toxique
+    poisonous_hint: Toxique à la consommation.
+    add: Ajouter une espèce
+    add_title: Ajouter une espèce
+    scientific_name: Nom scientifique
+    local_names: Noms locaux
+    translations: Traductions
+    translations_hint: Le nom commun et la description dans chaque langue. Les lecteurs voient leur propre langue, avec l'anglais en repli.
+    local_name: Nom commun
+    description: Description
+    descriptions: Descriptions
+    wikipedia_url: URL Wikipédia
+    wikipedia: Voir sur Wikipédia
+    wikipedia_url_invalid: doit être l'URL d'un article Wikipédia (p. ex. https://fr.wikipedia.org/wiki/...)
+    habitat: Habitat
+    tab_lures: Pris avec
+    tab_catches: Prises
+    tab_leaderboard: Classement
+    tab_history: Historique
+    proven_lures: Leurres éprouvés
+    lures_count:
+      one: "%{count} leurre"
+      other: "%{count} leurres"
+    no_proven_lures: Pas encore de leurres éprouvés
+    be_first_lure: Soyez le premier à prouver qu'un leurre prend ce poisson
+    empty_title: Pas encore d'espèces
+    empty_sub: Soyez le premier à ajouter une espèce de poisson.
+
+  brand:
+    title: Marques
+    subtitle: Les fabricants
+    search_placeholder: Rechercher des marques…
+    add: Ajouter une marque
+    add_title: Ajouter une marque
+    founded: Fondée en
+    empty_title: Pas encore de marques
+    empty_sub: Soyez le premier à ajouter une marque de leurres.
+    country: Pays
+    website: Site web
+    website_invalid: "Saisissez une URL valide commençant par http:// ou https://"
+    logo: Logo
+    blurb: À propos
+    description: Description
+    descriptions: Descriptions
+    translations: Traductions
+    translations_hint: La description de la marque dans chaque langue. Les lecteurs voient leur propre langue, avec l'anglais en repli.
+    tab_lures: Leurres
+    tab_history: Historique
+    claim: Revendiquer cette marque
+    claimed: Revendiquée
+    owned_by: Propriété de
+
+  buy_link:
+    add: Ajouter un point de vente
+    empty: Aucune boutique répertoriée pour l'instant — ajoutez le premier point de vente pour ce leurre.
+    choose_shop: Boutique
+    choose_shop_placeholder: Rechercher des boutiques…
+    existing_shop: Boutique existante
+    new_shop: Nouvelle boutique
+    product_url: Lien produit (facultatif)
+    submit: Ajouter
+    shop_required: Veuillez choisir une boutique.
+    already_listed: Cette boutique est déjà répertoriée pour ce leurre.
+
+  shop:
+    title: Boutiques
+    subtitle: Où acheter
+    search_placeholder: Rechercher des boutiques…
+    add: Ajouter une boutique
+    add_title: Ajouter une boutique
+    ships_to_you: Boutiques qui livrent vers %{country}
+    other_shops: Autres boutiques
+    none_ship: Aucune boutique ne livre encore vers %{country}. Vous en connaissez une ?
+    tab_lures: Leurres
+    tab_history: Historique
+    no_lures: Aucun leurre répertorié dans cette boutique pour l'instant.
+    ships_to: Livre vers
+    ships_to_unknown: "—"
+    ships_worldwide: Livraison dans le monde entier
+    ships_to_hint: Laissez vide si la boutique livre dans le monde entier.
+    add_country: Ajouter un pays
+    worldwide: Monde entier
+    claim: Revendiquer une boutique
+
+  catch:
+    title: Prises
+    subtitle: Les preuves récentes de la communauté
+    add: Ajouter une prise
+    add_title: Ajouter une prise
+    on_lure: "avec %{lure}"
+    conditions: Conditions
+    location: Lieu
+    length: Longueur
+    weight: Poids
+    contributor: Contributeur
+    comments: Commentaires
+    add_comment: Ajouter un commentaire
+    upvote: Voter
+    upvoted: Voté
+    remove_upvote: Cliquez à nouveau pour retirer votre vote
+    report: Signaler cette prise
+    related: Plus de prises de cette espèce
+    photos: Photos
+    pick_brand: Choisir une marque
+    pick_lure: Choisir un leurre
+    pick_variant: Choisir une variante
+    color: Couleur
+    pick_color: Choisissez la couleur avec laquelle vous avez pêché
+    pick_build: Choisir une version
+    pick_species: Qu'avez-vous attrapé ?
+    log_title: Enregistrer une prise
+    log_this: Enregistrer cette prise
+    modal_step1: "Étape 1 sur 2 · Choisissez la couleur avec laquelle vous avez pêché"
+    modal_step2: "Étape 2 sur 2 · Choisissez la version & la profondeur"
+    builds_in: "Versions disponibles en"
+    no_builds: Cette couleur n'a pas encore de versions.
+    variation: Variante
+    choose_variation: Choisir une variante
+    change: Changer
+    note: Notes
+    submitted: Soumis pour vérification
+    submitted_body: Merci ! Votre prise est dans la file de modération et apparaîtra une fois approuvée.
+    add_another: En ajouter une autre
+
+  search:
+    filters: Filtres
+    combine_free: Combinez librement — les résultats correspondent à tous les filtres
+    no_results: Aucun résultat
+    any_species: Toutes les espèces
+    any_type: Tous les types
+    any_brand: Toutes les marques
+    any_action: Toute densité
+    any_depth: Toute profondeur
+    depth_band:
+      shallow: Faible (0–1,5 m)
+      mid: Moyenne (1,5–4,5 m)
+      deep: Profonde (4,5 m+)
+    saltwater_only: Eau salée uniquement
+    clear_all: Tout effacer
+    show_n_lures:
+      one: Afficher %{count} leurre
+      other: Afficher %{count} leurres
+    other: Autre
+
+  leaderboard:
+    title: Classement
+    subtitle: Meilleurs pêcheurs par espèce
+    all_species: Toutes les espèces
+    rank_by: Classer par
+    metric_catches: Prises
+    metric_upvotes: Votes
+    metric_length: Longueur du poisson
+    rank: Rang
+    angler: Pêcheur
+    catches: Prises
+    upvotes: Votes
+    best_length: Meilleure longueur
+    specialist: spécialiste
+    species_count:
+      one: "%{count} espèce"
+      other: "%{count} espèces"
+    you: VOUS
+    empty: Pas encore de pêcheurs classés
+
+  contribute:
+    suggest_edit: Suggérer une modification
+    edit_title: "Modifier %{name}"
+    edit_saved: "Modifications enregistrées"
+    added: "Ajouté au catalogue"
+    suggest_title: "Suggérer une modification pour %{name}"
+    suggest_note: Votre suggestion sera examinée par un modérateur.
+    suggested: Suggestion envoyée
+    suggested_body: Merci — un modérateur examinera votre suggestion.
+    add_photos: Ajouter des photos
+    moderation_note: Les contributions sont vérifiées avant leur publication.
+    direct_note: En tant que propriétaire de la marque, ceci est publié immédiatement — sans vérification.
+    pending_review: Cette entrée est en attente de vérification et n'est pas encore publique.
+
+  crop:
+    adjust: "Ajuster le cadrage"
+    done: "Terminé"
+    reset: "Réinitialiser le cadrage"
+    aspect_free: "Libre"
+    aspect_square: "Carré"
+    bg_label: "Fond de la vignette"
+    bg_auto: "Auto"
+    bg_pick: "Choisir dans la photo"
+    bg_apply_all: "Appliquer ce fond à toutes les couleurs de ce leurre"
+    hint: "Faites glisser pour repositionner ; tirez les coins pour redimensionner. Le cadrage est appliqué à l'enregistrement."
+    invalid: "Le rectangle de cadrage est invalide"
+  claim:
+    title: "Revendiquer %{name}"
+    page_title: Revendiquer une fiche
+    intro: "Revendiquez ce %{kind} pour gérer sa fiche. Dites-nous qui vous êtes et nous poursuivrons par e-mail."
+    message_label: Qui êtes-vous, et quel est votre lien avec cette fiche ?
+    message_hint: "p. ex. Je suis le fondateur / je m'occupe du marketing de la marque…"
+    submit: Envoyer la demande
+    submitted_title: Demande reçue
+    submitted_body: "Merci — nous examinerons votre demande et reviendrons vers vous par e-mail."
+    rejected_title: Demande non approuvée
+    rejected_body: "Cette demande a été examinée et n'a pas été approuvée. Si vous pensez qu'il s'agit d'une erreur, contactez-nous."
+    verified_title: Propriété vérifiée
+    verified_body: Vous gérez désormais cette fiche. Vos modifications sont publiées sans vérification.
+    managed_badge: Géré par le propriétaire
+
+  report:
+    title: Signaler un contenu
+    target: Signalement
+    reason: Motif
+    reason_inaccurate: Inexact ou trompeur
+    reason_fake: Fausse prise / photo truquée
+    reason_wrong: Mauvaise espèce ou mauvais leurre
+    reason_spam: Spam ou publicité
+    reason_offensive: Offensant ou inapproprié
+    reason_other: Autre
+    note: Détails supplémentaires (facultatif)
+    submit: Envoyer le signalement
+    submitted: Signalement envoyé
+    submitted_body: Merci — les modérateurs l'examineront sous peu.
+
+  moderation:
+    title: File de modération
+    subtitle: Examiner les contributions de la communauté
+    moderator_view: VUE MODÉRATEUR
+    all: Tout
+    reports: Signalements
+    catches: Prises
+    edits: Modifications
+    catalog: Catalogue
+    claims: Revendications
+    awaiting: "%{count} en attente de vérification"
+    approve: Approuver
+    reject: Rejeter
+    undo: Annuler
+    approved: Approuvé
+    rejected: Rejeté
+    needs_admin: Admin requis
+    own_submission: Soumis par vous
+    submitted_by: Soumis par
+    view_details: Voir les détails
+    kind:
+      catch: Prise
+      edit: Modification
+      catalog: Catalogue
+      claim: Revendication
+      report: Signalement
+
+  admin:
+    title: Console d'administration
+    overview: Vue d'ensemble
+    people: Personnes & rôles
+    activity: Journal d'activité
+    pending: En attente de vérification
+    catches_logged: Prises enregistrées
+    contributors: Contributeurs
+    lures_catalogued: Leurres catalogués
+    role: Rôle
+    member: Membre
+    moderator: Modérateur
+    admin: Admin
+    joined: Inscrit le
+    you: VOUS
+
+  settings:
+    title: Paramètres
+    tab_profile: Profil
+    tab_preferences: Préférences
+    profile: Profil
+    country: Pays
+    language: Langue
+    time_zone: Fuseau horaire
+    time_zone_auto: "Automatique (UTC)"
+    units: Unités
+    notifications: Notifications
+    saved: Paramètres enregistrés
+    public_profile: Votre profil public
+    copy: Copier
+    copied: Copié !
+    username: Nom d'utilisateur
+    username_hint: p. ex. casey-rivera
+    username_help: Facultatif. Lettres minuscules, chiffres, traits d'union. Utilisé dans l'URL de votre profil.
+    avatar: Photo de profil
+    avatar_help: PNG, JPEG, WEBP ou GIF. Jusqu'à 5 Mo.
+    choose_image: Choisir une image
+    no_file: Aucune image sélectionnée
+    remove_avatar: Supprimer la photo actuelle
+    avatar_too_large: est trop volumineuse (5 Mo maximum)
+    avatar_invalid_type: doit être une image PNG, JPEG, WEBP ou GIF
+
+  dashboard:
+    my_catches: Mes prises
+    my_profile: Mon profil
+    total_upvotes: Total des votes reçus
+    no_catches: Vous n'avez pas encore enregistré de prises.
+
+  profile:
+    catches: Prises
+    tab_catches: Prises
+    tab_favorites: Favoris
+    tab_contributions: Contributions
+    contributions: Contributions
+    no_contributions: Pas encore de contributions.
+    view_picture: Voir la photo de profil
+    change_picture: Téléverser/changer la photo de profil
+    total_upvotes: Total des votes
+    member_since: Membre depuis
+    favorite_species: Espèces favorites
+    favorite_lures: Leurres favoris
+    favorite_shops: Boutiques favorites
+    no_favorites: Pas encore de favoris.
+    no_catches: Pas encore de prises.
+
+  provenance:
+    title: Historique & propriété
+    edits:
+      one: "%{count} modification"
+      other: "%{count} modifications"
+    added_by: Ajouté par
+    owned_by: Propriété de
+    originally_added: "Ajouté à l'origine par %{name} · %{date}"
+    edit_history: Historique des modifications
+    created: A créé cette entrée
+    edited: a modifié
+    col_change: Modification
+    col_contributor: Contributeur
+    col_date: Date
+
+  revision:
+    title: Révision
+    no_changes: Aucune modification de champ n'a été enregistrée pour cette édition.
+    removed: Supprimé
+    added: Ajouté
+
+  species_names:
+    largemouth_bass:
+      common: Black-bass à grande bouche
+      habitat: Lacs et étangs chauds et végétalisés ; prédateur d'affût près des obstacles.
+    smallmouth_bass:
+      common: Black-bass à petite bouche
+      habitat: Rivières fraîches et claires, lacs rocheux ; combattant redoutable.
+    northern_pike:
+      common: Brochet
+      habitat: Baies herbeuses et lacs frais ; prédateur d'affût agressif.
+    walleye:
+      common: Doré jaune
+      habitat: Lacs et rivières profonds et frais ; chasse en faible lumière.
+    yellow_perch:
+      common: Perchaude
+      habitat: Poisson grégaire des lacs et étangs ; se nourrit près du fond.
+    muskellunge:
+      common: Maskinongé
+      habitat: Grands lacs clairs et rivières ; superprédateur d'eau douce.
+    bluegill:
+      common: Crapet arlequin
+      habitat: Étangs chauds et hauts-fonds des lacs ; niche en colonies.
+    rainbow_trout:
+      common: Truite arc-en-ciel
+      habitat: Ruisseaux, rivières et lacs froids ; poisson sportif prisé.
+    mahi_mahi:
+      common: Dorade coryphène
+      habitat: Eaux de surface chaudes du large ; prédateur pélagique rapide.
+    striped_bass:
+      common: Bar rayé
+      habitat: Ressac côtier, estuaires et grands fleuves ; migrateur.
+    bonefish:
+      common: Bonefish
+      habitat: Flats tropicaux peu profonds ; méfiant et rapide.
+    chinook_salmon:
+      common: Saumon quinnat
+      habitat: Rivières et lacs froids du Pacifique ; puissant poisson migrateur.
+  country:
+    US: États-Unis
+    CA: Canada
+    GB: Royaume-Uni
+    DE: Allemagne
+    FR: France
+    ES: Espagne
+    IT: Italie
+    NL: Pays-Bas
+    SE: Suède
+    "NO": Norvège
+    PL: Pologne
+    RU: Russie
+    BG: Bulgarie
+    GR: Grèce
+    JP: Japon
+    CN: Chine
+    BR: Brésil
+    MX: Mexique
+    FI: Finlande
+    AU: Australie
+    NZ: Nouvelle-Zélande
+    DK: Danemark
+    IE: Irlande
+    PT: Portugal
+    KR: Corée du Sud
+    TH: Thaïlande
+    ZA: Afrique du Sud
+    IN: Inde
+    AR: Argentine
+    CL: Chili
+    UA: Ukraine
+    TR: Turquie
+    AT: Autriche
+    BE: Belgique
+    CH: Suisse
+    CZ: Tchéquie
+    HU: Hongrie
+    RO: Roumanie
+  activerecord:
+    attributes:
+      user:
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+    errors:
+      messages:
+        confirmation: ne correspond pas à %{attribute}

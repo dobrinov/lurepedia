@@ -596,6 +596,10 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
     padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
     overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 200;
   }
+  /* Re-pin to the viewport: the desktop drop-down offset (.page-search
+     .search-panel { top: 52px; bottom: auto }) is more specific and would
+     otherwise unbound the overlay's height, pushing the footer off-screen. */
+  .page-search .search-panel { top: 0; bottom: 0; }
   .search-panel .filters-grid { grid-template-columns: repeat(2, 1fr); }
   .panel-close { display: inline-flex; }
   .panel-hint { display: none; }

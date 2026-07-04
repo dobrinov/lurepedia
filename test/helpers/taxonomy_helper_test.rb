@@ -15,11 +15,10 @@ class TaxonomyHelperTest < ActionView::TestCase
     I18n.with_locale(:de) { assert_equal "Wobbler", lure_type_name("crankbait") }
   end
 
-  test "unpopulated locale falls back to english" do
-    I18n.with_locale(:fr) do
-      assert_equal "Largemouth Bass", species_common_name("largemouth_bass")
-      assert_equal "Crankbait", lure_type_name("crankbait")
-    end
+  test "formerly stubbed locales are translated" do
+    I18n.with_locale(:fr) { assert_equal "Black-bass à grande bouche", species_common_name("largemouth_bass") }
+    I18n.with_locale(:ru) { assert_equal "Большеротый окунь", species_common_name("largemouth_bass") }
+    I18n.with_locale(:zh) { assert_equal "大口黑鲈", species_common_name("largemouth_bass") }
   end
 
   test "condition names translated" do

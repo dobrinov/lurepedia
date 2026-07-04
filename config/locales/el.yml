@@ -1,4 +1,695 @@
 el:
   common:
-    # UI strings fall back to English (config.i18n.fallbacks = [:en]).
-    all: All
+    all: Όλα
+    none: "—"
+    save: Αποθήκευση
+    cancel: Άκυρο
+    submit: Υποβολή
+    edit: Επεξεργασία
+    delete: Διαγραφή
+    add: Προσθήκη
+    search: Αναζήτηση
+    loading: Φόρτωση…
+    showing: "%{from}–%{to} από %{count}"
+    page: Σελίδα
+    next: Επόμενη
+    prev: Προηγούμενη
+    back: Πίσω
+    close: Κλείσιμο
+    by: από
+    on: σε
+    "yes": "Ναι"
+    "no": "Όχι"
+    verified: Επαληθευμένο
+    promoted: Προωθημένο
+    sponsored: Χορηγούμενο
+
+  bans:
+    blocked: Ο λογαριασμός σου έχει περιοριστεί από αυτή την ενέργεια.
+    notice:
+      title: Ο λογαριασμός σου είναι περιορισμένος.
+      reason: Αιτία
+      permanent: Αυτός ο περιορισμός είναι μόνιμος.
+      until: "Σε ισχύ έως %{date}."
+      scope: Περιορισμένες ενέργειες
+    capability:
+      catalog: επεξεργασίες καταλόγου
+      claims: διεκδικήσεις ιδιοκτησίας
+      catches: καταγραφή ψαριών
+      comments: σχόλια
+      upvotes: ψήφοι
+      reports: αναφορές
+      favorites: αγαπημένα
+    preset:
+      catalog_only: Μόνο κατάλογος
+      contributions: Όλες οι συνεισφορές
+      full: Πλήρης (λογαριασμός μόνο για ανάγνωση)
+    admin:
+      title: "Αποκλεισμοί — %{name}"
+      title_short: Αποκλεισμοί
+      new: Επιβολή αποκλεισμού
+      reason: Αιτία
+      preset: Προεπιλογή
+      custom: Προσαρμοσμένη επιλογή
+      capabilities: Περιορισμένες ενέργειες
+      capabilities_help: Η προεπιλογή προεπιλέγει ενέργειες· τσέκαρε τα κουτάκια για προσαρμογή.
+      expires_at: Λήγει στις
+      permanent_hint: Άφησέ το κενό για μόνιμο αποκλεισμό.
+      issue: Επιβολή αποκλεισμού
+      status: Κατάσταση
+      scope: Εύρος
+      active: Ενεργός
+      lifted: Άρθηκε
+      expired: Έληξε
+      lift: Άρση αποκλεισμού
+      manage: Διαχείριση αποκλεισμών
+      created: Ο αποκλεισμός επιβλήθηκε.
+      revoked: Ο αποκλεισμός άρθηκε.
+
+  favorites:
+    add: Αγαπημένο
+    remove: Αφαίρεση από τα αγαπημένα
+    favorited: Στα αγαπημένα
+
+  footer:
+    explore: Εξερεύνηση
+
+  home:
+    tagline: Κάθε τεχνητό, αποδεδειγμένο με μια ψαριά
+    meta_description: Το Lurepedia είναι μια συνεργατική εγκυκλοπαίδεια τεχνητών δολωμάτων — βρες τεχνητά και δες πραγματικές αποδείξεις, ψαριά την ψαριά, ότι πιάνουν.
+    hero_title: Κάθε τεχνητό, αποδεδειγμένο με μια ψαριά
+    hero_sub: Μια συνεργατική εγκυκλοπαίδεια τεχνητών δολωμάτων. Βρες ό,τι πιάνει — τεκμηριωμένο με πραγματικές ψαριές.
+    browse_lures: Περιήγηση στα τεχνητά
+    browse_another_way: Περιηγήσου αλλιώς
+    add_a_catch: Πρόσθεσε ψαριά
+
+  nav:
+    lures: Τεχνητά
+    species: Είδη
+    catches: Ψαριές
+    brands: Μάρκες
+    shops: Καταστήματα
+    leaderboard: Κατάταξη
+    menu: Μενού
+
+  auth:
+    sign_in: Σύνδεση
+    sign_up: Δημιουργία λογαριασμού
+    sign_out: Αποσύνδεση
+    email: Email
+    password: Κωδικός πρόσβασης
+    password_confirmation: Επιβεβαίωση κωδικού
+    name: Όνομα
+    sign_in_required: Συνδέσου για να συνεισφέρεις.
+    not_authorized: Δεν έχεις δικαίωμα για αυτή την ενέργεια.
+    create_account: Δημιουργία λογαριασμού
+    have_account: Έχεις ήδη λογαριασμό;
+    no_account: Νέος στο Lurepedia;
+    welcome_back: Καλώς ήρθες ξανά
+    join: Γίνε μέλος του Lurepedia
+    choose_country: Η χώρα σου
+    choose_language: Προτιμώμενη γλώσσα
+    continue_with_google: Συνέχεια με Google
+
+  units:
+    label: Μονάδες
+    auto: Αυτόματα (από τη χώρα)
+    imperial: Αγγλοσαξονικές
+    metric: Μετρικές
+    length: Μήκος
+    weight: Βάρος
+    depth: Βάθος
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Γλυκό νερό
+    salt: Αλμυρό νερό
+    both: Γλυκό & αλμυρό
+
+  action:
+    suspending: Αιωρούμενο
+    floating: Πλωτό
+    sinking: Βυθιζόμενο
+    none: "—"
+
+  condition:
+    season:
+      label: Εποχή
+      any: Κάθε εποχή
+      spring: Άνοιξη
+      summer: Καλοκαίρι
+      fall: Φθινόπωρο
+      winter: Χειμώνας
+    clarity:
+      label: Διαύγεια
+      any: Κάθε διαύγεια
+      clear: Καθαρό
+      stained: Ελαφρώς θολό
+      muddy: Θολό
+    water_body:
+      label: Τύπος νερού
+      any: Όλα τα νερά
+      lake: Λίμνη
+      pond: Λιμνούλα
+      river: Ποτάμι
+      reservoir: Φράγμα
+      stream: Ρέμα
+    wind:
+      label: Άνεμος
+      any: Κάθε άνεμος
+      calm: Άπνοια
+      light: Ασθενής (5–10 mph)
+      moderate: Μέτριος (10–20 mph)
+      strong: Ισχυρός (20+ mph)
+    time_of_day:
+      label: Ώρα της ημέρας
+      any: Οποιαδήποτε ώρα
+      dawn: Χάραμα
+      morning: Πρωί
+      midday: Μεσημέρι
+      afternoon: Απόγευμα
+      dusk: Σούρουπο
+      night: Νύχτα
+    platform:
+      label: Ψάρεμα από
+      any: Οπουδήποτε
+      shore: Στεριά
+      boat: Βάρκα
+      kayak: Καγιάκ
+    retrieve:
+      label: Στυλ ανάκτησης
+      any: Κάθε στυλ
+      steady: Σταθερή
+      stop_and_go: Stop-and-go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow roll
+      burn: Γρήγορη ανάκτηση
+      dead_stick: Dead stick
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Σιλικόνη
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Επιφανείας
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Κουταλάκι
+    lipless_crankbait: Lipless crankbait
+
+  lure:
+    title: Τεχνητά
+    subtitle: Κάθε τεχνητό, αποδεδειγμένο με μια ψαριά
+    search_placeholder: Αναζήτηση τεχνητών — ή φιλτράρισμα ανά τύπο, νερό, δράση…
+    model: Μοντέλο
+    description: Περιγραφή
+    descriptions: Περιγραφές
+    translations: Μεταφράσεις
+    translations_hint: Η περιγραφή του τεχνητού σε κάθε γλώσσα. Οι αναγνώστες βλέπουν τη γλώσσα τους, με τα Αγγλικά ως εναλλακτική.
+    add: Προσθήκη τεχνητού
+    add_title: Προσθήκη τεχνητού
+    type: Τύπος
+    depth: Βάθος εργασίας
+    action: Δράση
+    buoyancy: "Πλευστότητα"
+    action_varies: "Ποικίλλει"
+    water: Νερό
+    brand: Μάρκα
+    variants: Παραλλαγές
+    variant: Παραλλαγή
+    tab_caught: Πιάστηκαν με αυτό
+    tab_variations: "Παραλλαγές"
+    tab_buy: Πού να το αγοράσεις
+    tab_history: Ιστορικό
+    proof: Απόδειξη ότι πιάνει
+    catches_count:
+      one: "%{count} ψαριά"
+      other: "%{count} ψαριές"
+    no_proof: Καμία απόδειξη ακόμα
+    be_first: Γίνε ο πρώτος που θα αποδείξει ότι αυτό το τεχνητό πιάνει
+    be_first_short: Γίνε ο πρώτος που θα το αποδείξει →
+    where_to_buy: Πού να το αγοράσεις
+    quick_facts: Με μια ματιά
+    action_video: Το τεχνητό σε δράση
+    add_video: Προσθήκη βίντεο δράσης
+    watch_video: Δες το βίντεο
+    suggest_edit: Πρότεινε μια επεξεργασία
+    add_catch: Πρόσθεσε ψαριά
+    proven_for: Αποδεδειγμένο για
+    no_matches: Κανένα τεχνητό δεν ταιριάζει στα φίλτρα σου
+    no_matches_sub: Ψάχνεις κάποιο συγκεκριμένο τεχνητό; Πρόσθεσέ το αν λείπει.
+    empty_title: Κανένα τεχνητό ακόμα
+    size: Μέγεθος
+    weight: Βάρος
+    color: Χρώμα
+    colors: Χρώματα
+    colors_count:
+      one: "%{count} χρώμα"
+      other: "%{count} χρώματα"
+    build: Έκδοση
+    builds: Εκδόσεις
+    browse_colors: Περιήγηση στα χρώματα
+    common_attributes: Κοινά χαρακτηριστικά · όλη η οικογένεια
+    this_variation: Αυτή η παραλλαγή
+    default_variation: Προεπιλεγμένη παραλλαγή
+    uv_glow: Λάμψη UV
+    best_for: Ιδανικό για
+    manage_variations: Παραλλαγές & εκδόσεις
+    tab_details: Γενικά στοιχεία
+    add_color: Προσθήκη χρώματος
+    add_build: Προσθήκη έκδοσης
+    color_name: Όνομα χρώματος
+    availability: Διαθέσιμες εκδόσεις
+
+  species:
+    title: Είδη
+    subtitle: Το λεξικό των ψαριών
+    search_placeholder: Αναζήτηση ειδών — κοινή ή επιστημονική ονομασία…
+    venomous: Φαρμακερό
+    venomous_hint: Έχει φαρμακερά αγκάθια ή κεντριά — πιάσε το με προσοχή.
+    poisonous: Δηλητηριώδες
+    poisonous_hint: Τοξικό αν καταναλωθεί.
+    add: Προσθήκη είδους
+    add_title: Προσθήκη είδους
+    scientific_name: Επιστημονική ονομασία
+    local_names: Τοπικές ονομασίες
+    translations: Μεταφράσεις
+    translations_hint: Η κοινή ονομασία και η περιγραφή σε κάθε γλώσσα. Οι αναγνώστες βλέπουν τη γλώσσα τους, με τα Αγγλικά ως εναλλακτική.
+    local_name: Κοινή ονομασία
+    description: Περιγραφή
+    descriptions: Περιγραφές
+    wikipedia_url: URL Wikipedia
+    wikipedia: Δες στη Wikipedia
+    wikipedia_url_invalid: πρέπει να είναι URL άρθρου της Wikipedia (π.χ. https://el.wikipedia.org/wiki/...)
+    habitat: Βιότοπος
+    tab_lures: Πιάνεται με
+    tab_catches: Ψαριές
+    tab_leaderboard: Κατάταξη
+    tab_history: Ιστορικό
+    proven_lures: Αποδεδειγμένα τεχνητά
+    lures_count:
+      one: "%{count} τεχνητό"
+      other: "%{count} τεχνητά"
+    no_proven_lures: Κανένα αποδεδειγμένο τεχνητό ακόμα
+    be_first_lure: Γίνε ο πρώτος που θα αποδείξει ότι ένα τεχνητό πιάνει αυτό το ψάρι
+    empty_title: Κανένα είδος ακόμα
+    empty_sub: Πρόσθεσε πρώτος ένα είδος ψαριού.
+
+  brand:
+    title: Μάρκες
+    subtitle: Οι κατασκευαστές
+    search_placeholder: Αναζήτηση μαρκών…
+    add: Προσθήκη μάρκας
+    add_title: Προσθήκη μάρκας
+    founded: Ιδρύθηκε
+    empty_title: Καμία μάρκα ακόμα
+    empty_sub: Πρόσθεσε πρώτος μια μάρκα τεχνητών.
+    country: Χώρα
+    website: Ιστότοπος
+    website_invalid: Δώσε ένα έγκυρο URL που ξεκινά με http:// ή https://
+    logo: Λογότυπο
+    blurb: Σχετικά
+    description: Περιγραφή
+    descriptions: Περιγραφές
+    translations: Μεταφράσεις
+    translations_hint: Η περιγραφή της μάρκας σε κάθε γλώσσα. Οι αναγνώστες βλέπουν τη γλώσσα τους, με τα Αγγλικά ως εναλλακτική.
+    tab_lures: Τεχνητά
+    tab_history: Ιστορικό
+    claim: Διεκδίκησε αυτή τη μάρκα
+    claimed: Διεκδικημένη
+    owned_by: Ανήκει σε
+
+  buy_link:
+    add: Πρόσθεσε σημείο αγοράς
+    empty: Δεν υπάρχουν καταστήματα ακόμα — πρόσθεσε το πρώτο μέρος αγοράς για αυτό το τεχνητό.
+    choose_shop: Κατάστημα
+    choose_shop_placeholder: Αναζήτηση καταστημάτων…
+    existing_shop: Υπάρχον κατάστημα
+    new_shop: Νέο κατάστημα
+    product_url: Σύνδεσμος προϊόντος (προαιρετικό)
+    submit: Προσθήκη
+    shop_required: Επίλεξε ένα κατάστημα.
+    already_listed: Αυτό το κατάστημα είναι ήδη καταχωρημένο για αυτό το τεχνητό.
+
+  shop:
+    title: Καταστήματα
+    subtitle: Πού να αγοράσεις
+    search_placeholder: Αναζήτηση καταστημάτων…
+    add: Προσθήκη καταστήματος
+    add_title: Προσθήκη καταστήματος
+    ships_to_you: Καταστήματα με παράδοση σε %{country}
+    other_shops: Άλλα καταστήματα
+    none_ship: Κανένα κατάστημα δεν παραδίδει σε %{country} ακόμα. Ξέρεις κάποιο;
+    tab_lures: Τεχνητά
+    tab_history: Ιστορικό
+    no_lures: Κανένα τεχνητό καταχωρημένο σε αυτό το κατάστημα ακόμα.
+    ships_to: Αποστολές προς
+    ships_to_unknown: "—"
+    ships_worldwide: Αποστολές παγκοσμίως
+    ships_to_hint: Άφησέ το κενό αν το κατάστημα στέλνει παγκοσμίως.
+    add_country: Προσθήκη χώρας
+    worldwide: Παγκοσμίως
+    claim: Διεκδίκησε ένα κατάστημα
+
+  catch:
+    title: Ψαριές
+    subtitle: Πρόσφατες αποδείξεις από την κοινότητα
+    add: Πρόσθεσε ψαριά
+    add_title: Πρόσθεσε ψαριά
+    on_lure: "με %{lure}"
+    conditions: Συνθήκες
+    location: Τοποθεσία
+    length: Μήκος
+    weight: Βάρος
+    contributor: Συνεισφέρων
+    comments: Σχόλια
+    add_comment: Πρόσθεσε σχόλιο
+    upvote: Θετική ψήφος
+    upvoted: Ψηφισμένο
+    remove_upvote: Κάνε ξανά κλικ για να αφαιρέσεις την ψήφο σου
+    report: Ανάφερε αυτή την ψαριά
+    related: Περισσότερες ψαριές αυτού του είδους
+    photos: Φωτογραφίες
+    pick_brand: Διάλεξε μάρκα
+    pick_lure: Διάλεξε τεχνητό
+    pick_variant: Διάλεξε παραλλαγή
+    color: Χρώμα
+    pick_color: Διάλεξε το χρώμα με το οποίο έπιασες
+    pick_build: Διάλεξε έκδοση
+    pick_species: Τι έπιασες;
+    log_title: Καταγραφή ψαριάς
+    log_this: Καταχώρησε αυτή την ψαριά
+    modal_step1: "Βήμα 1 από 2 · Διάλεξε το χρώμα με το οποίο έπιασες"
+    modal_step2: "Βήμα 2 από 2 · Διάλεξε έκδοση & βάθος"
+    builds_in: "Διαθέσιμες εκδόσεις σε"
+    no_builds: Αυτό το χρώμα δεν έχει εκδόσεις ακόμα.
+    variation: Παραλλαγή
+    choose_variation: Διάλεξε παραλλαγή
+    change: Αλλαγή
+    note: Σημειώσεις
+    submitted: Υποβλήθηκε για έλεγχο
+    submitted_body: Ευχαριστούμε! Η ψαριά σου είναι στην ουρά συντονισμού και θα εμφανιστεί μόλις εγκριθεί.
+    add_another: Πρόσθεσε άλλη μία
+
+  search:
+    filters: Φίλτρα
+    combine_free: Συνδύασέ τα ελεύθερα — τα αποτελέσματα ταιριάζουν σε όλα
+    no_results: Δεν βρέθηκαν αποτελέσματα
+    any_species: Κάθε είδος
+    any_type: Κάθε τύπος
+    any_brand: Κάθε μάρκα
+    any_action: Κάθε δράση
+    any_depth: Κάθε βάθος
+    depth_band:
+      shallow: Ρηχό (0–1,5 m)
+      mid: Μεσαίο (1,5–4,5 m)
+      deep: Βαθύ (4,5 m+)
+    saltwater_only: Μόνο αλμυρό νερό
+    clear_all: Καθαρισμός όλων
+    show_n_lures:
+      one: Δες %{count} τεχνητό
+      other: Δες %{count} τεχνητά
+    other: Άλλο
+
+  leaderboard:
+    title: Κατάταξη
+    subtitle: Κορυφαίοι ψαράδες ανά είδος
+    all_species: Όλα τα είδη
+    rank_by: Κατάταξη κατά
+    metric_catches: Ψαριές
+    metric_upvotes: Ψήφοι
+    metric_length: Μήκος ψαριού
+    rank: Θέση
+    angler: Ψαράς
+    catches: Ψαριές
+    upvotes: Ψήφοι
+    best_length: Καλύτερο μήκος
+    specialist: ειδικός
+    species_count:
+      one: "%{count} είδος"
+      other: "%{count} είδη"
+    you: ΕΣΥ
+    empty: Κανένας ψαράς στην κατάταξη ακόμα
+
+  contribute:
+    suggest_edit: Πρότεινε μια επεξεργασία
+    edit_title: "Επεξεργασία %{name}"
+    edit_saved: "Οι αλλαγές αποθηκεύτηκαν"
+    added: "Προστέθηκε στον κατάλογο"
+    suggest_title: "Πρότεινε μια επεξεργασία για %{name}"
+    suggest_note: Η πρότασή σου θα ελεγχθεί από συντονιστή.
+    suggested: Η πρόταση υποβλήθηκε
+    suggested_body: Ευχαριστούμε — ένας συντονιστής θα ελέγξει την πρότασή σου.
+    add_photos: Προσθήκη φωτογραφιών
+    moderation_note: Οι συνεισφορές ελέγχονται πριν δημοσιευτούν.
+    direct_note: Ως ιδιοκτήτης της μάρκας, αυτό δημοσιεύεται αμέσως — χωρίς έλεγχο.
+    pending_review: Αυτή η καταχώρηση περιμένει έλεγχο και δεν είναι ακόμα δημόσια.
+
+  crop:
+    adjust: "Προσαρμογή περικοπής"
+    done: "Έτοιμο"
+    reset: "Επαναφορά περικοπής"
+    aspect_free: "Ελεύθερο"
+    aspect_square: "Τετράγωνο"
+    bg_label: "Φόντο πλακιδίου"
+    bg_auto: "Αυτόματο"
+    bg_pick: "Επιλογή από τη φωτογραφία"
+    bg_apply_all: "Εφαρμογή αυτού του φόντου σε όλα τα χρώματα αυτού του τεχνητού"
+    hint: "Σύρε για μετακίνηση· σύρε τις γωνίες για αλλαγή μεγέθους. Η περικοπή εφαρμόζεται όταν αποθηκεύσεις."
+    invalid: "Το ορθογώνιο περικοπής δεν είναι έγκυρο"
+  claim:
+    title: "Διεκδίκηση %{name}"
+    page_title: Διεκδίκηση καταχώρησης
+    intro: "Διεκδίκησε αυτή την καταχώρηση (%{kind}) για να τη διαχειρίζεσαι. Πες μας ποιος είσαι και θα συνεχίσουμε μέσω email."
+    message_label: Ποιος είσαι και ποια είναι η σχέση σου με αυτή την καταχώρηση;
+    message_hint: "π.χ. Είμαι ο ιδρυτής / ασχολούμαι με το μάρκετινγκ της μάρκας…"
+    submit: Υποβολή διεκδίκησης
+    submitted_title: Η διεκδίκηση ελήφθη
+    submitted_body: "Ευχαριστούμε — θα ελέγξουμε τη διεκδίκησή σου και θα επικοινωνήσουμε μαζί σου μέσω email."
+    rejected_title: Η διεκδίκηση δεν εγκρίθηκε
+    rejected_body: "Αυτή η διεκδίκηση ελέγχθηκε και δεν εγκρίθηκε. Αν πιστεύεις ότι πρόκειται για λάθος, επικοινώνησε μαζί μας."
+    verified_title: Η ιδιοκτησία επαληθεύτηκε
+    verified_body: Πλέον διαχειρίζεσαι αυτή την καταχώρηση. Οι αλλαγές σου δημοσιεύονται χωρίς έλεγχο.
+    managed_badge: Το διαχειρίζεται ο ιδιοκτήτης
+
+  report:
+    title: Αναφορά περιεχομένου
+    target: Αναφορά για
+    reason: Αιτία
+    reason_inaccurate: Ανακριβές ή παραπλανητικό
+    reason_fake: Όχι πραγματική ψαριά / ψεύτικη φωτογραφία
+    reason_wrong: Λάθος είδος ή τεχνητό
+    reason_spam: Spam ή διαφήμιση
+    reason_offensive: Προσβλητικό ή ακατάλληλο
+    reason_other: Άλλο
+    note: Επιπλέον λεπτομέρειες (προαιρετικό)
+    submit: Υποβολή αναφοράς
+    submitted: Η αναφορά υποβλήθηκε
+    submitted_body: Ευχαριστούμε — οι συντονιστές θα το ελέγξουν σύντομα.
+
+  moderation:
+    title: Ουρά συντονισμού
+    subtitle: Έλεγχος συνεισφορών της κοινότητας
+    moderator_view: ΠΡΟΒΟΛΗ ΣΥΝΤΟΝΙΣΤΗ
+    all: Όλα
+    reports: Αναφορές
+    catches: Ψαριές
+    edits: Επεξεργασίες
+    catalog: Κατάλογος
+    claims: Διεκδικήσεις
+    awaiting: "%{count} σε αναμονή ελέγχου"
+    approve: Έγκριση
+    reject: Απόρριψη
+    undo: Αναίρεση
+    approved: Εγκρίθηκε
+    rejected: Απορρίφθηκε
+    needs_admin: Απαιτεί διαχειριστή
+    own_submission: Το υπέβαλες εσύ
+    submitted_by: Υποβλήθηκε από
+    view_details: Δες λεπτομέρειες
+    kind:
+      catch: Ψαριά
+      edit: Επεξεργασία
+      catalog: Κατάλογος
+      claim: Διεκδίκηση
+      report: Αναφορά
+
+  admin:
+    title: Κονσόλα διαχείρισης
+    overview: Επισκόπηση
+    people: Άτομα & ρόλοι
+    activity: Αρχείο δραστηριότητας
+    pending: Σε αναμονή ελέγχου
+    catches_logged: Καταγεγραμμένες ψαριές
+    contributors: Συνεισφέροντες
+    lures_catalogued: Καταλογογραφημένα τεχνητά
+    role: Ρόλος
+    member: Μέλος
+    moderator: Συντονιστής
+    admin: Διαχειριστής
+    joined: Μέλος από
+    you: ΕΣΥ
+
+  settings:
+    title: Ρυθμίσεις
+    tab_profile: Προφίλ
+    tab_preferences: Προτιμήσεις
+    profile: Προφίλ
+    country: Χώρα
+    language: Γλώσσα
+    time_zone: Ζώνη ώρας
+    time_zone_auto: "Αυτόματη (UTC)"
+    units: Μονάδες
+    notifications: Ειδοποιήσεις
+    saved: Οι ρυθμίσεις αποθηκεύτηκαν
+    public_profile: Το δημόσιο προφίλ σου
+    copy: Αντιγραφή
+    copied: Αντιγράφηκε!
+    username: Όνομα χρήστη
+    username_hint: π.χ. casey-rivera
+    username_help: Προαιρετικό. Πεζά λατινικά γράμματα, αριθμοί, παύλες. Χρησιμοποιείται στο URL του προφίλ σου.
+    avatar: Εικόνα προφίλ
+    avatar_help: PNG, JPEG, WEBP ή GIF. Έως 5 MB.
+    choose_image: Επιλογή εικόνας
+    no_file: Δεν επιλέχθηκε εικόνα
+    remove_avatar: Αφαίρεση τρέχουσας εικόνας
+    avatar_too_large: είναι πολύ μεγάλη (μέγιστο 5 MB)
+    avatar_invalid_type: πρέπει να είναι εικόνα PNG, JPEG, WEBP ή GIF
+
+  dashboard:
+    my_catches: Οι ψαριές μου
+    my_profile: Το προφίλ μου
+    total_upvotes: Συνολικές ψήφοι που κέρδισες
+    no_catches: Δεν έχεις καταγράψει ψαριές ακόμα.
+
+  profile:
+    catches: Ψαριές
+    tab_catches: Ψαριές
+    tab_favorites: Αγαπημένα
+    tab_contributions: Συνεισφορές
+    contributions: Συνεισφορές
+    no_contributions: Καμία συνεισφορά ακόμα.
+    view_picture: Προβολή εικόνας προφίλ
+    change_picture: Ανέβασμα/αλλαγή εικόνας προφίλ
+    total_upvotes: Συνολικές ψήφοι
+    member_since: Μέλος από
+    favorite_species: Αγαπημένα είδη
+    favorite_lures: Αγαπημένα τεχνητά
+    favorite_shops: Αγαπημένα καταστήματα
+    no_favorites: Κανένα αγαπημένο ακόμα.
+    no_catches: Καμία ψαριά ακόμα.
+
+  provenance:
+    title: Ιστορικό & ιδιοκτησία
+    edits:
+      one: "%{count} επεξεργασία"
+      other: "%{count} επεξεργασίες"
+    added_by: Προστέθηκε από
+    owned_by: Ανήκει σε
+    originally_added: "Αρχικά προστέθηκε από %{name} · %{date}"
+    edit_history: Ιστορικό επεξεργασιών
+    created: Δημιούργησε αυτή την καταχώρηση
+    edited: επεξεργάστηκε
+    col_change: Αλλαγή
+    col_contributor: Συνεισφέρων
+    col_date: Ημερομηνία
+
+  revision:
+    title: Αναθεώρηση
+    no_changes: Δεν καταγράφηκαν αλλαγές πεδίων για αυτή την επεξεργασία.
+    removed: Αφαιρέθηκε
+    added: Προστέθηκε
+
+  species_names:
+    largemouth_bass:
+      common: Μεγαλόστομη πέρκα
+      habitat: Ζεστές λίμνες και λιμνούλες με βλάστηση· αρπακτικό ενέδρας κοντά σε καλύψεις.
+    smallmouth_bass:
+      common: Μικρόστομη πέρκα
+      habitat: Δροσερά, καθαρά ποτάμια και βραχώδεις λίμνες· δυνατός μαχητής.
+    northern_pike:
+      common: Τούρνα
+      habitat: Κόλποι με βλάστηση και δροσερές λίμνες· επιθετικό αρπακτικό ενέδρας.
+    walleye:
+      common: Walleye
+      habitat: Βαθιές, δροσερές λίμνες και ποτάμια· τρέφεται σε χαμηλό φωτισμό.
+    yellow_perch:
+      common: Κίτρινη πέρκα
+      habitat: Ψάρι κοπαδιού σε λίμνες και λιμνούλες· τρέφεται κοντά στον βυθό.
+    muskellunge:
+      common: Muskellunge
+      habitat: Μεγάλες καθαρές λίμνες και ποτάμια· κορυφαίο αρπακτικό του γλυκού νερού.
+    bluegill:
+      common: Bluegill
+      habitat: Ζεστές λιμνούλες και ρηχά λιμνών· φωλιάζει σε αποικίες.
+    rainbow_trout:
+      common: Ιριδίζουσα πέστροφα
+      habitat: Κρύα ρέματα, ποτάμια και λίμνες· περιζήτητο ψάρι για σπορ.
+    mahi_mahi:
+      common: Κυνηγός (Mahi-Mahi)
+      habitat: Ζεστά επιφανειακά νερά ανοιχτής θάλασσας· γρήγορο πελαγικό αρπακτικό.
+    striped_bass:
+      common: Ραβδωτό λαβράκι
+      habitat: Παράκτια κύματα, εκβολές και μεγάλα ποτάμια· μεταναστευτικό.
+    bonefish:
+      common: Bonefish
+      habitat: Τροπικά ρηχά πλατώματα· επιφυλακτικό και γρήγορο.
+    chinook_salmon:
+      common: Σολομός Τσινούκ
+      habitat: Κρύα ποτάμια και λίμνες του Ειρηνικού· δυνατό μεταναστευτικό ψάρι.
+  country:
+    US: Ηνωμένες Πολιτείες
+    CA: Καναδάς
+    GB: Ηνωμένο Βασίλειο
+    DE: Γερμανία
+    FR: Γαλλία
+    ES: Ισπανία
+    IT: Ιταλία
+    NL: Ολλανδία
+    SE: Σουηδία
+    "NO": Νορβηγία
+    PL: Πολωνία
+    RU: Ρωσία
+    BG: Βουλγαρία
+    GR: Ελλάδα
+    JP: Ιαπωνία
+    CN: Κίνα
+    BR: Βραζιλία
+    MX: Μεξικό
+    FI: Φινλανδία
+    AU: Αυστραλία
+    NZ: Νέα Ζηλανδία
+    DK: Δανία
+    IE: Ιρλανδία
+    PT: Πορτογαλία
+    KR: Νότια Κορέα
+    TH: Ταϊλάνδη
+    ZA: Νότια Αφρική
+    IN: Ινδία
+    AR: Αργεντινή
+    CL: Χιλή
+    UA: Ουκρανία
+    TR: Τουρκία
+    AT: Αυστρία
+    BE: Βέλγιο
+    CH: Ελβετία
+    CZ: Τσεχία
+    HU: Ουγγαρία
+    RO: Ρουμανία
+  activerecord:
+    attributes:
+      user:
+        password: Κωδικός πρόσβασης
+        password_confirmation: Επιβεβαίωση κωδικού
+    errors:
+      messages:
+        confirmation: δεν ταιριάζει με %{attribute}

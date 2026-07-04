@@ -1,11 +1,9 @@
 require "test_helper"
 
-# The app actively maintains translations for these locales; the remaining
-# available locales are intentional stubs that fall back to English
-# (config.i18n.fallbacks = [:en]). This test guards that the maintained
-# locales stay in full key-parity with the English source.
+# Every available locale ships a full translation; this test guards that they
+# all stay in full key-parity with the English source.
 class LocaleParityTest < ActiveSupport::TestCase
-  MAINTAINED_LOCALES = %w[de bg ja].freeze
+  MAINTAINED_LOCALES = %w[de bg ja fr es el zh ru nl].freeze
 
   EN = YAML.load_file(Rails.root.join("config/locales/en.yml"))["en"]
 

@@ -1,4 +1,695 @@
 nl:
   common:
-    # UI strings fall back to English (config.i18n.fallbacks = [:en]).
-    all: All
+    all: Alle
+    none: "—"
+    save: Opslaan
+    cancel: Annuleren
+    submit: Verzenden
+    edit: Bewerken
+    delete: Verwijderen
+    add: Toevoegen
+    search: Zoeken
+    loading: Laden…
+    showing: "%{from}–%{to} van %{count}"
+    page: Pagina
+    next: Volgende
+    prev: Vorige
+    back: Terug
+    close: Sluiten
+    by: door
+    on: op
+    "yes": "Ja"
+    "no": "Nee"
+    verified: Geverifieerd
+    promoted: Gepromoot
+    sponsored: Gesponsord
+
+  bans:
+    blocked: Je account is momenteel beperkt voor deze actie.
+    notice:
+      title: Je account is beperkt.
+      reason: Reden
+      permanent: Deze beperking is permanent.
+      until: "Van kracht tot %{date}."
+      scope: Beperkte acties
+    capability:
+      catalog: catalogusbewerkingen
+      claims: eigendomsclaims
+      catches: vangsten loggen
+      comments: reacties
+      upvotes: upvotes
+      reports: meldingen
+      favorites: favorieten
+    preset:
+      catalog_only: Alleen catalogus
+      contributions: Alle bijdragen
+      full: Volledig (alleen-lezen account)
+    admin:
+      title: "Bans — %{name}"
+      title_short: Bans
+      new: Ban opleggen
+      reason: Reden
+      preset: Voorinstelling
+      custom: Aangepaste selectie
+      capabilities: Beperkte acties
+      capabilities_help: Een voorinstelling selecteert acties vooraf; vink vakjes aan om aan te passen.
+      expires_at: Verloopt op
+      permanent_hint: Laat leeg voor een permanente ban.
+      issue: Ban opleggen
+      status: Status
+      scope: Omvang
+      active: Actief
+      lifted: Opgeheven
+      expired: Verlopen
+      lift: Ban opheffen
+      manage: Bans beheren
+      created: Ban opgelegd.
+      revoked: Ban opgeheven.
+
+  favorites:
+    add: Favoriet maken
+    remove: Favoriet verwijderen
+    favorited: Favoriet
+
+  footer:
+    explore: Ontdekken
+
+  home:
+    tagline: Elk kunstaas, bewezen door een vangst
+    meta_description: Lurepedia is een door de community samengestelde encyclopedie van kunstaas — vind kunstaas en zie echt bewijs, vangst voor vangst, dat het werkt.
+    hero_title: Elk kunstaas, bewezen door een vangst
+    hero_sub: Een door de community samengestelde encyclopedie van kunstaas. Vind wat werkt — onderbouwd door echte vangsten.
+    browse_lures: Kunstaas bekijken
+    browse_another_way: Op een andere manier bladeren
+    add_a_catch: Vangst toevoegen
+
+  nav:
+    lures: Kunstaas
+    species: Vissoorten
+    catches: Vangsten
+    brands: Merken
+    shops: Winkels
+    leaderboard: Ranglijst
+    menu: Menu
+
+  auth:
+    sign_in: Inloggen
+    sign_up: Account aanmaken
+    sign_out: Uitloggen
+    email: E-mail
+    password: Wachtwoord
+    password_confirmation: Wachtwoord bevestigen
+    name: Naam
+    sign_in_required: Log in om bij te dragen.
+    not_authorized: Daar heb je geen toestemming voor.
+    create_account: Account aanmaken
+    have_account: Heb je al een account?
+    no_account: Nieuw bij Lurepedia?
+    welcome_back: Welkom terug
+    join: Word lid van Lurepedia
+    choose_country: Je land
+    choose_language: Voorkeurstaal
+    continue_with_google: Doorgaan met Google
+
+  units:
+    label: Eenheden
+    auto: Automatisch (op basis van land)
+    imperial: Imperiaal
+    metric: Metrisch
+    length: Lengte
+    weight: Gewicht
+    depth: Diepte
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Zoetwater
+    salt: Zoutwater
+    both: Zoet- & zoutwater
+
+  action:
+    suspending: Zwevend
+    floating: Drijvend
+    sinking: Zinkend
+    none: "—"
+
+  condition:
+    season:
+      label: Seizoen
+      any: Elk seizoen
+      spring: Lente
+      summer: Zomer
+      fall: Herfst
+      winter: Winter
+    clarity:
+      label: Helderheid
+      any: Elke helderheid
+      clear: Helder
+      stained: Licht troebel
+      muddy: Troebel
+    water_body:
+      label: Watertype
+      any: Elk watertype
+      lake: Meer
+      pond: Vijver
+      river: Rivier
+      reservoir: Stuwmeer
+      stream: Beek
+    wind:
+      label: Wind
+      any: Elke wind
+      calm: Windstil
+      light: Licht (5–10 mph)
+      moderate: Matig (10–20 mph)
+      strong: Sterk (20+ mph)
+    time_of_day:
+      label: Tijdstip
+      any: Elk tijdstip
+      dawn: Ochtendschemering
+      morning: Ochtend
+      midday: Middag
+      afternoon: Namiddag
+      dusk: Avondschemering
+      night: Nacht
+    platform:
+      label: Vissen vanaf
+      any: Overal
+      shore: Kant
+      boat: Boot
+      kayak: Kajak
+    retrieve:
+      label: Binnenhaalstijl
+      any: Elke stijl
+      steady: Gelijkmatig
+      stop_and_go: Stop-and-go
+      twitch: Twitchen
+      jerk: Jerken
+      slow_roll: Slow roll
+      burn: Burnen
+      dead_stick: Deadsticken
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Softbait
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Topwater
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Lepel
+    lipless_crankbait: Lipless crankbait
+
+  lure:
+    title: Kunstaas
+    subtitle: Elk kunstaas, bewezen door een vangst
+    search_placeholder: Zoek kunstaas — of filter op type, water, actie…
+    model: Model
+    description: Beschrijving
+    descriptions: Beschrijvingen
+    translations: Vertalingen
+    translations_hint: De beschrijving van het kunstaas in elke taal. Lezers zien hun eigen taal, met Engels als terugval.
+    add: Kunstaas toevoegen
+    add_title: Kunstaas toevoegen
+    type: Type
+    depth: Doeldiepte
+    action: Actie
+    buoyancy: "Drijfvermogen"
+    action_varies: "Varieert"
+    water: Water
+    brand: Merk
+    variants: Varianten
+    variant: Variant
+    tab_caught: Hiermee gevangen
+    tab_variations: "Variaties"
+    tab_buy: Waar te koop
+    tab_history: Geschiedenis
+    proof: Bewijs dat het werkt
+    catches_count:
+      one: "%{count} vangst"
+      other: "%{count} vangsten"
+    no_proof: Nog geen bewijs
+    be_first: Wees de eerste die bewijst dat dit kunstaas werkt
+    be_first_short: Wees de eerste die bewijst dat het werkt →
+    where_to_buy: Waar te koop
+    quick_facts: In het kort
+    action_video: Kunstaas in actie
+    add_video: Actievideo toevoegen
+    watch_video: Video bekijken
+    suggest_edit: Stel een bewerking voor
+    add_catch: Vangst toevoegen
+    proven_for: Bewezen voor
+    no_matches: Geen kunstaas komt overeen met je filters
+    no_matches_sub: Zoek je een specifiek kunstaas? Voeg het toe als het ontbreekt.
+    empty_title: Nog geen kunstaas
+    size: Maat
+    weight: Gewicht
+    color: Kleur
+    colors: Kleuren
+    colors_count:
+      one: "%{count} kleur"
+      other: "%{count} kleuren"
+    build: "Uitvoering"
+    builds: "Uitvoeringen"
+    browse_colors: "Kleuren bekijken"
+    common_attributes: "Gemeenschappelijke kenmerken · hele familie"
+    this_variation: "Deze variatie"
+    default_variation: "Standaardvariatie"
+    uv_glow: "UV-glow"
+    best_for: "Het best voor"
+    manage_variations: "Variaties & uitvoeringen"
+    tab_details: Algemene details
+    add_color: "Kleur toevoegen"
+    add_build: "Uitvoering toevoegen"
+    color_name: "Kleurnaam"
+    availability: "Beschikbare uitvoeringen"
+
+  species:
+    title: Vissoorten
+    subtitle: Het vissenwoordenboek
+    search_placeholder: Zoek vissoorten — gangbare of wetenschappelijke naam…
+    venomous: Giftige stekels
+    venomous_hint: Heeft giftige stekels of angels — voorzichtig hanteren.
+    poisonous: Giftig bij consumptie
+    poisonous_hint: Giftig om te eten.
+    add: Vissoort toevoegen
+    add_title: Vissoort toevoegen
+    scientific_name: Wetenschappelijke naam
+    local_names: Lokale namen
+    translations: Vertalingen
+    translations_hint: De gangbare naam en beschrijving in elke taal. Lezers zien hun eigen taal, met Engels als terugval.
+    local_name: Gangbare naam
+    description: Beschrijving
+    descriptions: Beschrijvingen
+    wikipedia_url: Wikipedia-URL
+    wikipedia: Bekijk op Wikipedia
+    wikipedia_url_invalid: moet een URL van een Wikipedia-artikel zijn (bijv. https://nl.wikipedia.org/wiki/...)
+    habitat: Leefgebied
+    tab_lures: Gevangen met
+    tab_catches: Vangsten
+    tab_leaderboard: Ranglijst
+    tab_history: Geschiedenis
+    proven_lures: Bewezen kunstaas
+    lures_count:
+      one: "%{count} kunstaas"
+      other: "%{count} kunstazen"
+    no_proven_lures: Nog geen bewezen kunstaas
+    be_first_lure: Wees de eerste die bewijst dat een kunstaas deze vis vangt
+    empty_title: Nog geen soorten
+    empty_sub: Voeg als eerste een vissoort toe.
+
+  brand:
+    title: Merken
+    subtitle: De makers
+    search_placeholder: Zoek merken…
+    add: Merk toevoegen
+    add_title: Merk toevoegen
+    founded: Opgericht
+    empty_title: Nog geen merken
+    empty_sub: Voeg als eerste een kunstaasmerk toe.
+    country: Land
+    website: Website
+    website_invalid: Voer een geldige URL in die begint met http:// of https://
+    logo: Logo
+    blurb: Over
+    description: Beschrijving
+    descriptions: Beschrijvingen
+    translations: Vertalingen
+    translations_hint: De beschrijving van het merk in elke taal. Lezers zien hun eigen taal, met Engels als terugval.
+    tab_lures: Kunstaas
+    tab_history: Geschiedenis
+    claim: Claim dit merk
+    claimed: Geclaimd
+    owned_by: Eigendom van
+
+  buy_link:
+    add: Verkooppunt toevoegen
+    empty: Nog geen winkels vermeld — voeg het eerste verkooppunt voor dit kunstaas toe.
+    choose_shop: Winkel
+    choose_shop_placeholder: Zoek winkels…
+    existing_shop: Bestaande winkel
+    new_shop: Nieuwe winkel
+    product_url: Productlink (optioneel)
+    submit: Toevoegen
+    shop_required: Kies een winkel.
+    already_listed: Die winkel staat al vermeld voor dit kunstaas.
+
+  shop:
+    title: Winkels
+    subtitle: Waar te koop
+    search_placeholder: Zoek winkels…
+    add: Winkel toevoegen
+    add_title: Winkel toevoegen
+    ships_to_you: Winkels die bezorgen in %{country}
+    other_shops: Overige winkels
+    none_ship: Nog geen winkels die bezorgen in %{country}. Ken je er een?
+    tab_lures: Kunstaas
+    tab_history: Geschiedenis
+    no_lures: Nog geen kunstaas vermeld bij deze winkel.
+    ships_to: Verzendt naar
+    ships_to_unknown: "—"
+    ships_worldwide: Verzendt wereldwijd
+    ships_to_hint: Laat leeg als de winkel wereldwijd verzendt.
+    add_country: Land toevoegen
+    worldwide: Wereldwijd
+    claim: Claim een winkel
+
+  catch:
+    title: Vangsten
+    subtitle: Recent bewijs van de community
+    add: Vangst toevoegen
+    add_title: Vangst toevoegen
+    on_lure: "met %{lure}"
+    conditions: Omstandigheden
+    location: Locatie
+    length: Lengte
+    weight: Gewicht
+    contributor: Bijdrager
+    comments: Reacties
+    add_comment: Reactie toevoegen
+    upvote: Upvoten
+    upvoted: Geüpvotet
+    remove_upvote: Klik nogmaals om je upvote te verwijderen
+    report: Meld deze vangst
+    related: Meer vangsten van deze soort
+    photos: Foto's
+    pick_brand: Kies een merk
+    pick_lure: Kies een kunstaas
+    pick_variant: Kies een variant
+    color: Kleur
+    pick_color: Kies de kleur waarmee je hebt gevangen
+    pick_build: Kies een uitvoering
+    pick_species: Wat heb je gevangen?
+    log_title: Vangst loggen
+    log_this: Deze vangst loggen
+    modal_step1: "Stap 1 van 2 · Kies de kleur waarmee je hebt gevangen"
+    modal_step2: "Stap 2 van 2 · Kies de uitvoering & diepte"
+    builds_in: "Beschikbare uitvoeringen in"
+    no_builds: Deze kleur heeft nog geen uitvoeringen.
+    variation: Variatie
+    choose_variation: Kies een variatie
+    change: Wijzigen
+    note: Notities
+    submitted: Ingediend ter beoordeling
+    submitted_body: Bedankt! Je vangst staat in de moderatiewachtrij en verschijnt zodra hij is goedgekeurd.
+    add_another: Nog een toevoegen
+
+  search:
+    filters: Filters
+    combine_free: Combineer vrij — resultaten voldoen aan alle filters
+    no_results: Geen resultaten gevonden
+    any_species: Elke soort
+    any_type: Elk type
+    any_brand: Elk merk
+    any_action: Elke actie
+    any_depth: Elke diepte
+    depth_band:
+      shallow: Ondiep (0–1,5 m)
+      mid: Middeldiep (1,5–4,5 m)
+      deep: Diep (4,5 m+)
+    saltwater_only: Alleen zoutwater
+    clear_all: Alles wissen
+    show_n_lures:
+      one: Toon %{count} kunstaas
+      other: Toon %{count} kunstazen
+    other: Overig
+
+  leaderboard:
+    title: Ranglijst
+    subtitle: Beste hengelaars per vissoort
+    all_species: Alle soorten
+    rank_by: Rangschikken op
+    metric_catches: Vangsten
+    metric_upvotes: Upvotes
+    metric_length: Vislengte
+    rank: Positie
+    angler: Hengelaar
+    catches: Vangsten
+    upvotes: Upvotes
+    best_length: Beste lengte
+    specialist: specialist
+    species_count:
+      one: "%{count} soort"
+      other: "%{count} soorten"
+    you: JIJ
+    empty: Nog geen gerangschikte hengelaars
+
+  contribute:
+    suggest_edit: Stel een bewerking voor
+    edit_title: "%{name} bewerken"
+    edit_saved: "Wijzigingen opgeslagen"
+    added: "Toegevoegd aan de catalogus"
+    suggest_title: "Stel een bewerking voor aan %{name}"
+    suggest_note: Je voorstel wordt beoordeeld door een moderator.
+    suggested: Voorstel ingediend
+    suggested_body: Bedankt — een moderator beoordeelt je voorstel.
+    add_photos: Foto's toevoegen
+    moderation_note: Inzendingen worden beoordeeld voordat ze live gaan.
+    direct_note: Als merkeigenaar gaat dit direct live — geen beoordeling nodig.
+    pending_review: Dit item wacht op beoordeling en is nog niet openbaar.
+
+  crop:
+    adjust: "Bijsnijden aanpassen"
+    done: "Klaar"
+    reset: "Bijsnijden herstellen"
+    aspect_free: "Vrij"
+    aspect_square: "Vierkant"
+    bg_label: "Tegelachtergrond"
+    bg_auto: "Auto"
+    bg_pick: "Kies uit de foto"
+    bg_apply_all: "Pas deze achtergrond toe op alle kleuren van dit kunstaas"
+    hint: "Sleep om te verplaatsen; sleep aan de hoeken om het formaat te wijzigen. Het bijsnijden wordt toegepast bij het opslaan."
+    invalid: "De bijsnijrechthoek is ongeldig"
+  claim:
+    title: "%{name} claimen"
+    page_title: Claim een vermelding
+    intro: "Claim deze %{kind} om de vermelding te beheren. Vertel ons wie je bent en we regelen de rest via e-mail."
+    message_label: Wie ben je, en hoe ben je verbonden aan deze vermelding?
+    message_hint: "bijv. Ik ben de oprichter / ik doe de marketing voor het merk…"
+    submit: Claim indienen
+    submitted_title: Claim ontvangen
+    submitted_body: "Bedankt — we beoordelen je claim en komen per e-mail bij je terug."
+    rejected_title: Claim niet goedgekeurd
+    rejected_body: "Deze claim is beoordeeld en niet goedgekeurd. Denk je dat dit een vergissing is, neem dan contact op."
+    verified_title: Eigendom geverifieerd
+    verified_body: Je beheert deze vermelding nu. Je bewerkingen gaan live zonder beoordeling.
+    managed_badge: Beheerd door eigenaar
+
+  report:
+    title: Inhoud melden
+    target: Melding van
+    reason: Reden
+    reason_inaccurate: Onjuist of misleidend
+    reason_fake: Geen echte vangst / vervalste foto
+    reason_wrong: Verkeerde soort of verkeerd kunstaas
+    reason_spam: Spam of reclame
+    reason_offensive: Beledigend of ongepast
+    reason_other: Overig
+    note: Aanvullende details (optioneel)
+    submit: Melding indienen
+    submitted: Melding ingediend
+    submitted_body: Bedankt — moderators beoordelen dit binnenkort.
+
+  moderation:
+    title: Moderatiewachtrij
+    subtitle: Beoordeel bijdragen van de community
+    moderator_view: MODERATORWEERGAVE
+    all: Alle
+    reports: Meldingen
+    catches: Vangsten
+    edits: Bewerkingen
+    catalog: Catalogus
+    claims: Claims
+    awaiting: "%{count} wachten op beoordeling"
+    approve: Goedkeuren
+    reject: Afwijzen
+    undo: Ongedaan maken
+    approved: Goedgekeurd
+    rejected: Afgewezen
+    needs_admin: Admin vereist
+    own_submission: Door jou ingediend
+    submitted_by: Ingediend door
+    view_details: Details bekijken
+    kind:
+      catch: Vangst
+      edit: Bewerking
+      catalog: Catalogus
+      claim: Claim
+      report: Melding
+
+  admin:
+    title: Adminconsole
+    overview: Overzicht
+    people: Mensen & rollen
+    activity: Activiteitenlog
+    pending: Wacht op beoordeling
+    catches_logged: Gelogde vangsten
+    contributors: Bijdragers
+    lures_catalogued: Gecatalogiseerd kunstaas
+    role: Rol
+    member: Lid
+    moderator: Moderator
+    admin: Admin
+    joined: Lid geworden
+    you: JIJ
+
+  settings:
+    title: Instellingen
+    tab_profile: Profiel
+    tab_preferences: Voorkeuren
+    profile: Profiel
+    country: Land
+    language: Taal
+    time_zone: Tijdzone
+    time_zone_auto: "Automatisch (UTC)"
+    units: Eenheden
+    notifications: Notificaties
+    saved: Instellingen opgeslagen
+    public_profile: Je openbare profiel
+    copy: Kopiëren
+    copied: Gekopieerd!
+    username: Gebruikersnaam
+    username_hint: bijv. casey-rivera
+    username_help: Optioneel. Kleine letters, cijfers, koppeltekens. Wordt gebruikt in je profiel-URL.
+    avatar: Profielfoto
+    avatar_help: PNG, JPEG, WEBP of GIF. Maximaal 5 MB.
+    choose_image: Afbeelding kiezen
+    no_file: Geen afbeelding geselecteerd
+    remove_avatar: Huidige foto verwijderen
+    avatar_too_large: is te groot (maximaal 5 MB)
+    avatar_invalid_type: moet een PNG-, JPEG-, WEBP- of GIF-afbeelding zijn
+
+  dashboard:
+    my_catches: Mijn vangsten
+    my_profile: Mijn profiel
+    total_upvotes: Totaal ontvangen upvotes
+    no_catches: Je hebt nog geen vangsten gelogd.
+
+  profile:
+    catches: Vangsten
+    tab_catches: Vangsten
+    tab_favorites: Favorieten
+    tab_contributions: Bijdragen
+    contributions: Bijdragen
+    no_contributions: Nog geen bijdragen.
+    view_picture: Profielfoto bekijken
+    change_picture: Profielfoto uploaden/wijzigen
+    total_upvotes: Totaal aantal upvotes
+    member_since: Lid sinds
+    favorite_species: Favoriete vissoorten
+    favorite_lures: Favoriet kunstaas
+    favorite_shops: Favoriete winkels
+    no_favorites: Nog geen favorieten.
+    no_catches: Nog geen vangsten.
+
+  provenance:
+    title: Geschiedenis & eigendom
+    edits:
+      one: "%{count} bewerking"
+      other: "%{count} bewerkingen"
+    added_by: Toegevoegd door
+    owned_by: Eigendom van
+    originally_added: "Oorspronkelijk toegevoegd door %{name} · %{date}"
+    edit_history: Bewerkingsgeschiedenis
+    created: Dit item aangemaakt
+    edited: bewerkt
+    col_change: Wijziging
+    col_contributor: Bijdrager
+    col_date: Datum
+
+  revision:
+    title: Revisie
+    no_changes: Voor deze bewerking zijn geen veldwijzigingen vastgelegd.
+    removed: Verwijderd
+    added: Toegevoegd
+
+  species_names:
+    largemouth_bass:
+      common: Forelbaars
+      habitat: Warme, begroeide meren en vijvers; hinderlaagjager rond structuur.
+    smallmouth_bass:
+      common: Kleinbekbaars
+      habitat: Koele, heldere rivieren en rotsachtige meren; sterke vechter.
+    northern_pike:
+      common: Snoek
+      habitat: Kruidrijke baaien en koele meren; agressieve hinderlaagjager.
+    walleye:
+      common: Walleye
+      habitat: Diepe, koele meren en rivieren; aast bij weinig licht.
+    yellow_perch:
+      common: Gele baars
+      habitat: Scholenvis van meren en vijvers; aast dicht bij de bodem.
+    muskellunge:
+      common: Muskellunge
+      habitat: Grote heldere meren en rivieren; toppredator van het zoete water.
+    bluegill:
+      common: Bluegill
+      habitat: Warme vijvers en ondiepe oevers van meren; nestelt in kolonies.
+    rainbow_trout:
+      common: Regenboogforel
+      habitat: Koude beken, rivieren en meren; gewilde sportvis.
+    mahi_mahi:
+      common: Goudmakreel
+      habitat: Warme oppervlaktewateren op open zee; snelle pelagische roofvis.
+    striped_bass:
+      common: Gestreepte zeebaars
+      habitat: Kustbranding, estuaria en grote rivieren; trekvis.
+    bonefish:
+      common: Bonefish
+      habitat: Tropische ondiepe flats; schuw en snel.
+    chinook_salmon:
+      common: Koningszalm
+      habitat: Koude rivieren en meren rond de Stille Oceaan; krachtige trekvis.
+  country:
+    US: Verenigde Staten
+    CA: Canada
+    GB: Verenigd Koninkrijk
+    DE: Duitsland
+    FR: Frankrijk
+    ES: Spanje
+    IT: Italië
+    NL: Nederland
+    SE: Zweden
+    "NO": Noorwegen
+    PL: Polen
+    RU: Rusland
+    BG: Bulgarije
+    GR: Griekenland
+    JP: Japan
+    CN: China
+    BR: Brazilië
+    MX: Mexico
+    FI: Finland
+    AU: Australië
+    NZ: Nieuw-Zeeland
+    DK: Denemarken
+    IE: Ierland
+    PT: Portugal
+    KR: Zuid-Korea
+    TH: Thailand
+    ZA: Zuid-Afrika
+    IN: India
+    AR: Argentinië
+    CL: Chili
+    UA: Oekraïne
+    TR: Turkije
+    AT: Oostenrijk
+    BE: België
+    CH: Zwitserland
+    CZ: Tsjechië
+    HU: Hongarije
+    RO: Roemenië
+  activerecord:
+    attributes:
+      user:
+        password: Wachtwoord
+        password_confirmation: Wachtwoordbevestiging
+    errors:
+      messages:
+        confirmation: komt niet overeen met %{attribute}
