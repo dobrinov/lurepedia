@@ -142,14 +142,32 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "claim flow: create then verify" do
+  test "claim flow: submit then admin approves" do
     sign_in_as(@member)
-    post claims_path(locale: :en), params: { claim: { type: "brand", email: "owner@megabass.com" }, slug: @brand.slug }
+    assert_difference -> { ModerationItem.where(kind: :claim).count }, 1 do
+      post claims_path(locale: :en), params: { claim: { type: "brand", email: "owner@megabass.com", message: "I run the brand." }, slug: @brand.slug }
+    end
     claim = @brand.reload.claim
     assert claim.present?
-    post verify_claim_path(claim, locale: :en)
+    assert claim.status_pending?
+    assert_not @brand.claimed?
+
+    item = ModerationItem.find_by!(subject: claim, kind: :claim)
+    item.approve!(@admin)
     assert claim.reload.status_verified?
     assert @brand.reload.claimed?
+  end
+
+  test "claim without a message is rejected and only one claim per listing" do
+    sign_in_as(@member)
+    post claims_path(locale: :en), params: { claim: { type: "brand", email: "owner@megabass.com", message: "" }, slug: @brand.slug }
+    assert_response :unprocessable_entity
+    assert_nil @brand.reload.claim
+
+    Claim.create!(claimable: @brand, user: @member, email: "o@x.com", message: "It's mine.")
+    assert_no_difference -> { Claim.count } do
+      post claims_path(locale: :en), params: { claim: { type: "brand", email: "someone@else.com", message: "Me too." }, slug: @brand.slug }
+    end
   end
 
   test "moderation queue requires moderator" do
@@ -168,7 +186,7 @@ class CommunityScreensTest < ActionDispatch::IntegrationTest
 
   test "moderator can approve a catch but not a claim" do
     catch_item = ModerationItem.create!(subject: @catch, kind: :catch, submitter: @member, mod_actionable: true)
-    claim = Claim.create!(claimable: @brand, user: @member, email: "o@x.com")
+    claim = Claim.create!(claimable: @brand, user: @member, email: "o@x.com", message: "I own this brand.")
     claim_item = ModerationItem.create!(subject: claim, kind: :claim, submitter: @member, mod_actionable: false)
 
     sign_in_as(@moderator)

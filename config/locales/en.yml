@@ -399,14 +399,14 @@ en:
     modal_step1: "Step 1 of 2 · Choose the color you caught on"
     modal_step2: "Step 2 of 2 · Choose the build & depth"
     builds_in: "Builds available in"
-    logged: Catch logged
-    removed: Catch removed
     no_builds: This color has no builds yet.
     variation: Variation
     choose_variation: Choose a variation
     change: Change
     note: Notes
     submitted: Submitted for review
+    logged: Catch logged
+    removed: Catch removed
     submitted_body: Thanks! Your catch is in the moderation queue and will appear once approved.
     add_another: Add another
 
@@ -478,18 +478,18 @@ en:
     invalid: "The crop rectangle is invalid"
   claim:
     title: "Claim %{name}"
-    intro: "Claim this %{kind} to manage its listing. We verify ownership via a DNS TXT record on your domain."
-    step_intro: Get started
-    step_dns: Add DNS record
-    step_verify: Verify
-    domain: Your domain
-    txt_record: Add this TXT record
-    copy: Copy
-    copied: Copied!
-    verify: Verify ownership
+    page_title: Claim a listing
+    intro: "Claim this %{kind} to manage its listing. Tell us who you are and we'll take it from there over email."
+    message_label: Who are you, and how are you related to this listing?
+    message_hint: "e.g. I'm the founder / I handle marketing for the brand…"
+    submit: Submit claim
+    submitted_title: Claim received
+    submitted_body: "Thanks — we'll review your claim and get back to you by email."
+    rejected_title: Claim not approved
+    rejected_body: "This claim was reviewed and not approved. If you think that's a mistake, get in touch."
     verified_title: Ownership verified
-    verified_body: You now manage this listing. Changes still go through moderation.
-    pending: Verification pending
+    verified_body: You now manage this listing. Your edits go live without review.
+    managed_badge: Managed by owner
 
   report:
     title: Report content

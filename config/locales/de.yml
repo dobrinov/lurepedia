@@ -349,14 +349,14 @@ de:
     modal_step1: "Schritt 1 von 2 · Wähle die Farbe, mit der du gefangen hast"
     modal_step2: "Schritt 2 von 2 · Wähle Bauform & Tiefe"
     builds_in: "Verfügbare Bauformen in"
-    logged: Fang eingetragen
-    removed: Fang entfernt
     no_builds: "Diese Farbe hat noch keine Bauformen."
     variation: "Variante"
     choose_variation: "Variante wählen"
     change: "Ändern"
     note: Notizen
     submitted: Zur Prüfung eingereicht
+    logged: Fang eingetragen
+    removed: Fang entfernt
     submitted_body: Danke! Dein Fang ist in der Moderationswarteschlange und erscheint nach Freigabe.
     add_another: Weiteren hinzufügen
 
@@ -428,18 +428,18 @@ de:
     invalid: "Der Zuschnittsbereich ist ungültig"
   claim:
     title: "%{name} beanspruchen"
-    intro: "Beanspruche diesen %{kind}, um den Eintrag zu verwalten. Wir bestätigen den Besitz über einen DNS-TXT-Eintrag."
-    step_intro: Loslegen
-    step_dns: DNS-Eintrag hinzufügen
-    step_verify: Bestätigen
-    domain: Deine Domain
-    txt_record: Füge diesen TXT-Eintrag hinzu
-    copy: Kopieren
-    copied: Kopiert!
-    verify: Besitz bestätigen
+    page_title: Eintrag beanspruchen
+    intro: "Beanspruche diesen %{kind}, um den Eintrag zu verwalten. Erzähl uns, wer du bist — den Rest klären wir per E-Mail."
+    message_label: Wer bist du und in welcher Beziehung stehst du zu diesem Eintrag?
+    message_hint: "z. B. Ich bin der Gründer / ich mache das Marketing der Marke…"
+    submit: Anfrage senden
+    submitted_title: Anfrage erhalten
+    submitted_body: "Danke — wir prüfen deine Anfrage und melden uns per E-Mail."
+    rejected_title: Anfrage abgelehnt
+    rejected_body: "Die Anfrage wurde geprüft und abgelehnt. Wenn das ein Irrtum ist, melde dich bei uns."
     verified_title: Besitz bestätigt
-    verified_body: Du verwaltest diesen Eintrag jetzt. Änderungen werden weiterhin moderiert.
-    pending: Bestätigung ausstehend
+    verified_body: Du verwaltest diesen Eintrag jetzt. Deine Änderungen gehen ohne Prüfung live.
+    managed_badge: Vom Inhaber verwaltet
 
   report:
     title: Inhalt melden

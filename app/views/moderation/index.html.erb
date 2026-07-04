@@ -29,6 +29,12 @@
           </div>
           <strong style="font-size:15px"><%= moderation_title(item) %></strong>
           <div class="muted" style="font-size:12.5px"><%= t("moderation.submitted_by") %> <%= item.submitter&.name || "—" %> · <%= time_ago_in_words(item.created_at) %></div>
+          <% if item.kind_claim? && item.subject.is_a?(Claim) %>
+            <div class="card card-pad stack" style="gap:4px;font-size:13px">
+              <div><%= mail_to item.subject.email, item.subject.email %></div>
+              <% if item.subject.message.present? %><p class="muted" style="white-space:pre-line;margin:0"><%= item.subject.message %></p><% end %>
+            </div>
+          <% end %>
           <% if item.revision&.edit? %>
             <div style="margin-top:8px;width:100%"><%= render "shared/diff_detail", revision: item.revision %></div>
           <% end %>

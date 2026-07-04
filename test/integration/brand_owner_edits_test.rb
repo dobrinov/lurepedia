@@ -12,7 +12,7 @@ class BrandOwnerEditsTest < ActionDispatch::IntegrationTest
     @variant = @lure.variants.create!(name: "GG Bass")
     @build = @lure.builds.create!(name: "Standard")
 
-    @brand.create_claim!(user: @owner, email: @owner.email_address).verify!
+    @brand.create_claim!(user: @owner, email: @owner.email_address, message: "I founded Megabass.").approve!
   end
 
   test "verified brand owner edits a lure directly without moderation" do

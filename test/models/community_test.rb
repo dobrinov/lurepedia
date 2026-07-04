@@ -39,13 +39,29 @@ class CommunityTest < ActiveSupport::TestCase
     assert_equal 1, @catch.reload.comments_count
   end
 
-  test "claim generates a verification token and verifies" do
-    claim = Claim.create!(claimable: @brand, user: @user, email: "owner@megabass.com")
-    assert_match(/\Alurepedia-verify=lp_brand_megabass_[0-9a-f]{6}\z/, claim.verification_token)
+  test "claim requires an email and a message and is decided by moderation" do
+    claim = Claim.new(claimable: @brand, user: @user, email: "owner@megabass.com")
+    assert_not claim.valid?, "a claim without a message is invalid"
+
+    claim.message = "I'm the founder of Megabass."
+    claim.save!
     assert claim.status_pending?
-    claim.verify!
-    assert claim.status_verified?
+    assert_not @brand.reload.claimed?
+
+    admin = User.create!(name: "Admin", email_address: "claim-admin@example.com", password: "secret123", role: :admin)
+    item = ModerationItem.create!(subject: claim, kind: :claim, submitter: @user, mod_actionable: false)
+
+    item.approve!(admin)
+    assert claim.reload.status_verified?
     assert @brand.reload.claimed?
+
+    item.undo!
+    assert claim.reload.status_pending?
+    assert_not @brand.reload.claimed?
+
+    item.reject!(admin)
+    assert claim.reload.status_rejected?
+    assert_not @brand.reload.claimed?
   end
 
   test "report polymorphic with reason enum" do

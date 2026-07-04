@@ -508,13 +508,6 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .crop-stage.is-sampling { cursor: crosshair; }
 .crop-stage.is-sampling .crop-box { pointer-events: none; }
 
-/* Stepper ----------------------------------------------------------------- */
-.stepper { display: flex; gap: 8px; margin-bottom: 24px; }
-.step { flex: 1; padding: 12px; border-radius: var(--r-md); border: 1px solid var(--line); font-size: 13px; }
-.step.active { border-color: var(--ink); background: var(--surface-1); font-weight: 600; }
-.step.done { border-color: var(--ok-border); background: var(--ok-bg); color: var(--ok); }
-.txt-record { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: var(--ink); color: #fff; padding: 12px 14px; border-radius: var(--r-md); word-break: break-all; }
-
 /* Design system (styleguide) --------------------------------------------- */
 .ds-section { margin-bottom: 40px; }
 .ds-section > h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-bottom: 8px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }

@@ -339,12 +339,16 @@ seed_revision(lures["Vision 110"], admin, "Corrected target depth", 30.days.ago)
 # ---------------------------------------------------------------- Claims
 # Verified ownership claims — these are what make a brand show as "claimed".
 { "Megabass" => "team@megabass.co.jp", "Rapala" => "owner@rapala.com", "Berkley" => "owner@berkley.com" }.each do |brand_name, email|
-  claim = Claim.find_or_create_by!(claimable: brands[brand_name], user: admin) { |c| c.email = email }
-  claim.verify! unless claim.status_verified?
+  claim = Claim.find_or_create_by!(claimable: brands[brand_name], user: admin) do |c|
+    c.email = email
+    c.message = "I work at #{brand_name} and manage our online presence."
+  end
+  claim.approve! unless claim.status_verified?
 end
 
 Claim.find_or_create_by!(claimable: brands["Strike King"], user: members[0]) do |c|
   c.email = "owner@strikeking.com"
+  c.message = "I'm the founder of Strike King and would like to manage our listing."
   c.status = :pending
 end
 

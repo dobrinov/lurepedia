@@ -28,6 +28,7 @@ class ModerationItem < ApplicationRecord
   def approve!(reviewer)
     transaction do
       apply_edit!(:new) if edits_a_record?
+      subject.approve! if decides_a_claim?
       update!(status: :approved, reviewer: reviewer, reviewed_at: Time.current)
     end
   end
@@ -35,6 +36,7 @@ class ModerationItem < ApplicationRecord
   def reject!(reviewer)
     transaction do
       apply_edit!(:old) if edits_a_record? && status_approved?
+      subject.reject! if decides_a_claim?
       update!(status: :rejected, reviewer: reviewer, reviewed_at: Time.current)
     end
   end
@@ -42,6 +44,7 @@ class ModerationItem < ApplicationRecord
   def undo!
     transaction do
       apply_edit!(:old) if edits_a_record? && status_approved?
+      subject.reopen! if decides_a_claim?
       update!(status: :pending, reviewer: nil, reviewed_at: nil)
     end
   end
@@ -49,9 +52,15 @@ class ModerationItem < ApplicationRecord
   private
 
   # Only edit suggestions carry a changeset to apply; catches, new catalog
-  # entries, claims and reports are acted on live and just flip status.
+  # entries and reports are acted on live and just flip status.
   def edits_a_record?
     kind_edit? && revision&.changeset.present?
+  end
+
+  # Ownership claims are decided in the queue: the item's verdict is mirrored
+  # onto the claim itself, which is what confers (or revokes) owner rights.
+  def decides_a_claim?
+    kind_claim? && subject.is_a?(Claim)
   end
 
   # Writes one side of the changeset (:new to apply, :old to roll back) onto the

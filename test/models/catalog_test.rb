@@ -143,10 +143,10 @@ class CatalogTest < ActiveSupport::TestCase
     owner = users(:two)
     assert_not @brand.managed_by?(owner), "unclaimed brand has no manager"
 
-    claim = @brand.create_claim!(user: owner, email: owner.email_address)
+    claim = @brand.create_claim!(user: owner, email: owner.email_address, message: "I own this brand.")
     assert_not @brand.reload.managed_by?(owner), "a pending claim does not confer management"
 
-    claim.verify!
+    claim.approve!
     assert @brand.reload.managed_by?(owner)
     assert_not @brand.managed_by?(@user), "a different user does not manage the brand"
     assert_not @brand.managed_by?(nil)

@@ -349,14 +349,14 @@ ja:
     modal_step1: "ステップ 1/2 · 釣れたカラーを選択"
     modal_step2: "ステップ 2/2 · ビルドと深度を選択"
     builds_in: "利用可能なビルド:"
-    logged: 釣果を記録しました
-    removed: 釣果を削除しました
     no_builds: "このカラーにはまだビルドがありません。"
     variation: "バリエーション"
     choose_variation: "バリエーションを選択"
     change: "変更"
     note: メモ
     submitted: 審査に送信しました
+    logged: 釣果を記録しました
+    removed: 釣果を削除しました
     submitted_body: ありがとうございます！釣果は審査待ちで、承認後に表示されます。
     add_another: 続けて追加
 
@@ -428,18 +428,18 @@ ja:
     invalid: "切り抜き範囲が無効です"
   claim:
     title: "%{name} を申請"
-    intro: "この%{kind}を申請して掲載を管理できます。DNS TXTレコードで所有権を確認します。"
-    step_intro: はじめる
-    step_dns: DNSレコードを追加
-    step_verify: 確認
-    domain: あなたのドメイン
-    txt_record: このTXTレコードを追加
-    copy: コピー
-    copied: コピーしました！
-    verify: 所有権を確認
+    page_title: 掲載の所有権を申請
+    intro: "この%{kind}を申請して掲載を管理できます。あなたがどなたかを教えてください。続きはメールでご連絡します。"
+    message_label: あなたはどなたですか？この掲載とのご関係を教えてください
+    message_hint: "例：創業者です / ブランドのマーケティング担当です…"
+    submit: 申請を送信
+    submitted_title: 申請を受け付けました
+    submitted_body: "ありがとうございます。内容を確認のうえ、メールでご連絡します。"
+    rejected_title: 申請は承認されませんでした
+    rejected_body: "審査の結果、申請は承認されませんでした。誤りだと思われる場合はご連絡ください。"
     verified_title: 所有権を確認しました
-    verified_body: この掲載を管理できるようになりました。変更は引き続き審査されます。
-    pending: 確認待ち
+    verified_body: この掲載を管理できるようになりました。編集は審査なしで公開されます。
+    managed_badge: オーナーが管理
 
   report:
     title: コンテンツを報告

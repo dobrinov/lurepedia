@@ -65,9 +65,7 @@ Rails.application.routes.draw do
     get "design-system", to: "design_system#index", as: :design_system
 
     # Contribution / community
-    resources :claims, only: %i[new create] do
-      member { post :verify }
-    end
+    resources :claims, only: %i[new create]
     resources :reports, only: :create
     resources :favorites, only: :create do
       delete :destroy, on: :collection

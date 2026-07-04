@@ -11,32 +11,34 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    @claimable = find_claimable(params.dig(:claim, :type))
-    @claim = @claimable.claim || @claimable.build_claim
-    @claim.assign_attributes(user: current_user, email: params.dig(:claim, :email))
-    @claim.save!
-    redirect_to new_claim_path(type: claim_type(@claimable), slug: @claimable.slug), notice: t("claim.step_dns")
-  end
+    @type = params.dig(:claim, :type)
+    @claimable = find_claimable(@type)
 
-  def verify
-    @claim = Claim.find(params[:id])
-    @claim.verify!
-    ModerationItem.find_or_create_by!(subject: @claim, kind: :claim) do |m|
-      m.submitter = current_user
-      m.mod_actionable = false
+    # One claim per listing: once somebody has asked, the page just shows that
+    # claim's status. A rejected claim is re-opened from the moderation queue.
+    if @claimable.claim
+      redirect_to new_claim_path(type: @type, slug: @claimable.slug) and return
     end
-    redirect_to new_claim_path(type: @claim.kind, slug: @claim.claimable.slug), notice: t("claim.verified_title")
+
+    @claim = @claimable.build_claim(user: current_user, **claim_params)
+    if @claim.save
+      ModerationItem.create!(subject: @claim, kind: :claim, submitter: current_user, mod_actionable: false)
+      redirect_to new_claim_path(type: @type, slug: @claimable.slug), notice: t("claim.submitted_title")
+    else
+      flash.now[:alert] = @claim.errors.full_messages.to_sentence
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
+
+  def claim_params
+    params.require(:claim).permit(:email, :message).to_h.symbolize_keys
+  end
 
   def find_claimable(type = params[:type])
     return nil if type.blank? || params[:slug].blank?
 
     CLAIMABLES.fetch(type).find_by(slug: params[:slug])
-  end
-
-  def claim_type(claimable)
-    claimable.class.name.downcase
   end
 end

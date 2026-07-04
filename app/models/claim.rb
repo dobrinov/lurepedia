@@ -4,31 +4,25 @@ class Claim < ApplicationRecord
 
   enum :status, { pending: 0, verified: 1, rejected: 2 }, prefix: true
 
-  before_validation :generate_token, on: :create
-  validates :verification_token, presence: true
+  validates :email, presence: true
+  validates :message, presence: true
 
   def kind
     claimable_type.to_s.downcase
   end
 
-  def txt_record
-    verification_token
+  # Ownership is vetted by hand: the claimant leaves an email and explains who
+  # they are, and an admin settles it over email before deciding in the
+  # moderation queue. The claimable's #claimed? derives from this status.
+  def approve!
+    update!(status: :verified)
   end
 
-  # Simulated DNS-TXT verification: in production this would query DNS for the
-  # token. Here we trust the stored token and mark ownership verified. The
-  # claimable's #claimed? derives from this status — nothing else to update.
-  def verify!
-    update!(status: :verified, dns_verified_at: Time.current)
+  def reject!
+    update!(status: :rejected)
   end
 
-  private
-
-  def generate_token
-    return if verification_token.present?
-
-    hex = SecureRandom.hex(3)
-    slug = claimable.try(:slug) || claimable_id
-    self.verification_token = "lurepedia-verify=lp_#{kind}_#{slug}_#{hex}"
+  def reopen!
+    update!(status: :pending)
   end
 end
