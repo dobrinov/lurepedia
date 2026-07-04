@@ -416,6 +416,8 @@ ja:
     reset: "切り抜きをリセット"
     aspect_free: "フリー"
     aspect_square: "正方形"
+    bg_label: "タイルの背景"
+    bg_auto: "自動"
     hint: "ドラッグで移動、四隅をドラッグでサイズ変更。保存時に適用されます。"
     invalid: "切り抜き範囲が無効です"
   claim:

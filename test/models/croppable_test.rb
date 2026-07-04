@@ -51,6 +51,28 @@ class CroppableTest < ActiveSupport::TestCase
     assert_equal "30x20+1+2", @variant.reload.photo_crop_geometry
   end
 
+  test "manual background color overrides the measured one" do
+    @variant.photo.blob.update!(metadata: @variant.photo.blob.metadata.merge("background_color" => "#111111"))
+    assert_equal "#111111", @variant.photo_background_color
+
+    @variant.update!(photo_bg_color: "#ff8800")
+    assert_equal "#ff8800", @variant.photo_background_color
+  end
+
+  test "background color must be a hex color" do
+    @variant.photo_bg_color = "red"
+    assert_not @variant.valid?
+
+    @variant.photo_bg_color = "#ff8800"
+    assert @variant.valid?
+  end
+
+  test "replacing the photo clears the background override" do
+    @variant.update!(photo_bg_color: "#ff8800")
+    @variant.update!(photo: photo_blob)
+    assert_nil @variant.reload.photo_bg_color
+  end
+
   test "species is croppable too" do
     species = Species.create!(key: "largemouth_bass")
     species.update!(photo_crop_x: 0, photo_crop_y: 0, photo_crop_w: 40, photo_crop_h: 25)

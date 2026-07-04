@@ -1,7 +1,7 @@
 <%# locals: lure %>
 <%= link_to lure_path(lure), class: "card lure-card" do %>
   <% default_variant = lure.primary_variant %>
-  <div class="ph ph-lure ph-contain" style="<%= photo_frame_style(default_variant&.photo) %>">
+  <div class="ph ph-lure ph-contain" style="<%= photo_frame_style(default_variant) %>">
     <% if default_variant&.photo&.attached? %>
       <%= image_tag cropped_photo(default_variant, resize_to_limit: [ 560, 560 ]), alt: lure.title, loading: "lazy" %>
     <% else %>

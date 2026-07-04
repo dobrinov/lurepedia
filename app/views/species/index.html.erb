@@ -15,7 +15,7 @@
     <div class="grid-cards">
       <% @species.each do |sp| %>
         <%= link_to species_path(sp), class: "card" do %>
-          <div class="ph ph-lure ph-contain" style="<%= photo_frame_style(sp.photo) %>">
+          <div class="ph ph-lure ph-contain" style="<%= photo_frame_style(sp) %>">
             <% if sp.photo.attached? %>
               <%= image_tag cropped_photo(sp, resize_to_limit: [ 560, 560 ]), alt: sp.common_name, loading: "lazy" %>
             <% else %>

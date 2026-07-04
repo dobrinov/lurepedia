@@ -75,13 +75,15 @@ module ApplicationHelper
     end
   end
 
-  # The photo's border color as measured by TileBackgroundAnalyzer, or nil
-  # when the photo is missing or not yet analyzed. Takes an attachment or a
-  # bare blob.
-  def photo_background_color(attachment)
-    return if attachment.respond_to?(:attached?) && !attachment.attached?
+  # The color to paint behind a letterboxed photo. Takes a Croppable record
+  # (manual photo_bg_color override first, then the color measured by
+  # TileBackgroundAnalyzer) or an attachment/bare blob (measured color only —
+  # e.g. a diff preview of a proposed upload). Nil when nothing is known.
+  def photo_background_color(source)
+    return source.photo_background_color if source.respond_to?(:photo_background_color)
+    return if source.respond_to?(:attached?) && !source.attached?
 
-    (attachment.try(:blob) || attachment)&.metadata&.[]("background_color")
+    (source.try(:blob) || source)&.metadata&.[]("background_color")
   end
 
   # Inline style painting a contain-fit tile with the photo's own border

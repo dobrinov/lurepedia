@@ -416,6 +416,8 @@ de:
     reset: "Zuschnitt zurücksetzen"
     aspect_free: "Frei"
     aspect_square: "Quadrat"
+    bg_label: "Kachel-Hintergrund"
+    bg_auto: "Auto"
     hint: "Ziehen zum Verschieben; an den Ecken ziehen zum Ändern der Größe. Der Zuschnitt wird beim Speichern übernommen."
     invalid: "Der Zuschnittsbereich ist ungültig"
   claim:

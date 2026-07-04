@@ -23,7 +23,7 @@
 
   <!-- Hero: preview image + color selector -->
   <div class="lure-hero">
-    <div class="lure-stage" data-variant-stage-target="stage" style="<%= photo_frame_style(dv&.photo) %>">
+    <div class="lure-stage" data-variant-stage-target="stage" style="<%= photo_frame_style(dv) %>">
       <span class="lure-stage-chip">
         <span data-variant-stage-target="chipName"><%= dv&.name %></span>
         <span class="uv-badge" data-variant-stage-target="chipUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>
@@ -62,7 +62,7 @@
                         data-name="<%= v.name %>"
                         data-uv="<%= v.uv_glow %>"
                         <% if v.photo.attached? %>data-photo-url="<%= url_for(cropped_photo(v, resize_to_limit: [ 760, 760 ])) %>"<% end %>
-                        <% if (bg = photo_background_color(v.photo)) %>data-photo-bg="<%= bg %>"<% end %>>
+                        <% if (bg = photo_background_color(v)) %>data-photo-bg="<%= bg %>"<% end %>>
                   <% if v.photo.attached? %>
                     <%= image_tag cropped_photo(v, resize_to_fill: [ 120, 120 ]), alt: v.name %>
                   <% else %>

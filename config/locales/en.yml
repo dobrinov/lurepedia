@@ -466,6 +466,8 @@ en:
     reset: "Reset crop"
     aspect_free: "Free"
     aspect_square: "Square"
+    bg_label: "Tile background"
+    bg_auto: "Auto"
     hint: "Drag to reposition; drag the corners to resize. The crop is applied when you save."
     invalid: "The crop rectangle is invalid"
   claim:

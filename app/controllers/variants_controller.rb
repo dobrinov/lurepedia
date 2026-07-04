@@ -51,6 +51,6 @@ class VariantsController < ApplicationController
 
   def variant_params
     params.require(:variant).permit(:name, :best_for, :uv_glow, :photo,
-                                    :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h)
+                                    :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h, :photo_bg_color)
   end
 end
