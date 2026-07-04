@@ -8,6 +8,7 @@ namespace :storage do
     total = scope.count
     migrated = 0
     missing = []
+    corrupt = []
 
     scope.find_each do |blob|
       unless local.exist?(blob.key)
@@ -15,19 +16,25 @@ namespace :storage do
         next
       end
 
-      local.open(blob.key, checksum: blob.checksum) do |file|
-        tigris.upload(blob.key, file,
-          checksum: blob.checksum,
-          filename: blob.filename,
-          content_type: blob.content_type,
-          disposition: :inline)
+      begin
+        local.open(blob.key, checksum: blob.checksum) do |file|
+          tigris.upload(blob.key, file,
+            checksum: blob.checksum,
+            filename: blob.filename,
+            content_type: blob.content_type,
+            disposition: :inline)
+        end
+      rescue ActiveStorage::IntegrityError
+        corrupt << blob
+        next
       end
       blob.update_columns(service_name: "tigris")
       migrated += 1
       puts "#{migrated}/#{total} #{blob.key} (#{blob.filename})"
     end
 
-    puts "Done: #{migrated} migrated, #{missing.size} skipped (no file on disk)."
+    puts "Done: #{migrated} migrated, #{corrupt.size} corrupt, #{missing.size} skipped (no file on disk)."
+    corrupt.each { |blob| puts "  CORRUPT blob #{blob.id} #{blob.key} (#{blob.filename})" }
     missing.each { |blob| puts "  MISSING blob #{blob.id} #{blob.key} (#{blob.filename})" }
     puts "Remaining on local service: #{ActiveStorage::Blob.where(service_name: 'local').count}"
   end
