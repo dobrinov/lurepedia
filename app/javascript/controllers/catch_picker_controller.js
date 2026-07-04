@@ -5,11 +5,13 @@ import { Controller } from "@hotwired/stimulus"
 //   brand  scopes the lure combobox to that brand's lures
 //   lure   loads its colors (variants) and builds from the /variation-options JSON
 //
-// Color and build are independent axes of the chosen lure — a catch records a
-// color plus an optional build. Brand and lure are async comboboxes (large
-// lists); color and build are native selects (a handful per lure). Any level can
-// be preselected from query params — the matching *-value attributes are restored
-// once the data loads.
+// A catch records a color plus an optional build. Picking a color narrows the
+// build select to that color's confirmed builds (open world: a color with no
+// confirmed availability offers every build); colors are never narrowed by
+// build. Brand and lure are async comboboxes (large lists); color and build are
+// native selects (a handful per lure). Any level can be preselected from query
+// params — the matching *-value attributes are restored once the data loads,
+// color before builds so the filter can't drop a preselected build.
 export default class extends Controller {
   static targets = [ "lureCombobox", "colorSelect", "buildSelect" ]
   static values = {
@@ -77,11 +79,22 @@ export default class extends Controller {
     this.selectedVariantValue = ""
   }
 
-  // Every build of the lure is offered, independent of the chosen color.
+  // Color picked: re-filter the build select, keeping the current build when
+  // it survives the filter.
+  colorChanged() {
+    this.populateBuilds()
+  }
+
+  // Builds offered for the chosen color: its confirmed subset when known,
+  // otherwise — open world — every build of the lure.
   populateBuilds() {
     const sel = this.buildSelectTarget
+    const previous = sel.value
     sel.innerHTML = ""
-    const builds = this.variations?.builds || []
+    const all = this.variations?.builds || []
+    const colorId = this.colorSelectTarget.value
+    const color = (this.variations?.colors || []).find((c) => String(c.id) === colorId)
+    const builds = color?.build_ids ? all.filter((b) => color.build_ids.includes(b.id)) : all
     if (builds.length === 0) {
       sel.appendChild(this.option("", this.label("no_builds")))
       sel.disabled = true
@@ -93,7 +106,7 @@ export default class extends Controller {
       sel.appendChild(this.option(b.id, facts ? `${b.name} — ${facts}` : b.name))
     })
     sel.disabled = false
-    const want = String(this.selectedBuildValue || "")
+    const want = String(this.selectedBuildValue || "") || previous
     if (want && builds.some((b) => String(b.id) === want)) sel.value = want
     this.selectedBuildValue = ""
   }

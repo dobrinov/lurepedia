@@ -270,6 +270,7 @@ en:
     color_name: Color name
     availability: Available builds
     availability_hint: Tick the builds this color is confirmed to come in. Leave all unticked if unknown — the color is shown under every build.
+    available_in_n_of_m: Available in %{n} of %{m} builds
 
   species:
     title: Species

@@ -123,13 +123,18 @@
     <% when "variations" %>
       <% if @variants.any? %>
         <% @variants.each do |v| %>
+          <%# Open world: a color with confirmed builds shows only those; an
+              unknown one shows every (visible) build. Intersect against
+              @builds so moderation-hidden builds never resurface. %>
+          <% confirmed_ids = v.variant_builds.map(&:build_id) %>
+          <% color_builds = confirmed_ids.any? ? @builds.select { |b| confirmed_ids.include?(b.id) } : @builds %>
           <div class="variation-table" data-variant-stage-target="buildsTable" data-color-id="<%= v.id %>" <%= "hidden" unless v == @selected_variant %>>
-            <% if @builds.any? %>
+            <% if color_builds.any? %>
               <div class="card">
                 <table class="lb-table">
                   <thead><tr><th><%= t("lure.build") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.depth") %></th><th><%= t("lure.buoyancy") %></th><th><%= t("lure.water") %></th><th></th></tr></thead>
                   <tbody>
-                    <% @builds.each do |b| %>
+                    <% color_builds.each do |b| %>
                       <tr>
                         <td style="font-weight:600"><%= b.name %></td>
                         <td><%= fmt_size_mm(b.length_mm) || t("common.none") %></td>
@@ -149,6 +154,9 @@
                   </tbody>
                 </table>
               </div>
+              <% if confirmed_ids.any? && color_builds.size < @builds.size %>
+                <p class="muted" style="font-size:12px;margin-top:6px"><%= t("lure.available_in_n_of_m", n: color_builds.size, m: @builds.size) %></p>
+              <% end %>
             <% else %>
               <div class="card card-pad"><p class="muted" style="font-size:13px"><%= t("catch.no_builds") %></p></div>
             <% end %>

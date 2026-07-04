@@ -220,6 +220,7 @@ de:
     color_name: "Farbname"
     availability: "Verfügbare Bauformen"
     availability_hint: "Bauformen ankreuzen, in denen diese Farbe bestätigt erhältlich ist. Alle frei lassen, wenn unbekannt — die Farbe wird dann bei jeder Bauform angezeigt."
+    available_in_n_of_m: "In %{n} von %{m} Bauformen erhältlich"
 
   species:
     title: Fischarten

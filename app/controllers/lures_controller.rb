@@ -13,7 +13,7 @@ class LuresController < ApplicationController
     @lure = Lure.includes(:brand, :lure_type, variants: { photo_attachment: :blob }).find_by!(slug: params[:id])
     raise ActiveRecord::RecordNotFound unless @lure.visible_to?(current_user)
 
-    @variants = visible_catalog(@lure.variants).to_a
+    @variants = visible_catalog(@lure.variants).includes(:variant_builds).to_a
     @builds = visible_catalog(@lure.builds.ordered).to_a
     @default_variant = @lure.primary_variant
     @selected_variant = @variants.detect { |v| v.to_color_param == params[:color].to_s } || @default_variant
@@ -24,7 +24,7 @@ class LuresController < ApplicationController
 
   # JSON consumed by the variation-picker modal (lure page + catch form).
   def variations
-    lure = Lure.includes(:builds, variants: { photo_attachment: :blob }).find_by!(slug: params[:id])
+    lure = Lure.includes(:builds, variants: [ :variant_builds, { photo_attachment: :blob } ]).find_by!(slug: params[:id])
 
     render json: {
       lure: { slug: lure.slug, title: lure.title },
@@ -32,7 +32,9 @@ class LuresController < ApplicationController
         {
           id: v.id, name: v.name, best_for: v.best_for, uv_glow: v.uv_glow,
           catches_count: v.catches_count, default: v.id == lure.primary_variant&.id,
-          photo_url: v.photo.attached? ? url_for(v.photo.variant(resize_to_fill: [ 160, 160 ])) : nil
+          photo_url: v.photo.attached? ? url_for(v.photo.variant(resize_to_fill: [ 160, 160 ])) : nil,
+          # Confirmed availability, or null when unknown (open world: offer every build).
+          build_ids: v.variant_builds.map(&:build_id).sort.presence
         }
       },
       builds: lure.builds.ordered.map { |b|

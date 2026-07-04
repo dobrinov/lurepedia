@@ -270,6 +270,7 @@ zh:
     color_name: 颜色名称
     availability: 可选规格
     availability_hint: "勾选已确认提供此颜色的规格。如不确定请全部留空 — 该颜色将显示在所有规格下。"
+    available_in_n_of_m: "%{m} 个规格中有 %{n} 个提供此颜色"
 
   species:
     title: 鱼种

@@ -270,6 +270,7 @@ es:
     color_name: Nombre del color
     availability: Versiones disponibles
     availability_hint: "Marca las versiones en las que este color está confirmado. Deja todo sin marcar si no se sabe — el color se muestra en todas las versiones."
+    available_in_n_of_m: "Disponible en %{n} de %{m} versiones"
 
   species:
     title: Especies

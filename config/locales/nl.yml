@@ -270,6 +270,7 @@ nl:
     color_name: "Kleurnaam"
     availability: "Beschikbare uitvoeringen"
     availability_hint: "Vink de uitvoeringen aan waarin deze kleur bevestigd verkrijgbaar is. Laat alles leeg indien onbekend — de kleur wordt dan bij elke uitvoering getoond."
+    available_in_n_of_m: "Verkrijgbaar in %{n} van %{m} uitvoeringen"
 
   species:
     title: Vissoorten

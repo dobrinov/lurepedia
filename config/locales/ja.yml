@@ -220,6 +220,7 @@ ja:
     color_name: "カラー名"
     availability: "利用可能なビルド"
     availability_hint: "このカラーが確認済みのビルドにチェックを入れてください。不明な場合はすべて未チェックのままにしてください — カラーはすべてのビルドに表示されます。"
+    available_in_n_of_m: "%{m}種のビルドのうち%{n}種で利用可能"
 
   species:
     title: 魚種

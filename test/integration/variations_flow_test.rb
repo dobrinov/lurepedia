@@ -13,16 +13,56 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     @admin = User.create!(name: "Ada", email_address: "ada@example.com", password: "secret123", role: :admin)
   end
 
-  test "variations endpoint returns colors and builds independently" do
+  test "variations endpoint ships null build_ids for unknown colors and the sorted subset for confirmed ones" do
+    second = @lure.builds.create!(name: "110 F")
+    confirmed = @lure.variants.create!(name: "Pro Blue")
+    VariantBuild.create!(variant: confirmed, build: second)
+    VariantBuild.create!(variant: confirmed, build: @build)
+
     get lure_variation_options_path(@lure, locale: :en)
     assert_response :success
     body = JSON.parse(response.body)
     assert_equal "Megabass Vision 110", body.dig("lure", "title")
-    color = body["colors"].first
-    assert_equal "GG Ayu", color["name"]
-    assert color["uv_glow"]
-    assert_not color.key?("build_ids"), "colors no longer carry per-color build availability"
+
+    unknown_color, confirmed_color = body["colors"].partition { |c| c["name"] == "GG Ayu" }.map(&:first)
+    assert unknown_color["uv_glow"]
+    assert_nil unknown_color["build_ids"], "unknown availability is open world"
+    assert_equal [ @build.id, second.id ].sort, confirmed_color["build_ids"]
     assert_equal "110 SP", body["builds"].first["name"]
+  end
+
+  test "lure page narrows a confirmed color's builds table and captions it; unknown colors show every build" do
+    second = @lure.builds.create!(name: "110 F")
+    confirmed = @lure.variants.create!(name: "Pro Blue")
+    VariantBuild.create!(variant: confirmed, build: @build)
+
+    get lure_path(@lure, locale: :en)
+    assert_response :success
+
+    assert_select ".variation-table[data-color-id='#{confirmed.id}']" do
+      assert_select "tbody tr", count: 1
+      assert_select "td", text: "110 SP"
+      assert_select "p", text: /1 of 2/
+    end
+    assert_select ".variation-table[data-color-id='#{@color.id}']" do
+      assert_select "tbody tr", count: 2
+      assert_select "p", text: /of 2/, count: 0
+    end
+  end
+
+  test "a moderation-hidden build stays out of every color's table, even when confirmed" do
+    hidden = @lure.builds.create!(name: "110 Prototype")
+    ModerationItem.create!(subject: hidden, kind: :catalog, submitter: @member)
+    confirmed = @lure.variants.create!(name: "Pro Blue")
+    VariantBuild.create!(variant: confirmed, build: hidden)
+    VariantBuild.create!(variant: confirmed, build: @build)
+
+    get lure_path(@lure, locale: :en)
+    assert_response :success
+    assert_select ".variation-table[data-color-id='#{confirmed.id}']" do
+      assert_select "tbody tr", count: 1
+      assert_select "td", text: "110 Prototype", count: 0
+    end
   end
 
   test "lure options can be scoped to a brand" do
