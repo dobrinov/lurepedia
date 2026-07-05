@@ -220,6 +220,15 @@ fr:
     lipless_crankbait: Lipless
 
   lure:
+    similar_title: "Leurres similaires"
+    similar_manage_hint: "Reliez les leurres qui se ressemblent — souvent d'autres marques — pour que les pêcheurs puissent les comparer."
+    similar_none: "Aucun leurre similaire relié pour l'instant."
+    similar_add: "Relier un leurre similaire"
+    similar_add_placeholder: "Trouver un leurre…"
+    similar_not_found: "Ce leurre est introuvable."
+    similar_match: "%{score} % de correspondance"
+    similar_suggest_title: "Ressemble à…"
+    similar_suggest_hint: "Cette photo ressemble à ces leurres. Cochez ceux qui se ressemblent vraiment et nous les relierons."
     title: Leurres
     subtitle: Chaque leurre, prouvé par une prise
     search_placeholder: Rechercher des leurres — ou filtrer par type, eau, densité…

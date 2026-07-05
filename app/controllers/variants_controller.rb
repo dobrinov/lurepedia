@@ -15,6 +15,7 @@ class VariantsController < ApplicationController
 
     if @variant.save
       @variant.revisions.create!(user: current_user, summary: t("provenance.created"))
+      link_similar_lures
       if can_add_directly?(owning_brand(@variant))
         redirect_to edit_lure_path(@lure), notice: t("contribute.added")
       else
@@ -56,6 +57,19 @@ class VariantsController < ApplicationController
                                     build_ids: [])
     permitted[:build_ids] = permitted[:build_ids].reject(&:blank?) if permitted[:build_ids]
     permitted
+  end
+
+  # Cross-references ticked in the upload form's "looks similar" proposals.
+  # Links are catalog entries queued for review unless the contributor is an
+  # admin — mirroring LureLinksController#create, and deliberately narrower
+  # than the can_add_directly? gate used for the color itself (see LureLink).
+  def link_similar_lures
+    Lure.where(slug: Array(params[:similar_lure_slugs]).reject(&:blank?)).find_each do |other|
+      link = LureLink.new(lure: @lure, related_lure: other)
+      next unless link.save
+
+      ModerationItem.create!(subject: link, kind: :catalog, submitter: current_user) unless current_user.admin?
+    end
   end
 
   # "Apply the background to all colors" is offered only to direct editors

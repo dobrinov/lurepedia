@@ -106,6 +106,43 @@
         <p class="muted" style="font-size:13px"><%= t("lure.builds") %> —</p>
       <% end %>
     </div>
+
+    <!-- Similar lures (cross-brand references) -->
+    <div class="card card-pad" style="margin-top:18px">
+      <div class="section-head" style="margin-bottom:6px">
+        <h3 style="font-size:15px"><%= t("lure.similar_title") %></h3>
+      </div>
+      <p class="muted" style="font-size:13px;margin-bottom:12px"><%= t("lure.similar_manage_hint") %></p>
+      <% if @lure_links.any? %>
+        <table class="lb-table" style="margin-bottom:14px">
+          <tbody>
+            <% @lure_links.each do |link| %>
+              <% other = link.other_lure(@lure) %>
+              <tr>
+                <td style="font-weight:600">
+                  <%= link_to other.title, lure_path(other) %>
+                  <% unless link.published? %><span class="badge badge-noproof"><%= t("contribute.pending_review") %></span><% end %>
+                </td>
+                <td style="text-align:right;width:1%;white-space:nowrap">
+                  <% if current_user&.can_moderate? %>
+                    <%= button_to t("common.delete"), lure_link_path(@lure, link), method: :delete, class: "btn btn-sm" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="muted" style="font-size:13px;margin-bottom:14px"><%= t("lure.similar_none") %></p>
+      <% end %>
+      <%= form_with url: lure_links_path(@lure), method: :post, class: "row", html: { style: "gap:8px;align-items:flex-start;flex-wrap:wrap" } do %>
+        <div style="min-width:260px;flex:1">
+          <%= render "shared/async_combobox", name: "similar_lure", url: lure_options_path,
+                placeholder: t("lure.similar_add_placeholder") %>
+        </div>
+        <%= submit_tag t("lure.similar_add"), class: "btn btn-sm" %>
+      <% end %>
+    </div>
   </div>
   </div>
 </div>

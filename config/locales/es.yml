@@ -220,6 +220,15 @@ es:
     lipless_crankbait: Crankbait lipless
 
   lure:
+    similar_title: "Señuelos similares"
+    similar_manage_hint: "Enlaza señuelos parecidos — a menudo de otras marcas — para que los pescadores puedan compararlos."
+    similar_none: "Aún no hay señuelos similares enlazados."
+    similar_add: "Enlazar señuelo similar"
+    similar_add_placeholder: "Busca un señuelo…"
+    similar_not_found: "No se encontró ese señuelo."
+    similar_match: "%{score}% de coincidencia"
+    similar_suggest_title: "Se parece a…"
+    similar_suggest_hint: "Esta foto se parece a estos señuelos. Marca los que realmente se parezcan y los enlazaremos."
     title: Señuelos
     subtitle: Cada señuelo, probado con una captura
     search_placeholder: Buscar señuelos — o filtrar por tipo, agua, acción…

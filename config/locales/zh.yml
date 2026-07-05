@@ -220,6 +220,15 @@ zh:
     lipless_crankbait: VIB
 
   lure:
+    similar_title: "相似路亚饵"
+    similar_manage_hint: "将外形相近的路亚饵（通常来自不同品牌）互相关联，方便钓友比较。"
+    similar_none: "尚未关联相似路亚饵。"
+    similar_add: "关联相似路亚饵"
+    similar_add_placeholder: "查找路亚饵…"
+    similar_not_found: "未找到该路亚饵。"
+    similar_match: "相似度 %{score}%"
+    similar_suggest_title: "看起来像……"
+    similar_suggest_hint: "这张照片与以下路亚饵相似。勾选确实相似的，我们会将它们互相关联。"
     title: 路亚饵
     subtitle: 每一款路亚饵，都有渔获证明
     search_placeholder: 搜索路亚饵 — 或按类型、水域、动作筛选…

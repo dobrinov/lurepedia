@@ -220,6 +220,15 @@ en:
     lipless_crankbait: Lipless Crankbait
 
   lure:
+    similar_title: "Similar lures"
+    similar_manage_hint: "Cross-reference look-alike lures — often from other brands — so anglers can compare them."
+    similar_none: "No similar lures linked yet."
+    similar_add: "Link similar lure"
+    similar_add_placeholder: "Find a lure…"
+    similar_not_found: "That lure could not be found."
+    similar_match: "%{score}% match"
+    similar_suggest_title: "Looks similar to…"
+    similar_suggest_hint: "This photo resembles these lures. Tick any that really are look-alikes and we'll cross-reference them."
     title: Lures
     subtitle: Every lure, proven by a catch
     search_placeholder: Search lures — or filter by type, water, action…

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_04_000004) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_05_053254) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -153,6 +153,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_04_000004) do
     t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
     t.index ["user_id", "favoritable_type", "favoritable_id"], name: "index_favorites_on_user_and_favoritable", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "lure_links", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "lure_id", null: false
+    t.integer "related_lure_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lure_id", "related_lure_id"], name: "index_lure_links_on_lure_id_and_related_lure_id", unique: true
+    t.index ["lure_id"], name: "index_lure_links_on_lure_id"
+    t.index ["related_lure_id"], name: "index_lure_links_on_related_lure_id"
   end
 
   create_table "lure_types", force: :cascade do |t|
@@ -339,6 +349,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_04_000004) do
   add_foreign_key "comments", "catches"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"
+  add_foreign_key "lure_links", "lures"
+  add_foreign_key "lure_links", "lures", column: "related_lure_id"
   add_foreign_key "lures", "brands"
   add_foreign_key "lures", "lure_types"
   add_foreign_key "moderation_items", "revisions"

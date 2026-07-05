@@ -170,6 +170,15 @@ de:
     lipless_crankbait: Lippenloser Wobbler
 
   lure:
+    similar_title: "Ähnliche Köder"
+    similar_manage_hint: "Verknüpfe zum Verwechseln ähnliche Köder — oft von anderen Marken — damit Angler sie vergleichen können."
+    similar_none: "Noch keine ähnlichen Köder verknüpft."
+    similar_add: "Ähnlichen Köder verknüpfen"
+    similar_add_placeholder: "Köder finden…"
+    similar_not_found: "Dieser Köder wurde nicht gefunden."
+    similar_match: "%{score} % Übereinstimmung"
+    similar_suggest_title: "Sieht ähnlich aus wie…"
+    similar_suggest_hint: "Dieses Foto ähnelt diesen Ködern. Hake alle an, die sich wirklich ähneln — wir verknüpfen sie."
     title: Köder
     subtitle: Jeder Köder, bewiesen durch einen Fang
     search_placeholder: Köder suchen — oder nach Typ, Wasser, Aktion filtern…

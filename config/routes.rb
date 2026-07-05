@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       resources :variants, only: %i[new create edit update destroy]
       resources :builds, only: %i[new create edit update destroy]
       resources :buy_links, only: :create
+      resources :lure_links, only: %i[create destroy]
+      post "similar-preview", to: "lure_links#preview", as: :lure_similar_preview
     end
     get   "lures/:id(/:tab)(/:color)", to: "lures#show", as: :lure, constraints: { tab: /caught|buy|history|variations/ }
     # A bare trailing segment that is not a tab is a color on the default tab:

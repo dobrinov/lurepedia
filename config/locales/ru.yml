@@ -220,6 +220,15 @@ ru:
     lipless_crankbait: Раттлин
 
   lure:
+    similar_title: "Похожие приманки"
+    similar_manage_hint: "Свяжите похожие приманки — часто разных брендов — чтобы рыболовы могли их сравнить."
+    similar_none: "Похожие приманки пока не связаны."
+    similar_add: "Связать похожую приманку"
+    similar_add_placeholder: "Найти приманку…"
+    similar_not_found: "Приманка не найдена."
+    similar_match: "Совпадение %{score}%"
+    similar_suggest_title: "Похожа на…"
+    similar_suggest_hint: "Это фото похоже на эти приманки. Отметьте действительно похожие — мы их свяжем."
     title: Приманки
     subtitle: Каждая приманка, доказанная уловом
     search_placeholder: Поиск приманок — или фильтр по типу, воде, плавучести…

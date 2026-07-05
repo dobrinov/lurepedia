@@ -1,6 +1,9 @@
 <%# locals: variant, submit_label %>
 <% url = variant.persisted? ? variant_path(@lure, variant) : variants_path(@lure) %>
-<%= form_with model: variant, url: url, method: (variant.persisted? ? :patch : :post) do |f| %>
+<%# New colors get upload-time "looks similar" proposals (similar_lures_controller.js). %>
+<% suggest_similar = !variant.persisted? %>
+<%= form_with model: variant, url: url, method: (variant.persisted? ? :patch : :post),
+      data: (suggest_similar ? { controller: "similar-lures", similar_lures_url_value: lure_similar_preview_path(@lure) } : {}) do |f| %>
   <div class="field">
     <%= f.label :name, t("lure.color_name") %>
     <%= f.text_field :name, class: "input", required: true %>
@@ -24,14 +27,22 @@
         </label>
       <% end %>
       <div class="upload-drop" data-image-upload-target="drop"
-           data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop">
+           data-action="click->image-upload#browse dragover->image-upload#dragover dragleave->image-upload#dragleave drop->image-upload#drop<%= " drop->similar-lures#drop" if suggest_similar %>">
         <%= t("contribute.add_photos") %>
       </div>
       <%= f.file_field :photo, accept: "image/*", style: "display:none",
-            data: { image_upload_target: "input", action: "image-upload#add" } %>
+            data: { image_upload_target: "input", action: "image-upload#add#{" similar-lures#check" if suggest_similar}" } %>
       <div class="upload-previews" data-image-upload-target="previews"></div>
     </div>
   </div>
+
+  <% if suggest_similar %>
+    <div class="field" data-similar-lures-target="section" hidden>
+      <label><%= t("lure.similar_suggest_title") %></label>
+      <p class="muted" style="font-size:13px;margin:2px 0 6px"><%= t("lure.similar_suggest_hint") %></p>
+      <div class="stack" style="gap:8px" data-similar-lures-target="list"></div>
+    </div>
+  <% end %>
 
   <% builds = @lure.builds.ordered %>
   <% if builds.any? %>

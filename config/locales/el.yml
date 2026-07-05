@@ -220,6 +220,15 @@ el:
     lipless_crankbait: Lipless crankbait
 
   lure:
+    similar_title: "Παρόμοια τεχνητά"
+    similar_manage_hint: "Συνδέστε τεχνητά που μοιάζουν — συχνά από άλλες μάρκες — ώστε οι ψαράδες να τα συγκρίνουν."
+    similar_none: "Δεν έχουν συνδεθεί ακόμη παρόμοια τεχνητά."
+    similar_add: "Σύνδεση παρόμοιου τεχνητού"
+    similar_add_placeholder: "Βρείτε τεχνητό…"
+    similar_not_found: "Το τεχνητό δεν βρέθηκε."
+    similar_match: "%{score}% ταίριασμα"
+    similar_suggest_title: "Μοιάζει με…"
+    similar_suggest_hint: "Η φωτογραφία μοιάζει με αυτά τα τεχνητά. Επιλέξτε όσα πραγματικά μοιάζουν και θα τα συνδέσουμε."
     title: Τεχνητά
     subtitle: Κάθε τεχνητό, αποδεδειγμένο με μια ψαριά
     search_placeholder: Αναζήτηση τεχνητών — ή φιλτράρισμα ανά τύπο, νερό, δράση…

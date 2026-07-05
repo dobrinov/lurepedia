@@ -14,6 +14,9 @@ class Lure < ApplicationRecord
   has_many :shops, through: :buy_links
   has_one :claim, as: :claimable, dependent: :destroy
   has_many :revisions, as: :subject, dependent: :destroy
+  has_many :lure_links, dependent: :destroy
+  has_many :inverse_lure_links, class_name: "LureLink", foreign_key: :related_lure_id,
+           inverse_of: :related_lure, dependent: :destroy
 
   validates :model, presence: true
 
@@ -54,6 +57,14 @@ class Lure < ApplicationRecord
     return "none" if actions.empty?
 
     actions.tally.max_by { |_action, count| count }.first
+  end
+
+  # Cross-referenced look-alikes, resolved from both directions of the
+  # symmetric link. Pass links: LureLink.all to include links still in review
+  # (moderators); the returned lures still need visibility filtering.
+  def similar_lures(links: LureLink.published)
+    pair_ids = links.involving(self).pluck(:lure_id, :related_lure_id).flatten.uniq - [ id ]
+    Lure.where(id: pair_ids)
   end
 
   # Distinct species this lure has caught.

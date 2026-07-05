@@ -20,6 +20,12 @@ class LuresController < ApplicationController
     @catches = @lure.catches.includes(:user, :species, :build).recent.limit(8)
     @buy_links = @lure.buy_links.includes(:shop).sort_by { |b| b.shop.promoted? ? 0 : 1 }
     @tab = %w[caught variations buy history].include?(params[:tab].to_s) ? params[:tab] : "variations"
+    # Cross-referenced look-alikes: moderators also see links still in review;
+    # the linked lures themselves stay visibility-filtered for everyone.
+    link_scope = current_user&.can_moderate? ? LureLink.all : LureLink.published
+    @similar_lures = visible_catalog(@lure.similar_lures(links: link_scope))
+                       .includes(:brand, :lure_type, :default_variant, variants: { photo_attachment: :blob })
+                       .by_catch_count.limit(8)
   end
 
   # JSON consumed by the variation-picker modal (lure page + catch form).
@@ -75,6 +81,7 @@ class LuresController < ApplicationController
     @lure = Lure.find_by!(slug: params[:id])
     @variants = @lure.variants.to_a
     @builds = @lure.builds.ordered.to_a
+    @lure_links = LureLink.involving(@lure).includes(lure: :brand, related_lure: :brand).order(:id).to_a
   end
 
   def update

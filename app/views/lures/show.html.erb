@@ -264,4 +264,16 @@
       <% end %>
     <% end %>
   </div>
+
+  <!-- Cross-referenced look-alikes, often from other brands -->
+  <% if @similar_lures.any? %>
+    <div style="margin-top:48px">
+      <div class="overline" style="margin-bottom:12px"><%= t("lure.similar_title") %></div>
+      <div class="grid-cards">
+        <% @similar_lures.each do |similar| %>
+          <%= render "shared/lure_card", lure: similar %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

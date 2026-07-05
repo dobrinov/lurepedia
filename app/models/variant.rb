@@ -23,6 +23,15 @@ class Variant < ApplicationRecord
     availability_known? ? builds.ordered : lure.builds.ordered
   end
 
+  # The photo's color-distribution fingerprint, measured by
+  # TileBackgroundAnalyzer at attach time. Nil until analyzed, or when the
+  # image was too uniform to fingerprint.
+  def color_signature
+    return unless photo.attached?
+
+    ColorSignature.parse(photo.blob.metadata["color_signature"])
+  end
+
   # Human-readable, shareable identifier used in the lure URL (?color=ghost-shad)
   # in place of the opaque numeric id.
   def to_color_param

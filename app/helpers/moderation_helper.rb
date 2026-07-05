@@ -8,6 +8,7 @@ module ModerationHelper
     when Variant, Build then "#{subject.lure.title} — #{subject.name}"
     when Brand, Shop then subject.name
     when BuyLink then "#{subject.lure.title} — #{subject.shop.name}"
+    when LureLink then "#{subject.lure.title} ↔ #{subject.related_lure.title}"
     when Species then subject.common_name
     when Report
       "#{t("report.reason_#{subject.reason}")} — #{report_target_label(subject)}"

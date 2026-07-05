@@ -170,6 +170,15 @@ ja:
     lipless_crankbait: リップレスクランク
 
   lure:
+    similar_title: "似ているルアー"
+    similar_manage_hint: "よく似たルアー（他ブランドのものも）を相互参照して、比較できるようにします。"
+    similar_none: "まだ似ているルアーはリンクされていません。"
+    similar_add: "似ているルアーをリンク"
+    similar_add_placeholder: "ルアーを検索…"
+    similar_not_found: "そのルアーは見つかりませんでした。"
+    similar_match: "一致度 %{score}%"
+    similar_suggest_title: "これに似ています…"
+    similar_suggest_hint: "この写真は次のルアーに似ています。本当に似ているものにチェックを入れると相互参照されます。"
     title: ルアー
     subtitle: すべてのルアーを、釣果で証明
     search_placeholder: ルアーを検索 — タイプ・水域・アクションで絞り込み…

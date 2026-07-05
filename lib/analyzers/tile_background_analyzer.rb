@@ -4,6 +4,10 @@
 # edge color makes the bars blend into the image
 # (ApplicationHelper#photo_frame_style).
 #
+# Also stores the photo's color-distribution fingerprint as "color_signature"
+# (see ColorSignature), which powers the similar-lure proposals shown while a
+# contributor uploads a new color.
+#
 # Runs in ActiveStorage::AnalyzeJob when a blob is attached. Existing blobs
 # are backfilled with `bin/rails images:backfill_backgrounds`. Required and
 # registered by config/initializers/active_storage_analyzers.rb; not
@@ -17,10 +21,18 @@ class TileBackgroundAnalyzer < ActiveStorage::Analyzer::ImageAnalyzer::ImageMagi
   # color" apart from "never analyzed" and skip it on reruns. Readers treat
   # false as absent (it is .blank?).
   def metadata
-    super.merge(background_color: background_color || false)
+    super.merge(background_color: background_color || false, color_signature: color_signature || false)
   end
 
   private
+
+  def color_signature
+    download_blob_to_tempfile do |file|
+      ColorSignature.from_file(file.path)&.to_s
+    end
+  rescue MiniMagick::Error
+    nil
+  end
 
   def background_color
     download_blob_to_tempfile do |file|

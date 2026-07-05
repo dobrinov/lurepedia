@@ -220,6 +220,15 @@ nl:
     lipless_crankbait: Lipless crankbait
 
   lure:
+    similar_title: "Vergelijkbaar kunstaas"
+    similar_manage_hint: "Koppel sterk gelijkend kunstaas — vaak van andere merken — zodat vissers ze kunnen vergelijken."
+    similar_none: "Nog geen vergelijkbaar kunstaas gekoppeld."
+    similar_add: "Vergelijkbaar kunstaas koppelen"
+    similar_add_placeholder: "Zoek kunstaas…"
+    similar_not_found: "Dat kunstaas is niet gevonden."
+    similar_match: "%{score}% overeenkomst"
+    similar_suggest_title: "Lijkt op…"
+    similar_suggest_hint: "Deze foto lijkt op dit kunstaas. Vink aan wat er echt op lijkt, dan koppelen we ze."
     title: Kunstaas
     subtitle: Elk kunstaas, bewezen door een vangst
     search_placeholder: Zoek kunstaas — of filter op type, water, actie…
