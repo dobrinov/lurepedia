@@ -4,6 +4,24 @@
                    "#{@species.description.presence || @species.habitat.presence || t('meta.species_show', species: @species.common_name)}"
   meta_image cropped_photo(@species, resize_to_limit: [ 1200, 1200 ]) if @species.photo.attached? && @species.photo.variable?
 %>
+<% content_for :head do %>
+  <%= structured_data(
+        "@type": "Taxon",
+        name: @species.scientific_name,
+        alternateName: @species.common_name,
+        taxonRank: "species",
+        description: meta_description,
+        url: canonical_url,
+        image: @species.photo.attached? && @species.photo.variable? ? absolute_url(cropped_photo(@species, resize_to_limit: [ 1200, 1200 ])) : nil
+      ) %>
+  <%= structured_data(
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: t("nav.species"), item: species_index_url },
+          { "@type": "ListItem", position: 2, name: @species.common_name, item: species_url(@species) }
+        ]
+      ) %>
+<% end %>
 
 <%= render "shared/pending_review", record: @species %>
 

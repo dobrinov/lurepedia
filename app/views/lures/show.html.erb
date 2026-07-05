@@ -4,6 +4,7 @@
   og_photo = og_variant && cropped_photo(og_variant, resize_to_limit: [ 1200, 1200 ])
   meta_description @lure.description.presence || t("meta.lure_show", lure: @lure.title, type: lure_type_name(@lure.lure_type), catches: @lure.catches_count)
   meta_image og_photo if og_photo
+  og_type "product"
 %>
 <% content_for :head do %>
   <%= structured_data(

@@ -4,6 +4,33 @@
   og_photo = catch_display_photo(@catch)
   meta_image og_photo.variant(resize_to_fill: [ 1200, 630 ]) if og_photo&.variable?
 %>
+<% content_for :head do %>
+  <%= structured_data(
+        "@type": "SocialMediaPosting",
+        headline: "#{species_common_name(@catch.species)} — #{@catch.lure.title}",
+        image: og_photo&.variable? ? absolute_url(og_photo.variant(resize_to_fill: [ 1200, 630 ])) : nil,
+        datePublished: @catch.created_at.iso8601,
+        author: { "@type": "Person", name: @catch.user.name, url: profile_url(@catch.user) },
+        commentCount: @catch.comments_count,
+        interactionStatistic: {
+          "@type": "InteractionCounter",
+          interactionType: "https://schema.org/LikeAction",
+          userInteractionCount: @catch.upvotes_count
+        },
+        about: [
+          { "@type": "Product", name: @catch.lure.title, url: lure_url(@catch.lure) },
+          { "@type": "Taxon", name: @catch.species.scientific_name, alternateName: species_common_name(@catch.species), url: species_url(@catch.species) }
+        ],
+        url: canonical_url
+      ) %>
+  <%= structured_data(
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: t("nav.catches"), item: catches_url },
+          { "@type": "ListItem", position: 2, name: "#{species_common_name(@catch.species)} — #{@catch.lure.title}", item: catch_url(@catch) }
+        ]
+      ) %>
+<% end %>
 
 <div class="container" style="padding-top:24px">
   <div class="detail-grid">

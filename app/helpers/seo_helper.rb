@@ -46,6 +46,13 @@ module SeoHelper
     absolute_url(@meta_image.presence || DEFAULT_OG_IMAGE)
   end
 
+  # Open Graph object type for the current page; views override the
+  # "website" default where a more specific type exists (lure pages: product).
+  def og_type(value = nil)
+    @og_type = value if value
+    @og_type.presence || "website"
+  end
+
   # Marks the current page as noindex (renders via robots_meta_tag).
   def noindex
     @noindex = true
@@ -67,7 +74,7 @@ module SeoHelper
 
     safe_join([
       tag.meta(property: "og:site_name", content: "Lurepedia"),
-      tag.meta(property: "og:type", content: "website"),
+      tag.meta(property: "og:type", content: og_type),
       tag.meta(property: "og:title", content: title),
       tag.meta(property: "og:description", content: description),
       tag.meta(property: "og:url", content: canonical_url),

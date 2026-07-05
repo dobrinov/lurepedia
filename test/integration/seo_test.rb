@@ -23,6 +23,38 @@ class SeoTest < ActionDispatch::IntegrationTest
     assert_select "link[rel=canonical]"
     assert_select "link[rel=alternate][hreflang=de]"
     assert_match '"@type":"Product"', response.body
+    assert_select "meta[property='og:type'][content=product]"
+  end
+
+  test "non-lure pages keep the website og:type" do
+    get lures_path(locale: :en)
+    assert_select "meta[property='og:type'][content=website]"
+  end
+
+  test "species page emits taxon and breadcrumb json-ld" do
+    get species_path(@species, locale: :en)
+    assert_match '"@type":"Taxon"', response.body
+    assert_match @species.scientific_name, response.body
+    assert_match '"@type":"BreadcrumbList"', response.body
+  end
+
+  test "shop page emits online store and breadcrumb json-ld" do
+    shop = Shop.create!(name: "Tackle Direct", url: "tackledirect.example")
+    get shop_path(shop, locale: :en)
+    assert_match '"@type":"OnlineStore"', response.body
+    assert_match '"url":"https://tackledirect.example"', response.body
+    assert_match '"@type":"BreadcrumbList"', response.body
+  end
+
+  test "catch page emits social media posting and breadcrumb json-ld" do
+    user = User.create!(email_address: "angler@example.com", password: "s3cret-pass", name: "Angler Andy")
+    variant = Variant.create!(lure: @lure, name: "Chartreuse")
+    a_catch = Catch.create!(user: user, variant: variant, species: @species)
+
+    get catch_path(a_catch, locale: :en)
+    assert_match '"@type":"SocialMediaPosting"', response.body
+    assert_match '"@type":"Person"', response.body
+    assert_match '"@type":"BreadcrumbList"', response.body
   end
 
   test "localized title and description per locale" do
