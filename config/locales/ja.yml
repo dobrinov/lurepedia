@@ -12,6 +12,7 @@ ja:
     loading: 読み込み中…
     showing: "%{count}件中 %{from}–%{to}"
     page: ページ
+    page_of: "／%{total} ページ"
     next: 次へ
     prev: 前へ
     back: "戻る"

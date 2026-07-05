@@ -12,6 +12,7 @@ fr:
     loading: Chargement…
     showing: "Affichage de %{from}–%{to} sur %{count}"
     page: Page
+    page_of: "sur %{total}"
     next: Suivant
     prev: Précédent
     back: Retour

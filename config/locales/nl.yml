@@ -12,6 +12,7 @@ nl:
     loading: Laden…
     showing: "%{from}–%{to} van %{count}"
     page: Pagina
+    page_of: "van %{total}"
     next: Volgende
     prev: Vorige
     back: Terug

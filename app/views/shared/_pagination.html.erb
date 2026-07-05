@@ -7,12 +7,15 @@
       <%= link_to t("common.prev"), url_for(request.query_parameters.merge(page: page.current - 1)) %>
     <% end %>
 
-    <% page.window.each do |n| %>
-      <% if n == page.current %>
-        <span class="current"><%= n %></span>
-      <% else %>
-        <%= link_to n, url_for(request.query_parameters.merge(page: n)) %>
+    <%= form_with url: request.path, method: :get, class: "pager-jump" do %>
+      <% request.query_parameters.except("page").each do |key, value| %>
+        <% Array(value).each do |v| %>
+          <%= hidden_field_tag "#{key}#{"[]" if value.is_a?(Array)}", v, id: nil %>
+        <% end %>
       <% end %>
+      <%= text_field_tag :page, page.current, inputmode: "numeric", pattern: "[0-9]*",
+            id: nil, aria: { label: t("common.page") } %>
+      <span class="pager-total"><%= t("common.page_of", total: page.total_pages) %></span>
     <% end %>
 
     <% if page.last? %>

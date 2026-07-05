@@ -12,6 +12,7 @@ bg:
     loading: Зарежда се…
     showing: "%{from}–%{to} от %{count}"
     page: Страница
+    page_of: "от %{total}"
     next: Напред
     prev: Назад
     back: "Назад"

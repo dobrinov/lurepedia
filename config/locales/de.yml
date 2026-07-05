@@ -12,6 +12,7 @@ de:
     loading: Wird geladen…
     showing: "%{from}–%{to} von %{count}"
     page: Seite
+    page_of: "von %{total}"
     next: Weiter
     prev: Zurück
     back: "Zurück"

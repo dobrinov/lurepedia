@@ -396,8 +396,11 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .pager { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 28px; }
 .pager a, .pager span { min-width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; padding: 0 10px; border-radius: var(--r-md); border: 1px solid var(--line); font-size: 13px; font-weight: 600; color: var(--ink-2); }
 .pager a:hover { background: var(--surface-2); }
-.pager .current { background: var(--ink); color: var(--surface-1); border-color: var(--ink); }
 .pager .disabled { opacity: .4; pointer-events: none; }
+.pager-jump { display: inline-flex; align-items: center; gap: 6px; margin: 0 4px; }
+.pager-jump input { width: 3.4em; height: 34px; text-align: center; border: 1px solid var(--line); border-radius: var(--r-md); font-size: 13px; font-weight: 600; color: var(--ink); background: var(--surface-1); }
+.pager-jump input:focus { outline: none; border-color: var(--ink); }
+.pager .pager-total { min-width: 0; height: auto; padding: 0; border: none; white-space: nowrap; }
 
 /* Diff (git-style before/after) ------------------------------------------- */
 .diff { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }

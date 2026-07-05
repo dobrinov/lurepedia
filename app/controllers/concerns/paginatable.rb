@@ -4,9 +4,6 @@ module Paginatable
     def last? = current >= total_pages
     def from = total_count.zero? ? 0 : ((current - 1) * per) + 1
     def to = [ current * per, total_count ].min
-    def window
-      (1..total_pages).to_a
-    end
   end
 
   # Accepts a relation or a plain Array (for collections filtered in Ruby,
@@ -16,8 +13,7 @@ module Paginatable
     total = total.size if total.is_a?(Hash) # grouped counts
     total_pages = [ (total.to_f / per).ceil, 1 ].max
     current = params[param].to_i
-    current = 1 if current < 1
-    current = total_pages if current > total_pages
+    current = 1 if current < 1 || current > total_pages
     records =
       if scope.is_a?(Array)
         scope[(current - 1) * per, per] || []

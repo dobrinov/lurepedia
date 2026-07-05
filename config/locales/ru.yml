@@ -12,6 +12,7 @@ ru:
     loading: Загрузка…
     showing: "Показано %{from}–%{to} из %{count}"
     page: Страница
+    page_of: "из %{total}"
     next: Вперёд
     prev: Назад
     back: Назад

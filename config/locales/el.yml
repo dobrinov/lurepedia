@@ -12,6 +12,7 @@ el:
     loading: Φόρτωση…
     showing: "%{from}–%{to} από %{count}"
     page: Σελίδα
+    page_of: "από %{total}"
     next: Επόμενη
     prev: Προηγούμενη
     back: Πίσω
