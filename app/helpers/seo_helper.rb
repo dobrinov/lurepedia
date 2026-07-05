@@ -21,7 +21,7 @@ module SeoHelper
   end
 
   def canonical_url
-    url_for(only_path: false, locale: I18n.locale)
+    url_for(only_path: false, locale: I18n.locale, page: canonical_page)
   rescue StandardError
     request.original_url
   end
@@ -103,9 +103,18 @@ module SeoHelper
     end
   end
 
+  # Paginated listings self-canonicalize: pointing every page at page 1 tells
+  # crawlers to drop everything past it, and with rel=next/prev retired the
+  # page param in the canonical is the only crawl path into the catalog tail.
+  # Hreflang alternates carry the same page so they keep pointing at canonicals.
+  def canonical_page
+    page = params[:page].to_i
+    page > 1 ? page : nil
+  end
+
   def alternate_tag(locale, hreflang)
     href = begin
-      url_for(only_path: false, locale: locale)
+      url_for(only_path: false, locale: locale, page: canonical_page)
     rescue StandardError
       nil
     end

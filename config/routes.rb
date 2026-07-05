@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # Fly also answers on www and the *.fly.dev hostname, each a full duplicate
+  # copy whose canonical tags point at themselves — 301 them to the apex so
+  # crawlers see a single site. /up stays reachable on any host for Fly's
+  # health checks (mirrors production.rb's ssl_options exclusion).
+  match "(*path)", via: :all, to: redirect(host: "lurepedia.com", status: 301),
+    constraints: ->(req) { %w[www.lurepedia.com lurepedia.fly.dev].include?(req.host) && req.path != "/up" }
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Sitemap (locale-independent)

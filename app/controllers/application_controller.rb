@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
   # are served at "/" directly. Runs inside switch_locale, so I18n.locale is set.
   def canonicalize_root_locale
     return if signed_in? || params[:locale].present?
-    return unless request.get? && request.path == "/"
+    return unless (request.get? || request.head?) && request.path == "/"
 
     redirect_to localized_root_path(locale: I18n.locale), status: :moved_permanently
   end
