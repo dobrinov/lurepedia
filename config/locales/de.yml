@@ -199,6 +199,9 @@ de:
     variants: Varianten
     variant: Variante
     tab_caught: Damit gefangen
+    proven_record:
+      title: Was die Fänge zeigen
+      top_species: Häufigste Arten
     tab_variations: "Varianten"
     tab_buy: Wo kaufen
     tab_history: Verlauf

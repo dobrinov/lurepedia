@@ -18,6 +18,7 @@ class LuresController < ApplicationController
     @default_variant = @lure.primary_variant
     @selected_variant = @variants.detect { |v| v.to_color_param == params[:color].to_s } || @default_variant
     @catches = @lure.catches.includes(:user, :species, :build).recent.limit(8)
+    @catch_summary = LureCatchSummary.new(@lure)
     @buy_links = @lure.buy_links.includes(:shop).sort_by { |b| b.shop.promoted? ? 0 : 1 }
     @tab = %w[caught variations buy history].include?(params[:tab].to_s) ? params[:tab] : "variations"
     # Cross-referenced look-alikes: moderators also see links still in review;

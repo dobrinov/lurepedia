@@ -199,6 +199,9 @@ ja:
     variants: バリエーション
     variant: バリエーション
     tab_caught: 釣果
+    proven_record:
+      title: 釣果からわかること
+      top_species: 多い魚種
     tab_variations: "バリエーション"
     tab_buy: 購入先
     tab_history: 履歴

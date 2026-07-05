@@ -249,6 +249,9 @@ fr:
     variants: Variantes
     variant: Variante
     tab_caught: Pris avec
+    proven_record:
+      title: Ce que montrent les prises
+      top_species: Espèces les plus fréquentes
     tab_variations: "Variantes"
     tab_buy: Où acheter
     tab_history: Historique

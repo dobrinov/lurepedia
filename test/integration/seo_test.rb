@@ -63,6 +63,22 @@ class SeoTest < ActionDispatch::IntegrationTest
     assert_select "meta[name=description]"
   end
 
+  test "lure page surfaces aggregated catch conditions on the canonical url" do
+    user = User.create!(email_address: "summary@example.com", password: "s3cret-pass", name: "Summary Sam")
+    variant = Variant.create!(lure: @lure, name: "Sexy Shad")
+    2.times { Catch.create!(user: user, variant: variant, species: @species, season: :spring, water_body: :lake) }
+
+    get lure_path(@lure, locale: :en)
+    assert_match "What the catches show", response.body
+    assert_match "Spring ×2", response.body
+    assert_select "a[href=?]", species_path(@species, locale: :en), text: /×2/
+  end
+
+  test "unproven lure page has no catch summary" do
+    get lure_path(@lure, locale: :en)
+    assert_no_match "What the catches show", response.body
+  end
+
   test "robots references sitemap" do
     get "/robots.txt"
     assert_match "Sitemap:", response.body

@@ -249,6 +249,9 @@ en:
     variants: Variants
     variant: Variant
     tab_caught: Caught on it
+    proven_record:
+      title: What the catches show
+      top_species: Top species
     tab_variations: "Variations"
     tab_buy: Where to buy
     tab_history: History

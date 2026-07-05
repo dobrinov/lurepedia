@@ -199,6 +199,9 @@ bg:
     variants: Варианти
     variant: Вариант
     tab_caught: Уловено с нея
+    proven_record:
+      title: Какво показват уловите
+      top_species: Най-чести видове
     tab_variations: "Варианти"
     tab_buy: Къде да купя
     tab_history: История

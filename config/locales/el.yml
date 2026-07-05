@@ -249,6 +249,9 @@ el:
     variants: Παραλλαγές
     variant: Παραλλαγή
     tab_caught: Πιάστηκαν με αυτό
+    proven_record:
+      title: Τι δείχνουν οι ψαριές
+      top_species: Κορυφαία είδη
     tab_variations: "Παραλλαγές"
     tab_buy: Πού να το αγοράσεις
     tab_history: Ιστορικό

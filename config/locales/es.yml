@@ -249,6 +249,9 @@ es:
     variants: Variantes
     variant: Variante
     tab_caught: Capturas con él
+    proven_record:
+      title: Lo que muestran las capturas
+      top_species: Especies más frecuentes
     tab_variations: "Variantes"
     tab_buy: Dónde comprar
     tab_history: Historial

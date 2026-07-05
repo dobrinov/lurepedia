@@ -249,6 +249,9 @@ zh:
     variants: 款式
     variant: 款式
     tab_caught: 渔获实证
+    proven_record:
+      title: 渔获数据显示
+      top_species: 主要鱼种
     tab_variations: "款式"
     tab_buy: 购买渠道
     tab_history: 历史

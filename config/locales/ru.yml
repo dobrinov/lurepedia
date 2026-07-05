@@ -249,6 +249,9 @@ ru:
     variants: Варианты
     variant: Вариант
     tab_caught: Поймано на неё
+    proven_record:
+      title: Что показывают уловы
+      top_species: Основные виды
     tab_variations: "Вариации"
     tab_buy: Где купить
     tab_history: История

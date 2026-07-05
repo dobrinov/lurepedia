@@ -249,6 +249,9 @@ nl:
     variants: Varianten
     variant: Variant
     tab_caught: Hiermee gevangen
+    proven_record:
+      title: Wat de vangsten laten zien
+      top_species: Meest gevangen soorten
     tab_variations: "Variaties"
     tab_buy: Waar te koop
     tab_history: Geschiedenis
