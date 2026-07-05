@@ -88,4 +88,72 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_equal LureFilter.new({}).results.to_a, LureFilter.new(depth: "bogus").results.to_a
     assert_includes LureFilter.new(depth: "shallow").active_pills.map(&:first), :depth
   end
+
+  test "filter by length range matches any build in range" do
+    small = Lure.create!(brand: @sk, lure_type: @jerk, model: "Squirt 65")
+    small.builds.create!(name: "65", length_mm: 65)
+    big = Lure.create!(brand: @sk, lure_type: @jerk, model: "Magnum 180")
+    big.builds.create!(name: "180", length_mm: 180)
+    both = Lure.create!(brand: @sk, lure_type: @jerk, model: "Family")
+    both.builds.create!(name: "S", length_mm: 70)
+    both.builds.create!(name: "L", length_mm: 160)
+
+    assert_equal [ big, both ].sort_by(&:id), LureFilter.new(length_min: "100").results.sort_by(&:id)
+    assert_equal [ small, both ].sort_by(&:id), LureFilter.new(length_max: "90").results.sort_by(&:id)
+    assert_equal [ both ], LureFilter.new(length_min: "150", length_max: "170").results.to_a
+  end
+
+  test "filter by weight range" do
+    light = Lure.create!(brand: @sk, lure_type: @jerk, model: "Feather")
+    light.builds.create!(name: "F", weight_g: 5.5)
+    heavy = Lure.create!(brand: @sk, lure_type: @jerk, model: "Brick")
+    heavy.builds.create!(name: "B", weight_g: 42)
+
+    assert_equal [ light ], LureFilter.new(weight_max: "10").results.to_a
+    assert_equal [ heavy ], LureFilter.new(weight_min: "10").results.to_a
+    assert_equal [], LureFilter.new(weight_min: "50", weight_max: "60").results.to_a
+  end
+
+  test "weight range in ounces converts to grams, rounding to catch nominal weights" do
+    oneoz = Lure.create!(brand: @sk, lure_type: @jerk, model: "Nominal Ounce")
+    oneoz.builds.create!(name: "1oz", weight_g: 28) # catalogued as "28 g", sold as "1 oz"
+    heavy = Lure.create!(brand: @sk, lure_type: @jerk, model: "Two Ounce")
+    heavy.builds.create!(name: "2oz", weight_g: 57)
+
+    assert_equal [ oneoz, heavy ].sort_by(&:id), LureFilter.new(weight_min: "1", weight_unit: "oz").results.sort_by(&:id)
+    assert_equal [ oneoz ], LureFilter.new(weight_max: "1", weight_unit: "oz").results.to_a
+    assert_equal [ heavy ], LureFilter.new(weight_min: "1.5", weight_unit: "oz").results.to_a
+  end
+
+  test "unknown weight units fall back to grams" do
+    light = Lure.create!(brand: @sk, lure_type: @jerk, model: "Feather")
+    light.builds.create!(name: "F", weight_g: 5.5)
+    assert_equal [ light ], LureFilter.new(weight_max: "10", weight_unit: "stone").results.to_a
+  end
+
+  test "builds without the spec never match a range filter" do
+    unspecced = Lure.create!(brand: @sk, lure_type: @jerk, model: "Mystery")
+    unspecced.builds.create!(name: "?")
+    assert_not_includes LureFilter.new(length_min: "0").results.to_a, unspecced
+    assert_not_includes LureFilter.new(weight_max: "1000").results.to_a, unspecced
+  end
+
+  test "range filters ignore non-numeric values" do
+    assert_equal LureFilter.new({}).results.to_a, LureFilter.new(length_min: "abc", weight_max: "").results.to_a
+    assert_empty LureFilter.new(length_min: "abc").active_pills
+  end
+
+  test "range pills label the bounds and clear both params" do
+    pills = LureFilter.new(length_min: "70", length_max: "120", weight_min: "10.5").active_pills.to_h
+    assert_equal "70–120 mm", pills[:length]
+    assert_equal "≥ 10.5 g", pills[:weight]
+    assert_equal %w[ length_min length_max ], LureFilter.pill_params(:length)
+    assert_equal [ "type" ], LureFilter.pill_params(:type)
+  end
+
+  test "weight pill shows the entered unit and its params include the unit" do
+    pills = LureFilter.new(weight_min: "0.5", weight_max: "1.5", weight_unit: "oz").active_pills.to_h
+    assert_equal "0.5–1.5 oz", pills[:weight]
+    assert_equal %w[ weight_min weight_max weight_unit ], LureFilter.pill_params(:weight)
+  end
 end

@@ -1,9 +1,17 @@
 # Filters lures by catalog attributes and (via catches) condition attributes.
 class LureFilter
-  ATTRS = %i[q type brand species lure_action depth water_body season clarity wind saltwater sort].freeze
+  ATTRS = %i[q type brand species lure_action depth length_min length_max weight_min weight_max weight_unit
+             water_body season clarity wind saltwater sort].freeze
 
   # Depth bands in centimetres, matched by overlap against a lure's [min, max] range.
   DEPTH_BANDS = { "shallow" => [ 0, 150 ], "mid" => [ 150, 450 ], "deep" => [ 450, 100_000 ] }.freeze
+
+  # Range filters render one pill but span several query params; the pill's × must clear them all.
+  PILL_PARAMS = { length: %w[ length_min length_max ], weight: %w[ weight_min weight_max weight_unit ] }.freeze
+
+  def self.pill_params(key)
+    PILL_PARAMS.fetch(key.to_sym, [ key.to_s ])
+  end
 
   def initialize(params = {})
     @p = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h.symbolize_keys : params.symbolize_keys
@@ -25,6 +33,8 @@ class LureFilter
     pills << [ :species, species_label(@p[:species]) ] if present?(:species)
     pills << [ :lure_action, @p[:lure_action].to_s.titleize ] if present?(:lure_action)
     pills << [ :depth, I18n.t("search.depth_band.#{@p[:depth]}", default: @p[:depth].to_s.titleize) ] if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
+    pills << [ :length, range_label(:length_min, :length_max, "mm") ] if range?(:length_min, :length_max)
+    pills << [ :weight, range_label(:weight_min, :weight_max, I18n.t("units.#{weight_unit}")) ] if range?(:weight_min, :weight_max)
     pills << [ :saltwater, I18n.t("search.saltwater_only") ] if truthy?(:saltwater)
     %i[season clarity water_body wind].each do |k|
       pills << [ k, I18n.t("condition.#{k}.#{@p[k]}", default: @p[k].to_s.titleize) ] if present?(k)
@@ -51,6 +61,8 @@ class LureFilter
     scope = apply_action(scope) if present?(:lure_action) && Build.actions.key?(@p[:lure_action].to_s)
     scope = apply_depth(scope) if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
     scope = scope.where(id: Build.where(water: [ :salt, :both ]).select(:lure_id)) if truthy?(:saltwater)
+    scope = apply_build_range(scope, :length_mm, :length_min, :length_max)
+    scope = apply_build_range(scope, :weight_g, :weight_min, :weight_max, factor: weight_factor)
     scope
   end
 
@@ -63,6 +75,31 @@ class LureFilter
     band_min, band_max = DEPTH_BANDS.fetch(@p[:depth].to_s)
     builds = Build.where("builds.depth_min_cm <= ? AND builds.depth_max_cm >= ?", band_max, band_min)
     scope.where(id: builds.select(:lure_id))
+  end
+
+  # Size and weight are per-build specs — a lure matches if any build falls in
+  # the range. Builds missing the spec never match a range filter. `factor`
+  # converts entered values into the column's canonical unit; converted bounds
+  # are rounded to the nearest gram so nominal imperial weights still match
+  # their catalog entries (1 oz ≈ 28.35 g must find a "28 g" build).
+  def apply_build_range(scope, column, min_key, max_key, factor: 1)
+    min, max = numeric(min_key), numeric(max_key)
+    return scope unless min || max
+
+    min = (min * factor).round if min && factor != 1
+    max = (max * factor).round if max && factor != 1
+    range = min ? (max ? min..max : min..) : ..max
+    scope.where(id: Build.where(column => range).select(:lure_id))
+  end
+
+  # Weights are entered in the unit the search panel advertised (the viewer's
+  # preference, carried as weight_unit so shared URLs keep their meaning).
+  def weight_unit
+    @p[:weight_unit].to_s == "oz" ? "oz" : "g"
+  end
+
+  def weight_factor
+    weight_unit == "oz" ? Units::G_PER_OZ : 1
   end
 
   def apply_conditions(scope)
@@ -97,6 +134,31 @@ class LureFilter
 
   def present?(key)
     @p[key].present?
+  end
+
+  def range?(min_key, max_key)
+    numeric(min_key) || numeric(max_key)
+  end
+
+  def range_label(min_key, max_key, unit)
+    min, max = numeric(min_key), numeric(max_key)
+    if min && max
+      "#{fmt_num(min)}–#{fmt_num(max)} #{unit}"
+    elsif min
+      "≥ #{fmt_num(min)} #{unit}"
+    else
+      "≤ #{fmt_num(max)} #{unit}"
+    end
+  end
+
+  def numeric(key)
+    Float(@p[key].to_s)
+  rescue ArgumentError
+    nil
+  end
+
+  def fmt_num(value)
+    value == value.to_i ? value.to_i : value
   end
 
   def truthy?(key)

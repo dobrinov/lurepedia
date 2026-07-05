@@ -17,6 +17,11 @@ module UnitsHelper
     mm.present? ? "#{mm} mm" : nil
   end
 
+  # The unit the viewer thinks in when typing a lure weight (search filters).
+  def viewer_weight_unit
+    Units.system(user_units_setting(:weight), country: viewer_country) == :imperial ? "oz" : "g"
+  end
+
   # Registered users carry an explicit country; for anonymous visitors we fall
   # back to the country implied by the active locale.
   def viewer_country

@@ -444,6 +444,8 @@ ru:
       deep: Глубоко (4,5 м+)
     saltwater_only: Только солёная вода
     clear_all: Сбросить всё
+    min: Мин
+    max: Макс
     show_n_lures:
       one: Показать %{count} приманку
       other: Показать %{count} приманок

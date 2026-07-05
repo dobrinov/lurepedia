@@ -444,6 +444,8 @@ zh:
       deep: 深层（4.5 米以上）
     saltwater_only: 仅海水
     clear_all: 清除全部
+    min: 最小
+    max: 最大
     show_n_lures:
       one: "显示 %{count} 款路亚饵"
       other: "显示 %{count} 款路亚饵"

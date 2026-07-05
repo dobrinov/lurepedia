@@ -444,6 +444,8 @@ en:
       deep: Deep (4.5m+)
     saltwater_only: Saltwater only
     clear_all: Clear all
+    min: Min
+    max: Max
     show_n_lures:
       one: Show %{count} lure
       other: Show %{count} lures

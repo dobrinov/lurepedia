@@ -29,6 +29,13 @@ module SearchFiltersHelper
     Brand.find_by(slug: slug)&.name if slug.is_a?(String) && slug.present?
   end
 
+  # Unit for the weight range inputs: whatever unit the values in the URL were
+  # typed in, else the viewer's preference for a fresh search.
+  def selected_weight_filter_unit
+    param = selected_filter_value(:weight_unit)
+    %w[ g oz ].include?(param) ? param : viewer_weight_unit
+  end
+
   private
 
   def static_filter_options(field)

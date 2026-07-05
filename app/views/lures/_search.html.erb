@@ -50,6 +50,32 @@
           </div>
         <% end %>
 
+        <%# Build-spec ranges, in the units lures are catalogued in (mm / g) %>
+        <div>
+          <div class="filter-label"><%= t("lure.size") %> (mm)</div>
+          <div class="range-inputs">
+            <%= number_field_tag :length_min, selected_filter_value(:length_min), min: 0, class: "input",
+                  placeholder: t("search.min"), aria: { label: "#{t('lure.size')} #{t('search.min')}" } %>
+            <span class="muted">–</span>
+            <%= number_field_tag :length_max, selected_filter_value(:length_max), min: 0, class: "input",
+                  placeholder: t("search.max"), aria: { label: "#{t('lure.size')} #{t('search.max')}" } %>
+          </div>
+        </div>
+        <%# Weight follows the viewer's unit preference; the unit rides the URL so
+            redisplayed (or shared) filter values keep the unit they were typed in %>
+        <% weight_unit = selected_weight_filter_unit %>
+        <div>
+          <div class="filter-label"><%= t("lure.weight") %> (<%= t("units.#{weight_unit}") %>)</div>
+          <%= hidden_field_tag :weight_unit, weight_unit if weight_unit != "g" %>
+          <div class="range-inputs">
+            <%= number_field_tag :weight_min, selected_filter_value(:weight_min), min: 0, step: "any", class: "input",
+                  placeholder: t("search.min"), aria: { label: "#{t('lure.weight')} #{t('search.min')}" } %>
+            <span class="muted">–</span>
+            <%= number_field_tag :weight_max, selected_filter_value(:weight_max), min: 0, step: "any", class: "input",
+                  placeholder: t("search.max"), aria: { label: "#{t('lure.weight')} #{t('search.max')}" } %>
+          </div>
+        </div>
+
         <div>
           <div class="filter-label"><%= t("search.other") %></div>
           <label class="toggle"><%= check_box_tag :saltwater, "1", params[:saltwater].present? %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>

@@ -394,6 +394,8 @@ de:
       deep: Tief (4,5 m+)
     saltwater_only: Nur Salzwasser
     clear_all: Alles zurücksetzen
+    min: Min
+    max: Max
     show_n_lures:
       one: "%{count} Köder zeigen"
       other: "%{count} Köder zeigen"

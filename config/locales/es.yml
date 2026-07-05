@@ -444,6 +444,8 @@ es:
       deep: Profunda (4,5 m+)
     saltwater_only: Solo agua salada
     clear_all: Borrar todo
+    min: Mín
+    max: Máx
     show_n_lures:
       one: Mostrar %{count} señuelo
       other: Mostrar %{count} señuelos

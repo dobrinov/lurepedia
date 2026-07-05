@@ -394,6 +394,8 @@ ja:
       deep: ディープ（4.5m以上）
     saltwater_only: 海水のみ
     clear_all: すべてクリア
+    min: 最小
+    max: 最大
     show_n_lures:
       one: "%{count} ルアーを表示"
       other: "%{count} ルアーを表示"

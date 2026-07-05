@@ -130,6 +130,8 @@ main { min-height: 60vh; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px 16px; margin-top: 12px;
 }
 .filter-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 6px; }
+.range-inputs { display: flex; align-items: center; gap: 6px; }
+.range-inputs .input { min-width: 0; flex: 1; }
 .search-panel .panel-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--surface-2); }
 /* The panel's close control only applies to the mobile full-screen overlay */
 .panel-close { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: none; border-radius: var(--r-pill); background: var(--surface-2); color: var(--ink); cursor: pointer; }

@@ -444,6 +444,8 @@ el:
       deep: Βαθύ (4,5 m+)
     saltwater_only: Μόνο αλμυρό νερό
     clear_all: Καθαρισμός όλων
+    min: Ελάχ.
+    max: Μέγ.
     show_n_lures:
       one: Δες %{count} τεχνητό
       other: Δες %{count} τεχνητά

@@ -394,6 +394,8 @@ bg:
       deep: Дълбоко (4.5 м+)
     saltwater_only: Само солена вода
     clear_all: Изчисти всичко
+    min: Мин
+    max: Макс
     show_n_lures:
       one: "Покажи %{count} примамка"
       other: "Покажи %{count} примамки"

@@ -34,7 +34,7 @@
     <div class="chips" style="margin-bottom:18px">
       <% @filter.active_pills.each do |key, label| %>
         <span class="filter-pill"><%= label %>
-          <%= link_to "×", url_for(request.query_parameters.except(key.to_s, "page")) %>
+          <%= link_to "×", url_for(request.query_parameters.except(*LureFilter.pill_params(key), "page")) %>
         </span>
       <% end %>
       <%= link_to t("search.clear_all"), lures_path, class: "muted", style: "font-size:13px" %>
