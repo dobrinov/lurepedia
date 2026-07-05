@@ -74,6 +74,18 @@ es:
   footer:
     explore: Explorar
 
+  meta:
+    lures_index: "Explora el catálogo completo de señuelos de pesca — filtra por tipo, profundidad, agua y especie, con capturas reales como prueba."
+    catches_index: "Capturas reales registradas por pescadores — el señuelo, el color y las condiciones detrás de cada pez."
+    brands_index: "Marcas de señuelos de todo el mundo, cada una con su gama completa y las capturas de la comunidad."
+    species_index: "Especies de peces y los señuelos que realmente las capturan, avalados por capturas reales."
+    shops_index: "Dónde comprar señuelos de pesca — tiendas ordenadas por envío a tu país."
+    leaderboard: "Los señuelos más probados, clasificados por capturas reales de la comunidad."
+    lure_show: "%{lure} — %{type} con fotos, colores, tallas, dónde comprarlo y capturas reales de pescadores."
+    brand_show: "Señuelos %{brand} — la gama completa con fotos, especificaciones y capturas reales."
+    species_show: "descubre qué señuelos la capturan de verdad, avalado por capturas reales"
+    shop_show: "tienda de pesca — países de envío y enlaces de compra"
+    catch_show: "%{species} capturado con %{lure} — foto, condiciones y detalles del señuelo."
   home:
     tagline: Cada señuelo, probado con una captura
     meta_description: Lurepedia es una enciclopedia colaborativa de señuelos de pesca — encuentra señuelos y comprueba con capturas reales que funcionan.

@@ -1,5 +1,5 @@
 <% content_for :title, @shop.name %>
-<% content_for :head, tag.meta(name: "description", content: "#{@shop.name}: #{@shop.blurb}".truncate(155)) %>
+<% meta_description "#{@shop.name}: #{@shop.blurb.presence || t('meta.shop_show', shop: @shop.name)}" %>
 
 <%= render "shared/pending_review", record: @shop %>
 

@@ -1,5 +1,17 @@
 <% content_for :title, @brand.name %>
-<% content_for :head, tag.meta(name: "description", content: "#{@brand.name}: #{@brand.description}".truncate(155)) %>
+<%
+  meta_description @brand.description.presence || t("meta.brand_show", brand: @brand.name, lures: @brand.lures_count)
+  meta_image @brand.logo.variant(resize_to_limit: [ 1200, 1200 ]) if @brand.logo.attached? && @brand.logo.variable?
+%>
+<% content_for :head do %>
+  <%= structured_data(
+        "@type": "Brand",
+        name: @brand.name,
+        description: meta_description,
+        url: canonical_url,
+        logo: @brand.logo.attached? && @brand.logo.variable? ? absolute_url(@brand.logo.variant(resize_to_limit: [ 600, 600 ])) : nil
+      ) %>
+<% end %>
 
 <%= render "shared/pending_review", record: @brand %>
 

@@ -1,5 +1,9 @@
 <% content_for :title, @species.common_name %>
-<% content_for :head, tag.meta(name: "description", content: "#{@species.common_name} (#{@species.scientific_name}): #{@species.description.presence || @species.habitat}".truncate(155)) %>
+<%
+  meta_description "#{@species.common_name} (#{@species.scientific_name}): " \
+                   "#{@species.description.presence || @species.habitat.presence || t('meta.species_show', species: @species.common_name)}"
+  meta_image cropped_photo(@species, resize_to_limit: [ 1200, 1200 ]) if @species.photo.attached? && @species.photo.variable?
+%>
 
 <%= render "shared/pending_review", record: @species %>
 

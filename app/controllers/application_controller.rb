@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
   around_action :use_time_zone
   before_action :canonicalize_root_locale
+  before_action :noindex_form_pages
 
   helper_method :current_user, :signed_in?
 
@@ -31,6 +32,12 @@ class ApplicationController < ActionController::Base
   # screens they're redirected to on creation.
   def visible_catalog(scope)
     current_user&.can_moderate? ? scope : scope.published
+  end
+
+  # Form screens are contributor UI, not search content; SeoHelper's
+  # robots_meta_tag renders the noindex meta from @noindex.
+  def noindex_form_pages
+    @noindex = true if %w[new edit].include?(action_name)
   end
 
   def switch_locale(&action)

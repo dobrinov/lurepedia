@@ -5,6 +5,8 @@ class SitemapsController < ApplicationController
     @lures = Lure.published
     @species = Species.published
     @brands = Brand.published
+    @shops = Shop.published
+    @catch_records = Catch.all
     respond_to { |format| format.xml }
   end
 end

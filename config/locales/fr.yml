@@ -74,6 +74,18 @@ fr:
   footer:
     explore: Explorer
 
+  meta:
+    lures_index: "Parcourez le catalogue complet de leurres de pêche — filtrez par type, profondeur, eau et espèce, avec de vraies prises comme preuve."
+    catches_index: "De vraies prises enregistrées par des pêcheurs — le leurre, le coloris et les conditions derrière chaque poisson."
+    brands_index: "Des marques de leurres du monde entier, chacune avec sa gamme complète et les prises de la communauté."
+    species_index: "Les espèces de poissons et les leurres qui les prennent vraiment, preuves à l'appui."
+    shops_index: "Où acheter des leurres de pêche — boutiques classées selon la livraison vers votre pays."
+    leaderboard: "Les leurres les plus éprouvés, classés selon les vraies prises de la communauté."
+    lure_show: "%{lure} — %{type} avec photos, coloris, tailles, où l'acheter et de vraies prises de pêcheurs."
+    brand_show: "Leurres %{brand} — la gamme complète avec photos, caractéristiques et vraies prises."
+    species_show: "découvrez quels leurres le prennent vraiment, preuves à l'appui"
+    shop_show: "magasin de pêche — pays de livraison et liens d'achat"
+    catch_show: "%{species} pris au %{lure} — photo, conditions et détails du leurre."
   home:
     tagline: Chaque leurre, prouvé par une prise
     meta_description: Lurepedia est une encyclopédie collaborative des leurres de pêche — trouvez des leurres et voyez la preuve, par des prises réelles, qu'ils fonctionnent.

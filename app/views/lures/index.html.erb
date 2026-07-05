@@ -1,4 +1,22 @@
-<% content_for :head, tag.meta(name: "robots", content: "index,follow") %>
+<% meta_description t("meta.lures_index") %>
+<% content_for :head do %>
+  <%= structured_data(
+        "@type": "WebSite",
+        name: "Lurepedia",
+        url: "#{request.base_url}/",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: { "@type": "EntryPoint", urlTemplate: "#{lures_url(locale: I18n.locale)}?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      ) %>
+  <%= structured_data(
+        "@type": "Organization",
+        name: "Lurepedia",
+        url: "#{request.base_url}/",
+        logo: "#{request.base_url}/android-chrome-512x512.png"
+      ) %>
+<% end %>
 <div class="container">
   <div class="page-head">
     <div>

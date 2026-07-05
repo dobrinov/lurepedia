@@ -1,4 +1,9 @@
 <% content_for :title, "#{species_common_name(@catch.species)} — #{@catch.lure.title}" %>
+<%
+  meta_description t("meta.catch_show", species: species_common_name(@catch.species), lure: @catch.lure.title)
+  og_photo = catch_display_photo(@catch)
+  meta_image og_photo.variant(resize_to_fill: [ 1200, 630 ]) if og_photo&.variable?
+%>
 
 <div class="container" style="padding-top:24px">
   <div class="detail-grid">

@@ -1,9 +1,22 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 User-agent: *
+Disallow: /session
 Disallow: /*/session
+Disallow: /registration
+Disallow: /*/registration
+Disallow: /settings
 Disallow: /*/settings
+Disallow: /moderation
 Disallow: /*/moderation
+Disallow: /admin
 Disallow: /*/admin
+Disallow: /my/
 Disallow: /*/my/
+Disallow: /options/
+Disallow: /*/options/
+Disallow: /design-system
+Disallow: /*/design-system
+Disallow: /*/new$
+Disallow: /*/edit$
 
-Sitemap: /sitemap.xml
+Sitemap: https://lurepedia.com/sitemap.xml

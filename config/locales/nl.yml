@@ -74,6 +74,18 @@ nl:
   footer:
     explore: Ontdekken
 
+  meta:
+    lures_index: "Blader door de volledige catalogus kunstaas — filter op type, diepte, water en vissoort, met echte vangsten als bewijs."
+    catches_index: "Echte vangsten gelogd door vissers — zie het kunstaas, de kleur en de omstandigheden achter elke vis."
+    brands_index: "Kunstaasmerken van over de hele wereld, elk met het volledige assortiment en de vangsten van de community."
+    species_index: "Vissoorten en het kunstaas dat ze echt vangt, onderbouwd met echte vangsten."
+    shops_index: "Waar je kunstaas koopt — winkels gesorteerd op levering naar jouw land."
+    leaderboard: "Het meest bewezen kunstaas, gerangschikt op echte vangsten van de community."
+    lure_show: "%{lure} — %{type} met foto's, kleuren, maten, koopadressen en echte vangsten van vissers."
+    brand_show: "%{brand} kunstaas — het volledige assortiment met foto's, specificaties en echte vangsten."
+    species_show: "zie welk kunstaas hem echt vangt, onderbouwd met echte vangsten"
+    shop_show: "hengelsportwinkel — bezorglanden en kooplinks"
+    catch_show: "%{species} gevangen op de %{lure} — foto, omstandigheden en details van het kunstaas."
   home:
     tagline: Elk kunstaas, bewezen door een vangst
     meta_description: Lurepedia is een door de community samengestelde encyclopedie van kunstaas — vind kunstaas en zie echt bewijs, vangst voor vangst, dat het werkt.

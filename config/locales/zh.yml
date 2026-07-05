@@ -74,6 +74,18 @@ zh:
   footer:
     explore: 探索
 
+  meta:
+    lures_index: "浏览完整的路亚拟饵目录 — 按类型、泳深、水域和鱼种筛选，以真实渔获为证。"
+    catches_index: "钓友记录的真实渔获 — 查看每条鱼背后的拟饵、颜色和条件。"
+    brands_index: "来自世界各地的拟饵品牌，每个品牌都有完整产品线和社区渔获记录。"
+    species_index: "鱼种及真正能钓到它们的拟饵，以真实渔获为依据。"
+    shops_index: "哪里购买路亚拟饵 — 按可送达您所在国家排序的商店。"
+    leaderboard: "最经得起验证的拟饵，按社区真实渔获排名。"
+    lure_show: "%{lure} — %{type}：照片、颜色、尺寸、购买渠道及钓友的真实渔获。"
+    brand_show: "%{brand} 拟饵 — 完整产品线，含照片、规格和真实渔获记录。"
+    species_show: "看看哪些拟饵真正钓得到它，以真实渔获为证"
+    shop_show: "渔具商店 — 配送国家和购买链接"
+    catch_show: "用 %{lure} 钓获的 %{species} — 照片、条件和拟饵详情。"
   home:
     tagline: 每一款路亚饵，都有渔获证明
     meta_description: Lurepedia 是一部由社区共建的路亚饵百科全书 — 查找路亚饵，并通过真实渔获验证它们的效果。

@@ -24,6 +24,18 @@ de:
     promoted: Gesponsert
     sponsored: Gesponsert
 
+  meta:
+    lures_index: "Der komplette Katalog an Angelködern — filtere nach Typ, Tiefe, Gewässer und Fischart, mit echten Fängen als Beweis."
+    catches_index: "Echte Fänge von Anglern — mit Köder, Farbe und Bedingungen hinter jedem Fisch."
+    brands_index: "Köder-Marken aus aller Welt, jede mit komplettem Sortiment und der Fangbilanz der Community."
+    species_index: "Fischarten und die Köder, die sie wirklich fangen — belegt durch echte Fänge."
+    shops_index: "Wo du Angelköder kaufst — Shops sortiert nach Lieferung in dein Land."
+    leaderboard: "Die bewährtesten Angelköder, sortiert nach echten Fängen der Community."
+    lure_show: "%{lure} — %{type} mit Fotos, Farben, Größen, Kaufquellen und echten Fängen von Anglern."
+    brand_show: "%{brand} Angelköder — das komplette Sortiment mit Fotos, Daten und echten Fangberichten."
+    species_show: "sieh, welche Köder sie wirklich fangen — belegt durch echte Fänge"
+    shop_show: "Angelshop — Lieferländer und Kauf-Links"
+    catch_show: "%{species}, gefangen mit %{lure} — Foto, Bedingungen und Köderdetails."
   home:
     tagline: Jeder Köder, bewiesen durch einen Fang
     meta_description: Lurepedia ist eine gemeinschaftliche Enzyklopädie der Angelköder — finde Köder und sieh echte Beweise, dass sie fangen.

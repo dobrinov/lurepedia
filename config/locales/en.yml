@@ -74,6 +74,18 @@ en:
   footer:
     explore: Explore
 
+  meta:
+    lures_index: "Browse the full catalog of fishing lures — filter by type, depth, water and species, with real catches as proof of what works."
+    catches_index: "Real catches logged by anglers — see the exact lure, color and conditions behind every fish."
+    brands_index: "Fishing lure brands from around the world, each with its full lineup and community catch record."
+    species_index: "Fish species and the lures that actually catch them, backed by angler-logged catches."
+    shops_index: "Where to buy fishing lures — shops ordered by delivery to your country."
+    leaderboard: "The most proven fishing lures, ranked by real catches logged by the community."
+    lure_show: "%{lure} — %{type} with photos, colors, sizes, where to buy, and real catches logged by anglers."
+    brand_show: "%{brand} fishing lures — the full lineup with photos, specs and real catch reports."
+    species_show: "see which lures actually catch it, proven by real angler-logged catches"
+    shop_show: "fishing tackle shop — delivery countries and lure buy links"
+    catch_show: "%{species} caught on the %{lure} — photo, conditions and lure details logged by an angler."
   home:
     tagline: Every lure, proven by a catch
     meta_description: Lurepedia is a crowdsourced encyclopedia of fishing lures — find lures and see real proof, by catch, that they work.

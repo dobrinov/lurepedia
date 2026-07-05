@@ -1,9 +1,28 @@
 <% content_for :title, @lure.title %>
+<%
+  og_variant = [ @selected_variant, @lure.primary_variant ].compact.find { |v| v.photo.attached? && v.photo.variable? }
+  og_photo = og_variant && cropped_photo(og_variant, resize_to_limit: [ 1200, 1200 ])
+  meta_description @lure.description.presence || t("meta.lure_show", lure: @lure.title, type: lure_type_name(@lure.lure_type), catches: @lure.catches_count)
+  meta_image og_photo if og_photo
+%>
 <% content_for :head do %>
-  <meta name="description" content="<%= "#{@lure.title}: #{@lure.description}".truncate(155) %>">
-  <%= tag.script type: "application/ld+json" do %>
-    <%= raw({ "@context": "https://schema.org", "@type": "Product", name: @lure.title, brand: @lure.brand.name, category: lure_type_name(@lure.lure_type), description: @lure.description }.to_json) %>
-  <% end %>
+  <%= structured_data(
+        "@type": "Product",
+        name: @lure.title,
+        brand: { "@type": "Brand", name: @lure.brand.name },
+        category: lure_type_name(@lure.lure_type),
+        description: meta_description,
+        image: og_photo && absolute_url(og_photo),
+        url: canonical_url
+      ) %>
+  <%= structured_data(
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: t("nav.lures"), item: lures_url },
+          { "@type": "ListItem", position: 2, name: @lure.brand.name, item: brand_url(@lure.brand) },
+          { "@type": "ListItem", position: 3, name: @lure.title, item: lure_url(@lure) }
+        ]
+      ) %>
 <% end %>
 
 <% dv = @selected_variant %>
