@@ -54,25 +54,29 @@ Key facts to respect:
 
 ### Domain model
 
-The catalog is three levels: **Brand → Lure → Variant**. A `Catch` belongs to a `Variant` (and a `Species`), so a lure's catches reach it `through: :variants`. `catches_count` on `Lure` is a denormalized counter maintained by `Catch` callbacks (`bump_lure_counter`/`drop_lure_counter`) — a lure is "proven" when it has > 0 catches. `Catch` carries the condition enums (`season`, `clarity`, `water_body`, `wind`, `time_of_day`) that power discovery; `Lure` carries catalog enums (`water`, `action`) and a depth range in centimetres.
+The catalog is **Brand → Lure → two independent axes**: `Variant` is a color/finish (name, photo, `uv_glow`) and `Build` is a physical size/spec (name like "140 FLYER", `length_mm`, `weight_g`, depth range in cm, buoyancy `action`, `water`). A lure also has a `lure_type` (spoon, jerkbait, …) and an optional explicit `default_variant`; `Lure#primary_variant` resolves it (explicit pick, else first-added) without shadowing the association.
 
-Other domain pieces: `Shop`/`BuyLink` (where to buy), `Comment`/`Upvote`/`Report` (community on catches), `Claim` (brand/lure ownership via simulated DNS-TXT token), `Revision` (polymorphic edit history), `ModerationItem` (the review queue).
+**Color↔build availability is open-world.** The `variant_builds` join records which builds a color is *confirmed* to come in; a variant with **no** rows means "availability unknown — show the color under every build", never "available nowhere". `Variant#available_builds` resolves this; views must intersect it with the visibility-filtered build list (see `lures/show`). Availability edits ride `commit_edit` as a `build_ids` array; the `/variations` JSON ships `build_ids: null | [ids]` per color and the catch picker narrows builds by the chosen color (one-directional — colors are never filtered by build). Never validate catches against the matrix: a catch on an "unavailable" combo is evidence the matrix is wrong.
 
-**Canonical units are metric** — lengths/depths stored in cm, weights in grams. Never format measurements inline; always go through `Units` (`app/services/units.rb`), which converts to the viewer's preferred system (`:auto` resolves to imperial only for the `en` locale).
+A `Catch` belongs to a `Variant` (and a `Species`), plus an **optional** `Build` that must belong to the same lure; a lure's catches reach it `through: :variants`. `catches_count` on `Lure` is a denormalized counter maintained by `Catch` callbacks (`bump_lure_counter`/`drop_lure_counter`) — a lure is "proven" when it has > 0 catches. `Catch` carries the condition enums (`season`, `clarity`, `water_body`, `wind`, `time_of_day`) that power discovery.
+
+Other domain pieces: `Shop`/`BuyLink` (where to buy; shops list delivery-to-viewer-country first), `Comment`/`Upvote`/`Report` (community on catches), `Claim` (brand/lure/shop ownership: claimant leaves an email + message, an admin decides it in the moderation queue; a verified claim's holder edits that listing without review), `Revision` (polymorphic edit history), `ModerationItem` (the review queue).
+
+**Canonical units are metric** — depths and catch lengths in cm, build lengths in **mm** (`length_mm`, by convention — don't "fix" it to cm), weights in grams. Never format measurements inline; always go through `Units` (`app/services/units.rb`), which converts to the viewer's preferred system (`:auto` resolves to imperial only for the `en` locale).
 
 ### Cross-cutting concerns (read these before touching controllers/models)
 
 - `Authentication` (`app/controllers/concerns/`) — custom session auth (no Devise). `Current.session`/`Current.user` (`ActiveSupport::CurrentAttributes`) hold the actor. Public-by-default: there is no global auth filter; gate actions explicitly.
 - `Authorization` — plain-Ruby policy objects (no Pundit). `policy(:catch)` or `policy(record)` infers `<Class>Policy`. Defaults in `ApplicationPolicy`: reads public, writes need login. Controllers gate with `require_login` / `require_moderator` / `require_admin`; `NotAuthorized` is rescued into a redirect/403.
-- `Editable` — the contribution model. `commit_edit` applies an admin's change directly (+ a `Revision`), but for everyone else creates a `Revision` plus a pending `ModerationItem` instead of mutating the record. Edit affordances read "Edit" for admins, "Suggest an edit" for others. Most write paths should funnel through this rather than calling `update` directly.
+- `Editable` — the contribution model. `commit_edit` applies a change directly (+ a `Revision`) for admins and the record's verified brand/shop owner, but for everyone else creates a `Revision` plus a pending `ModerationItem` instead of mutating the record; it returns true/false so callers can chain follow-up work. Edit affordances read "Edit" for direct editors, "Suggest an edit" for others. Most write paths should funnel through this rather than calling `update` directly.
 - `Paginatable` — `paginate(scope, per:)` returns a `Page` struct rendered by `shared/_pagination`. Used app-wide instead of a gem.
 - `Sluggable` (model concern) — `to_param` returns the slug; auto-generates a unique slug from `slug_source` (override per model). Look up records by slug, not id.
 
-Discovery/listing logic lives in **query objects** under `app/queries/` (`LureFilter`, `LeaderboardQuery`), not in controllers. `LureFilter` is the heart of search/browse: it whitelists params via `ATTRS`, maps depth bands to cm ranges, and builds the removable filter pills.
+Discovery/listing logic lives in **query objects** under `app/queries/` (`LureFilter`, `LeaderboardQuery`), not in controllers. `LureFilter` is the heart of search/browse: it whitelists params via `ATTRS`, maps depth bands to cm ranges, and builds the removable filter pills. Buoyancy, depth and water live on builds, so a lure matches when **any** of its builds does; the default sort is recently-updated (`proven` is an explicit sort option).
 
 ### Roles & moderation
 
-`User#role` is `member`/`moderator`/`admin`. Moderators can action most `ModerationItem`s; **claims and new catalog entries require an admin** (`ModerationItem#actionable_by?` / `mod_actionable?`). The moderation queue (`ModerationController`) only flips item status — approving does not itself re-apply the change, since non-admin edits already wrote their `Revision` at submission time.
+`User#role` is `member`/`moderator`/`admin`. Moderators can action most `ModerationItem`s; **claims and new catalog entries require an admin** (`ModerationItem#actionable_by?` / `mod_actionable?`), and nobody actions their own submission. Approving a suggested **edit** is what lands it: `approve!` applies the revision's changeset to the record (and `reject!`/`undo!` roll an applied one back). Approving a **claim** mirrors the verdict onto the claim itself (`approve!`/`reject!`/`reopen!`), which is what confers or revokes owner rights. New catalog entries and catches just flip status — they were created live and gated by `Publishable` visibility until approved.
 
 ### Localization
 
