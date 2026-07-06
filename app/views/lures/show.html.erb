@@ -57,9 +57,22 @@
     </div>
 
     <%# Lightbox lives outside .lure-stage so its img escapes the stage's
-        contain-fit img rule; variant-stage keeps its src on the shown color. %>
-    <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
+        contain-fit img rule; variant-stage keeps its src on the shown color.
+        Arrows/arrow keys step through the colors that have photos. %>
+    <% photo_colors = @variants.count { |v| v.photo.attached? } %>
+    <div class="modal-backdrop" data-modal-target="dialog" data-variant-stage-target="lightbox"
+         data-action="click->modal#backdrop keydown.left@window->variant-stage#prevColor keydown.right@window->variant-stage#nextColor" hidden>
+      <% if photo_colors > 1 %>
+        <button type="button" class="lightbox-nav lightbox-nav-prev" data-action="variant-stage#prevColor" aria-label="<%= t("common.prev") %>">&lsaquo;</button>
+      <% end %>
       <img class="lightbox-img" data-variant-stage-target="lightboxImage"<% if dv&.photo&.attached? %> src="<%= url_for(dv.photo.variant(resize_to_limit: [ 1600, 1600 ])) %>"<% end %> alt="<%= @lure.title %>" loading="lazy" data-action="click->modal#close">
+      <% if photo_colors > 1 %>
+        <button type="button" class="lightbox-nav lightbox-nav-next" data-action="variant-stage#nextColor" aria-label="<%= t("common.next") %>">&rsaquo;</button>
+      <% end %>
+      <span class="lightbox-caption">
+        <span data-variant-stage-target="lightboxName"><%= dv&.name %></span>
+        <span class="uv-badge" data-variant-stage-target="lightboxUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>
+      </span>
     </div>
 
     <div class="stack" style="gap:14px">

@@ -6,7 +6,7 @@ import { Controller } from "@hotwired/stimulus"
 // default "variations" tab is implicit (/lures/<slug>/<color>); other tabs carry
 // their name (/lures/<slug>/<tab>/<color>).
 export default class extends Controller {
-  static targets = [ "chip", "stage", "stageImage", "stageGlyph", "stageZoom", "lightboxImage", "chipName", "chipUv", "buildsTable" ]
+  static targets = [ "chip", "stage", "stageImage", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxName", "lightboxUv", "chipName", "chipUv", "buildsTable" ]
   static values = { basePath: String, tabs: Array } // basePath: "/en/lures/<slug>"
 
   connect() {
@@ -41,6 +41,8 @@ export default class extends Controller {
       if (d.photoZoomUrl) this.lightboxImageTarget.src = d.photoZoomUrl
       else this.lightboxImageTarget.removeAttribute("src")
     }
+    if (this.hasLightboxNameTarget) this.lightboxNameTarget.textContent = d.name || ""
+    if (this.hasLightboxUvTarget) this.lightboxUvTarget.hidden = d.uv !== "true"
 
     // Paint the stage with the photo's border color (blank restores the CSS
     // default) so letterbox bars blend into the image.
@@ -51,6 +53,23 @@ export default class extends Controller {
 
     // Show the build table for the selected color (only present on the Variations tab).
     this.buildsTableTargets.forEach((t) => { t.hidden = t.dataset.colorId !== d.colorId })
+  }
+
+  // Lightbox prev/next: cycle through the colors that have photos, keeping the
+  // page-level selection (tiles, builds table, URL) in step. Only active while
+  // the lightbox is open — the arrow keys are bound at the window level.
+  prevColor(event) { this.stepColor(event, -1) }
+  nextColor(event) { this.stepColor(event, 1) }
+
+  stepColor(event, delta) {
+    if (!this.hasLightboxTarget || this.lightboxTarget.hidden) return
+    event.preventDefault()
+    const chips = this.chipTargets.filter((c) => c.dataset.photoUrl)
+    if (chips.length < 2) return
+    const current = chips.findIndex((c) => c.classList.contains("selected"))
+    const chip = chips[(current + delta + chips.length) % chips.length]
+    this.show(chip)
+    this.syncUrl(chip.dataset.colorSlug)
   }
 
   // Rewrite the color path segment on the address bar and every tab link, so the

@@ -394,6 +394,13 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .lightbox { position: relative; max-width: min(90vw, 520px); }
 .lightbox img { display: block; width: 100%; height: auto; max-height: 86vh; object-fit: contain; border-radius: var(--r-xl); box-shadow: var(--shadow-modal); }
 .lightbox-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: var(--r-pill); border: none; background: var(--white); color: var(--ink); box-shadow: var(--shadow-modal); font-size: 20px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+/* Lightbox color navigation (lure page): arrows pinned to the backdrop edges,
+   current color name pinned to the bottom */
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: var(--r-pill); border: none; background: var(--white); color: var(--ink); box-shadow: var(--shadow-modal); font-size: 28px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-bottom: 4px; }
+.lightbox-nav:hover { box-shadow: var(--shadow-card-hover); }
+.lightbox-nav-prev { left: 16px; }
+.lightbox-nav-next { right: 16px; }
+.lightbox-caption { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); border-radius: var(--r-pill); font-size: 13px; font-weight: 700; box-shadow: var(--shadow-modal); white-space: nowrap; }
 
 /* Pagination -------------------------------------------------------------- */
 .pager { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 28px; }
