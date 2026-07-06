@@ -12,6 +12,7 @@ module ApplicationHelper
     pt: { native: "Português", country: "PT" },
     sv: { native: "Svenska", country: "SE" },
     no: { native: "Norsk", country: "NO" },
+    da: { native: "Dansk", country: "DK" },
     fi: { native: "Suomi", country: "FI" },
     pl: { native: "Polski", country: "PL" },
     cs: { native: "Čeština", country: "CZ" },

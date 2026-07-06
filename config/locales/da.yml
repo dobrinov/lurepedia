@@ -1,0 +1,728 @@
+da:
+  common:
+    all: Alle
+    none: "—"
+    save: Gem
+    cancel: Annuller
+    submit: Send
+    edit: Rediger
+    delete: Slet
+    add: Tilføj
+    search: Søg
+    loading: Indlæser…
+    showing: "Viser %{from}–%{to} af %{count}"
+    page: Side
+    page_of: "af %{total}"
+    next: Næste
+    prev: Forrige
+    back: Tilbage
+    close: Luk
+    by: af
+    on: den
+    "yes": "Ja"
+    "no": "Nej"
+    verified: Verificeret
+    promoted: Fremhævet
+    sponsored: Sponsoreret
+
+  bans:
+    blocked: Din konto er i øjeblikket udelukket fra denne handling.
+    notice:
+      title: Din konto er begrænset.
+      reason: Årsag
+      permanent: Denne begrænsning er permanent.
+      until: "Gælder indtil %{date}."
+      scope: Begrænsede handlinger
+    capability:
+      catalog: katalogredigeringer
+      claims: ejerskabskrav
+      catches: fangstregistrering
+      comments: kommentarer
+      upvotes: upvotes
+      reports: anmeldelser
+      favorites: favoritter
+    preset:
+      catalog_only: Kun katalog
+      contributions: Alle bidrag
+      full: Fuld (skrivebeskyttet konto)
+    admin:
+      title: "Udelukkelser — %{name}"
+      title_short: Udelukkelser
+      new: Udsted en udelukkelse
+      reason: Årsag
+      preset: Forudindstilling
+      custom: Brugerdefineret valg
+      capabilities: Begrænsede handlinger
+      capabilities_help: En forudindstilling forudvælger handlinger; sæt flueben for at tilpasse.
+      expires_at: Udløber
+      permanent_hint: Lad feltet stå tomt for en permanent udelukkelse.
+      issue: Udsted udelukkelse
+      status: Status
+      scope: Omfang
+      active: Aktiv
+      lifted: Ophævet
+      expired: Udløbet
+      lift: Ophæv udelukkelse
+      manage: Administrer udelukkelser
+      created: Udelukkelse udstedt.
+      revoked: Udelukkelse ophævet.
+
+  favorites:
+    add: Gem som favorit
+    remove: Fjern favorit
+    favorited: Favorit
+
+  footer:
+    explore: Udforsk
+
+  meta:
+    lures_index: "Gennemse hele kataloget af kunstagn — filtrer efter type, dybde, vand og art, med rigtige fangster som bevis for, hvad der virker."
+    catches_index: "Rigtige fangster registreret af lystfiskere — se præcis hvilken agn, farve og forhold der lå bag hver fisk."
+    brands_index: "Kunstagnsmærker fra hele verden, hvert med sit fulde sortiment og fællesskabets fangstjournal."
+    species_index: "Fiskearter og de agn, der faktisk fanger dem, dokumenteret af lystfiskeres fangster."
+    shops_index: "Hvor du kan købe kunstagn — butikker sorteret efter levering til dit land."
+    leaderboard: "De mest gennemprøvede kunstagn, rangeret efter rigtige fangster registreret af fællesskabet."
+    lure_show: "%{lure} — %{type} med fotos, farver, størrelser, købssteder og rigtige fangster registreret af lystfiskere."
+    brand_show: "Kunstagn fra %{brand} — hele sortimentet med fotos, specifikationer og rigtige fangstrapporter."
+    species_show: "se hvilke agn der faktisk fanger den, bevist af rigtige fangster registreret af lystfiskere"
+    shop_show: "grejbutik — leveringslande og købslinks til agn"
+    catch_show: "%{species} fanget på %{lure} — foto, forhold og agndetaljer registreret af en lystfisker."
+  home:
+    tagline: Hver agn, bevist af en fangst
+    meta_description: Lurepedia er en brugerdrevet encyklopædi over kunstagn — find agn og se rigtige beviser, fangst for fangst, på at de virker.
+    hero_title: Hver agn, bevist af en fangst
+    hero_sub: En brugerdrevet encyklopædi over kunstagn. Find det, der virker — dokumenteret af rigtige fangster.
+    browse_lures: Gennemse agn
+    browse_another_way: Gennemse på en anden måde
+    add_a_catch: Tilføj en fangst
+
+  nav:
+    lures: Agn
+    species: Arter
+    catches: Fangster
+    brands: Mærker
+    shops: Butikker
+    leaderboard: Rangliste
+    menu: Menu
+
+  auth:
+    sign_in: Log ind
+    sign_up: Opret konto
+    sign_out: Log ud
+    email: E-mail
+    password: Adgangskode
+    password_confirmation: Bekræft adgangskode
+    name: Navn
+    sign_in_required: Log ind for at bidrage.
+    not_authorized: Du har ikke tilladelse til det.
+    create_account: Opret konto
+    have_account: Har du allerede en konto?
+    no_account: Ny på Lurepedia?
+    welcome_back: Velkommen tilbage
+    join: Bliv en del af Lurepedia
+    choose_country: Dit land
+    choose_language: Foretrukket sprog
+    continue_with_google: Fortsæt med Google
+
+  units:
+    label: Enheder
+    auto: Automatisk (efter land)
+    imperial: Imperial
+    metric: Metrisk
+    length: Længde
+    weight: Vægt
+    depth: Dybde
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Ferskvand
+    salt: Saltvand
+    both: Fersk- og saltvand
+
+  action:
+    suspending: Suspending
+    floating: Flydende
+    sinking: Synkende
+    none: "—"
+
+  condition:
+    season:
+      label: Sæson
+      any: Alle sæsoner
+      spring: Forår
+      summer: Sommer
+      fall: Efterår
+      winter: Vinter
+    clarity:
+      label: Sigtbarhed
+      any: Al sigtbarhed
+      clear: Klart
+      stained: Farvet
+      muddy: Grumset
+    water_body:
+      label: Vandtype
+      any: Alle vandtyper
+      lake: Sø
+      pond: Dam
+      river: Flod
+      reservoir: Reservoir
+      stream: Å
+    wind:
+      label: Vind
+      any: Al vind
+      calm: Vindstille
+      light: Let (5–10 mph)
+      moderate: Moderat (10–20 mph)
+      strong: Kraftig (20+ mph)
+    time_of_day:
+      label: Tidspunkt på dagen
+      any: Ethvert tidspunkt
+      dawn: Daggry
+      morning: Morgen
+      midday: Middag
+      afternoon: Eftermiddag
+      dusk: Skumring
+      night: Nat
+    platform:
+      label: Fisker fra
+      any: Hvor som helst
+      shore: Land
+      boat: Båd
+      kayak: Kajak
+    retrieve:
+      label: Indspinningsstil
+      any: Enhver stil
+      steady: Jævn indspinning
+      stop_and_go: Stop-and-go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow roll
+      burn: Hurtig indspinning
+      dead_stick: Dead-sticking
+
+  lure_type:
+    crankbait: Wobler
+    jerkbait: Jerkbait
+    soft_plastic: Gummidyr
+    spinnerbait: Spinnerbait
+    bladed_jig: Bladed jig
+    topwater: Overfladeagn
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Blink
+    lipless_crankbait: Lipless wobler
+
+  lure:
+    similar_title: "Lignende agn"
+    similar_manage_hint: "Krydshenvis agn, der ligner hinanden — ofte fra andre mærker — så lystfiskere kan sammenligne dem."
+    similar_none: "Ingen lignende agn linket endnu."
+    similar_add: "Link lignende agn"
+    similar_add_placeholder: "Find en agn…"
+    similar_not_found: "Den agn kunne ikke findes."
+    similar_match: "%{score}% match"
+    similar_suggest_title: "Ligner…"
+    similar_suggest_hint: "Dette foto ligner disse agn. Sæt flueben ved dem, der virkelig ligner, så krydshenviser vi dem."
+    title: Agn
+    subtitle: Hver agn, bevist af en fangst
+    search_placeholder: Søg agn — eller filtrer efter type, vand, aktion…
+    model: Model
+    description: Beskrivelse
+    descriptions: Beskrivelser
+    translations: Oversættelser
+    translations_hint: Agnens beskrivelse på hvert sprog. Læsere ser deres eget sprog og ellers engelsk.
+    add: Tilføj en agn
+    add_title: Tilføj en agn
+    type: Type
+    depth: Arbejdsdybde
+    action: Aktion
+    buoyancy: "Opdrift"
+    action_varies: "Varierer"
+    water: Vand
+    brand: Mærke
+    variants: Varianter
+    variant: Variant
+    tab_caught: Fanget på den
+    proven_record:
+      title: Hvad fangsterne viser
+      top_species: Hyppigste arter
+    tab_variations: "Variationer"
+    tab_buy: Købssteder
+    tab_history: Historik
+    proof: Bevis for at den virker
+    catches_count:
+      one: "%{count} fangst"
+      other: "%{count} fangster"
+    no_proof: Ingen beviser endnu
+    be_first: Vær den første til at bevise, at denne agn virker
+    be_first_short: Vær den første til at bevise, at den virker →
+    where_to_buy: Købssteder
+    quick_facts: Hurtige fakta
+    action_video: Agnen i aktion
+    add_video: Tilføj en video af agnen i aktion
+    watch_video: Se video
+    suggest_edit: Foreslå en rettelse
+    add_catch: Tilføj en fangst
+    proven_for: Bevist til
+    no_matches: Ingen agn matcher dine filtre
+    no_matches_sub: Leder du efter en bestemt agn? Tilføj den, hvis den mangler.
+    empty_title: Ingen agn endnu
+    size: Størrelse
+    weight: Vægt
+    color: Farve
+    colors: Farver
+    colors_count:
+      one: "%{count} farve"
+      other: "%{count} farver"
+    build: Udgave
+    builds: Udgaver
+    browse_colors: Gennemse farver
+    common_attributes: Fælles egenskaber · hele familien
+    this_variation: Denne variation
+    default_variation: Standardvariation
+    uv_glow: UV-glød
+    best_for: Bedst til
+    manage_variations: Variationer & udgaver
+    tab_details: Generelle detaljer
+    add_color: Tilføj en farve
+    add_build: Tilføj en udgave
+    color_name: Farvenavn
+    availability: Tilgængelige udgaver
+    availability_hint: Sæt flueben ved de udgaver, som farven bekræftet fås i. Lad alle stå tomme, hvis det er ukendt — så vises farven under alle udgaver.
+    available_in_n_of_m: Fås i %{n} af %{m} udgaver
+
+  species:
+    title: Arter
+    subtitle: Fiskeleksikonet
+    search_placeholder: Søg arter — almindeligt eller videnskabeligt navn…
+    venomous: Giftig
+    venomous_hint: Har giftige pigge eller brod — håndteres med forsigtighed.
+    poisonous: Giftig som føde
+    poisonous_hint: Giftig, hvis den spises.
+    add: Tilføj en art
+    add_title: Tilføj en art
+    scientific_name: Videnskabeligt navn
+    local_names: Lokale navne
+    translations: Oversættelser
+    translations_hint: Det almindelige navn og beskrivelsen på hvert sprog. Læsere ser deres eget sprog og ellers engelsk.
+    local_name: Almindeligt navn
+    description: Beskrivelse
+    descriptions: Beskrivelser
+    wikipedia_url: Wikipedia-URL
+    wikipedia: Se på Wikipedia
+    wikipedia_url_invalid: "skal være en URL til en Wikipedia-artikel (f.eks. https://en.wikipedia.org/wiki/...)"
+    habitat: Levested
+    tab_lures: Fanget på
+    tab_catches: Fangster
+    tab_leaderboard: Rangliste
+    tab_history: Historik
+    proven_lures: Gennemprøvede agn
+    lures_count:
+      one: "%{count} agn"
+      other: "%{count} agn"
+    no_proven_lures: Ingen gennemprøvede agn endnu
+    be_first_lure: Vær den første til at bevise, at en agn fanger denne fisk
+    empty_title: Ingen arter endnu
+    empty_sub: Vær den første til at tilføje en fiskeart.
+
+  brand:
+    title: Mærker
+    subtitle: Producenterne
+    search_placeholder: Søg mærker…
+    add: Tilføj et mærke
+    add_title: Tilføj et mærke
+    founded: Grundlagt
+    empty_title: Ingen mærker endnu
+    empty_sub: Vær den første til at tilføje et agnmærke.
+    country: Land
+    website: Websted
+    website_invalid: "Indtast en gyldig URL, der starter med http:// eller https://"
+    logo: Logo
+    blurb: Om
+    description: Beskrivelse
+    descriptions: Beskrivelser
+    translations: Oversættelser
+    translations_hint: Mærkets beskrivelse på hvert sprog. Læsere ser deres eget sprog og ellers engelsk.
+    tab_lures: Agn
+    tab_history: Historik
+    claim: Gør krav på dette mærke
+    claimed: Gjort krav på
+    owned_by: Ejes af
+
+  buy_link:
+    add: Tilføj et købssted
+    empty: Ingen butikker på listen endnu — tilføj det første sted, hvor denne agn kan købes.
+    choose_shop: Butik
+    choose_shop_placeholder: Søg butikker…
+    existing_shop: Eksisterende butik
+    new_shop: Ny butik
+    product_url: Produktlink (valgfrit)
+    submit: Tilføj
+    shop_required: Vælg venligst en butik.
+    already_listed: Den butik er allerede på listen for denne agn.
+
+  shop:
+    title: Butikker
+    subtitle: Hvor du kan købe
+    search_placeholder: Søg butikker…
+    add: Tilføj en butik
+    add_title: Tilføj en butik
+    ships_to_you: Butikker der leverer til %{country}
+    other_shops: Andre butikker
+    none_ship: Ingen butikker leverer til %{country} endnu. Kender du en?
+    tab_lures: Agn
+    tab_history: Historik
+    no_lures: Ingen agn på listen i denne butik endnu.
+    ships_to: Leverer til
+    ships_to_unknown: "—"
+    ships_worldwide: Leverer til hele verden
+    ships_to_hint: Lad feltet stå tomt, hvis butikken leverer til hele verden.
+    add_country: Tilføj et land
+    worldwide: Hele verden
+    claim: Gør krav på en butik
+
+  catch:
+    title: Fangster
+    subtitle: Friske beviser fra fællesskabet
+    add: Tilføj en fangst
+    add_title: Tilføj en fangst
+    on_lure: "på %{lure}"
+    conditions: Forhold
+    location: Sted
+    length: Længde
+    weight: Vægt
+    contributor: Bidragyder
+    comments: Kommentarer
+    add_comment: Tilføj en kommentar
+    upvote: Stem op
+    upvoted: Stemt op
+    remove_upvote: Klik igen for at fjerne din stemme
+    report: Anmeld denne fangst
+    related: Flere fangster af denne art
+    photos: Fotos
+    pick_brand: Vælg et mærke
+    pick_lure: Vælg en agn
+    pick_variant: Vælg en variant
+    color: Farve
+    pick_color: Vælg den farve, du fangede på
+    pick_build: Vælg en udgave
+    pick_species: Hvad fangede du?
+    log_title: Registrer en fangst
+    log_this: Registrer denne fangst
+    modal_step1: "Trin 1 af 2 · Vælg den farve, du fangede på"
+    modal_step2: "Trin 2 af 2 · Vælg udgave & dybde"
+    builds_in: "Udgaver tilgængelige i"
+    no_builds: Denne farve har ingen udgaver endnu.
+    variation: Variation
+    choose_variation: Vælg en variation
+    change: Skift
+    note: Noter
+    submitted: Sendt til gennemsyn
+    logged: Fangst registreret
+    removed: Fangst fjernet
+    submitted_body: Tak! Din fangst er i moderationskøen og vises, når den er godkendt.
+    add_another: Tilføj en til
+
+  search:
+    filters: Filtre
+    combine_free: Kombiner frit — resultaterne matcher alle
+    no_results: Ingen resultater fundet
+    any_species: Alle arter
+    any_type: Alle typer
+    any_brand: Alle mærker
+    any_action: Alle aktioner
+    any_depth: Alle dybder
+    depth_band:
+      shallow: Lavt (0–1,5 m)
+      mid: Mellem (1,5–4,5 m)
+      deep: Dybt (4,5 m+)
+    saltwater_only: Kun saltvand
+    clear_all: Ryd alle
+    min: Min.
+    max: Maks.
+    show_n_lures:
+      one: Vis %{count} agn
+      other: Vis %{count} agn
+    other: Andet
+
+  leaderboard:
+    title: Rangliste
+    subtitle: Bedste lystfiskere pr. art
+    all_species: Alle arter
+    rank_by: Rangér efter
+    metric_catches: Fangster
+    metric_upvotes: Upvotes
+    metric_length: Fiskelængde
+    rank: Plads
+    angler: Lystfisker
+    catches: Fangster
+    upvotes: Upvotes
+    best_length: Bedste længde
+    specialist: specialist
+    species_count:
+      one: "%{count} art"
+      other: "%{count} arter"
+    you: DIG
+    empty: Ingen rangerede lystfiskere endnu
+
+  contribute:
+    suggest_edit: Foreslå en rettelse
+    edit_title: "Rediger %{name}"
+    edit_saved: "Ændringer gemt"
+    added: "Tilføjet til kataloget"
+    suggest_title: "Foreslå en rettelse til %{name}"
+    suggest_note: Dit forslag bliver gennemgået af en moderator.
+    suggested: Forslag sendt
+    suggested_body: Tak — en moderator gennemgår dit forslag.
+    add_photos: Tilføj fotos
+    moderation_note: Bidrag gennemgås, før de offentliggøres.
+    direct_note: Som ejer af mærket offentliggøres dette med det samme — ingen gennemgang nødvendig.
+    pending_review: Denne post afventer gennemgang og er endnu ikke offentlig.
+
+  crop:
+    adjust: "Juster beskæring"
+    done: "Færdig"
+    reset: "Nulstil beskæring"
+    aspect_free: "Frit"
+    aspect_square: "Kvadratisk"
+    bg_label: "Flisebaggrund"
+    bg_auto: "Auto"
+    bg_pick: "Vælg fra fotoet"
+    bg_apply_all: "Anvend denne baggrund på alle farver af denne agn"
+    hint: "Træk for at flytte; træk i hjørnerne for at ændre størrelsen. Beskæringen anvendes, når du gemmer."
+    invalid: "Beskæringsrektanglet er ugyldigt"
+  claim:
+    title: "Gør krav på %{name}"
+    page_title: Gør krav på et opslag
+    intro: "Gør krav på denne %{kind} for at administrere opslaget. Fortæl os, hvem du er, så tager vi den derfra over e-mail."
+    message_label: Hvem er du, og hvordan er du knyttet til dette opslag?
+    message_hint: "f.eks. Jeg er grundlæggeren / Jeg står for markedsføringen af mærket…"
+    submit: Send krav
+    submitted_title: Krav modtaget
+    submitted_body: "Tak — vi gennemgår dit krav og vender tilbage til dig på e-mail."
+    rejected_title: Krav ikke godkendt
+    rejected_body: "Dette krav blev gennemgået og ikke godkendt. Mener du, det er en fejl, så kontakt os."
+    verified_title: Ejerskab verificeret
+    verified_body: Du administrerer nu dette opslag. Dine rettelser offentliggøres uden gennemgang.
+    managed_badge: Administreret af ejeren
+
+  report:
+    title: Anmeld indhold
+    target: Anmelder
+    reason: Årsag
+    reason_inaccurate: Unøjagtigt eller vildledende
+    reason_fake: Ikke en rigtig fangst / manipuleret foto
+    reason_wrong: Forkert art eller agn
+    reason_spam: Spam eller reklame
+    reason_offensive: Stødende eller upassende
+    reason_other: Andet
+    note: Yderligere detaljer (valgfrit)
+    submit: Send anmeldelse
+    submitted: Anmeldelse sendt
+    submitted_body: Tak — moderatorerne gennemgår den snarest.
+
+  moderation:
+    title: Moderationskø
+    subtitle: Gennemgå brugerbidrag
+    moderator_view: MODERATORVISNING
+    all: Alle
+    reports: Anmeldelser
+    catches: Fangster
+    edits: Rettelser
+    catalog: Katalog
+    claims: Krav
+    awaiting: "%{count} afventer gennemgang"
+    approve: Godkend
+    reject: Afvis
+    undo: Fortryd
+    approved: Godkendt
+    rejected: Afvist
+    needs_admin: Kræver admin
+    own_submission: Du har indsendt dette
+    submitted_by: Indsendt af
+    view_details: Se detaljer
+    kind:
+      catch: Fangst
+      edit: Rettelse
+      catalog: Katalog
+      claim: Krav
+      report: Anmeldelse
+
+  admin:
+    title: Adminkonsol
+    overview: Overblik
+    people: Personer & roller
+    activity: Aktivitetslog
+    pending: Afventer gennemgang
+    catches_logged: Registrerede fangster
+    contributors: Bidragydere
+    lures_catalogued: Katalogiserede agn
+    role: Rolle
+    member: Medlem
+    moderator: Moderator
+    admin: Admin
+    joined: Tilmeldt
+    you: DIG
+
+  settings:
+    title: Indstillinger
+    tab_profile: Profil
+    tab_preferences: Præferencer
+    profile: Profil
+    country: Land
+    language: Sprog
+    time_zone: Tidszone
+    time_zone_auto: "Automatisk (UTC)"
+    units: Enheder
+    notifications: Notifikationer
+    saved: Indstillinger gemt
+    public_profile: Din offentlige profil
+    copy: Kopiér
+    copied: Kopieret!
+    username: Brugernavn
+    username_hint: f.eks. casey-rivera
+    username_help: Valgfrit. Små bogstaver, tal og bindestreger. Bruges i din profil-URL.
+    avatar: Profilbillede
+    avatar_help: PNG, JPEG, WEBP eller GIF. Op til 5 MB.
+    choose_image: Vælg billede
+    no_file: Intet billede valgt
+    remove_avatar: Fjern nuværende billede
+    avatar_too_large: er for stort (maks. 5 MB)
+    avatar_invalid_type: skal være et billede i PNG, JPEG, WEBP eller GIF
+
+  dashboard:
+    my_catches: Mine fangster
+    my_profile: Min profil
+    total_upvotes: Upvotes i alt
+    no_catches: Du har ikke registreret nogen fangster endnu.
+
+  profile:
+    catches: Fangster
+    tab_catches: Fangster
+    tab_favorites: Favoritter
+    tab_contributions: Bidrag
+    contributions: Bidrag
+    no_contributions: Ingen bidrag endnu.
+    view_picture: Se profilbillede
+    change_picture: Upload/skift profilbillede
+    total_upvotes: Upvotes i alt
+    member_since: Medlem siden
+    favorite_species: Favoritarter
+    favorite_lures: Favoritagn
+    favorite_shops: Favoritbutikker
+    no_favorites: Ingen favoritter endnu.
+    no_catches: Ingen fangster endnu.
+
+  provenance:
+    title: Historik & ejerskab
+    edits:
+      one: "%{count} rettelse"
+      other: "%{count} rettelser"
+    added_by: Tilføjet af
+    owned_by: Ejes af
+    originally_added: "Oprindeligt tilføjet af %{name} · %{date}"
+    edit_history: Redigeringshistorik
+    created: Oprettede denne post
+    edited: redigerede
+    col_change: Ændring
+    col_contributor: Bidragyder
+    col_date: Dato
+
+  revision:
+    title: Revision
+    no_changes: Der blev ikke registreret ændringer på feltniveau for denne rettelse.
+    removed: Fjernet
+    added: Tilføjet
+    field:
+      build_ids: Tilgængelige udgaver
+
+  species_names:
+    largemouth_bass:
+      common: Largemouth bass
+      habitat: Varme, vegetationsrige søer og damme; bagholdsjæger omkring skjul.
+    smallmouth_bass:
+      common: Smallmouth bass
+      habitat: Kølige, klare floder og stenede søer; en stærk fighter.
+    northern_pike:
+      common: Gedde
+      habitat: Grødefyldte vige og kølige søer; aggressiv bagholdsjæger.
+    walleye:
+      common: Walleye
+      habitat: Dybe, kølige søer og floder; jager i svagt lys.
+    yellow_perch:
+      common: Gul aborre
+      habitat: Stimefisk i søer og damme; søger føde nær bunden.
+    muskellunge:
+      common: Muskellunge
+      habitat: Store, klare søer og floder; ferskvandets toprovdyr.
+    bluegill:
+      common: Bluegill
+      habitat: Varme damme og lavvandede søbredder; yngler i kolonier.
+    rainbow_trout:
+      common: Regnbueørred
+      habitat: Kolde bække, floder og søer; eftertragtet sportsfisk.
+    mahi_mahi:
+      common: Guldmakrel
+      habitat: Varmt overfladevand på åbent hav; hurtigt pelagisk rovdyr.
+    striped_bass:
+      common: Stribet bars
+      habitat: Kystbrænding, flodmundinger og store floder; trækfisk.
+    bonefish:
+      common: Bonefish
+      habitat: Tropiske, lavvandede flats; sky og hurtig.
+    chinook_salmon:
+      common: Kongelaks
+      habitat: Kolde stillehavsfloder og søer; kraftfuld trækfisk.
+  country:
+    US: USA
+    CA: Canada
+    GB: Storbritannien
+    DE: Tyskland
+    FR: Frankrig
+    ES: Spanien
+    IT: Italien
+    NL: Holland
+    SE: Sverige
+    "NO": Norge
+    PL: Polen
+    RU: Rusland
+    BG: Bulgarien
+    GR: Grækenland
+    JP: Japan
+    CN: Kina
+    BR: Brasilien
+    MX: Mexico
+    FI: Finland
+    AU: Australien
+    NZ: New Zealand
+    DK: Danmark
+    IE: Irland
+    PT: Portugal
+    KR: Sydkorea
+    TH: Thailand
+    ZA: Sydafrika
+    IN: Indien
+    AR: Argentina
+    CL: Chile
+    UA: Ukraine
+    TR: Tyrkiet
+    AT: Østrig
+    BE: Belgien
+    CH: Schweiz
+    CZ: Tjekkiet
+    HU: Ungarn
+    RO: Rumænien
+  activerecord:
+    attributes:
+      user:
+        password: Adgangskode
+        password_confirmation: Bekræftelse af adgangskode
+    errors:
+      messages:
+        confirmation: stemmer ikke overens med %{attribute}
