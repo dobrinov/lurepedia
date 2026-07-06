@@ -6,7 +6,7 @@ import { Controller } from "@hotwired/stimulus"
 // default "variations" tab is implicit (/lures/<slug>/<color>); other tabs carry
 // their name (/lures/<slug>/<tab>/<color>).
 export default class extends Controller {
-  static targets = [ "chip", "stage", "stageImage", "stageGlyph", "chipName", "chipUv", "buildsTable" ]
+  static targets = [ "chip", "stage", "stageImage", "stageGlyph", "stageZoom", "lightboxImage", "chipName", "chipUv", "buildsTable" ]
   static values = { basePath: String, tabs: Array } // basePath: "/en/lures/<slug>"
 
   connect() {
@@ -33,6 +33,13 @@ export default class extends Controller {
         this.stageImageTarget.hidden = true
         if (this.hasStageGlyphTarget) this.stageGlyphTarget.hidden = false
       }
+    }
+
+    // The zoom button and its lightbox only make sense with a photo to show.
+    if (this.hasStageZoomTarget) this.stageZoomTarget.hidden = !d.photoUrl
+    if (this.hasLightboxImageTarget) {
+      if (d.photoZoomUrl) this.lightboxImageTarget.src = d.photoZoomUrl
+      else this.lightboxImageTarget.removeAttribute("src")
     }
 
     // Paint the stage with the photo's border color (blank restores the CSS

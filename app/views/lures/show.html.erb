@@ -26,7 +26,7 @@
 <%= render "shared/pending_review", record: @lure %>
 
 <div class="container" style="padding-top:24px"
-     data-controller="variant-stage"
+     data-controller="variant-stage modal"
      data-variant-stage-base-path-value="<%= lure_path(@lure) %>"
      data-variant-stage-tabs-value="<%= %w[caught buy history variations].to_json %>">
 
@@ -44,12 +44,22 @@
         <span class="uv-badge" data-variant-stage-target="chipUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>
       </span>
       <% if dv&.photo&.attached? %>
-        <img data-variant-stage-target="stageImage" src="<%= url_for(cropped_photo(dv, resize_to_limit: [ 760, 760 ])) %>" alt="<%= @lure.title %>">
+        <button type="button" class="lure-stage-zoom" data-variant-stage-target="stageZoom" data-action="modal#open" aria-label="<%= @lure.title %>">
+          <img data-variant-stage-target="stageImage" src="<%= url_for(cropped_photo(dv, resize_to_limit: [ 760, 760 ])) %>" alt="<%= @lure.title %>">
+        </button>
         <div class="lure-stage-glyph" data-variant-stage-target="stageGlyph" hidden><%= render "shared/lure_glyph" %></div>
       <% else %>
-        <img data-variant-stage-target="stageImage" hidden alt="<%= @lure.title %>">
+        <button type="button" class="lure-stage-zoom" data-variant-stage-target="stageZoom" data-action="modal#open" aria-label="<%= @lure.title %>" hidden>
+          <img data-variant-stage-target="stageImage" hidden alt="<%= @lure.title %>">
+        </button>
         <div class="lure-stage-glyph" data-variant-stage-target="stageGlyph"><%= render "shared/lure_glyph" %></div>
       <% end %>
+    </div>
+
+    <%# Lightbox lives outside .lure-stage so its img escapes the stage's
+        contain-fit img rule; variant-stage keeps its src on the shown color. %>
+    <div class="modal-backdrop" data-modal-target="dialog" data-action="click->modal#backdrop" hidden>
+      <img class="lightbox-img" data-variant-stage-target="lightboxImage"<% if dv&.photo&.attached? %> src="<%= url_for(dv.photo.variant(resize_to_limit: [ 1600, 1600 ])) %>"<% end %> alt="<%= @lure.title %>" loading="lazy" data-action="click->modal#close">
     </div>
 
     <div class="stack" style="gap:14px">
@@ -76,7 +86,7 @@
                         data-color-slug="<%= v.to_color_param %>"
                         data-name="<%= v.name %>"
                         data-uv="<%= v.uv_glow %>"
-                        <% if v.photo.attached? %>data-photo-url="<%= url_for(cropped_photo(v, resize_to_limit: [ 760, 760 ])) %>"<% end %>
+                        <% if v.photo.attached? %>data-photo-url="<%= url_for(cropped_photo(v, resize_to_limit: [ 760, 760 ])) %>" data-photo-zoom-url="<%= url_for(v.photo.variant(resize_to_limit: [ 1600, 1600 ])) %>"<% end %>
                         <% if (bg = photo_background_color(v)) %>data-photo-bg="<%= bg %>"<% end %>>
                   <% if v.photo.attached? %>
                     <%= image_tag cropped_photo(v, resize_to_fill: [ 120, 120 ]), alt: v.name %>
