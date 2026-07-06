@@ -80,7 +80,7 @@ Discovery/listing logic lives in **query objects** under `app/queries/` (`LureFi
 
 ### Localization
 
-The app is multi-locale (10 locales in `config/locales/`; `en` is default and the only imperial one). Routes are wrapped in an optional `(:locale)` scope — bare `/` redirects to the default locale. `ApplicationController#switch_locale` resolves locale from param → user pref → cookie → default and sets `default_url_options[:locale]`, so every generated URL is locale-prefixed. All user-facing strings go through `I18n.t`; enum/condition labels are translated by key (e.g. `condition.season.spring`). When adding a UI string, add it to **all** locale files.
+The app is multi-locale (15 locales in `config/locales/`; `en` is default and the only imperial one). Routes are wrapped in an optional `(:locale)` scope — bare `/` redirects to the default locale. `ApplicationController#switch_locale` resolves locale from param → user pref → cookie → default and sets `default_url_options[:locale]`, so every generated URL is locale-prefixed. All user-facing strings go through `I18n.t`; enum/condition labels are translated by key (e.g. `condition.season.spring`). When adding a UI string, add it to **all** locale files.
 
 ### Frontend
 

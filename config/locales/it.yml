@@ -1,0 +1,728 @@
+it:
+  common:
+    all: Tutti
+    none: "—"
+    save: Salva
+    cancel: Annulla
+    submit: Invia
+    edit: Modifica
+    delete: Elimina
+    add: Aggiungi
+    search: Cerca
+    loading: Caricamento…
+    showing: "Risultati %{from}–%{to} di %{count}"
+    page: Pagina
+    page_of: "di %{total}"
+    next: Successiva
+    prev: Precedente
+    back: Indietro
+    close: Chiudi
+    by: di
+    on: su
+    "yes": "Sì"
+    "no": "No"
+    verified: Verificato
+    promoted: In evidenza
+    sponsored: Sponsorizzato
+
+  bans:
+    blocked: Al momento il tuo account non può eseguire questa azione.
+    notice:
+      title: Il tuo account è soggetto a restrizioni.
+      reason: Motivo
+      permanent: Questa restrizione è permanente.
+      until: "In vigore fino al %{date}."
+      scope: Azioni soggette a restrizione
+    capability:
+      catalog: modifiche al catalogo
+      claims: rivendicazioni di proprietà
+      catches: registrazione delle catture
+      comments: commenti
+      upvotes: voti
+      reports: segnalazioni
+      favorites: preferiti
+    preset:
+      catalog_only: Solo catalogo
+      contributions: Tutti i contributi
+      full: Completo (account in sola lettura)
+    admin:
+      title: "Ban — %{name}"
+      title_short: Ban
+      new: Applica un ban
+      reason: Motivo
+      preset: Preimpostazione
+      custom: Selezione personalizzata
+      capabilities: Azioni soggette a restrizione
+      capabilities_help: Una preimpostazione preseleziona le azioni; spunta le caselle per personalizzare.
+      expires_at: Scade il
+      permanent_hint: Lascia vuoto per un ban permanente.
+      issue: Applica ban
+      status: Stato
+      scope: Ambito
+      active: Attivo
+      lifted: Revocato
+      expired: Scaduto
+      lift: Revoca ban
+      manage: Gestisci ban
+      created: Ban applicato.
+      revoked: Ban revocato.
+
+  favorites:
+    add: Aggiungi ai preferiti
+    remove: Rimuovi dai preferiti
+    favorited: Nei preferiti
+
+  footer:
+    explore: Esplora
+
+  meta:
+    lures_index: "Sfoglia il catalogo completo degli artificiali da pesca — filtra per tipo, profondità, acqua e specie, con catture reali come prova di ciò che funziona."
+    catches_index: "Catture reali registrate dai pescatori — scopri l'artificiale, il colore e le condizioni esatte dietro ogni pesce."
+    brands_index: "Marchi di artificiali da pesca da tutto il mondo, ognuno con la gamma completa e le catture registrate dalla community."
+    species_index: "Le specie ittiche e gli artificiali che le catturano davvero, con la prova delle catture registrate dai pescatori."
+    shops_index: "Dove comprare artificiali da pesca — negozi ordinati per consegna nel tuo paese."
+    leaderboard: "Gli artificiali da pesca più comprovati, classificati in base alle catture reali registrate dalla community."
+    lure_show: "%{lure} — %{type} con foto, colori, misure, dove comprarlo e catture reali registrate dai pescatori."
+    brand_show: "Artificiali da pesca %{brand} — la gamma completa con foto, specifiche e resoconti di catture reali."
+    species_show: "scopri quali artificiali la catturano davvero, con la prova delle catture registrate dai pescatori"
+    shop_show: "negozio di articoli da pesca — paesi di consegna e link per comprare gli artificiali"
+    catch_show: "%{species} catturato con %{lure} — foto, condizioni e dettagli dell'artificiale registrati da un pescatore."
+  home:
+    tagline: Ogni artificiale, provato da una cattura
+    meta_description: Lurepedia è un'enciclopedia collaborativa degli artificiali da pesca — trova gli artificiali e guarda le prove reali, cattura dopo cattura, che funzionano.
+    hero_title: Ogni artificiale, provato da una cattura
+    hero_sub: Un'enciclopedia collaborativa degli artificiali da pesca. Trova ciò che funziona — con il supporto di catture reali.
+    browse_lures: Sfoglia gli artificiali
+    browse_another_way: Sfoglia in un altro modo
+    add_a_catch: Aggiungi una cattura
+
+  nav:
+    lures: Artificiali
+    species: Specie
+    catches: Catture
+    brands: Marchi
+    shops: Negozi
+    leaderboard: Classifica
+    menu: Menu
+
+  auth:
+    sign_in: Accedi
+    sign_up: Crea account
+    sign_out: Esci
+    email: Email
+    password: Password
+    password_confirmation: Conferma password
+    name: Nome
+    sign_in_required: Accedi per contribuire.
+    not_authorized: Non hai i permessi per farlo.
+    create_account: Crea account
+    have_account: Hai già un account?
+    no_account: Nuovo su Lurepedia?
+    welcome_back: Bentornato
+    join: Unisciti a Lurepedia
+    choose_country: Il tuo paese
+    choose_language: Lingua preferita
+    continue_with_google: Continua con Google
+
+  units:
+    label: Unità
+    auto: Automatiche (dal paese)
+    imperial: Imperiali
+    metric: Metriche
+    length: Lunghezza
+    weight: Peso
+    depth: Profondità
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Acqua dolce
+    salt: Acqua salata
+    both: Dolce e salata
+
+  action:
+    suspending: Suspending
+    floating: Galleggiante
+    sinking: Affondante
+    none: "—"
+
+  condition:
+    season:
+      label: Stagione
+      any: Qualsiasi stagione
+      spring: Primavera
+      summer: Estate
+      fall: Autunno
+      winter: Inverno
+    clarity:
+      label: Limpidezza
+      any: Qualsiasi limpidezza
+      clear: Limpida
+      stained: Velata
+      muddy: Torbida
+    water_body:
+      label: Specchio d'acqua
+      any: Qualsiasi specchio d'acqua
+      lake: Lago
+      pond: Stagno
+      river: Fiume
+      reservoir: Bacino artificiale
+      stream: Torrente
+    wind:
+      label: Vento
+      any: Qualsiasi vento
+      calm: Calmo
+      light: Leggero (5–10 mph)
+      moderate: Moderato (10–20 mph)
+      strong: Forte (20+ mph)
+    time_of_day:
+      label: Momento della giornata
+      any: Qualsiasi ora
+      dawn: Alba
+      morning: Mattina
+      midday: Mezzogiorno
+      afternoon: Pomeriggio
+      dusk: Tramonto
+      night: Notte
+    platform:
+      label: Pesca da
+      any: Ovunque
+      shore: Riva
+      boat: Barca
+      kayak: Kayak
+    retrieve:
+      label: Stile di recupero
+      any: Qualsiasi stile
+      steady: Lineare
+      stop_and_go: Stop and go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow rolling
+      burn: Recupero veloce
+      dead_stick: Dead sticking
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Esca siliconica
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Topwater
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Ondulante
+    lipless_crankbait: Lipless
+
+  lure:
+    similar_title: "Artificiali simili"
+    similar_manage_hint: "Collega artificiali che si assomigliano — spesso di altri marchi — così i pescatori possono confrontarli."
+    similar_none: "Nessun artificiale simile collegato per ora."
+    similar_add: "Collega un artificiale simile"
+    similar_add_placeholder: "Trova un artificiale…"
+    similar_not_found: "Artificiale non trovato."
+    similar_match: "%{score}% di somiglianza"
+    similar_suggest_title: "Assomiglia a…"
+    similar_suggest_hint: "Questa foto ricorda questi artificiali. Spunta quelli che si assomigliano davvero e li collegheremo tra loro."
+    title: Artificiali
+    subtitle: Ogni artificiale, provato da una cattura
+    search_placeholder: Cerca artificiali — o filtra per tipo, acqua, azione…
+    model: Modello
+    description: Descrizione
+    descriptions: Descrizioni
+    translations: Traduzioni
+    translations_hint: La descrizione dell'artificiale in ogni lingua. I lettori vedono la propria lingua, con l'inglese come ripiego.
+    add: Aggiungi un artificiale
+    add_title: Aggiungi un artificiale
+    type: Tipo
+    depth: Profondità di lavoro
+    action: Azione
+    buoyancy: "Galleggiabilità"
+    action_varies: "Varia"
+    water: Acqua
+    brand: Marchio
+    variants: Varianti
+    variant: Variante
+    tab_caught: Catture
+    proven_record:
+      title: Cosa dicono le catture
+      top_species: Specie principali
+    tab_variations: "Variazioni"
+    tab_buy: Dove comprare
+    tab_history: Cronologia
+    proof: La prova che funziona
+    catches_count:
+      one: "%{count} cattura"
+      other: "%{count} catture"
+    no_proof: Ancora nessuna prova
+    be_first: Sii il primo a dimostrare che questo artificiale funziona
+    be_first_short: Sii il primo a dimostrare che funziona →
+    where_to_buy: Dove comprare
+    quick_facts: In breve
+    action_video: L'artificiale in azione
+    add_video: Aggiungi un video in azione
+    watch_video: Guarda il video
+    suggest_edit: Suggerisci una modifica
+    add_catch: Aggiungi una cattura
+    proven_for: Comprovato per
+    no_matches: Nessun artificiale corrisponde ai filtri
+    no_matches_sub: Cerchi un artificiale specifico? Aggiungilo se manca.
+    empty_title: Ancora nessun artificiale
+    size: Misura
+    weight: Peso
+    color: Colore
+    colors: Colori
+    colors_count:
+      one: "%{count} colore"
+      other: "%{count} colori"
+    build: Versione
+    builds: Versioni
+    browse_colors: Sfoglia i colori
+    common_attributes: Attributi comuni · tutta la famiglia
+    this_variation: Questa variazione
+    default_variation: Variazione predefinita
+    uv_glow: Glow UV
+    best_for: Ideale per
+    manage_variations: Variazioni e versioni
+    tab_details: Dettagli generali
+    add_color: Aggiungi un colore
+    add_build: Aggiungi una versione
+    color_name: Nome del colore
+    availability: Versioni disponibili
+    availability_hint: Spunta le versioni in cui questo colore è confermato. Lascia tutto deselezionato se non lo sai — il colore verrà mostrato sotto ogni versione.
+    available_in_n_of_m: Disponibile in %{n} versioni su %{m}
+
+  species:
+    title: Specie
+    subtitle: Il dizionario dei pesci
+    search_placeholder: Cerca specie — nome comune o scientifico…
+    venomous: Velenoso
+    venomous_hint: Ha spine o aculei velenosi — maneggiare con cura.
+    poisonous: Tossico
+    poisonous_hint: Tossico se ingerito.
+    add: Aggiungi una specie
+    add_title: Aggiungi una specie
+    scientific_name: Nome scientifico
+    local_names: Nomi locali
+    translations: Traduzioni
+    translations_hint: Il nome comune e la descrizione in ogni lingua. I lettori vedono la propria lingua, con l'inglese come ripiego.
+    local_name: Nome comune
+    description: Descrizione
+    descriptions: Descrizioni
+    wikipedia_url: URL Wikipedia
+    wikipedia: Vedi su Wikipedia
+    wikipedia_url_invalid: "deve essere l'URL di un articolo di Wikipedia (es. https://it.wikipedia.org/wiki/...)"
+    habitat: Habitat
+    tab_lures: Catturato con
+    tab_catches: Catture
+    tab_leaderboard: Classifica
+    tab_history: Cronologia
+    proven_lures: Artificiali comprovati
+    lures_count:
+      one: "%{count} artificiale"
+      other: "%{count} artificiali"
+    no_proven_lures: Ancora nessun artificiale comprovato
+    be_first_lure: Sii il primo a dimostrare che un artificiale cattura questo pesce
+    empty_title: Ancora nessuna specie
+    empty_sub: Sii il primo ad aggiungere una specie ittica.
+
+  brand:
+    title: Marchi
+    subtitle: I produttori
+    search_placeholder: Cerca marchi…
+    add: Aggiungi un marchio
+    add_title: Aggiungi un marchio
+    founded: Fondato nel
+    empty_title: Ancora nessun marchio
+    empty_sub: Sii il primo ad aggiungere un marchio di artificiali.
+    country: Paese
+    website: Sito web
+    website_invalid: "Inserisci un URL valido che inizi con http:// o https://"
+    logo: Logo
+    blurb: Informazioni
+    description: Descrizione
+    descriptions: Descrizioni
+    translations: Traduzioni
+    translations_hint: La descrizione del marchio in ogni lingua. I lettori vedono la propria lingua, con l'inglese come ripiego.
+    tab_lures: Artificiali
+    tab_history: Cronologia
+    claim: Rivendica questo marchio
+    claimed: Rivendicato
+    owned_by: Di proprietà di
+
+  buy_link:
+    add: Aggiungi un punto vendita
+    empty: Ancora nessun negozio in elenco — aggiungi il primo posto dove comprare questo artificiale.
+    choose_shop: Negozio
+    choose_shop_placeholder: Cerca negozi…
+    existing_shop: Negozio esistente
+    new_shop: Nuovo negozio
+    product_url: Link al prodotto (facoltativo)
+    submit: Aggiungi
+    shop_required: Scegli un negozio.
+    already_listed: Questo negozio è già in elenco per questo artificiale.
+
+  shop:
+    title: Negozi
+    subtitle: Dove comprare
+    search_placeholder: Cerca negozi…
+    add: Aggiungi un negozio
+    add_title: Aggiungi un negozio
+    ships_to_you: "Negozi con consegna in %{country}"
+    other_shops: Altri negozi
+    none_ship: "Ancora nessun negozio consegna in %{country}. Ne conosci uno?"
+    tab_lures: Artificiali
+    tab_history: Cronologia
+    no_lures: Ancora nessun artificiale in elenco per questo negozio.
+    ships_to: Consegna in
+    ships_to_unknown: "—"
+    ships_worldwide: Consegna in tutto il mondo
+    ships_to_hint: Lascia vuoto se il negozio consegna in tutto il mondo.
+    add_country: Aggiungi un paese
+    worldwide: Tutto il mondo
+    claim: Rivendica un negozio
+
+  catch:
+    title: Catture
+    subtitle: Le prove più recenti dalla community
+    add: Aggiungi una cattura
+    add_title: Aggiungi una cattura
+    on_lure: "con %{lure}"
+    conditions: Condizioni
+    location: Luogo
+    length: Lunghezza
+    weight: Peso
+    contributor: Contributore
+    comments: Commenti
+    add_comment: Aggiungi un commento
+    upvote: Vota
+    upvoted: Votato
+    remove_upvote: Clicca di nuovo per rimuovere il tuo voto
+    report: Segnala questa cattura
+    related: Altre catture di questa specie
+    photos: Foto
+    pick_brand: Scegli un marchio
+    pick_lure: Scegli un artificiale
+    pick_variant: Scegli una variante
+    color: Colore
+    pick_color: Scegli il colore con cui hai catturato
+    pick_build: Scegli una versione
+    pick_species: Cosa hai catturato?
+    log_title: Registra una cattura
+    log_this: Registra questa cattura
+    modal_step1: "Passo 1 di 2 · Scegli il colore con cui hai catturato"
+    modal_step2: "Passo 2 di 2 · Scegli versione e profondità"
+    builds_in: "Versioni disponibili in"
+    no_builds: Questo colore non ha ancora versioni.
+    variation: Variazione
+    choose_variation: Scegli una variazione
+    change: Cambia
+    note: Note
+    submitted: Inviata per la revisione
+    logged: Cattura registrata
+    removed: Cattura rimossa
+    submitted_body: Grazie! La tua cattura è nella coda di moderazione e apparirà una volta approvata.
+    add_another: Aggiungine un'altra
+
+  search:
+    filters: Filtri
+    combine_free: Combinali liberamente — i risultati li soddisfano tutti
+    no_results: Nessun risultato trovato
+    any_species: Qualsiasi specie
+    any_type: Qualsiasi tipo
+    any_brand: Qualsiasi marchio
+    any_action: Qualsiasi azione
+    any_depth: Qualsiasi profondità
+    depth_band:
+      shallow: Superficiale (0–1,5 m)
+      mid: Media (1,5–4,5 m)
+      deep: Profonda (4,5 m+)
+    saltwater_only: Solo acqua salata
+    clear_all: Cancella tutto
+    min: Min
+    max: Max
+    show_n_lures:
+      one: Mostra %{count} artificiale
+      other: Mostra %{count} artificiali
+    other: Altro
+
+  leaderboard:
+    title: Classifica
+    subtitle: I migliori pescatori per specie
+    all_species: Tutte le specie
+    rank_by: Ordina per
+    metric_catches: Catture
+    metric_upvotes: Voti
+    metric_length: Lunghezza del pesce
+    rank: Posizione
+    angler: Pescatore
+    catches: Catture
+    upvotes: Voti
+    best_length: Miglior lunghezza
+    specialist: specialista
+    species_count:
+      one: "%{count} specie"
+      other: "%{count} specie"
+    you: TU
+    empty: Ancora nessun pescatore in classifica
+
+  contribute:
+    suggest_edit: Suggerisci una modifica
+    edit_title: "Modifica %{name}"
+    edit_saved: "Modifiche salvate"
+    added: "Aggiunto al catalogo"
+    suggest_title: "Suggerisci una modifica a %{name}"
+    suggest_note: Il tuo suggerimento sarà esaminato da un moderatore.
+    suggested: Suggerimento inviato
+    suggested_body: Grazie — un moderatore esaminerà il tuo suggerimento.
+    add_photos: Aggiungi foto
+    moderation_note: I contributi vengono esaminati prima della pubblicazione.
+    direct_note: In quanto proprietario del marchio, la modifica va subito online — nessuna revisione necessaria.
+    pending_review: Questa voce è in attesa di revisione e non è ancora pubblica.
+
+  crop:
+    adjust: "Regola ritaglio"
+    done: "Fatto"
+    reset: "Reimposta ritaglio"
+    aspect_free: "Libero"
+    aspect_square: "Quadrato"
+    bg_label: "Sfondo del riquadro"
+    bg_auto: "Automatico"
+    bg_pick: "Scegli dalla foto"
+    bg_apply_all: "Applica questo sfondo a tutti i colori di questo artificiale"
+    hint: "Trascina per riposizionare; trascina gli angoli per ridimensionare. Il ritaglio viene applicato al salvataggio."
+    invalid: "Il rettangolo di ritaglio non è valido"
+  claim:
+    title: "Rivendica %{name}"
+    page_title: Rivendica una scheda
+    intro: "Rivendica questo %{kind} per gestirne la scheda. Dicci chi sei e proseguiremo via email."
+    message_label: Chi sei e che rapporto hai con questa scheda?
+    message_hint: "es. Sono il fondatore / Mi occupo del marketing del marchio…"
+    submit: Invia rivendicazione
+    submitted_title: Rivendicazione ricevuta
+    submitted_body: "Grazie — esamineremo la tua rivendicazione e ti risponderemo via email."
+    rejected_title: Rivendicazione non approvata
+    rejected_body: "Questa rivendicazione è stata esaminata e non approvata. Se pensi che sia un errore, contattaci."
+    verified_title: Proprietà verificata
+    verified_body: Ora gestisci questa scheda. Le tue modifiche vanno online senza revisione.
+    managed_badge: Gestito dal proprietario
+
+  report:
+    title: Segnala contenuto
+    target: Stai segnalando
+    reason: Motivo
+    reason_inaccurate: Impreciso o fuorviante
+    reason_fake: Non è una cattura reale / foto falsa
+    reason_wrong: Specie o artificiale sbagliati
+    reason_spam: Spam o pubblicità
+    reason_offensive: Offensivo o inappropriato
+    reason_other: Altro
+    note: Dettagli aggiuntivi (facoltativo)
+    submit: Invia segnalazione
+    submitted: Segnalazione inviata
+    submitted_body: Grazie — i moderatori la esamineranno a breve.
+
+  moderation:
+    title: Coda di moderazione
+    subtitle: Esamina i contributi della community
+    moderator_view: VISTA MODERATORE
+    all: Tutti
+    reports: Segnalazioni
+    catches: Catture
+    edits: Modifiche
+    catalog: Catalogo
+    claims: Rivendicazioni
+    awaiting: "%{count} in attesa di revisione"
+    approve: Approva
+    reject: Rifiuta
+    undo: Annulla
+    approved: Approvato
+    rejected: Rifiutato
+    needs_admin: Richiede un admin
+    own_submission: L'hai inviato tu
+    submitted_by: Inviato da
+    view_details: Vedi dettagli
+    kind:
+      catch: Cattura
+      edit: Modifica
+      catalog: Catalogo
+      claim: Rivendicazione
+      report: Segnalazione
+
+  admin:
+    title: Console di amministrazione
+    overview: Panoramica
+    people: Persone e ruoli
+    activity: Registro attività
+    pending: In attesa di revisione
+    catches_logged: Catture registrate
+    contributors: Contributori
+    lures_catalogued: Artificiali a catalogo
+    role: Ruolo
+    member: Membro
+    moderator: Moderatore
+    admin: Admin
+    joined: Iscritto il
+    you: TU
+
+  settings:
+    title: Impostazioni
+    tab_profile: Profilo
+    tab_preferences: Preferenze
+    profile: Profilo
+    country: Paese
+    language: Lingua
+    time_zone: Fuso orario
+    time_zone_auto: "Automatico (UTC)"
+    units: Unità
+    notifications: Notifiche
+    saved: Impostazioni salvate
+    public_profile: Il tuo profilo pubblico
+    copy: Copia
+    copied: Copiato!
+    username: Nome utente
+    username_hint: es. casey-rivera
+    username_help: Facoltativo. Lettere minuscole, numeri, trattini. Usato nell'URL del tuo profilo.
+    avatar: Immagine del profilo
+    avatar_help: PNG, JPEG, WEBP o GIF. Fino a 5 MB.
+    choose_image: Scegli immagine
+    no_file: Nessuna immagine selezionata
+    remove_avatar: Rimuovi l'immagine attuale
+    avatar_too_large: è troppo grande (massimo 5 MB)
+    avatar_invalid_type: deve essere un'immagine PNG, JPEG, WEBP o GIF
+
+  dashboard:
+    my_catches: Le mie catture
+    my_profile: Il mio profilo
+    total_upvotes: Voti totali ricevuti
+    no_catches: Non hai ancora registrato nessuna cattura.
+
+  profile:
+    catches: Catture
+    tab_catches: Catture
+    tab_favorites: Preferiti
+    tab_contributions: Contributi
+    contributions: Contributi
+    no_contributions: Ancora nessun contributo.
+    view_picture: Vedi immagine del profilo
+    change_picture: Carica/cambia immagine del profilo
+    total_upvotes: Voti totali
+    member_since: Membro dal
+    favorite_species: Specie preferite
+    favorite_lures: Artificiali preferiti
+    favorite_shops: Negozi preferiti
+    no_favorites: Ancora nessun preferito.
+    no_catches: Ancora nessuna cattura.
+
+  provenance:
+    title: Cronologia e proprietà
+    edits:
+      one: "%{count} modifica"
+      other: "%{count} modifiche"
+    added_by: Aggiunto da
+    owned_by: Di proprietà di
+    originally_added: "Aggiunto in origine da %{name} · %{date}"
+    edit_history: Cronologia delle modifiche
+    created: Ha creato questa voce
+    edited: ha modificato
+    col_change: Modifica
+    col_contributor: Contributore
+    col_date: Data
+
+  revision:
+    title: Revisione
+    no_changes: Per questa modifica non sono state registrate modifiche ai campi.
+    removed: Rimosso
+    added: Aggiunto
+    field:
+      build_ids: Versioni disponibili
+
+  species_names:
+    largemouth_bass:
+      common: Persico trota
+      habitat: Laghi e stagni caldi e ricchi di vegetazione; predatore d'agguato vicino agli ostacoli.
+    smallmouth_bass:
+      common: Smallmouth bass
+      habitat: Fiumi freschi e limpidi e laghi rocciosi; combattente tenace.
+    northern_pike:
+      common: Luccio
+      habitat: Baie erbose e laghi freschi; predatore d'agguato aggressivo.
+    walleye:
+      common: Walleye
+      habitat: Laghi e fiumi profondi e freschi; si alimenta con poca luce.
+    yellow_perch:
+      common: Persico dorato
+      habitat: Pesce gregario di laghi e stagni; si alimenta vicino al fondo.
+    muskellunge:
+      common: Muskellunge
+      habitat: Grandi laghi limpidi e fiumi; predatore apicale d'acqua dolce.
+    bluegill:
+      common: Bluegill
+      habitat: Stagni caldi e acque basse dei laghi; nidifica in colonie.
+    rainbow_trout:
+      common: Trota iridea
+      habitat: Torrenti, fiumi e laghi freddi; ambito pesce sportivo.
+    mahi_mahi:
+      common: Lampuga
+      habitat: Acque superficiali calde d'altura; veloce predatore pelagico.
+    striped_bass:
+      common: Spigola striata
+      habitat: Risacca costiera, estuari e grandi fiumi; migratrice.
+    bonefish:
+      common: Bonefish
+      habitat: Bassi fondali tropicali (flat); diffidente e veloce.
+    chinook_salmon:
+      common: Salmone reale
+      habitat: Fiumi e laghi freddi del Pacifico; potente pesce migratore.
+  country:
+    US: Stati Uniti
+    CA: Canada
+    GB: Regno Unito
+    DE: Germania
+    FR: Francia
+    ES: Spagna
+    IT: Italia
+    NL: Paesi Bassi
+    SE: Svezia
+    "NO": Norvegia
+    PL: Polonia
+    RU: Russia
+    BG: Bulgaria
+    GR: Grecia
+    JP: Giappone
+    CN: Cina
+    BR: Brasile
+    MX: Messico
+    FI: Finlandia
+    AU: Australia
+    NZ: Nuova Zelanda
+    DK: Danimarca
+    IE: Irlanda
+    PT: Portogallo
+    KR: Corea del Sud
+    TH: Thailandia
+    ZA: Sudafrica
+    IN: India
+    AR: Argentina
+    CL: Cile
+    UA: Ucraina
+    TR: Turchia
+    AT: Austria
+    BE: Belgio
+    CH: Svizzera
+    CZ: Cechia
+    HU: Ungheria
+    RO: Romania
+  activerecord:
+    attributes:
+      user:
+        password: Password
+        password_confirmation: Conferma password
+    errors:
+      messages:
+        confirmation: "non corrisponde a %{attribute}"

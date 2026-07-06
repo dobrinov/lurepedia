@@ -1,0 +1,728 @@
+sv:
+  common:
+    all: Alla
+    none: "—"
+    save: Spara
+    cancel: Avbryt
+    submit: Skicka
+    edit: Redigera
+    delete: Ta bort
+    add: Lägg till
+    search: Sök
+    loading: Laddar…
+    showing: "Visar %{from}–%{to} av %{count}"
+    page: Sida
+    page_of: "av %{total}"
+    next: Nästa
+    prev: Föregående
+    back: Tillbaka
+    close: Stäng
+    by: av
+    on: på
+    "yes": "Ja"
+    "no": "Nej"
+    verified: Verifierad
+    promoted: Framhävd
+    sponsored: Sponsrad
+
+  bans:
+    blocked: Ditt konto är för närvarande spärrat från den här åtgärden.
+    notice:
+      title: Ditt konto är begränsat.
+      reason: Anledning
+      permanent: Den här begränsningen är permanent.
+      until: "Gäller till %{date}."
+      scope: Begränsade åtgärder
+    capability:
+      catalog: katalogredigeringar
+      claims: ägaranspråk
+      catches: loggning av fångster
+      comments: kommentarer
+      upvotes: uppröstningar
+      reports: anmälningar
+      favorites: favoriter
+    preset:
+      catalog_only: Endast katalogen
+      contributions: Alla bidrag
+      full: Full (skrivskyddat konto)
+    admin:
+      title: "Avstängningar — %{name}"
+      title_short: Avstängningar
+      new: Utfärda en avstängning
+      reason: Anledning
+      preset: Förval
+      custom: Eget urval
+      capabilities: Begränsade åtgärder
+      capabilities_help: Ett förval kryssar i åtgärder åt dig; bocka i rutorna för att anpassa.
+      expires_at: Upphör
+      permanent_hint: Lämna tomt för en permanent avstängning.
+      issue: Utfärda avstängning
+      status: Status
+      scope: Omfattning
+      active: Aktiv
+      lifted: Hävd
+      expired: Utgången
+      lift: Häv avstängning
+      manage: Hantera avstängningar
+      created: Avstängning utfärdad.
+      revoked: Avstängning hävd.
+
+  favorites:
+    add: Favoritmarkera
+    remove: Ta bort favorit
+    favorited: Favoritmarkerad
+
+  footer:
+    explore: Utforska
+
+  meta:
+    lures_index: "Bläddra i hela katalogen av fiskebeten — filtrera på typ, djup, vatten och art, med riktiga fångster som bevis på vad som fungerar."
+    catches_index: "Riktiga fångster loggade av sportfiskare — se exakt vilket bete, vilken färg och vilka förhållanden som låg bakom varje fisk."
+    brands_index: "Betesmärken från hela världen, vart och ett med hela sitt sortiment och communityts fångststatistik."
+    species_index: "Fiskarter och de beten som faktiskt fångar dem, styrkt av fångster loggade av sportfiskare."
+    shops_index: "Var du köper fiskebeten — butiker sorterade efter leverans till ditt land."
+    leaderboard: "De mest beprövade fiskebetena, rankade efter riktiga fångster loggade av communityt."
+    lure_show: "%{lure} — %{type} med foton, färger, storlekar, köpställen och riktiga fångster loggade av sportfiskare."
+    brand_show: "Fiskebeten från %{brand} — hela sortimentet med foton, specifikationer och riktiga fångstrapporter."
+    species_show: "se vilka beten som faktiskt fångar den, bevisat genom riktiga fångster loggade av sportfiskare"
+    shop_show: "fiskebutik — leveransländer och köplänkar för beten"
+    catch_show: "%{species} fångad på %{lure} — foto, förhållanden och betesdetaljer loggade av en sportfiskare."
+  home:
+    tagline: Varje bete, bevisat med en fångst
+    meta_description: Lurepedia är ett crowdsourcat uppslagsverk över fiskebeten — hitta beten och se riktiga bevis, fångst för fångst, på att de fungerar.
+    hero_title: Varje bete, bevisat med en fångst
+    hero_sub: Ett crowdsourcat uppslagsverk över fiskebeten. Hitta det som fungerar — styrkt av riktiga fångster.
+    browse_lures: Bläddra bland beten
+    browse_another_way: Bläddra på annat sätt
+    add_a_catch: Lägg till en fångst
+
+  nav:
+    lures: Beten
+    species: Arter
+    catches: Fångster
+    brands: Märken
+    shops: Butiker
+    leaderboard: Topplista
+    menu: Meny
+
+  auth:
+    sign_in: Logga in
+    sign_up: Skapa konto
+    sign_out: Logga ut
+    email: E-post
+    password: Lösenord
+    password_confirmation: Bekräfta lösenord
+    name: Namn
+    sign_in_required: Logga in för att bidra.
+    not_authorized: Du har inte behörighet att göra det.
+    create_account: Skapa konto
+    have_account: Har du redan ett konto?
+    no_account: Ny på Lurepedia?
+    welcome_back: Välkommen tillbaka
+    join: Gå med i Lurepedia
+    choose_country: Ditt land
+    choose_language: Föredraget språk
+    continue_with_google: Fortsätt med Google
+
+  units:
+    label: Enheter
+    auto: Automatiskt (efter land)
+    imperial: Imperial
+    metric: Metriskt
+    length: Längd
+    weight: Vikt
+    depth: Djup
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Sötvatten
+    salt: Saltvatten
+    both: "Söt- & saltvatten"
+
+  action:
+    suspending: Suspending
+    floating: Flytande
+    sinking: Sjunkande
+    none: "—"
+
+  condition:
+    season:
+      label: Säsong
+      any: Alla säsonger
+      spring: Vår
+      summer: Sommar
+      fall: Höst
+      winter: Vinter
+    clarity:
+      label: Sikt
+      any: Alla siktförhållanden
+      clear: Klart
+      stained: Färgat
+      muddy: Grumligt
+    water_body:
+      label: Vattentyp
+      any: Alla vatten
+      lake: Sjö
+      pond: Damm
+      river: Flod
+      reservoir: Vattenmagasin
+      stream: Bäck
+    wind:
+      label: Vind
+      any: Alla vindförhållanden
+      calm: Vindstilla
+      light: Svag (5–10 mph)
+      moderate: Måttlig (10–20 mph)
+      strong: Hård (20+ mph)
+    time_of_day:
+      label: Tid på dygnet
+      any: När som helst
+      dawn: Gryning
+      morning: Morgon
+      midday: Mitt på dagen
+      afternoon: Eftermiddag
+      dusk: Skymning
+      night: Natt
+    platform:
+      label: Fiske från
+      any: Var som helst
+      shore: Land
+      boat: Båt
+      kayak: Kajak
+    retrieve:
+      label: Hemtagning
+      any: Alla stilar
+      steady: Jämn invevning
+      stop_and_go: Spinnstopp
+      twitch: Twitch
+      jerk: Jerk
+      slow_roll: Slow roll
+      burn: Maxfart
+      dead_stick: Dead sticking
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Mjukplast
+    spinnerbait: Spinnerbait
+    bladed_jig: Bladed jig
+    topwater: Ytbete
+    swimbait: Swimbait
+    jig: Jigg
+    spoon: Skeddrag
+    lipless_crankbait: Lipless crankbait
+
+  lure:
+    similar_title: "Liknande beten"
+    similar_manage_hint: "Korshänvisa beten som liknar varandra — ofta från andra märken — så att fiskare kan jämföra dem."
+    similar_none: "Inga liknande beten länkade ännu."
+    similar_add: "Länka liknande bete"
+    similar_add_placeholder: "Hitta ett bete…"
+    similar_not_found: "Det betet kunde inte hittas."
+    similar_match: "%{score}% likhet"
+    similar_suggest_title: "Liknar…"
+    similar_suggest_hint: "Det här fotot påminner om de här betena. Bocka i de som verkligen är lika, så korshänvisar vi dem."
+    title: Beten
+    subtitle: Varje bete, bevisat med en fångst
+    search_placeholder: Sök beten — eller filtrera på typ, vatten, flytläge…
+    model: Modell
+    description: Beskrivning
+    descriptions: Beskrivningar
+    translations: Översättningar
+    translations_hint: Betets beskrivning på varje språk. Läsare ser sitt eget språk, med engelska som reserv.
+    add: Lägg till ett bete
+    add_title: Lägg till ett bete
+    type: Typ
+    depth: Gångdjup
+    action: Flytläge
+    buoyancy: "Flytläge"
+    action_varies: "Varierar"
+    water: Vatten
+    brand: Märke
+    variants: Varianter
+    variant: Variant
+    tab_caught: Fångat på betet
+    proven_record:
+      title: Vad fångsterna visar
+      top_species: Främsta arter
+    tab_variations: "Varianter"
+    tab_buy: Köpställen
+    tab_history: Historik
+    proof: Bevis att det fungerar
+    catches_count:
+      one: "%{count} fångst"
+      other: "%{count} fångster"
+    no_proof: Inga bevis ännu
+    be_first: Bli först med att bevisa att betet fungerar
+    be_first_short: Bli först med att bevisa att det fungerar →
+    where_to_buy: Köpställen
+    quick_facts: Snabbfakta
+    action_video: Betet i aktion
+    add_video: Lägg till en aktionsvideo
+    watch_video: Se video
+    suggest_edit: Föreslå en ändring
+    add_catch: Lägg till en fångst
+    proven_for: Bevisat för
+    no_matches: Inga beten matchar dina filter
+    no_matches_sub: Letar du efter ett visst bete? Lägg till det om det saknas.
+    empty_title: Inga beten ännu
+    size: Storlek
+    weight: Vikt
+    color: Färg
+    colors: Färger
+    colors_count:
+      one: "%{count} färg"
+      other: "%{count} färger"
+    build: Utförande
+    builds: Utföranden
+    browse_colors: Bläddra bland färger
+    common_attributes: Gemensamma egenskaper · hela familjen
+    this_variation: Den här varianten
+    default_variation: Standardvariant
+    uv_glow: UV-glöd
+    best_for: Bäst för
+    manage_variations: "Varianter & utföranden"
+    tab_details: Allmänna uppgifter
+    add_color: Lägg till en färg
+    add_build: Lägg till ett utförande
+    color_name: Färgnamn
+    availability: Tillgängliga utföranden
+    availability_hint: Bocka i de utföranden som färgen bekräftat finns i. Lämna alla tomma om det är okänt — färgen visas då under alla utföranden.
+    available_in_n_of_m: "Finns i %{n} av %{m} utföranden"
+
+  species:
+    title: Arter
+    subtitle: Fisklexikonet
+    search_placeholder: Sök arter — trivialnamn eller vetenskapligt namn…
+    venomous: Gifttaggig
+    venomous_hint: Har giftiga taggar eller stick — hantera med försiktighet.
+    poisonous: Giftig att äta
+    poisonous_hint: Giftig om den äts.
+    add: Lägg till en art
+    add_title: Lägg till en art
+    scientific_name: Vetenskapligt namn
+    local_names: Lokala namn
+    translations: Översättningar
+    translations_hint: Trivialnamnet och beskrivningen på varje språk. Läsare ser sitt eget språk, med engelska som reserv.
+    local_name: Trivialnamn
+    description: Beskrivning
+    descriptions: Beskrivningar
+    wikipedia_url: Wikipedia-URL
+    wikipedia: Visa på Wikipedia
+    wikipedia_url_invalid: "måste vara en URL till en Wikipedia-artikel (t.ex. https://sv.wikipedia.org/wiki/...)"
+    habitat: Livsmiljö
+    tab_lures: Fångas på
+    tab_catches: Fångster
+    tab_leaderboard: Topplista
+    tab_history: Historik
+    proven_lures: Beprövade beten
+    lures_count:
+      one: "%{count} bete"
+      other: "%{count} beten"
+    no_proven_lures: Inga beprövade beten ännu
+    be_first_lure: Bli först med att bevisa att ett bete fångar den här fisken
+    empty_title: Inga arter ännu
+    empty_sub: Bli först med att lägga till en fiskart.
+
+  brand:
+    title: Märken
+    subtitle: Tillverkarna
+    search_placeholder: Sök märken…
+    add: Lägg till ett märke
+    add_title: Lägg till ett märke
+    founded: Grundat
+    empty_title: Inga märken ännu
+    empty_sub: Bli först med att lägga till ett betesmärke.
+    country: Land
+    website: Webbplats
+    website_invalid: "Ange en giltig URL som börjar med http:// eller https://"
+    logo: Logotyp
+    blurb: Om
+    description: Beskrivning
+    descriptions: Beskrivningar
+    translations: Översättningar
+    translations_hint: Märkesbeskrivningen på varje språk. Läsare ser sitt eget språk, med engelska som reserv.
+    tab_lures: Beten
+    tab_history: Historik
+    claim: Gör anspråk på märket
+    claimed: Anspråk gjort
+    owned_by: Ägs av
+
+  buy_link:
+    add: Lägg till ett köpställe
+    empty: Inga butiker listade ännu — lägg till det första stället att köpa betet på.
+    choose_shop: Butik
+    choose_shop_placeholder: Sök butiker…
+    existing_shop: Befintlig butik
+    new_shop: Ny butik
+    product_url: Produktlänk (valfritt)
+    submit: Lägg till
+    shop_required: Välj en butik.
+    already_listed: Den butiken är redan listad för det här betet.
+
+  shop:
+    title: Butiker
+    subtitle: Köpställen
+    search_placeholder: Sök butiker…
+    add: Lägg till en butik
+    add_title: Lägg till en butik
+    ships_to_you: "Butiker som levererar till %{country}"
+    other_shops: Övriga butiker
+    none_ship: "Inga butiker levererar till %{country} ännu. Känner du till någon?"
+    tab_lures: Beten
+    tab_history: Historik
+    no_lures: Inga beten listade i den här butiken ännu.
+    ships_to: Levererar till
+    ships_to_unknown: "—"
+    ships_worldwide: Levererar till hela världen
+    ships_to_hint: Lämna tomt om butiken levererar till hela världen.
+    add_country: Lägg till ett land
+    worldwide: Hela världen
+    claim: Gör anspråk på en butik
+
+  catch:
+    title: Fångster
+    subtitle: Färska bevis från communityt
+    add: Lägg till en fångst
+    add_title: Lägg till en fångst
+    on_lure: "på %{lure}"
+    conditions: Förhållanden
+    location: Plats
+    length: Längd
+    weight: Vikt
+    contributor: Bidragsgivare
+    comments: Kommentarer
+    add_comment: Lägg till en kommentar
+    upvote: Rösta upp
+    upvoted: Uppröstad
+    remove_upvote: Klicka igen för att ta bort din uppröstning
+    report: Anmäl den här fångsten
+    related: Fler fångster av den här arten
+    photos: Foton
+    pick_brand: Välj ett märke
+    pick_lure: Välj ett bete
+    pick_variant: Välj en variant
+    color: Färg
+    pick_color: Välj färgen du fångade på
+    pick_build: Välj ett utförande
+    pick_species: Vad fångade du?
+    log_title: Logga en fångst
+    log_this: Logga fångsten
+    modal_step1: "Steg 1 av 2 · Välj färgen du fångade på"
+    modal_step2: "Steg 2 av 2 · Välj utförande & djup"
+    builds_in: "Utföranden tillgängliga i"
+    no_builds: Den här färgen har inga utföranden ännu.
+    variation: Variant
+    choose_variation: Välj en variant
+    change: Ändra
+    note: Anteckningar
+    submitted: Inskickad för granskning
+    logged: Fångst loggad
+    removed: Fångst borttagen
+    submitted_body: Tack! Din fångst ligger i granskningskön och visas så snart den godkänts.
+    add_another: Lägg till en till
+
+  search:
+    filters: Filter
+    combine_free: Kombinera fritt — resultaten matchar alla
+    no_results: Inga resultat hittades
+    any_species: Alla arter
+    any_type: Alla typer
+    any_brand: Alla märken
+    any_action: Alla flytlägen
+    any_depth: Alla djup
+    depth_band:
+      shallow: Grunt (0–1,5 m)
+      mid: Mellandjup (1,5–4,5 m)
+      deep: Djupt (4,5 m+)
+    saltwater_only: Endast saltvatten
+    clear_all: Rensa alla
+    min: Min
+    max: Max
+    show_n_lures:
+      one: "Visa %{count} bete"
+      other: "Visa %{count} beten"
+    other: Övrigt
+
+  leaderboard:
+    title: Topplista
+    subtitle: Bästa fiskarna per art
+    all_species: Alla arter
+    rank_by: Ranka efter
+    metric_catches: Fångster
+    metric_upvotes: Uppröstningar
+    metric_length: Fisklängd
+    rank: Plats
+    angler: Fiskare
+    catches: Fångster
+    upvotes: Uppröstningar
+    best_length: Bästa längd
+    specialist: specialist
+    species_count:
+      one: "%{count} art"
+      other: "%{count} arter"
+    you: DU
+    empty: Inga rankade fiskare ännu
+
+  contribute:
+    suggest_edit: Föreslå en ändring
+    edit_title: "Redigera %{name}"
+    edit_saved: "Ändringar sparade"
+    added: "Tillagd i katalogen"
+    suggest_title: "Föreslå en ändring av %{name}"
+    suggest_note: Ditt förslag granskas av en moderator.
+    suggested: Förslag inskickat
+    suggested_body: Tack — en moderator granskar ditt förslag.
+    add_photos: Lägg till foton
+    moderation_note: Bidrag granskas innan de publiceras.
+    direct_note: Som ägare av märket publiceras detta direkt — ingen granskning behövs.
+    pending_review: Den här posten väntar på granskning och är inte offentlig ännu.
+
+  crop:
+    adjust: "Justera beskärning"
+    done: "Klar"
+    reset: "Återställ beskärning"
+    aspect_free: "Fritt"
+    aspect_square: "Kvadrat"
+    bg_label: "Kortbakgrund"
+    bg_auto: "Auto"
+    bg_pick: "Välj från fotot"
+    bg_apply_all: "Använd den här bakgrunden för alla färger av betet"
+    hint: "Dra för att flytta; dra i hörnen för att ändra storlek. Beskärningen tillämpas när du sparar."
+    invalid: "Beskärningsrektangeln är ogiltig"
+  claim:
+    title: "Gör anspråk på %{name}"
+    page_title: Gör anspråk på en post
+    intro: "Gör anspråk på denna %{kind} för att hantera posten. Berätta vem du är, så sköter vi resten via e-post."
+    message_label: Vem är du, och hur är du kopplad till den här posten?
+    message_hint: "t.ex. Jag är grundaren / Jag sköter marknadsföringen för märket…"
+    submit: Skicka anspråk
+    submitted_title: Anspråk mottaget
+    submitted_body: "Tack — vi granskar ditt anspråk och återkommer via e-post."
+    rejected_title: Anspråket godkändes inte
+    rejected_body: "Anspråket har granskats och inte godkänts. Tycker du att det är fel, hör av dig."
+    verified_title: Ägarskap verifierat
+    verified_body: Du hanterar nu den här posten. Dina ändringar publiceras utan granskning.
+    managed_badge: Hanteras av ägaren
+
+  report:
+    title: Anmäl innehåll
+    target: Anmäler
+    reason: Anledning
+    reason_inaccurate: Felaktigt eller vilseledande
+    reason_fake: Ingen riktig fångst / manipulerat foto
+    reason_wrong: Fel art eller bete
+    reason_spam: Skräppost eller reklam
+    reason_offensive: Stötande eller olämpligt
+    reason_other: Annat
+    note: Ytterligare detaljer (valfritt)
+    submit: Skicka anmälan
+    submitted: Anmälan skickad
+    submitted_body: Tack — moderatorerna tittar på det inom kort.
+
+  moderation:
+    title: Granskningskö
+    subtitle: Granska bidrag från communityt
+    moderator_view: MODERATORVY
+    all: Alla
+    reports: Anmälningar
+    catches: Fångster
+    edits: Ändringar
+    catalog: Katalog
+    claims: Anspråk
+    awaiting: "%{count} väntar på granskning"
+    approve: Godkänn
+    reject: Avslå
+    undo: Ångra
+    approved: Godkänd
+    rejected: Avslagen
+    needs_admin: Kräver admin
+    own_submission: Du skickade in detta
+    submitted_by: Inskickat av
+    view_details: Visa detaljer
+    kind:
+      catch: Fångst
+      edit: Ändring
+      catalog: Katalog
+      claim: Anspråk
+      report: Anmälan
+
+  admin:
+    title: Adminkonsol
+    overview: Översikt
+    people: "Personer & roller"
+    activity: Aktivitetslogg
+    pending: Väntar på granskning
+    catches_logged: Loggade fångster
+    contributors: Bidragsgivare
+    lures_catalogued: Katalogiserade beten
+    role: Roll
+    member: Medlem
+    moderator: Moderator
+    admin: Admin
+    joined: Gick med
+    you: DU
+
+  settings:
+    title: Inställningar
+    tab_profile: Profil
+    tab_preferences: Preferenser
+    profile: Profil
+    country: Land
+    language: Språk
+    time_zone: Tidszon
+    time_zone_auto: "Automatisk (UTC)"
+    units: Enheter
+    notifications: Aviseringar
+    saved: Inställningar sparade
+    public_profile: Din offentliga profil
+    copy: Kopiera
+    copied: Kopierat!
+    username: Användarnamn
+    username_hint: t.ex. casey-rivera
+    username_help: Valfritt. Små bokstäver, siffror och bindestreck. Används i din profil-URL.
+    avatar: Profilbild
+    avatar_help: PNG, JPEG, WEBP eller GIF. Upp till 5 MB.
+    choose_image: Välj bild
+    no_file: Ingen bild vald
+    remove_avatar: Ta bort nuvarande bild
+    avatar_too_large: är för stor (max 5 MB)
+    avatar_invalid_type: måste vara en bild i PNG, JPEG, WEBP eller GIF
+
+  dashboard:
+    my_catches: Mina fångster
+    my_profile: Min profil
+    total_upvotes: Totalt intjänade uppröstningar
+    no_catches: Du har inte loggat några fångster ännu.
+
+  profile:
+    catches: Fångster
+    tab_catches: Fångster
+    tab_favorites: Favoriter
+    tab_contributions: Bidrag
+    contributions: Bidrag
+    no_contributions: Inga bidrag ännu.
+    view_picture: Visa profilbild
+    change_picture: Ladda upp/byt profilbild
+    total_upvotes: Totalt antal uppröstningar
+    member_since: Medlem sedan
+    favorite_species: Favoritarter
+    favorite_lures: Favoritbeten
+    favorite_shops: Favoritbutiker
+    no_favorites: Inga favoriter ännu.
+    no_catches: Inga fångster ännu.
+
+  provenance:
+    title: "Historik & ägarskap"
+    edits:
+      one: "%{count} ändring"
+      other: "%{count} ändringar"
+    added_by: Tillagd av
+    owned_by: Ägs av
+    originally_added: "Ursprungligen tillagd av %{name} · %{date}"
+    edit_history: Ändringshistorik
+    created: Skapade den här posten
+    edited: redigerade
+    col_change: Ändring
+    col_contributor: Bidragsgivare
+    col_date: Datum
+
+  revision:
+    title: Revision
+    no_changes: Inga fältändringar registrerades för den här redigeringen.
+    removed: Borttaget
+    added: Tillagt
+    field:
+      build_ids: Tillgängliga utföranden
+
+  species_names:
+    largemouth_bass:
+      common: Öringabborre
+      habitat: Varma, vegetationsrika sjöar och dammar; bakhållsjägare kring skydd.
+    smallmouth_bass:
+      common: Svartabborre
+      habitat: Svala, klara floder och steniga sjöar; stark kämpe.
+    northern_pike:
+      common: Gädda
+      habitat: Vassrika vikar och svala sjöar; aggressiv bakhållsjägare.
+    walleye:
+      common: Walleye
+      habitat: Djupa, svala sjöar och floder; jagar i svagt ljus.
+    yellow_perch:
+      common: Amerikansk abborre
+      habitat: Stimfisk i sjöar och dammar; söker föda nära botten.
+    muskellunge:
+      common: Muskellunge
+      habitat: Stora, klara sjöar och floder; sötvattnets toppredator.
+    bluegill:
+      common: Blågälad solabborre
+      habitat: Varma dammar och grunda sjöpartier; leker i kolonier.
+    rainbow_trout:
+      common: Regnbåge
+      habitat: Kalla bäckar, floder och sjöar; uppskattad sportfisk.
+    mahi_mahi:
+      common: Guldmakrill
+      habitat: Varma ytvatten till havs; snabb pelagisk rovfisk.
+    striped_bass:
+      common: Strimmig havsabborre
+      habitat: Bränningar vid kusten, flodmynningar och stora floder; vandrande art.
+    bonefish:
+      common: Bonefish
+      habitat: Tropiska grunda flats; skygg och snabb.
+    chinook_salmon:
+      common: Kungslax
+      habitat: Kalla Stillahavsfloder och sjöar; kraftfull vandringsfisk.
+  country:
+    US: USA
+    CA: Kanada
+    GB: Storbritannien
+    DE: Tyskland
+    FR: Frankrike
+    ES: Spanien
+    IT: Italien
+    NL: Nederländerna
+    SE: Sverige
+    "NO": Norge
+    PL: Polen
+    RU: Ryssland
+    BG: Bulgarien
+    GR: Grekland
+    JP: Japan
+    CN: Kina
+    BR: Brasilien
+    MX: Mexiko
+    FI: Finland
+    AU: Australien
+    NZ: Nya Zeeland
+    DK: Danmark
+    IE: Irland
+    PT: Portugal
+    KR: Sydkorea
+    TH: Thailand
+    ZA: Sydafrika
+    IN: Indien
+    AR: Argentina
+    CL: Chile
+    UA: Ukraina
+    TR: Turkiet
+    AT: Österrike
+    BE: Belgien
+    CH: Schweiz
+    CZ: Tjeckien
+    HU: Ungern
+    RO: Rumänien
+  activerecord:
+    attributes:
+      user:
+        password: Lösenord
+        password_confirmation: Lösenordsbekräftelse
+    errors:
+      messages:
+        confirmation: "stämmer inte överens med %{attribute}"

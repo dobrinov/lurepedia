@@ -1,0 +1,728 @@
+ko:
+  common:
+    all: 전체
+    none: "—"
+    save: 저장
+    cancel: 취소
+    submit: 제출
+    edit: 편집
+    delete: 삭제
+    add: 추가
+    search: 검색
+    loading: 불러오는 중…
+    showing: "전체 %{count}건 중 %{from}–%{to} 표시"
+    page: 페이지
+    page_of: "/ 총 %{total}페이지"
+    next: 다음
+    prev: 이전
+    back: 뒤로
+    close: 닫기
+    by: 작성자
+    on: 사용
+    "yes": "예"
+    "no": "아니요"
+    verified: 인증됨
+    promoted: 프로모션
+    sponsored: 스폰서
+
+  bans:
+    blocked: 회원님의 계정은 현재 이 작업이 제한되어 있습니다.
+    notice:
+      title: 회원님의 계정이 제한되었습니다.
+      reason: 사유
+      permanent: 이 제한은 영구적입니다.
+      until: "%{date}까지 적용됩니다."
+      scope: 제한된 작업
+    capability:
+      catalog: 카탈로그 편집
+      claims: 소유권 신청
+      catches: 조과 기록
+      comments: 댓글
+      upvotes: 추천
+      reports: 신고
+      favorites: 즐겨찾기
+    preset:
+      catalog_only: 카탈로그만
+      contributions: 모든 기여
+      full: 전체 (읽기 전용 계정)
+    admin:
+      title: "이용 제한 — %{name}"
+      title_short: 이용 제한
+      new: 제한 부과
+      reason: 사유
+      preset: 프리셋
+      custom: 직접 선택
+      capabilities: 제한할 작업
+      capabilities_help: 프리셋을 선택하면 작업이 미리 선택됩니다. 체크박스로 직접 조정할 수 있습니다.
+      expires_at: 만료 일시
+      permanent_hint: 비워 두면 영구 제한이 됩니다.
+      issue: 제한 부과
+      status: 상태
+      scope: 범위
+      active: 적용 중
+      lifted: 해제됨
+      expired: 만료됨
+      lift: 제한 해제
+      manage: 제한 관리
+      created: 제한이 부과되었습니다.
+      revoked: 제한이 해제되었습니다.
+
+  favorites:
+    add: 즐겨찾기
+    remove: 즐겨찾기 해제
+    favorited: 즐겨찾기됨
+
+  footer:
+    explore: 둘러보기
+
+  meta:
+    lures_index: "낚시 루어 전체 카탈로그 — 타입, 수심, 수역, 어종으로 필터링하고 실제 조과로 검증된 루어를 찾아보세요."
+    catches_index: "낚시인들이 기록한 실제 조과 — 물고기마다 어떤 루어, 컬러, 조건이었는지 확인하세요."
+    brands_index: "전 세계의 낚시 루어 브랜드 — 브랜드별 전체 라인업과 커뮤니티 조과 기록."
+    species_index: "어종별로 실제로 잘 잡히는 루어를 확인하세요 — 낚시인이 기록한 조과가 증거입니다."
+    shops_index: "낚시 루어 구매처 — 회원님의 국가로 배송 가능한 샵부터 정렬됩니다."
+    leaderboard: "커뮤니티가 기록한 실제 조과 수로 순위를 매긴 가장 검증된 낚시 루어."
+    lure_show: "%{lure} — 사진, 컬러, 사이즈, 구매처, 그리고 낚시인이 기록한 실제 조과가 있는 %{type}."
+    brand_show: "%{brand} 낚시 루어 — 사진, 스펙, 실제 조과 리포트가 있는 전체 라인업."
+    species_show: "실제 낚시인의 조과로 검증된, 이 어종에 잘 통하는 루어를 확인하세요"
+    shop_show: "낚시 태클 샵 — 배송 국가와 루어 구매 링크"
+    catch_show: "%{lure}로 잡은 %{species} — 낚시인이 기록한 사진, 조건, 루어 정보."
+  home:
+    tagline: 모든 루어, 조과로 검증
+    meta_description: Lurepedia는 크라우드소싱 낚시 루어 백과사전입니다 — 실제 조과로 검증된, 정말 잘 잡히는 루어를 찾아보세요.
+    hero_title: 모든 루어, 조과로 검증
+    hero_sub: 크라우드소싱 낚시 루어 백과사전. 실제 조과가 증명하는, 정말 잘 잡히는 루어를 찾아보세요.
+    browse_lures: 루어 둘러보기
+    browse_another_way: 다른 방법으로 둘러보기
+    add_a_catch: 조과 추가
+
+  nav:
+    lures: 루어
+    species: 어종
+    catches: 조과
+    brands: 브랜드
+    shops: 샵
+    leaderboard: 리더보드
+    menu: 메뉴
+
+  auth:
+    sign_in: 로그인
+    sign_up: 계정 만들기
+    sign_out: 로그아웃
+    email: 이메일
+    password: 비밀번호
+    password_confirmation: 비밀번호 확인
+    name: 이름
+    sign_in_required: 기여하려면 로그인해 주세요.
+    not_authorized: 이 작업을 수행할 권한이 없습니다.
+    create_account: 계정 만들기
+    have_account: 이미 계정이 있으신가요?
+    no_account: Lurepedia가 처음이신가요?
+    welcome_back: 다시 오신 것을 환영합니다
+    join: Lurepedia 가입하기
+    choose_country: 국가
+    choose_language: 선호 언어
+    continue_with_google: Google로 계속하기
+
+  units:
+    label: 단위
+    auto: 자동 (국가 기준)
+    imperial: 야드파운드법
+    metric: 미터법
+    length: 길이
+    weight: 무게
+    depth: 수심
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: 민물
+    salt: 바다
+    both: 민물 & 바다
+
+  action:
+    suspending: 서스펜딩
+    floating: 플로팅
+    sinking: 싱킹
+    none: "—"
+
+  condition:
+    season:
+      label: 계절
+      any: 모든 계절
+      spring: 봄
+      summer: 여름
+      fall: 가을
+      winter: 겨울
+    clarity:
+      label: 물색
+      any: 모든 물색
+      clear: 맑음
+      stained: 탁함
+      muddy: 흙탕물
+    water_body:
+      label: 수역
+      any: 모든 수역
+      lake: 호수
+      pond: 연못
+      river: 강
+      reservoir: 저수지
+      stream: 계류
+    wind:
+      label: 바람
+      any: 모든 바람
+      calm: 무풍
+      light: "약함 (5–10mph)"
+      moderate: "보통 (10–20mph)"
+      strong: "강함 (20mph 이상)"
+    time_of_day:
+      label: 시간대
+      any: 모든 시간대
+      dawn: 새벽
+      morning: 오전
+      midday: 한낮
+      afternoon: 오후
+      dusk: 해질녘
+      night: 밤
+    platform:
+      label: 낚시 장소
+      any: 어디서나
+      shore: 연안
+      boat: 보트
+      kayak: 카약
+    retrieve:
+      label: 리트리브 스타일
+      any: 모든 스타일
+      steady: 스테디
+      stop_and_go: 스탑앤고
+      twitch: 트위칭
+      jerk: 저킹
+      slow_roll: 슬로우 롤링
+      burn: 버닝
+      dead_stick: 데드 스티킹
+
+  lure_type:
+    crankbait: 크랭크베이트
+    jerkbait: 저크베이트
+    soft_plastic: 소프트 베이트
+    spinnerbait: 스피너베이트
+    bladed_jig: 블레이드 지그
+    topwater: 탑워터
+    swimbait: 스윔베이트
+    jig: 지그
+    spoon: 스푼
+    lipless_crankbait: 립리스 크랭크베이트
+
+  lure:
+    similar_title: "비슷한 루어"
+    similar_manage_hint: "생김새가 비슷한 루어(주로 다른 브랜드)를 서로 연결해 낚시인들이 비교할 수 있게 해 주세요."
+    similar_none: "아직 연결된 비슷한 루어가 없습니다."
+    similar_add: "비슷한 루어 연결"
+    similar_add_placeholder: "루어 찾기…"
+    similar_not_found: "해당 루어를 찾을 수 없습니다."
+    similar_match: "%{score}% 일치"
+    similar_suggest_title: "이 루어와 비슷해요…"
+    similar_suggest_hint: "이 사진은 아래 루어들과 닮았습니다. 정말 비슷한 루어에 체크하면 서로 연결해 드립니다."
+    title: 루어
+    subtitle: 모든 루어, 조과로 검증
+    search_placeholder: 루어 검색 — 타입, 수역, 액션으로 필터링…
+    model: 모델
+    description: 설명
+    descriptions: 설명
+    translations: 번역
+    translations_hint: 각 언어별 루어 설명입니다. 독자에게는 자신의 언어로 표시되며, 없으면 영어로 대체됩니다.
+    add: 루어 추가
+    add_title: 루어 추가
+    type: 타입
+    depth: 공략 수심
+    action: 액션
+    buoyancy: "부력"
+    action_varies: "빌드마다 다름"
+    water: 수역
+    brand: 브랜드
+    variants: 베리에이션
+    variant: 베리에이션
+    tab_caught: 조과 기록
+    proven_record:
+      title: 조과가 말해 주는 것
+      top_species: 대표 어종
+    tab_variations: "베리에이션"
+    tab_buy: 구매처
+    tab_history: 히스토리
+    proof: 검증된 조과
+    catches_count:
+      one: "조과 %{count}건"
+      other: "조과 %{count}건"
+    no_proof: 아직 검증 기록이 없습니다
+    be_first: 이 루어의 첫 조과를 기록해 보세요
+    be_first_short: 첫 조과를 기록해 보세요 →
+    where_to_buy: 구매처
+    quick_facts: 요약 정보
+    action_video: 루어 액션 영상
+    add_video: 액션 영상 추가
+    watch_video: 영상 보기
+    suggest_edit: 편집 제안
+    add_catch: 조과 추가
+    proven_for: 검증된 어종
+    no_matches: 필터에 맞는 루어가 없습니다
+    no_matches_sub: 찾는 루어가 없나요? 직접 추가해 주세요.
+    empty_title: 아직 루어가 없습니다
+    size: 사이즈
+    weight: 무게
+    color: 컬러
+    colors: 컬러
+    colors_count:
+      one: "컬러 %{count}종"
+      other: "컬러 %{count}종"
+    build: 빌드
+    builds: 빌드
+    browse_colors: 컬러 둘러보기
+    common_attributes: 공통 속성 · 전체 패밀리
+    this_variation: 이 베리에이션
+    default_variation: 기본 베리에이션
+    uv_glow: UV 글로우
+    best_for: 추천 대상
+    manage_variations: 베리에이션 & 빌드
+    tab_details: 기본 정보
+    add_color: 컬러 추가
+    add_build: 빌드 추가
+    color_name: 컬러 이름
+    availability: 출시 빌드
+    availability_hint: 이 컬러로 출시된 것이 확인된 빌드에 체크해 주세요. 모르면 모두 비워 두세요 — 그러면 모든 빌드에서 이 컬러가 표시됩니다.
+    available_in_n_of_m: 전체 %{m}개 빌드 중 %{n}개에서 출시
+
+  species:
+    title: 어종
+    subtitle: 물고기 사전
+    search_placeholder: 어종 검색 — 일반명 또는 학명…
+    venomous: 독가시
+    venomous_hint: 독이 있는 가시나 침이 있습니다 — 취급에 주의하세요.
+    poisonous: 독성
+    poisonous_hint: 먹으면 독이 됩니다.
+    add: 어종 추가
+    add_title: 어종 추가
+    scientific_name: 학명
+    local_names: 현지 이름
+    translations: 번역
+    translations_hint: 각 언어별 일반명과 설명입니다. 독자에게는 자신의 언어로 표시되며, 없으면 영어로 대체됩니다.
+    local_name: 일반명
+    description: 설명
+    descriptions: 설명
+    wikipedia_url: 위키백과 URL
+    wikipedia: 위키백과에서 보기
+    wikipedia_url_invalid: "위키백과 문서 URL이어야 합니다 (예: https://en.wikipedia.org/wiki/...)"
+    habitat: 서식지
+    tab_lures: 잘 잡히는 루어
+    tab_catches: 조과
+    tab_leaderboard: 리더보드
+    tab_history: 히스토리
+    proven_lures: 검증된 루어
+    lures_count:
+      one: "루어 %{count}개"
+      other: "루어 %{count}개"
+    no_proven_lures: 아직 검증된 루어가 없습니다
+    be_first_lure: 이 어종을 잡는 루어를 처음으로 검증해 보세요
+    empty_title: 아직 어종이 없습니다
+    empty_sub: 첫 어종을 추가해 보세요.
+
+  brand:
+    title: 브랜드
+    subtitle: 루어를 만드는 사람들
+    search_placeholder: 브랜드 검색…
+    add: 브랜드 추가
+    add_title: 브랜드 추가
+    founded: 설립
+    empty_title: 아직 브랜드가 없습니다
+    empty_sub: 첫 루어 브랜드를 추가해 보세요.
+    country: 국가
+    website: 웹사이트
+    website_invalid: "http:// 또는 https://로 시작하는 올바른 URL을 입력해 주세요"
+    logo: 로고
+    blurb: 소개
+    description: 설명
+    descriptions: 설명
+    translations: 번역
+    translations_hint: 각 언어별 브랜드 설명입니다. 독자에게는 자신의 언어로 표시되며, 없으면 영어로 대체됩니다.
+    tab_lures: 루어
+    tab_history: 히스토리
+    claim: 이 브랜드 소유권 신청
+    claimed: 소유권 신청됨
+    owned_by: 소유자
+
+  buy_link:
+    add: 구매처 추가
+    empty: 아직 등록된 샵이 없습니다 — 이 루어의 첫 구매처를 추가해 보세요.
+    choose_shop: 샵
+    choose_shop_placeholder: 샵 검색…
+    existing_shop: 기존 샵
+    new_shop: 새 샵
+    product_url: 상품 링크 (선택)
+    submit: 추가
+    shop_required: 샵을 선택해 주세요.
+    already_listed: 해당 샵은 이미 이 루어에 등록되어 있습니다.
+
+  shop:
+    title: 샵
+    subtitle: 구매처
+    search_placeholder: 샵 검색…
+    add: 샵 추가
+    add_title: 샵 추가
+    ships_to_you: "%{country}(으)로 배송하는 샵"
+    other_shops: 기타 샵
+    none_ship: "아직 %{country}(으)로 배송하는 샵이 없습니다. 알고 계신 곳이 있나요?"
+    tab_lures: 루어
+    tab_history: 히스토리
+    no_lures: 이 샵에 아직 등록된 루어가 없습니다.
+    ships_to: 배송 지역
+    ships_to_unknown: "—"
+    ships_worldwide: 전 세계 배송
+    ships_to_hint: 전 세계 배송이라면 비워 두세요.
+    add_country: 국가 추가
+    worldwide: 전 세계
+    claim: 샵 소유권 신청
+
+  catch:
+    title: 조과
+    subtitle: 커뮤니티의 최근 검증 기록
+    add: 조과 추가
+    add_title: 조과 추가
+    on_lure: "%{lure} 사용"
+    conditions: 조건
+    location: 위치
+    length: 길이
+    weight: 무게
+    contributor: 기여자
+    comments: 댓글
+    add_comment: 댓글 달기
+    upvote: 추천
+    upvoted: 추천함
+    remove_upvote: 다시 클릭하면 추천이 취소됩니다
+    report: 이 조과 신고
+    related: 이 어종의 다른 조과
+    photos: 사진
+    pick_brand: 브랜드 선택
+    pick_lure: 루어 선택
+    pick_variant: 베리에이션 선택
+    color: 컬러
+    pick_color: 잡을 때 사용한 컬러를 선택하세요
+    pick_build: 빌드 선택
+    pick_species: 무엇을 잡으셨나요?
+    log_title: 조과 기록
+    log_this: 이 조과 기록하기
+    modal_step1: "1/2단계 · 잡을 때 사용한 컬러를 선택하세요"
+    modal_step2: "2/2단계 · 빌드와 수심을 선택하세요"
+    builds_in: "출시된 빌드"
+    no_builds: 이 컬러에는 아직 빌드가 없습니다.
+    variation: 베리에이션
+    choose_variation: 베리에이션 선택
+    change: 변경
+    note: 메모
+    submitted: 검토 대기 중
+    logged: 조과가 기록되었습니다
+    removed: 조과가 삭제되었습니다
+    submitted_body: 감사합니다! 조과가 검수 대기열에 등록되었으며 승인되면 표시됩니다.
+    add_another: 하나 더 추가
+
+  search:
+    filters: 필터
+    combine_free: 자유롭게 조합하세요 — 결과는 모든 조건을 만족합니다
+    no_results: 검색 결과가 없습니다
+    any_species: 모든 어종
+    any_type: 모든 타입
+    any_brand: 모든 브랜드
+    any_action: 모든 액션
+    any_depth: 모든 수심
+    depth_band:
+      shallow: "얕음 (0–1.5m)"
+      mid: "중층 (1.5–4.5m)"
+      deep: "깊음 (4.5m 이상)"
+    saltwater_only: 바다 전용
+    clear_all: 모두 지우기
+    min: 최소
+    max: 최대
+    show_n_lures:
+      one: 루어 %{count}개 보기
+      other: 루어 %{count}개 보기
+    other: 기타
+
+  leaderboard:
+    title: 리더보드
+    subtitle: 어종별 상위 낚시인
+    all_species: 모든 어종
+    rank_by: 순위 기준
+    metric_catches: 조과 수
+    metric_upvotes: 추천 수
+    metric_length: 물고기 길이
+    rank: 순위
+    angler: 낚시인
+    catches: 조과
+    upvotes: 추천
+    best_length: 최고 길이
+    specialist: 전문가
+    species_count:
+      one: "어종 %{count}종"
+      other: "어종 %{count}종"
+    you: 나
+    empty: 아직 순위에 오른 낚시인이 없습니다
+
+  contribute:
+    suggest_edit: 편집 제안
+    edit_title: "%{name} 편집"
+    edit_saved: "변경 사항이 저장되었습니다"
+    added: "카탈로그에 추가되었습니다"
+    suggest_title: "%{name}에 대한 편집 제안"
+    suggest_note: 제안은 모더레이터의 검토를 거칩니다.
+    suggested: 제안이 제출되었습니다
+    suggested_body: 감사합니다 — 모더레이터가 제안을 검토할 예정입니다.
+    add_photos: 사진 추가
+    moderation_note: 제출된 내용은 검토를 거쳐 게시됩니다.
+    direct_note: 브랜드 소유자이므로 검토 없이 즉시 게시됩니다.
+    pending_review: 이 항목은 검토 대기 중이며 아직 공개되지 않았습니다.
+
+  crop:
+    adjust: "자르기 조정"
+    done: "완료"
+    reset: "자르기 초기화"
+    aspect_free: "자유"
+    aspect_square: "정사각형"
+    bg_label: "타일 배경"
+    bg_auto: "자동"
+    bg_pick: "사진에서 선택"
+    bg_apply_all: "이 배경을 이 루어의 모든 컬러에 적용"
+    hint: "드래그로 위치를 옮기고 모서리를 드래그해 크기를 조절하세요. 자르기는 저장할 때 적용됩니다."
+    invalid: "자르기 영역이 올바르지 않습니다"
+  claim:
+    title: "%{name} 소유권 신청"
+    page_title: 소유권 신청
+    intro: "이 %{kind}의 소유권을 신청하면 해당 페이지를 직접 관리할 수 있습니다. 어떤 분인지 알려 주시면 이후 절차는 이메일로 안내해 드립니다."
+    message_label: 어떤 분이시며, 이 페이지와 어떤 관계이신가요?
+    message_hint: "예: 창업자입니다 / 브랜드 마케팅을 담당하고 있습니다…"
+    submit: 소유권 신청 제출
+    submitted_title: 신청이 접수되었습니다
+    submitted_body: "감사합니다 — 신청을 검토한 후 이메일로 답변드리겠습니다."
+    rejected_title: 신청이 승인되지 않았습니다
+    rejected_body: "이 신청은 검토 후 승인되지 않았습니다. 잘못되었다고 생각하시면 문의해 주세요."
+    verified_title: 소유권이 확인되었습니다
+    verified_body: 이제 이 페이지를 직접 관리할 수 있습니다. 회원님의 편집은 검토 없이 바로 게시됩니다.
+    managed_badge: 소유자가 관리 중
+
+  report:
+    title: 콘텐츠 신고
+    target: 신고 대상
+    reason: 사유
+    reason_inaccurate: 부정확하거나 오해의 소지가 있음
+    reason_fake: 실제 조과가 아님 / 조작된 사진
+    reason_wrong: 어종이나 루어가 잘못됨
+    reason_spam: 스팸 또는 광고
+    reason_offensive: 불쾌하거나 부적절함
+    reason_other: 기타
+    note: 추가 설명 (선택)
+    submit: 신고 제출
+    submitted: 신고가 접수되었습니다
+    submitted_body: 감사합니다 — 모더레이터가 곧 검토할 예정입니다.
+
+  moderation:
+    title: 검수 대기열
+    subtitle: 크라우드소싱 기여 검토
+    moderator_view: 모더레이터 보기
+    all: 전체
+    reports: 신고
+    catches: 조과
+    edits: 편집
+    catalog: 카탈로그
+    claims: 소유권 신청
+    awaiting: "%{count}건 검토 대기 중"
+    approve: 승인
+    reject: 거절
+    undo: 되돌리기
+    approved: 승인됨
+    rejected: 거절됨
+    needs_admin: 관리자 필요
+    own_submission: 회원님이 제출한 항목입니다
+    submitted_by: 제출자
+    view_details: 상세 보기
+    kind:
+      catch: 조과
+      edit: 편집
+      catalog: 카탈로그
+      claim: 소유권 신청
+      report: 신고
+
+  admin:
+    title: 관리자 콘솔
+    overview: 개요
+    people: 사용자 & 역할
+    activity: 활동 로그
+    pending: 검토 대기
+    catches_logged: 기록된 조과
+    contributors: 기여자
+    lures_catalogued: 등록된 루어
+    role: 역할
+    member: 멤버
+    moderator: 모더레이터
+    admin: 관리자
+    joined: 가입일
+    you: 나
+
+  settings:
+    title: 설정
+    tab_profile: 프로필
+    tab_preferences: 환경설정
+    profile: 프로필
+    country: 국가
+    language: 언어
+    time_zone: 시간대
+    time_zone_auto: "자동 (UTC)"
+    units: 단위
+    notifications: 알림
+    saved: 설정이 저장되었습니다
+    public_profile: 내 공개 프로필
+    copy: 복사
+    copied: 복사됨!
+    username: 사용자 이름
+    username_hint: "예: casey-rivera"
+    username_help: 선택 사항입니다. 소문자, 숫자, 하이픈만 사용할 수 있으며 프로필 URL에 사용됩니다.
+    avatar: 프로필 사진
+    avatar_help: PNG, JPEG, WEBP 또는 GIF. 최대 5MB.
+    choose_image: 이미지 선택
+    no_file: 선택된 이미지가 없습니다
+    remove_avatar: 현재 사진 삭제
+    avatar_too_large: 파일이 너무 큽니다 (최대 5MB)
+    avatar_invalid_type: PNG, JPEG, WEBP 또는 GIF 이미지여야 합니다
+
+  dashboard:
+    my_catches: 내 조과
+    my_profile: 내 프로필
+    total_upvotes: 받은 추천 합계
+    no_catches: 아직 기록한 조과가 없습니다.
+
+  profile:
+    catches: 조과
+    tab_catches: 조과
+    tab_favorites: 즐겨찾기
+    tab_contributions: 기여
+    contributions: 기여
+    no_contributions: 아직 기여가 없습니다.
+    view_picture: 프로필 사진 보기
+    change_picture: 프로필 사진 업로드/변경
+    total_upvotes: 총 추천 수
+    member_since: 가입일
+    favorite_species: 즐겨찾는 어종
+    favorite_lures: 즐겨찾는 루어
+    favorite_shops: 즐겨찾는 샵
+    no_favorites: 아직 즐겨찾기가 없습니다.
+    no_catches: 아직 조과가 없습니다.
+
+  provenance:
+    title: 히스토리 & 소유권
+    edits:
+      one: "편집 %{count}회"
+      other: "편집 %{count}회"
+    added_by: 추가한 사람
+    owned_by: 소유자
+    originally_added: "%{name} 님이 처음 추가 · %{date}"
+    edit_history: 편집 기록
+    created: 이 항목을 생성함
+    edited: 편집함
+    col_change: 변경 내용
+    col_contributor: 기여자
+    col_date: 날짜
+
+  revision:
+    title: 리비전
+    no_changes: 이 편집에는 필드 단위의 변경 사항이 기록되지 않았습니다.
+    removed: 삭제됨
+    added: 추가됨
+    field:
+      build_ids: 출시 빌드
+
+  species_names:
+    largemouth_bass:
+      common: 라지마우스 배스
+      habitat: 수초가 많은 따뜻한 호수와 연못에 서식하며, 장애물 주변에서 매복하는 포식자입니다.
+    smallmouth_bass:
+      common: 스몰마우스 배스
+      habitat: 차고 맑은 강과 바위가 많은 호수에 서식하며, 힘이 좋은 파이터입니다.
+    northern_pike:
+      common: 노던 파이크
+      habitat: 수초가 우거진 만과 차가운 호수에 서식하는 공격적인 매복 포식자입니다.
+    walleye:
+      common: 월아이
+      habitat: 깊고 차가운 호수와 강에 서식하며, 어두울 때 먹이 활동을 합니다.
+    yellow_perch:
+      common: 옐로 퍼치
+      habitat: 호수와 연못에서 무리를 짓는 어종으로, 바닥 근처에서 먹이 활동을 합니다.
+    muskellunge:
+      common: 머스킬런지
+      habitat: 크고 맑은 호수와 강에 서식하는 민물 최상위 포식자입니다.
+    bluegill:
+      common: 블루길
+      habitat: 따뜻한 연못과 호수 얕은 곳에 서식하며, 무리를 지어 산란합니다.
+    rainbow_trout:
+      common: 무지개송어
+      habitat: 차가운 계류, 강, 호수에 서식하는 인기 스포츠 피시입니다.
+    mahi_mahi:
+      common: 만새기
+      habitat: 따뜻한 외해 표층에 서식하는 빠른 원양 포식자입니다.
+    striped_bass:
+      common: 스트라이프드 배스
+      habitat: 연안 서프, 하구, 큰 강에 서식하는 회유성 어종입니다.
+    bonefish:
+      common: 본피시
+      habitat: 열대의 얕은 플랫에 서식하며, 경계심이 강하고 빠릅니다.
+    chinook_salmon:
+      common: 왕연어
+      habitat: 차가운 태평양 연안의 강과 호수에 서식하는 힘센 회유성 어종입니다.
+  country:
+    US: 미국
+    CA: 캐나다
+    GB: 영국
+    DE: 독일
+    FR: 프랑스
+    ES: 스페인
+    IT: 이탈리아
+    NL: 네덜란드
+    SE: 스웨덴
+    "NO": 노르웨이
+    PL: 폴란드
+    RU: 러시아
+    BG: 불가리아
+    GR: 그리스
+    JP: 일본
+    CN: 중국
+    BR: 브라질
+    MX: 멕시코
+    FI: 핀란드
+    AU: 호주
+    NZ: 뉴질랜드
+    DK: 덴마크
+    IE: 아일랜드
+    PT: 포르투갈
+    KR: 대한민국
+    TH: 태국
+    ZA: 남아프리카 공화국
+    IN: 인도
+    AR: 아르헨티나
+    CL: 칠레
+    UA: 우크라이나
+    TR: 튀르키예
+    AT: 오스트리아
+    BE: 벨기에
+    CH: 스위스
+    CZ: 체코
+    HU: 헝가리
+    RO: 루마니아
+  activerecord:
+    attributes:
+      user:
+        password: 비밀번호
+        password_confirmation: 비밀번호 확인
+    errors:
+      messages:
+        confirmation: "%{attribute}와(과) 일치하지 않습니다"

@@ -2,7 +2,8 @@ module SeoHelper
   # og:locale wants language_TERRITORY; our locale codes are bare languages.
   OG_LOCALES = {
     bg: "bg_BG", de: "de_DE", el: "el_GR", en: "en_US", es: "es_ES",
-    fr: "fr_FR", ja: "ja_JP", nl: "nl_NL", ru: "ru_RU", zh: "zh_CN"
+    fr: "fr_FR", ja: "ja_JP", nl: "nl_NL", ru: "ru_RU", zh: "zh_CN",
+    it: "it_IT", pt: "pt_PT", ko: "ko_KR", sv: "sv_SE", no: "nb_NO"
   }.freeze
 
   DEFAULT_OG_IMAGE = "/android-chrome-512x512.png"

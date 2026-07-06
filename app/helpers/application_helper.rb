@@ -10,7 +10,12 @@ module ApplicationHelper
     zh: { native: "中文", country: "CN" },
     ja: { native: "日本語", country: "JP" },
     ru: { native: "Русский", country: "RU" },
-    nl: { native: "Nederlands", country: "NL" }
+    nl: { native: "Nederlands", country: "NL" },
+    it: { native: "Italiano", country: "IT" },
+    pt: { native: "Português", country: "PT" },
+    ko: { native: "한국어", country: "KR" },
+    sv: { native: "Svenska", country: "SE" },
+    no: { native: "Norsk", country: "NO" }
   }.freeze
 
   def available_locales_for_switcher

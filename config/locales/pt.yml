@@ -1,0 +1,728 @@
+pt:
+  common:
+    all: Todos
+    none: "—"
+    save: Guardar
+    cancel: Cancelar
+    submit: Submeter
+    edit: Editar
+    delete: Eliminar
+    add: Adicionar
+    search: Pesquisar
+    loading: A carregar…
+    showing: "A mostrar %{from}–%{to} de %{count}"
+    page: Página
+    page_of: "de %{total}"
+    next: Seguinte
+    prev: Anterior
+    back: Voltar
+    close: Fechar
+    by: por
+    on: em
+    "yes": "Sim"
+    "no": "Não"
+    verified: Verificado
+    promoted: Promovido
+    sponsored: Patrocinado
+
+  bans:
+    blocked: A sua conta está atualmente impedida de realizar esta ação.
+    notice:
+      title: A sua conta está restringida.
+      reason: Motivo
+      permanent: Esta restrição é permanente.
+      until: "Em vigor até %{date}."
+      scope: Ações restringidas
+    capability:
+      catalog: edições do catálogo
+      claims: reivindicações de propriedade
+      catches: registo de capturas
+      comments: comentários
+      upvotes: votos positivos
+      reports: denúncias
+      favorites: favoritos
+    preset:
+      catalog_only: Apenas catálogo
+      contributions: Todas as contribuições
+      full: Total (conta só de leitura)
+    admin:
+      title: "Banimentos — %{name}"
+      title_short: Banimentos
+      new: Aplicar um banimento
+      reason: Motivo
+      preset: Predefinição
+      custom: Seleção personalizada
+      capabilities: Ações restringidas
+      capabilities_help: Uma predefinição pré-seleciona ações; marque as caixas para personalizar.
+      expires_at: Expira em
+      permanent_hint: Deixe em branco para um banimento permanente.
+      issue: Aplicar banimento
+      status: Estado
+      scope: Âmbito
+      active: Ativo
+      lifted: Levantado
+      expired: Expirado
+      lift: Levantar banimento
+      manage: Gerir banimentos
+      created: Banimento aplicado.
+      revoked: Banimento levantado.
+
+  favorites:
+    add: Adicionar aos favoritos
+    remove: Remover dos favoritos
+    favorited: Nos favoritos
+
+  footer:
+    explore: Explorar
+
+  meta:
+    lures_index: "Explore o catálogo completo de amostras de pesca — filtre por tipo, profundidade, água e espécie, com capturas reais como prova do que funciona."
+    catches_index: "Capturas reais registadas por pescadores — veja a amostra exata, a cor e as condições por trás de cada peixe."
+    brands_index: "Marcas de amostras de pesca de todo o mundo, cada uma com a gama completa e o registo de capturas da comunidade."
+    species_index: "Espécies de peixes e as amostras que realmente as capturam, comprovadas por capturas registadas por pescadores."
+    shops_index: "Onde comprar amostras de pesca — lojas ordenadas pela entrega no seu país."
+    leaderboard: "As amostras de pesca mais comprovadas, classificadas pelas capturas reais registadas pela comunidade."
+    lure_show: "%{lure} — %{type} com fotos, cores, tamanhos, onde comprar e capturas reais registadas por pescadores."
+    brand_show: "Amostras de pesca %{brand} — a gama completa com fotos, especificações e relatos de capturas reais."
+    species_show: "veja que amostras realmente o capturam, comprovado por capturas reais registadas por pescadores"
+    shop_show: "loja de artigos de pesca — países de entrega e ligações para comprar amostras"
+    catch_show: "%{species} capturado com a %{lure} — foto, condições e detalhes da amostra registados por um pescador."
+  home:
+    tagline: Cada amostra, comprovada por uma captura
+    meta_description: A Lurepedia é uma enciclopédia colaborativa de amostras de pesca — encontre amostras e veja provas reais, captura a captura, de que funcionam.
+    hero_title: Cada amostra, comprovada por uma captura
+    hero_sub: Uma enciclopédia colaborativa de amostras de pesca. Encontre o que funciona — comprovado por capturas reais.
+    browse_lures: Explorar amostras
+    browse_another_way: Explorar de outra forma
+    add_a_catch: Adicionar uma captura
+
+  nav:
+    lures: Amostras
+    species: Espécies
+    catches: Capturas
+    brands: Marcas
+    shops: Lojas
+    leaderboard: Classificação
+    menu: Menu
+
+  auth:
+    sign_in: Iniciar sessão
+    sign_up: Criar conta
+    sign_out: Terminar sessão
+    email: Email
+    password: Palavra-passe
+    password_confirmation: Confirmar palavra-passe
+    name: Nome
+    sign_in_required: Inicie sessão para contribuir.
+    not_authorized: Não tem permissão para fazer isso.
+    create_account: Criar conta
+    have_account: Já tem conta?
+    no_account: Novo na Lurepedia?
+    welcome_back: Bem-vindo de volta
+    join: Junte-se à Lurepedia
+    choose_country: O seu país
+    choose_language: Idioma preferido
+    continue_with_google: Continuar com o Google
+
+  units:
+    label: Unidades
+    auto: Automático (pelo país)
+    imperial: Imperial
+    metric: Métrico
+    length: Comprimento
+    weight: Peso
+    depth: Profundidade
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Água doce
+    salt: Água salgada
+    both: Doce e salgada
+
+  action:
+    suspending: Suspending
+    floating: Flutuante
+    sinking: Afundante
+    none: "—"
+
+  condition:
+    season:
+      label: Estação
+      any: Qualquer estação
+      spring: Primavera
+      summer: Verão
+      fall: Outono
+      winter: Inverno
+    clarity:
+      label: Transparência
+      any: Qualquer transparência
+      clear: Límpida
+      stained: Turva
+      muddy: Barrenta
+    water_body:
+      label: Massa de água
+      any: Qualquer massa de água
+      lake: Lago
+      pond: Charca
+      river: Rio
+      reservoir: Albufeira
+      stream: Ribeiro
+    wind:
+      label: Vento
+      any: Qualquer vento
+      calm: Calmo
+      light: Fraco (5–10 mph)
+      moderate: Moderado (10–20 mph)
+      strong: Forte (20+ mph)
+    time_of_day:
+      label: Hora do dia
+      any: Qualquer hora
+      dawn: Amanhecer
+      morning: Manhã
+      midday: Meio-dia
+      afternoon: Tarde
+      dusk: Anoitecer
+      night: Noite
+    platform:
+      label: A pescar de
+      any: Qualquer sítio
+      shore: Margem
+      boat: Barco
+      kayak: Caiaque
+    retrieve:
+      label: Estilo de recolha
+      any: Qualquer estilo
+      steady: Contínua
+      stop_and_go: Stop-and-go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow roll
+      burn: Burning
+      dead_stick: Dead sticking
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Vinil
+    spinnerbait: Spinnerbait
+    bladed_jig: Bladed Jig
+    topwater: Topwater
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Colher
+    lipless_crankbait: Lipless Crankbait
+
+  lure:
+    similar_title: "Amostras semelhantes"
+    similar_manage_hint: "Cruze referências de amostras parecidas — muitas vezes de outras marcas — para que os pescadores as possam comparar."
+    similar_none: "Ainda não há amostras semelhantes associadas."
+    similar_add: "Associar amostra semelhante"
+    similar_add_placeholder: "Procurar uma amostra…"
+    similar_not_found: "Não foi possível encontrar essa amostra."
+    similar_match: "%{score}% de semelhança"
+    similar_suggest_title: "Parece semelhante a…"
+    similar_suggest_hint: "Esta foto assemelha-se a estas amostras. Assinale as que realmente são parecidas e faremos a referência cruzada."
+    title: Amostras
+    subtitle: Cada amostra, comprovada por uma captura
+    search_placeholder: Pesquisar amostras — ou filtrar por tipo, água, ação…
+    model: Modelo
+    description: Descrição
+    descriptions: Descrições
+    translations: Traduções
+    translations_hint: A descrição da amostra em cada idioma. Os leitores veem o seu próprio idioma, com o inglês como alternativa.
+    add: Adicionar uma amostra
+    add_title: Adicionar uma amostra
+    type: Tipo
+    depth: Profundidade de trabalho
+    action: Ação
+    buoyancy: "Flutuabilidade"
+    action_varies: "Varia"
+    water: Água
+    brand: Marca
+    variants: Variantes
+    variant: Variante
+    tab_caught: Capturas com ela
+    proven_record:
+      title: O que as capturas mostram
+      top_species: Principais espécies
+    tab_variations: "Variações"
+    tab_buy: Onde comprar
+    tab_history: Histórico
+    proof: Prova de que funciona
+    catches_count:
+      one: "%{count} captura"
+      other: "%{count} capturas"
+    no_proof: Ainda sem provas
+    be_first: Seja o primeiro a provar que esta amostra funciona
+    be_first_short: Seja o primeiro a provar que funciona →
+    where_to_buy: Onde comprar
+    quick_facts: Factos rápidos
+    action_video: Amostra em ação
+    add_video: Adicionar um vídeo de ação
+    watch_video: Ver vídeo
+    suggest_edit: Sugerir uma edição
+    add_catch: Adicionar uma captura
+    proven_for: Comprovada para
+    no_matches: Nenhuma amostra corresponde aos seus filtros
+    no_matches_sub: Procura uma amostra específica? Adicione-a se estiver em falta.
+    empty_title: Ainda não há amostras
+    size: Tamanho
+    weight: Peso
+    color: Cor
+    colors: Cores
+    colors_count:
+      one: "%{count} cor"
+      other: "%{count} cores"
+    build: Versão
+    builds: Versões
+    browse_colors: Ver cores
+    common_attributes: Atributos comuns · toda a família
+    this_variation: Esta variação
+    default_variation: Variação predefinida
+    uv_glow: Brilho UV
+    best_for: Ideal para
+    manage_variations: Variações e versões
+    tab_details: Detalhes gerais
+    add_color: Adicionar uma cor
+    add_build: Adicionar uma versão
+    color_name: Nome da cor
+    availability: Versões disponíveis
+    availability_hint: Assinale as versões em que esta cor está confirmada. Deixe tudo desmarcado se desconhecer — a cor é mostrada em todas as versões.
+    available_in_n_of_m: Disponível em %{n} de %{m} versões
+
+  species:
+    title: Espécies
+    subtitle: O dicionário dos peixes
+    search_placeholder: Pesquisar espécies — nome comum ou científico…
+    venomous: Peçonhento
+    venomous_hint: Tem espinhos ou ferrões venenosos — manuseie com cuidado.
+    poisonous: Venenoso
+    poisonous_hint: Tóxico se for ingerido.
+    add: Adicionar uma espécie
+    add_title: Adicionar uma espécie
+    scientific_name: Nome científico
+    local_names: Nomes locais
+    translations: Traduções
+    translations_hint: O nome comum e a descrição em cada idioma. Os leitores veem o seu próprio idioma, com o inglês como alternativa.
+    local_name: Nome comum
+    description: Descrição
+    descriptions: Descrições
+    wikipedia_url: URL da Wikipédia
+    wikipedia: Ver na Wikipédia
+    wikipedia_url_invalid: "tem de ser o URL de um artigo da Wikipédia (p. ex. https://pt.wikipedia.org/wiki/...)"
+    habitat: Habitat
+    tab_lures: Capturado com
+    tab_catches: Capturas
+    tab_leaderboard: Classificação
+    tab_history: Histórico
+    proven_lures: Amostras comprovadas
+    lures_count:
+      one: "%{count} amostra"
+      other: "%{count} amostras"
+    no_proven_lures: Ainda sem amostras comprovadas
+    be_first_lure: Seja o primeiro a provar que uma amostra captura este peixe
+    empty_title: Ainda não há espécies
+    empty_sub: Seja o primeiro a adicionar uma espécie de peixe.
+
+  brand:
+    title: Marcas
+    subtitle: Os fabricantes
+    search_placeholder: Pesquisar marcas…
+    add: Adicionar uma marca
+    add_title: Adicionar uma marca
+    founded: Fundada em
+    empty_title: Ainda não há marcas
+    empty_sub: Seja o primeiro a adicionar uma marca de amostras.
+    country: País
+    website: Website
+    website_invalid: "Introduza um URL válido começado por http:// ou https://"
+    logo: Logótipo
+    blurb: Sobre
+    description: Descrição
+    descriptions: Descrições
+    translations: Traduções
+    translations_hint: A descrição da marca em cada idioma. Os leitores veem o seu próprio idioma, com o inglês como alternativa.
+    tab_lures: Amostras
+    tab_history: Histórico
+    claim: Reivindicar esta marca
+    claimed: Reivindicada
+    owned_by: Propriedade de
+
+  buy_link:
+    add: Adicionar um local de compra
+    empty: Ainda não há lojas listadas — adicione o primeiro local onde comprar esta amostra.
+    choose_shop: Loja
+    choose_shop_placeholder: Pesquisar lojas…
+    existing_shop: Loja existente
+    new_shop: Nova loja
+    product_url: Ligação do produto (opcional)
+    submit: Adicionar
+    shop_required: Escolha uma loja, por favor.
+    already_listed: Essa loja já está listada para esta amostra.
+
+  shop:
+    title: Lojas
+    subtitle: Onde comprar
+    search_placeholder: Pesquisar lojas…
+    add: Adicionar uma loja
+    add_title: Adicionar uma loja
+    ships_to_you: Lojas que entregam em %{country}
+    other_shops: Outras lojas
+    none_ship: Ainda nenhuma loja entrega em %{country}. Conhece alguma?
+    tab_lures: Amostras
+    tab_history: Histórico
+    no_lures: Ainda não há amostras listadas nesta loja.
+    ships_to: Envia para
+    ships_to_unknown: "—"
+    ships_worldwide: Envia para todo o mundo
+    ships_to_hint: Deixe em branco se a loja enviar para todo o mundo.
+    add_country: Adicionar um país
+    worldwide: Todo o mundo
+    claim: Reivindicar uma loja
+
+  catch:
+    title: Capturas
+    subtitle: Provas recentes da comunidade
+    add: Adicionar uma captura
+    add_title: Adicionar uma captura
+    on_lure: "com a %{lure}"
+    conditions: Condições
+    location: Local
+    length: Comprimento
+    weight: Peso
+    contributor: Contribuidor
+    comments: Comentários
+    add_comment: Adicionar um comentário
+    upvote: Votar
+    upvoted: Votado
+    remove_upvote: Clique novamente para remover o seu voto
+    report: Denunciar esta captura
+    related: Mais capturas desta espécie
+    photos: Fotos
+    pick_brand: Escolha uma marca
+    pick_lure: Escolha uma amostra
+    pick_variant: Escolha uma variante
+    color: Cor
+    pick_color: Escolha a cor com que pescou
+    pick_build: Escolha uma versão
+    pick_species: O que pescou?
+    log_title: Registar uma captura
+    log_this: Registar esta captura
+    modal_step1: "Passo 1 de 2 · Escolha a cor com que pescou"
+    modal_step2: "Passo 2 de 2 · Escolha a versão e a profundidade"
+    builds_in: "Versões disponíveis em"
+    no_builds: Esta cor ainda não tem versões.
+    variation: Variação
+    choose_variation: Escolha uma variação
+    change: Alterar
+    note: Notas
+    submitted: Submetido para revisão
+    logged: Captura registada
+    removed: Captura removida
+    submitted_body: Obrigado! A sua captura está na fila de moderação e aparecerá assim que for aprovada.
+    add_another: Adicionar outra
+
+  search:
+    filters: Filtros
+    combine_free: Combine à vontade — os resultados correspondem a todos
+    no_results: Nenhum resultado encontrado
+    any_species: Qualquer espécie
+    any_type: Qualquer tipo
+    any_brand: Qualquer marca
+    any_action: Qualquer ação
+    any_depth: Qualquer profundidade
+    depth_band:
+      shallow: Rasa (0–1,5 m)
+      mid: Média (1,5–4,5 m)
+      deep: Funda (4,5 m+)
+    saltwater_only: Apenas água salgada
+    clear_all: Limpar tudo
+    min: Mín
+    max: Máx
+    show_n_lures:
+      one: Mostrar %{count} amostra
+      other: Mostrar %{count} amostras
+    other: Outro
+
+  leaderboard:
+    title: Classificação
+    subtitle: Melhores pescadores por espécie
+    all_species: Todas as espécies
+    rank_by: Ordenar por
+    metric_catches: Capturas
+    metric_upvotes: Votos positivos
+    metric_length: Comprimento do peixe
+    rank: Posição
+    angler: Pescador
+    catches: Capturas
+    upvotes: Votos positivos
+    best_length: Melhor comprimento
+    specialist: especialista
+    species_count:
+      one: "%{count} espécie"
+      other: "%{count} espécies"
+    you: VOCÊ
+    empty: Ainda não há pescadores classificados
+
+  contribute:
+    suggest_edit: Sugerir uma edição
+    edit_title: "Editar %{name}"
+    edit_saved: "Alterações guardadas"
+    added: "Adicionado ao catálogo"
+    suggest_title: "Sugerir uma edição a %{name}"
+    suggest_note: A sua sugestão será revista por um moderador.
+    suggested: Sugestão submetida
+    suggested_body: Obrigado — um moderador irá rever a sua sugestão.
+    add_photos: Adicionar fotos
+    moderation_note: As submissões são revistas antes de serem publicadas.
+    direct_note: Como proprietário da marca, isto é publicado imediatamente — sem necessidade de revisão.
+    pending_review: Esta entrada aguarda revisão e ainda não é pública.
+
+  crop:
+    adjust: "Ajustar recorte"
+    done: "Concluído"
+    reset: "Repor recorte"
+    aspect_free: "Livre"
+    aspect_square: "Quadrado"
+    bg_label: "Fundo do mosaico"
+    bg_auto: "Automático"
+    bg_pick: "Escolher a partir da foto"
+    bg_apply_all: "Aplicar este fundo a todas as cores desta amostra"
+    hint: "Arraste para reposicionar; arraste os cantos para redimensionar. O recorte é aplicado quando guardar."
+    invalid: "O retângulo de recorte é inválido"
+  claim:
+    title: "Reivindicar %{name}"
+    page_title: Reivindicar uma listagem
+    intro: "Reivindique esta %{kind} para gerir a sua listagem. Diga-nos quem é e tratamos do resto por email."
+    message_label: Quem é e qual é a sua relação com esta listagem?
+    message_hint: "p. ex. Sou o fundador / Trato do marketing da marca…"
+    submit: Submeter reivindicação
+    submitted_title: Reivindicação recebida
+    submitted_body: "Obrigado — vamos rever a sua reivindicação e responderemos por email."
+    rejected_title: Reivindicação não aprovada
+    rejected_body: "Esta reivindicação foi revista e não foi aprovada. Se acha que se trata de um engano, contacte-nos."
+    verified_title: Propriedade verificada
+    verified_body: Agora é você que gere esta listagem. As suas edições são publicadas sem revisão.
+    managed_badge: Gerido pelo proprietário
+
+  report:
+    title: Denunciar conteúdo
+    target: A denunciar
+    reason: Motivo
+    reason_inaccurate: Impreciso ou enganador
+    reason_fake: Não é uma captura real / foto falsificada
+    reason_wrong: Espécie ou amostra errada
+    reason_spam: Spam ou publicidade
+    reason_offensive: Ofensivo ou impróprio
+    reason_other: Outro
+    note: Detalhes adicionais (opcional)
+    submit: Submeter denúncia
+    submitted: Denúncia submetida
+    submitted_body: Obrigado — os moderadores vão rever em breve.
+
+  moderation:
+    title: Fila de moderação
+    subtitle: Rever contribuições da comunidade
+    moderator_view: VISTA DE MODERADOR
+    all: Tudo
+    reports: Denúncias
+    catches: Capturas
+    edits: Edições
+    catalog: Catálogo
+    claims: Reivindicações
+    awaiting: "%{count} a aguardar revisão"
+    approve: Aprovar
+    reject: Rejeitar
+    undo: Anular
+    approved: Aprovado
+    rejected: Rejeitado
+    needs_admin: Requer admin
+    own_submission: Submetido por si
+    submitted_by: Submetido por
+    view_details: Ver detalhes
+    kind:
+      catch: Captura
+      edit: Edição
+      catalog: Catálogo
+      claim: Reivindicação
+      report: Denúncia
+
+  admin:
+    title: Consola de administração
+    overview: Visão geral
+    people: Pessoas e funções
+    activity: Registo de atividade
+    pending: A aguardar revisão
+    catches_logged: Capturas registadas
+    contributors: Contribuidores
+    lures_catalogued: Amostras catalogadas
+    role: Função
+    member: Membro
+    moderator: Moderador
+    admin: Admin
+    joined: Registou-se
+    you: VOCÊ
+
+  settings:
+    title: Definições
+    tab_profile: Perfil
+    tab_preferences: Preferências
+    profile: Perfil
+    country: País
+    language: Idioma
+    time_zone: Fuso horário
+    time_zone_auto: "Automático (UTC)"
+    units: Unidades
+    notifications: Notificações
+    saved: Definições guardadas
+    public_profile: O seu perfil público
+    copy: Copiar
+    copied: Copiado!
+    username: Nome de utilizador
+    username_hint: p. ex. casey-rivera
+    username_help: Opcional. Letras minúsculas, números, hífenes. Usado no URL do seu perfil.
+    avatar: Fotografia de perfil
+    avatar_help: PNG, JPEG, WEBP ou GIF. Até 5 MB.
+    choose_image: Escolher imagem
+    no_file: Nenhuma imagem selecionada
+    remove_avatar: Remover a fotografia atual
+    avatar_too_large: é demasiado grande (máximo de 5 MB)
+    avatar_invalid_type: tem de ser uma imagem PNG, JPEG, WEBP ou GIF
+
+  dashboard:
+    my_catches: As minhas capturas
+    my_profile: O meu perfil
+    total_upvotes: Total de votos positivos recebidos
+    no_catches: Ainda não registou nenhuma captura.
+
+  profile:
+    catches: Capturas
+    tab_catches: Capturas
+    tab_favorites: Favoritos
+    tab_contributions: Contribuições
+    contributions: Contribuições
+    no_contributions: Ainda sem contribuições.
+    view_picture: Ver fotografia de perfil
+    change_picture: Carregar/alterar fotografia de perfil
+    total_upvotes: Total de votos positivos
+    member_since: Membro desde
+    favorite_species: Espécies favoritas
+    favorite_lures: Amostras favoritas
+    favorite_shops: Lojas favoritas
+    no_favorites: Ainda sem favoritos.
+    no_catches: Ainda sem capturas.
+
+  provenance:
+    title: Histórico e propriedade
+    edits:
+      one: "%{count} edição"
+      other: "%{count} edições"
+    added_by: Adicionado por
+    owned_by: Propriedade de
+    originally_added: "Adicionado originalmente por %{name} · %{date}"
+    edit_history: Histórico de edições
+    created: Criou esta entrada
+    edited: editou
+    col_change: Alteração
+    col_contributor: Contribuidor
+    col_date: Data
+
+  revision:
+    title: Revisão
+    no_changes: Não foram registadas alterações de campos nesta edição.
+    removed: Removido
+    added: Adicionado
+    field:
+      build_ids: Versões disponíveis
+
+  species_names:
+    largemouth_bass:
+      common: Achigã
+      habitat: Lagos e charcas quentes com vegetação; predador de emboscada junto a estruturas.
+    smallmouth_bass:
+      common: Achigã-de-boca-pequena
+      habitat: Rios frescos e límpidos e lagos rochosos; grande lutador.
+    northern_pike:
+      common: Lúcio
+      habitat: Baías com ervas e lagos frescos; predador de emboscada agressivo.
+    walleye:
+      common: Walleye
+      habitat: Lagos e rios profundos e frescos; alimenta-se com pouca luz.
+    yellow_perch:
+      common: Perca-amarela
+      habitat: Peixe de cardume de lagos e charcas; alimenta-se junto ao fundo.
+    muskellunge:
+      common: Muskellunge
+      habitat: Grandes lagos e rios límpidos; predador de topo de água doce.
+    bluegill:
+      common: Bluegill
+      habitat: Charcas quentes e zonas baixas dos lagos; nidifica em colónias.
+    rainbow_trout:
+      common: Truta-arco-íris
+      habitat: Ribeiros, rios e lagos frios; peixe desportivo muito apreciado.
+    mahi_mahi:
+      common: Mahi-Mahi
+      habitat: Águas superficiais quentes ao largo; predador pelágico veloz.
+    striped_bass:
+      common: Robalo-riscado
+      habitat: Rebentação costeira, estuários e grandes rios; migrador.
+    bonefish:
+      common: Bonefish
+      habitat: Baixios tropicais pouco profundos; desconfiado e rápido.
+    chinook_salmon:
+      common: Salmão-chinook
+      habitat: Rios e lagos frios do Pacífico; peixe migrador possante.
+  country:
+    US: Estados Unidos
+    CA: Canadá
+    GB: Reino Unido
+    DE: Alemanha
+    FR: França
+    ES: Espanha
+    IT: Itália
+    NL: Países Baixos
+    SE: Suécia
+    "NO": Noruega
+    PL: Polónia
+    RU: Rússia
+    BG: Bulgária
+    GR: Grécia
+    JP: Japão
+    CN: China
+    BR: Brasil
+    MX: México
+    FI: Finlândia
+    AU: Austrália
+    NZ: Nova Zelândia
+    DK: Dinamarca
+    IE: Irlanda
+    PT: Portugal
+    KR: Coreia do Sul
+    TH: Tailândia
+    ZA: África do Sul
+    IN: Índia
+    AR: Argentina
+    CL: Chile
+    UA: Ucrânia
+    TR: Turquia
+    AT: Áustria
+    BE: Bélgica
+    CH: Suíça
+    CZ: Chéquia
+    HU: Hungria
+    RO: Roménia
+  activerecord:
+    attributes:
+      user:
+        password: Palavra-passe
+        password_confirmation: Confirmação da palavra-passe
+    errors:
+      messages:
+        confirmation: não corresponde a %{attribute}

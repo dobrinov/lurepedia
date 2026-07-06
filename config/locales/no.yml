@@ -1,0 +1,728 @@
+"no":
+  common:
+    all: Alle
+    none: "—"
+    save: Lagre
+    cancel: Avbryt
+    submit: Send inn
+    edit: Rediger
+    delete: Slett
+    add: Legg til
+    search: Søk
+    loading: Laster…
+    showing: "Viser %{from}–%{to} av %{count}"
+    page: Side
+    page_of: "av %{total}"
+    next: Neste
+    prev: Forrige
+    back: Tilbake
+    close: Lukk
+    by: av
+    on: den
+    "yes": "Ja"
+    "no": "Nei"
+    verified: Verifisert
+    promoted: Fremhevet
+    sponsored: Sponset
+
+  bans:
+    blocked: Kontoen din er for tiden sperret for denne handlingen.
+    notice:
+      title: Kontoen din er begrenset.
+      reason: Årsak
+      permanent: Denne begrensningen er permanent.
+      until: "Gjelder til %{date}."
+      scope: Sperrede handlinger
+    capability:
+      catalog: katalogendringer
+      claims: eierskapskrav
+      catches: loggføring av fangster
+      comments: kommentarer
+      upvotes: oppstemmer
+      reports: rapporter
+      favorites: favoritter
+    preset:
+      catalog_only: Kun katalog
+      contributions: Alle bidrag
+      full: Full (skrivebeskyttet konto)
+    admin:
+      title: "Utestengelser — %{name}"
+      title_short: Utestengelser
+      new: Ilegg en utestengelse
+      reason: Årsak
+      preset: Forhåndsvalg
+      custom: Egendefinert utvalg
+      capabilities: Sperrede handlinger
+      capabilities_help: Et forhåndsvalg velger handlinger automatisk; huk av bokser for å tilpasse.
+      expires_at: Utløper
+      permanent_hint: La stå tomt for en permanent utestengelse.
+      issue: Ilegg utestengelse
+      status: Status
+      scope: Omfang
+      active: Aktiv
+      lifted: Opphevet
+      expired: Utløpt
+      lift: Opphev utestengelse
+      manage: Administrer utestengelser
+      created: Utestengelse ilagt.
+      revoked: Utestengelse opphevet.
+
+  favorites:
+    add: Legg til i favoritter
+    remove: Fjern fra favoritter
+    favorited: Favoritt
+
+  footer:
+    explore: Utforsk
+
+  meta:
+    lures_index: "Bla i hele katalogen av fiskesluker — filtrer etter type, dybde, vann og art, med ekte fangster som bevis på hva som virker."
+    catches_index: "Ekte fangster loggført av fiskere — se nøyaktig hvilken sluk, farge og hvilke forhold som lå bak hver fisk."
+    brands_index: "Slukmerker fra hele verden, hvert med hele sortimentet og fellesskapets fangstliste."
+    species_index: "Fiskearter og slukene som faktisk fanger dem, dokumentert av fangster loggført av fiskere."
+    shops_index: "Hvor du kan kjøpe fiskesluker — butikker sortert etter levering til ditt land."
+    leaderboard: "De mest beviste fiskeslukene, rangert etter ekte fangster loggført av fellesskapet."
+    lure_show: "%{lure} — %{type} med bilder, farger, størrelser, kjøpssteder og ekte fangster loggført av fiskere."
+    brand_show: "Fiskesluker fra %{brand} — hele sortimentet med bilder, spesifikasjoner og ekte fangstrapporter."
+    species_show: "se hvilke sluker som faktisk fanger den, bevist av ekte fangster loggført av fiskere"
+    shop_show: "fiskeutstyrsbutikk — leveringsland og kjøpslenker for sluker"
+    catch_show: "%{species} tatt på %{lure} — bilde, forhold og slukdetaljer loggført av en fisker."
+  home:
+    tagline: Hver sluk, bevist med en fangst
+    meta_description: Lurepedia er et brukerdrevet leksikon over fiskesluker — finn sluker og se ekte bevis, fangst for fangst, på at de virker.
+    hero_title: Hver sluk, bevist med en fangst
+    hero_sub: Et brukerdrevet leksikon over fiskesluker. Finn det som virker — dokumentert med ekte fangster.
+    browse_lures: Bla i sluker
+    browse_another_way: Bla på en annen måte
+    add_a_catch: Legg til en fangst
+
+  nav:
+    lures: Sluker
+    species: Arter
+    catches: Fangster
+    brands: Merker
+    shops: Butikker
+    leaderboard: Toppliste
+    menu: Meny
+
+  auth:
+    sign_in: Logg inn
+    sign_up: Opprett konto
+    sign_out: Logg ut
+    email: E-post
+    password: Passord
+    password_confirmation: Bekreft passord
+    name: Navn
+    sign_in_required: Logg inn for å bidra.
+    not_authorized: Du har ikke tilgang til å gjøre det.
+    create_account: Opprett konto
+    have_account: Har du allerede en konto?
+    no_account: Ny på Lurepedia?
+    welcome_back: Velkommen tilbake
+    join: Bli med i Lurepedia
+    choose_country: Ditt land
+    choose_language: Foretrukket språk
+    continue_with_google: Fortsett med Google
+
+  units:
+    label: Enheter
+    auto: Automatisk (fra land)
+    imperial: Imperisk
+    metric: Metrisk
+    length: Lengde
+    weight: Vekt
+    depth: Dybde
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Ferskvann
+    salt: Saltvann
+    both: Fersk- og saltvann
+
+  action:
+    suspending: Suspending
+    floating: Flytende
+    sinking: Synkende
+    none: "—"
+
+  condition:
+    season:
+      label: Sesong
+      any: Alle sesonger
+      spring: Vår
+      summer: Sommer
+      fall: Høst
+      winter: Vinter
+    clarity:
+      label: Sikt
+      any: All sikt
+      clear: Klart
+      stained: Farget
+      muddy: Grumsete
+    water_body:
+      label: Vanntype
+      any: Alle vanntyper
+      lake: Innsjø
+      pond: Dam
+      river: Elv
+      reservoir: Magasin
+      stream: Bekk
+    wind:
+      label: Vind
+      any: All vind
+      calm: Vindstille
+      light: Lett (5–10 mph)
+      moderate: Moderat (10–20 mph)
+      strong: Sterk (20+ mph)
+    time_of_day:
+      label: Tid på døgnet
+      any: Når som helst
+      dawn: Daggry
+      morning: Morgen
+      midday: Midt på dagen
+      afternoon: Ettermiddag
+      dusk: Skumring
+      night: Natt
+    platform:
+      label: Fisker fra
+      any: Hvor som helst
+      shore: Land
+      boat: Båt
+      kayak: Kajakk
+    retrieve:
+      label: Innsveivingsstil
+      any: Alle stiler
+      steady: Jevn
+      stop_and_go: Stopp-og-gå
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow roll
+      burn: Burning
+      dead_stick: Dead-sticking
+
+  lure_type:
+    crankbait: Wobbler
+    jerkbait: Jerkbait
+    soft_plastic: Gummiagn
+    spinnerbait: Spinnerbait
+    bladed_jig: Bladed jig
+    topwater: Overflateagn
+    swimbait: Swimbait
+    jig: Jigg
+    spoon: Skjesluk
+    lipless_crankbait: Lipless crankbait
+
+  lure:
+    similar_title: "Lignende sluker"
+    similar_manage_hint: "Kryssreferer sluker som ligner — ofte fra andre merker — slik at fiskere kan sammenligne dem."
+    similar_none: "Ingen lignende sluker er koblet ennå."
+    similar_add: "Koble lignende sluk"
+    similar_add_placeholder: "Finn en sluk…"
+    similar_not_found: "Fant ikke den sluken."
+    similar_match: "%{score}% match"
+    similar_suggest_title: "Ligner på…"
+    similar_suggest_hint: "Dette bildet ligner på disse slukene. Huk av dem som faktisk ligner, så kryssrefererer vi dem."
+    title: Sluker
+    subtitle: Hver sluk, bevist med en fangst
+    search_placeholder: Søk i sluker — eller filtrer etter type, vann, aksjon…
+    model: Modell
+    description: Beskrivelse
+    descriptions: Beskrivelser
+    translations: Oversettelser
+    translations_hint: Slukbeskrivelsen på hvert språk. Leserne ser sitt eget språk, med engelsk som reserve.
+    add: Legg til en sluk
+    add_title: Legg til en sluk
+    type: Type
+    depth: Gangdybde
+    action: Aksjon
+    buoyancy: "Flyteevne"
+    action_varies: "Varierer"
+    water: Vann
+    brand: Merke
+    variants: Varianter
+    variant: Variant
+    tab_caught: Fanget på den
+    proven_record:
+      title: Hva fangstene viser
+      top_species: Beste arter
+    tab_variations: "Variasjoner"
+    tab_buy: Hvor du kan kjøpe
+    tab_history: Historikk
+    proof: Bevis på at den virker
+    catches_count:
+      one: "%{count} fangst"
+      other: "%{count} fangster"
+    no_proof: Ingen bevis ennå
+    be_first: Bli den første til å bevise at denne sluken virker
+    be_first_short: Bli den første til å bevise at den virker →
+    where_to_buy: Hvor du kan kjøpe
+    quick_facts: Kjappe fakta
+    action_video: Sluken i aksjon
+    add_video: Legg til en aksjonsvideo
+    watch_video: Se video
+    suggest_edit: Foreslå en endring
+    add_catch: Legg til en fangst
+    proven_for: Bevist for
+    no_matches: Ingen sluker matcher filtrene dine
+    no_matches_sub: Leter du etter en bestemt sluk? Legg den til hvis den mangler.
+    empty_title: Ingen sluker ennå
+    size: Størrelse
+    weight: Vekt
+    color: Farge
+    colors: Farger
+    colors_count:
+      one: "%{count} farge"
+      other: "%{count} farger"
+    build: Utgave
+    builds: Utgaver
+    browse_colors: Bla i farger
+    common_attributes: Felles egenskaper · hele familien
+    this_variation: Denne variasjonen
+    default_variation: Standardvariasjon
+    uv_glow: UV-glød
+    best_for: Best for
+    manage_variations: Variasjoner og utgaver
+    tab_details: Generelle detaljer
+    add_color: Legg til en farge
+    add_build: Legg til en utgave
+    color_name: Fargenavn
+    availability: Tilgjengelige utgaver
+    availability_hint: Huk av utgavene denne fargen bekreftet finnes i. La alle stå tomme hvis det er ukjent — da vises fargen under alle utgaver.
+    available_in_n_of_m: Tilgjengelig i %{n} av %{m} utgaver
+
+  species:
+    title: Arter
+    subtitle: Fiskeleksikonet
+    search_placeholder: Søk etter art — norsk eller vitenskapelig navn…
+    venomous: Giftig
+    venomous_hint: Har giftige pigger eller brodder — håndter med forsiktighet.
+    poisonous: Giftig som mat
+    poisonous_hint: Giftig å spise.
+    add: Legg til en art
+    add_title: Legg til en art
+    scientific_name: Vitenskapelig navn
+    local_names: Lokale navn
+    translations: Oversettelser
+    translations_hint: Det vanlige navnet og beskrivelsen på hvert språk. Leserne ser sitt eget språk, med engelsk som reserve.
+    local_name: Vanlig navn
+    description: Beskrivelse
+    descriptions: Beskrivelser
+    wikipedia_url: Wikipedia-URL
+    wikipedia: Se på Wikipedia
+    wikipedia_url_invalid: "må være en URL til en Wikipedia-artikkel (f.eks. https://en.wikipedia.org/wiki/...)"
+    habitat: Habitat
+    tab_lures: Fanget på
+    tab_catches: Fangster
+    tab_leaderboard: Toppliste
+    tab_history: Historikk
+    proven_lures: Beviste sluker
+    lures_count:
+      one: "%{count} sluk"
+      other: "%{count} sluker"
+    no_proven_lures: Ingen beviste sluker ennå
+    be_first_lure: Bli den første til å bevise at en sluk fanger denne fisken
+    empty_title: Ingen arter ennå
+    empty_sub: Bli den første til å legge til en fiskeart.
+
+  brand:
+    title: Merker
+    subtitle: Produsentene
+    search_placeholder: Søk i merker…
+    add: Legg til et merke
+    add_title: Legg til et merke
+    founded: Grunnlagt
+    empty_title: Ingen merker ennå
+    empty_sub: Bli den første til å legge til et slukmerke.
+    country: Land
+    website: Nettsted
+    website_invalid: "Oppgi en gyldig URL som starter med http:// eller https://"
+    logo: Logo
+    blurb: Om
+    description: Beskrivelse
+    descriptions: Beskrivelser
+    translations: Oversettelser
+    translations_hint: Merkebeskrivelsen på hvert språk. Leserne ser sitt eget språk, med engelsk som reserve.
+    tab_lures: Sluker
+    tab_history: Historikk
+    claim: Gjør krav på dette merket
+    claimed: Gjort krav på
+    owned_by: Eies av
+
+  buy_link:
+    add: Legg til et kjøpssted
+    empty: Ingen butikker er oppført ennå — legg til det første stedet å kjøpe denne sluken.
+    choose_shop: Butikk
+    choose_shop_placeholder: Søk i butikker…
+    existing_shop: Eksisterende butikk
+    new_shop: Ny butikk
+    product_url: Produktlenke (valgfritt)
+    submit: Legg til
+    shop_required: Velg en butikk.
+    already_listed: Den butikken er allerede oppført for denne sluken.
+
+  shop:
+    title: Butikker
+    subtitle: Hvor du kan kjøpe
+    search_placeholder: Søk i butikker…
+    add: Legg til en butikk
+    add_title: Legg til en butikk
+    ships_to_you: Butikker som leverer til %{country}
+    other_shops: Andre butikker
+    none_ship: Ingen butikker leverer til %{country} ennå. Kjenner du en?
+    tab_lures: Sluker
+    tab_history: Historikk
+    no_lures: Ingen sluker er oppført i denne butikken ennå.
+    ships_to: Leverer til
+    ships_to_unknown: "—"
+    ships_worldwide: Leverer til hele verden
+    ships_to_hint: La stå tomt hvis butikken leverer til hele verden.
+    add_country: Legg til et land
+    worldwide: Hele verden
+    claim: Gjør krav på en butikk
+
+  catch:
+    title: Fangster
+    subtitle: Ferske bevis fra fellesskapet
+    add: Legg til en fangst
+    add_title: Legg til en fangst
+    on_lure: "på %{lure}"
+    conditions: Forhold
+    location: Sted
+    length: Lengde
+    weight: Vekt
+    contributor: Bidragsyter
+    comments: Kommentarer
+    add_comment: Legg til en kommentar
+    upvote: Stem opp
+    upvoted: Stemt opp
+    remove_upvote: Klikk igjen for å fjerne stemmen din
+    report: Rapporter denne fangsten
+    related: Flere fangster av denne arten
+    photos: Bilder
+    pick_brand: Velg et merke
+    pick_lure: Velg en sluk
+    pick_variant: Velg en variant
+    color: Farge
+    pick_color: Velg fargen du fikk fisk på
+    pick_build: Velg en utgave
+    pick_species: Hva fikk du?
+    log_title: Loggfør en fangst
+    log_this: Loggfør denne fangsten
+    modal_step1: "Steg 1 av 2 · Velg fargen du fikk fisk på"
+    modal_step2: "Steg 2 av 2 · Velg utgave og dybde"
+    builds_in: "Utgaver tilgjengelig i"
+    no_builds: Denne fargen har ingen utgaver ennå.
+    variation: Variasjon
+    choose_variation: Velg en variasjon
+    change: Endre
+    note: Notater
+    submitted: Sendt til gjennomgang
+    logged: Fangst loggført
+    removed: Fangst fjernet
+    submitted_body: Takk! Fangsten din ligger i moderasjonskøen og vises så snart den er godkjent.
+    add_another: Legg til en til
+
+  search:
+    filters: Filtre
+    combine_free: Kombiner fritt — resultatene matcher alle
+    no_results: Ingen resultater
+    any_species: Alle arter
+    any_type: Alle typer
+    any_brand: Alle merker
+    any_action: Alle aksjoner
+    any_depth: Alle dybder
+    depth_band:
+      shallow: Grunt (0–1,5 m)
+      mid: Middels (1,5–4,5 m)
+      deep: Dypt (4,5 m+)
+    saltwater_only: Kun saltvann
+    clear_all: Fjern alle
+    min: Min
+    max: Maks
+    show_n_lures:
+      one: Vis %{count} sluk
+      other: Vis %{count} sluker
+    other: Annet
+
+  leaderboard:
+    title: Toppliste
+    subtitle: Beste fiskere per art
+    all_species: Alle arter
+    rank_by: Ranger etter
+    metric_catches: Fangster
+    metric_upvotes: Oppstemmer
+    metric_length: Fiskelengde
+    rank: Plass
+    angler: Fisker
+    catches: Fangster
+    upvotes: Oppstemmer
+    best_length: Beste lengde
+    specialist: spesialist
+    species_count:
+      one: "%{count} art"
+      other: "%{count} arter"
+    you: DEG
+    empty: Ingen rangerte fiskere ennå
+
+  contribute:
+    suggest_edit: Foreslå en endring
+    edit_title: "Rediger %{name}"
+    edit_saved: "Endringer lagret"
+    added: "Lagt til i katalogen"
+    suggest_title: "Foreslå en endring av %{name}"
+    suggest_note: Forslaget ditt blir gjennomgått av en moderator.
+    suggested: Forslag sendt inn
+    suggested_body: Takk — en moderator vil gjennomgå forslaget ditt.
+    add_photos: Legg til bilder
+    moderation_note: Innsendinger gjennomgås før de publiseres.
+    direct_note: Som merkeeier publiseres dette umiddelbart — ingen gjennomgang nødvendig.
+    pending_review: Denne oppføringen venter på gjennomgang og er ikke offentlig ennå.
+
+  crop:
+    adjust: "Juster beskjæring"
+    done: "Ferdig"
+    reset: "Tilbakestill beskjæring"
+    aspect_free: "Fritt"
+    aspect_square: "Kvadrat"
+    bg_label: "Flisbakgrunn"
+    bg_auto: "Automatisk"
+    bg_pick: "Velg fra bildet"
+    bg_apply_all: "Bruk denne bakgrunnen på alle farger av denne sluken"
+    hint: "Dra for å flytte; dra i hjørnene for å endre størrelse. Beskjæringen brukes når du lagrer."
+    invalid: "Beskjæringsrektangelet er ugyldig"
+  claim:
+    title: "Gjør krav på %{name}"
+    page_title: Gjør krav på en oppføring
+    intro: "Gjør krav på denne oppføringen (%{kind}) for å administrere den. Fortell oss hvem du er, så tar vi det derfra på e-post."
+    message_label: Hvem er du, og hvordan er du knyttet til denne oppføringen?
+    message_hint: "f.eks. Jeg er grunnleggeren / Jeg har ansvar for markedsføringen til merket…"
+    submit: Send inn krav
+    submitted_title: Krav mottatt
+    submitted_body: "Takk — vi gjennomgår kravet ditt og kommer tilbake til deg på e-post."
+    rejected_title: Krav ikke godkjent
+    rejected_body: "Dette kravet ble gjennomgått og ikke godkjent. Mener du dette er en feil, ta kontakt."
+    verified_title: Eierskap verifisert
+    verified_body: Du administrerer nå denne oppføringen. Endringene dine publiseres uten gjennomgang.
+    managed_badge: Administrert av eier
+
+  report:
+    title: Rapporter innhold
+    target: Rapporterer
+    reason: Årsak
+    reason_inaccurate: Unøyaktig eller villedende
+    reason_fake: Ikke en ekte fangst / forfalsket bilde
+    reason_wrong: Feil art eller sluk
+    reason_spam: Spam eller reklame
+    reason_offensive: Støtende eller upassende
+    reason_other: Annet
+    note: Flere detaljer (valgfritt)
+    submit: Send rapport
+    submitted: Rapport sendt
+    submitted_body: Takk — moderatorene ser på dette snart.
+
+  moderation:
+    title: Moderasjonskø
+    subtitle: Gjennomgå bidrag fra fellesskapet
+    moderator_view: MODERATORVISNING
+    all: Alle
+    reports: Rapporter
+    catches: Fangster
+    edits: Endringer
+    catalog: Katalog
+    claims: Krav
+    awaiting: "%{count} venter på gjennomgang"
+    approve: Godkjenn
+    reject: Avvis
+    undo: Angre
+    approved: Godkjent
+    rejected: Avvist
+    needs_admin: Krever admin
+    own_submission: Du sendte inn dette
+    submitted_by: Sendt inn av
+    view_details: Vis detaljer
+    kind:
+      catch: Fangst
+      edit: Endring
+      catalog: Katalog
+      claim: Krav
+      report: Rapport
+
+  admin:
+    title: Adminkonsoll
+    overview: Oversikt
+    people: Personer og roller
+    activity: Aktivitetslogg
+    pending: Venter på gjennomgang
+    catches_logged: Fangster loggført
+    contributors: Bidragsytere
+    lures_catalogued: Sluker katalogisert
+    role: Rolle
+    member: Medlem
+    moderator: Moderator
+    admin: Admin
+    joined: Ble med
+    you: DEG
+
+  settings:
+    title: Innstillinger
+    tab_profile: Profil
+    tab_preferences: Preferanser
+    profile: Profil
+    country: Land
+    language: Språk
+    time_zone: Tidssone
+    time_zone_auto: "Automatisk (UTC)"
+    units: Enheter
+    notifications: Varsler
+    saved: Innstillinger lagret
+    public_profile: Din offentlige profil
+    copy: Kopier
+    copied: Kopiert!
+    username: Brukernavn
+    username_hint: f.eks. casey-rivera
+    username_help: Valgfritt. Små bokstaver, tall og bindestreker. Brukes i profil-URL-en din.
+    avatar: Profilbilde
+    avatar_help: PNG, JPEG, WEBP eller GIF. Maks 5 MB.
+    choose_image: Velg bilde
+    no_file: Ingen bilde valgt
+    remove_avatar: Fjern nåværende bilde
+    avatar_too_large: er for stort (maks 5 MB)
+    avatar_invalid_type: må være et PNG-, JPEG-, WEBP- eller GIF-bilde
+
+  dashboard:
+    my_catches: Mine fangster
+    my_profile: Min profil
+    total_upvotes: Oppstemmer totalt
+    no_catches: Du har ikke loggført noen fangster ennå.
+
+  profile:
+    catches: Fangster
+    tab_catches: Fangster
+    tab_favorites: Favoritter
+    tab_contributions: Bidrag
+    contributions: Bidrag
+    no_contributions: Ingen bidrag ennå.
+    view_picture: Vis profilbilde
+    change_picture: Last opp/endre profilbilde
+    total_upvotes: Oppstemmer totalt
+    member_since: Medlem siden
+    favorite_species: Favorittarter
+    favorite_lures: Favorittsluker
+    favorite_shops: Favorittbutikker
+    no_favorites: Ingen favoritter ennå.
+    no_catches: Ingen fangster ennå.
+
+  provenance:
+    title: Historikk og eierskap
+    edits:
+      one: "%{count} endring"
+      other: "%{count} endringer"
+    added_by: Lagt til av
+    owned_by: Eies av
+    originally_added: "Opprinnelig lagt til av %{name} · %{date}"
+    edit_history: Endringshistorikk
+    created: Opprettet denne oppføringen
+    edited: redigerte
+    col_change: Endring
+    col_contributor: Bidragsyter
+    col_date: Dato
+
+  revision:
+    title: Revisjon
+    no_changes: Ingen feltendringer ble registrert for denne redigeringen.
+    removed: Fjernet
+    added: Lagt til
+    field:
+      build_ids: Tilgjengelige utgaver
+
+  species_names:
+    largemouth_bass:
+      common: Stormunnet bass
+      habitat: Varme, vegetasjonsrike innsjøer og dammer; bakholdsjeger rundt skjul.
+    smallmouth_bass:
+      common: Småmunnet bass
+      habitat: Kjølige, klare elver og steinete innsjøer; sterk fighter.
+    northern_pike:
+      common: Gjedde
+      habitat: Gressrike viker og kjølige innsjøer; aggressiv bakholdsjeger.
+    walleye:
+      common: Walleye
+      habitat: Dype, kjølige innsjøer og elver; beiter helst i svakt lys.
+    yellow_perch:
+      common: Amerikansk abbor
+      habitat: Stimfisk i innsjøer og dammer; beiter nær bunnen.
+    muskellunge:
+      common: Muskellunge
+      habitat: Store, klare innsjøer og elver; toppredator i ferskvann.
+    bluegill:
+      common: Bluegill
+      habitat: Varme dammer og grunne innsjøpartier; gyter i kolonier.
+    rainbow_trout:
+      common: Regnbueørret
+      habitat: Kalde bekker, elver og innsjøer; høyt skattet sportsfisk.
+    mahi_mahi:
+      common: Mahi-mahi
+      habitat: Varme overflatevann til havs; rask pelagisk rovfisk.
+    striped_bass:
+      common: Stripet bass
+      habitat: Kystbrenninger, elvemunninger og store elver; vandrende.
+    bonefish:
+      common: Bonefish
+      habitat: Tropiske grunne flater; sky og rask.
+    chinook_salmon:
+      common: Kongelaks
+      habitat: Kalde elver og innsjøer ved Stillehavet; kraftig vandrefisk.
+  country:
+    US: USA
+    CA: Canada
+    GB: Storbritannia
+    DE: Tyskland
+    FR: Frankrike
+    ES: Spania
+    IT: Italia
+    NL: Nederland
+    SE: Sverige
+    "NO": Norge
+    PL: Polen
+    RU: Russland
+    BG: Bulgaria
+    GR: Hellas
+    JP: Japan
+    CN: Kina
+    BR: Brasil
+    MX: Mexico
+    FI: Finland
+    AU: Australia
+    NZ: New Zealand
+    DK: Danmark
+    IE: Irland
+    PT: Portugal
+    KR: Sør-Korea
+    TH: Thailand
+    ZA: Sør-Afrika
+    IN: India
+    AR: Argentina
+    CL: Chile
+    UA: Ukraina
+    TR: Tyrkia
+    AT: Østerrike
+    BE: Belgia
+    CH: Sveits
+    CZ: Tsjekkia
+    HU: Ungarn
+    RO: Romania
+  activerecord:
+    attributes:
+      user:
+        password: Passord
+        password_confirmation: Passordbekreftelse
+    errors:
+      messages:
+        confirmation: "stemmer ikke overens med %{attribute}"
