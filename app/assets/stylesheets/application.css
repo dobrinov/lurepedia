@@ -194,6 +194,7 @@ main { min-height: 60vh; }
   background: var(--white); overflow: hidden;
 }
 .ph img { width: 100%; height: 100%; object-fit: cover; }
+.ph > svg { max-width: 72%; height: auto; }
 /* Species photos: fish are long — letterbox instead of cropping head/tail off */
 .ph-contain img { object-fit: contain; }
 /* Click-to-zoom photo (species page) */
@@ -536,7 +537,8 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .lure-stage { position: relative; border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; background: var(--white); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
 /* Lure photos are long and thin — letterbox on the stage background instead of cropping the ends off */
 .lure-stage img { width: 100%; height: 100%; object-fit: contain; }
-.lure-stage-glyph { width: 60%; opacity: .5; }
+.lure-stage-glyph { width: 55%; opacity: .5; display: flex; align-items: center; justify-content: center; }
+.lure-stage-glyph svg { width: 100%; height: auto; }
 .lure-stage-chip { position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(255,255,255,.9); backdrop-filter: blur(6px); border-radius: var(--r-pill); font-size: 13px; font-weight: 700; }
 /* Color selector (hero, right side): square image tiles */
 .color-tiles { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -549,6 +551,7 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .color-tile { position: relative; width: 72px; height: 72px; padding: 0; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; background: var(--surface-2); cursor: pointer; transition: border-color .15s, box-shadow .15s; }
 .color-tile img { width: 100%; height: 100%; object-fit: cover; }
 .color-tile-empty { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; opacity: .5; }
+.color-tile-empty svg { max-width: 62%; height: auto; }
 .color-tile:hover { border-color: var(--line-strong); }
 .color-tile.selected { border-color: var(--ink); box-shadow: var(--shadow-card-hover); }
 .color-tile-uv { position: absolute; top: 4px; right: 4px; font-size: 8.5px; padding: 1px 5px; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
