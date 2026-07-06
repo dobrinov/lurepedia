@@ -7,15 +7,10 @@
   og_type "product"
 %>
 <% content_for :head do %>
-  <%= structured_data(
-        "@type": "Product",
-        name: @lure.title,
-        brand: { "@type": "Brand", name: @lure.brand.name },
-        category: lure_type_name(@lure.lure_type),
-        description: meta_description,
-        image: og_photo && absolute_url(og_photo),
-        url: canonical_url
-      ) %>
+  <%# No Product JSON-LD: Google requires offers/review/aggregateRating for
+      product snippets, and we can honestly provide none (BuyLinks carry no
+      prices, and catch counts are not ratings) — emitting Product markup
+      without them only produces GSC "invalid item" errors. %>
   <%= structured_data(
         "@type": "BreadcrumbList",
         itemListElement: [

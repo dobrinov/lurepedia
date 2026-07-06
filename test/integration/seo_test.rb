@@ -18,11 +18,14 @@ class SeoTest < ActionDispatch::IntegrationTest
     assert_match @lure.slug, response.body
   end
 
-  test "lure page emits canonical, hreflang, and product json-ld" do
+  test "lure page emits canonical, hreflang, and breadcrumb json-ld but no product json-ld" do
     get lure_path(@lure, locale: :en)
     assert_select "link[rel=canonical]"
     assert_select "link[rel=alternate][hreflang=de]"
-    assert_match '"@type":"Product"', response.body
+    # No Product JSON-LD: without offers/review/aggregateRating (none of which
+    # we can honestly provide), Google flags it as an invalid rich-result item.
+    assert_no_match '"@type":"Product"', response.body
+    assert_match '"@type":"BreadcrumbList"', response.body
     assert_select "meta[property='og:type'][content=product]"
   end
 
