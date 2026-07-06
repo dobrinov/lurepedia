@@ -4,7 +4,9 @@
 
     <nav class="main-nav">
       <%= link_to t("nav.lures"), lures_path, class: ("active" if controller_name == "lures") %>
+      <%= link_to t("nav.brands"), brands_path, class: ("active" if controller_name == "brands") %>
       <%= link_to t("nav.species"), species_index_path, class: ("active" if controller_name == "species") %>
+      <%= link_to t("nav.shops"), shops_path, class: ("active" if controller_name == "shops") %>
       <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
     </nav>
 
@@ -16,7 +18,9 @@
         </button>
         <div class="dropdown-menu" data-dropdown-target="menu" hidden>
           <%= link_to t("nav.lures"), lures_path, class: ("active" if controller_name == "lures") %>
+          <%= link_to t("nav.brands"), brands_path, class: ("active" if controller_name == "brands") %>
           <%= link_to t("nav.species"), species_index_path, class: ("active" if controller_name == "species") %>
+          <%= link_to t("nav.shops"), shops_path, class: ("active" if controller_name == "shops") %>
           <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
         </div>
       </div>
