@@ -1,21 +1,26 @@
 module ApplicationHelper
-  # Native names for the language switcher (matches the prototype).
+  # Native names for the language switcher. Hash order is the picker's display
+  # order: English, then Germanic, Romance, Nordic, Central/Eastern European,
+  # Asian, with Russian last.
   LOCALE_NAMES = {
     en: { native: "English", country: "GB" },
     de: { native: "Deutsch", country: "DE" },
+    nl: { native: "Nederlands", country: "NL" },
     fr: { native: "Français", country: "FR" },
     es: { native: "Español", country: "ES" },
+    it: { native: "Italiano", country: "IT" },
+    pt: { native: "Português", country: "PT" },
+    sv: { native: "Svenska", country: "SE" },
+    no: { native: "Norsk", country: "NO" },
+    fi: { native: "Suomi", country: "FI" },
+    pl: { native: "Polski", country: "PL" },
+    cs: { native: "Čeština", country: "CZ" },
     bg: { native: "Български", country: "BG" },
     el: { native: "Ελληνικά", country: "GR" },
     zh: { native: "中文", country: "CN" },
     ja: { native: "日本語", country: "JP" },
-    ru: { native: "Русский", country: "RU" },
-    nl: { native: "Nederlands", country: "NL" },
-    it: { native: "Italiano", country: "IT" },
-    pt: { native: "Português", country: "PT" },
     ko: { native: "한국어", country: "KR" },
-    sv: { native: "Svenska", country: "SE" },
-    no: { native: "Norsk", country: "NO" }
+    ru: { native: "Русский", country: "RU" }
   }.freeze
 
   def available_locales_for_switcher

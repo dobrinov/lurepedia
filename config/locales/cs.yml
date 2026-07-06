@@ -1,0 +1,728 @@
+cs:
+  common:
+    all: Vše
+    none: "—"
+    save: Uložit
+    cancel: Zrušit
+    submit: Odeslat
+    edit: Upravit
+    delete: Smazat
+    add: Přidat
+    search: Hledat
+    loading: Načítání…
+    showing: "Zobrazeno %{from}–%{to} z %{count}"
+    page: Strana
+    page_of: "z %{total}"
+    next: Další
+    prev: Předchozí
+    back: Zpět
+    close: Zavřít
+    by: od
+    on: dne
+    "yes": "Ano"
+    "no": "Ne"
+    verified: Ověřeno
+    promoted: Propagováno
+    sponsored: Sponzorováno
+
+  bans:
+    blocked: Váš účet má tuto akci momentálně zakázanou.
+    notice:
+      title: Váš účet je omezen.
+      reason: Důvod
+      permanent: Toto omezení je trvalé.
+      until: "Platí do %{date}."
+      scope: Omezené akce
+    capability:
+      catalog: úpravy katalogu
+      claims: žádosti o vlastnictví
+      catches: zapisování úlovků
+      comments: komentáře
+      upvotes: hlasování
+      reports: nahlašování
+      favorites: oblíbené
+    preset:
+      catalog_only: Pouze katalog
+      contributions: Všechny příspěvky
+      full: Úplný (účet jen pro čtení)
+    admin:
+      title: "Zákazy — %{name}"
+      title_short: Zákazy
+      new: Udělit zákaz
+      reason: Důvod
+      preset: Předvolba
+      custom: Vlastní výběr
+      capabilities: Omezené akce
+      capabilities_help: Předvolba akce předvybere; zaškrtnutím výběr upravíte.
+      expires_at: Vyprší
+      permanent_hint: Pro trvalý zákaz nechte prázdné.
+      issue: Udělit zákaz
+      status: Stav
+      scope: Rozsah
+      active: Aktivní
+      lifted: Zrušen
+      expired: Vypršel
+      lift: Zrušit zákaz
+      manage: Spravovat zákazy
+      created: Zákaz udělen.
+      revoked: Zákaz zrušen.
+
+  favorites:
+    add: Přidat do oblíbených
+    remove: Odebrat z oblíbených
+    favorited: V oblíbených
+
+  footer:
+    explore: Objevujte
+
+  meta:
+    lures_index: "Procházejte kompletní katalog rybářských nástrah — filtrujte podle typu, hloubky, vody a druhu ryby, se skutečnými úlovky jako důkazem, co funguje."
+    catches_index: "Skutečné úlovky zapsané rybáři — u každé ryby přesná nástraha, barva a podmínky, za kterých zabrala."
+    brands_index: "Značky rybářských nástrah z celého světa, každá s kompletní nabídkou a úlovky zapsanými komunitou."
+    species_index: "Druhy ryb a nástrahy, které je opravdu chytají, podložené úlovky zapsanými rybáři."
+    shops_index: "Kde koupit rybářské nástrahy — obchody seřazené podle doručení do vaší země."
+    leaderboard: "Nejosvědčenější rybářské nástrahy seřazené podle skutečných úlovků zapsaných komunitou."
+    lure_show: "%{lure} — %{type} s fotkami, barvami, velikostmi, tipy kde koupit a skutečnými úlovky zapsanými rybáři."
+    brand_show: "Rybářské nástrahy %{brand} — kompletní nabídka s fotkami, parametry a skutečnými úlovky."
+    species_show: "podívejte se, které nástrahy ji opravdu chytají — doloženo úlovky zapsanými rybáři"
+    shop_show: "rybářský obchod — země doručení a odkazy na nákup nástrah"
+    catch_show: "%{species} chycený na %{lure} — fotka, podmínky a detaily nástrahy zapsané rybářem."
+  home:
+    tagline: Každá nástraha, prověřená úlovkem
+    meta_description: Lurepedia je komunitní encyklopedie rybářských nástrah — najděte nástrahy a podívejte se na skutečné důkazy, úlovek po úlovku, že fungují.
+    hero_title: Každá nástraha, prověřená úlovkem
+    hero_sub: Komunitní encyklopedie rybářských nástrah. Najděte, co funguje — podloženo skutečnými úlovky.
+    browse_lures: Procházet nástrahy
+    browse_another_way: Procházet jinak
+    add_a_catch: Přidat úlovek
+
+  nav:
+    lures: Nástrahy
+    species: Druhy
+    catches: Úlovky
+    brands: Značky
+    shops: Obchody
+    leaderboard: Žebříček
+    menu: Menu
+
+  auth:
+    sign_in: Přihlásit se
+    sign_up: Vytvořit účet
+    sign_out: Odhlásit se
+    email: E-mail
+    password: Heslo
+    password_confirmation: Potvrzení hesla
+    name: Jméno
+    sign_in_required: Pro přispívání se prosím přihlaste.
+    not_authorized: K tomu nemáte oprávnění.
+    create_account: Vytvořit účet
+    have_account: Už máte účet?
+    no_account: Jste na Lurepedii poprvé?
+    welcome_back: Vítejte zpět
+    join: Přidejte se k Lurepedii
+    choose_country: Vaše země
+    choose_language: Preferovaný jazyk
+    continue_with_google: Pokračovat přes Google
+
+  units:
+    label: Jednotky
+    auto: Automaticky (podle země)
+    imperial: Imperiální
+    metric: Metrické
+    length: Délka
+    weight: Hmotnost
+    depth: Hloubka
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Sladká voda
+    salt: Slaná voda
+    both: Sladká i slaná
+
+  action:
+    suspending: Suspender
+    floating: Plovoucí
+    sinking: Potápivá
+    none: "—"
+
+  condition:
+    season:
+      label: Roční období
+      any: Kterékoli období
+      spring: Jaro
+      summer: Léto
+      fall: Podzim
+      winter: Zima
+    clarity:
+      label: Průhlednost vody
+      any: Jakákoli průhlednost
+      clear: Čirá
+      stained: Zakalená
+      muddy: Kalná
+    water_body:
+      label: Typ vody
+      any: Jakákoli voda
+      lake: Jezero
+      pond: Rybník
+      river: Řeka
+      reservoir: Přehrada
+      stream: Potok
+    wind:
+      label: Vítr
+      any: Jakýkoli vítr
+      calm: Bezvětří
+      light: Mírný (5–10 mph)
+      moderate: Střední (10–20 mph)
+      strong: Silný (20+ mph)
+    time_of_day:
+      label: Denní doba
+      any: Kdykoli
+      dawn: Rozbřesk
+      morning: Ráno
+      midday: Poledne
+      afternoon: Odpoledne
+      dusk: Soumrak
+      night: Noc
+    platform:
+      label: Lovím z
+      any: Odkudkoli
+      shore: Břeh
+      boat: Loď
+      kayak: Kajak
+    retrieve:
+      label: Styl vedení
+      any: Jakýkoli styl
+      steady: Rovnoměrné vedení
+      stop_and_go: Stop-and-go
+      twitch: Twitchování
+      jerk: Jerkování
+      slow_roll: Pomalé vedení
+      burn: Rychlé stahování
+      dead_stick: Vedení s pauzou na dně
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Gumová nástraha
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Povrchová nástraha
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Plandavka
+    lipless_crankbait: Lipless crankbait
+
+  lure:
+    similar_title: "Podobné nástrahy"
+    similar_manage_hint: "Propojte podobně vypadající nástrahy — často od jiných značek — aby je rybáři mohli porovnat."
+    similar_none: "Zatím žádné propojené podobné nástrahy."
+    similar_add: "Propojit podobnou nástrahu"
+    similar_add_placeholder: "Najít nástrahu…"
+    similar_not_found: "Tuto nástrahu se nepodařilo najít."
+    similar_match: "Shoda %{score} %"
+    similar_suggest_title: "Vypadá podobně jako…"
+    similar_suggest_hint: "Tato fotka připomíná následující nástrahy. Zaškrtněte ty, které si jsou opravdu podobné, a my je propojíme."
+    title: Nástrahy
+    subtitle: Každá nástraha, prověřená úlovkem
+    search_placeholder: Hledejte nástrahy — nebo filtrujte podle typu, vody, akce…
+    model: Model
+    description: Popis
+    descriptions: Popisy
+    translations: Překlady
+    translations_hint: Popis nástrahy v jednotlivých jazycích. Čtenáři vidí svůj jazyk, jinak angličtinu.
+    add: Přidat nástrahu
+    add_title: Přidat nástrahu
+    type: Typ
+    depth: Pracovní hloubka
+    action: Akce
+    buoyancy: "Vztlak"
+    action_varies: "Liší se"
+    water: Voda
+    brand: Značka
+    variants: Varianty
+    variant: Varianta
+    tab_caught: Ulovené na ni
+    proven_record:
+      title: Co ukazují úlovky
+      top_species: Nejčastější druhy
+    tab_variations: "Varianty"
+    tab_buy: Kde koupit
+    tab_history: Historie
+    proof: Důkaz, že funguje
+    catches_count:
+      one: "%{count} úlovek"
+      other: "%{count} úlovků"
+    no_proof: Zatím bez důkazu
+    be_first: Buďte první, kdo dokáže, že tato nástraha funguje
+    be_first_short: Buďte první, kdo dokáže, že funguje →
+    where_to_buy: Kde koupit
+    quick_facts: Rychlý přehled
+    action_video: Nástraha v akci
+    add_video: Přidat video s akcí
+    watch_video: Přehrát video
+    suggest_edit: Navrhnout úpravu
+    add_catch: Přidat úlovek
+    proven_for: Osvědčená na
+    no_matches: Vašim filtrům neodpovídají žádné nástrahy
+    no_matches_sub: Hledáte konkrétní nástrahu? Pokud chybí, přidejte ji.
+    empty_title: Zatím žádné nástrahy
+    size: Velikost
+    weight: Hmotnost
+    color: Barva
+    colors: Barvy
+    colors_count:
+      one: "%{count} barva"
+      other: "%{count} barev"
+    build: Provedení
+    builds: Provedení
+    browse_colors: Procházet barvy
+    common_attributes: Společné vlastnosti · celá rodina
+    this_variation: Tato varianta
+    default_variation: Výchozí varianta
+    uv_glow: UV efekt
+    best_for: Nejlépe na
+    manage_variations: Varianty a provedení
+    tab_details: Obecné údaje
+    add_color: Přidat barvu
+    add_build: Přidat provedení
+    color_name: Název barvy
+    availability: Dostupná provedení
+    availability_hint: Zaškrtněte provedení, ve kterých se tato barva potvrzeně vyrábí. Pokud nevíte, nechte vše nezaškrtnuté — barva se zobrazí u všech provedení.
+    available_in_n_of_m: Dostupná v %{n} z %{m} provedení
+
+  species:
+    title: Druhy
+    subtitle: Slovník ryb
+    search_placeholder: Hledejte druhy — běžný nebo vědecký název…
+    venomous: Jedovaté ostny
+    venomous_hint: Má jedovaté ostny nebo trny — při manipulaci buďte opatrní.
+    poisonous: Jedovatá
+    poisonous_hint: Toxická při požití.
+    add: Přidat druh
+    add_title: Přidat druh
+    scientific_name: Vědecký název
+    local_names: Místní názvy
+    translations: Překlady
+    translations_hint: Běžný název a popis v jednotlivých jazycích. Čtenáři vidí svůj jazyk, jinak angličtinu.
+    local_name: Běžný název
+    description: Popis
+    descriptions: Popisy
+    wikipedia_url: Adresa na Wikipedii
+    wikipedia: Zobrazit na Wikipedii
+    wikipedia_url_invalid: "musí být adresa článku na Wikipedii (např. https://cs.wikipedia.org/wiki/...)"
+    habitat: Výskyt
+    tab_lures: Chytá se na
+    tab_catches: Úlovky
+    tab_leaderboard: Žebříček
+    tab_history: Historie
+    proven_lures: Osvědčené nástrahy
+    lures_count:
+      one: "%{count} nástraha"
+      other: "%{count} nástrah"
+    no_proven_lures: Zatím žádné osvědčené nástrahy
+    be_first_lure: Buďte první, kdo dokáže, že na nějakou nástrahu tato ryba bere
+    empty_title: Zatím žádné druhy
+    empty_sub: Buďte první, kdo přidá druh ryby.
+
+  brand:
+    title: Značky
+    subtitle: Výrobci
+    search_placeholder: Hledejte značky…
+    add: Přidat značku
+    add_title: Přidat značku
+    founded: Založeno
+    empty_title: Zatím žádné značky
+    empty_sub: Buďte první, kdo přidá značku nástrah.
+    country: Země
+    website: Web
+    website_invalid: "Zadejte platnou adresu začínající http:// nebo https://"
+    logo: Logo
+    blurb: O značce
+    description: Popis
+    descriptions: Popisy
+    translations: Překlady
+    translations_hint: Popis značky v jednotlivých jazycích. Čtenáři vidí svůj jazyk, jinak angličtinu.
+    tab_lures: Nástrahy
+    tab_history: Historie
+    claim: Zažádat o správu značky
+    claimed: Převzato
+    owned_by: Vlastník
+
+  buy_link:
+    add: Přidat místo nákupu
+    empty: Zatím žádné obchody — přidejte první místo, kde se dá tato nástraha koupit.
+    choose_shop: Obchod
+    choose_shop_placeholder: Hledejte obchody…
+    existing_shop: Existující obchod
+    new_shop: Nový obchod
+    product_url: Odkaz na produkt (volitelné)
+    submit: Přidat
+    shop_required: Vyberte prosím obchod.
+    already_listed: Tento obchod už je u této nástrahy uveden.
+
+  shop:
+    title: Obchody
+    subtitle: Kde nakoupit
+    search_placeholder: Hledejte obchody…
+    add: Přidat obchod
+    add_title: Přidat obchod
+    ships_to_you: Obchody doručující do země %{country}
+    other_shops: Ostatní obchody
+    none_ship: Do země %{country} zatím žádný obchod nedoručuje. Znáte nějaký?
+    tab_lures: Nástrahy
+    tab_history: Historie
+    no_lures: V tomto obchodě zatím nejsou uvedeny žádné nástrahy.
+    ships_to: Doručuje do
+    ships_to_unknown: "—"
+    ships_worldwide: Doručuje po celém světě
+    ships_to_hint: Pokud obchod doručuje po celém světě, nechte prázdné.
+    add_country: Přidat zemi
+    worldwide: Celosvětově
+    claim: Zažádat o správu obchodu
+
+  catch:
+    title: Úlovky
+    subtitle: Čerstvé důkazy od komunity
+    add: Přidat úlovek
+    add_title: Přidat úlovek
+    on_lure: "na %{lure}"
+    conditions: Podmínky
+    location: Místo
+    length: Délka
+    weight: Hmotnost
+    contributor: Přispěvatel
+    comments: Komentáře
+    add_comment: Přidat komentář
+    upvote: Dát hlas
+    upvoted: Hlas udělen
+    remove_upvote: Dalším kliknutím hlas odeberete
+    report: Nahlásit tento úlovek
+    related: Další úlovky tohoto druhu
+    photos: Fotky
+    pick_brand: Vyberte značku
+    pick_lure: Vyberte nástrahu
+    pick_variant: Vyberte variantu
+    color: Barva
+    pick_color: Vyberte barvu, na kterou jste chytili
+    pick_build: Vyberte provedení
+    pick_species: Co jste chytili?
+    log_title: Zapsat úlovek
+    log_this: Zapsat tento úlovek
+    modal_step1: "Krok 1 ze 2 · Vyberte barvu, na kterou jste chytili"
+    modal_step2: "Krok 2 ze 2 · Vyberte provedení a hloubku"
+    builds_in: "Provedení dostupná v barvě"
+    no_builds: Tato barva zatím nemá žádná provedení.
+    variation: Varianta
+    choose_variation: Vyberte variantu
+    change: Změnit
+    note: Poznámky
+    submitted: Odesláno ke schválení
+    logged: Úlovek zapsán
+    removed: Úlovek odstraněn
+    submitted_body: Díky! Váš úlovek je ve frontě moderace a po schválení se zobrazí.
+    add_another: Přidat další
+
+  search:
+    filters: Filtry
+    combine_free: Kombinujte libovolně — výsledky odpovídají všem filtrům
+    no_results: Nic nenalezeno
+    any_species: Jakýkoli druh
+    any_type: Jakýkoli typ
+    any_brand: Jakákoli značka
+    any_action: Jakákoli akce
+    any_depth: Jakákoli hloubka
+    depth_band:
+      shallow: Mělce (0–1,5 m)
+      mid: Středně (1,5–4,5 m)
+      deep: Hluboko (4,5 m+)
+    saltwater_only: Pouze slaná voda
+    clear_all: Zrušit vše
+    min: Min
+    max: Max
+    show_n_lures:
+      one: Zobrazit %{count} nástrahu
+      other: Zobrazit %{count} nástrah
+    other: Ostatní
+
+  leaderboard:
+    title: Žebříček
+    subtitle: Nejlepší rybáři podle druhů
+    all_species: Všechny druhy
+    rank_by: Řadit podle
+    metric_catches: Úlovky
+    metric_upvotes: Hlasy
+    metric_length: Délka ryby
+    rank: Pořadí
+    angler: Rybář
+    catches: Úlovky
+    upvotes: Hlasy
+    best_length: Nejdelší úlovek
+    specialist: specialista
+    species_count:
+      one: "%{count} druh"
+      other: "%{count} druhů"
+    you: VY
+    empty: Zatím žádní rybáři v žebříčku
+
+  contribute:
+    suggest_edit: Navrhnout úpravu
+    edit_title: "Upravit %{name}"
+    edit_saved: "Změny uloženy"
+    added: "Přidáno do katalogu"
+    suggest_title: "Navrhnout úpravu záznamu %{name}"
+    suggest_note: Váš návrh posoudí moderátor.
+    suggested: Návrh odeslán
+    suggested_body: Díky — moderátor váš návrh posoudí.
+    add_photos: Přidat fotky
+    moderation_note: Příspěvky jsou před zveřejněním kontrolovány.
+    direct_note: Jako vlastník značky publikujete okamžitě — bez kontroly.
+    pending_review: Tento záznam čeká na posouzení a zatím není veřejný.
+
+  crop:
+    adjust: "Upravit ořez"
+    done: "Hotovo"
+    reset: "Obnovit ořez"
+    aspect_free: "Volný"
+    aspect_square: "Čtverec"
+    bg_label: "Pozadí dlaždice"
+    bg_auto: "Automaticky"
+    bg_pick: "Vybrat z fotky"
+    bg_apply_all: "Použít toto pozadí u všech barev této nástrahy"
+    hint: "Tažením posunete výřez; tažením za rohy změníte velikost. Ořez se použije při uložení."
+    invalid: "Výřez je neplatný"
+  claim:
+    title: "Zažádat o správu — %{name}"
+    page_title: Žádost o správu záznamu
+    intro: "Zažádejte o správu tohoto záznamu (%{kind}). Napište nám, kdo jste, a zbytek vyřešíme e-mailem."
+    message_label: Kdo jste a jaký máte k tomuto záznamu vztah?
+    message_hint: "např. Jsem zakladatel / mám na starosti marketing značky…"
+    submit: Odeslat žádost
+    submitted_title: Žádost přijata
+    submitted_body: "Díky — žádost posoudíme a ozveme se vám e-mailem."
+    rejected_title: Žádost neschválena
+    rejected_body: "Tato žádost byla posouzena a neschválena. Pokud si myslíte, že jde o omyl, ozvěte se nám."
+    verified_title: Vlastnictví ověřeno
+    verified_body: Nyní tento záznam spravujete. Vaše úpravy se zveřejňují bez kontroly.
+    managed_badge: Spravováno vlastníkem
+
+  report:
+    title: Nahlásit obsah
+    target: Nahlašujete
+    reason: Důvod
+    reason_inaccurate: Nepřesné nebo zavádějící
+    reason_fake: Není skutečný úlovek / upravená fotka
+    reason_wrong: Špatný druh nebo nástraha
+    reason_spam: Spam nebo reklama
+    reason_offensive: Urážlivé nebo nevhodné
+    reason_other: Jiné
+    note: Další podrobnosti (volitelné)
+    submit: Odeslat nahlášení
+    submitted: Nahlášení odesláno
+    submitted_body: Díky — moderátoři to brzy posoudí.
+
+  moderation:
+    title: Fronta moderace
+    subtitle: Kontrola příspěvků od komunity
+    moderator_view: POHLED MODERÁTORA
+    all: Vše
+    reports: Nahlášení
+    catches: Úlovky
+    edits: Úpravy
+    catalog: Katalog
+    claims: Žádosti o správu
+    awaiting: "%{count} čeká na posouzení"
+    approve: Schválit
+    reject: Zamítnout
+    undo: Vrátit zpět
+    approved: Schváleno
+    rejected: Zamítnuto
+    needs_admin: Vyžaduje admina
+    own_submission: Odeslali jste vy
+    submitted_by: Odeslal
+    view_details: Zobrazit detail
+    kind:
+      catch: Úlovek
+      edit: Úprava
+      catalog: Katalog
+      claim: Žádost o správu
+      report: Nahlášení
+
+  admin:
+    title: Administrace
+    overview: Přehled
+    people: Lidé a role
+    activity: Záznam aktivity
+    pending: Čeká na posouzení
+    catches_logged: Zapsané úlovky
+    contributors: Přispěvatelé
+    lures_catalogued: Nástrahy v katalogu
+    role: Role
+    member: Člen
+    moderator: Moderátor
+    admin: Admin
+    joined: Registrace
+    you: VY
+
+  settings:
+    title: Nastavení
+    tab_profile: Profil
+    tab_preferences: Předvolby
+    profile: Profil
+    country: Země
+    language: Jazyk
+    time_zone: Časové pásmo
+    time_zone_auto: "Automaticky (UTC)"
+    units: Jednotky
+    notifications: Oznámení
+    saved: Nastavení uloženo
+    public_profile: Váš veřejný profil
+    copy: Kopírovat
+    copied: Zkopírováno!
+    username: Uživatelské jméno
+    username_hint: např. casey-rivera
+    username_help: Volitelné. Malá písmena, číslice, pomlčky. Používá se v adrese vašeho profilu.
+    avatar: Profilový obrázek
+    avatar_help: PNG, JPEG, WEBP nebo GIF. Max 5 MB.
+    choose_image: Vybrat obrázek
+    no_file: Žádný obrázek nevybrán
+    remove_avatar: Odstranit aktuální obrázek
+    avatar_too_large: je příliš velký (maximum 5 MB)
+    avatar_invalid_type: musí být obrázek PNG, JPEG, WEBP nebo GIF
+
+  dashboard:
+    my_catches: Moje úlovky
+    my_profile: Můj profil
+    total_upvotes: Celkem získaných hlasů
+    no_catches: Zatím jste nezapsali žádný úlovek.
+
+  profile:
+    catches: Úlovky
+    tab_catches: Úlovky
+    tab_favorites: Oblíbené
+    tab_contributions: Příspěvky
+    contributions: Příspěvky
+    no_contributions: Zatím žádné příspěvky.
+    view_picture: Zobrazit profilový obrázek
+    change_picture: Nahrát/změnit profilový obrázek
+    total_upvotes: Celkem hlasů
+    member_since: Členem od
+    favorite_species: Oblíbené druhy
+    favorite_lures: Oblíbené nástrahy
+    favorite_shops: Oblíbené obchody
+    no_favorites: Zatím nic v oblíbených.
+    no_catches: Zatím žádné úlovky.
+
+  provenance:
+    title: Historie a vlastnictví
+    edits:
+      one: "%{count} úprava"
+      other: "%{count} úprav"
+    added_by: Přidal
+    owned_by: Vlastník
+    originally_added: "Původně přidal %{name} · %{date}"
+    edit_history: Historie úprav
+    created: Vytvořil tento záznam
+    edited: upravil
+    col_change: Změna
+    col_contributor: Přispěvatel
+    col_date: Datum
+
+  revision:
+    title: Revize
+    no_changes: U této úpravy nebyly zaznamenány žádné změny polí.
+    removed: Odebráno
+    added: Přidáno
+    field:
+      build_ids: Dostupná provedení
+
+  species_names:
+    largemouth_bass:
+      common: Okounek pstruhový
+      habitat: Teplá, zarostlá jezera a rybníky; útočí ze zálohy u překážek.
+    smallmouth_bass:
+      common: Okounek černý
+      habitat: Chladné, čisté řeky a kamenitá jezera; skvělý bojovník.
+    northern_pike:
+      common: Štika obecná
+      habitat: Zarostlé zátoky a chladná jezera; agresivní predátor útočící ze zálohy.
+    walleye:
+      common: Candát americký
+      habitat: Hluboká, chladná jezera a řeky; loví za šera.
+    yellow_perch:
+      common: Okoun žlutý
+      habitat: Hejnová ryba jezer a rybníků; potravu sbírá u dna.
+    muskellunge:
+      common: Štika muskalunga
+      habitat: Velká čistá jezera a řeky; vrcholový sladkovodní predátor.
+    bluegill:
+      common: Slunečnice pestrá
+      habitat: Teplé rybníky a mělčiny jezer; hnízdí v koloniích.
+    rainbow_trout:
+      common: Pstruh duhový
+      habitat: Studené potoky, řeky a jezera; ceněná sportovní ryba.
+    mahi_mahi:
+      common: Zlak nachový
+      habitat: Teplé povrchové vody oceánů; rychlý pelagický predátor.
+    striped_bass:
+      common: Mořčák pruhovaný
+      habitat: Pobřežní příboj, ústí řek a velké řeky; tažná ryba.
+    bonefish:
+      common: Albula liščí
+      habitat: Tropické mělčiny; plachá a rychlá.
+    chinook_salmon:
+      common: Losos čavyča
+      habitat: Studené pacifické řeky a jezera; silná tažná ryba.
+  country:
+    US: Spojené státy
+    CA: Kanada
+    GB: Spojené království
+    DE: Německo
+    FR: Francie
+    ES: Španělsko
+    IT: Itálie
+    NL: Nizozemsko
+    SE: Švédsko
+    "NO": Norsko
+    PL: Polsko
+    RU: Rusko
+    BG: Bulharsko
+    GR: Řecko
+    JP: Japonsko
+    CN: Čína
+    BR: Brazílie
+    MX: Mexiko
+    FI: Finsko
+    AU: Austrálie
+    NZ: Nový Zéland
+    DK: Dánsko
+    IE: Irsko
+    PT: Portugalsko
+    KR: Jižní Korea
+    TH: Thajsko
+    ZA: Jihoafrická republika
+    IN: Indie
+    AR: Argentina
+    CL: Chile
+    UA: Ukrajina
+    TR: Turecko
+    AT: Rakousko
+    BE: Belgie
+    CH: Švýcarsko
+    CZ: Česko
+    HU: Maďarsko
+    RO: Rumunsko
+  activerecord:
+    attributes:
+      user:
+        password: Heslo
+        password_confirmation: Potvrzení hesla
+    errors:
+      messages:
+        confirmation: "neshoduje se s polem %{attribute}"

@@ -1,0 +1,728 @@
+pl:
+  common:
+    all: Wszystkie
+    none: "—"
+    save: Zapisz
+    cancel: Anuluj
+    submit: Wyślij
+    edit: Edytuj
+    delete: Usuń
+    add: Dodaj
+    search: Szukaj
+    loading: Ładowanie…
+    showing: "Wyświetlanie %{from}–%{to} z %{count}"
+    page: Strona
+    page_of: "z %{total}"
+    next: Dalej
+    prev: Wstecz
+    back: Wróć
+    close: Zamknij
+    by: przez
+    on: dnia
+    "yes": "Tak"
+    "no": "Nie"
+    verified: Zweryfikowano
+    promoted: Promowane
+    sponsored: Sponsorowane
+
+  bans:
+    blocked: Twoje konto ma obecnie zablokowaną tę akcję.
+    notice:
+      title: Twoje konto jest objęte ograniczeniami.
+      reason: Powód
+      permanent: To ograniczenie jest bezterminowe.
+      until: "Obowiązuje do %{date}."
+      scope: Ograniczone akcje
+    capability:
+      catalog: edycje katalogu
+      claims: roszczenia własności
+      catches: rejestrowanie połowów
+      comments: komentarze
+      upvotes: głosy
+      reports: zgłoszenia
+      favorites: ulubione
+    preset:
+      catalog_only: Tylko katalog
+      contributions: Cały wkład
+      full: Pełna (konto tylko do odczytu)
+    admin:
+      title: "Blokady — %{name}"
+      title_short: Blokady
+      new: Nałóż blokadę
+      reason: Powód
+      preset: Szablon
+      custom: Wybór własny
+      capabilities: Ograniczone akcje
+      capabilities_help: Szablon wstępnie zaznacza akcje; zaznacz pola, aby dostosować wybór.
+      expires_at: Wygasa
+      permanent_hint: Zostaw puste, aby blokada była bezterminowa.
+      issue: Nałóż blokadę
+      status: Status
+      scope: Zakres
+      active: Aktywna
+      lifted: Zdjęta
+      expired: Wygasła
+      lift: Zdejmij blokadę
+      manage: Zarządzaj blokadami
+      created: Blokada nałożona.
+      revoked: Blokada zdjęta.
+
+  favorites:
+    add: Do ulubionych
+    remove: Usuń z ulubionych
+    favorited: W ulubionych
+
+  footer:
+    explore: Odkrywaj
+
+  meta:
+    lures_index: "Przeglądaj pełny katalog przynęt wędkarskich — filtruj według typu, głębokości, wody i gatunku, z prawdziwymi połowami jako dowodem skuteczności."
+    catches_index: "Prawdziwe połowy rejestrowane przez wędkarzy — zobacz dokładną przynętę, kolor i warunki każdej złowionej ryby."
+    brands_index: "Marki przynęt wędkarskich z całego świata — każda z pełną ofertą i historią połowów społeczności."
+    species_index: "Gatunki ryb i przynęty, które naprawdę je łowią — potwierdzone połowami rejestrowanymi przez wędkarzy."
+    shops_index: "Gdzie kupić przynęty wędkarskie — sklepy uporządkowane według dostawy do Twojego kraju."
+    leaderboard: "Najbardziej sprawdzone przynęty wędkarskie, uszeregowane według prawdziwych połowów zarejestrowanych przez społeczność."
+    lure_show: "%{lure} — %{type} ze zdjęciami, kolorami, rozmiarami, miejscami zakupu i prawdziwymi połowami wędkarzy."
+    brand_show: "Przynęty wędkarskie %{brand} — pełna oferta ze zdjęciami, specyfikacją i prawdziwymi raportami z połowów."
+    species_show: "zobacz, które przynęty naprawdę go łowią — potwierdzone prawdziwymi połowami wędkarzy"
+    shop_show: "sklep wędkarski — kraje dostawy i linki do zakupu przynęt"
+    catch_show: "%{species} złowiony na %{lure} — zdjęcie, warunki i szczegóły przynęty zarejestrowane przez wędkarza."
+  home:
+    tagline: Każda przynęta potwierdzona połowem
+    meta_description: Lurepedia to tworzona przez społeczność encyklopedia przynęt wędkarskich — znajdź przynęty i zobacz prawdziwe dowody w postaci połowów, że działają.
+    hero_title: Każda przynęta potwierdzona połowem
+    hero_sub: Tworzona przez społeczność encyklopedia przynęt wędkarskich. Znajdź to, co łowi — poparte prawdziwymi połowami.
+    browse_lures: Przeglądaj przynęty
+    browse_another_way: Przeglądaj inaczej
+    add_a_catch: Dodaj połów
+
+  nav:
+    lures: Przynęty
+    species: Gatunki
+    catches: Połowy
+    brands: Marki
+    shops: Sklepy
+    leaderboard: Ranking
+    menu: Menu
+
+  auth:
+    sign_in: Zaloguj się
+    sign_up: Załóż konto
+    sign_out: Wyloguj się
+    email: E-mail
+    password: Hasło
+    password_confirmation: Potwierdź hasło
+    name: Nazwa
+    sign_in_required: Zaloguj się, aby współtworzyć.
+    not_authorized: Nie masz uprawnień do tej akcji.
+    create_account: Załóż konto
+    have_account: Masz już konto?
+    no_account: Nie masz jeszcze konta?
+    welcome_back: Witaj ponownie
+    join: Dołącz do Lurepedia
+    choose_country: Twój kraj
+    choose_language: Preferowany język
+    continue_with_google: Kontynuuj przez Google
+
+  units:
+    label: Jednostki
+    auto: Automatycznie (wg kraju)
+    imperial: Imperialne
+    metric: Metryczne
+    length: Długość
+    weight: Waga
+    depth: Głębokość
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Woda słodka
+    salt: Woda słona
+    both: Słodka i słona
+
+  action:
+    suspending: Suspending
+    floating: Pływająca
+    sinking: Tonąca
+    none: "—"
+
+  condition:
+    season:
+      label: Pora roku
+      any: Dowolna pora roku
+      spring: Wiosna
+      summer: Lato
+      fall: Jesień
+      winter: Zima
+    clarity:
+      label: Przejrzystość wody
+      any: Dowolna przejrzystość
+      clear: Czysta
+      stained: Przybrudzona
+      muddy: Mętna
+    water_body:
+      label: Rodzaj łowiska
+      any: Dowolne łowisko
+      lake: Jezioro
+      pond: Staw
+      river: Rzeka
+      reservoir: Zbiornik zaporowy
+      stream: Strumień
+    wind:
+      label: Wiatr
+      any: Dowolny wiatr
+      calm: Bezwietrznie
+      light: Lekki (5–10 mph)
+      moderate: Umiarkowany (10–20 mph)
+      strong: Silny (20+ mph)
+    time_of_day:
+      label: Pora dnia
+      any: Dowolna pora
+      dawn: Świt
+      morning: Poranek
+      midday: Południe
+      afternoon: Popołudnie
+      dusk: Zmierzch
+      night: Noc
+    platform:
+      label: Łowienie z
+      any: Skądkolwiek
+      shore: Z brzegu
+      boat: Z łodzi
+      kayak: Z kajaka
+    retrieve:
+      label: Styl prowadzenia
+      any: Dowolny styl
+      steady: Jednostajnie
+      stop_and_go: Stop and go
+      twitch: Twitching
+      jerk: Jerking
+      slow_roll: Slow roll
+      burn: Burning
+      dead_stick: Dead stick
+
+  lure_type:
+    crankbait: Crankbait
+    jerkbait: Jerkbait
+    soft_plastic: Guma
+    spinnerbait: Spinnerbait
+    bladed_jig: Chatterbait
+    topwater: Powierzchniówka
+    swimbait: Swimbait
+    jig: Jig
+    spoon: Błystka wahadłowa
+    lipless_crankbait: Lipless crankbait
+
+  lure:
+    similar_title: "Podobne przynęty"
+    similar_manage_hint: "Powiąż łudząco podobne przynęty — często innych marek — aby wędkarze mogli je porównać."
+    similar_none: "Nie powiązano jeszcze podobnych przynęt."
+    similar_add: "Powiąż podobną przynętę"
+    similar_add_placeholder: "Znajdź przynętę…"
+    similar_not_found: "Nie znaleziono tej przynęty."
+    similar_match: "%{score}% zgodności"
+    similar_suggest_title: "Wygląda podobnie do…"
+    similar_suggest_hint: "To zdjęcie przypomina te przynęty. Zaznacz te, które naprawdę są łudząco podobne, a powiążemy je ze sobą."
+    title: Przynęty
+    subtitle: Każda przynęta potwierdzona połowem
+    search_placeholder: Szukaj przynęt — lub filtruj według typu, wody, pracy…
+    model: Model
+    description: Opis
+    descriptions: Opisy
+    translations: Tłumaczenia
+    translations_hint: Opis przynęty w każdym języku. Czytelnicy widzą swój język, a w razie braku — angielski.
+    add: Dodaj przynętę
+    add_title: Dodaj przynętę
+    type: Typ
+    depth: Głębokość pracy
+    action: Praca
+    buoyancy: "Pływalność"
+    action_varies: "Różna"
+    water: Woda
+    brand: Marka
+    variants: Warianty
+    variant: Wariant
+    tab_caught: Złowione na nią
+    proven_record:
+      title: Co pokazują połowy
+      top_species: Najczęstsze gatunki
+    tab_variations: "Warianty"
+    tab_buy: Gdzie kupić
+    tab_history: Historia
+    proof: Dowód skuteczności
+    catches_count:
+      one: "%{count} połów"
+      other: "%{count} połowów"
+    no_proof: Brak dowodów
+    be_first: Udowodnij jako pierwszy, że ta przynęta łowi
+    be_first_short: Udowodnij jako pierwszy, że łowi →
+    where_to_buy: Gdzie kupić
+    quick_facts: W skrócie
+    action_video: Przynęta w akcji
+    add_video: Dodaj film z pracą przynęty
+    watch_video: Obejrzyj film
+    suggest_edit: Zaproponuj zmianę
+    add_catch: Dodaj połów
+    proven_for: Sprawdzona na
+    no_matches: Żadna przynęta nie pasuje do filtrów
+    no_matches_sub: Szukasz konkretnej przynęty? Dodaj ją, jeśli jej brakuje.
+    empty_title: Brak przynęt
+    size: Rozmiar
+    weight: Waga
+    color: Kolor
+    colors: Kolory
+    colors_count:
+      one: "%{count} kolor"
+      other: "%{count} kolorów"
+    build: Wersja
+    builds: Wersje
+    browse_colors: Przeglądaj kolory
+    common_attributes: Cechy wspólne · cała rodzina
+    this_variation: Ten wariant
+    default_variation: Wariant domyślny
+    uv_glow: Świeci w UV
+    best_for: Najlepsza na
+    manage_variations: Warianty i wersje
+    tab_details: Informacje ogólne
+    add_color: Dodaj kolor
+    add_build: Dodaj wersję
+    color_name: Nazwa koloru
+    availability: Dostępne wersje
+    availability_hint: Zaznacz wersje, w których ten kolor jest na pewno dostępny. Jeśli nie wiadomo — zostaw wszystko odznaczone, a kolor będzie widoczny przy każdej wersji.
+    available_in_n_of_m: Dostępny w %{n} z %{m} wersji
+
+  species:
+    title: Gatunki
+    subtitle: Słownik ryb
+    search_placeholder: Szukaj gatunków — nazwa zwyczajowa lub naukowa…
+    venomous: Jadowita
+    venomous_hint: Ma jadowite kolce lub żądła — obchodź się z nią ostrożnie.
+    poisonous: Trująca
+    poisonous_hint: Toksyczna po spożyciu.
+    add: Dodaj gatunek
+    add_title: Dodaj gatunek
+    scientific_name: Nazwa naukowa
+    local_names: Nazwy lokalne
+    translations: Tłumaczenia
+    translations_hint: Nazwa zwyczajowa i opis w każdym języku. Czytelnicy widzą swój język, a w razie braku — angielski.
+    local_name: Nazwa zwyczajowa
+    description: Opis
+    descriptions: Opisy
+    wikipedia_url: Adres URL Wikipedii
+    wikipedia: Zobacz w Wikipedii
+    wikipedia_url_invalid: "musi być adresem artykułu Wikipedii (np. https://en.wikipedia.org/wiki/...)"
+    habitat: Środowisko
+    tab_lures: Łowiony na
+    tab_catches: Połowy
+    tab_leaderboard: Ranking
+    tab_history: Historia
+    proven_lures: Sprawdzone przynęty
+    lures_count:
+      one: "%{count} przynęta"
+      other: "%{count} przynęt"
+    no_proven_lures: Brak sprawdzonych przynęt
+    be_first_lure: Udowodnij jako pierwszy, że jakaś przynęta łowi tę rybę
+    empty_title: Brak gatunków
+    empty_sub: Dodaj pierwszy gatunek ryby.
+
+  brand:
+    title: Marki
+    subtitle: Producenci
+    search_placeholder: Szukaj marek…
+    add: Dodaj markę
+    add_title: Dodaj markę
+    founded: Rok założenia
+    empty_title: Brak marek
+    empty_sub: Dodaj pierwszą markę przynęt.
+    country: Kraj
+    website: Strona internetowa
+    website_invalid: "Podaj prawidłowy adres URL zaczynający się od http:// lub https://"
+    logo: Logo
+    blurb: O marce
+    description: Opis
+    descriptions: Opisy
+    translations: Tłumaczenia
+    translations_hint: Opis marki w każdym języku. Czytelnicy widzą swój język, a w razie braku — angielski.
+    tab_lures: Przynęty
+    tab_history: Historia
+    claim: Zgłoś prawa do tej marki
+    claimed: Zgłoszono prawa
+    owned_by: Właściciel
+
+  buy_link:
+    add: Dodaj miejsce zakupu
+    empty: Nie dodano jeszcze żadnego sklepu — dodaj pierwsze miejsce, gdzie można kupić tę przynętę.
+    choose_shop: Sklep
+    choose_shop_placeholder: Szukaj sklepów…
+    existing_shop: Istniejący sklep
+    new_shop: Nowy sklep
+    product_url: Link do produktu (opcjonalnie)
+    submit: Dodaj
+    shop_required: Wybierz sklep.
+    already_listed: Ten sklep jest już dodany dla tej przynęty.
+
+  shop:
+    title: Sklepy
+    subtitle: Gdzie kupić
+    search_placeholder: Szukaj sklepów…
+    add: Dodaj sklep
+    add_title: Dodaj sklep
+    ships_to_you: Sklepy z dostawą do %{country}
+    other_shops: Pozostałe sklepy
+    none_ship: Żaden sklep nie dostarcza jeszcze do %{country}. Znasz jakiś?
+    tab_lures: Przynęty
+    tab_history: Historia
+    no_lures: Ten sklep nie ma jeszcze żadnych przynęt.
+    ships_to: Wysyłka do
+    ships_to_unknown: "—"
+    ships_worldwide: Wysyłka na cały świat
+    ships_to_hint: Zostaw puste, jeśli sklep wysyła na cały świat.
+    add_country: Dodaj kraj
+    worldwide: Cały świat
+    claim: Zgłoś prawa do sklepu
+
+  catch:
+    title: Połowy
+    subtitle: Najnowsze dowody od społeczności
+    add: Dodaj połów
+    add_title: Dodaj połów
+    on_lure: "na %{lure}"
+    conditions: Warunki
+    location: Miejsce
+    length: Długość
+    weight: Waga
+    contributor: Autor
+    comments: Komentarze
+    add_comment: Dodaj komentarz
+    upvote: Zagłosuj
+    upvoted: Zagłosowano
+    remove_upvote: Kliknij ponownie, aby cofnąć swój głos
+    report: Zgłoś ten połów
+    related: Więcej połowów tego gatunku
+    photos: Zdjęcia
+    pick_brand: Wybierz markę
+    pick_lure: Wybierz przynętę
+    pick_variant: Wybierz wariant
+    color: Kolor
+    pick_color: Wybierz kolor, na który złowiłeś
+    pick_build: Wybierz wersję
+    pick_species: Co złowiłeś?
+    log_title: Zarejestruj połów
+    log_this: Zarejestruj ten połów
+    modal_step1: "Krok 1 z 2 · Wybierz kolor, na który złowiłeś"
+    modal_step2: "Krok 2 z 2 · Wybierz wersję i głębokość"
+    builds_in: "Wersje dostępne w kolorze"
+    no_builds: Ten kolor nie ma jeszcze żadnych wersji.
+    variation: Wariant
+    choose_variation: Wybierz wariant
+    change: Zmień
+    note: Notatki
+    submitted: Wysłano do recenzji
+    logged: Połów zarejestrowany
+    removed: Połów usunięty
+    submitted_body: Dzięki! Twój połów trafił do kolejki moderacji i pojawi się po zatwierdzeniu.
+    add_another: Dodaj kolejny
+
+  search:
+    filters: Filtry
+    combine_free: Łącz dowolnie — wyniki spełniają wszystkie warunki
+    no_results: Brak wyników
+    any_species: Dowolny gatunek
+    any_type: Dowolny typ
+    any_brand: Dowolna marka
+    any_action: Dowolna praca
+    any_depth: Dowolna głębokość
+    depth_band:
+      shallow: Płytko (0–1,5 m)
+      mid: Średnio (1,5–4,5 m)
+      deep: Głęboko (4,5 m+)
+    saltwater_only: Tylko woda słona
+    clear_all: Wyczyść wszystko
+    min: Min
+    max: Maks
+    show_n_lures:
+      one: Pokaż %{count} przynętę
+      other: Pokaż %{count} przynęt
+    other: Inne
+
+  leaderboard:
+    title: Ranking
+    subtitle: Najlepsi wędkarze według gatunków
+    all_species: Wszystkie gatunki
+    rank_by: Szereguj według
+    metric_catches: Połowy
+    metric_upvotes: Głosy
+    metric_length: Długość ryby
+    rank: Miejsce
+    angler: Wędkarz
+    catches: Połowy
+    upvotes: Głosy
+    best_length: Najdłuższa ryba
+    specialist: specjalista
+    species_count:
+      one: "%{count} gatunek"
+      other: "%{count} gatunków"
+    you: TY
+    empty: Brak sklasyfikowanych wędkarzy
+
+  contribute:
+    suggest_edit: Zaproponuj zmianę
+    edit_title: "Edytuj %{name}"
+    edit_saved: "Zmiany zapisane"
+    added: "Dodano do katalogu"
+    suggest_title: "Zaproponuj zmianę w %{name}"
+    suggest_note: Twoja propozycja zostanie sprawdzona przez moderatora.
+    suggested: Propozycja wysłana
+    suggested_body: Dzięki — moderator sprawdzi Twoją propozycję.
+    add_photos: Dodaj zdjęcia
+    moderation_note: Zgłoszenia są sprawdzane przed publikacją.
+    direct_note: Jako właściciel marki publikujesz od razu — bez recenzji.
+    pending_review: Ten wpis czeka na recenzję i nie jest jeszcze publiczny.
+
+  crop:
+    adjust: "Dostosuj kadr"
+    done: "Gotowe"
+    reset: "Resetuj kadr"
+    aspect_free: "Dowolny"
+    aspect_square: "Kwadrat"
+    bg_label: "Tło kafelka"
+    bg_auto: "Automatyczne"
+    bg_pick: "Wybierz ze zdjęcia"
+    bg_apply_all: "Zastosuj to tło do wszystkich kolorów tej przynęty"
+    hint: "Przeciągnij, aby zmienić położenie; przeciągnij rogi, aby zmienić rozmiar. Kadr zostanie zastosowany przy zapisie."
+    invalid: "Prostokąt kadru jest nieprawidłowy"
+  claim:
+    title: "Zgłoś prawa do %{name}"
+    page_title: Zgłoszenie praw do wpisu
+    intro: "Zgłoś prawa do tego wpisu (%{kind}), aby zarządzać jego treścią. Napisz nam, kim jesteś, a resztą zajmiemy się mailowo."
+    message_label: Kim jesteś i jaki masz związek z tym wpisem?
+    message_hint: "np. jestem założycielem / zajmuję się marketingiem marki…"
+    submit: Wyślij zgłoszenie
+    submitted_title: Zgłoszenie przyjęte
+    submitted_body: "Dzięki — rozpatrzymy Twoje zgłoszenie i odezwiemy się mailowo."
+    rejected_title: Zgłoszenie odrzucone
+    rejected_body: "To zgłoszenie zostało rozpatrzone i odrzucone. Jeśli uważasz, że to pomyłka, skontaktuj się z nami."
+    verified_title: Własność zweryfikowana
+    verified_body: Od teraz zarządzasz tym wpisem. Twoje zmiany publikowane są bez recenzji.
+    managed_badge: Zarządzane przez właściciela
+
+  report:
+    title: Zgłoś treść
+    target: Zgłaszasz
+    reason: Powód
+    reason_inaccurate: Nieprawdziwe lub wprowadzające w błąd
+    reason_fake: To nie jest prawdziwy połów / sfałszowane zdjęcie
+    reason_wrong: Zły gatunek lub przynęta
+    reason_spam: Spam lub reklama
+    reason_offensive: Obraźliwe lub nieodpowiednie
+    reason_other: Inne
+    note: Dodatkowe szczegóły (opcjonalnie)
+    submit: Wyślij zgłoszenie
+    submitted: Zgłoszenie wysłane
+    submitted_body: Dzięki — moderatorzy wkrótce to sprawdzą.
+
+  moderation:
+    title: Kolejka moderacji
+    subtitle: Recenzuj wkład społeczności
+    moderator_view: WIDOK MODERATORA
+    all: Wszystko
+    reports: Zgłoszenia
+    catches: Połowy
+    edits: Edycje
+    catalog: Katalog
+    claims: Roszczenia
+    awaiting: "%{count} czeka na recenzję"
+    approve: Zatwierdź
+    reject: Odrzuć
+    undo: Cofnij
+    approved: Zatwierdzono
+    rejected: Odrzucono
+    needs_admin: Wymaga administratora
+    own_submission: To Twoje zgłoszenie
+    submitted_by: Zgłoszone przez
+    view_details: Zobacz szczegóły
+    kind:
+      catch: Połów
+      edit: Edycja
+      catalog: Katalog
+      claim: Roszczenie
+      report: Zgłoszenie
+
+  admin:
+    title: Panel administratora
+    overview: Przegląd
+    people: Użytkownicy i role
+    activity: Dziennik aktywności
+    pending: Oczekuje na recenzję
+    catches_logged: Zarejestrowane połowy
+    contributors: Współtwórcy
+    lures_catalogued: Skatalogowane przynęty
+    role: Rola
+    member: Członek
+    moderator: Moderator
+    admin: Administrator
+    joined: Dołączył
+    you: TY
+
+  settings:
+    title: Ustawienia
+    tab_profile: Profil
+    tab_preferences: Preferencje
+    profile: Profil
+    country: Kraj
+    language: Język
+    time_zone: Strefa czasowa
+    time_zone_auto: "Automatyczna (UTC)"
+    units: Jednostki
+    notifications: Powiadomienia
+    saved: Ustawienia zapisane
+    public_profile: Twój profil publiczny
+    copy: Kopiuj
+    copied: Skopiowano!
+    username: Nazwa użytkownika
+    username_hint: np. casey-rivera
+    username_help: Opcjonalna. Małe litery, cyfry, myślniki. Używana w adresie Twojego profilu.
+    avatar: Zdjęcie profilowe
+    avatar_help: PNG, JPEG, WEBP lub GIF. Maks. 5 MB.
+    choose_image: Wybierz obraz
+    no_file: Nie wybrano obrazu
+    remove_avatar: Usuń obecne zdjęcie
+    avatar_too_large: jest za duże (maksymalnie 5 MB)
+    avatar_invalid_type: musi być obrazem PNG, JPEG, WEBP lub GIF
+
+  dashboard:
+    my_catches: Moje połowy
+    my_profile: Mój profil
+    total_upvotes: Łącznie otrzymanych głosów
+    no_catches: Nie zarejestrowałeś jeszcze żadnych połowów.
+
+  profile:
+    catches: Połowy
+    tab_catches: Połowy
+    tab_favorites: Ulubione
+    tab_contributions: Wkład
+    contributions: Wkład
+    no_contributions: Brak wkładu.
+    view_picture: Zobacz zdjęcie profilowe
+    change_picture: Prześlij/zmień zdjęcie profilowe
+    total_upvotes: Łączna liczba głosów
+    member_since: W serwisie od
+    favorite_species: Ulubione gatunki
+    favorite_lures: Ulubione przynęty
+    favorite_shops: Ulubione sklepy
+    no_favorites: Brak ulubionych.
+    no_catches: Brak połowów.
+
+  provenance:
+    title: Historia i własność
+    edits:
+      one: "%{count} edycja"
+      other: "%{count} edycji"
+    added_by: Dodane przez
+    owned_by: Właściciel
+    originally_added: "Pierwotnie dodane przez %{name} · %{date}"
+    edit_history: Historia edycji
+    created: Utworzenie tego wpisu
+    edited: edytowano
+    col_change: Zmiana
+    col_contributor: Autor
+    col_date: Data
+
+  revision:
+    title: Rewizja
+    no_changes: Dla tej edycji nie zarejestrowano zmian na poziomie pól.
+    removed: Usunięto
+    added: Dodano
+    field:
+      build_ids: Dostępne wersje
+
+  species_names:
+    largemouth_bass:
+      common: Bass wielkogębowy
+      habitat: Ciepłe, zarośnięte jeziora i stawy; drapieżnik polujący z zasadzki przy przeszkodach.
+    smallmouth_bass:
+      common: Bass małogębowy
+      habitat: Chłodne, czyste rzeki i kamieniste jeziora; wyjątkowo waleczny przeciwnik.
+    northern_pike:
+      common: Szczupak
+      habitat: Zarośnięte zatoki i chłodne jeziora; agresywny drapieżnik polujący z zasadzki.
+    walleye:
+      common: Sandacz amerykański
+      habitat: Głębokie, chłodne jeziora i rzeki; żeruje przy słabym świetle.
+    yellow_perch:
+      common: Okoń żółty
+      habitat: Ryba stadna jezior i stawów; żeruje przy dnie.
+    muskellunge:
+      common: Muskellunge
+      habitat: Duże, czyste jeziora i rzeki; szczytowy drapieżnik wód słodkich.
+    bluegill:
+      common: Bluegill
+      habitat: Ciepłe stawy i płycizny jezior; gniazduje w koloniach.
+    rainbow_trout:
+      common: Pstrąg tęczowy
+      habitat: Zimne strumienie, rzeki i jeziora; ceniona ryba sportowa.
+    mahi_mahi:
+      common: Mahi-Mahi
+      habitat: Ciepłe wody powierzchniowe otwartego oceanu; szybki drapieżnik pelagiczny.
+    striped_bass:
+      common: Bass prążkowany
+      habitat: Przybrzeżny przybój, estuaria i duże rzeki; ryba wędrowna.
+    bonefish:
+      common: Bonefish
+      habitat: Tropikalne płytkie równie pływowe; płochliwa i bardzo szybka.
+    chinook_salmon:
+      common: Czawycza
+      habitat: Zimne rzeki i jeziora zlewiska Pacyfiku; silna ryba wędrowna.
+  country:
+    US: Stany Zjednoczone
+    CA: Kanada
+    GB: Wielka Brytania
+    DE: Niemcy
+    FR: Francja
+    ES: Hiszpania
+    IT: Włochy
+    NL: Holandia
+    SE: Szwecja
+    "NO": Norwegia
+    PL: Polska
+    RU: Rosja
+    BG: Bułgaria
+    GR: Grecja
+    JP: Japonia
+    CN: Chiny
+    BR: Brazylia
+    MX: Meksyk
+    FI: Finlandia
+    AU: Australia
+    NZ: Nowa Zelandia
+    DK: Dania
+    IE: Irlandia
+    PT: Portugalia
+    KR: Korea Południowa
+    TH: Tajlandia
+    ZA: Republika Południowej Afryki
+    IN: Indie
+    AR: Argentyna
+    CL: Chile
+    UA: Ukraina
+    TR: Turcja
+    AT: Austria
+    BE: Belgia
+    CH: Szwajcaria
+    CZ: Czechy
+    HU: Węgry
+    RO: Rumunia
+  activerecord:
+    attributes:
+      user:
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+    errors:
+      messages:
+        confirmation: nie zgadza się z polem %{attribute}

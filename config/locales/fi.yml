@@ -1,0 +1,728 @@
+fi:
+  common:
+    all: Kaikki
+    none: "—"
+    save: Tallenna
+    cancel: Peruuta
+    submit: Lähetä
+    edit: Muokkaa
+    delete: Poista
+    add: Lisää
+    search: Hae
+    loading: Ladataan…
+    showing: "Näytetään %{from}–%{to} / %{count}"
+    page: Sivu
+    page_of: "/ %{total}"
+    next: Seuraava
+    prev: Edellinen
+    back: Takaisin
+    close: Sulje
+    by: lisännyt
+    on: ""
+    "yes": "Kyllä"
+    "no": "Ei"
+    verified: Vahvistettu
+    promoted: Korostettu
+    sponsored: Sponsoroitu
+
+  bans:
+    blocked: Tilisi käyttöä on rajoitettu, etkä voi tehdä tätä toimintoa.
+    notice:
+      title: Tilisi käyttöä on rajoitettu.
+      reason: Syy
+      permanent: Rajoitus on pysyvä.
+      until: "Voimassa %{date} asti."
+      scope: Rajoitetut toiminnot
+    capability:
+      catalog: katalogin muokkaukset
+      claims: omistajuuspyynnöt
+      catches: saaliiden kirjaaminen
+      comments: kommentit
+      upvotes: peukutukset
+      reports: ilmoitukset
+      favorites: suosikit
+    preset:
+      catalog_only: Vain katalogi
+      contributions: Kaikki osallistuminen
+      full: Täysi (vain luku -tili)
+    admin:
+      title: "Estot — %{name}"
+      title_short: Estot
+      new: Aseta esto
+      reason: Syy
+      preset: Esiasetus
+      custom: Mukautettu valinta
+      capabilities: Rajoitetut toiminnot
+      capabilities_help: Esiasetus valitsee toiminnot valmiiksi; muokkaa valintoja tarpeen mukaan.
+      expires_at: Päättyy
+      permanent_hint: Jätä tyhjäksi, jos esto on pysyvä.
+      issue: Aseta esto
+      status: Tila
+      scope: Laajuus
+      active: Voimassa
+      lifted: Poistettu
+      expired: Vanhentunut
+      lift: Poista esto
+      manage: Hallitse estoja
+      created: Esto asetettu.
+      revoked: Esto poistettu.
+
+  favorites:
+    add: Lisää suosikkeihin
+    remove: Poista suosikeista
+    favorited: Suosikeissa
+
+  footer:
+    explore: Tutustu
+
+  meta:
+    lures_index: "Selaa koko viehekatalogia — suodata tyypin, uintisyvyyden, veden ja kalalajin mukaan, todisteena oikeat kirjatut saaliit."
+    catches_index: "Kalastajien kirjaamia oikeita saaliita — näe tarkka viehe, väri ja olosuhteet jokaisen kalan takana."
+    brands_index: "Viehemerkkejä ympäri maailmaa, jokaisella koko mallisto ja yhteisön saalishistoria."
+    species_index: "Kalalajit ja vieheet, joilla niitä oikeasti saadaan — todisteena kalastajien kirjaamat saaliit."
+    shops_index: "Mistä ostaa vieheitä — kaupat järjestettynä sen mukaan, toimittavatko ne maahasi."
+    leaderboard: "Todistetuimmat vieheet, järjestettynä yhteisön kirjaamien oikeiden saaliiden mukaan."
+    lure_show: "%{lure} — %{type}, kuvat, värit, koot, ostopaikat ja kalastajien kirjaamat oikeat saaliit."
+    brand_show: "%{brand}-vieheet — koko mallisto kuvineen, teknisine tietoineen ja oikeine saalisraportteineen."
+    species_show: "katso, millä vieheillä sitä oikeasti saadaan — todisteena kalastajien kirjaamat saaliit"
+    shop_show: "kalastustarvikekauppa — toimitusmaat ja vieheiden ostolinkit"
+    catch_show: "%{species} saatu vieheellä %{lure} — kuva, olosuhteet ja vieheen tiedot kalastajan kirjaamana."
+  home:
+    tagline: Jokainen viehe, saaliilla todistettu
+    meta_description: Lurepedia on yhteisön kokoama vieheiden tietosanakirja — löydä vieheet ja näe oikeat saaliit todisteena siitä, että ne toimivat.
+    hero_title: Jokainen viehe, saaliilla todistettu
+    hero_sub: Yhteisön kokoama kalastusvieheiden tietosanakirja. Löydä toimivat vieheet — todisteena oikeat saaliit.
+    browse_lures: Selaa vieheitä
+    browse_another_way: Selaa toisella tavalla
+    add_a_catch: Lisää saalis
+
+  nav:
+    lures: Vieheet
+    species: Kalalajit
+    catches: Saaliit
+    brands: Merkit
+    shops: Kaupat
+    leaderboard: Tulostaulu
+    menu: Valikko
+
+  auth:
+    sign_in: Kirjaudu sisään
+    sign_up: Luo tili
+    sign_out: Kirjaudu ulos
+    email: Sähköposti
+    password: Salasana
+    password_confirmation: Vahvista salasana
+    name: Nimi
+    sign_in_required: Kirjaudu sisään osallistuaksesi.
+    not_authorized: Sinulla ei ole oikeutta tehdä tätä.
+    create_account: Luo tili
+    have_account: Onko sinulla jo tili?
+    no_account: Uusi Lurepediassa?
+    welcome_back: Tervetuloa takaisin
+    join: Liity Lurepediaan
+    choose_country: Maasi
+    choose_language: Ensisijainen kieli
+    continue_with_google: Jatka Googlella
+
+  units:
+    label: Yksiköt
+    auto: Automaattinen (maan mukaan)
+    imperial: Imperiaaliset
+    metric: Metriset
+    length: Pituus
+    weight: Paino
+    depth: Syvyys
+    cm: cm
+    in: in
+    g: g
+    kg: kg
+    oz: oz
+    lb: lb
+    ft: ft
+    m: m
+
+  water:
+    fresh: Makea vesi
+    salt: Suolainen vesi
+    both: Makea ja suolainen
+
+  action:
+    suspending: Suspending
+    floating: Kelluva
+    sinking: Uppoava
+    none: "—"
+
+  condition:
+    season:
+      label: Vuodenaika
+      any: Kaikki vuodenajat
+      spring: Kevät
+      summer: Kesä
+      fall: Syksy
+      winter: Talvi
+    clarity:
+      label: Veden kirkkaus
+      any: Kaikki kirkkaudet
+      clear: Kirkas
+      stained: Samea
+      muddy: Mutainen
+    water_body:
+      label: Vesistö
+      any: Kaikki vesistöt
+      lake: Järvi
+      pond: Lampi
+      river: Joki
+      reservoir: Tekojärvi
+      stream: Puro
+    wind:
+      label: Tuuli
+      any: Kaikki tuulet
+      calm: Tyyni
+      light: Heikko (5–10 mph)
+      moderate: Kohtalainen (10–20 mph)
+      strong: Kova (20+ mph)
+    time_of_day:
+      label: Vuorokaudenaika
+      any: Mihin aikaan tahansa
+      dawn: Aamuhämärä
+      morning: Aamu
+      midday: Keskipäivä
+      afternoon: Iltapäivä
+      dusk: Iltahämärä
+      night: Yö
+    platform:
+      label: Kalastuspaikka
+      any: Mistä tahansa
+      shore: Rannalta
+      boat: Veneestä
+      kayak: Kajakista
+    retrieve:
+      label: Kelaustyyli
+      any: Mikä tahansa tyyli
+      steady: Tasainen kelaus
+      stop_and_go: Stop and go
+      twitch: Twitchaus
+      jerk: Jerkkaus
+      slow_roll: Hidas kelaus
+      burn: Nopea kelaus
+      dead_stick: Seisotus
+
+  lure_type:
+    crankbait: Vaappu
+    jerkbait: Jerkkivaappu
+    soft_plastic: Pehmytmuoviviehe
+    spinnerbait: Spinnerbait
+    bladed_jig: Bladed jig
+    topwater: Pintaviehe
+    swimbait: Swimbait
+    jig: Jigi
+    spoon: Lusikkauistin
+    lipless_crankbait: Lipaton vaappu
+
+  lure:
+    similar_title: "Samankaltaiset vieheet"
+    similar_manage_hint: "Yhdistä ulkonäöltään samankaltaiset vieheet — usein eri merkeiltä — jotta kalastajat voivat vertailla niitä."
+    similar_none: "Samankaltaisia vieheitä ei ole vielä linkitetty."
+    similar_add: "Linkitä samankaltainen viehe"
+    similar_add_placeholder: "Etsi viehettä…"
+    similar_not_found: "Viehettä ei löytynyt."
+    similar_match: "%{score} % vastaavuus"
+    similar_suggest_title: "Muistuttaa näitä…"
+    similar_suggest_hint: "Tämä kuva muistuttaa näitä vieheitä. Valitse ne, jotka todella näyttävät samalta, niin linkitämme ne toisiinsa."
+    title: Vieheet
+    subtitle: Jokainen viehe, saaliilla todistettu
+    search_placeholder: Hae vieheitä — tai suodata tyypin, veden tai uintitavan mukaan…
+    model: Malli
+    description: Kuvaus
+    descriptions: Kuvaukset
+    translations: Käännökset
+    translations_hint: Vieheen kuvaus kullakin kielellä. Lukijat näkevät oman kielensä; jos käännöstä ei ole, näytetään englanti.
+    add: Lisää viehe
+    add_title: Lisää viehe
+    type: Tyyppi
+    depth: Uintisyvyys
+    action: Uintitapa
+    buoyancy: "Kelluvuus"
+    action_varies: "Vaihtelee"
+    water: Vesi
+    brand: Merkki
+    variants: Versiot
+    variant: Versio
+    tab_caught: Saatu tällä
+    proven_record:
+      title: Mitä saaliit kertovat
+      top_species: Yleisimmät lajit
+    tab_variations: "Versiot"
+    tab_buy: Ostopaikat
+    tab_history: Historia
+    proof: Todisteet toimivuudesta
+    catches_count:
+      one: "%{count} saalis"
+      other: "%{count} saalista"
+    no_proof: Ei vielä todisteita
+    be_first: Todista ensimmäisenä, että tämä viehe toimii
+    be_first_short: Todista ensimmäisenä, että se toimii →
+    where_to_buy: Ostopaikat
+    quick_facts: Pikatiedot
+    action_video: Viehe toiminnassa
+    add_video: Lisää uintivideo
+    watch_video: Katso video
+    suggest_edit: Ehdota muokkausta
+    add_catch: Lisää saalis
+    proven_for: Tehoaa todistetusti
+    no_matches: Yksikään viehe ei vastaa suodattimiasi
+    no_matches_sub: Etsitkö tiettyä viehettä? Lisää se, jos se puuttuu.
+    empty_title: Ei vielä vieheitä
+    size: Koko
+    weight: Paino
+    color: Väri
+    colors: Värit
+    colors_count:
+      one: "%{count} väri"
+      other: "%{count} väriä"
+    build: Koko
+    builds: Koot
+    browse_colors: Selaa värejä
+    common_attributes: Yhteiset ominaisuudet · koko viehesarja
+    this_variation: Tämä versio
+    default_variation: Oletusversio
+    uv_glow: UV-hohto
+    best_for: Tehoaa parhaiten
+    manage_variations: Versiot ja koot
+    tab_details: Yleistiedot
+    add_color: Lisää väri
+    add_build: Lisää koko
+    color_name: Värin nimi
+    availability: Saatavilla olevat koot
+    availability_hint: Valitse koot, joissa tämän värin tiedetään olevan saatavilla. Jätä kaikki valitsematta, jos et tiedä — väri näytetään silloin kaikkien kokojen alla.
+    available_in_n_of_m: Saatavilla %{n}/%{m} koossa
+
+  species:
+    title: Kalalajit
+    subtitle: Kalasanakirja
+    search_placeholder: Hae lajia — yleis- tai tieteellisellä nimellä…
+    venomous: Myrkkypiikkinen
+    venomous_hint: Kalalla on myrkylliset piikit tai pistin — käsittele varoen.
+    poisonous: Myrkyllinen
+    poisonous_hint: Myrkyllinen syötynä.
+    add: Lisää kalalaji
+    add_title: Lisää kalalaji
+    scientific_name: Tieteellinen nimi
+    local_names: Paikalliset nimet
+    translations: Käännökset
+    translations_hint: Yleisnimi ja kuvaus kullakin kielellä. Lukijat näkevät oman kielensä; jos käännöstä ei ole, näytetään englanti.
+    local_name: Yleisnimi
+    description: Kuvaus
+    descriptions: Kuvaukset
+    wikipedia_url: Wikipedia-osoite
+    wikipedia: Katso Wikipediassa
+    wikipedia_url_invalid: "täytyy olla Wikipedia-artikkelin osoite (esim. https://fi.wikipedia.org/wiki/...)"
+    habitat: Elinympäristö
+    tab_lures: Saatu näillä
+    tab_catches: Saaliit
+    tab_leaderboard: Tulostaulu
+    tab_history: Historia
+    proven_lures: Todistetut vieheet
+    lures_count:
+      one: "%{count} viehe"
+      other: "%{count} viehettä"
+    no_proven_lures: Ei vielä todistettuja vieheitä
+    be_first_lure: Todista ensimmäisenä, että jokin viehe tehoaa tähän kalaan
+    empty_title: Ei vielä kalalajeja
+    empty_sub: Lisää ensimmäinen kalalaji.
+
+  brand:
+    title: Merkit
+    subtitle: Valmistajat
+    search_placeholder: Hae merkkejä…
+    add: Lisää merkki
+    add_title: Lisää merkki
+    founded: Perustettu
+    empty_title: Ei vielä merkkejä
+    empty_sub: Lisää ensimmäinen viehemerkki.
+    country: Maa
+    website: Verkkosivusto
+    website_invalid: "Anna kelvollinen osoite, joka alkaa http:// tai https://"
+    logo: Logo
+    blurb: Tietoa
+    description: Kuvaus
+    descriptions: Kuvaukset
+    translations: Käännökset
+    translations_hint: Merkin kuvaus kullakin kielellä. Lukijat näkevät oman kielensä; jos käännöstä ei ole, näytetään englanti.
+    tab_lures: Vieheet
+    tab_history: Historia
+    claim: Ota tämä merkki hallintaasi
+    claimed: Otettu hallintaan
+    owned_by: Omistaja
+
+  buy_link:
+    add: Lisää ostopaikka
+    empty: Ei vielä kauppoja — lisää ensimmäinen paikka, josta tämän vieheen voi ostaa.
+    choose_shop: Kauppa
+    choose_shop_placeholder: Hae kauppoja…
+    existing_shop: Olemassa oleva kauppa
+    new_shop: Uusi kauppa
+    product_url: Tuotelinkki (valinnainen)
+    submit: Lisää
+    shop_required: Valitse kauppa.
+    already_listed: Kauppa on jo listattu tälle vieheelle.
+
+  shop:
+    title: Kaupat
+    subtitle: Ostopaikat
+    search_placeholder: Hae kauppoja…
+    add: Lisää kauppa
+    add_title: Lisää kauppa
+    ships_to_you: Kaupat, jotka toimittavat maahan %{country}
+    other_shops: Muut kaupat
+    none_ship: Yksikään kauppa ei vielä toimita maahan %{country}. Tiedätkö sellaisen?
+    tab_lures: Vieheet
+    tab_history: Historia
+    no_lures: Tässä kaupassa ei ole vielä listattuja vieheitä.
+    ships_to: Toimittaa maihin
+    ships_to_unknown: "—"
+    ships_worldwide: Toimittaa maailmanlaajuisesti
+    ships_to_hint: Jätä tyhjäksi, jos kauppa toimittaa maailmanlaajuisesti.
+    add_country: Lisää maa
+    worldwide: Maailmanlaajuinen
+    claim: Ota kauppa hallintaasi
+
+  catch:
+    title: Saaliit
+    subtitle: Yhteisön tuoreimmat todisteet
+    add: Lisää saalis
+    add_title: Lisää saalis
+    on_lure: "vieheellä %{lure}"
+    conditions: Olosuhteet
+    location: Paikka
+    length: Pituus
+    weight: Paino
+    contributor: Lisääjä
+    comments: Kommentit
+    add_comment: Lisää kommentti
+    upvote: Peukuta
+    upvoted: Peukutettu
+    remove_upvote: Poista peukutus napsauttamalla uudelleen
+    report: Ilmoita tästä saaliista
+    related: Lisää saaliita tästä lajista
+    photos: Kuvat
+    pick_brand: Valitse merkki
+    pick_lure: Valitse viehe
+    pick_variant: Valitse versio
+    color: Väri
+    pick_color: Valitse väri, jolla sait kalan
+    pick_build: Valitse koko
+    pick_species: Mitä sait?
+    log_title: Kirjaa saalis
+    log_this: Kirjaa tämä saalis
+    modal_step1: "Vaihe 1/2 · Valitse väri, jolla sait kalan"
+    modal_step2: "Vaihe 2/2 · Valitse koko ja syvyys"
+    builds_in: "Saatavilla olevat koot värissä"
+    no_builds: Tällä värillä ei ole vielä kokoja.
+    variation: Versio
+    choose_variation: Valitse versio
+    change: Vaihda
+    note: Muistiinpanot
+    submitted: Lähetetty tarkistettavaksi
+    logged: Saalis kirjattu
+    removed: Saalis poistettu
+    submitted_body: Kiitos! Saaliisi on moderointijonossa ja tulee näkyviin, kun se on hyväksytty.
+    add_another: Lisää toinen
+
+  search:
+    filters: Suodattimet
+    combine_free: Yhdistele vapaasti — tulokset täsmäävät kaikkiin
+    no_results: Ei tuloksia
+    any_species: Kaikki lajit
+    any_type: Kaikki tyypit
+    any_brand: Kaikki merkit
+    any_action: Kaikki uintitavat
+    any_depth: Kaikki syvyydet
+    depth_band:
+      shallow: Matala (0–1,5 m)
+      mid: Keskisyvä (1,5–4,5 m)
+      deep: Syvä (4,5 m+)
+    saltwater_only: Vain suolainen vesi
+    clear_all: Tyhjennä kaikki
+    min: Min
+    max: Max
+    show_n_lures:
+      one: Näytä %{count} viehe
+      other: Näytä %{count} viehettä
+    other: Muu
+
+  leaderboard:
+    title: Tulostaulu
+    subtitle: Parhaat kalastajat lajeittain
+    all_species: Kaikki lajit
+    rank_by: Järjestä
+    metric_catches: Saaliit
+    metric_upvotes: Peukutukset
+    metric_length: Kalan pituus
+    rank: Sija
+    angler: Kalastaja
+    catches: Saaliit
+    upvotes: Peukutukset
+    best_length: Paras pituus
+    specialist: spesialisti
+    species_count:
+      one: "%{count} laji"
+      other: "%{count} lajia"
+    you: SINÄ
+    empty: Ei vielä sijoittuneita kalastajia
+
+  contribute:
+    suggest_edit: Ehdota muokkausta
+    edit_title: "Muokkaa kohdetta %{name}"
+    edit_saved: "Muutokset tallennettu"
+    added: "Lisätty katalogiin"
+    suggest_title: "Ehdota muokkausta kohteeseen %{name}"
+    suggest_note: Moderaattori tarkistaa ehdotuksesi.
+    suggested: Ehdotus lähetetty
+    suggested_body: Kiitos — moderaattori tarkistaa ehdotuksesi.
+    add_photos: Lisää kuvia
+    moderation_note: Lisäykset tarkistetaan ennen julkaisua.
+    direct_note: Merkin omistajana muutoksesi julkaistaan heti — ilman tarkistusta.
+    pending_review: Tämä kohde odottaa tarkistusta eikä ole vielä julkinen.
+
+  crop:
+    adjust: "Säädä rajausta"
+    done: "Valmis"
+    reset: "Palauta rajaus"
+    aspect_free: "Vapaa"
+    aspect_square: "Neliö"
+    bg_label: "Laatan tausta"
+    bg_auto: "Automaattinen"
+    bg_pick: "Poimi kuvasta"
+    bg_apply_all: "Käytä tätä taustaa tämän vieheen kaikissa väreissä"
+    hint: "Siirrä vetämällä; muuta kokoa kulmista vetämällä. Rajaus tehdään tallennettaessa."
+    invalid: "Rajausalue ei kelpaa"
+  claim:
+    title: "Ota %{name} hallintaasi"
+    page_title: Ota listaus hallintaasi
+    intro: "Ota tämä %{kind} hallintaasi hallinnoidaksesi sen listausta. Kerro, kuka olet, niin jatkamme sähköpostitse."
+    message_label: Kuka olet ja miten liityt tähän listaukseen?
+    message_hint: "esim. Olen perustaja / vastaan merkin markkinoinnista…"
+    submit: Lähetä pyyntö
+    submitted_title: Pyyntö vastaanotettu
+    submitted_body: "Kiitos — tarkistamme pyyntösi ja palaamme asiaan sähköpostitse."
+    rejected_title: Pyyntöä ei hyväksytty
+    rejected_body: "Pyyntö tarkistettiin, mutta sitä ei hyväksytty. Jos tämä on mielestäsi virhe, ota yhteyttä."
+    verified_title: Omistajuus vahvistettu
+    verified_body: Hallinnoit nyt tätä listausta. Muokkauksesi julkaistaan ilman tarkistusta.
+    managed_badge: Omistajan hallinnoima
+
+  report:
+    title: Ilmoita sisällöstä
+    target: Ilmoituksen kohde
+    reason: Syy
+    reason_inaccurate: Virheellinen tai harhaanjohtava
+    reason_fake: Ei oikea saalis / lavastettu kuva
+    reason_wrong: Väärä laji tai viehe
+    reason_spam: Roskapostia tai mainontaa
+    reason_offensive: Loukkaava tai sopimaton
+    reason_other: Muu
+    note: Lisätiedot (valinnainen)
+    submit: Lähetä ilmoitus
+    submitted: Ilmoitus lähetetty
+    submitted_body: Kiitos — moderaattorit tarkistavat tämän pian.
+
+  moderation:
+    title: Moderointijono
+    subtitle: Tarkista yhteisön lisäykset
+    moderator_view: MODERAATTORINÄKYMÄ
+    all: Kaikki
+    reports: Ilmoitukset
+    catches: Saaliit
+    edits: Muokkaukset
+    catalog: Katalogi
+    claims: Omistajuuspyynnöt
+    awaiting: "%{count} odottaa tarkistusta"
+    approve: Hyväksy
+    reject: Hylkää
+    undo: Kumoa
+    approved: Hyväksytty
+    rejected: Hylätty
+    needs_admin: Vaatii ylläpitäjän
+    own_submission: Oma lisäyksesi
+    submitted_by: Lähettäjä
+    view_details: Näytä tiedot
+    kind:
+      catch: Saalis
+      edit: Muokkaus
+      catalog: Katalogi
+      claim: Omistajuuspyyntö
+      report: Ilmoitus
+
+  admin:
+    title: Ylläpito
+    overview: Yleiskatsaus
+    people: Käyttäjät ja roolit
+    activity: Tapahtumaloki
+    pending: Odottaa tarkistusta
+    catches_logged: Kirjatut saaliit
+    contributors: Osallistujat
+    lures_catalogued: Katalogoidut vieheet
+    role: Rooli
+    member: Jäsen
+    moderator: Moderaattori
+    admin: Ylläpitäjä
+    joined: Liittynyt
+    you: SINÄ
+
+  settings:
+    title: Asetukset
+    tab_profile: Profiili
+    tab_preferences: Mieltymykset
+    profile: Profiili
+    country: Maa
+    language: Kieli
+    time_zone: Aikavyöhyke
+    time_zone_auto: "Automaattinen (UTC)"
+    units: Yksiköt
+    notifications: Ilmoitukset
+    saved: Asetukset tallennettu
+    public_profile: Julkinen profiilisi
+    copy: Kopioi
+    copied: Kopioitu!
+    username: Käyttäjänimi
+    username_hint: esim. casey-rivera
+    username_help: Valinnainen. Pieniä kirjaimia, numeroita ja väliviivoja. Käytetään profiilisi osoitteessa.
+    avatar: Profiilikuva
+    avatar_help: PNG, JPEG, WEBP tai GIF. Enintään 5 Mt.
+    choose_image: Valitse kuva
+    no_file: Ei valittua kuvaa
+    remove_avatar: Poista nykyinen kuva
+    avatar_too_large: on liian suuri (enintään 5 Mt)
+    avatar_invalid_type: täytyy olla PNG-, JPEG-, WEBP- tai GIF-kuva
+
+  dashboard:
+    my_catches: Omat saaliit
+    my_profile: Oma profiili
+    total_upvotes: Peukutuksia yhteensä
+    no_catches: Et ole vielä kirjannut yhtään saalista.
+
+  profile:
+    catches: Saaliit
+    tab_catches: Saaliit
+    tab_favorites: Suosikit
+    tab_contributions: Lisäykset
+    contributions: Lisäykset
+    no_contributions: Ei vielä lisäyksiä.
+    view_picture: Näytä profiilikuva
+    change_picture: Lataa tai vaihda profiilikuva
+    total_upvotes: Peukutukset yhteensä
+    member_since: Jäsen alkaen
+    favorite_species: Suosikkilajit
+    favorite_lures: Suosikkivieheet
+    favorite_shops: Suosikkikaupat
+    no_favorites: Ei vielä suosikkeja.
+    no_catches: Ei vielä saaliita.
+
+  provenance:
+    title: Historia ja omistajuus
+    edits:
+      one: "%{count} muokkaus"
+      other: "%{count} muokkausta"
+    added_by: Lisääjä
+    owned_by: Omistaja
+    originally_added: "Alun perin lisännyt %{name} · %{date}"
+    edit_history: Muokkaushistoria
+    created: Loi tämän kohteen
+    edited: muokkasi
+    col_change: Muutos
+    col_contributor: Tekijä
+    col_date: Päivämäärä
+
+  revision:
+    title: Muokkaus
+    no_changes: Tähän muokkaukseen ei tallentunut kenttäkohtaisia muutoksia.
+    removed: Poistettu
+    added: Lisätty
+    field:
+      build_ids: Saatavilla olevat koot
+
+  species_names:
+    largemouth_bass:
+      common: Isobassi
+      habitat: Lämpimät, runsaskasvustoiset järvet ja lammet; väijyvä peto suojapaikkojen tuntumassa.
+    smallmouth_bass:
+      common: Pikkubassi
+      habitat: Viileät, kirkkaat joet ja kivikkoiset järvet; kova vastustaja.
+    northern_pike:
+      common: Hauki
+      habitat: Ruohoiset lahdet ja viileät järvet; aggressiivinen väijyvä peto.
+    walleye:
+      common: Valkosilmäkuha
+      habitat: Syvät, viileät järvet ja joet; syö hämärän aikaan.
+    yellow_perch:
+      common: Keltaahven
+      habitat: Järvien ja lampien parvikala; syö läheltä pohjaa.
+    muskellunge:
+      common: Jättihauki
+      habitat: Suuret kirkkaat järvet ja joet; makean veden huippupeto.
+    bluegill:
+      common: Isoaurinkoahven
+      habitat: Lämpimät lammet ja järvien matalikot; pesii yhdyskunnissa.
+    rainbow_trout:
+      common: Kirjolohi
+      habitat: Kylmät purot, joet ja järvet; arvostettu urheilukala.
+    mahi_mahi:
+      common: Dolfiini
+      habitat: Lämpimät avomeren pintavedet; nopea ulapan peto.
+    striped_bass:
+      common: Juovabassi
+      habitat: Rannikon tyrskyt, jokisuistot ja suuret joet; vaeltava laji.
+    bonefish:
+      common: Bonefish
+      habitat: Trooppiset matalat flatsit; arka ja nopea.
+    chinook_salmon:
+      common: Kuningaslohi
+      habitat: Kylmät Tyynenmeren joet ja järvet; voimakas vaeltava kala.
+  country:
+    US: Yhdysvallat
+    CA: Kanada
+    GB: Yhdistynyt kuningaskunta
+    DE: Saksa
+    FR: Ranska
+    ES: Espanja
+    IT: Italia
+    NL: Alankomaat
+    SE: Ruotsi
+    "NO": Norja
+    PL: Puola
+    RU: Venäjä
+    BG: Bulgaria
+    GR: Kreikka
+    JP: Japani
+    CN: Kiina
+    BR: Brasilia
+    MX: Meksiko
+    FI: Suomi
+    AU: Australia
+    NZ: Uusi-Seelanti
+    DK: Tanska
+    IE: Irlanti
+    PT: Portugali
+    KR: Etelä-Korea
+    TH: Thaimaa
+    ZA: Etelä-Afrikka
+    IN: Intia
+    AR: Argentiina
+    CL: Chile
+    UA: Ukraina
+    TR: Turkki
+    AT: Itävalta
+    BE: Belgia
+    CH: Sveitsi
+    CZ: Tšekki
+    HU: Unkari
+    RO: Romania
+  activerecord:
+    attributes:
+      user:
+        password: Salasana
+        password_confirmation: Salasanan vahvistus
+    errors:
+      messages:
+        confirmation: "ei täsmää kentän %{attribute} kanssa"
