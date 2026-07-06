@@ -9,8 +9,20 @@
   </div>
 
   <div class="page-search-row">
-    <%= render "shared/search_bar", url: species_index_path, placeholder: t("species.search_placeholder") %>
+    <%= render "species/search" %>
   </div>
+
+  <!-- Active filter pills -->
+  <% if @filter.active_pills.any? %>
+    <div class="chips" style="margin-bottom:18px">
+      <% @filter.active_pills.each do |key, label| %>
+        <span class="filter-pill"><%= label %>
+          <%= link_to "×", url_for(request.query_parameters.except(*SpeciesFilter.pill_params(key), "page")) %>
+        </span>
+      <% end %>
+      <%= link_to t("search.clear_all"), species_index_path, class: "muted", style: "font-size:13px" %>
+    </div>
+  <% end %>
 
   <% if @species.any? %>
     <div class="grid-cards">
@@ -37,7 +49,7 @@
       <% end %>
     </div>
     <%= render "shared/pagination", page: @page %>
-  <% elsif @q.present? %>
+  <% elsif @filter.any? %>
     <div class="empty-state">
       <h3><%= t("search.no_results") %></h3>
       <%= link_to t("search.clear_all"), species_index_path, class: "btn" %>

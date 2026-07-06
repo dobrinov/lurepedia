@@ -1,0 +1,15 @@
+<%= render layout: "shared/filter_panel",
+      locals: { url: shops_path, placeholder: t("shop.search_placeholder") } do %>
+  <div>
+    <div class="filter-label"><%= t("shop.ships_to") %></div>
+    <%= render "shared/combobox", name: "country", options: country_options,
+          selected: selected_filter_value(:country), placeholder: t("search.any_country") %>
+  </div>
+  <div>
+    <div class="filter-label"><%= t("search.other") %></div>
+    <div class="stack" style="gap:8px">
+      <label class="toggle"><%= check_box_tag :worldwide, "1", params[:worldwide].present? %><span class="track"><span class="knob"></span></span><%= t("shop.ships_worldwide") %></label>
+      <label class="toggle"><%= check_box_tag :claimed, "1", params[:claimed].present? %><span class="track"><span class="knob"></span></span><%= t("claim.managed_badge") %></label>
+    </div>
+  </div>
+<% end %>

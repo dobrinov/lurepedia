@@ -438,11 +438,14 @@ da:
     any_brand: Alle mærker
     any_action: Alle aktioner
     any_depth: Alle dybder
+    any_country: Alle lande
+    any_water: Alle vandtyper
     depth_band:
       shallow: Lavt (0–1,5 m)
       mid: Mellem (1,5–4,5 m)
       deep: Dybt (4,5 m+)
     saltwater_only: Kun saltvand
+    proven_only: Kun gennemprøvede
     clear_all: Ryd alle
     min: Min.
     max: Maks.

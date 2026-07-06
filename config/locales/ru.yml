@@ -438,11 +438,14 @@ ru:
     any_brand: Любой бренд
     any_action: Любая плавучесть
     any_depth: Любая глубина
+    any_country: Любая страна
+    any_water: Любая вода
     depth_band:
       shallow: Мелко (0–1,5 м)
       mid: Средне (1,5–4,5 м)
       deep: Глубоко (4,5 м+)
     saltwater_only: Только солёная вода
+    proven_only: Только проверенные
     clear_all: Сбросить всё
     min: Мин
     max: Макс

@@ -438,11 +438,14 @@ pt:
     any_brand: Qualquer marca
     any_action: Qualquer ação
     any_depth: Qualquer profundidade
+    any_country: Qualquer país
+    any_water: Qualquer água
     depth_band:
       shallow: Rasa (0–1,5 m)
       mid: Média (1,5–4,5 m)
       deep: Funda (4,5 m+)
     saltwater_only: Apenas água salgada
+    proven_only: Apenas comprovados
     clear_all: Limpar tudo
     min: Mín
     max: Máx

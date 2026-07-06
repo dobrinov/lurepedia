@@ -438,11 +438,14 @@ ko:
     any_brand: 모든 브랜드
     any_action: 모든 액션
     any_depth: 모든 수심
+    any_country: 모든 국가
+    any_water: 모든 수역
     depth_band:
       shallow: "얕음 (0–1.5m)"
       mid: "중층 (1.5–4.5m)"
       deep: "깊음 (4.5m 이상)"
     saltwater_only: 바다 전용
+    proven_only: 검증된 항목만
     clear_all: 모두 지우기
     min: 최소
     max: 최대

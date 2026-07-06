@@ -388,11 +388,14 @@ ja:
     any_brand: すべてのブランド
     any_action: すべてのアクション
     any_depth: すべてのレンジ
+    any_country: すべての国
+    any_water: すべての水域
     depth_band:
       shallow: シャロー（0〜1.5m）
       mid: ミディアム（1.5〜4.5m）
       deep: ディープ（4.5m以上）
     saltwater_only: 海水のみ
+    proven_only: 実績ありのみ
     clear_all: すべてクリア
     min: 最小
     max: 最大

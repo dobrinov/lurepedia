@@ -9,8 +9,20 @@
   </div>
 
   <div class="page-search-row">
-    <%= render "shared/search_bar", url: brands_path, placeholder: t("brand.search_placeholder") %>
+    <%= render "brands/search" %>
   </div>
+
+  <!-- Active filter pills -->
+  <% if @filter.active_pills.any? %>
+    <div class="chips" style="margin-bottom:18px">
+      <% @filter.active_pills.each do |key, label| %>
+        <span class="filter-pill"><%= label %>
+          <%= link_to "×", url_for(request.query_parameters.except(*BrandFilter.pill_params(key), "page")) %>
+        </span>
+      <% end %>
+      <%= link_to t("search.clear_all"), brands_path, class: "muted", style: "font-size:13px" %>
+    </div>
+  <% end %>
 
   <% if @brands.any? %>
     <div class="grid-cards">
@@ -30,7 +42,7 @@
       <% end %>
     </div>
     <%= render "shared/pagination", page: @page %>
-  <% elsif @q.present? %>
+  <% elsif @filter.any? %>
     <div class="empty-state">
       <h3><%= t("search.no_results") %></h3>
       <%= link_to t("search.clear_all"), brands_path, class: "btn" %>

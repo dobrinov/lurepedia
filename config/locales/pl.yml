@@ -438,11 +438,14 @@ pl:
     any_brand: Dowolna marka
     any_action: Dowolna praca
     any_depth: Dowolna głębokość
+    any_country: Dowolny kraj
+    any_water: Dowolna woda
     depth_band:
       shallow: Płytko (0–1,5 m)
       mid: Średnio (1,5–4,5 m)
       deep: Głęboko (4,5 m+)
     saltwater_only: Tylko woda słona
+    proven_only: Tylko sprawdzone
     clear_all: Wyczyść wszystko
     min: Min
     max: Maks

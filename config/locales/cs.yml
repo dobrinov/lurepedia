@@ -438,11 +438,14 @@ cs:
     any_brand: Jakákoli značka
     any_action: Jakákoli akce
     any_depth: Jakákoli hloubka
+    any_country: Jakákoli země
+    any_water: Jakákoli voda
     depth_band:
       shallow: Mělce (0–1,5 m)
       mid: Středně (1,5–4,5 m)
       deep: Hluboko (4,5 m+)
     saltwater_only: Pouze slaná voda
+    proven_only: Pouze osvědčené
     clear_all: Zrušit vše
     min: Min
     max: Max

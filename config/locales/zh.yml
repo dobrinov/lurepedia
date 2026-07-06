@@ -438,11 +438,14 @@ zh:
     any_brand: 不限品牌
     any_action: 不限动作
     any_depth: 不限泳层
+    any_country: 不限国家
+    any_water: 不限水域
     depth_band:
       shallow: 浅层（0–1.5 米）
       mid: 中层（1.5–4.5 米）
       deep: 深层（4.5 米以上）
     saltwater_only: 仅海水
+    proven_only: 仅显示已验证
     clear_all: 清除全部
     min: 最小
     max: 最大

@@ -438,11 +438,14 @@ nl:
     any_brand: Elk merk
     any_action: Elke actie
     any_depth: Elke diepte
+    any_country: Elk land
+    any_water: Elk water
     depth_band:
       shallow: Ondiep (0–1,5 m)
       mid: Middeldiep (1,5–4,5 m)
       deep: Diep (4,5 m+)
     saltwater_only: Alleen zoutwater
+    proven_only: Alleen bewezen
     clear_all: Alles wissen
     min: Min
     max: Max

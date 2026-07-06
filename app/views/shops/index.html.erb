@@ -12,10 +12,22 @@
   </div>
 
   <div class="page-search-row">
-    <%= render "shared/search_bar", url: shops_path, placeholder: t("shop.search_placeholder") %>
+    <%= render "shops/search" %>
   </div>
 
-  <% if @q.present? && @local_shops.empty? && @other_shops.empty? %>
+  <!-- Active filter pills -->
+  <% if @filter.active_pills.any? %>
+    <div class="chips" style="margin-bottom:18px">
+      <% @filter.active_pills.each do |key, label| %>
+        <span class="filter-pill"><%= label %>
+          <%= link_to "×", url_for(request.query_parameters.except(*ShopFilter.pill_params(key), "page")) %>
+        </span>
+      <% end %>
+      <%= link_to t("search.clear_all"), shops_path, class: "muted", style: "font-size:13px" %>
+    </div>
+  <% end %>
+
+  <% if @filter.any? && @local_shops.empty? && @other_shops.empty? %>
     <div class="empty-state">
       <h3><%= t("search.no_results") %></h3>
       <%= link_to t("search.clear_all"), shops_path, class: "btn" %>

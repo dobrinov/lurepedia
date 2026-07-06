@@ -438,11 +438,14 @@ fi:
     any_brand: Kaikki merkit
     any_action: Kaikki uintitavat
     any_depth: Kaikki syvyydet
+    any_country: Kaikki maat
+    any_water: Kaikki vesistöt
     depth_band:
       shallow: Matala (0–1,5 m)
       mid: Keskisyvä (1,5–4,5 m)
       deep: Syvä (4,5 m+)
     saltwater_only: Vain suolainen vesi
+    proven_only: Vain todistetut
     clear_all: Tyhjennä kaikki
     min: Min
     max: Max

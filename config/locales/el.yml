@@ -438,11 +438,14 @@ el:
     any_brand: Κάθε μάρκα
     any_action: Κάθε δράση
     any_depth: Κάθε βάθος
+    any_country: Κάθε χώρα
+    any_water: Κάθε νερό
     depth_band:
       shallow: Ρηχό (0–1,5 m)
       mid: Μεσαίο (1,5–4,5 m)
       deep: Βαθύ (4,5 m+)
     saltwater_only: Μόνο αλμυρό νερό
+    proven_only: Μόνο αποδεδειγμένα
     clear_all: Καθαρισμός όλων
     min: Ελάχ.
     max: Μέγ.

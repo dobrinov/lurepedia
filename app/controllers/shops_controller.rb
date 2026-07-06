@@ -3,11 +3,9 @@ class ShopsController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
-    @q = params[:q].to_s.strip
-    shops = Shop.published.includes(:claim).promoted_first
-    shops = shops.where("LOWER(name) LIKE ?", "%#{@q.downcase}%") if @q.present?
+    @filter = ShopFilter.new(params)
     @country = helpers.viewer_country
-    local, other = shops.partition { |shop| shop.ships_to_country?(@country) }
+    local, other = @filter.results.partition { |shop| shop.ships_to_country?(@country) }
     @local_shops = local
     @page = paginate(other, per: 9)
     @other_shops = @page.records

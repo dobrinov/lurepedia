@@ -1,90 +1,56 @@
-<div class="site-search page-search" data-controller="search-bar">
-  <span class="search-icon">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
-  </span>
-  <%= form_with url: lures_path, method: :get do |f| %>
-    <%# Keep the active filters when submitting a free-text query %>
-    <% request.query_parameters.except("q", "page").each do |key, value| %>
-      <%= hidden_field_tag key, value if value.is_a?(String) %>
-    <% end %>
-    <%= f.search_field :q, value: params[:q], placeholder: t("lure.search_placeholder"),
-          autocomplete: "off",
-          data: { action: "focus->search-bar#expand" } %>
+<%= render layout: "shared/filter_panel",
+      locals: { url: lures_path, placeholder: t("lure.search_placeholder") } do %>
+  <%# Large collections: server-backed, paginated, infinite-scroll comboboxes %>
+  <div>
+    <div class="filter-label"><%= t("nav.species") %></div>
+    <%= render "shared/async_combobox", name: "species", url: species_options_path,
+          selected: selected_filter_value(:species), selected_label: selected_species_label(selected_filter_value(:species)),
+          placeholder: t("search.any_species") %>
+  </div>
+  <div>
+    <div class="filter-label"><%= t("lure.brand") %></div>
+    <%= render "shared/async_combobox", name: "brand", url: brand_options_path,
+          selected: selected_filter_value(:brand), selected_label: selected_brand_label(selected_filter_value(:brand)),
+          placeholder: t("search.any_brand") %>
+  </div>
+
+  <%# Small static enums: inline client-side combobox %>
+  <% static_filter_fields.each do |field, opts| %>
+    <div>
+      <div class="filter-label"><%= opts[:label] %></div>
+      <%= render "shared/combobox", name: field.to_s, options: opts[:options],
+            selected: params[field], placeholder: opts[:placeholder] %>
+    </div>
   <% end %>
 
-  <div class="search-panel" data-search-bar-target="panel" hidden>
-    <div class="row" style="justify-content:space-between">
-      <strong style="display:flex;align-items:center;gap:8px">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
-        <%= t("search.filters") %>
-      </strong>
-      <span class="muted panel-hint" style="font-size:13px"><%= t("search.combine_free") %></span>
-      <button type="button" class="panel-close" data-action="search-bar#collapse" aria-label="<%= t("common.close") %>">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
-      </button>
+  <%# Build-spec ranges, in the units lures are catalogued in (mm / g) %>
+  <div>
+    <div class="filter-label"><%= t("lure.size") %> (mm)</div>
+    <div class="range-inputs">
+      <%= number_field_tag :length_min, selected_filter_value(:length_min), min: 0, class: "input",
+            placeholder: t("search.min"), aria: { label: "#{t('lure.size')} #{t('search.min')}" } %>
+      <span class="muted">–</span>
+      <%= number_field_tag :length_max, selected_filter_value(:length_max), min: 0, class: "input",
+            placeholder: t("search.max"), aria: { label: "#{t('lure.size')} #{t('search.max')}" } %>
     </div>
-    <%= form_with url: lures_path, method: :get, class: "filters-form" do %>
-      <%# Keep the free-text query when applying filters %>
-      <%= hidden_field_tag :q, params[:q] if selected_filter_value(:q) %>
-      <div class="filters-grid">
-        <%# Large collections: server-backed, paginated, infinite-scroll comboboxes %>
-        <div>
-          <div class="filter-label"><%= t("nav.species") %></div>
-          <%= render "shared/async_combobox", name: "species", url: species_options_path,
-                selected: selected_filter_value(:species), selected_label: selected_species_label(selected_filter_value(:species)),
-                placeholder: t("search.any_species") %>
-        </div>
-        <div>
-          <div class="filter-label"><%= t("lure.brand") %></div>
-          <%= render "shared/async_combobox", name: "brand", url: brand_options_path,
-                selected: selected_filter_value(:brand), selected_label: selected_brand_label(selected_filter_value(:brand)),
-                placeholder: t("search.any_brand") %>
-        </div>
-
-        <%# Small static enums: inline client-side combobox %>
-        <% static_filter_fields.each do |field, opts| %>
-          <div>
-            <div class="filter-label"><%= opts[:label] %></div>
-            <%= render "shared/combobox", name: field.to_s, options: opts[:options],
-                  selected: params[field], placeholder: opts[:placeholder] %>
-          </div>
-        <% end %>
-
-        <%# Build-spec ranges, in the units lures are catalogued in (mm / g) %>
-        <div>
-          <div class="filter-label"><%= t("lure.size") %> (mm)</div>
-          <div class="range-inputs">
-            <%= number_field_tag :length_min, selected_filter_value(:length_min), min: 0, class: "input",
-                  placeholder: t("search.min"), aria: { label: "#{t('lure.size')} #{t('search.min')}" } %>
-            <span class="muted">–</span>
-            <%= number_field_tag :length_max, selected_filter_value(:length_max), min: 0, class: "input",
-                  placeholder: t("search.max"), aria: { label: "#{t('lure.size')} #{t('search.max')}" } %>
-          </div>
-        </div>
-        <%# Weight follows the viewer's unit preference; the unit rides the URL so
-            redisplayed (or shared) filter values keep the unit they were typed in %>
-        <% weight_unit = selected_weight_filter_unit %>
-        <div>
-          <div class="filter-label"><%= t("lure.weight") %> (<%= t("units.#{weight_unit}") %>)</div>
-          <%= hidden_field_tag :weight_unit, weight_unit if weight_unit != "g" %>
-          <div class="range-inputs">
-            <%= number_field_tag :weight_min, selected_filter_value(:weight_min), min: 0, step: "any", class: "input",
-                  placeholder: t("search.min"), aria: { label: "#{t('lure.weight')} #{t('search.min')}" } %>
-            <span class="muted">–</span>
-            <%= number_field_tag :weight_max, selected_filter_value(:weight_max), min: 0, step: "any", class: "input",
-                  placeholder: t("search.max"), aria: { label: "#{t('lure.weight')} #{t('search.max')}" } %>
-          </div>
-        </div>
-
-        <div>
-          <div class="filter-label"><%= t("search.other") %></div>
-          <label class="toggle"><%= check_box_tag :saltwater, "1", params[:saltwater].present? %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>
-        </div>
-      </div>
-      <div class="panel-foot">
-        <a href="<%= lures_path %>" class="muted" style="font-size:14px"><%= t("search.clear_all") %></a>
-        <button type="submit" class="btn btn-primary"><%= t("common.search") %></button>
-      </div>
-    <% end %>
   </div>
-</div>
+  <%# Weight follows the viewer's unit preference; the unit rides the URL so
+      redisplayed (or shared) filter values keep the unit they were typed in %>
+  <% weight_unit = selected_weight_filter_unit %>
+  <div>
+    <div class="filter-label"><%= t("lure.weight") %> (<%= t("units.#{weight_unit}") %>)</div>
+    <%= hidden_field_tag :weight_unit, weight_unit if weight_unit != "g" %>
+    <div class="range-inputs">
+      <%= number_field_tag :weight_min, selected_filter_value(:weight_min), min: 0, step: "any", class: "input",
+            placeholder: t("search.min"), aria: { label: "#{t('lure.weight')} #{t('search.min')}" } %>
+      <span class="muted">–</span>
+      <%= number_field_tag :weight_max, selected_filter_value(:weight_max), min: 0, step: "any", class: "input",
+            placeholder: t("search.max"), aria: { label: "#{t('lure.weight')} #{t('search.max')}" } %>
+    </div>
+  </div>
+
+  <div>
+    <div class="filter-label"><%= t("search.other") %></div>
+    <label class="toggle"><%= check_box_tag :saltwater, "1", params[:saltwater].present? %><span class="track"><span class="knob"></span></span><%= t("search.saltwater_only") %></label>
+  </div>
+<% end %>

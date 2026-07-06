@@ -388,11 +388,14 @@ de:
     any_brand: Alle Marken
     any_action: Jede Aktion
     any_depth: Jede Tiefe
+    any_country: Jedes Land
+    any_water: Jedes Gewässer
     depth_band:
       shallow: Flach (0–1,5 m)
       mid: Mittel (1,5–4,5 m)
       deep: Tief (4,5 m+)
     saltwater_only: Nur Salzwasser
+    proven_only: Nur bewährte
     clear_all: Alles zurücksetzen
     min: Min
     max: Max

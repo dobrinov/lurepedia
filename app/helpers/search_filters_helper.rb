@@ -36,6 +36,16 @@ module SearchFiltersHelper
     %w[ g oz ].include?(param) ? param : viewer_weight_unit
   end
 
+  # Origin countries actually present in the brand directory, as combobox options.
+  def brand_country_options
+    Brand.published.where.not(country: [ nil, "" ]).distinct.pluck(:country)
+         .map { |code| [ country_name(code), code ] }.sort_by(&:first)
+  end
+
+  def species_water_options
+    Species.waters.keys.map { |key| [ water_name(key), key ] }
+  end
+
   private
 
   def static_filter_options(field)

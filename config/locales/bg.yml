@@ -388,11 +388,14 @@ bg:
     any_brand: Всички марки
     any_action: Всякакво движение
     any_depth: Всякаква дълбочина
+    any_country: Всяка държава
+    any_water: Всякаква вода
     depth_band:
       shallow: Плитко (0–1.5 м)
       mid: Средно (1.5–4.5 м)
       deep: Дълбоко (4.5 м+)
     saltwater_only: Само солена вода
+    proven_only: Само доказани
     clear_all: Изчисти всичко
     min: Мин
     max: Макс

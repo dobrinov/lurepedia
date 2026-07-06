@@ -438,11 +438,14 @@
     any_brand: Alle merker
     any_action: Alle aksjoner
     any_depth: Alle dybder
+    any_country: Alle land
+    any_water: Alle vanntyper
     depth_band:
       shallow: Grunt (0–1,5 m)
       mid: Middels (1,5–4,5 m)
       deep: Dypt (4,5 m+)
     saltwater_only: Kun saltvann
+    proven_only: Kun beviste
     clear_all: Fjern alle
     min: Min
     max: Maks

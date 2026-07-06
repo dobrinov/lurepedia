@@ -438,11 +438,14 @@ en:
     any_brand: Any brand
     any_action: Any action
     any_depth: Any depth
+    any_country: Any country
+    any_water: Any water
     depth_band:
       shallow: Shallow (0–1.5m)
       mid: Mid (1.5–4.5m)
       deep: Deep (4.5m+)
     saltwater_only: Saltwater only
+    proven_only: Proven only
     clear_all: Clear all
     min: Min
     max: Max

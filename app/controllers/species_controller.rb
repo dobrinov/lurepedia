@@ -3,14 +3,8 @@ class SpeciesController < ApplicationController
   before_action -> { require_contribution(:catalog) }, only: %i[new create edit update]
 
   def index
-    @q = params[:q].to_s.strip
-    scope = Species.alpha.published
-    if @q.present?
-      # Ruby-side over the full, bounded species set — same approach as
-      # FilterOptionsController#species.
-      scope = scope.to_a.select { |s| s.name_matches?(@q) }
-    end
-    @page = paginate(scope, per: 12)
+    @filter = SpeciesFilter.new(params)
+    @page = paginate(@filter.results, per: 12)
     @species = @page.records
     @proven_lure_counts = Species.proven_lure_counts(@species)
   end

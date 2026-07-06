@@ -438,11 +438,14 @@ fr:
     any_brand: Toutes les marques
     any_action: Toute densité
     any_depth: Toute profondeur
+    any_country: Tous les pays
+    any_water: Tous types d'eau
     depth_band:
       shallow: Faible (0–1,5 m)
       mid: Moyenne (1,5–4,5 m)
       deep: Profonde (4,5 m+)
     saltwater_only: Eau salée uniquement
+    proven_only: Éprouvés uniquement
     clear_all: Tout effacer
     min: Min
     max: Max

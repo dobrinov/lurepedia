@@ -438,11 +438,14 @@ sv:
     any_brand: Alla märken
     any_action: Alla flytlägen
     any_depth: Alla djup
+    any_country: Alla länder
+    any_water: Alla vattentyper
     depth_band:
       shallow: Grunt (0–1,5 m)
       mid: Mellandjup (1,5–4,5 m)
       deep: Djupt (4,5 m+)
     saltwater_only: Endast saltvatten
+    proven_only: Endast beprövade
     clear_all: Rensa alla
     min: Min
     max: Max

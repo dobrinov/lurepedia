@@ -1,0 +1,16 @@
+<%= render layout: "shared/filter_panel",
+      locals: { url: species_index_path, placeholder: t("species.search_placeholder") } do %>
+  <div>
+    <div class="filter-label"><%= t("lure.water") %></div>
+    <%= render "shared/combobox", name: "water", options: species_water_options,
+          selected: selected_filter_value(:water), placeholder: t("search.any_water") %>
+  </div>
+  <div>
+    <div class="filter-label"><%= t("search.other") %></div>
+    <div class="stack" style="gap:8px">
+      <label class="toggle"><%= check_box_tag :venomous, "1", params[:venomous].present? %><span class="track"><span class="knob"></span></span><%= t("species.venomous") %></label>
+      <label class="toggle"><%= check_box_tag :poisonous, "1", params[:poisonous].present? %><span class="track"><span class="knob"></span></span><%= t("species.poisonous") %></label>
+      <label class="toggle"><%= check_box_tag :proven, "1", params[:proven].present? %><span class="track"><span class="knob"></span></span><%= t("search.proven_only") %></label>
+    </div>
+  </div>
+<% end %>
