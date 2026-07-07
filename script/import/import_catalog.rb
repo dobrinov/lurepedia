@@ -83,8 +83,16 @@ data.fetch("lures").each do |spec|
       end
     next stats[:missing_photos] += 1 unless io
 
-    variant.photo.attach(io: io, filename: "#{lure.slug}-#{variant.to_color_param}#{File.extname(filename)}")
-    stats[:photos] += 1
+    # The in-Puma Solid Queue workers contend with the analyze-job enqueue on
+    # the queue SQLite DB; a locked DB must not kill the import mid-run. The
+    # analyze sweep after the run picks up any blob left unanalyzed here.
+    begin
+      variant.photo.attach(io: io, filename: "#{lure.slug}-#{variant.to_color_param}#{File.extname(filename)}")
+      stats[:photos] += 1
+    rescue SolidQueue::Job::EnqueueError, ActiveRecord::StatementTimeout => e
+      puts "  ! attach enqueue failed (continuing): #{lure.model} / #{cs["name"]}: #{e.class}"
+      stats[:photos] += 1 if variant.photo.attached?
+    end
     sleep 0.15 if cs["image"]
   end
 
