@@ -8,7 +8,7 @@ class Brand < ApplicationRecord
   has_many :revisions, as: :subject, dependent: :destroy
   has_one_attached :logo
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :website,
             format: { with: %r{\Ahttps?://.+\..+\z}i, message: ->(*) { I18n.t("brand.website_invalid") } },
             allow_blank: true

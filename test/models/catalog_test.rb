@@ -16,9 +16,9 @@ class CatalogTest < ActiveSupport::TestCase
   end
 
   test "slug uniqueness disambiguates" do
-    other_brand = Brand.create!(name: "Other")
-    dup = Lure.create!(brand: other_brand, lure_type: @type, model: "KVD 1.5")
-    @brand.update!(name: "Other") # force same source
+    # Same brand + model => identical slug source; the second must still get a
+    # distinct slug.
+    dup = Lure.create!(brand: @brand, lure_type: @type, model: "KVD 1.5")
     assert_not_equal @lure.slug, dup.slug
   end
 
