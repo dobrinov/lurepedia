@@ -39,8 +39,11 @@ primary_region = "lhr"
     grace_period = "20s"
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "1gb"
+  # Single machine, sized up for headroom: browse traffic plus the in-Puma
+  # Solid Queue analyze jobs (CPU-heavy image processing during catalog imports).
+  # Still ONE machine — see the SQLite note at the top; do not raise the count.
+  size = "shared-cpu-2x"
+  memory = "4gb"
 
 # Persistent storage for the SQLite databases (primary, cache, queue, cable)
 # and any local Active Storage uploads. Without this, the database is wiped on
