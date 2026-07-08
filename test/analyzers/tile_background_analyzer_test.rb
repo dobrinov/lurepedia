@@ -39,6 +39,24 @@ class TileBackgroundAnalyzerTest < ActiveSupport::TestCase
     assert_equal "#ff0000", blob.metadata["background_color"]
   end
 
+  test "a lure touching an edge mid-span leaves the corner background clean" do
+    # White studio background with a dark shape crossing the bottom edge away
+    # from the corners (a body or diving lip touching a side). Averaging the
+    # whole border would drag the tile toward grey; the corners stay white.
+    path = File.join(Dir.mktmpdir, "touching.png")
+    MiniMagick.convert do |c|
+      c.size("120x80")
+      c << "canvas:white"
+      c.fill("black")
+      c.draw("rectangle 45,45 75,80")
+      c << path
+    end
+    blob = ActiveStorage::Blob.create_and_upload!(io: File.open(path), filename: "touching.png", content_type: "image/png")
+    blob.analyze
+
+    assert_equal "#ffffff", blob.metadata["background_color"]
+  end
+
   test "transparent edges store false so reruns can skip the blob" do
     blob = blob_for("canvas:transparent")
     blob.analyze

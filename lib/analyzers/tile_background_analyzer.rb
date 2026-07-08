@@ -1,7 +1,7 @@
-# The stock image analysis (width/height) plus the photo's dominant border
-# color, stored in blob metadata as "background_color" => "#rrggbb". Square
-# tiles letterbox contain-fit photos; painting the tile with the photo's own
-# edge color makes the bars blend into the image
+# The stock image analysis (width/height) plus the photo's corner color,
+# stored in blob metadata as "background_color" => "#rrggbb". Square tiles
+# letterbox contain-fit photos; painting the tile with the photo's own corner
+# color makes the bars blend into the image
 # (ApplicationHelper#photo_frame_style).
 #
 # Also stores the photo's color-distribution fingerprint as "color_signature"
@@ -34,18 +34,24 @@ class TileBackgroundAnalyzer < ActiveStorage::Analyzer::ImageAnalyzer::ImageMagi
     nil
   end
 
+  # The four corner pixels are the safest read of the studio background: a
+  # centered lure never reaches a corner, whereas a body or diving lip that
+  # touches a side would drag a whole-border average toward muddy grey. The
+  # SAMPLE×SAMPLE forced resize already smooths each corner over a block of the
+  # original, so one pixel per corner is a regional sample, not a lone dot.
+  # Transparent corners (letterbox bars) don't vote, and the per-channel median
+  # of the survivors shrugs off a single odd corner.
   def background_color
     download_blob_to_tempfile do |file|
-      pixels = border_pixels(file.path)
-      average_hex(pixels) if pixels.size >= edge_pixel_count / 2
+      corners = corner_pixels(file.path)
+      median_hex(corners) if corners.size >= 2
     end
   rescue MiniMagick::Error
     nil
   end
 
-  # RGB triplets of the opaque pixels on the resampled image's 1px border —
-  # the pixels that end up adjacent to any letterbox bar.
-  def border_pixels(path)
+  # RGB triplets of the opaque pixels at the resampled image's four corners.
+  def corner_pixels(path)
     dump = MiniMagick.convert do |convert|
       convert << path
       convert.resize("#{SAMPLE}x#{SAMPLE}!")
@@ -58,19 +64,25 @@ class TileBackgroundAnalyzer < ActiveStorage::Analyzer::ImageAnalyzer::ImageMagi
       next unless (m = line.match(PIXEL))
 
       x, y, r, g, b, a = m.captures.map { |v| v&.to_i }
-      next unless x.zero? || y.zero? || x == SAMPLE - 1 || y == SAMPLE - 1
-      next if a && a < 128 # transparent edges: let the default tile show
+      next unless corner?(x, y)
+      next if a && a < 128 # transparent corner: let the default tile show
 
       [ r, g, b ]
     end
   end
 
-  def edge_pixel_count
-    SAMPLE * 4 - 4
+  def corner?(x, y)
+    (x.zero? || x == SAMPLE - 1) && (y.zero? || y == SAMPLE - 1)
   end
 
-  def average_hex(pixels)
-    r, g, b = pixels.transpose.map { |channel| channel.sum / channel.size }
+  def median_hex(pixels)
+    r, g, b = pixels.transpose.map { |channel| median(channel) }
     format("#%02x%02x%02x", r, g, b)
+  end
+
+  def median(values)
+    sorted = values.sort
+    mid = sorted.size / 2
+    sorted.size.odd? ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2
   end
 end
