@@ -403,7 +403,7 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .lightbox-nav-next { right: 16px; }
 .lightbox-caption { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); border-radius: var(--r-pill); font-size: 13px; font-weight: 700; box-shadow: var(--shadow-modal); white-space: nowrap; }
 /* Shown while a newly-selected color's zoomed photo is still loading */
-.lightbox-spinner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,.35); border-top-color: #fff; border-radius: 50%; animation: lure-stage-spin .7s linear infinite; }
+.lightbox-spinner { position: absolute; top: 50%; left: 50%; margin: -20px 0 0 -20px; z-index: 3; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,.35); border-top-color: #fff; border-radius: 50%; animation: lure-stage-spin .7s linear infinite; }
 
 /* Pagination -------------------------------------------------------------- */
 .pager { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 28px; }
