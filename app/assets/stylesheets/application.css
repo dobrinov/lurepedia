@@ -597,9 +597,12 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 }
 @media (max-width: 880px) {
   /* iOS zooms the page in when a focused form control has a font-size below
-     16px. Bump controls to 16px on small screens so tapping the search field,
-     a filter, or a menu input doesn't trigger an auto-zoom. */
-  input, select, textarea,
+     16px (and once zoomed, a position:fixed overlay no longer covers the
+     visual viewport). Bump controls to 16px on small screens — the selectors
+     must match the specificity of the base rules they override (e.g.
+     `.site-search input`, `select.input`) or the 14px base would win. */
+  .site-search input,
+  .input, textarea.input, select.input,
   .combobox-trigger, .combobox-search input { font-size: 16px; }
 
   /* Header dropdown menus (nav/sandwich, language, avatar): pin under the
@@ -631,6 +634,7 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
   .search-panel .filters-grid {
     grid-template-columns: repeat(2, 1fr);
     flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     margin-top: 0; padding: 0 18px 4px;
   }
   .search-panel .panel-foot {
