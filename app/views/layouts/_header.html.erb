@@ -1,5 +1,19 @@
 <header class="site-header">
   <div class="container">
+    <!-- Primary nav as a menu on small screens, where .main-nav is hidden -->
+    <div class="dropdown nav-menu" data-controller="dropdown">
+      <button class="nav-toggle" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false" aria-label="<%= t("nav.menu") %>">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+      </button>
+      <div class="dropdown-menu" data-dropdown-target="menu" hidden>
+        <%= link_to t("nav.lures"), lures_path, class: ("active" if controller_name == "lures") %>
+        <%= link_to t("nav.brands"), brands_path, class: ("active" if controller_name == "brands") %>
+        <%= link_to t("nav.species"), species_index_path, class: ("active" if controller_name == "species") %>
+        <%= link_to t("nav.shops"), shops_path, class: ("active" if controller_name == "shops") %>
+        <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
+      </div>
+    </div>
+
     <a href="<%= localized_root_path %>" class="wordmark"><span class="lure">lure</span><span class="pedia">pedia</span></a>
 
     <nav class="main-nav">
@@ -11,20 +25,6 @@
     </nav>
 
     <div class="header-right">
-      <!-- Primary nav as a menu on small screens, where .main-nav is hidden -->
-      <div class="dropdown nav-menu" data-controller="dropdown">
-        <button class="nav-toggle" data-action="dropdown#toggle" data-dropdown-target="trigger" aria-expanded="false" aria-label="<%= t("nav.menu") %>">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
-        </button>
-        <div class="dropdown-menu" data-dropdown-target="menu" hidden>
-          <%= link_to t("nav.lures"), lures_path, class: ("active" if controller_name == "lures") %>
-          <%= link_to t("nav.brands"), brands_path, class: ("active" if controller_name == "brands") %>
-          <%= link_to t("nav.species"), species_index_path, class: ("active" if controller_name == "species") %>
-          <%= link_to t("nav.shops"), shops_path, class: ("active" if controller_name == "shops") %>
-          <%= link_to t("nav.catches"), catches_path, class: ("active" if controller_name == "catches") %>
-        </div>
-      </div>
-
       <!-- Language switcher: only for guests; signed-in users use their configured language -->
       <% unless signed_in? %>
         <div class="dropdown" data-controller="dropdown">

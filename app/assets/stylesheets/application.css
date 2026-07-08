@@ -616,6 +616,10 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
     overflow-y: auto; -webkit-overflow-scrolling: touch;
   }
 
+  /* The sandwich menu now sits on the left of the logo, so open it from the
+     left edge rather than the right. */
+  .site-header .nav-menu .dropdown-menu { left: 12px; right: auto; }
+
   /* On small screens the filter panel becomes a full-screen overlay: the
      header row stays put, the filters scroll, and the footer (with the Search
      button) is pinned to the bottom. */
