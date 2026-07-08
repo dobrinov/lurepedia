@@ -115,6 +115,8 @@ main { min-height: 60vh; }
   padding: 0 14px 0 40px; font-size: 14px; background: var(--white); outline: none;
 }
 .site-search input:focus { border-color: var(--ink); box-shadow: var(--focus-ring); }
+/* Checkboxes (e.g. the glow/UV finish toggles) opt out of the full-width text-input sizing above. */
+.site-search input[type="checkbox"] { width: auto; height: auto; padding: 0; accent-color: var(--ink); }
 .site-search .search-icon { position: absolute; left: 14px; top: 22px; transform: translateY(-50%); color: var(--muted-2); pointer-events: none; }
 /* On-page search above each catalog listing */
 .page-search-row { margin-bottom: 20px; max-width: 560px; }
