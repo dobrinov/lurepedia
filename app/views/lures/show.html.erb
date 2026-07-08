@@ -39,6 +39,7 @@
   <!-- Hero: preview image + color selector -->
   <div class="lure-hero">
     <div class="lure-stage" data-variant-stage-target="stage" style="<%= photo_frame_style(dv) %>">
+      <div class="lure-stage-spinner" data-variant-stage-target="stageSpinner" aria-hidden="true"></div>
       <span class="lure-stage-chip">
         <span data-variant-stage-target="chipName"><%= dv&.name %></span>
         <span class="uv-badge" data-variant-stage-target="chipUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>

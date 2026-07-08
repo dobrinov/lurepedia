@@ -549,6 +549,11 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 .lure-stage-glyph { width: 55%; opacity: .5; display: flex; align-items: center; justify-content: center; }
 .lure-stage-glyph svg { width: 100%; height: auto; }
 .lure-stage-chip { position: absolute; top: 14px; left: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; background: rgba(255,255,255,.9); backdrop-filter: blur(6px); border-radius: var(--r-pill); font-size: 13px; font-weight: 700; }
+/* Shown while a newly-selected color's photo is still loading (variant processing on first request) */
+.lure-stage-spinner { position: absolute; inset: 0; z-index: 3; display: none; align-items: center; justify-content: center; background: rgba(255,255,255,.6); }
+.lure-stage.is-loading .lure-stage-spinner { display: flex; }
+.lure-stage-spinner::after { content: ""; width: 32px; height: 32px; border: 3px solid var(--line); border-top-color: var(--ink); border-radius: 50%; animation: lure-stage-spin .7s linear infinite; }
+@keyframes lure-stage-spin { to { transform: rotate(360deg); } }
 /* Color selector (hero, right side): square image tiles */
 .color-tiles { display: flex; flex-wrap: wrap; gap: 10px; }
 /* Each swatch is wrapped so its name tooltip isn't clipped by the tile's

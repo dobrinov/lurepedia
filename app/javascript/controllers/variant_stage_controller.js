@@ -6,10 +6,15 @@ import { Controller } from "@hotwired/stimulus"
 // default "variations" tab is implicit (/lures/<slug>/<color>); other tabs carry
 // their name (/lures/<slug>/<tab>/<color>).
 export default class extends Controller {
-  static targets = [ "chip", "stage", "stageImage", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxName", "lightboxUv", "chipName", "chipUv", "buildsTable" ]
+  static targets = [ "chip", "stage", "stageImage", "stageSpinner", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxName", "lightboxUv", "chipName", "chipUv", "buildsTable" ]
   static values = { basePath: String, tabs: Array } // basePath: "/en/lures/<slug>"
 
   connect() {
+    if (this.hasStageImageTarget) {
+      this.stageImageTarget.addEventListener("load", () => this.setStageLoading(false))
+      this.stageImageTarget.addEventListener("error", () => this.setStageLoading(false))
+    }
+
     const initial = this.chipTargets.find((c) => c.dataset.default === "true") || this.chipTargets[0]
     if (initial) this.show(initial) // initial state only — server already set the URL
   }
@@ -26,10 +31,15 @@ export default class extends Controller {
 
     if (this.hasStageImageTarget) {
       if (d.photoUrl) {
-        this.stageImageTarget.src = d.photoUrl
+        const nextUrl = new URL(d.photoUrl, window.location.href).href
+        if (this.stageImageTarget.src !== nextUrl) {
+          this.setStageLoading(true)
+          this.stageImageTarget.src = d.photoUrl
+        }
         this.stageImageTarget.hidden = false
         if (this.hasStageGlyphTarget) this.stageGlyphTarget.hidden = true
       } else {
+        this.setStageLoading(false)
         this.stageImageTarget.hidden = true
         if (this.hasStageGlyphTarget) this.stageGlyphTarget.hidden = false
       }
@@ -53,6 +63,10 @@ export default class extends Controller {
 
     // Show the build table for the selected color (only present on the Variations tab).
     this.buildsTableTargets.forEach((t) => { t.hidden = t.dataset.colorId !== d.colorId })
+  }
+
+  setStageLoading(loading) {
+    if (this.hasStageTarget) this.stageTarget.classList.toggle("is-loading", loading)
   }
 
   // Lightbox prev/next: cycle through the colors that have photos, keeping the
