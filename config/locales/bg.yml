@@ -73,6 +73,7 @@ bg:
     choose_country: Твоята държава
     choose_language: Предпочитан език
     continue_with_google: Продължи с Google
+    continue_with_apple: "Продължи с Apple"
     or: "или"
     oauth_failed: "Влизането е неуспешно. Опитайте отново."
 

@@ -123,6 +123,7 @@ sv:
     choose_country: Ditt land
     choose_language: Föredraget språk
     continue_with_google: Fortsätt med Google
+    continue_with_apple: "Fortsätt med Apple"
     or: "eller"
     oauth_failed: "Inloggningen misslyckades. Försök igen."
 

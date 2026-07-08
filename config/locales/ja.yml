@@ -73,6 +73,7 @@ ja:
     choose_country: お住まいの国
     choose_language: 希望言語
     continue_with_google: Googleで続行
+    continue_with_apple: "Appleで続行"
     or: "または"
     oauth_failed: "サインインに失敗しました。もう一度お試しください。"
 

@@ -123,6 +123,7 @@ fi:
     choose_country: Maasi
     choose_language: Ensisijainen kieli
     continue_with_google: Jatka Googlella
+    continue_with_apple: "Jatka Applella"
     or: "tai"
     oauth_failed: "Kirjautuminen epäonnistui. Yritä uudelleen."
 

@@ -73,6 +73,7 @@ de:
     choose_country: Dein Land
     choose_language: Bevorzugte Sprache
     continue_with_google: Mit Google fortfahren
+    continue_with_apple: "Weiter mit Apple"
     or: "oder"
     oauth_failed: "Anmeldung fehlgeschlagen. Bitte versuche es erneut."
 

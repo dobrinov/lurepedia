@@ -123,6 +123,7 @@ es:
     choose_country: Tu país
     choose_language: Idioma preferido
     continue_with_google: Continuar con Google
+    continue_with_apple: "Continuar con Apple"
     or: "o"
     oauth_failed: "Error al iniciar sesión. Inténtalo de nuevo."
 

@@ -123,6 +123,7 @@ da:
     choose_country: Dit land
     choose_language: Foretrukket sprog
     continue_with_google: Fortsæt med Google
+    continue_with_apple: "Fortsæt med Apple"
     or: "eller"
     oauth_failed: "Login mislykkedes. Prøv igen."
 

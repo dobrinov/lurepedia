@@ -8,6 +8,28 @@ class IdentityTest < ActiveSupport::TestCase
     )
   end
 
+  test "from_omniauth handles an Apple payload with a private relay email" do
+    apple = auth(provider: "apple", uid: "apple-sub-1",
+      email: "abc123@privaterelay.appleid.com", name: "Apple Angler")
+
+    assert_difference [ "User.count", "Identity.count" ], 1 do
+      @user = User.from_omniauth(apple)
+    end
+
+    assert_equal "abc123@privaterelay.appleid.com", @user.email_address
+    assert_equal "Apple Angler", @user.name
+    assert @user.identities.exists?(provider: "apple", uid: "apple-sub-1")
+  end
+
+  test "from_omniauth falls back to a name when Apple omits one on later logins" do
+    apple = auth(provider: "apple", uid: "apple-sub-2",
+      email: "noname@privaterelay.appleid.com", name: nil)
+
+    user = User.from_omniauth(apple)
+    assert user.persisted?
+    assert user.name.present?, "should derive a name rather than fail validation"
+  end
+
   test "from_omniauth creates a user and identity for a new person" do
     assert_difference [ "User.count", "Identity.count" ], 1 do
       @user = User.from_omniauth(auth(email: "brand-new@example.com"))

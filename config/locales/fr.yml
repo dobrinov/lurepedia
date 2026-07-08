@@ -123,6 +123,7 @@ fr:
     choose_country: Votre pays
     choose_language: Langue préférée
     continue_with_google: Continuer avec Google
+    continue_with_apple: "Continuer avec Apple"
     or: "ou"
     oauth_failed: "Échec de la connexion. Veuillez réessayer."
 

@@ -123,6 +123,7 @@ el:
     choose_country: Η χώρα σου
     choose_language: Προτιμώμενη γλώσσα
     continue_with_google: Συνέχεια με Google
+    continue_with_apple: "Συνέχεια με Apple"
     or: "ή"
     oauth_failed: "Η σύνδεση απέτυχε. Δοκιμάστε ξανά."
 

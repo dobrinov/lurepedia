@@ -123,6 +123,7 @@ ru:
     choose_country: Ваша страна
     choose_language: Предпочитаемый язык
     continue_with_google: Продолжить с Google
+    continue_with_apple: "Продолжить с Apple"
     or: "или"
     oauth_failed: "Не удалось войти. Попробуйте снова."
 

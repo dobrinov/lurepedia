@@ -123,6 +123,7 @@ zh:
     choose_country: 您所在的国家/地区
     choose_language: 首选语言
     continue_with_google: 使用 Google 继续
+    continue_with_apple: "使用 Apple 继续"
     or: "或"
     oauth_failed: "登录失败，请重试。"
 

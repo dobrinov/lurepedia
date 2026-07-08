@@ -123,6 +123,7 @@ nl:
     choose_country: Je land
     choose_language: Voorkeurstaal
     continue_with_google: Doorgaan met Google
+    continue_with_apple: "Doorgaan met Apple"
     or: "of"
     oauth_failed: "Aanmelden mislukt. Probeer het opnieuw."
 

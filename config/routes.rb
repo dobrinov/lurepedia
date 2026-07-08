@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   # OmniAuth callbacks are locale-independent: the provider's redirect URI is a
   # fixed, registered path, so these live outside the optional (:locale) scope.
+  # Apple posts back its callback (form_post response mode), so accept POST too.
   get  "/auth/:provider/callback", to: "sessions/omniauth#create", as: :omniauth_callback
+  post "/auth/:provider/callback", to: "sessions/omniauth#create"
   get  "/auth/failure",            to: "sessions/omniauth#failure", as: :omniauth_failure
 
   # Sitemap (locale-independent). /sitemap.xml is a sitemap index that points

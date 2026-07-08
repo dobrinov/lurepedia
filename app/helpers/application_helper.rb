@@ -30,12 +30,13 @@ module ApplicationHelper
   def oauth_provider_enabled?(provider)
     case provider
     when :google then Rails.application.credentials.dig(:google, :client_id).present?
+    when :apple then Rails.application.credentials.dig(:apple, :client_id).present?
     else false
     end
   end
 
   def any_oauth_enabled?
-    oauth_provider_enabled?(:google)
+    oauth_provider_enabled?(:google) || oauth_provider_enabled?(:apple)
   end
 
   def available_locales_for_switcher

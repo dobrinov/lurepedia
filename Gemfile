@@ -20,9 +20,11 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 
-# Social sign-in (Google now; Apple later). omniauth-rails_csrf_protection is
-# required by OmniAuth 2 to initiate auth over a CSRF-protected POST.
+# Social sign-in. omniauth-rails_csrf_protection is required by OmniAuth 2 to
+# initiate auth over a CSRF-protected POST. omniauth-apple generates Apple's
+# JWT client secret on the fly from the .p8 signing key.
 gem "omniauth-google-oauth2"
+gem "omniauth-apple"
 gem "omniauth-rails_csrf_protection"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

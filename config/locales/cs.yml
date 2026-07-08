@@ -123,6 +123,7 @@ cs:
     choose_country: Vaše země
     choose_language: Preferovaný jazyk
     continue_with_google: Pokračovat přes Google
+    continue_with_apple: "Pokračovat přes Apple"
     or: "nebo"
     oauth_failed: "Přihlášení se nezdařilo. Zkuste to znovu."
 
