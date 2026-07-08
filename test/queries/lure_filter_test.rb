@@ -44,15 +44,23 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_equal [ @vision ], LureFilter.new(species: @bass.slug).results.to_a
   end
 
-  test "saltwater only" do
-    assert_equal [ @salt ], LureFilter.new(saltwater: "1").results.to_a
+  test "water salt matches salt and both builds" do
+    assert_equal [ @salt ], LureFilter.new(water: "salt").results.to_a
+  end
+
+  test "water fresh matches fresh builds and excludes salt-only builds" do
+    fresh = Lure.create!(brand: @sk, lure_type: @crank, model: "Fresh One")
+    fresh.builds.create!(name: "FW", water: :fresh)
+    results = LureFilter.new(water: "fresh").results.to_a
+    assert_includes results, fresh
+    assert_not_includes results, @salt
   end
 
   test "active pills reflect filters" do
-    f = LureFilter.new(type: "crankbait", saltwater: "1")
+    f = LureFilter.new(type: "crankbait", water: "salt")
     keys = f.active_pills.map(&:first)
     assert_includes keys, :type
-    assert_includes keys, :saltwater
+    assert_includes keys, :water
   end
 
   test "filter by lure_action" do

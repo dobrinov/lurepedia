@@ -1,7 +1,7 @@
 # Filters lures by catalog attributes and (via catches) condition attributes.
 class LureFilter
   ATTRS = %i[q type brand species lure_action depth length_min length_max weight_min weight_max weight_unit
-             water_body season clarity wind saltwater sort].freeze
+             water_body season clarity wind water sort].freeze
 
   # Depth bands in centimetres, matched by overlap against a lure's [min, max] range.
   DEPTH_BANDS = { "shallow" => [ 0, 150 ], "mid" => [ 150, 450 ], "deep" => [ 450, 100_000 ] }.freeze
@@ -35,7 +35,7 @@ class LureFilter
     pills << [ :depth, I18n.t("search.depth_band.#{@p[:depth]}", default: @p[:depth].to_s.titleize) ] if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
     pills << [ :length, range_label(:length_min, :length_max, "mm") ] if range?(:length_min, :length_max)
     pills << [ :weight, range_label(:weight_min, :weight_max, I18n.t("units.#{weight_unit}")) ] if range?(:weight_min, :weight_max)
-    pills << [ :saltwater, I18n.t("search.saltwater_only") ] if truthy?(:saltwater)
+    pills << [ :water, I18n.t("water.#{water_type}") ] if water_type
     %i[season clarity water_body wind].each do |k|
       pills << [ k, I18n.t("condition.#{k}.#{@p[k]}", default: @p[k].to_s.titleize) ] if present?(k)
     end
@@ -60,7 +60,7 @@ class LureFilter
     scope = scope.joins(:brand).where(brands: { slug: @p[:brand] }) if present?(:brand)
     scope = apply_action(scope) if present?(:lure_action) && Build.actions.key?(@p[:lure_action].to_s)
     scope = apply_depth(scope) if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
-    scope = scope.where(id: Build.where(water: [ :salt, :both ]).select(:lure_id)) if truthy?(:saltwater)
+    scope = apply_water(scope) if water_type
     scope = apply_build_range(scope, :length_mm, :length_min, :length_max)
     scope = apply_build_range(scope, :weight_g, :weight_min, :weight_max, factor: weight_factor)
     scope
@@ -69,6 +69,18 @@ class LureFilter
   # Buoyancy, depth and water now live on builds — a lure matches if any build does.
   def apply_action(scope)
     scope.where(id: Build.where(action: @p[:lure_action]).select(:lure_id))
+  end
+
+  # "salt" matches salt + both builds; "fresh" matches fresh + both — a
+  # both-water build serves either search.
+  def apply_water(scope)
+    waters = water_type == "salt" ? [ :salt, :both ] : [ :fresh, :both ]
+    scope.where(id: Build.where(water: waters).select(:lure_id))
+  end
+
+  # The requested water type, or nil for the unfiltered "any water" default.
+  def water_type
+    %w[ salt fresh ].include?(@p[:water].to_s) ? @p[:water].to_s : nil
   end
 
   def apply_depth(scope)

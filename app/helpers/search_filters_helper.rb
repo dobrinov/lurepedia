@@ -1,7 +1,7 @@
 module SearchFiltersHelper
   # Small, static filter dropdowns rendered with the inline (client-side) combobox,
   # in display order.
-  STATIC_FILTERS = %i[type season water_body clarity wind lure_action depth].freeze
+  STATIC_FILTERS = %i[type season water_body clarity wind lure_action depth water].freeze
 
   def static_filter_fields
     STATIC_FILTERS.index_with do |field|
@@ -56,6 +56,8 @@ module SearchFiltersHelper
       Build.actions.keys.excluding("none").map { |k| [ lure_action_label(k), k ] }
     when :depth
       LureFilter::DEPTH_BANDS.keys.map { |k| [ t("search.depth_band.#{k}", default: k.titleize), k ] }
+    when :water
+      %w[ salt fresh ].map { |k| [ water_name(k), k ] }
     else # season, water_body, clarity, wind
       Catch.public_send(field.to_s.pluralize).keys.map { |k| [ condition_name(field, k), k ] }
     end
@@ -66,7 +68,8 @@ module SearchFiltersHelper
     when :type then t("lure.type")
     when :lure_action then t("lure.buoyancy")
     when :depth then t("lure.depth")
-    else t("search.#{field}", default: field.to_s.humanize) # season, water_body, clarity, wind
+    when :water then t("lure.water")
+    else t("condition.#{field}.label", default: field.to_s.humanize) # season, water_body, clarity, wind
     end
   end
 
@@ -75,6 +78,7 @@ module SearchFiltersHelper
     when :type then t("search.any_type")
     when :depth then t("search.any_depth")
     when :lure_action then t("search.any_action", default: t("search.any_type"))
+    when :water then t("search.any_water")
     else t("condition.#{field}.any")
     end
   end
