@@ -4,8 +4,7 @@ class BrandsController < ApplicationController
 
   def index
     @filter = BrandFilter.new(params)
-    @page = paginate(@filter.results, per: 12)
-    @brands = @page.records
+    @brands = @filter.results
   end
 
   def show

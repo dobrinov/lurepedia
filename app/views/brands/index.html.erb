@@ -17,7 +17,7 @@
     <div class="chips" style="margin-bottom:18px">
       <% @filter.active_pills.each do |key, label| %>
         <span class="filter-pill"><%= label %>
-          <%= link_to "×", url_for(request.query_parameters.except(*BrandFilter.pill_params(key), "page")) %>
+          <%= link_to "×", url_for(request.query_parameters.except(*BrandFilter.pill_params(key))) %>
         </span>
       <% end %>
       <%= link_to t("search.clear_all"), brands_path, class: "muted", style: "font-size:13px" %>
@@ -41,7 +41,6 @@
         <% end %>
       <% end %>
     </div>
-    <%= render "shared/pagination", page: @page %>
   <% elsif @filter.any? %>
     <div class="empty-state">
       <h3><%= t("search.no_results") %></h3>
