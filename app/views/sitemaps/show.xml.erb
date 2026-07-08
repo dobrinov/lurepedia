@@ -1,0 +1,25 @@
+<%= '<?xml version="1.0" encoding="UTF-8"?>'.html_safe %>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <%
+    entries = []
+    @static_paths.each { |name| entries << [ ->(loc) { public_send("#{name}_url", locale: loc) }, nil ] }
+    @lures.each { |r| entries << [ ->(loc) { lure_url(r, locale: loc) }, r.updated_at ] }
+    @species.each { |r| entries << [ ->(loc) { species_url(r, locale: loc) }, r.updated_at ] }
+    @brands.each { |r| entries << [ ->(loc) { brand_url(r, locale: loc) }, r.updated_at ] }
+    @shops.each { |r| entries << [ ->(loc) { shop_url(r, locale: loc) }, r.updated_at ] }
+    @catch_records.each { |r| entries << [ ->(loc) { catch_url(r, locale: loc) }, r.updated_at ] }
+  %>
+  <%# One <url> per page for this locale; the hreflang set links every language. %>
+  <% entries.each do |builder, lastmod| %>
+    <url>
+      <loc><%= builder.call(@locale) %></loc>
+      <% if lastmod %>
+      <lastmod><%= lastmod.utc.iso8601 %></lastmod>
+      <% end %>
+      <% @locales.each do |loc| %>
+      <xhtml:link rel="alternate" hreflang="<%= loc %>" href="<%= builder.call(loc) %>"/>
+      <% end %>
+      <xhtml:link rel="alternate" hreflang="x-default" href="<%= builder.call(I18n.default_locale) %>"/>
+    </url>
+  <% end %>
+</urlset>

@@ -8,8 +8,12 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Sitemap (locale-independent)
+  # Sitemap (locale-independent). /sitemap.xml is a sitemap index that points
+  # at one per-locale sitemap; each /sitemaps/<locale>.xml lists that language's
+  # URLs (with the full hreflang alternate set).
   get "sitemap.xml" => "sitemaps#index", defaults: { format: "xml" }, as: :sitemap
+  get "sitemaps/:locale.xml" => "sitemaps#show", constraints: { locale: /#{I18n.available_locales.join("|")}/ },
+    defaults: { format: "xml" }, as: :locale_sitemap
 
   # Bare root: served here for everyone, but anonymous visitors are redirected
   # to a canonical locale-prefixed home by Application#canonicalize_root_locale.
