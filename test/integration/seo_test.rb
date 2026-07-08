@@ -8,8 +8,17 @@ class SeoTest < ActionDispatch::IntegrationTest
     @species = Species.create!(key: "largemouth_bass", scientific_name: "Micropterus salmoides")
   end
 
-  test "sitemap lists urls with locale alternates" do
+  test "sitemap index points at one sitemap per locale" do
     get "/sitemap.xml"
+    assert_response :success
+    assert_equal "application/xml", response.media_type
+    assert_match "<sitemapindex", response.body
+    assert_match "http://www.example.com/sitemaps/en.xml", response.body
+    assert_match "http://www.example.com/sitemaps/de.xml", response.body
+  end
+
+  test "per-locale sitemap lists urls with locale alternates" do
+    get "/sitemaps/en.xml"
     assert_response :success
     assert_equal "application/xml", response.media_type
     assert_match "http://www.example.com/en/lures", response.body
