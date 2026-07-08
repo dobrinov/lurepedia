@@ -289,7 +289,10 @@ pl:
     common_attributes: Cechy wspólne · cała rodzina
     this_variation: Ten wariant
     default_variation: Wariant domyślny
-    uv_glow: Świeci w UV
+    finish: "Wykończenie"
+    glow: "Glow (świeci w ciemności)"
+    uv: "UV"
+    glow_uv_hint: "Glow świeci w ciemności; UV wygląda inaczej w świetle ultrafioletowym."
     best_for: Najlepsza na
     manage_variations: Warianty i wersje
     tab_details: Informacje ogólne

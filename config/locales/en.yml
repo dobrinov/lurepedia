@@ -289,7 +289,10 @@ en:
     common_attributes: Common attributes · whole family
     this_variation: This variation
     default_variation: Default variation
-    uv_glow: UV glow
+    finish: "Finish"
+    glow: "Glow"
+    uv: "UV"
+    glow_uv_hint: "Glow shines in the dark; UV looks different under ultraviolet light."
     best_for: Best for
     manage_variations: Variations & builds
     tab_details: General details

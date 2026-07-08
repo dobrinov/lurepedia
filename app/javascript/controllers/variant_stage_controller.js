@@ -6,7 +6,7 @@ import { Controller } from "@hotwired/stimulus"
 // default "variations" tab is implicit (/lures/<slug>/<color>); other tabs carry
 // their name (/lures/<slug>/<tab>/<color>).
 export default class extends Controller {
-  static targets = [ "chip", "stage", "stageImage", "stageSpinner", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxSpinner", "lightboxName", "lightboxUv", "chipName", "chipUv", "buildsTable" ]
+  static targets = [ "chip", "stage", "stageImage", "stageSpinner", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxSpinner", "lightboxName", "lightboxUv", "lightboxGlow", "chipName", "chipUv", "chipGlow", "buildsTable" ]
   static values = { basePath: String, tabs: Array } // basePath: "/en/lures/<slug>"
 
   connect() {
@@ -65,6 +65,7 @@ export default class extends Controller {
     }
     if (this.hasLightboxNameTarget) this.lightboxNameTarget.textContent = d.name || ""
     if (this.hasLightboxUvTarget) this.lightboxUvTarget.hidden = d.uv !== "true"
+    if (this.hasLightboxGlowTarget) this.lightboxGlowTarget.hidden = d.glow !== "true"
 
     // Paint the stage with the photo's border color (blank restores the CSS
     // default) so letterbox bars blend into the image.
@@ -72,6 +73,7 @@ export default class extends Controller {
 
     if (this.hasChipNameTarget) this.chipNameTarget.textContent = d.name || ""
     if (this.hasChipUvTarget) this.chipUvTarget.hidden = d.uv !== "true"
+    if (this.hasChipGlowTarget) this.chipGlowTarget.hidden = d.glow !== "true"
 
     // Show the build table for the selected color (only present on the Variations tab).
     this.buildsTableTargets.forEach((t) => { t.hidden = t.dataset.colorId !== d.colorId })

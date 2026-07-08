@@ -37,7 +37,7 @@ class LuresController < ApplicationController
       lure: { slug: lure.slug, title: lure.title },
       colors: lure.variants.map { |v|
         {
-          id: v.id, name: v.name, best_for: v.best_for, uv_glow: v.uv_glow,
+          id: v.id, name: v.name, best_for: v.best_for, glow: v.glow, uv: v.uv,
           catches_count: v.catches_count, default: v.id == lure.primary_variant&.id,
           photo_url: v.photo.attached? ? url_for(v.photo.variant(resize_to_fill: [ 160, 160 ])) : nil,
           # Confirmed availability, or null when unknown (open world: offer every build).

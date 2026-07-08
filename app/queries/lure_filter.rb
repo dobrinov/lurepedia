@@ -1,7 +1,7 @@
 # Filters lures by catalog attributes and (via catches) condition attributes.
 class LureFilter
   ATTRS = %i[q type brand species lure_action depth length_min length_max weight_min weight_max weight_unit
-             water_body season clarity wind water sort].freeze
+             water_body season clarity wind water glow uv sort].freeze
 
   # Depth bands in centimetres, matched by overlap against a lure's [min, max] range.
   DEPTH_BANDS = { "shallow" => [ 0, 150 ], "mid" => [ 150, 450 ], "deep" => [ 450, 100_000 ] }.freeze
@@ -36,6 +36,8 @@ class LureFilter
     pills << [ :length, range_label(:length_min, :length_max, "mm") ] if range?(:length_min, :length_max)
     pills << [ :weight, range_label(:weight_min, :weight_max, I18n.t("units.#{weight_unit}")) ] if range?(:weight_min, :weight_max)
     pills << [ :water, I18n.t("water.#{water_type}") ] if water_type
+    pills << [ :glow, I18n.t("lure.glow") ] if truthy?(:glow)
+    pills << [ :uv, I18n.t("lure.uv") ] if truthy?(:uv)
     %i[season clarity water_body wind].each do |k|
       pills << [ k, I18n.t("condition.#{k}.#{@p[k]}", default: @p[k].to_s.titleize) ] if present?(k)
     end
@@ -63,6 +65,16 @@ class LureFilter
     scope = apply_water(scope) if water_type
     scope = apply_build_range(scope, :length_mm, :length_min, :length_max)
     scope = apply_build_range(scope, :weight_g, :weight_min, :weight_max, factor: weight_factor)
+    scope = apply_finish(scope)
+    scope
+  end
+
+  # Glow (phosphorescent) and UV (ultraviolet-reactive) are per-color finish
+  # flags — a lure matches if any of its colors carries the requested flag. We
+  # only ever assert presence, never absence: an untagged lure isn't excluded.
+  def apply_finish(scope)
+    scope = scope.where(id: Variant.where(glow: true).select(:lure_id)) if truthy?(:glow)
+    scope = scope.where(id: Variant.where(uv: true).select(:lure_id)) if truthy?(:uv)
     scope
   end
 

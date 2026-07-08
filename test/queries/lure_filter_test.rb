@@ -164,4 +164,27 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_equal "0.5–1.5 oz", pills[:weight]
     assert_equal %w[ weight_min weight_max weight_unit ], LureFilter.pill_params(:weight)
   end
+
+  test "glow and uv filter by color finish and are independent" do
+    glow_lure = Lure.create!(brand: @sk, lure_type: @jerk, model: "Night Glow")
+    glow_lure.variants.create!(name: "Phosphor", glow: true)
+    uv_lure = Lure.create!(brand: @sk, lure_type: @jerk, model: "UV Special")
+    uv_lure.variants.create!(name: "Reactive", uv: true)
+
+    assert_equal [ glow_lure ], LureFilter.new(glow: "1").results.to_a
+    assert_equal [ uv_lure ], LureFilter.new(uv: "1").results.to_a
+  end
+
+  test "a lure matches when any of its colors carries the finish" do
+    lure = Lure.create!(brand: @sk, lure_type: @jerk, model: "Mixed Bag")
+    lure.variants.create!(name: "Plain")
+    lure.variants.create!(name: "Glowy", glow: true)
+    assert_includes LureFilter.new(glow: "1").results.to_a, lure
+  end
+
+  test "glow and uv appear in active pills" do
+    keys = LureFilter.new(glow: "1", uv: "1").active_pills.map(&:first)
+    assert_includes keys, :glow
+    assert_includes keys, :uv
+  end
 end

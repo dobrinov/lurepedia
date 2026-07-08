@@ -7,7 +7,7 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     @type = LureType.create!(key: "jerkbait")
     @brand = Brand.create!(name: "Megabass")
     @lure = Lure.create!(brand: @brand, lure_type: @type, model: "Vision 110")
-    @color = @lure.variants.create!(name: "GG Ayu", uv_glow: true)
+    @color = @lure.variants.create!(name: "GG Ayu", uv: true, glow: true)
     @build = @lure.builds.create!(name: "110 SP", depth_min_cm: 120, depth_max_cm: 180, action: :suspending)
     @member = User.create!(name: "Mia", email_address: "mia@example.com", password: "secret123", role: :member)
     @admin = User.create!(name: "Ada", email_address: "ada@example.com", password: "secret123", role: :admin)
@@ -25,7 +25,8 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
     assert_equal "Megabass Vision 110", body.dig("lure", "title")
 
     unknown_color, confirmed_color = body["colors"].partition { |c| c["name"] == "GG Ayu" }.map(&:first)
-    assert unknown_color["uv_glow"]
+    assert unknown_color["uv"]
+    assert unknown_color["glow"]
     assert_nil unknown_color["build_ids"], "unknown availability is open world"
     assert_equal [ @build.id, second.id ].sort, confirmed_color["build_ids"]
     assert_equal "110 SP", body["builds"].first["name"]
@@ -90,7 +91,7 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
   test "admin adds a color directly without review" do
     sign_in_as(@admin)
     assert_difference -> { @lure.variants.count } => 1, -> { ModerationItem.count } => 0 do
-      post variants_path(@lure, locale: :en), params: { variant: { name: "Pro Blue", uv_glow: "0" } }
+      post variants_path(@lure, locale: :en), params: { variant: { name: "Pro Blue", uv: "0", glow: "0" } }
     end
     assert_redirected_to edit_lure_path(@lure)
     assert @lure.variants.order(:id).last.published?, "an admin's color is published immediately"
@@ -99,7 +100,7 @@ class VariationsFlowTest < ActionDispatch::IntegrationTest
   test "a member's new color is queued and hidden from the public lure page until approved" do
     sign_in_as(@member)
     assert_difference -> { @lure.variants.count } => 1, -> { ModerationItem.where(kind: :catalog).count } => 1 do
-      post variants_path(@lure, locale: :en), params: { variant: { name: "Member Blue", uv_glow: "0" } }
+      post variants_path(@lure, locale: :en), params: { variant: { name: "Member Blue", uv: "0", glow: "0" } }
     end
     variant = @lure.variants.order(:id).last
     assert_not variant.published?

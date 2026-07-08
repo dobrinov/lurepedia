@@ -289,7 +289,10 @@ da:
     common_attributes: Fælles egenskaber · hele familien
     this_variation: Denne variation
     default_variation: Standardvariation
-    uv_glow: UV-glød
+    finish: "Finish"
+    glow: "Glow (selvlysende)"
+    uv: "UV"
+    glow_uv_hint: "Glow lyser i mørke; UV ser anderledes ud under ultraviolet lys."
     best_for: Bedst til
     manage_variations: Variationer & udgaver
     tab_details: Generelle detaljer

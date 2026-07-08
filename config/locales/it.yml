@@ -289,7 +289,10 @@ it:
     common_attributes: Attributi comuni · tutta la famiglia
     this_variation: Questa variazione
     default_variation: Variazione predefinita
-    uv_glow: Glow UV
+    finish: "Finitura"
+    glow: "Glow (fosforescente)"
+    uv: "UV"
+    glow_uv_hint: "Il glow brilla al buio; l'UV appare diverso sotto la luce ultravioletta."
     best_for: Ideale per
     manage_variations: Variazioni e versioni
     tab_details: Dettagli generali

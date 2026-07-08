@@ -289,7 +289,10 @@ nl:
     common_attributes: "Gemeenschappelijke kenmerken · hele familie"
     this_variation: "Deze variatie"
     default_variation: "Standaardvariatie"
-    uv_glow: "UV-glow"
+    finish: "Afwerking"
+    glow: "Glow (lichtgevend)"
+    uv: "UV"
+    glow_uv_hint: "Glow licht op in het donker; UV ziet er anders uit onder ultraviolet licht."
     best_for: "Het best voor"
     manage_variations: "Variaties & uitvoeringen"
     tab_details: Algemene details

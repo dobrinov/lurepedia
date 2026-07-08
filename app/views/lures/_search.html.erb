@@ -48,4 +48,14 @@
             placeholder: t("search.max"), aria: { label: "#{t('lure.weight')} #{t('search.max')}" } %>
     </div>
   </div>
+  <%# Per-color finish flags — presence-only toggles (checked = require it) %>
+  <div>
+    <div class="filter-label"><%= t("lure.finish") %></div>
+    <label class="row" style="gap:8px;align-items:center">
+      <%= check_box_tag :glow, "1", selected_filter_value(:glow) %> <%= t("lure.glow") %>
+    </label>
+    <label class="row" style="gap:8px;align-items:center">
+      <%= check_box_tag :uv, "1", selected_filter_value(:uv) %> <%= t("lure.uv") %>
+    </label>
+  </div>
 <% end %>

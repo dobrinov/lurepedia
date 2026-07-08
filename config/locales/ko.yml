@@ -289,7 +289,10 @@ ko:
     common_attributes: 공통 속성 · 전체 패밀리
     this_variation: 이 베리에이션
     default_variation: 기본 베리에이션
-    uv_glow: UV 글로우
+    finish: "마감"
+    glow: "글로우(야광)"
+    uv: "UV(자외선)"
+    glow_uv_hint: "글로우는 어둠 속에서 빛나고, UV는 자외선 아래에서 다르게 보입니다."
     best_for: 추천 대상
     manage_variations: 베리에이션 & 빌드
     tab_details: 기본 정보

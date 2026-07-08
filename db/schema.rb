@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_08_151418) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_08_160000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -335,6 +335,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_08_151418) do
     t.string "best_for"
     t.integer "catches_count", default: 0, null: false
     t.datetime "created_at", null: false
+    t.boolean "glow", default: false, null: false
     t.integer "lure_id", null: false
     t.string "name", null: false
     t.string "photo_bg_color"
@@ -343,7 +344,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_08_151418) do
     t.integer "photo_crop_x"
     t.integer "photo_crop_y"
     t.datetime "updated_at", null: false
-    t.boolean "uv_glow", default: false, null: false
+    t.boolean "uv", default: false, null: false
     t.index ["lure_id"], name: "index_variants_on_lure_id"
   end
 

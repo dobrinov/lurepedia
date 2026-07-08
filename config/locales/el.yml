@@ -289,7 +289,10 @@ el:
     common_attributes: Κοινά χαρακτηριστικά · όλη η οικογένεια
     this_variation: Αυτή η παραλλαγή
     default_variation: Προεπιλεγμένη παραλλαγή
-    uv_glow: Λάμψη UV
+    finish: "Φινίρισμα"
+    glow: "Glow (φωσφορίζον)"
+    uv: "UV"
+    glow_uv_hint: "Το glow λάμπει στο σκοτάδι· το UV φαίνεται διαφορετικό στο υπεριώδες φως."
     best_for: Ιδανικό για
     manage_variations: Παραλλαγές & εκδόσεις
     tab_details: Γενικά στοιχεία

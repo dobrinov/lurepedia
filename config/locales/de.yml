@@ -239,7 +239,10 @@ de:
     common_attributes: "Gemeinsame Merkmale · ganze Familie"
     this_variation: "Diese Variante"
     default_variation: "Standardvariante"
-    uv_glow: "UV-Leuchten"
+    finish: "Finish"
+    glow: "Glow (nachleuchtend)"
+    uv: "UV"
+    glow_uv_hint: "Glow leuchtet im Dunkeln; UV-Farben wirken unter Ultraviolettlicht anders."
     best_for: "Am besten für"
     manage_variations: "Varianten & Bauformen"
     tab_details: Allgemeine Details

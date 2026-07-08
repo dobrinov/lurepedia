@@ -42,7 +42,8 @@
       <div class="lure-stage-spinner" data-variant-stage-target="stageSpinner" aria-hidden="true"></div>
       <span class="lure-stage-chip">
         <span data-variant-stage-target="chipName"><%= dv&.name %></span>
-        <span class="uv-badge" data-variant-stage-target="chipUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>
+        <span class="glow-badge" data-variant-stage-target="chipGlow" <%= "hidden" unless dv&.glow %>>GLOW</span>
+        <span class="uv-badge" data-variant-stage-target="chipUv" <%= "hidden" unless dv&.uv %>>UV</span>
       </span>
       <% if dv&.photo&.attached? %>
         <button type="button" class="lure-stage-zoom" data-variant-stage-target="stageZoom" data-action="modal#open" aria-label="<%= @lure.title %>">
@@ -73,7 +74,8 @@
       <% end %>
       <span class="lightbox-caption">
         <span data-variant-stage-target="lightboxName"><%= dv&.name %></span>
-        <span class="uv-badge" data-variant-stage-target="lightboxUv" <%= "hidden" unless dv&.uv_glow %>>UV</span>
+        <span class="glow-badge" data-variant-stage-target="lightboxGlow" <%= "hidden" unless dv&.glow %>>GLOW</span>
+        <span class="uv-badge" data-variant-stage-target="lightboxUv" <%= "hidden" unless dv&.uv %>>UV</span>
       </span>
     </div>
 
@@ -100,7 +102,8 @@
                         data-color-id="<%= v.id %>"
                         data-color-slug="<%= v.to_color_param %>"
                         data-name="<%= v.name %>"
-                        data-uv="<%= v.uv_glow %>"
+                        data-glow="<%= v.glow %>"
+                        data-uv="<%= v.uv %>"
                         <% if v.photo.attached? %>data-photo-url="<%= url_for(cropped_photo(v, resize_to_limit: [ 760, 760 ])) %>" data-photo-zoom-url="<%= url_for(v.photo.variant(resize_to_limit: [ 1600, 1600 ])) %>"<% end %>
                         <% if (bg = photo_background_color(v)) %>data-photo-bg="<%= bg %>"<% end %>>
                   <% if v.photo.attached? %>
@@ -108,7 +111,8 @@
                   <% else %>
                     <span class="color-tile-empty"><%= render "shared/lure_glyph" %></span>
                   <% end %>
-                  <% if v.uv_glow %><span class="uv-badge color-tile-uv">UV</span><% end %>
+                  <% if v.glow %><span class="glow-badge color-tile-uv">GLOW</span><% end %>
+                  <% if v.uv %><span class="uv-badge color-tile-uv">UV</span><% end %>
                 </button>
               </span>
             <% end %>

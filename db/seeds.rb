@@ -188,16 +188,17 @@ if vision
       b.action = act; b.water = wat; b.position = i + 1
     end
   end
+  # [ best_for, uv, glow ] — glow and uv are independent finishes.
   color_meta = {
-    "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true ],
-    "Sexy French Pearl"      => [ "Smallmouth Bass · Stained water", false ],
-    "Pro Blue"               => [ "Smallmouth Bass · Cold, clear", true ]
+    "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true, false ],
+    "Sexy French Pearl"      => [ "Smallmouth Bass · Stained water", false, true ],
+    "Pro Blue"               => [ "Smallmouth Bass · Cold, clear", true, false ]
   }
   vision.variants.each do |v|
-    best_for, uv = color_meta[v.name]
+    best_for, uv, glow = color_meta[v.name]
     next unless best_for
 
-    v.update!(best_for: best_for, uv_glow: uv)
+    v.update!(best_for: best_for, uv: uv, glow: glow)
   end
 
   # Availability is open-world: colors with no confirmed builds show under every

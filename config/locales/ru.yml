@@ -289,7 +289,10 @@ ru:
     common_attributes: Общие характеристики · вся серия
     this_variation: Эта вариация
     default_variation: Вариация по умолчанию
-    uv_glow: UV-свечение
+    finish: "Покрытие"
+    glow: "Glow (светится в темноте)"
+    uv: "UV"
+    glow_uv_hint: "Glow светится в темноте; UV выглядит иначе в ультрафиолетовом свете."
     best_for: Лучше всего для
     manage_variations: Вариации и исполнения
     tab_details: Общие сведения

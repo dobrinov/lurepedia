@@ -239,7 +239,10 @@ ja:
     common_attributes: "共通の特性 · ファミリー全体"
     this_variation: "このバリエーション"
     default_variation: "デフォルトのバリエーション"
-    uv_glow: "UVグロー"
+    finish: "仕上げ"
+    glow: "グロー（蓄光）"
+    uv: "UV（紫外線）"
+    glow_uv_hint: "グローは暗闇で光ります。UVは紫外線の下で違って見えます。"
     best_for: "最適な対象"
     manage_variations: "バリエーションとビルド"
     tab_details: 基本情報

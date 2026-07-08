@@ -289,7 +289,10 @@ cs:
     common_attributes: Společné vlastnosti · celá rodina
     this_variation: Tato varianta
     default_variation: Výchozí varianta
-    uv_glow: UV efekt
+    finish: "Povrch"
+    glow: "Glow (svítí ve tmě)"
+    uv: "UV"
+    glow_uv_hint: "Glow svítí ve tmě; UV vypadá jinak pod ultrafialovým světlem."
     best_for: Nejlépe na
     manage_variations: Varianty a provedení
     tab_details: Obecné údaje

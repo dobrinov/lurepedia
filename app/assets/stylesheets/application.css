@@ -548,7 +548,9 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 
 /* Lure detail — Vision 110 hero ------------------------------------------- */
 .overline { font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted-2); }
-.uv-badge { display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; background: var(--ink); color: #3dffa0; border-radius: var(--r-pill); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.uv-badge, .glow-badge { display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; background: var(--ink); border-radius: var(--r-pill); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.uv-badge { color: #b98cff; }
+.glow-badge { color: #3dffa0; }
 
 .lure-hero { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 40px; align-items: start; margin-bottom: 8px; }
 .lure-stage { position: relative; border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; background: var(--white); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }

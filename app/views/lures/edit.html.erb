@@ -61,7 +61,8 @@
                 </td>
                 <td style="font-weight:600">
                   <%= v.name %>
-                  <% if v.uv_glow %><span class="uv-badge">UV</span><% end %>
+                  <% if v.glow %><span class="glow-badge">GLOW</span><% end %>
+                  <% if v.uv %><span class="uv-badge">UV</span><% end %>
                   <% if v == @lure.primary_variant %><span class="tag"><%= t("lure.default_variation") %></span><% end %>
                 </td>
                 <td class="muted"><%= v.best_for %></td>

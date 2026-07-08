@@ -289,7 +289,10 @@ fr:
     common_attributes: Attributs communs · toute la famille
     this_variation: Cette variante
     default_variation: Variante par défaut
-    uv_glow: Brillance UV
+    finish: "Finition"
+    glow: "Glow (phosphorescent)"
+    uv: "UV"
+    glow_uv_hint: "Le glow brille dans le noir ; l'UV change d'aspect sous lumière ultraviolette."
     best_for: Idéal pour
     manage_variations: Variantes & versions
     tab_details: Informations générales

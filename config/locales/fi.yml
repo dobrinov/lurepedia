@@ -289,7 +289,10 @@ fi:
     common_attributes: Yhteiset ominaisuudet · koko viehesarja
     this_variation: Tämä versio
     default_variation: Oletusversio
-    uv_glow: UV-hohto
+    finish: "Viimeistely"
+    glow: "Glow (jälkivalaiseva)"
+    uv: "UV"
+    glow_uv_hint: "Glow hohtaa pimeässä; UV näyttää erilaiselta ultraviolettivalossa."
     best_for: Tehoaa parhaiten
     manage_variations: Versiot ja koot
     tab_details: Yleistiedot

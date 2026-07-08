@@ -239,7 +239,10 @@ bg:
     common_attributes: "Общи характеристики · цялото семейство"
     this_variation: "Този вариант"
     default_variation: "Вариант по подразбиране"
-    uv_glow: "UV сияние"
+    finish: "Ефект"
+    glow: "Глоу"
+    uv: "UV"
+    glow_uv_hint: "Глоу свети на тъмно; UV цветовете изглеждат различно на ултравиолетова светлина."
     best_for: "Най-добър за"
     manage_variations: "Варианти и модели"
     tab_details: Общи данни
