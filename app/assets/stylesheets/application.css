@@ -596,20 +596,48 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
   .nav-menu { display: none; }
 }
 @media (max-width: 880px) {
-  /* On small screens make the filter panel a full-screen overlay that covers
-     the page and scrolls internally, instead of an absolutely-positioned box
-     that scrolls with the page. */
+  /* iOS zooms the page in when a focused form control has a font-size below
+     16px. Bump controls to 16px on small screens so tapping the search field,
+     a filter, or a menu input doesn't trigger an auto-zoom. */
+  input, select, textarea,
+  .combobox-trigger, .combobox-search input { font-size: 16px; }
+
+  /* Header dropdown menus (nav/sandwich, language, avatar): pin under the
+     header and to the viewport's right edge, capped to the screen so they
+     never run off the side, and let a long list (e.g. the 19 locales) scroll
+     internally instead of overflowing the viewport height. */
+  .site-header .dropdown-menu {
+    position: fixed; top: 56px; right: 12px; left: auto;
+    max-width: calc(100vw - 24px);
+    max-height: calc(100dvh - 68px);
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+  }
+
+  /* On small screens the filter panel becomes a full-screen overlay: the
+     header row stays put, the filters scroll, and the footer (with the Search
+     button) is pinned to the bottom. */
   .search-panel {
     position: fixed; inset: 0; width: 100vw; max-width: none;
     border: none; border-radius: 0; box-shadow: none;
-    padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
-    overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 200;
+    padding: 0; z-index: 200;
+    display: flex; flex-direction: column; overflow: hidden;
   }
   /* Re-pin to the viewport: the desktop drop-down offset (.page-search
      .search-panel { top: 52px; bottom: auto }) is more specific and would
      otherwise unbound the overlay's height, pushing the footer off-screen. */
   .page-search .search-panel { top: 0; bottom: 0; }
-  .search-panel .filters-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-panel > .row { flex-shrink: 0; padding: 16px 18px 12px; }
+  .search-panel .filters-form { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .search-panel .filters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    margin-top: 0; padding: 0 18px 4px;
+  }
+  .search-panel .panel-foot {
+    flex-shrink: 0; margin-top: 0;
+    padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+    background: var(--white);
+  }
   .panel-close { display: inline-flex; }
   .panel-hint { display: none; }
 }
