@@ -6,13 +6,17 @@ import { Controller } from "@hotwired/stimulus"
 // default "variations" tab is implicit (/lures/<slug>/<color>); other tabs carry
 // their name (/lures/<slug>/<tab>/<color>).
 export default class extends Controller {
-  static targets = [ "chip", "stage", "stageImage", "stageSpinner", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxName", "lightboxUv", "chipName", "chipUv", "buildsTable" ]
+  static targets = [ "chip", "stage", "stageImage", "stageSpinner", "stageGlyph", "stageZoom", "lightbox", "lightboxImage", "lightboxSpinner", "lightboxName", "lightboxUv", "chipName", "chipUv", "buildsTable" ]
   static values = { basePath: String, tabs: Array } // basePath: "/en/lures/<slug>"
 
   connect() {
     if (this.hasStageImageTarget) {
       this.stageImageTarget.addEventListener("load", () => this.setStageLoading(false))
       this.stageImageTarget.addEventListener("error", () => this.setStageLoading(false))
+    }
+    if (this.hasLightboxImageTarget) {
+      this.lightboxImageTarget.addEventListener("load", () => this.setLightboxLoading(false))
+      this.lightboxImageTarget.addEventListener("error", () => this.setLightboxLoading(false))
     }
 
     const initial = this.chipTargets.find((c) => c.dataset.default === "true") || this.chipTargets[0]
@@ -48,8 +52,16 @@ export default class extends Controller {
     // The zoom button and its lightbox only make sense with a photo to show.
     if (this.hasStageZoomTarget) this.stageZoomTarget.hidden = !d.photoUrl
     if (this.hasLightboxImageTarget) {
-      if (d.photoZoomUrl) this.lightboxImageTarget.src = d.photoZoomUrl
-      else this.lightboxImageTarget.removeAttribute("src")
+      if (d.photoZoomUrl) {
+        const nextZoomUrl = new URL(d.photoZoomUrl, window.location.href).href
+        if (this.lightboxImageTarget.src !== nextZoomUrl) {
+          this.setLightboxLoading(true)
+          this.lightboxImageTarget.src = d.photoZoomUrl
+        }
+      } else {
+        this.setLightboxLoading(false)
+        this.lightboxImageTarget.removeAttribute("src")
+      }
     }
     if (this.hasLightboxNameTarget) this.lightboxNameTarget.textContent = d.name || ""
     if (this.hasLightboxUvTarget) this.lightboxUvTarget.hidden = d.uv !== "true"
@@ -67,6 +79,10 @@ export default class extends Controller {
 
   setStageLoading(loading) {
     if (this.hasStageTarget) this.stageTarget.classList.toggle("is-loading", loading)
+  }
+
+  setLightboxLoading(loading) {
+    if (this.hasLightboxSpinnerTarget) this.lightboxSpinnerTarget.hidden = !loading
   }
 
   // Lightbox prev/next: cycle through the colors that have photos, keeping the

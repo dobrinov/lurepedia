@@ -63,6 +63,7 @@
     <% photo_colors = @variants.count { |v| v.photo.attached? } %>
     <div class="modal-backdrop" data-modal-target="dialog" data-variant-stage-target="lightbox"
          data-action="click->modal#backdrop keydown.left@window->variant-stage#prevColor keydown.right@window->variant-stage#nextColor" hidden>
+      <div class="lightbox-spinner" data-variant-stage-target="lightboxSpinner" hidden aria-hidden="true"></div>
       <% if photo_colors > 1 %>
         <button type="button" class="lightbox-nav lightbox-nav-prev" data-action="variant-stage#prevColor" aria-label="<%= t("common.prev") %>">&lsaquo;</button>
       <% end %>
