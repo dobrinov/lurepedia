@@ -73,6 +73,8 @@ ja:
     choose_country: お住まいの国
     choose_language: 希望言語
     continue_with_google: Googleで続行
+    or: "または"
+    oauth_failed: "サインインに失敗しました。もう一度お試しください。"
 
   units:
     label: 単位
@@ -535,6 +537,13 @@ ja:
     units: 単位
     notifications: 通知
     saved: 設定を保存しました
+    set_password: "パスワードを設定"
+    change_password: "パスワードを変更"
+    set_password_help: "Google でサインインしました。メールアドレスでもサインインできるようにパスワードを設定してください。"
+    current_password: "現在のパスワード"
+    new_password: "新しいパスワード"
+    password_saved: "パスワードを更新しました"
+    current_password_wrong: "現在のパスワードが正しくありません。"
     public_profile: 公開プロフィール
     copy: コピー
     copied: コピーしました！

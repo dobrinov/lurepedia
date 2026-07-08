@@ -123,6 +123,8 @@ pl:
     choose_country: Twój kraj
     choose_language: Preferowany język
     continue_with_google: Kontynuuj przez Google
+    or: "lub"
+    oauth_failed: "Logowanie nie powiodło się. Spróbuj ponownie."
 
   units:
     label: Jednostki
@@ -585,6 +587,13 @@ pl:
     units: Jednostki
     notifications: Powiadomienia
     saved: Ustawienia zapisane
+    set_password: "Ustaw hasło"
+    change_password: "Zmień hasło"
+    set_password_help: "Zalogowano się przez Google. Ustaw hasło, aby logować się także za pomocą adresu e-mail."
+    current_password: "Obecne hasło"
+    new_password: "Nowe hasło"
+    password_saved: "Hasło zaktualizowane"
+    current_password_wrong: "Twoje obecne hasło jest nieprawidłowe."
     public_profile: Twój profil publiczny
     copy: Kopiuj
     copied: Skopiowano!

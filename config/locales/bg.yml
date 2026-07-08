@@ -73,6 +73,8 @@ bg:
     choose_country: Твоята държава
     choose_language: Предпочитан език
     continue_with_google: Продължи с Google
+    or: "или"
+    oauth_failed: "Влизането е неуспешно. Опитайте отново."
 
   units:
     label: Мерни единици
@@ -602,6 +604,13 @@ bg:
     units: Мерни единици
     notifications: Известия
     saved: Настройките са запазени
+    set_password: "Задаване на парола"
+    change_password: "Смяна на паролата"
+    set_password_help: "Влязохте с Google. Задайте парола, за да влизате и с имейл адреса си."
+    current_password: "Текуща парола"
+    new_password: "Нова парола"
+    password_saved: "Паролата е обновена"
+    current_password_wrong: "Текущата ви парола е грешна."
     public_profile: Твоят публичен профил
     copy: Копирай
     copied: Копирано!

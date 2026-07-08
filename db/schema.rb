@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_07_140000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_08_151418) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -156,6 +156,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_140000) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true
+    t.index ["provider", "user_id"], name: "index_identities_on_provider_and_user_id", unique: true
+    t.index ["user_id"], name: "index_identities_on_user_id"
+  end
+
   create_table "lure_links", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "lure_id", null: false
@@ -298,7 +309,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_140000) do
     t.integer "length_units", default: 0, null: false
     t.string "locale", default: "en", null: false
     t.string "name", default: "", null: false
-    t.string "password_digest", null: false
+    t.string "password_digest"
     t.integer "role", default: 0, null: false
     t.string "slug", null: false
     t.string "time_zone"
@@ -350,6 +361,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_140000) do
   add_foreign_key "comments", "catches"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"
+  add_foreign_key "identities", "users"
   add_foreign_key "lure_links", "lures"
   add_foreign_key "lure_links", "lures", column: "related_lure_id"
   add_foreign_key "lures", "brands"

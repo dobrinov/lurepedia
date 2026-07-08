@@ -123,6 +123,8 @@ fr:
     choose_country: Votre pays
     choose_language: Langue préférée
     continue_with_google: Continuer avec Google
+    or: "ou"
+    oauth_failed: "Échec de la connexion. Veuillez réessayer."
 
   units:
     label: Unités
@@ -585,6 +587,13 @@ fr:
     units: Unités
     notifications: Notifications
     saved: Paramètres enregistrés
+    set_password: "Définir un mot de passe"
+    change_password: "Changer le mot de passe"
+    set_password_help: "Vous vous êtes connecté avec Google. Définissez un mot de passe pour vous connecter aussi avec votre adresse e-mail."
+    current_password: "Mot de passe actuel"
+    new_password: "Nouveau mot de passe"
+    password_saved: "Mot de passe mis à jour"
+    current_password_wrong: "Votre mot de passe actuel est incorrect."
     public_profile: Votre profil public
     copy: Copier
     copied: Copié !

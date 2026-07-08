@@ -123,6 +123,8 @@ es:
     choose_country: Tu país
     choose_language: Idioma preferido
     continue_with_google: Continuar con Google
+    or: "o"
+    oauth_failed: "Error al iniciar sesión. Inténtalo de nuevo."
 
   units:
     label: Unidades
@@ -585,6 +587,13 @@ es:
     units: Unidades
     notifications: Notificaciones
     saved: Ajustes guardados
+    set_password: "Establecer una contraseña"
+    change_password: "Cambiar contraseña"
+    set_password_help: "Iniciaste sesión con Google. Establece una contraseña para iniciar sesión también con tu correo electrónico."
+    current_password: "Contraseña actual"
+    new_password: "Nueva contraseña"
+    password_saved: "Contraseña actualizada"
+    current_password_wrong: "Tu contraseña actual es incorrecta."
     public_profile: Tu perfil público
     copy: Copiar
     copied: ¡Copiado!

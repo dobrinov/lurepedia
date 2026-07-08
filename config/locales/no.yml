@@ -123,6 +123,8 @@
     choose_country: Ditt land
     choose_language: Foretrukket språk
     continue_with_google: Fortsett med Google
+    or: "eller"
+    oauth_failed: "Innlogging mislyktes. Prøv igjen."
 
   units:
     label: Enheter
@@ -585,6 +587,13 @@
     units: Enheter
     notifications: Varsler
     saved: Innstillinger lagret
+    set_password: "Angi et passord"
+    change_password: "Endre passord"
+    set_password_help: "Du logget inn med Google. Angi et passord for også å logge inn med e-postadressen din."
+    current_password: "Nåværende passord"
+    new_password: "Nytt passord"
+    password_saved: "Passordet oppdatert"
+    current_password_wrong: "Det nåværende passordet ditt er feil."
     public_profile: Din offentlige profil
     copy: Kopier
     copied: Kopiert!

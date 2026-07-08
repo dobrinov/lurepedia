@@ -123,6 +123,8 @@ pt:
     choose_country: O seu país
     choose_language: Idioma preferido
     continue_with_google: Continuar com o Google
+    or: "ou"
+    oauth_failed: "Falha ao entrar. Tente novamente."
 
   units:
     label: Unidades
@@ -585,6 +587,13 @@ pt:
     units: Unidades
     notifications: Notificações
     saved: Definições guardadas
+    set_password: "Definir uma palavra-passe"
+    change_password: "Alterar palavra-passe"
+    set_password_help: "Iniciou sessão com o Google. Defina uma palavra-passe para iniciar sessão também com o seu e-mail."
+    current_password: "Palavra-passe atual"
+    new_password: "Nova palavra-passe"
+    password_saved: "Palavra-passe atualizada"
+    current_password_wrong: "A sua palavra-passe atual está incorreta."
     public_profile: O seu perfil público
     copy: Copiar
     copied: Copiado!

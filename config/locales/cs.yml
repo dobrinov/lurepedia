@@ -123,6 +123,8 @@ cs:
     choose_country: Vaše země
     choose_language: Preferovaný jazyk
     continue_with_google: Pokračovat přes Google
+    or: "nebo"
+    oauth_failed: "Přihlášení se nezdařilo. Zkuste to znovu."
 
   units:
     label: Jednotky
@@ -585,6 +587,13 @@ cs:
     units: Jednotky
     notifications: Oznámení
     saved: Nastavení uloženo
+    set_password: "Nastavit heslo"
+    change_password: "Změnit heslo"
+    set_password_help: "Přihlásili jste se přes Google. Nastavte si heslo, abyste se mohli přihlásit i pomocí e-mailu."
+    current_password: "Současné heslo"
+    new_password: "Nové heslo"
+    password_saved: "Heslo aktualizováno"
+    current_password_wrong: "Vaše současné heslo je nesprávné."
     public_profile: Váš veřejný profil
     copy: Kopírovat
     copied: Zkopírováno!

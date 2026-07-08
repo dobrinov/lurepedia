@@ -123,6 +123,8 @@ zh:
     choose_country: 您所在的国家/地区
     choose_language: 首选语言
     continue_with_google: 使用 Google 继续
+    or: "或"
+    oauth_failed: "登录失败，请重试。"
 
   units:
     label: 单位
@@ -585,6 +587,13 @@ zh:
     units: 单位
     notifications: 通知
     saved: 设置已保存
+    set_password: "设置密码"
+    change_password: "修改密码"
+    set_password_help: "您通过 Google 登录。设置密码后也可使用电子邮箱登录。"
+    current_password: "当前密码"
+    new_password: "新密码"
+    password_saved: "密码已更新"
+    current_password_wrong: "您的当前密码不正确。"
     public_profile: 您的公开主页
     copy: 复制
     copied: 已复制！

@@ -123,6 +123,8 @@ en:
     choose_country: Your country
     choose_language: Preferred language
     continue_with_google: Continue with Google
+    or: "or"
+    oauth_failed: "Sign-in failed. Please try again."
 
   units:
     label: Units
@@ -585,6 +587,13 @@ en:
     units: Units
     notifications: Notifications
     saved: Settings saved
+    set_password: "Set a password"
+    change_password: "Change password"
+    set_password_help: "You signed in with Google. Add a password to also sign in with your email address."
+    current_password: "Current password"
+    new_password: "New password"
+    password_saved: "Password updated"
+    current_password_wrong: "Your current password is incorrect."
     public_profile: Your public profile
     copy: Copy
     copied: Copied!

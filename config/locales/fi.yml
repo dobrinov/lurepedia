@@ -123,6 +123,8 @@ fi:
     choose_country: Maasi
     choose_language: Ensisijainen kieli
     continue_with_google: Jatka Googlella
+    or: "tai"
+    oauth_failed: "Kirjautuminen epäonnistui. Yritä uudelleen."
 
   units:
     label: Yksiköt
@@ -585,6 +587,13 @@ fi:
     units: Yksiköt
     notifications: Ilmoitukset
     saved: Asetukset tallennettu
+    set_password: "Aseta salasana"
+    change_password: "Vaihda salasana"
+    set_password_help: "Kirjauduit sisään Googlella. Aseta salasana, jotta voit kirjautua myös sähköpostiosoitteellasi."
+    current_password: "Nykyinen salasana"
+    new_password: "Uusi salasana"
+    password_saved: "Salasana päivitetty"
+    current_password_wrong: "Nykyinen salasanasi on virheellinen."
     public_profile: Julkinen profiilisi
     copy: Kopioi
     copied: Kopioitu!

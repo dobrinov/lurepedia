@@ -24,6 +24,20 @@ module ApplicationHelper
     ru: { native: "Русский", country: "RU" }
   }.freeze
 
+  # Which social sign-in providers have credentials configured. The auth views
+  # only render a provider's button when it's enabled, so a checkout without
+  # credentials (CI, a fresh clone) shows the plain email/password form.
+  def oauth_provider_enabled?(provider)
+    case provider
+    when :google then Rails.application.credentials.dig(:google, :client_id).present?
+    else false
+    end
+  end
+
+  def any_oauth_enabled?
+    oauth_provider_enabled?(:google)
+  end
+
   def available_locales_for_switcher
     # Display in the canonical order defined by LOCALE_NAMES, limited to enabled locales.
     available = I18n.available_locales

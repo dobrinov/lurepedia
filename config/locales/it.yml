@@ -123,6 +123,8 @@ it:
     choose_country: Il tuo paese
     choose_language: Lingua preferita
     continue_with_google: Continua con Google
+    or: "o"
+    oauth_failed: "Accesso non riuscito. Riprova."
 
   units:
     label: Unità
@@ -585,6 +587,13 @@ it:
     units: Unità
     notifications: Notifiche
     saved: Impostazioni salvate
+    set_password: "Imposta una password"
+    change_password: "Cambia password"
+    set_password_help: "Hai effettuato l'accesso con Google. Imposta una password per accedere anche con il tuo indirizzo email."
+    current_password: "Password attuale"
+    new_password: "Nuova password"
+    password_saved: "Password aggiornata"
+    current_password_wrong: "La tua password attuale non è corretta."
     public_profile: Il tuo profilo pubblico
     copy: Copia
     copied: Copiato!

@@ -4,6 +4,8 @@
     <h1 style="font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px"><%= t("auth.join") %></h1>
     <p class="muted" style="margin-bottom:20px"><%= t("auth.create_account") %></p>
 
+    <%= render "shared/oauth_buttons" %>
+
     <%= form_with model: @user, url: registration_path, method: :post do |f| %>
       <div class="field">
         <%= f.label :name, t("auth.name") %>

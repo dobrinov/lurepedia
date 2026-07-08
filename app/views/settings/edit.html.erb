@@ -5,4 +5,7 @@
 
   <h2 style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin:36px 0 16px"><%= t("settings.tab_preferences") %></h2>
   <%= render "settings/preferences", user: @user %>
+
+  <h2 style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin:36px 0 16px"><%= @user.password_set? ? t("settings.change_password") : t("settings.set_password") %></h2>
+  <%= render "settings/password", user: @user %>
 </div>

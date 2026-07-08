@@ -123,6 +123,8 @@ da:
     choose_country: Dit land
     choose_language: Foretrukket sprog
     continue_with_google: Fortsæt med Google
+    or: "eller"
+    oauth_failed: "Login mislykkedes. Prøv igen."
 
   units:
     label: Enheder
@@ -585,6 +587,13 @@ da:
     units: Enheder
     notifications: Notifikationer
     saved: Indstillinger gemt
+    set_password: "Angiv en adgangskode"
+    change_password: "Skift adgangskode"
+    set_password_help: "Du loggede ind med Google. Angiv en adgangskode for også at logge ind med din e-mailadresse."
+    current_password: "Nuværende adgangskode"
+    new_password: "Ny adgangskode"
+    password_saved: "Adgangskode opdateret"
+    current_password_wrong: "Din nuværende adgangskode er forkert."
     public_profile: Din offentlige profil
     copy: Kopiér
     copied: Kopieret!

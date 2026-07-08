@@ -73,6 +73,8 @@ de:
     choose_country: Dein Land
     choose_language: Bevorzugte Sprache
     continue_with_google: Mit Google fortfahren
+    or: "oder"
+    oauth_failed: "Anmeldung fehlgeschlagen. Bitte versuche es erneut."
 
   units:
     label: Einheiten
@@ -535,6 +537,13 @@ de:
     units: Einheiten
     notifications: Benachrichtigungen
     saved: Einstellungen gespeichert
+    set_password: "Passwort festlegen"
+    change_password: "Passwort ändern"
+    set_password_help: "Du hast dich mit Google angemeldet. Lege ein Passwort fest, um dich auch mit deiner E-Mail-Adresse anzumelden."
+    current_password: "Aktuelles Passwort"
+    new_password: "Neues Passwort"
+    password_saved: "Passwort aktualisiert"
+    current_password_wrong: "Dein aktuelles Passwort ist falsch."
     public_profile: Dein öffentliches Profil
     copy: Kopieren
     copied: Kopiert!

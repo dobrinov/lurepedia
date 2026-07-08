@@ -153,6 +153,10 @@ main { min-height: 60vh; }
 .btn-ghost:hover { background: var(--surface-2); }
 .btn-sm { height: 32px; padding: 0 10px; font-size: 13px; }
 .btn-block { width: 100%; }
+.btn-oauth { gap: 10px; }
+.btn-oauth svg { width: 18px; height: 18px; flex-shrink: 0; }
+.or-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.or-divider::before, .or-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
 .btn.is-upvoted { background: var(--ink); color: var(--surface-1); border-color: var(--ink); }
 .btn.is-upvoted:hover { background: #000; color: #fff; }

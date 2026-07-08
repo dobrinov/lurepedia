@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # OmniAuth callbacks are locale-independent: the provider's redirect URI is a
+  # fixed, registered path, so these live outside the optional (:locale) scope.
+  get  "/auth/:provider/callback", to: "sessions/omniauth#create", as: :omniauth_callback
+  get  "/auth/failure",            to: "sessions/omniauth#failure", as: :omniauth_failure
+
   # Sitemap (locale-independent). /sitemap.xml is a sitemap index that points
   # at one per-locale sitemap; each /sitemaps/<locale>.xml lists that language's
   # URLs (with the full hreflang alternate set).
@@ -27,7 +32,9 @@ Rails.application.routes.draw do
     resource :registration, only: %i[new create]
 
     # Account
-    resource :settings, only: %i[edit update]
+    resource :settings, only: %i[edit update] do
+      patch :password
+    end
     namespace :my do
       resources :catches, only: :index
     end

@@ -123,6 +123,8 @@ el:
     choose_country: Η χώρα σου
     choose_language: Προτιμώμενη γλώσσα
     continue_with_google: Συνέχεια με Google
+    or: "ή"
+    oauth_failed: "Η σύνδεση απέτυχε. Δοκιμάστε ξανά."
 
   units:
     label: Μονάδες
@@ -585,6 +587,13 @@ el:
     units: Μονάδες
     notifications: Ειδοποιήσεις
     saved: Οι ρυθμίσεις αποθηκεύτηκαν
+    set_password: "Ορισμός κωδικού"
+    change_password: "Αλλαγή κωδικού"
+    set_password_help: "Συνδεθήκατε με Google. Ορίστε έναν κωδικό για να συνδέεστε και με το email σας."
+    current_password: "Τρέχων κωδικός"
+    new_password: "Νέος κωδικός"
+    password_saved: "Ο κωδικός ενημερώθηκε"
+    current_password_wrong: "Ο τρέχων κωδικός σας είναι λανθασμένος."
     public_profile: Το δημόσιο προφίλ σου
     copy: Αντιγραφή
     copied: Αντιγράφηκε!

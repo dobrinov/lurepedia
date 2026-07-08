@@ -123,6 +123,8 @@ nl:
     choose_country: Je land
     choose_language: Voorkeurstaal
     continue_with_google: Doorgaan met Google
+    or: "of"
+    oauth_failed: "Aanmelden mislukt. Probeer het opnieuw."
 
   units:
     label: Eenheden
@@ -585,6 +587,13 @@ nl:
     units: Eenheden
     notifications: Notificaties
     saved: Instellingen opgeslagen
+    set_password: "Wachtwoord instellen"
+    change_password: "Wachtwoord wijzigen"
+    set_password_help: "Je bent ingelogd met Google. Stel een wachtwoord in om ook met je e-mailadres in te loggen."
+    current_password: "Huidig wachtwoord"
+    new_password: "Nieuw wachtwoord"
+    password_saved: "Wachtwoord bijgewerkt"
+    current_password_wrong: "Je huidige wachtwoord is onjuist."
     public_profile: Je openbare profiel
     copy: Kopiëren
     copied: Gekopieerd!

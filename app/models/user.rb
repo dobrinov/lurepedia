@@ -1,8 +1,13 @@
 class User < ApplicationRecord
   include Sluggable
 
-  has_secure_password
+  # Password is optional: OAuth-only users have no password_digest. We keep the
+  # has_secure_password attribute methods (password=, authenticate, authenticate_by)
+  # but skip its validations and enforce presence ourselves only for the
+  # email/password signup path (see below).
+  has_secure_password validations: false
   has_one_attached :avatar
+  has_many :identities, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :catches, foreign_key: :user_id, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -22,6 +27,11 @@ class User < ApplicationRecord
   normalizes :username, with: ->(u) { u.to_s.strip.downcase.presence }
 
   validates :name, presence: true
+  validates :password, length: { maximum: 72 }, confirmation: true, allow_blank: true
+  validates :password, presence: true, on: :create, unless: :oauth_signup?
+  # Setting/changing a password from the settings page (see SettingsController#password),
+  # where presence is required regardless of how the account was created.
+  validates :password, presence: true, on: :password_update
   validates :time_zone, inclusion: { in: ->(*) { ActiveSupport::TimeZone.all.map(&:name) } }, allow_blank: true
   validates :username, uniqueness: { case_sensitive: false },
                        format: { with: /\A[a-z0-9_-]{3,30}\z/ },
@@ -36,6 +46,33 @@ class User < ApplicationRecord
     (handle.present? && find_by(username: handle)) || find_by!(slug: handle)
   end
 
+  # Resolve (or create) the user behind an OmniAuth payload. Accounts are linked
+  # by verified email: an existing identity wins, else a user with the same email
+  # gets the new identity attached, else a fresh user is created. Providers we
+  # enable (Google, later Apple) return verified emails, so this is safe.
+  def self.from_omniauth(auth)
+    Identity.find_by(provider: auth.provider, uid: auth.uid)&.user ||
+      link_or_create_from_omniauth(auth)
+  end
+
+  def self.link_or_create_from_omniauth(auth)
+    email = auth.info.email.to_s.strip.downcase
+    user  = (email.present? && find_by(email_address: email)) || new_from_omniauth(auth, email)
+    user.identities.build(provider: auth.provider, uid: auth.uid)
+    user.oauth_signup = true
+    user.save!
+    user
+  end
+
+  def self.new_from_omniauth(auth, email)
+    new(
+      email_address: email,
+      name: auth.info.name.presence || email.split("@").first.presence || "Angler",
+      country: "US",
+      locale: I18n.locale.to_s
+    )
+  end
+
   def to_param
     username.presence || slug
   end
@@ -46,6 +83,20 @@ class User < ApplicationRecord
 
   def staff?
     moderator? || admin?
+  end
+
+  # Whether this account can sign in with an email/password (OAuth-only users
+  # have no digest until they set one from settings).
+  def password_set?
+    password_digest.present?
+  end
+
+  # Set when a record is being created through OmniAuth so password presence is
+  # not required. A record that already has identities is likewise OAuth-backed.
+  attr_accessor :oauth_signup
+
+  def oauth_signup?
+    oauth_signup || identities.any?
   end
 
   # Brand ids this user owns through a verified claim — submissions to these
