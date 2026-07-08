@@ -635,6 +635,10 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
     grid-template-columns: repeat(2, 1fr);
     flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+    /* Pack rows to the top: sparse grids (brands/shops/species have just two
+       cells) would otherwise stretch to fill the overlay height, floating the
+       toggles into the vertical middle. */
+    align-content: start;
     margin-top: 0; padding: 0 18px 4px;
   }
   .search-panel .panel-foot {
