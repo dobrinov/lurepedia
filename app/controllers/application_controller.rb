@@ -26,6 +26,16 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
+  # Queues a Plausible conversion goal to fire on the next rendered page. Kept in
+  # the flash so it survives the post-action redirect; the layout emits it and
+  # analytics_controller.js sends it to Plausible on load. `props` become
+  # Plausible custom properties (e.g. which shop, whether an edit was direct).
+  def track_goal(name, **props)
+    goals = Array(flash[:goals])
+    goals << (props.any? ? [ name, props.stringify_keys ] : name)
+    flash[:goals] = goals
+  end
+
   # Narrows a catalog scope (variants, builds, …) to what the viewer may see:
   # moderators see everything for review, everyone else sees only published
   # entries. Pending entries stay reachable to their submitter via the edit

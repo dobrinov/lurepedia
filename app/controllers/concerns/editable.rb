@@ -20,6 +20,7 @@ module Editable
     if can_edit_directly?(record)
       if record.update(attrs)
         record.revisions.create!(user: current_user, summary: "Edited #{name}", changeset: changeset)
+        track_goal("Contribution", direct: true)
         redirect_to redirect_path, notice: t("contribute.edit_saved")
         true
       else
@@ -30,6 +31,7 @@ module Editable
     else
       revision = record.revisions.create!(user: current_user, summary: "Suggested an edit to #{name}", changeset: changeset, applied: false)
       ModerationItem.create!(subject: record, kind: :edit, submitter: current_user, revision: revision)
+      track_goal("Contribution", direct: false)
       redirect_to redirect_path, notice: t("contribute.suggested")
       true
     end

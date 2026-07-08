@@ -10,6 +10,7 @@ class RegistrationsController < ApplicationController
     if @user.save
       start_new_session_for(@user)
       cookies[:locale] = @user.locale
+      track_goal("Signup", method: "password")
       redirect_to after_authentication_url, notice: t("auth.welcome_back")
     else
       flash.now[:alert] = @user.errors.full_messages.to_sentence

@@ -1,6 +1,7 @@
-<% if flash.any? %>
+<% messages = flash.to_hash.except("goals") %>
+<% if messages.any? %>
   <div class="flash-wrap" data-controller="flash">
-    <% flash.each do |type, message| %>
+    <% messages.each do |type, message| %>
       <div class="flash <%= type == "alert" ? "alert" : "notice" %>" data-flash-target="item"><%= message %></div>
     <% end %>
   </div>

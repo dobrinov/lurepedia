@@ -25,6 +25,7 @@ class CatchesController < ApplicationController
     @catch.user = current_user
 
     if @catch.save
+      track_goal("Catch Logged", review: !current_user.admin?)
       # Admins skip the review queue — actionable_by? blocks self-review, so an
       # admin's own catch would otherwise sit in a queue nobody can process.
       if current_user.admin?

@@ -39,6 +39,9 @@
   <body>
     <%= render "layouts/header" %>
     <%= render "layouts/flash" %>
+    <% if flash[:goals].present? %>
+      <%= tag.div hidden: true, data: { controller: "analytics", analytics_goals_value: flash[:goals] } %>
+    <% end %>
     <%= render "shared/ban_notice" %>
     <main>
       <%= yield %>
