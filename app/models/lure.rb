@@ -14,6 +14,8 @@ class Lure < ApplicationRecord
   has_many :shops, through: :buy_links
   has_one :claim, as: :claimable, dependent: :destroy
   has_many :revisions, as: :subject, dependent: :destroy
+  has_many :lure_techniques, dependent: :destroy
+  has_many :techniques, through: :lure_techniques
   has_many :lure_links, dependent: :destroy
   has_many :inverse_lure_links, class_name: "LureLink", foreign_key: :related_lure_id,
            inverse_of: :related_lure, dependent: :destroy

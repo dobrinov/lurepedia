@@ -19,6 +19,18 @@ class EditHistoryTest < ActionDispatch::IntegrationTest
     assert_equal [ nil, "https://example.com/v" ], rev.changeset["action_video_url"]
   end
 
+  test "admin edit persists technique_ids and records them in the changeset" do
+    spinning = Technique.create!(key: "spinning")
+    trolling = Technique.create!(key: "trolling")
+    sign_in_as(@admin)
+    # The form always submits a blank sentinel alongside the checked ids.
+    patch lure_path(@lure, locale: :en), params: { lure: { technique_ids: [ "", spinning.id.to_s, trolling.id.to_s ] } }
+
+    assert_equal [ spinning, trolling ].map(&:id).sort, @lure.reload.technique_ids.sort
+    rev = @lure.revisions.newest_first.first
+    assert_equal [ [], [ spinning.id, trolling.id ].sort ], rev.changeset["technique_ids"]
+  end
+
   test "member suggestion links the moderation item to the proposed-change revision" do
     sign_in_as(@member)
     patch lure_path(@lure, locale: :en), params: { lure: { blurb: "Suggested blurb" } }

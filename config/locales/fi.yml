@@ -168,6 +168,13 @@ fi:
     single: "Yksihaarainen"
     treble: "Kolmihaarainen"
 
+  technique:
+    spinning: "Heittokalastus"
+    jigging: "Jigging"
+    trolling: "Uistelu"
+    drifting: "Ajelehtiva"
+    other: "Muu"
+
   condition:
     season:
       label: Vuodenaika
@@ -305,6 +312,7 @@ fi:
     finish: "Viimeistely"
     material: "Materiaali"
     hooks: "Koukut"
+    techniques: "Tekniikat"
     glow: "Glow (jälkivalaiseva)"
     uv: "UV"
     glow_uv_hint: "Glow hohtaa pimeässä; UV näyttää erilaiselta ultraviolettivalossa."

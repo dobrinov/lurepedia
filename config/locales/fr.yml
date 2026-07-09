@@ -168,6 +168,13 @@ fr:
     single: "Simple"
     treble: "Triple"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Traîne"
+    drifting: "Dérive"
+    other: "Autre"
+
   condition:
     season:
       label: Saison
@@ -305,6 +312,7 @@ fr:
     finish: "Finition"
     material: "Matériau"
     hooks: "Hameçons"
+    techniques: "Techniques"
     glow: "Glow (phosphorescent)"
     uv: "UV"
     glow_uv_hint: "Le glow brille dans le noir ; l'UV change d'aspect sous lumière ultraviolette."

@@ -168,6 +168,13 @@ el:
     single: "Μονό"
     treble: "Τριπλό"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Τρόλινγκ"
+    drifting: "Ντρίφτινγκ"
+    other: "Άλλο"
+
   condition:
     season:
       label: Εποχή
@@ -305,6 +312,7 @@ el:
     finish: "Φινίρισμα"
     material: "Υλικό"
     hooks: "Άγκιστρα"
+    techniques: "Τεχνικές"
     glow: "Glow (φωσφορίζον)"
     uv: "UV"
     glow_uv_hint: "Το glow λάμπει στο σκοτάδι· το UV φαίνεται διαφορετικό στο υπεριώδες φως."

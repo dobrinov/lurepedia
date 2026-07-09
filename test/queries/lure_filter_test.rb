@@ -165,6 +165,38 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_equal %w[ weight_min weight_max weight_unit ], LureFilter.pill_params(:weight)
   end
 
+  test "filter by technique matches any lure with that technique" do
+    spinning = Technique.create!(key: "spinning")
+    trolling = Technique.create!(key: "trolling")
+    @kvd.techniques = [ spinning ]
+    @vision.techniques = [ trolling ]
+    assert_equal [ @kvd ], LureFilter.new(technique: [ "spinning" ]).results.to_a
+    assert_equal [ @vision ], LureFilter.new(technique: [ "trolling" ]).results.to_a
+  end
+
+  test "multiple selected techniques are OR-combined" do
+    spinning = Technique.create!(key: "spinning")
+    trolling = Technique.create!(key: "trolling")
+    @kvd.techniques = [ spinning ]
+    @vision.techniques = [ trolling ]
+    results = LureFilter.new(technique: [ "spinning", "trolling" ]).results.to_a
+    assert_includes results, @kvd
+    assert_includes results, @vision
+  end
+
+  test "technique ignores unknown keys" do
+    assert_equal LureFilter.new({}).results.to_a, LureFilter.new(technique: [ "flossing" ]).results.to_a
+    assert_empty LureFilter.new(technique: [ "flossing" ]).active_pills
+  end
+
+  test "technique pill joins selected names and clears the param" do
+    Technique.create!(key: "spinning")
+    Technique.create!(key: "jigging")
+    pills = LureFilter.new(technique: [ "spinning", "jigging" ]).active_pills.to_h
+    assert_equal "Spinning, Jigging", pills[:technique]
+    assert_equal [ "technique" ], LureFilter.pill_params(:technique)
+  end
+
   test "filter by hook type matches any build with that hook" do
     singles = Lure.create!(brand: @sk, lure_type: @jerk, model: "Single Rig")
     singles.builds.create!(name: "S", hook_type: :single)

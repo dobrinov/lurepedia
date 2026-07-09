@@ -168,6 +168,13 @@ it:
     single: "Singolo"
     treble: "Ancoretta"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Traina"
+    drifting: "Drifting"
+    other: "Altro"
+
   condition:
     season:
       label: Stagione
@@ -305,6 +312,7 @@ it:
     finish: "Finitura"
     material: "Materiale"
     hooks: "Ami"
+    techniques: "Tecniche"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "Il glow brilla al buio; l'UV appare diverso sotto la luce ultravioletta."

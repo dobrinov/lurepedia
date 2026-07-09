@@ -168,6 +168,13 @@ nl:
     single: "Enkel"
     treble: "Dreghaak"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jiggen"
+    trolling: "Slepen"
+    drifting: "Driften"
+    other: "Overig"
+
   condition:
     season:
       label: Seizoen
@@ -305,6 +312,7 @@ nl:
     finish: "Afwerking"
     material: "Materiaal"
     hooks: "Haken"
+    techniques: "Technieken"
     glow: "Glow (lichtgevend)"
     uv: "UV"
     glow_uv_hint: "Glow licht op in het donker; UV ziet er anders uit onder ultraviolet licht."

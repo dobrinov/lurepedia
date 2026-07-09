@@ -118,6 +118,13 @@ bg:
     single: "Единични"
     treble: "Тройни"
 
+  technique:
+    spinning: "Спининг"
+    jigging: "Джигинг"
+    trolling: "Тролинг"
+    drifting: "Дрифтинг"
+    other: "Друго"
+
   condition:
     season:
       label: Сезон
@@ -255,6 +262,7 @@ bg:
     finish: "Ефект"
     material: "Материал"
     hooks: "Куки"
+    techniques: "Техники"
     glow: "Глоу"
     uv: "UV"
     glow_uv_hint: "Глоу свети на тъмно; UV цветовете изглеждат различно на ултравиолетова светлина."

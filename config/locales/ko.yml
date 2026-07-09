@@ -168,6 +168,13 @@ ko:
     single: "싱글"
     treble: "트레블"
 
+  technique:
+    spinning: "스피닝"
+    jigging: "지깅"
+    trolling: "트롤링"
+    drifting: "드리프팅"
+    other: "기타"
+
   condition:
     season:
       label: 계절
@@ -305,6 +312,7 @@ ko:
     finish: "마감"
     material: "소재"
     hooks: "훅"
+    techniques: "기법"
     glow: "글로우(야광)"
     uv: "UV(자외선)"
     glow_uv_hint: "글로우는 어둠 속에서 빛나고, UV는 자외선 아래에서 다르게 보입니다."

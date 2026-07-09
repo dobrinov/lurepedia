@@ -18,6 +18,16 @@
           options: [ [ t("common.none"), "" ] ] + Lure.materials.keys.map { |k| [ material_name(k), k ] },
           selected: lure.material, placeholder: t("search.any_material") %>
   </div>
+  <div class="field">
+    <label><%= t("lure.techniques") %></label>
+    <%# Blank sentinel so unchecking every technique submits an empty set (clears). %>
+    <%= hidden_field_tag "lure[technique_ids][]", "" %>
+    <div class="stack" style="gap:8px">
+      <% Technique.all.sort_by(&:key).each do |tech| %>
+        <label class="toggle"><%= check_box_tag "lure[technique_ids][]", tech.id, lure.technique_ids.include?(tech.id), id: "ltech_#{tech.id}" %><span class="track"><span class="knob"></span></span><%= technique_name(tech) %></label>
+      <% end %>
+    </div>
+  </div>
   <%= render "shared/description_translations", record: lure, scope: "lure" %>
   <%= f.submit submit_label, class: "btn btn-primary" %>
 <% end %>

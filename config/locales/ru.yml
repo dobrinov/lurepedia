@@ -168,6 +168,13 @@ ru:
     single: "Одинарные"
     treble: "Тройники"
 
+  technique:
+    spinning: "Спиннинг"
+    jigging: "Джиггинг"
+    trolling: "Троллинг"
+    drifting: "Дрифтинг"
+    other: "Другое"
+
   condition:
     season:
       label: Сезон
@@ -305,6 +312,7 @@ ru:
     finish: "Покрытие"
     material: "Материал"
     hooks: "Крючки"
+    techniques: "Техники"
     glow: "Glow (светится в темноте)"
     uv: "UV"
     glow_uv_hint: "Glow светится в темноте; UV выглядит иначе в ультрафиолетовом свете."

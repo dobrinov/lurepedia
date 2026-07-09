@@ -106,9 +106,11 @@ class LuresController < ApplicationController
 
   def lure_params
     permitted = params.require(:lure).permit(:model, :blurb, :action_video_url, :default_variant_id, :material,
-                                             local_descriptions: I18n.available_locales.map(&:to_s))
+                                             technique_ids: [], local_descriptions: I18n.available_locales.map(&:to_s))
     # The "unknown" material choice submits "", which the enum can't accept — store it as nil.
     permitted[:material] = permitted[:material].presence if permitted.key?(:material)
+    # Drop the blank sentinel the technique toggles submit so an empty set clears.
+    permitted[:technique_ids] = permitted[:technique_ids].reject(&:blank?) if permitted[:technique_ids]
     permitted
   end
 end

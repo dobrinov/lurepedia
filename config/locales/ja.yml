@@ -118,6 +118,13 @@ ja:
     single: "シングル"
     treble: "トレブル"
 
+  technique:
+    spinning: "スピニング"
+    jigging: "ジギング"
+    trolling: "トローリング"
+    drifting: "ドリフト"
+    other: "その他"
+
   condition:
     season:
       label: 季節
@@ -255,6 +262,7 @@ ja:
     finish: "仕上げ"
     material: "素材"
     hooks: "フック"
+    techniques: "釣り方"
     glow: "グロー（蓄光）"
     uv: "UV（紫外線）"
     glow_uv_hint: "グローは暗闇で光ります。UVは紫外線の下で違って見えます。"

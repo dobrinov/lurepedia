@@ -86,6 +86,7 @@
       <div class="chips">
         <span class="tag"><%= lure_type_name(@lure.lure_type) %></span>
         <% if @lure.material %><span class="tag"><%= material_name(@lure.material) %></span><% end %>
+        <% @lure.techniques.sort_by(&:key).each do |tech| %><span class="tag"><%= technique_name(tech) %></span><% end %>
         <span class="tag"><%= lure_action_label(@lure.dominant_action) %></span>
         <span class="tag"><%= water_name(@lure.water_summary) %></span>
       </div>

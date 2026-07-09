@@ -168,6 +168,13 @@ pt:
     single: "Simples"
     treble: "Triplo"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Corrico"
+    drifting: "Deriva"
+    other: "Outro"
+
   condition:
     season:
       label: Estação
@@ -305,6 +312,7 @@ pt:
     finish: "Acabamento"
     material: "Material"
     hooks: "Anzóis"
+    techniques: "Técnicas"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "O glow brilha no escuro; o UV parece diferente sob luz ultravioleta."

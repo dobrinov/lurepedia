@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_140000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -178,6 +178,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_140000) do
     t.index ["related_lure_id"], name: "index_lure_links_on_related_lure_id"
   end
 
+  create_table "lure_techniques", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "lure_id", null: false
+    t.integer "technique_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lure_id", "technique_id"], name: "index_lure_techniques_on_lure_id_and_technique_id", unique: true
+    t.index ["lure_id"], name: "index_lure_techniques_on_lure_id"
+    t.index ["technique_id"], name: "index_lure_techniques_on_technique_id"
+  end
+
   create_table "lure_types", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "key", null: false
@@ -292,6 +302,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_140000) do
     t.index ["slug"], name: "index_species_on_slug", unique: true
   end
 
+  create_table "techniques", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_techniques_on_key", unique: true
+  end
+
   create_table "upvotes", force: :cascade do |t|
     t.integer "catch_id", null: false
     t.datetime "created_at", null: false
@@ -367,6 +384,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_140000) do
   add_foreign_key "identities", "users"
   add_foreign_key "lure_links", "lures"
   add_foreign_key "lure_links", "lures", column: "related_lure_id"
+  add_foreign_key "lure_techniques", "lures"
+  add_foreign_key "lure_techniques", "techniques"
   add_foreign_key "lures", "brands"
   add_foreign_key "lures", "lure_types"
   add_foreign_key "moderation_items", "revisions"

@@ -118,6 +118,13 @@ de:
     single: "Einzelhaken"
     treble: "Drilling"
 
+  technique:
+    spinning: "Spinnfischen"
+    jigging: "Jiggen"
+    trolling: "Schleppen"
+    drifting: "Driften"
+    other: "Sonstiges"
+
   condition:
     season:
       label: Jahreszeit
@@ -255,6 +262,7 @@ de:
     finish: "Finish"
     material: "Material"
     hooks: "Haken"
+    techniques: "Techniken"
     glow: "Glow (nachleuchtend)"
     uv: "UV"
     glow_uv_hint: "Glow leuchtet im Dunkeln; UV-Farben wirken unter Ultraviolettlicht anders."

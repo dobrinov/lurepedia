@@ -168,6 +168,13 @@ zh:
     single: "单钩"
     treble: "三本钩"
 
+  technique:
+    spinning: "路亚"
+    jigging: "铁板"
+    trolling: "拖钓"
+    drifting: "漂流"
+    other: "其他"
+
   condition:
     season:
       label: 季节
@@ -305,6 +312,7 @@ zh:
     finish: "涂装"
     material: "材质"
     hooks: "钩"
+    techniques: "技法"
     glow: "夜光"
     uv: "UV（紫外）"
     glow_uv_hint: "夜光在黑暗中发光；UV 颜色在紫外线下呈现不同。"

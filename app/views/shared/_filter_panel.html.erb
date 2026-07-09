@@ -10,7 +10,12 @@
   <%= form_with url: url, method: :get do |f| %>
     <%# Keep the active filters when submitting a free-text query %>
     <% request.query_parameters.except("q", "page").each do |key, value| %>
-      <%= hidden_field_tag key, value if value.is_a?(String) %>
+      <% if value.is_a?(String) %>
+        <%= hidden_field_tag key, value %>
+      <% elsif value.is_a?(Array) %>
+        <%# Multi-valued filters (e.g. technique[]) — re-emit each entry. %>
+        <% value.each { |v| concat(hidden_field_tag("#{key}[]", v)) if v.is_a?(String) } %>
+      <% end %>
     <% end %>
     <%= f.search_field :q, value: params[:q], placeholder: placeholder,
           autocomplete: "off",

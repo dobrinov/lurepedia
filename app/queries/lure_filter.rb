@@ -1,6 +1,6 @@
 # Filters lures by catalog attributes and (via catches) condition attributes.
 class LureFilter
-  ATTRS = %i[q type brand species material lure_action hook depth length_min length_max weight_min weight_max weight_unit
+  ATTRS = %i[q type brand species material technique lure_action hook depth length_min length_max weight_min weight_max weight_unit
              water_body season clarity wind water glow uv sort].freeze
 
   # Depth bands in centimetres, matched by overlap against a lure's [min, max] range.
@@ -31,6 +31,7 @@ class LureFilter
     pills << [ :type, lure_type_label(@p[:type]) ] if present?(:type)
     pills << [ :brand, brand_label(@p[:brand]) ] if present?(:brand)
     pills << [ :material, I18n.t("material.#{@p[:material]}") ] if material?
+    pills << [ :technique, technique_keys.map { |k| I18n.t("technique.#{k}") }.join(", ") ] if technique_keys.any?
     pills << [ :species, species_label(@p[:species]) ] if present?(:species)
     pills << [ :lure_action, @p[:lure_action].to_s.titleize ] if present?(:lure_action)
     pills << [ :hook, I18n.t("hook.#{@p[:hook]}") ] if hook?
@@ -65,6 +66,7 @@ class LureFilter
     scope = scope.where(material: @p[:material]) if material?
     scope = apply_action(scope) if present?(:lure_action) && Build.actions.key?(@p[:lure_action].to_s)
     scope = scope.where(id: Build.where(hook_type: @p[:hook]).select(:lure_id)) if hook?
+    scope = apply_techniques(scope)
     scope = apply_depth(scope) if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
     scope = apply_water(scope) if water_type
     scope = apply_build_range(scope, :length_mm, :length_min, :length_max)
@@ -80,6 +82,21 @@ class LureFilter
     scope = scope.where(id: Variant.where(glow: true).select(:lure_id)) if truthy?(:glow)
     scope = scope.where(id: Variant.where(uv: true).select(:lure_id)) if truthy?(:uv)
     scope
+  end
+
+  # Technique is multi-valued: a lure matches if it has ANY of the selected
+  # techniques (OR), the useful facet semantics.
+  def apply_techniques(scope)
+    keys = technique_keys
+    return scope if keys.empty?
+
+    scope.where(id: LureTechnique.joins(:technique).where(techniques: { key: keys }).select(:lure_id))
+  end
+
+  # Selected technique keys narrowed to ones that actually exist (unknown values
+  # ignored). Memoized — used by the filter and the pill.
+  def technique_keys
+    @technique_keys ||= (Array(@p[:technique]).map(&:to_s) & Technique.pluck(:key))
   end
 
   # Buoyancy, depth and water now live on builds — a lure matches if any build does.

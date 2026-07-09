@@ -56,4 +56,13 @@
       <label class="toggle"><%= check_box_tag :uv, "1", selected_filter_value(:uv) %><span class="track"><span class="knob"></span></span><%= t("lure.uv") %></label>
     </div>
   </div>
+  <%# Technique is multi-valued — a lure matches any selected technique. %>
+  <div>
+    <div class="filter-label"><%= t("lure.techniques") %></div>
+    <div class="stack" style="gap:8px">
+      <% Technique.all.sort_by(&:key).each do |tech| %>
+        <label class="toggle"><%= check_box_tag "technique[]", tech.key, Array(params[:technique]).include?(tech.key), id: "tech_#{tech.key}" %><span class="track"><span class="knob"></span></span><%= technique_name(tech) %></label>
+      <% end %>
+    </div>
+  </div>
 <% end %>

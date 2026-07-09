@@ -168,6 +168,13 @@ da:
     single: "Enkeltkrog"
     treble: "Trekrog"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Trolling"
+    drifting: "Drift"
+    other: "Andet"
+
   condition:
     season:
       label: Sæson
@@ -305,6 +312,7 @@ da:
     finish: "Finish"
     material: "Materiale"
     hooks: "Kroge"
+    techniques: "Teknikker"
     glow: "Glow (selvlysende)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mørke; UV ser anderledes ud under ultraviolet lys."

@@ -168,6 +168,13 @@ cs:
     single: "Jednoháček"
     treble: "Trojháček"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Trolling"
+    drifting: "Drift"
+    other: "Jiné"
+
   condition:
     season:
       label: Roční období
@@ -305,6 +312,7 @@ cs:
     finish: "Povrch"
     material: "Materiál"
     hooks: "Háčky"
+    techniques: "Techniky"
     glow: "Glow (svítí ve tmě)"
     uv: "UV"
     glow_uv_hint: "Glow svítí ve tmě; UV vypadá jinak pod ultrafialovým světlem."

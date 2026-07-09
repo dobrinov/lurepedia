@@ -26,6 +26,11 @@ module TaxonomyHelper
     t("hook.#{hook_type}", default: hook_type.to_s.titleize)
   end
 
+  def technique_name(technique)
+    key = technique.respond_to?(:key) ? technique.key : technique
+    t("technique.#{key}", default: key.to_s.titleize)
+  end
+
   def lure_action_label(action)
     return t("action.none") if action.blank? || action.to_s == "none"
 

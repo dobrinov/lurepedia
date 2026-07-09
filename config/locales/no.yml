@@ -168,6 +168,13 @@
     single: "Enkeltkrok"
     treble: "Trekrok"
 
+  technique:
+    spinning: "Spinnfiske"
+    jigging: "Jigging"
+    trolling: "Dorging"
+    drifting: "Driving"
+    other: "Annet"
+
   condition:
     season:
       label: Sesong
@@ -305,6 +312,7 @@
     finish: "Finish"
     material: "Materiale"
     hooks: "Kroker"
+    techniques: "Teknikker"
     glow: "Glow (selvlysende)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mørket; UV ser annerledes ut under ultrafiolett lys."

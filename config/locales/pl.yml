@@ -168,6 +168,13 @@ pl:
     single: "Pojedyncze"
     treble: "Kotwiczki"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Trolling"
+    drifting: "Dryfowanie"
+    other: "Inne"
+
   condition:
     season:
       label: Pora roku
@@ -305,6 +312,7 @@ pl:
     finish: "Wykończenie"
     material: "Materiał"
     hooks: "Haki"
+    techniques: "Techniki"
     glow: "Glow (świeci w ciemności)"
     uv: "UV"
     glow_uv_hint: "Glow świeci w ciemności; UV wygląda inaczej w świetle ultrafioletowym."

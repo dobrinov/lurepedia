@@ -192,6 +192,8 @@ if vision
   # Hook rigging: the saltwater build ships singles, the rest run trebles.
   vision.builds.where(name: "110 SW").update_all(hook_type: Build.hook_types[:single])
   vision.builds.where.not(name: "110 SW").update_all(hook_type: Build.hook_types[:treble])
+  # A jerkbait's typical techniques (reference rows created by the migration).
+  vision.techniques = Technique.where(key: %w[spinning trolling])
   # [ best_for, uv, glow ] — glow and uv are independent finishes.
   color_meta = {
     "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true, false ],

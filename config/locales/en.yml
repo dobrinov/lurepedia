@@ -168,6 +168,13 @@ en:
     single: "Single"
     treble: "Treble"
 
+  technique:
+    spinning: "Spinning"
+    jigging: "Jigging"
+    trolling: "Trolling"
+    drifting: "Drifting"
+    other: "Other"
+
   condition:
     season:
       label: Season
@@ -305,6 +312,7 @@ en:
     finish: "Finish"
     material: "Material"
     hooks: "Hooks"
+    techniques: "Techniques"
     glow: "Glow"
     uv: "UV"
     glow_uv_hint: "Glow shines in the dark; UV looks different under ultraviolet light."
