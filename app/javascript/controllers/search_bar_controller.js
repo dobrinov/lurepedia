@@ -28,7 +28,10 @@ export default class extends Controller {
   }
 
   onDocClick(event) {
-    if (!this.element.contains(event.target)) this.collapse()
+    // A child control (e.g. the technique multi-select) re-renders its options
+    // on click, detaching the clicked node before this runs; a detached target
+    // means the click was inside, so the panel should stay open.
+    if (event.target.isConnected && !this.element.contains(event.target)) this.collapse()
   }
 
   disconnect() {
