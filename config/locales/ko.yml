@@ -466,6 +466,7 @@ ko:
     any_type: 모든 타입
     any_material: "모든 소재"
     any_hooks: "모든 훅"
+    any_techniques: "모든 기법"
     any_brand: 모든 브랜드
     any_action: 모든 액션
     any_depth: 모든 수심

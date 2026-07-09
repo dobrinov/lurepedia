@@ -466,6 +466,7 @@ fr:
     any_type: Tous les types
     any_material: "Tout matériau"
     any_hooks: "Tous les hameçons"
+    any_techniques: "Toutes les techniques"
     any_brand: Toutes les marques
     any_action: Toute densité
     any_depth: Toute profondeur

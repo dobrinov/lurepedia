@@ -57,12 +57,11 @@
     </div>
   </div>
   <%# Technique is multi-valued — a lure matches any selected technique. %>
+  <% technique_selected = params[:technique].is_a?(Array) ? params[:technique] : params[:technique].to_s.split(",") %>
   <div>
     <div class="filter-label"><%= t("lure.techniques") %></div>
-    <div class="stack" style="gap:8px">
-      <% Technique.all.sort_by(&:key).each do |tech| %>
-        <label class="toggle"><%= check_box_tag "technique[]", tech.key, Array(params[:technique]).include?(tech.key), id: "tech_#{tech.key}" %><span class="track"><span class="knob"></span></span><%= technique_name(tech) %></label>
-      <% end %>
-    </div>
+    <%= render "shared/multiselect", name: "technique",
+          options: Technique.all.sort_by(&:key).map { |tech| { value: tech.key, label: technique_name(tech) } },
+          selected: technique_selected, placeholder: t("search.any_techniques") %>
   </div>
 <% end %>

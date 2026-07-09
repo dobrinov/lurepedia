@@ -1,9 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Multi-select country picker. Reuses the combobox styling; chosen countries
-// show as removable flag chips and their codes are written to a hidden field as
-// a comma-separated string (e.g. "US,CA,GB"), so the server still receives a
-// plain ships_to string. The panel stays open while picking several countries.
+// Generic multi-select. Reuses the combobox styling; chosen options show as
+// removable chips and their values are written to a hidden field as a
+// comma-separated string (e.g. "US,CA,GB" or "spinning,trolling"), so the
+// server receives a plain string. Options may carry an optional `flag` image
+// (used by the country picker). The panel stays open while picking several.
 export default class extends Controller {
   static targets = [ "hidden", "panel", "search", "options", "chips", "trigger", "placeholder" ]
   static values = { options: Array, selected: Array }

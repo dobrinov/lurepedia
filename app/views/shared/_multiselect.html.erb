@@ -1,0 +1,32 @@
+<%#
+  Generic multi-select dropdown. Chosen values are submitted as a single
+  comma-separated string under `name` (e.g. "spinning,trolling"); selected
+  options show as removable chips inside the control. Options may carry an
+  optional `flag` image path (used by the country picker).
+  locals: name (form field name), options (array of { value:, label:, flag?: }),
+          selected (array of values), placeholder (optional)
+%>
+<% selected = Array(local_assigns.fetch(:selected, [])).map(&:to_s) %>
+<% placeholder = local_assigns.fetch(:placeholder, t("common.search")) %>
+<% options = local_assigns.fetch(:options, []) %>
+<div class="combobox multiselect" data-controller="multiselect"
+     data-multiselect-options-value="<%= options.to_json %>"
+     data-multiselect-selected-value="<%= selected.to_json %>">
+  <%= hidden_field_tag name, selected.join(","), data: { multiselect_target: "hidden" } %>
+  <div class="combobox-trigger placeholder" data-multiselect-target="trigger"
+       role="button" tabindex="0" aria-expanded="false"
+       data-action="click->multiselect#toggle keydown->multiselect#triggerKeydown">
+    <div class="ms-trigger-content">
+      <div class="ms-chips" data-multiselect-target="chips"></div>
+      <span class="ms-placeholder" data-multiselect-target="placeholder"><%= placeholder %></span>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg>
+  </div>
+  <div class="combobox-panel" data-multiselect-target="panel" hidden>
+    <div class="combobox-search">
+      <input type="text" placeholder="<%= t("common.search") %>" data-multiselect-target="search"
+             data-action="input->multiselect#filter keydown->multiselect#keydown">
+    </div>
+    <div class="combobox-options" data-multiselect-target="options"></div>
+  </div>
+</div>

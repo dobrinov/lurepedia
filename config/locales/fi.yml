@@ -466,6 +466,7 @@ fi:
     any_type: Kaikki tyypit
     any_material: "Mikä tahansa materiaali"
     any_hooks: "Kaikki koukut"
+    any_techniques: "Kaikki tekniikat"
     any_brand: Kaikki merkit
     any_action: Kaikki uintitavat
     any_depth: Kaikki syvyydet

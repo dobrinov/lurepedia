@@ -143,7 +143,7 @@ bg:
       label: Водоем
       any: Всякакъв водоем
       lake: Езеро
-      pond: Яз
+      pond: Езерце
       river: Река
       reservoir: Язовир
       stream: Поток
@@ -416,6 +416,7 @@ bg:
     any_type: Всички типове
     any_material: "Всякакъв материал"
     any_hooks: "Всякакви куки"
+    any_techniques: "Всякакви техники"
     any_brand: Всички марки
     any_action: Всякакво движение
     any_depth: Всякаква дълбочина

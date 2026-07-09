@@ -94,9 +94,14 @@ class LureFilter
   end
 
   # Selected technique keys narrowed to ones that actually exist (unknown values
-  # ignored). Memoized — used by the filter and the pill.
+  # ignored). Accepts the multiselect's comma-joined string ("spinning,trolling")
+  # or an array (older technique[]=… URLs). Memoized — used by filter and pill.
   def technique_keys
-    @technique_keys ||= (Array(@p[:technique]).map(&:to_s) & Technique.pluck(:key))
+    @technique_keys ||= begin
+      raw = @p[:technique]
+      given = raw.is_a?(Array) ? raw.map(&:to_s) : raw.to_s.split(",")
+      given.map(&:strip) & Technique.pluck(:key)
+    end
   end
 
   # Buoyancy, depth and water now live on builds — a lure matches if any build does.
