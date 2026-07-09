@@ -155,6 +155,14 @@ el:
     sinking: Βυθιζόμενο
     none: "—"
 
+  material:
+    plastic: "Πλαστικό"
+    composite: "Σύνθετο"
+    wood: "Ξύλο"
+    metal: "Μέταλλο"
+    silicone: "Σιλικόνη"
+    other: "Άλλο"
+
   condition:
     season:
       label: Εποχή
@@ -290,6 +298,7 @@ el:
     this_variation: Αυτή η παραλλαγή
     default_variation: Προεπιλεγμένη παραλλαγή
     finish: "Φινίρισμα"
+    material: "Υλικό"
     glow: "Glow (φωσφορίζον)"
     uv: "UV"
     glow_uv_hint: "Το glow λάμπει στο σκοτάδι· το UV φαίνεται διαφορετικό στο υπεριώδες φως."
@@ -441,6 +450,7 @@ el:
     no_results: Δεν βρέθηκαν αποτελέσματα
     any_species: Κάθε είδος
     any_type: Κάθε τύπος
+    any_material: "Οποιοδήποτε υλικό"
     any_brand: Κάθε μάρκα
     any_action: Κάθε δράση
     any_depth: Κάθε βάθος

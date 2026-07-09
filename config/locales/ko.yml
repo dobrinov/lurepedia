@@ -155,6 +155,14 @@ ko:
     sinking: 싱킹
     none: "—"
 
+  material:
+    plastic: "플라스틱"
+    composite: "복합"
+    wood: "목재"
+    metal: "금속"
+    silicone: "실리콘"
+    other: "기타"
+
   condition:
     season:
       label: 계절
@@ -290,6 +298,7 @@ ko:
     this_variation: 이 베리에이션
     default_variation: 기본 베리에이션
     finish: "마감"
+    material: "소재"
     glow: "글로우(야광)"
     uv: "UV(자외선)"
     glow_uv_hint: "글로우는 어둠 속에서 빛나고, UV는 자외선 아래에서 다르게 보입니다."
@@ -441,6 +450,7 @@ ko:
     no_results: 검색 결과가 없습니다
     any_species: 모든 어종
     any_type: 모든 타입
+    any_material: "모든 소재"
     any_brand: 모든 브랜드
     any_action: 모든 액션
     any_depth: 모든 수심

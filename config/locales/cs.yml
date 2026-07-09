@@ -155,6 +155,14 @@ cs:
     sinking: Potápivá
     none: "—"
 
+  material:
+    plastic: "Plast"
+    composite: "Kompozit"
+    wood: "Dřevo"
+    metal: "Kov"
+    silicone: "Silikon"
+    other: "Jiné"
+
   condition:
     season:
       label: Roční období
@@ -290,6 +298,7 @@ cs:
     this_variation: Tato varianta
     default_variation: Výchozí varianta
     finish: "Povrch"
+    material: "Materiál"
     glow: "Glow (svítí ve tmě)"
     uv: "UV"
     glow_uv_hint: "Glow svítí ve tmě; UV vypadá jinak pod ultrafialovým světlem."
@@ -441,6 +450,7 @@ cs:
     no_results: Nic nenalezeno
     any_species: Jakýkoli druh
     any_type: Jakýkoli typ
+    any_material: "Jakýkoliv materiál"
     any_brand: Jakákoli značka
     any_action: Jakákoli akce
     any_depth: Jakákoli hloubka

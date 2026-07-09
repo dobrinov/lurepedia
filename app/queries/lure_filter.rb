@@ -1,6 +1,6 @@
 # Filters lures by catalog attributes and (via catches) condition attributes.
 class LureFilter
-  ATTRS = %i[q type brand species lure_action depth length_min length_max weight_min weight_max weight_unit
+  ATTRS = %i[q type brand species material lure_action depth length_min length_max weight_min weight_max weight_unit
              water_body season clarity wind water glow uv sort].freeze
 
   # Depth bands in centimetres, matched by overlap against a lure's [min, max] range.
@@ -30,6 +30,7 @@ class LureFilter
     pills = []
     pills << [ :type, lure_type_label(@p[:type]) ] if present?(:type)
     pills << [ :brand, brand_label(@p[:brand]) ] if present?(:brand)
+    pills << [ :material, I18n.t("material.#{@p[:material]}") ] if material?
     pills << [ :species, species_label(@p[:species]) ] if present?(:species)
     pills << [ :lure_action, @p[:lure_action].to_s.titleize ] if present?(:lure_action)
     pills << [ :depth, I18n.t("search.depth_band.#{@p[:depth]}", default: @p[:depth].to_s.titleize) ] if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
@@ -60,6 +61,7 @@ class LureFilter
   def apply_catalog(scope)
     scope = scope.joins(:lure_type).where(lure_types: { key: @p[:type] }) if present?(:type)
     scope = scope.joins(:brand).where(brands: { slug: @p[:brand] }) if present?(:brand)
+    scope = scope.where(material: @p[:material]) if material?
     scope = apply_action(scope) if present?(:lure_action) && Build.actions.key?(@p[:lure_action].to_s)
     scope = apply_depth(scope) if present?(:depth) && DEPTH_BANDS.key?(@p[:depth].to_s)
     scope = apply_water(scope) if water_type
@@ -93,6 +95,11 @@ class LureFilter
   # The requested water type, or nil for the unfiltered "any water" default.
   def water_type
     %w[ salt fresh ].include?(@p[:water].to_s) ? @p[:water].to_s : nil
+  end
+
+  # A recognised material value is set (unknown values are ignored, like actions).
+  def material?
+    present?(:material) && Lure.materials.key?(@p[:material].to_s)
   end
 
   def apply_depth(scope)

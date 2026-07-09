@@ -155,6 +155,14 @@ pl:
     sinking: Tonąca
     none: "—"
 
+  material:
+    plastic: "Plastik"
+    composite: "Kompozyt"
+    wood: "Drewno"
+    metal: "Metal"
+    silicone: "Silikon"
+    other: "Inny"
+
   condition:
     season:
       label: Pora roku
@@ -290,6 +298,7 @@ pl:
     this_variation: Ten wariant
     default_variation: Wariant domyślny
     finish: "Wykończenie"
+    material: "Materiał"
     glow: "Glow (świeci w ciemności)"
     uv: "UV"
     glow_uv_hint: "Glow świeci w ciemności; UV wygląda inaczej w świetle ultrafioletowym."
@@ -441,6 +450,7 @@ pl:
     no_results: Brak wyników
     any_species: Dowolny gatunek
     any_type: Dowolny typ
+    any_material: "Dowolny materiał"
     any_brand: Dowolna marka
     any_action: Dowolna praca
     any_depth: Dowolna głębokość

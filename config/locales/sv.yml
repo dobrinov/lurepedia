@@ -155,6 +155,14 @@ sv:
     sinking: Sjunkande
     none: "—"
 
+  material:
+    plastic: "Plast"
+    composite: "Komposit"
+    wood: "Trä"
+    metal: "Metall"
+    silicone: "Silikon"
+    other: "Övrigt"
+
   condition:
     season:
       label: Säsong
@@ -290,6 +298,7 @@ sv:
     this_variation: Den här varianten
     default_variation: Standardvariant
     finish: "Finish"
+    material: "Material"
     glow: "Glow (självlysande)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mörkret; UV ser annorlunda ut under ultraviolett ljus."
@@ -441,6 +450,7 @@ sv:
     no_results: Inga resultat hittades
     any_species: Alla arter
     any_type: Alla typer
+    any_material: "Valfritt material"
     any_brand: Alla märken
     any_action: Alla flytlägen
     any_depth: Alla djup

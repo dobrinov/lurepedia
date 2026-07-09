@@ -155,6 +155,14 @@
     sinking: Synkende
     none: "—"
 
+  material:
+    plastic: "Plast"
+    composite: "Kompositt"
+    wood: "Tre"
+    metal: "Metall"
+    silicone: "Silikon"
+    other: "Annet"
+
   condition:
     season:
       label: Sesong
@@ -290,6 +298,7 @@
     this_variation: Denne variasjonen
     default_variation: Standardvariasjon
     finish: "Finish"
+    material: "Materiale"
     glow: "Glow (selvlysende)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mørket; UV ser annerledes ut under ultrafiolett lys."
@@ -441,6 +450,7 @@
     no_results: Ingen resultater
     any_species: Alle arter
     any_type: Alle typer
+    any_material: "Ethvert materiale"
     any_brand: Alle merker
     any_action: Alle aksjoner
     any_depth: Alle dybder

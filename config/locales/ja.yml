@@ -105,6 +105,14 @@ ja:
     sinking: シンキング
     none: "—"
 
+  material:
+    plastic: "プラスチック"
+    composite: "コンポジット"
+    wood: "ウッド"
+    metal: "メタル"
+    silicone: "シリコン"
+    other: "その他"
+
   condition:
     season:
       label: 季節
@@ -240,6 +248,7 @@ ja:
     this_variation: "このバリエーション"
     default_variation: "デフォルトのバリエーション"
     finish: "仕上げ"
+    material: "素材"
     glow: "グロー（蓄光）"
     uv: "UV（紫外線）"
     glow_uv_hint: "グローは暗闇で光ります。UVは紫外線の下で違って見えます。"
@@ -391,6 +400,7 @@ ja:
     no_results: 結果が見つかりません
     any_species: すべての魚種
     any_type: すべてのタイプ
+    any_material: "すべての素材"
     any_brand: すべてのブランド
     any_action: すべてのアクション
     any_depth: すべてのレンジ

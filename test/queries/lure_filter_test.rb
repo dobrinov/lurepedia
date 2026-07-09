@@ -165,6 +165,23 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_equal %w[ weight_min weight_max weight_unit ], LureFilter.pill_params(:weight)
   end
 
+  test "filter by material" do
+    @kvd.update!(material: :plastic)
+    @vision.update!(material: :wood)
+    assert_equal [ @vision ], LureFilter.new(material: "wood").results.to_a
+    assert_equal [ @kvd ], LureFilter.new(material: "plastic").results.to_a
+  end
+
+  test "material ignores unknown values" do
+    assert_equal LureFilter.new({}).results.to_a, LureFilter.new(material: "titanium").results.to_a
+  end
+
+  test "material appears in active pills" do
+    @kvd.update!(material: :metal)
+    keys = LureFilter.new(material: "metal").active_pills.map(&:first)
+    assert_includes keys, :material
+  end
+
   test "glow and uv filter by color finish and are independent" do
     glow_lure = Lure.create!(brand: @sk, lure_type: @jerk, model: "Night Glow")
     glow_lure.variants.create!(name: "Phosphor", glow: true)

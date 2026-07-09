@@ -155,6 +155,14 @@ pt:
     sinking: Afundante
     none: "—"
 
+  material:
+    plastic: "Plástico"
+    composite: "Composto"
+    wood: "Madeira"
+    metal: "Metal"
+    silicone: "Silicone"
+    other: "Outro"
+
   condition:
     season:
       label: Estação
@@ -290,6 +298,7 @@ pt:
     this_variation: Esta variação
     default_variation: Variação predefinida
     finish: "Acabamento"
+    material: "Material"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "O glow brilha no escuro; o UV parece diferente sob luz ultravioleta."
@@ -441,6 +450,7 @@ pt:
     no_results: Nenhum resultado encontrado
     any_species: Qualquer espécie
     any_type: Qualquer tipo
+    any_material: "Qualquer material"
     any_brand: Qualquer marca
     any_action: Qualquer ação
     any_depth: Qualquer profundidade

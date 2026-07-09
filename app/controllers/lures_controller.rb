@@ -105,7 +105,10 @@ class LuresController < ApplicationController
   end
 
   def lure_params
-    params.require(:lure).permit(:model, :blurb, :action_video_url, :default_variant_id,
-                                 local_descriptions: I18n.available_locales.map(&:to_s))
+    permitted = params.require(:lure).permit(:model, :blurb, :action_video_url, :default_variant_id, :material,
+                                             local_descriptions: I18n.available_locales.map(&:to_s))
+    # The "unknown" material choice submits "", which the enum can't accept — store it as nil.
+    permitted[:material] = permitted[:material].presence if permitted.key?(:material)
+    permitted
   end
 end

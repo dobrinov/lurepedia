@@ -105,6 +105,14 @@ de:
     sinking: Sinkend
     none: "—"
 
+  material:
+    plastic: "Kunststoff"
+    composite: "Composite"
+    wood: "Holz"
+    metal: "Metall"
+    silicone: "Silikon"
+    other: "Sonstiges"
+
   condition:
     season:
       label: Jahreszeit
@@ -240,6 +248,7 @@ de:
     this_variation: "Diese Variante"
     default_variation: "Standardvariante"
     finish: "Finish"
+    material: "Material"
     glow: "Glow (nachleuchtend)"
     uv: "UV"
     glow_uv_hint: "Glow leuchtet im Dunkeln; UV-Farben wirken unter Ultraviolettlicht anders."
@@ -391,6 +400,7 @@ de:
     no_results: Keine Ergebnisse gefunden
     any_species: Alle Arten
     any_type: Alle Typen
+    any_material: "Beliebiges Material"
     any_brand: Alle Marken
     any_action: Jede Aktion
     any_depth: Jede Tiefe

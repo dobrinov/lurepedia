@@ -18,6 +18,10 @@ module TaxonomyHelper
     t("water.#{water}", default: water.to_s.titleize)
   end
 
+  def material_name(material)
+    t("material.#{material}", default: material.to_s.titleize)
+  end
+
   def lure_action_label(action)
     return t("action.none") if action.blank? || action.to_s == "none"
 

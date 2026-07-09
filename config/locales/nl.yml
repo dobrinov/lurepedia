@@ -155,6 +155,14 @@ nl:
     sinking: Zinkend
     none: "—"
 
+  material:
+    plastic: "Kunststof"
+    composite: "Composiet"
+    wood: "Hout"
+    metal: "Metaal"
+    silicone: "Silicone"
+    other: "Overig"
+
   condition:
     season:
       label: Seizoen
@@ -290,6 +298,7 @@ nl:
     this_variation: "Deze variatie"
     default_variation: "Standaardvariatie"
     finish: "Afwerking"
+    material: "Materiaal"
     glow: "Glow (lichtgevend)"
     uv: "UV"
     glow_uv_hint: "Glow licht op in het donker; UV ziet er anders uit onder ultraviolet licht."
@@ -441,6 +450,7 @@ nl:
     no_results: Geen resultaten gevonden
     any_species: Elke soort
     any_type: Elk type
+    any_material: "Elk materiaal"
     any_brand: Elk merk
     any_action: Elke actie
     any_depth: Elke diepte

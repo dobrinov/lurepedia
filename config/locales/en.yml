@@ -155,6 +155,14 @@ en:
     sinking: Sinking
     none: "—"
 
+  material:
+    plastic: "Plastic"
+    composite: "Composite"
+    wood: "Wood"
+    metal: "Metal"
+    silicone: "Silicone"
+    other: "Other"
+
   condition:
     season:
       label: Season
@@ -290,6 +298,7 @@ en:
     this_variation: This variation
     default_variation: Default variation
     finish: "Finish"
+    material: "Material"
     glow: "Glow"
     uv: "UV"
     glow_uv_hint: "Glow shines in the dark; UV looks different under ultraviolet light."
@@ -441,6 +450,7 @@ en:
     no_results: No results found
     any_species: Any species
     any_type: Any type
+    any_material: "Any material"
     any_brand: Any brand
     any_action: Any action
     any_depth: Any depth

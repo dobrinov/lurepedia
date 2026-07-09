@@ -176,6 +176,7 @@ end
 # Showcase the two-axis model on Vision 110: extra builds and per-color metadata.
 vision = lures["Vision 110"]
 if vision
+  vision.update!(material: :plastic)
   extra_builds = {
     "110 +1 SP" => [ 110, 18.4, 150, 220, :suspending, :fresh ],
     "110 Jr SP"  => [ 88, 11.3, 90, 130, :suspending, :fresh ],

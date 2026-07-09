@@ -18,6 +18,9 @@ class Lure < ApplicationRecord
   has_many :inverse_lure_links, class_name: "LureLink", foreign_key: :related_lure_id,
            inverse_of: :related_lure, dependent: :destroy
 
+  # Nullable — nil means "material unknown/unrecorded", never "plastic".
+  enum :material, { plastic: 0, composite: 1, wood: 2, metal: 3, silicone: 4, other: 5 }, prefix: :material
+
   validates :model, presence: true
 
   scope :by_catch_count, -> { order(catches_count: :desc, model: :asc) }

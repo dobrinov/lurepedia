@@ -155,6 +155,14 @@ zh:
     sinking: 沉水
     none: "—"
 
+  material:
+    plastic: "塑料"
+    composite: "复合材料"
+    wood: "木质"
+    metal: "金属"
+    silicone: "硅胶"
+    other: "其他"
+
   condition:
     season:
       label: 季节
@@ -290,6 +298,7 @@ zh:
     this_variation: 当前款式
     default_variation: 默认款式
     finish: "涂装"
+    material: "材质"
     glow: "夜光"
     uv: "UV（紫外）"
     glow_uv_hint: "夜光在黑暗中发光；UV 颜色在紫外线下呈现不同。"
@@ -441,6 +450,7 @@ zh:
     no_results: 未找到结果
     any_species: 不限鱼种
     any_type: 不限类型
+    any_material: "任何材质"
     any_brand: 不限品牌
     any_action: 不限动作
     any_depth: 不限泳层

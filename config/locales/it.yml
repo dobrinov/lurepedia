@@ -155,6 +155,14 @@ it:
     sinking: Affondante
     none: "—"
 
+  material:
+    plastic: "Plastica"
+    composite: "Composito"
+    wood: "Legno"
+    metal: "Metallo"
+    silicone: "Silicone"
+    other: "Altro"
+
   condition:
     season:
       label: Stagione
@@ -290,6 +298,7 @@ it:
     this_variation: Questa variazione
     default_variation: Variazione predefinita
     finish: "Finitura"
+    material: "Materiale"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "Il glow brilla al buio; l'UV appare diverso sotto la luce ultravioletta."
@@ -441,6 +450,7 @@ it:
     no_results: Nessun risultato trovato
     any_species: Qualsiasi specie
     any_type: Qualsiasi tipo
+    any_material: "Qualsiasi materiale"
     any_brand: Qualsiasi marchio
     any_action: Qualsiasi azione
     any_depth: Qualsiasi profondità

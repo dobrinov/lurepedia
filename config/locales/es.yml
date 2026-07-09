@@ -155,6 +155,14 @@ es:
     sinking: Hundido
     none: "—"
 
+  material:
+    plastic: "Plástico"
+    composite: "Composite"
+    wood: "Madera"
+    metal: "Metal"
+    silicone: "Silicona"
+    other: "Otro"
+
   condition:
     season:
       label: Estación
@@ -290,6 +298,7 @@ es:
     this_variation: Esta variante
     default_variation: Variante predeterminada
     finish: "Acabado"
+    material: "Material"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "El glow brilla en la oscuridad; el UV se ve diferente bajo luz ultravioleta."
@@ -441,6 +450,7 @@ es:
     no_results: No se encontraron resultados
     any_species: Cualquier especie
     any_type: Cualquier tipo
+    any_material: "Cualquier material"
     any_brand: Cualquier marca
     any_action: Cualquier acción
     any_depth: Cualquier profundidad

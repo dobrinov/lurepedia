@@ -105,6 +105,14 @@ bg:
     sinking: Потъващ
     none: "—"
 
+  material:
+    plastic: "Пластмаса"
+    composite: "Композит"
+    wood: "Дърво"
+    metal: "Метал"
+    silicone: "Силикон"
+    other: "Друго"
+
   condition:
     season:
       label: Сезон
@@ -240,6 +248,7 @@ bg:
     this_variation: "Този вариант"
     default_variation: "Вариант по подразбиране"
     finish: "Ефект"
+    material: "Материал"
     glow: "Глоу"
     uv: "UV"
     glow_uv_hint: "Глоу свети на тъмно; UV цветовете изглеждат различно на ултравиолетова светлина."
@@ -391,6 +400,7 @@ bg:
     no_results: Няма намерени резултати
     any_species: Всички видове
     any_type: Всички типове
+    any_material: "Всякакъв материал"
     any_brand: Всички марки
     any_action: Всякакво движение
     any_depth: Всякаква дълбочина
