@@ -165,6 +165,28 @@ class LureFilterTest < ActiveSupport::TestCase
     assert_equal %w[ weight_min weight_max weight_unit ], LureFilter.pill_params(:weight)
   end
 
+  test "filter by hook type matches any build with that hook" do
+    singles = Lure.create!(brand: @sk, lure_type: @jerk, model: "Single Rig")
+    singles.builds.create!(name: "S", hook_type: :single)
+    trebles = Lure.create!(brand: @sk, lure_type: @jerk, model: "Treble Rig")
+    trebles.builds.create!(name: "T", hook_type: :treble)
+    mixed = Lure.create!(brand: @sk, lure_type: @jerk, model: "Mixed Rig")
+    mixed.builds.create!(name: "M1", hook_type: :single)
+    mixed.builds.create!(name: "M2", hook_type: :treble)
+
+    assert_equal [ singles, mixed ].sort_by(&:id), LureFilter.new(hook: "single").results.sort_by(&:id)
+    assert_equal [ trebles, mixed ].sort_by(&:id), LureFilter.new(hook: "treble").results.sort_by(&:id)
+  end
+
+  test "hook ignores unknown values" do
+    assert_equal LureFilter.new({}).results.to_a, LureFilter.new(hook: "quadruple").results.to_a
+  end
+
+  test "hook appears in active pills" do
+    keys = LureFilter.new(hook: "single").active_pills.map(&:first)
+    assert_includes keys, :hook
+  end
+
   test "filter by material" do
     @kvd.update!(material: :plastic)
     @vision.update!(material: :wood)

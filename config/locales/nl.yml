@@ -163,6 +163,11 @@ nl:
     silicone: "Silicone"
     other: "Overig"
 
+  hook:
+    none: "Geen haken"
+    single: "Enkel"
+    treble: "Dreghaak"
+
   condition:
     season:
       label: Seizoen
@@ -299,6 +304,7 @@ nl:
     default_variation: "Standaardvariatie"
     finish: "Afwerking"
     material: "Materiaal"
+    hooks: "Haken"
     glow: "Glow (lichtgevend)"
     uv: "UV"
     glow_uv_hint: "Glow licht op in het donker; UV ziet er anders uit onder ultraviolet licht."
@@ -451,6 +457,7 @@ nl:
     any_species: Elke soort
     any_type: Elk type
     any_material: "Elk materiaal"
+    any_hooks: "Alle haken"
     any_brand: Elk merk
     any_action: Elke actie
     any_depth: Elke diepte

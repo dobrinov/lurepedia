@@ -163,6 +163,11 @@ es:
     silicone: "Silicona"
     other: "Otro"
 
+  hook:
+    none: "Sin anzuelos"
+    single: "Simple"
+    treble: "Triple"
+
   condition:
     season:
       label: Estación
@@ -299,6 +304,7 @@ es:
     default_variation: Variante predeterminada
     finish: "Acabado"
     material: "Material"
+    hooks: "Anzuelos"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "El glow brilla en la oscuridad; el UV se ve diferente bajo luz ultravioleta."
@@ -451,6 +457,7 @@ es:
     any_species: Cualquier especie
     any_type: Cualquier tipo
     any_material: "Cualquier material"
+    any_hooks: "Cualquier anzuelo"
     any_brand: Cualquier marca
     any_action: Cualquier acción
     any_depth: Cualquier profundidad

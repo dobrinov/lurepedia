@@ -208,7 +208,7 @@
             <% if color_builds.any? %>
               <div class="card">
                 <table class="lb-table">
-                  <thead><tr><th><%= t("lure.build") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.depth") %></th><th><%= t("lure.buoyancy") %></th><th><%= t("lure.water") %></th><th></th></tr></thead>
+                  <thead><tr><th><%= t("lure.build") %></th><th><%= t("lure.size") %></th><th><%= t("lure.weight") %></th><th><%= t("lure.depth") %></th><th><%= t("lure.buoyancy") %></th><th><%= t("lure.water") %></th><th><%= t("lure.hooks") %></th><th></th></tr></thead>
                   <tbody>
                     <% color_builds.each do |b| %>
                       <tr>
@@ -218,6 +218,7 @@
                         <td><%= fmt_depth(b.depth_min_cm, b.depth_max_cm) || t("common.none") %></td>
                         <td><%= lure_action_label(b.action) %></td>
                         <td><%= water_name(b.water) %></td>
+                        <td><%= b.hook_type ? hook_type_name(b.hook_type) : t("common.none") %></td>
                         <td style="text-align:right;white-space:nowrap">
                           <% if signed_in? %>
                             <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug, variant_id: v.id, build_id: b.id), class: "btn btn-sm" %>

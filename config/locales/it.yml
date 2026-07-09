@@ -163,6 +163,11 @@ it:
     silicone: "Silicone"
     other: "Altro"
 
+  hook:
+    none: "Senza ami"
+    single: "Singolo"
+    treble: "Ancoretta"
+
   condition:
     season:
       label: Stagione
@@ -299,6 +304,7 @@ it:
     default_variation: Variazione predefinita
     finish: "Finitura"
     material: "Materiale"
+    hooks: "Ami"
     glow: "Glow (fosforescente)"
     uv: "UV"
     glow_uv_hint: "Il glow brilla al buio; l'UV appare diverso sotto la luce ultravioletta."
@@ -451,6 +457,7 @@ it:
     any_species: Qualsiasi specie
     any_type: Qualsiasi tipo
     any_material: "Qualsiasi materiale"
+    any_hooks: "Qualsiasi amo"
     any_brand: Qualsiasi marchio
     any_action: Qualsiasi azione
     any_depth: Qualsiasi profondità

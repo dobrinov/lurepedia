@@ -163,6 +163,11 @@ sv:
     silicone: "Silikon"
     other: "Övrigt"
 
+  hook:
+    none: "Inga krokar"
+    single: "Enkelkrok"
+    treble: "Trekrok"
+
   condition:
     season:
       label: Säsong
@@ -299,6 +304,7 @@ sv:
     default_variation: Standardvariant
     finish: "Finish"
     material: "Material"
+    hooks: "Krokar"
     glow: "Glow (självlysande)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mörkret; UV ser annorlunda ut under ultraviolett ljus."
@@ -451,6 +457,7 @@ sv:
     any_species: Alla arter
     any_type: Alla typer
     any_material: "Valfritt material"
+    any_hooks: "Alla krokar"
     any_brand: Alla märken
     any_action: Alla flytlägen
     any_depth: Alla djup

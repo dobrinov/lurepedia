@@ -189,6 +189,9 @@ if vision
       b.action = act; b.water = wat; b.position = i + 1
     end
   end
+  # Hook rigging: the saltwater build ships singles, the rest run trebles.
+  vision.builds.where(name: "110 SW").update_all(hook_type: Build.hook_types[:single])
+  vision.builds.where.not(name: "110 SW").update_all(hook_type: Build.hook_types[:treble])
   # [ best_for, uv, glow ] — glow and uv are independent finishes.
   color_meta = {
     "GG Megabass Kanata Ayu" => [ "Largemouth Bass · Clear water", true, false ],

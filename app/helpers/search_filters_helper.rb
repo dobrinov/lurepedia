@@ -1,7 +1,7 @@
 module SearchFiltersHelper
   # Small, static filter dropdowns rendered with the inline (client-side) combobox,
   # in display order.
-  STATIC_FILTERS = %i[type material season water_body clarity wind lure_action depth water].freeze
+  STATIC_FILTERS = %i[type material season water_body clarity wind lure_action hook depth water].freeze
 
   def static_filter_fields
     STATIC_FILTERS.index_with do |field|
@@ -54,6 +54,8 @@ module SearchFiltersHelper
       LureType.all.sort_by(&:key).map { |lt| [ lure_type_name(lt), lt.key ] }
     when :material
       Lure.materials.keys.map { |k| [ material_name(k), k ] }
+    when :hook
+      Build.hook_types.keys.map { |k| [ hook_type_name(k), k ] }
     when :lure_action
       Build.actions.keys.excluding("none").map { |k| [ lure_action_label(k), k ] }
     when :depth
@@ -69,6 +71,7 @@ module SearchFiltersHelper
     case field
     when :type then t("lure.type")
     when :material then t("lure.material")
+    when :hook then t("lure.hooks")
     when :lure_action then t("lure.buoyancy")
     when :depth then t("lure.depth")
     when :water then t("lure.water")
@@ -80,6 +83,7 @@ module SearchFiltersHelper
     case field
     when :type then t("search.any_type")
     when :material then t("search.any_material")
+    when :hook then t("search.any_hooks")
     when :depth then t("search.any_depth")
     when :lure_action then t("search.any_action", default: t("search.any_type"))
     when :water then t("search.any_water")

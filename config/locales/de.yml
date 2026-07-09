@@ -113,6 +113,11 @@ de:
     silicone: "Silikon"
     other: "Sonstiges"
 
+  hook:
+    none: "Keine Haken"
+    single: "Einzelhaken"
+    treble: "Drilling"
+
   condition:
     season:
       label: Jahreszeit
@@ -249,6 +254,7 @@ de:
     default_variation: "Standardvariante"
     finish: "Finish"
     material: "Material"
+    hooks: "Haken"
     glow: "Glow (nachleuchtend)"
     uv: "UV"
     glow_uv_hint: "Glow leuchtet im Dunkeln; UV-Farben wirken unter Ultraviolettlicht anders."
@@ -401,6 +407,7 @@ de:
     any_species: Alle Arten
     any_type: Alle Typen
     any_material: "Beliebiges Material"
+    any_hooks: "Beliebige Haken"
     any_brand: Alle Marken
     any_action: Jede Aktion
     any_depth: Jede Tiefe

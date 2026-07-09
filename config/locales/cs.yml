@@ -163,6 +163,11 @@ cs:
     silicone: "Silikon"
     other: "Jiné"
 
+  hook:
+    none: "Bez háčků"
+    single: "Jednoháček"
+    treble: "Trojháček"
+
   condition:
     season:
       label: Roční období
@@ -299,6 +304,7 @@ cs:
     default_variation: Výchozí varianta
     finish: "Povrch"
     material: "Materiál"
+    hooks: "Háčky"
     glow: "Glow (svítí ve tmě)"
     uv: "UV"
     glow_uv_hint: "Glow svítí ve tmě; UV vypadá jinak pod ultrafialovým světlem."
@@ -451,6 +457,7 @@ cs:
     any_species: Jakýkoli druh
     any_type: Jakýkoli typ
     any_material: "Jakýkoliv materiál"
+    any_hooks: "Jakékoliv háčky"
     any_brand: Jakákoli značka
     any_action: Jakákoli akce
     any_depth: Jakákoli hloubka

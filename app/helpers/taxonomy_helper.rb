@@ -22,6 +22,10 @@ module TaxonomyHelper
     t("material.#{material}", default: material.to_s.titleize)
   end
 
+  def hook_type_name(hook_type)
+    t("hook.#{hook_type}", default: hook_type.to_s.titleize)
+  end
+
   def lure_action_label(action)
     return t("action.none") if action.blank? || action.to_s == "none"
 

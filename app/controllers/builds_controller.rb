@@ -50,6 +50,9 @@ class BuildsController < ApplicationController
   end
 
   def build_params
-    params.require(:build).permit(:name, :length_mm, :weight_g, :depth_min_cm, :depth_max_cm, :action, :water)
+    permitted = params.require(:build).permit(:name, :length_mm, :weight_g, :depth_min_cm, :depth_max_cm, :action, :water, :hook_type)
+    # The blank "unknown" hook choice submits "", which the enum can't accept — store it as nil.
+    permitted[:hook_type] = permitted[:hook_type].presence if permitted.key?(:hook_type)
+    permitted
   end
 end

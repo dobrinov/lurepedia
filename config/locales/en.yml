@@ -163,6 +163,11 @@ en:
     silicone: "Silicone"
     other: "Other"
 
+  hook:
+    none: "No hooks"
+    single: "Single"
+    treble: "Treble"
+
   condition:
     season:
       label: Season
@@ -299,6 +304,7 @@ en:
     default_variation: Default variation
     finish: "Finish"
     material: "Material"
+    hooks: "Hooks"
     glow: "Glow"
     uv: "UV"
     glow_uv_hint: "Glow shines in the dark; UV looks different under ultraviolet light."
@@ -451,6 +457,7 @@ en:
     any_species: Any species
     any_type: Any type
     any_material: "Any material"
+    any_hooks: "Any hooks"
     any_brand: Any brand
     any_action: Any action
     any_depth: Any depth

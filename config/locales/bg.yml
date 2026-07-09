@@ -113,6 +113,11 @@ bg:
     silicone: "Силикон"
     other: "Друго"
 
+  hook:
+    none: "Без куки"
+    single: "Единични"
+    treble: "Тройни"
+
   condition:
     season:
       label: Сезон
@@ -249,6 +254,7 @@ bg:
     default_variation: "Вариант по подразбиране"
     finish: "Ефект"
     material: "Материал"
+    hooks: "Куки"
     glow: "Глоу"
     uv: "UV"
     glow_uv_hint: "Глоу свети на тъмно; UV цветовете изглеждат различно на ултравиолетова светлина."
@@ -401,6 +407,7 @@ bg:
     any_species: Всички видове
     any_type: Всички типове
     any_material: "Всякакъв материал"
+    any_hooks: "Всякакви куки"
     any_brand: Всички марки
     any_action: Всякакво движение
     any_depth: Всякаква дълбочина

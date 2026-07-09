@@ -163,6 +163,11 @@ da:
     silicone: "Silikone"
     other: "Andet"
 
+  hook:
+    none: "Ingen kroge"
+    single: "Enkeltkrog"
+    treble: "Trekrog"
+
   condition:
     season:
       label: Sæson
@@ -299,6 +304,7 @@ da:
     default_variation: Standardvariation
     finish: "Finish"
     material: "Materiale"
+    hooks: "Kroge"
     glow: "Glow (selvlysende)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mørke; UV ser anderledes ud under ultraviolet lys."
@@ -451,6 +457,7 @@ da:
     any_species: Alle arter
     any_type: Alle typer
     any_material: "Ethvert materiale"
+    any_hooks: "Alle kroge"
     any_brand: Alle mærker
     any_action: Alle aktioner
     any_depth: Alle dybder

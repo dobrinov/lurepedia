@@ -163,6 +163,11 @@
     silicone: "Silikon"
     other: "Annet"
 
+  hook:
+    none: "Ingen kroker"
+    single: "Enkeltkrok"
+    treble: "Trekrok"
+
   condition:
     season:
       label: Sesong
@@ -299,6 +304,7 @@
     default_variation: Standardvariasjon
     finish: "Finish"
     material: "Materiale"
+    hooks: "Kroker"
     glow: "Glow (selvlysende)"
     uv: "UV"
     glow_uv_hint: "Glow lyser i mørket; UV ser annerledes ut under ultrafiolett lys."
@@ -451,6 +457,7 @@
     any_species: Alle arter
     any_type: Alle typer
     any_material: "Ethvert materiale"
+    any_hooks: "Alle kroker"
     any_brand: Alle merker
     any_action: Alle aksjoner
     any_depth: Alle dybder

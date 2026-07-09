@@ -163,6 +163,11 @@ ru:
     silicone: "Силикон"
     other: "Другое"
 
+  hook:
+    none: "Без крючков"
+    single: "Одинарные"
+    treble: "Тройники"
+
   condition:
     season:
       label: Сезон
@@ -299,6 +304,7 @@ ru:
     default_variation: Вариация по умолчанию
     finish: "Покрытие"
     material: "Материал"
+    hooks: "Крючки"
     glow: "Glow (светится в темноте)"
     uv: "UV"
     glow_uv_hint: "Glow светится в темноте; UV выглядит иначе в ультрафиолетовом свете."
@@ -451,6 +457,7 @@ ru:
     any_species: Любой вид
     any_type: Любой тип
     any_material: "Любой материал"
+    any_hooks: "Любые крючки"
     any_brand: Любой бренд
     any_action: Любая плавучесть
     any_depth: Любая глубина

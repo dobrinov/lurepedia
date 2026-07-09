@@ -163,6 +163,11 @@ ko:
     silicone: "실리콘"
     other: "기타"
 
+  hook:
+    none: "훅 없음"
+    single: "싱글"
+    treble: "트레블"
+
   condition:
     season:
       label: 계절
@@ -299,6 +304,7 @@ ko:
     default_variation: 기본 베리에이션
     finish: "마감"
     material: "소재"
+    hooks: "훅"
     glow: "글로우(야광)"
     uv: "UV(자외선)"
     glow_uv_hint: "글로우는 어둠 속에서 빛나고, UV는 자외선 아래에서 다르게 보입니다."
@@ -451,6 +457,7 @@ ko:
     any_species: 모든 어종
     any_type: 모든 타입
     any_material: "모든 소재"
+    any_hooks: "모든 훅"
     any_brand: 모든 브랜드
     any_action: 모든 액션
     any_depth: 모든 수심

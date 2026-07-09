@@ -163,6 +163,11 @@ fr:
     silicone: "Silicone"
     other: "Autre"
 
+  hook:
+    none: "Sans hameçon"
+    single: "Simple"
+    treble: "Triple"
+
   condition:
     season:
       label: Saison
@@ -299,6 +304,7 @@ fr:
     default_variation: Variante par défaut
     finish: "Finition"
     material: "Matériau"
+    hooks: "Hameçons"
     glow: "Glow (phosphorescent)"
     uv: "UV"
     glow_uv_hint: "Le glow brille dans le noir ; l'UV change d'aspect sous lumière ultraviolette."
@@ -451,6 +457,7 @@ fr:
     any_species: Toutes les espèces
     any_type: Tous les types
     any_material: "Tout matériau"
+    any_hooks: "Tous les hameçons"
     any_brand: Toutes les marques
     any_action: Toute densité
     any_depth: Toute profondeur

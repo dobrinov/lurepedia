@@ -31,5 +31,10 @@
     <%= f.label :water, t("lure.water") %>
     <%= f.select :water, Build.waters.keys.map { |w| [ water_name(w), w ] }, {}, class: "input" %>
   </div>
+  <div class="field">
+    <%= f.label :hook_type, t("lure.hooks") %>
+    <%= f.select :hook_type, Build.hook_types.keys.map { |h| [ hook_type_name(h), h ] },
+          { include_blank: t("common.none") }, class: "input" %>
+  </div>
   <%= f.submit submit_label, class: "btn btn-primary" %>
 <% end %>

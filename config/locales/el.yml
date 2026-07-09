@@ -163,6 +163,11 @@ el:
     silicone: "Σιλικόνη"
     other: "Άλλο"
 
+  hook:
+    none: "Χωρίς άγκιστρα"
+    single: "Μονό"
+    treble: "Τριπλό"
+
   condition:
     season:
       label: Εποχή
@@ -299,6 +304,7 @@ el:
     default_variation: Προεπιλεγμένη παραλλαγή
     finish: "Φινίρισμα"
     material: "Υλικό"
+    hooks: "Άγκιστρα"
     glow: "Glow (φωσφορίζον)"
     uv: "UV"
     glow_uv_hint: "Το glow λάμπει στο σκοτάδι· το UV φαίνεται διαφορετικό στο υπεριώδες φως."
@@ -451,6 +457,7 @@ el:
     any_species: Κάθε είδος
     any_type: Κάθε τύπος
     any_material: "Οποιοδήποτε υλικό"
+    any_hooks: "Οποιαδήποτε άγκιστρα"
     any_brand: Κάθε μάρκα
     any_action: Κάθε δράση
     any_depth: Κάθε βάθος
