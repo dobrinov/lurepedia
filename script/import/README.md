@@ -25,16 +25,19 @@ relative to the JSON) or a downloaded `image` URL.
     {
       "model": "Tide Minnow Slim",
       "lure_type": "jerkbait",            // LureType key
+      "material": "composite",            // optional: Lure#material enum key
       "blurb": "...",
       "video": "https://...",             // optional
       "builds": [
         { "name": "120", "length_mm": 120, "weight_g": 13.0,
           "depth_min_cm": 60, "depth_max_cm": 100,
-          "action": "floating", "water": "salt", "position": 0 }
+          "action": "floating", "water": "salt",
+          "hook_type": "treble",          // optional: Build#hook_type enum key
+          "position": 0 }
       ],
       "colors": [
         { "name": "Midnight Black",
-          "uv_glow": false,
+          "uv": false, "glow": false,     // separate finishes; legacy "uv_glow" reads as uv
           "file": "images/abc.jpg",       // or "image": "https://..."
           "builds": [ "120", "140" ]      // ← availability (optional, see below)
         }

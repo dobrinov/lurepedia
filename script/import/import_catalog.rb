@@ -32,6 +32,7 @@ data.fetch("lures").each do |spec|
     l.lure_type = lure_type
     l.blurb = spec["blurb"]
     l.action_video_url = spec["video"]
+    l.material = spec["material"] if spec["material"]
     stats[:lures] += 1
   end
 
@@ -43,6 +44,7 @@ data.fetch("lures").each do |spec|
       b.depth_max_cm = bs["depth_max_cm"]
       b.action = bs["action"] || :none
       b.water = bs["water"] || :fresh
+      b.hook_type = bs["hook_type"] if bs["hook_type"]
       b.position = bs["position"] || i
       stats[:builds] += 1
     end
@@ -51,7 +53,10 @@ data.fetch("lures").each do |spec|
   first_variant = nil
   spec.fetch("colors").each do |cs|
     variant = lure.variants.find_or_create_by!(name: cs.fetch("name")) do |v|
-      v.uv_glow = cs["uv_glow"] || cs["uv"] || false
+      # uv and glow are separate finishes; "uv_glow" is the pre-split key kept
+      # working for older scrape files, where it always meant UV.
+      v.uv = cs["uv"] || cs["uv_glow"] || false
+      v.glow = cs["glow"] || false
       stats[:variants] += 1
     end
     first_variant ||= variant
