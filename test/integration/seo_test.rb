@@ -8,13 +8,13 @@ class SeoTest < ActionDispatch::IntegrationTest
     @species = Species.create!(key: "largemouth_bass", scientific_name: "Micropterus salmoides")
   end
 
-  test "sitemap index points at one sitemap per locale" do
+  test "sitemap index points at one sitemap per indexable locale" do
     get "/sitemap.xml"
     assert_response :success
     assert_equal "application/xml", response.media_type
     assert_match "<sitemapindex", response.body
     assert_match "http://www.example.com/sitemaps/en.xml", response.body
-    assert_match "http://www.example.com/sitemaps/de.xml", response.body
+    assert_no_match "http://www.example.com/sitemaps/de.xml", response.body
   end
 
   test "per-locale sitemap lists urls with locale alternates" do
@@ -22,15 +22,30 @@ class SeoTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal "application/xml", response.media_type
     assert_match "http://www.example.com/en/lures", response.body
-    assert_match "hreflang=\"de\"", response.body
+    assert_match "hreflang=\"en\"", response.body
     assert_match "hreflang=\"x-default\"", response.body
     assert_match @lure.slug, response.body
+  end
+
+  test "pages in a non-indexable locale are noindex and absent from the sitemaps" do
+    get lure_path(@lure, locale: :de)
+    assert_response :success
+    assert_select "meta[name=robots][content='noindex,nofollow']"
+    assert_select "link[rel=alternate][hreflang=de]", false
+
+    get "/sitemaps/de.xml"
+    assert_response :not_found
+  end
+
+  test "pages in an indexable locale carry no robots meta" do
+    get lure_path(@lure, locale: :en)
+    assert_select "meta[name=robots]", false
   end
 
   test "lure page emits canonical, hreflang, and breadcrumb json-ld but no product json-ld" do
     get lure_path(@lure, locale: :en)
     assert_select "link[rel=canonical]"
-    assert_select "link[rel=alternate][hreflang=de]"
+    assert_select "link[rel=alternate][hreflang=en]"
     # No Product JSON-LD: without offers/review/aggregateRating (none of which
     # we can honestly provide), Google flags it as an invalid rich-result item.
     assert_no_match '"@type":"Product"', response.body
@@ -120,7 +135,7 @@ class SeoTest < ActionDispatch::IntegrationTest
   test "paginated listings self-canonicalize with matching hreflang" do
     get lures_path(locale: :en, page: 2)
     assert_select "link[rel=canonical][href=?]", "http://www.example.com/en/lures?page=2"
-    assert_select "link[rel=alternate][hreflang=de][href=?]", "http://www.example.com/de/lures?page=2"
+    assert_select "link[rel=alternate][hreflang=en][href=?]", "http://www.example.com/en/lures?page=2"
   end
 
   test "first page canonical carries no page param" do

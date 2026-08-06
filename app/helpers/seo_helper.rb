@@ -9,11 +9,14 @@ module SeoHelper
 
   DEFAULT_OG_IMAGE = "/android-chrome-512x512.png"
 
-  # Renders <link rel="alternate" hreflang="..."> for every locale + x-default,
-  # all pointing at the current path with the locale swapped.
+  # Renders <link rel="alternate" hreflang="..."> for every indexable locale +
+  # x-default, all pointing at the current path with the locale swapped. Only
+  # indexable locales are annotated: an hreflang pointing at a noindex page is a
+  # contradiction, and it would hand crawlers a path into the locales we're
+  # keeping out of the index.
   def hreflang_tags
     safe_join(
-      I18n.available_locales.map { |loc| alternate_tag(loc, loc.to_s) } +
+      Locales.indexable.map { |loc| alternate_tag(loc, loc.to_s) } +
         [ alternate_tag(I18n.default_locale, "x-default") ]
     )
   end
@@ -61,8 +64,11 @@ module SeoHelper
     nil
   end
 
+  # Pages a view opted out of, plus everything in a non-indexable locale (see
+  # Locales). nofollow keeps crawlers from walking that locale's internal links
+  # into the rest of the translated tree.
   def robots_meta_tag
-    return unless @noindex
+    return unless @noindex || !Locales.indexable?(I18n.locale)
 
     tag.meta(name: "robots", content: "noindex,nofollow")
   end

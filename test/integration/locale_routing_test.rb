@@ -48,10 +48,13 @@ class LocaleRoutingTest < ActionDispatch::IntegrationTest
     assert_select "a[href^=?]", "/de/"
   end
 
-  test "hreflang alternate tags present for every locale" do
+  test "hreflang alternate tags present for every indexable locale" do
     get "/en"
-    I18n.available_locales.each do |loc|
+    Locales.indexable.each do |loc|
       assert_select "link[rel=alternate][hreflang=?]", loc.to_s
+    end
+    (I18n.available_locales - Locales.indexable).each do |loc|
+      assert_select "link[rel=alternate][hreflang=?]", loc.to_s, false
     end
     assert_select "link[rel=alternate][hreflang=?]", "x-default"
   end

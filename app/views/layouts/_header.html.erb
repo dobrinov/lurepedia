@@ -34,7 +34,8 @@
           </button>
           <div class="dropdown-menu" data-dropdown-target="menu" hidden>
             <% available_locales_for_switcher.each do |loc, meta| %>
-              <%= link_to url_for(locale: loc), class: "lang-item #{'active' if loc == I18n.locale}" do %>
+              <%# nofollow on noindex locales: readers still switch freely, crawlers stay in the indexed set. %>
+              <%= link_to url_for(locale: loc), rel: ("nofollow" unless Locales.indexable?(loc)), class: "lang-item #{'active' if loc == I18n.locale}" do %>
                 <%= country_flag(meta[:country], size: 22) %>
                 <span><%= meta[:native] %></span>
                 <% if loc == I18n.locale %><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="margin-left:auto"><path d="M20 6 9 17l-5-5"></path></svg><% end %>

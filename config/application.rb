@@ -32,6 +32,15 @@ module Lurepedia
 
     # Internationalization
     config.i18n.available_locales = %i[en de bg ja fr es el zh ru nl it pt ko sv no pl cs fi da]
+
+    # Which of those locales we ask search engines to index (see Locales).
+    # Every locale ships translated UI chrome, but catalog copy — lure and
+    # species descriptions — is English-only outside :en, so the other 18 are
+    # near-duplicates of the English set. Publishing all of them made a ~41k-URL
+    # crawl surface that buried the English pages under ~20k "crawled/discovered,
+    # currently not indexed" URLs. Add a locale back once its catalog copy is
+    # genuinely translated; it stays fully browsable either way.
+    config.x.indexable_locales = %i[en]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = [ :en ]
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
