@@ -87,6 +87,8 @@ pt:
     species_show: "veja que amostras realmente o capturam, comprovado por capturas reais registadas por pescadores"
     shop_show: "loja de artigos de pesca — países de entrega e ligações para comprar amostras"
     catch_show: "%{species} capturado com a %{lure} — foto, condições e detalhes da amostra registados por um pescador."
+    lure_types_index: "Todos os tipos de amostras de pesca — crankbaits, jerkbaits, de superfície e mais, cada um com o catálogo completo."
+    lure_type_show: "%{count} amostras %{type}: fotos, especificações, cores e capturas reais registadas por pescadores."
   home:
     tagline: Cada amostra, comprovada por uma captura
     meta_description: A Lurepedia é uma enciclopédia colaborativa de amostras de pesca — encontre amostras e veja provas reais, captura a captura, de que funcionam.
@@ -241,6 +243,13 @@ pt:
     jig: Jig
     spoon: Colher
     lipless_crankbait: Lipless Crankbait
+
+  lure_types:
+    title: "Tipos de amostra"
+    show_title: "Amostras %{type}"
+    count:
+      one: "%{count} amostra"
+      other: "%{count} amostras"
 
   lure:
     similar_title: "Amostras semelhantes"

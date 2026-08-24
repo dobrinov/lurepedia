@@ -87,6 +87,8 @@ fi:
     species_show: "katso, millä vieheillä sitä oikeasti saadaan — todisteena kalastajien kirjaamat saaliit"
     shop_show: "kalastustarvikekauppa — toimitusmaat ja vieheiden ostolinkit"
     catch_show: "%{species} saatu vieheellä %{lure} — kuva, olosuhteet ja vieheen tiedot kalastajan kirjaamana."
+    lure_types_index: "Kaikki viehetyypit — crankbaitit, jerkbaitit, pintavieheet ja muut, kukin koko katalogin kanssa."
+    lure_type_show: "%{count} %{type}-viehettä: kuvat, mitat, värit ja kalastajien kirjaamat saaliit."
   home:
     tagline: Jokainen viehe, saaliilla todistettu
     meta_description: Lurepedia on yhteisön kokoama vieheiden tietosanakirja — löydä vieheet ja näe oikeat saaliit todisteena siitä, että ne toimivat.
@@ -241,6 +243,13 @@ fi:
     jig: Jigi
     spoon: Lusikkauistin
     lipless_crankbait: Lipaton vaappu
+
+  lure_types:
+    title: "Viehetyypit"
+    show_title: "%{type}-vieheet"
+    count:
+      one: "%{count} viehe"
+      other: "%{count} viehettä"
 
   lure:
     similar_title: "Samankaltaiset vieheet"

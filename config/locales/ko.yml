@@ -87,6 +87,8 @@ ko:
     species_show: "실제 낚시인의 조과로 검증된, 이 어종에 잘 통하는 루어를 확인하세요"
     shop_show: "낚시 태클 샵 — 배송 국가와 루어 구매 링크"
     catch_show: "%{lure}로 잡은 %{species} — 낚시인이 기록한 사진, 조건, 루어 정보."
+    lure_types_index: "모든 낚시 루어 유형 — 크랭크베이트, 저크베이트, 탑워터 등 각 유형의 전체 카탈로그."
+    lure_type_show: "%{type} 루어 %{count}개 — 사진, 스펙, 색상, 실제 조과 기록."
   home:
     tagline: 모든 루어, 조과로 검증
     meta_description: Lurepedia는 크라우드소싱 낚시 루어 백과사전입니다 — 실제 조과로 검증된, 정말 잘 잡히는 루어를 찾아보세요.
@@ -241,6 +243,13 @@ ko:
     jig: 지그
     spoon: 스푼
     lipless_crankbait: 립리스 크랭크베이트
+
+  lure_types:
+    title: "루어 유형"
+    show_title: "%{type} 루어"
+    count:
+      one: "루어 %{count}개"
+      other: "루어 %{count}개"
 
   lure:
     similar_title: "비슷한 루어"

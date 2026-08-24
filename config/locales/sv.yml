@@ -87,6 +87,8 @@ sv:
     species_show: "se vilka beten som faktiskt fångar den, bevisat genom riktiga fångster loggade av sportfiskare"
     shop_show: "fiskebutik — leveransländer och köplänkar för beten"
     catch_show: "%{species} fångad på %{lure} — foto, förhållanden och betesdetaljer loggade av en sportfiskare."
+    lure_types_index: "Alla typer av fiskebeten — crankbaits, jerkbaits, ytbeten och fler, var och en med hela katalogen."
+    lure_type_show: "%{count} %{type}-beten med bilder, specifikationer, färger och verkliga fångster loggade av fiskare."
   home:
     tagline: Varje bete, bevisat med en fångst
     meta_description: Lurepedia är ett crowdsourcat uppslagsverk över fiskebeten — hitta beten och se riktiga bevis, fångst för fångst, på att de fungerar.
@@ -241,6 +243,13 @@ sv:
     jig: Jigg
     spoon: Skeddrag
     lipless_crankbait: Lipless crankbait
+
+  lure_types:
+    title: "Betestyper"
+    show_title: "%{type}-beten"
+    count:
+      one: "%{count} bete"
+      other: "%{count} beten"
 
   lure:
     similar_title: "Liknande beten"

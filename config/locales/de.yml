@@ -37,6 +37,8 @@ de:
     species_show: "sieh, welche Köder sie wirklich fangen — belegt durch echte Fänge"
     shop_show: "Angelshop — Lieferländer und Kauf-Links"
     catch_show: "%{species}, gefangen mit %{lure} — Foto, Bedingungen und Köderdetails."
+    lure_types_index: "Alle Ködertypen — Crankbaits, Jerkbaits, Oberflächenköder und mehr, jeder mit dem vollständigen Katalog."
+    lure_type_show: "%{count} %{type}-Köder mit Fotos, Daten, Farben und echten von Anglern erfassten Fängen."
   home:
     tagline: Jeder Köder, bewiesen durch einen Fang
     meta_description: Lurepedia ist eine gemeinschaftliche Enzyklopädie der Angelköder — finde Köder und sieh echte Beweise, dass sie fangen.
@@ -191,6 +193,13 @@ de:
     jig: Jig
     spoon: Blinker
     lipless_crankbait: Lippenloser Wobbler
+
+  lure_types:
+    title: "Ködertypen"
+    show_title: "%{type}-Köder"
+    count:
+      one: "%{count} Köder"
+      other: "%{count} Köder"
 
   lure:
     similar_title: "Ähnliche Köder"

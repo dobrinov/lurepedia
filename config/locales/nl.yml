@@ -87,6 +87,8 @@ nl:
     species_show: "zie welk kunstaas hem echt vangt, onderbouwd met echte vangsten"
     shop_show: "hengelsportwinkel — bezorglanden en kooplinks"
     catch_show: "%{species} gevangen op de %{lure} — foto, omstandigheden en details van het kunstaas."
+    lure_types_index: "Alle soorten kunstaas — crankbaits, jerkbaits, oppervlakteaas en meer, elk met de volledige catalogus."
+    lure_type_show: "%{count} %{type}-kunstaas met foto's, specificaties, kleuren en echte vangsten van vissers."
   home:
     tagline: Elk kunstaas, bewezen door een vangst
     meta_description: Lurepedia is een door de community samengestelde encyclopedie van kunstaas — vind kunstaas en zie echt bewijs, vangst voor vangst, dat het werkt.
@@ -241,6 +243,13 @@ nl:
     jig: Jig
     spoon: Lepel
     lipless_crankbait: Lipless crankbait
+
+  lure_types:
+    title: "Soorten kunstaas"
+    show_title: "%{type}-kunstaas"
+    count:
+      one: "%{count} kunstaas"
+      other: "%{count} kunstaas"
 
   lure:
     similar_title: "Vergelijkbaar kunstaas"

@@ -6,7 +6,9 @@
 %>
 <% prefill = local_assigns.fetch(:prefill, {}) %>
 <% label = local_assigns.fetch(:label, t("catch.add_title")) %>
-<%= link_to(signed_in? ? new_catch_path(prefill) : new_session_path, class: "card add-card") do %>
+<%# Signed-out visitors get the same link: require_login stores the path and
+    returns them here after sign-in, prefill intact. %>
+<%= link_to(new_catch_path(prefill), class: "card add-card") do %>
   <span class="add-card-plus" aria-hidden="true">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
   </span>

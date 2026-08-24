@@ -87,6 +87,8 @@ da:
     species_show: "se hvilke agn der faktisk fanger den, bevist af rigtige fangster registreret af lystfiskere"
     shop_show: "grejbutik — leveringslande og købslinks til agn"
     catch_show: "%{species} fanget på %{lure} — foto, forhold og agndetaljer registreret af en lystfisker."
+    lure_types_index: "Alle typer kunstagn — crankbaits, jerkbaits, overfladeagn og flere, hver med hele kataloget."
+    lure_type_show: "%{count} %{type}-agn med billeder, specifikationer, farver og rigtige fangster logget af lystfiskere."
   home:
     tagline: Hver agn, bevist af en fangst
     meta_description: Lurepedia er en brugerdrevet encyklopædi over kunstagn — find agn og se rigtige beviser, fangst for fangst, på at de virker.
@@ -241,6 +243,13 @@ da:
     jig: Jig
     spoon: Blink
     lipless_crankbait: Lipless wobler
+
+  lure_types:
+    title: "Agntyper"
+    show_title: "%{type}-agn"
+    count:
+      one: "%{count} agn"
+      other: "%{count} agn"
 
   lure:
     similar_title: "Lignende agn"

@@ -7,6 +7,9 @@ class LuresController < ApplicationController
     @filter = LureFilter.new(params)
     @page = paginate(@filter.results, per: 12)
     @lures = @page.records
+    # Type hubs are linked from here: this is the most-linked page on the site,
+    # so it is the shallowest crawl path into the catalog we can offer.
+    @lure_types = LureType.all.to_a.sort_by(&:name)
   end
 
   def show

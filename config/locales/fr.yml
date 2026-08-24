@@ -87,6 +87,8 @@ fr:
     species_show: "découvrez quels leurres le prennent vraiment, preuves à l'appui"
     shop_show: "magasin de pêche — pays de livraison et liens d'achat"
     catch_show: "%{species} pris au %{lure} — photo, conditions et détails du leurre."
+    lure_types_index: "Tous les types de leurres de pêche — crankbaits, jerkbaits, leurres de surface et plus, chacun avec son catalogue complet."
+    lure_type_show: "%{count} leurres %{type} : photos, caractéristiques, coloris et prises réelles enregistrées par des pêcheurs."
   home:
     tagline: Chaque leurre, prouvé par une prise
     meta_description: Lurepedia est une encyclopédie collaborative des leurres de pêche — trouvez des leurres et voyez la preuve, par des prises réelles, qu'ils fonctionnent.
@@ -241,6 +243,13 @@ fr:
     jig: Jig
     spoon: Cuillère
     lipless_crankbait: Lipless
+
+  lure_types:
+    title: "Types de leurre"
+    show_title: "Leurres %{type}"
+    count:
+      one: "%{count} leurre"
+      other: "%{count} leurres"
 
   lure:
     similar_title: "Leurres similaires"

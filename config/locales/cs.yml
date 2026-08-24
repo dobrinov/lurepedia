@@ -87,6 +87,8 @@ cs:
     species_show: "podívejte se, které nástrahy ji opravdu chytají — doloženo úlovky zapsanými rybáři"
     shop_show: "rybářský obchod — země doručení a odkazy na nákup nástrah"
     catch_show: "%{species} chycený na %{lure} — fotka, podmínky a detaily nástrahy zapsané rybářem."
+    lure_types_index: "Všechny typy rybářských nástrah — woblery, jerkbaity, povrchové a další, každý s celým katalogem."
+    lure_type_show: "%{count} nástrah %{type}: fotky, parametry, barvy a skutečné úlovky od rybářů."
   home:
     tagline: Každá nástraha, prověřená úlovkem
     meta_description: Lurepedia je komunitní encyklopedie rybářských nástrah — najděte nástrahy a podívejte se na skutečné důkazy, úlovek po úlovku, že fungují.
@@ -241,6 +243,13 @@ cs:
     jig: Jig
     spoon: Plandavka
     lipless_crankbait: Lipless crankbait
+
+  lure_types:
+    title: "Typy nástrah"
+    show_title: "Nástrahy %{type}"
+    count:
+      one: "%{count} nástraha"
+      other: "%{count} nástrah"
 
   lure:
     similar_title: "Podobné nástrahy"

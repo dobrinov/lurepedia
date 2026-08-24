@@ -87,6 +87,8 @@ en:
     species_show: "see which lures actually catch it, proven by real angler-logged catches"
     shop_show: "fishing tackle shop — delivery countries and lure buy links"
     catch_show: "%{species} caught on the %{lure} — photo, conditions and lure details logged by an angler."
+    lure_types_index: "Every kind of fishing lure — crankbaits, jerkbaits, topwater and more, each with its full catalog."
+    lure_type_show: "%{count} %{type} lures with photos, specs, colors and real angler-logged catches."
   home:
     tagline: Every lure, proven by a catch
     meta_description: Lurepedia is a crowdsourced encyclopedia of fishing lures — find lures and see real proof, by catch, that they work.
@@ -241,6 +243,13 @@ en:
     jig: Jig
     spoon: Spoon
     lipless_crankbait: Lipless Crankbait
+
+  lure_types:
+    title: "Lure Types"
+    show_title: "%{type} Lures"
+    count:
+      one: "%{count} lure"
+      other: "%{count} lures"
 
   lure:
     similar_title: "Similar lures"

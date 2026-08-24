@@ -3,6 +3,9 @@
   <%
     entries = []
     @static_paths.each { |name| entries << [ ->(loc) { public_send("#{name}_url", locale: loc) }, nil ] }
+    # No lastmod: a hub changes when its lures change, not when the taxonomy
+    # row is touched, so a type's own updated_at would be misleading.
+    @lure_types.each { |r| entries << [ ->(loc) { lure_type_url(r, locale: loc) }, nil ] }
     @lures.each { |r| entries << [ ->(loc) { lure_url(r, locale: loc) }, r.updated_at ] }
     @species.each { |r| entries << [ ->(loc) { species_url(r, locale: loc) }, r.updated_at ] }
     @brands.each { |r| entries << [ ->(loc) { brand_url(r, locale: loc) }, r.updated_at ] }

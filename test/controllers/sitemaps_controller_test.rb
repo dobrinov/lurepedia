@@ -34,6 +34,14 @@ class SitemapsControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, %(hreflang="x-default")
   end
 
+  test "per-locale sitemap includes the type hub index and every type" do
+    type = LureType.create!(key: "crankbait")
+
+    get locale_sitemap_url(locale: :en)
+    assert_includes response.body, "<loc>#{lure_types_url(locale: :en)}</loc>"
+    assert_includes response.body, "<loc>#{lure_type_url(type, locale: :en)}</loc>"
+  end
+
   test "non-indexable locale has no sitemap" do
     get locale_sitemap_url(locale: :de)
     assert_response :not_found

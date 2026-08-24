@@ -87,6 +87,8 @@ pl:
     species_show: "zobacz, które przynęty naprawdę go łowią — potwierdzone prawdziwymi połowami wędkarzy"
     shop_show: "sklep wędkarski — kraje dostawy i linki do zakupu przynęt"
     catch_show: "%{species} złowiony na %{lure} — zdjęcie, warunki i szczegóły przynęty zarejestrowane przez wędkarza."
+    lure_types_index: "Wszystkie typy przynęt wędkarskich — crankbaity, jerkbaity, powierzchniowe i inne, każdy z pełnym katalogiem."
+    lure_type_show: "%{count} przynęt %{type}: zdjęcia, specyfikacje, kolory i prawdziwe połowy zapisane przez wędkarzy."
   home:
     tagline: Każda przynęta potwierdzona połowem
     meta_description: Lurepedia to tworzona przez społeczność encyklopedia przynęt wędkarskich — znajdź przynęty i zobacz prawdziwe dowody w postaci połowów, że działają.
@@ -241,6 +243,13 @@ pl:
     jig: Jig
     spoon: Błystka wahadłowa
     lipless_crankbait: Lipless crankbait
+
+  lure_types:
+    title: "Typy przynęt"
+    show_title: "Przynęty %{type}"
+    count:
+      one: "%{count} przynęta"
+      other: "%{count} przynęt"
 
   lure:
     similar_title: "Podobne przynęty"

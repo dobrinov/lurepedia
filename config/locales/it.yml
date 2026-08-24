@@ -87,6 +87,8 @@ it:
     species_show: "scopri quali artificiali la catturano davvero, con la prova delle catture registrate dai pescatori"
     shop_show: "negozio di articoli da pesca — paesi di consegna e link per comprare gli artificiali"
     catch_show: "%{species} catturato con %{lure} — foto, condizioni e dettagli dell'artificiale registrati da un pescatore."
+    lure_types_index: "Tutti i tipi di artificiali da pesca — crankbait, jerkbait, di superficie e altri, ognuno con il catalogo completo."
+    lure_type_show: "%{count} artificiali %{type}: foto, specifiche, colori e catture reali registrate dai pescatori."
   home:
     tagline: Ogni artificiale, provato da una cattura
     meta_description: Lurepedia è un'enciclopedia collaborativa degli artificiali da pesca — trova gli artificiali e guarda le prove reali, cattura dopo cattura, che funzionano.
@@ -241,6 +243,13 @@ it:
     jig: Jig
     spoon: Ondulante
     lipless_crankbait: Lipless
+
+  lure_types:
+    title: "Tipi di artificiale"
+    show_title: "Artificiali %{type}"
+    count:
+      one: "%{count} artificiale"
+      other: "%{count} artificiali"
 
   lure:
     similar_title: "Artificiali simili"

@@ -80,11 +80,19 @@
     </div>
 
     <div class="stack" style="gap:14px">
-      <div class="card-brand"><%= @lure.brand.name %></div>
-      <h1 style="font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1"><%= @lure.model %></h1>
+      <%# The brand lives inside the h1 so the heading reads "Deps Basirisky".
+          A bare model name wastes the page's strongest on-page signal, and the
+          brand is half of what anyone actually searches for. The block span
+          keeps the original two-line look. %>
+      <h1 style="font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1">
+        <span class="card-brand" style="display:block;margin-bottom:14px;line-height:1.3"><%= @lure.brand.name %></span>
+        <%= @lure.model %>
+      </h1>
 
       <div class="chips">
-        <span class="tag"><%= lure_type_name(@lure.lure_type) %></span>
+        <%# Links to the type hub: gives this page an outbound topical link and
+            the hub an inbound one from every lure it lists. %>
+        <%= link_to lure_type_name(@lure.lure_type), lure_type_path(@lure.lure_type), class: "tag" %>
         <% if @lure.material %><span class="tag"><%= material_name(@lure.material) %></span><% end %>
         <% @lure.techniques.sort_by(&:key).each do |tech| %><span class="tag"><%= technique_name(tech) %></span><% end %>
         <span class="tag"><%= lure_action_label(@lure.dominant_action) %></span>
@@ -93,7 +101,9 @@
 
       <% if @variants.many? %>
         <div>
-          <div class="overline" style="margin-bottom:8px"><%= t("lure.browse_colors") %></div>
+          <%# An h2, not a div: this is the page's main content section and the
+              only other heading is inside a tab that most lures never render. %>
+          <h2 class="overline" style="margin-bottom:8px"><%= t("lure.browse_colors") %></h2>
           <div class="color-tiles">
             <% @variants.each do |v| %>
               <span class="tooltip color-tile-tip" data-tooltip="<%= v.name %>">
@@ -190,11 +200,10 @@
         <div class="empty-state">
           <h3><%= t("lure.be_first") %></h3>
           <p><%= t("home.hero_sub") %></p>
-          <% if signed_in? %>
-            <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to t("lure.add_catch"), new_session_path, class: "btn btn-primary" %>
-          <% end %>
+          <%# Linked for signed-out visitors too: require_login stores the full
+              path before bouncing to sign-in, so they come back to this
+              prefilled form instead of the homepage. %>
+          <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug), class: "btn btn-primary" %>
         </div>
       <% end %>
     <% when "variations" %>
@@ -221,11 +230,7 @@
                         <td><%= water_name(b.water) %></td>
                         <td><%= b.hook_type ? hook_type_name(b.hook_type) : t("common.none") %></td>
                         <td style="text-align:right;white-space:nowrap">
-                          <% if signed_in? %>
-                            <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug, variant_id: v.id, build_id: b.id), class: "btn btn-sm" %>
-                          <% else %>
-                            <%= link_to t("lure.add_catch"), new_session_path, class: "btn btn-sm" %>
-                          <% end %>
+                          <%= link_to t("lure.add_catch"), new_catch_path(lure: @lure.slug, variant_id: v.id, build_id: b.id), class: "btn btn-sm" %>
                         </td>
                       </tr>
                     <% end %>

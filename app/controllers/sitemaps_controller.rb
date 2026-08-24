@@ -15,7 +15,8 @@ class SitemapsController < ApplicationController
     return head :not_found unless Locales.indexable?(@locale)
 
     @locales = Locales.indexable
-    @static_paths = %i[lures species_index brands shops catches leaderboard]
+    @static_paths = %i[lures species_index brands shops catches leaderboard lure_types]
+    @lure_types = LureType.all
     @lures = Lure.published
     @species = Species.published
     @brands = Brand.published

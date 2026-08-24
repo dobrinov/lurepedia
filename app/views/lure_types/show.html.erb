@@ -1,0 +1,44 @@
+<% title = t("lure_types.show_title", type: @lure_type.name) %>
+<% content_for :title, title %>
+<% meta_description t("meta.lure_type_show", type: @lure_type.name, count: @page.total_count) %>
+<% content_for :head do %>
+  <%= structured_data(
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: t("nav.lures"), item: lures_url },
+          { "@type": "ListItem", position: 2, name: t("lure_types.title"), item: lure_types_url },
+          { "@type": "ListItem", position: 3, name: title, item: lure_type_url(@lure_type) }
+        ]
+      ) %>
+<% end %>
+<div class="container">
+  <nav class="muted" style="font-size:13px;margin-bottom:16px">
+    <%= link_to t("nav.lures"), lures_path %> ›
+    <%= link_to t("lure_types.title"), lure_types_path %> ›
+    <span><%= @lure_type.name %></span>
+  </nav>
+
+  <div class="page-head">
+    <div>
+      <h1><%= title %></h1>
+      <p class="muted"><%= t("lure_types.count", count: @page.total_count) %></p>
+    </div>
+    <%# Hands off to the full filter UI, where this type is one facet among many. %>
+    <%= link_to t("search.show_n_lures", count: @page.total_count),
+                lures_path(type: @lure_type.key), class: "btn btn-sm" %>
+  </div>
+
+  <% if @lures.any? %>
+    <div class="grid-cards">
+      <% @lures.each do |lure| %>
+        <%= render "shared/lure_card", lure: lure %>
+      <% end %>
+    </div>
+    <%= render "shared/pagination", page: @page %>
+  <% else %>
+    <div class="empty-state">
+      <h3><%= t("lure.empty_title") %></h3>
+      <%= link_to t("lure.add"), new_lure_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

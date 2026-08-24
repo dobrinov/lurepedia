@@ -37,6 +37,8 @@ ja:
     species_show: "実際に釣れるルアーを実釣記録で確認"
     shop_show: "釣具ショップ — 配送対応国と購入リンク"
     catch_show: "%{lure}で釣れた%{species} — 写真、条件、ルアーの詳細。"
+    lure_types_index: "釣りルアーのすべてのタイプ — クランクベイト、ジャークベイト、トップウォーターなど、それぞれの全カタログ。"
+    lure_type_show: "%{type}ルアー%{count}個 — 写真・スペック・カラー・実際の釣果記録。"
   home:
     tagline: すべてのルアーを、釣果で証明
     meta_description: Lurepediaは釣りルアーの共同百科事典です。ルアーを見つけ、実際の釣果という証拠を確認できます。
@@ -191,6 +193,13 @@ ja:
     jig: ジグ
     spoon: スプーン
     lipless_crankbait: リップレスクランク
+
+  lure_types:
+    title: "ルアータイプ"
+    show_title: "%{type}ルアー"
+    count:
+      one: "%{count}個のルアー"
+      other: "%{count}個のルアー"
 
   lure:
     similar_title: "似ているルアー"

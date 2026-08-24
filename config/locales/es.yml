@@ -87,6 +87,8 @@ es:
     species_show: "descubre qué señuelos la capturan de verdad, avalado por capturas reales"
     shop_show: "tienda de pesca — países de envío y enlaces de compra"
     catch_show: "%{species} capturado con %{lure} — foto, condiciones y detalles del señuelo."
+    lure_types_index: "Todos los tipos de señuelo de pesca — crankbaits, jerkbaits, de superficie y más, cada uno con su catálogo completo."
+    lure_type_show: "%{count} señuelos %{type}: fotos, especificaciones, colores y capturas reales registradas por pescadores."
   home:
     tagline: Cada señuelo, probado con una captura
     meta_description: Lurepedia es una enciclopedia colaborativa de señuelos de pesca — encuentra señuelos y comprueba con capturas reales que funcionan.
@@ -241,6 +243,13 @@ es:
     jig: Jig
     spoon: Cucharilla
     lipless_crankbait: Crankbait lipless
+
+  lure_types:
+    title: "Tipos de señuelo"
+    show_title: "Señuelos %{type}"
+    count:
+      one: "%{count} señuelo"
+      other: "%{count} señuelos"
 
   lure:
     similar_title: "Señuelos similares"

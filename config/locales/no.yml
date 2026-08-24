@@ -87,6 +87,8 @@
     species_show: "se hvilke sluker som faktisk fanger den, bevist av ekte fangster loggført av fiskere"
     shop_show: "fiskeutstyrsbutikk — leveringsland og kjøpslenker for sluker"
     catch_show: "%{species} tatt på %{lure} — bilde, forhold og slukdetaljer loggført av en fisker."
+    lure_types_index: "Alle typer fiskesluker — crankbaits, jerkbaits, overflatesluker og flere, hver med hele katalogen."
+    lure_type_show: "%{count} %{type}-sluker med bilder, spesifikasjoner, farger og reelle fangster logget av fiskere."
   home:
     tagline: Hver sluk, bevist med en fangst
     meta_description: Lurepedia er et brukerdrevet leksikon over fiskesluker — finn sluker og se ekte bevis, fangst for fangst, på at de virker.
@@ -241,6 +243,13 @@
     jig: Jigg
     spoon: Skjesluk
     lipless_crankbait: Lipless crankbait
+
+  lure_types:
+    title: "Sluketyper"
+    show_title: "%{type}-sluker"
+    count:
+      one: "%{count} sluk"
+      other: "%{count} sluker"
 
   lure:
     similar_title: "Lignende sluker"

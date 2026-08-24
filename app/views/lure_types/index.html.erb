@@ -1,0 +1,21 @@
+<% content_for :title, t("lure_types.title") %>
+<% meta_description t("meta.lure_types_index") %>
+<div class="container">
+  <div class="page-head">
+    <div>
+      <h1><%= t("lure_types.title") %></h1>
+      <p class="muted"><%= t("meta.lure_types_index") %></p>
+    </div>
+  </div>
+
+  <div class="grid-cards">
+    <% @lure_types.each do |type| %>
+      <%= link_to lure_type_path(type), class: "card card-pad" do %>
+        <h2 style="font-size:18px"><%= t("lure_types.show_title", type: type.name) %></h2>
+        <span class="muted" style="font-size:13px">
+          <%= t("lure_types.count", count: @counts[type.id].to_i) %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+</div>

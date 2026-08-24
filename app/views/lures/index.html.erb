@@ -29,6 +29,15 @@
     <%= render "lures/search" %>
   </div>
 
+  <%# Crawlable entry points into the type hubs. These are plain links, not
+      filters: /lures?type=x self-canonicalizes to /lures and so is invisible
+      to search, while /types/x is a real indexable page. %>
+  <nav class="chips" style="margin-bottom:18px" aria-label="<%= t("lure_types.title") %>">
+    <% @lure_types.each do |type| %>
+      <%= link_to type.name, lure_type_path(type), class: "tag" %>
+    <% end %>
+  </nav>
+
   <!-- Active filter pills -->
   <% if @filter.active_pills.any? %>
     <div class="chips" style="margin-bottom:18px">

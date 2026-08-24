@@ -87,6 +87,8 @@ zh:
     species_show: "看看哪些拟饵真正钓得到它，以真实渔获为证"
     shop_show: "渔具商店 — 配送国家和购买链接"
     catch_show: "用 %{lure} 钓获的 %{species} — 照片、条件和拟饵详情。"
+    lure_types_index: "所有路亚拟饵类型 — 摇滚饵、铅笔饵、水面系等，每类均附完整目录。"
+    lure_type_show: "%{count} 个%{type}路亚饵 — 照片、规格、颜色和真实渔获记录。"
   home:
     tagline: 每一款路亚饵，都有渔获证明
     meta_description: Lurepedia 是一部由社区共建的路亚饵百科全书 — 查找路亚饵，并通过真实渔获验证它们的效果。
@@ -241,6 +243,13 @@ zh:
     jig: 铅头钩
     spoon: 勺形亮片
     lipless_crankbait: VIB
+
+  lure_types:
+    title: "路亚饵类型"
+    show_title: "%{type}路亚饵"
+    count:
+      one: "%{count} 个路亚饵"
+      other: "%{count} 个路亚饵"
 
   lure:
     similar_title: "相似路亚饵"
