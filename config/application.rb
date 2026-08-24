@@ -30,6 +30,14 @@ module Lurepedia
     # installed in the production image (see Dockerfile) and on dev machines.
     config.active_storage.variant_processor = :mini_magick
 
+    # Serve images through the app instead of redirecting to storage. The
+    # default redirect mode costs a full extra round-trip before the browser
+    # can even start the real download — measured as most of a 6s LCP on lure
+    # pages. Proxy responses carry a 1-year immutable Cache-Control (Rails'
+    # ActiveStorage::Representations::ProxyController), so repeat views by the
+    # same visitor cost nothing further.
+    config.active_storage.resolve_model_to_route = :rails_storage_proxy
+
     # Internationalization
     config.i18n.available_locales = %i[en de bg ja fr es el zh ru nl it pt ko sv no pl cs fi da]
 

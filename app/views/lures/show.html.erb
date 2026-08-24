@@ -47,7 +47,10 @@
       </span>
       <% if dv&.photo&.attached? %>
         <button type="button" class="lure-stage-zoom" data-variant-stage-target="stageZoom" data-action="modal#open" aria-label="<%= @lure.title %>">
-          <img data-variant-stage-target="stageImage" src="<%= url_for(cropped_photo(dv, resize_to_limit: [ 760, 760 ])) %>" alt="<%= @lure.title %>">
+          <%# fetchpriority=high: Lighthouse identifies this as the page's LCP
+              element; without the hint the browser discovers it no earlier
+              than any other image on the page. %>
+          <img data-variant-stage-target="stageImage" src="<%= url_for(cropped_photo(dv, resize_to_limit: [ 760, 760 ])) %>" alt="<%= @lure.title %>" fetchpriority="high">
         </button>
         <div class="lure-stage-glyph" data-variant-stage-target="stageGlyph" hidden><%= render "shared/lure_glyph" %></div>
       <% else %>

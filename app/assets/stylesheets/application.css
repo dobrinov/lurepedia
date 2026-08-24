@@ -489,7 +489,7 @@ textarea.input { height: auto; padding: 10px 12px; min-height: 96px; resize: ver
 /* Footer ------------------------------------------------------------------ */
 .site-footer { margin-top: 64px; background: var(--surface-1); border-top: 1px solid var(--line); padding: 48px 0 32px; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px; }
-.footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 12px; }
+.footer-col h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 12px; }
 .footer-col a { display: block; font-size: 14px; color: var(--ink-2); padding: 4px 0; }
 .footer-col a:hover { color: var(--ink); }
 .footer-bottom { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }

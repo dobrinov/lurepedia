@@ -92,8 +92,11 @@ module ApplicationHelper
 
   # Variant of a Croppable record's photo with the stored crop (if any)
   # applied before the requested transformations. `+repage` drops the virtual
-  # canvas offset ImageMagick keeps after -crop.
+  # canvas offset ImageMagick keeps after -crop. Defaults to WebP output — a
+  # 760px hero crop measured 110KB as JPEG, 32KB as WebP at the same
+  # dimensions — but callers can override with an explicit format:.
   def cropped_photo(record, **transformations)
+    transformations = { format: :webp }.merge(transformations)
     if (geometry = record.photo_crop_geometry)
       record.photo.variant(crop: geometry, append: "+repage", **transformations)
     else

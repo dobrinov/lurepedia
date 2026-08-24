@@ -6,7 +6,10 @@
         <p class="muted" style="margin-top:12px;max-width:280px"><%= t("home.tagline") %>. <%= t("home.hero_sub") %></p>
       </div>
       <div class="footer-col">
-        <h4><%= t("footer.explore") %></h4>
+        <%# h3, not h4: this footer renders on every page, and most page
+            templates never reach an h3 in their main content, so h4 here
+            skipped a level (axe: heading-order). %>
+        <h3><%= t("footer.explore") %></h3>
         <%= link_to t("nav.species"), species_index_path %>
         <%= link_to t("nav.brands"), brands_path %>
         <%= link_to t("nav.catches"), catches_path %>
@@ -14,7 +17,7 @@
         <% if signed_in? && current_user.can_moderate? %><%= link_to t("moderation.title"), moderation_index_path %><% end %>
       </div>
       <div class="footer-col">
-        <h4><%= t("contribute.suggest_edit") %></h4>
+        <h3><%= t("contribute.suggest_edit") %></h3>
         <%= link_to t("catch.add_title"), new_catch_path %>
         <%= link_to t("lure.add"), new_lure_path %>
         <%= link_to t("species.add"), new_species_path %>
