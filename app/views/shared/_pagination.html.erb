@@ -7,6 +7,19 @@
       <%= link_to t("common.prev"), url_for(request.query_parameters.merge(page: page.current - 1)) %>
     <% end %>
 
+    <%# Direct links to nearby pages: the jump form below covers arbitrary
+        jumps for visitors, but crawlers only follow <a href>, so numbered
+        links are what actually shortens the crawl depth to a page. %>
+    <% page.page_numbers.each do |n| %>
+      <% if n.nil? %>
+        <span class="pager-ellipsis" aria-hidden="true">&hellip;</span>
+      <% elsif n == page.current %>
+        <span class="current" aria-current="page"><%= n %></span>
+      <% else %>
+        <%= link_to n, url_for(request.query_parameters.merge(page: n)) %>
+      <% end %>
+    <% end %>
+
     <%= form_with url: request.path, method: :get, class: "pager-jump" do %>
       <% request.query_parameters.except("page").each do |key, value| %>
         <% Array(value).each do |v| %>

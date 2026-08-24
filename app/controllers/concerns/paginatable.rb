@@ -4,6 +4,15 @@ module Paginatable
     def last? = current >= total_pages
     def from = total_count.zero? ? 0 : ((current - 1) * per) + 1
     def to = [ current * per, total_count ].min
+
+    # Page numbers for the pager, always including 1 and total_pages, with a
+    # window around the current page and nil standing in for an ellipsis gap.
+    # e.g. total_pages=44, current=7 -> [1, nil, 5, 6, 7, 8, 9, nil, 44]
+    def page_numbers(window: 2)
+      kept = ([ 1, total_pages ] + ((current - window)..(current + window)).to_a)
+               .select { |n| n.between?(1, total_pages) }.uniq.sort
+      kept.each_cons(2).flat_map { |a, b| b - a > 1 ? [ a, nil ] : [ a ] } + [ kept.last ]
+    end
   end
 
   # Accepts a relation or a plain Array (for collections filtered in Ruby,

@@ -53,4 +53,18 @@ class LureTypesControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", lure_type_path(@crankbait, locale: :en)
     assert_select "a[href=?]", lure_type_path(@jerkbait, locale: :en)
   end
+
+  test "a deep hub renders numbered pages with an ellipsis and links a nearby page directly" do
+    # 12 per page: 80 lures is 7 pages, enough to force a gap (window 2 from
+    # page 1 covers 1-3, leaving 4-6 collapsed before page 7).
+    80.times { |n| Lure.create!(brand: @brand, lure_type: @crankbait, model: "Model #{n}") }
+
+    get lure_type_path(@crankbait, locale: :en)
+    assert_select ".pager .current", text: "1"
+    assert_select ".pager-ellipsis"
+    assert_select ".pager a[href=?]", lure_type_path(@crankbait, locale: :en, page: 7)
+    # The old jump-to-page form stays: numbered links cover nearby pages, but
+    # a one-step jump to an arbitrary page is still faster than clicking through.
+    assert_select ".pager-jump input[name=page]"
+  end
 end
