@@ -67,10 +67,15 @@ module SeoHelper
   # Pages a view opted out of, plus everything in a non-indexable locale (see
   # Locales). nofollow keeps crawlers from walking that locale's internal links
   # into the rest of the translated tree.
+  #
+  # Pagination pages beyond the first show the same list sorted the same way,
+  # with no content of their own — not worth indexing individually. `follow`,
+  # not `nofollow`, so crawlers still walk the links to the lures on that page.
   def robots_meta_tag
-    return unless @noindex || !Locales.indexable?(I18n.locale)
+    return tag.meta(name: "robots", content: "noindex,nofollow") if @noindex || !Locales.indexable?(I18n.locale)
+    return tag.meta(name: "robots", content: "noindex,follow") if canonical_page
 
-    tag.meta(name: "robots", content: "noindex,nofollow")
+    nil
   end
 
   # The full Open Graph + Twitter card set, driven by the same values as the

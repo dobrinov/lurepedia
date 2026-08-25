@@ -146,6 +146,18 @@ class SeoTest < ActionDispatch::IntegrationTest
     assert_select "link[rel=canonical][href=?]", "http://www.example.com/en/lures"
   end
 
+  test "pages past the first are noindex,follow; the first page carries no robots meta" do
+    get lures_path(locale: :en)
+    assert_select "meta[name=robots]", false
+
+    get lures_path(locale: :en, page: 2)
+    assert_select "meta[name=robots][content='noindex,follow']"
+
+    # page=1 explicitly is still the first page, not "page 2 of something".
+    get lures_path(locale: :en, page: 1)
+    assert_select "meta[name=robots]", false
+  end
+
   test "bare root canonicalizes for HEAD requests too" do
     head "/"
     assert_response :moved_permanently
