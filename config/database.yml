@@ -1,40 +1,71 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
+# PostgreSQL, shared with the other app on the host: one role and four
+# databases of our own on a server-wide instance, reached over the `internal`
+# docker network. Production credentials arrive as environment variables, which
+# is exactly what the host's provisioning script writes out.
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
+# Four entries, not one. Solid Cache, Solid Queue and Solid Cable each keep
+# their own schema (db/{cache,queue,cable}_schema.rb) and their own
+# schema_migrations table, so pointing them at one shared database would make
+# those three tables collide.
 default: &default
-  adapter: sqlite3
-  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: storage/development.sqlite3
+  primary:
+    <<: *default
+    database: lurepedia_development
+  cache:
+    <<: *default
+    database: lurepedia_development_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: lurepedia_development_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: lurepedia_development_cable
+    migrations_paths: db/cable_migrate
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: storage/test.sqlite3
-
-# Store production database in the storage/ directory, which by default
-# is mounted as a persistent Docker volume in config/deploy.yml.
-production:
   primary:
     <<: *default
-    database: storage/production.sqlite3
+    database: lurepedia_test
   cache:
     <<: *default
-    database: storage/production_cache.sqlite3
+    database: lurepedia_test_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: storage/production_queue.sqlite3
+    database: lurepedia_test_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: storage/production_cable.sqlite3
+    database: lurepedia_test_cable
+    migrations_paths: db/cable_migrate
+
+production:
+  primary: &production
+    <<: *default
+    database: <%= ENV["POSTGRES_DB"] %>
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV.fetch("DB_PORT", 5432) %>
+    username: <%= ENV["POSTGRES_USER"] %>
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
+  cache:
+    <<: *production
+    database: <%= ENV["POSTGRES_DB_CACHE"] %>
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *production
+    database: <%= ENV["POSTGRES_DB_QUEUE"] %>
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *production
+    database: <%= ENV["POSTGRES_DB_CABLE"] %>
     migrations_paths: db/cable_migrate

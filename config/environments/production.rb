@@ -85,11 +85,15 @@ Rails.application.configure do
   # Enable DNS rebinding protection and other `Host` header attacks.
   config.hosts = [
     "lurepedia.com",
-    "www.lurepedia.com",
-    "lurepedia.fly.dev" # Fly's default app hostname
+    "www.lurepedia.com"
   ]
 
+  # A deployment DNS does not point at yet is reached on an internal hostname,
+  # which the allowlist above would reject. Comma-separated, set only while
+  # smoke-testing a new host; unset it and this is a no-op.
+  config.hosts += ENV.fetch("EXTRA_HOSTS", "").split(",").map(&:strip).reject(&:empty?)
+
   # Skip DNS rebinding protection for the default health check endpoint
-  # (Fly's health checks hit /up by internal IP, not the public hostname).
+  # (the container healthcheck hits /up on localhost, not the public hostname).
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

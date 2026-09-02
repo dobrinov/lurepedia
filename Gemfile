@@ -4,7 +4,10 @@ source "https://rubygems.org"
 gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
-# Use sqlite3 as the database for Active Record
+# PostgreSQL, shared with the other app on the host. sqlite3 stays for now:
+# the one-off script that copies production data out of the old SQLite file
+# needs both adapters loaded. Drop it once the data has moved.
+gem "pg", "~> 1.6"
 gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"

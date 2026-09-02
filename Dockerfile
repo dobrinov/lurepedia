@@ -16,8 +16,10 @@ WORKDIR /rails
 
 # Install base packages
 # imagemagick is required for Active Storage variants (variant_processor = :mini_magick).
+# postgresql-client brings libpq, which the pg gem loads at runtime, and psql
+# for the odd bit of maintenance from inside the container.
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl imagemagick libjemalloc2 libvips sqlite3 && \
+    apt-get install --no-install-recommends -y curl imagemagick libjemalloc2 libvips postgresql-client && \
     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
@@ -33,7 +35,7 @@ FROM base AS build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips libyaml-dev pkg-config && \
+    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install application gems

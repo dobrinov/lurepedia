@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_02_120000) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
   end
 
   create_table "bans", force: :cascade do |t|
-    t.json "capabilities", default: [], null: false
+    t.jsonb "capabilities", default: [], null: false
     t.datetime "created_at", null: false
     t.datetime "expires_at"
     t.integer "issued_by_id", null: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
     t.string "country"
     t.datetime "created_at", null: false
     t.integer "founded_year"
-    t.json "local_descriptions", default: {}, null: false
+    t.jsonb "local_descriptions", default: {}, null: false
     t.integer "lures_count", default: 0, null: false
     t.string "name", null: false
     t.string "slug", null: false
@@ -203,7 +206,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
     t.integer "catches_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.integer "default_variant_id"
-    t.json "local_descriptions", default: {}, null: false
+    t.jsonb "local_descriptions", default: {}, null: false
     t.integer "lure_type_id", null: false
     t.integer "material"
     t.string "model", null: false
@@ -247,7 +250,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
 
   create_table "revisions", force: :cascade do |t|
     t.boolean "applied", default: true, null: false
-    t.json "changeset"
+    t.jsonb "changeset"
     t.datetime "created_at", null: false
     t.integer "subject_id", null: false
     t.string "subject_type", null: false
@@ -284,8 +287,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_160000) do
     t.integer "catches_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.string "key", null: false
-    t.json "local_descriptions", default: {}, null: false
-    t.json "local_names", default: {}, null: false
+    t.jsonb "local_descriptions", default: {}, null: false
+    t.jsonb "local_names", default: {}, null: false
     t.string "photo_bg_color"
     t.integer "photo_crop_h"
     t.integer "photo_crop_w"
