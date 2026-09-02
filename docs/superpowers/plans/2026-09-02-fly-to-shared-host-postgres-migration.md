@@ -17,8 +17,19 @@ No spec — this is infrastructure, not a feature.
   dispatcher and scheduler all start; Tigris answers from the new host with the
   carried-over credentials; 13 of 100 Postgres connections in use; no errors in
   the log.
-- **Phase 2 and Phase 4 — outstanding.** No data has moved. Fly is still live,
-  still serving `lurepedia.com`, and DNS is unchanged.
+- **Phase 2 — done.** The catalog has been copied onto the new host and
+  verified: all 12 populated tables match the source row for row (348,432 rows
+  in total), sequences sit ahead of the data, the six `jsonb` columns hold
+  objects rather than double-encoded strings, booleans are booleans, and a real
+  image round-trips out of Tigris and back through the app as a WebP variant.
+  `script/copy_sqlite_to_postgres.rb` is the tool; it is idempotent, so the
+  cutover re-run is the same command.
+- **Phase 4 — outstanding.** Fly is still live, still serving `lurepedia.com`,
+  and DNS is unchanged. Nothing points at the new host yet.
+
+Useful for the cutover: the source has taken **no writes** — counts are
+identical to the snapshot and the newest lure edit is 6 August — so the copy is
+current and drift is unlikely to be an issue.
 
 Two things this plan got wrong, both corrected below: the `jsonb` conversion is
 **mandatory, not optional**, and the queue's connection pool has to be sized
@@ -155,14 +166,26 @@ Active Storage is remote. `backup.sh` picks the new databases up automatically
    then `fly ssh sftp get /tmp/snap.sqlite3`.
 2. Create the four local PG databases and `bin/rails db:schema:load` (all four),
    so **Rails owns the schema**, not the copy tool.
-3. Copy data only, into the Rails-made schema:
+3. Copy data into the Rails-made schema with `script/copy_sqlite_to_postgres.rb`
+   (written for this; pgloader turned out not to be needed):
 
-       pgloader --with "data only" --with "truncate" --with "disable triggers" \
-         sqlite:///path/snap.sqlite3 postgresql:///lurepedia_development
+       SNAPSHOT=/path/snap.sqlite3 bin/rails runner script/copy_sqlite_to_postgres.rb
 
-   Fallback if pgloader misbehaves on the boolean/datetime casts: a Ruby script
-   holding two AR connections and `insert_all`-ing each table in batches — the
-   data is small enough that either finishes in minutes.
+   It compares both schemas and refuses to run if they have drifted, empties the
+   target, copies each table in batches of 5,000, resets the sequences, and
+   finishes by comparing every row count. It does two casts by hand because both
+   fail *silently* otherwise: SQLite booleans arrive as `0`/`1`, which Postgres
+   rejects outright for a boolean column, and a `json` column arrives as a
+   **string** of JSON, which Active Record would encode a second time — leaving a
+   document whose entire content is one escaped string.
+
+   Two things learned the hard way. Foreign keys have to be switched off with
+   `session_replication_role = replica` rather than worked around by ordering the
+   tables, because the graph has a cycle: a lure points at its default variant
+   and a variant points back at its lure. And `TRUNCATE` must be a single
+   statement over all tables with `CASCADE` — refusing to empty a referenced
+   table is a restriction of `TRUNCATE` itself, not a foreign-key trigger, so
+   turning the triggers off does not lift it.
 4. **Reset every sequence.** This is the single most likely way to ship a broken
    migration: rows arrive with explicit ids, the sequences stay at 1, and the
    first `create` collides.
@@ -239,8 +262,15 @@ it deliberately.
    `VACUUM INTO` snapshot, download it, stop again. (Or take the snapshot in
    step 2 and accept that a few seconds of writes could follow — with staff-only
    write traffic, coordinate rather than engineer.)
-5. On the host: truncate/recreate `lurepedia_production`, `db:schema:load`,
-   pgloader data-only, **reset sequences**, verify counts.
+5. Re-run the copy. The route that worked: run the script against a **local**
+   Postgres (it needs superuser for `session_replication_role`, which the
+   `lurepedia` role is not), then move the result as a plain-SQL `pg_dump
+   --data-only --disable-triggers`, loaded on the server with `psql -U postgres`
+   inside the container. Plain SQL rather than a custom archive on purpose:
+   local `pg_dump` is 18.1 and the server is 17.11, and a custom-format archive
+   is not readable by an older `pg_restore`. `schema_migrations` and
+   `ar_internal_metadata` are excluded so Rails' own bookkeeping stays as the
+   app wrote it.
 6. `/opt/apps/lurepedia/deploy.sh main`; wait for healthy; re-run the smoke test.
 7. **Namecheap** (BasicDNS), apex and `www`:
    `A → 89.167.69.250`, `AAAA → 2a01:4f9:c015:5b3a::1`. Both records need
