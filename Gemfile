@@ -77,4 +77,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem "mini_magick", "~> 5.0"
+gem "mini_magick", "~> 5.3"
