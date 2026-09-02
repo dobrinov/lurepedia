@@ -7,6 +7,15 @@
 # their own schema (db/{cache,queue,cable}_schema.rb) and their own
 # schema_migrations table, so pointing them at one shared database would make
 # those three tables collide.
+#
+# The queue pool is set apart from RAILS_MAX_THREADS on purpose. Solid Queue
+# runs inside Puma here and needs a connection per worker thread plus its
+# dispatcher and scheduler — five, for the single 3-thread worker in
+# config/queue.yml. Size the queue pool below that and the supervisor refuses to
+# start, Puma notices it has gone and shuts down, and the container restarts
+# forever: "Solid Queue is configured to use 5 threads but the database
+# connection pool is 3". Web concurrency and job concurrency have no business
+# being the same number, so they are no longer the same setting.
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -22,6 +31,7 @@ development:
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
+    pool: <%= ENV.fetch("QUEUE_POOL") { 10 } %>
     database: lurepedia_development_queue
     migrations_paths: db/queue_migrate
   cable:
@@ -42,6 +52,7 @@ test:
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
+    pool: <%= ENV.fetch("QUEUE_POOL") { 10 } %>
     database: lurepedia_test_queue
     migrations_paths: db/queue_migrate
   cable:
@@ -63,6 +74,7 @@ production:
     migrations_paths: db/cache_migrate
   queue:
     <<: *production
+    pool: <%= ENV.fetch("QUEUE_POOL") { 10 } %>
     database: <%= ENV["POSTGRES_DB_QUEUE"] %>
     migrations_paths: db/queue_migrate
   cable:
