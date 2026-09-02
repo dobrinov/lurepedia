@@ -24,12 +24,33 @@ No spec — this is infrastructure, not a feature.
   image round-trips out of Tigris and back through the app as a WebP variant.
   `script/copy_sqlite_to_postgres.rb` is the tool; it is idempotent, so the
   cutover re-run is the same command.
-- **Phase 4 — outstanding.** Fly is still live, still serving `lurepedia.com`,
-  and DNS is unchanged. Nothing points at the new host yet.
+- **Phase 4 — done.** `lurepedia.com` is served from this host. A and AAAA moved
+  for apex and `www`, Let's Encrypt issued for both names, `www` redirects to
+  apex, HSTS and HTTP→HTTPS in place. The switch was gapless: Let's Encrypt
+  validates against the authoritative nameservers, so the certificate was issued
+  while cached answers still reached Fly.
+- **Phase 5 — partly done.** The branch is merged (`main` is at `ba34d42`) and
+  `deploy.sh` now defaults to `main`; it also verifies the public hostname before
+  calling a deploy good. **Fly.io is deleted** — app and volume both.
 
-Useful for the cutover: the source has taken **no writes** — counts are
-identical to the snapshot and the newest lure edit is 6 August — so the copy is
-current and drift is unlikely to be an issue.
+  Still outstanding: `fly.toml` and the `sqlite3` gem are still in the tree, this
+  repo's `CLAUDE.md` still describes the Fly deployment, and `EXTRA_HOSTS` plus
+  the `lure.local` smoke-test route are still in place (harmless — that hostname
+  is not routable). Wunderkind's fictional `config/deploy.yml` is also still
+  there.
+
+## The one real risk left
+
+Deleting the Fly app removed the last independent copy of the data. Everything
+now lives in `lurepedia_production` on one Hetzner disk, plus `/opt/backups`,
+which is **on that same disk**. `/opt/infra/README.md` already says those dumps
+are not a real backup until they leave the box, and that is now the highest-value
+thing left to fix — a Hetzner Storage Box, or pulling the nightly dump off
+periodically. There is no longer anywhere to fall back to.
+
+A second, smaller one: Tigris survived the deletion (verified by download) but is
+still provisioned through the Fly organisation, so that account has to stay
+alive. Phase 0's first decision is now worth revisiting properly.
 
 Two things this plan got wrong, both corrected below: the `jsonb` conversion is
 **mandatory, not optional**, and the queue's connection pool has to be sized
