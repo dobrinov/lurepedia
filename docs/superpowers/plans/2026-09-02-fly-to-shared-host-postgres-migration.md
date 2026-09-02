@@ -4,6 +4,26 @@ Moves Lurepedia off Fly.io onto the box that already serves Wunderkind
 (`89.167.69.250`, `wunderkind.bg`), onto that host's shared PostgreSQL 17.
 No spec — this is infrastructure, not a feature.
 
+## Status
+
+- **Phase 1 — done** (branch `postgres-migration`, commits `06eaa18`, `2de4ec9`).
+  447 tests green on Postgres.
+- **Phase 3 — done.** Role, four databases, `/opt/apps/lurepedia/`, `.env`,
+  `compose.yaml`, `deploy.sh`, Caddy smoke-test route. The app is **running on
+  the new host against an empty database** and reachable at `https://lure.local`
+  (Caddy's internal CA — `curl -k --resolve lure.local:443:89.167.69.250`).
+  Verified: `/`, `/en`, `/en/lures`, `/en/brands`, `/bg/lures`,
+  `/design-system`, `/robots.txt` all answer; Solid Queue's supervisor, worker,
+  dispatcher and scheduler all start; Tigris answers from the new host with the
+  carried-over credentials; 13 of 100 Postgres connections in use; no errors in
+  the log.
+- **Phase 2 and Phase 4 — outstanding.** No data has moved. Fly is still live,
+  still serving `lurepedia.com`, and DNS is unchanged.
+
+Two things this plan got wrong, both corrected below: the `jsonb` conversion is
+**mandatory, not optional**, and the queue's connection pool has to be sized
+apart from the web threads.
+
 ## What the target host actually is
 
 Not Kamal. `wunderkind/config/deploy.yml` describes a Kamal deployment that is
@@ -97,13 +117,33 @@ Active Storage is remote. `backup.sh` picks the new databases up automatically
    `force_ssl` (Caddy terminates TLS and its `trusted_proxies static
    private_ranges` makes `X-Forwarded-Proto` trustworthy) and keep both `/up`
    exclusions — the compose healthcheck hits it over plain HTTP on localhost.
-5. **Local PG**: `bin/rails db:prepare`, `bin/rails test`, `bin/rubocop`,
+5. **`json` → `jsonb` (`ConvertJsonColumnsToJsonb`)** — a **blocker, not a
+   nicety**, and the one thing here that would have taken the site down.
+   Postgres gives `json` no equality operator, so `SELECT DISTINCT` over any
+   table carrying one fails outright:
+
+       PG::UndefinedFunction: could not identify an equality operator for type json
+
+   `LureFilter` leans on `DISTINCT` (a lure matches when *any* of its builds
+   does), so this takes out browse, search and every hub page. SQLite has no
+   such scruples, which is why it stayed invisible until the suite ran on
+   Postgres — **53 errors**. The six columns are `bans.capabilities`,
+   `brands.local_descriptions`, `lures.local_descriptions`,
+   `revisions.changeset`, `species.local_descriptions`, `species.local_names`.
+   Defaults must be dropped and restated around the cast; `ALTER TYPE` will not
+   carry one across. Fixes all 53.
+6. **Size the queue pool apart from the web threads.** Solid Queue runs inside
+   Puma and needs a connection per worker thread plus its dispatcher and
+   scheduler — five, for the single 3-thread worker in `config/queue.yml`. Below
+   that the supervisor refuses to start, Puma notices it has gone and shuts
+   down, and the container restarts forever. On SQLite this was luck: the pool
+   came from the same `RAILS_MAX_THREADS` and defaulted to 5, exactly enough.
+   Dropping that to 3 to conserve shared connections is what exposed it. `queue`
+   now carries its own `QUEUE_POOL`, default 10.
+7. **Local PG**: `bin/rails db:prepare`, `bin/rails test`, `bin/rubocop`,
    `bin/ci`. Boot the app on an empty PG and click through. Regenerate
    `db/schema.rb` from PG and commit it.
-6. Leave `fly.toml` in place until Phase 5.
-
-Optional follow-up, not part of the cutover: a migration turning the 6 `json`
-columns into `jsonb`.
+8. Leave `fly.toml` in place until Phase 5.
 
 ## Phase 2 — dry-run the data migration locally (no production risk)
 
@@ -260,9 +300,18 @@ it deliberately.
    `RAILS_MAX_THREADS=3` this is comfortable; raising threads or workers is what
    would break Wunderkind, not just Lurepedia.
 4. **Type coercion** on 106k blob rows — booleans as `0/1`, datetimes as strings.
-   Caught by the Phase 2 dry run, which is why the dry run exists.
-5. **Collation reordering** in alphabetical lists (cosmetic, expected).
-6. **Tigris coupling.** Compute leaves Fly, storage does not. Until Phase 0's
+   Caught by the Phase 2 dry run, which is why the dry run exists. The six
+   `jsonb` columns now also have to receive valid JSON rather than arbitrary
+   text; they already hold JSON, but a malformed row that SQLite tolerated will
+   now fail the cast loudly, which is the better outcome.
+5. **A green healthcheck is not a running app.** The first deploy reported
+   *healthy* while the container was crashlooping: `/up` answers 200 in the
+   seconds before Solid Queue gives up and takes Puma with it, so every restart
+   handed out a fresh green. `deploy.sh` now watches `RestartCount` across a
+   20-second settle and re-checks health afterwards; without that, a broken
+   deploy looks like a good one.
+6. **Collation reordering** in alphabetical lists (cosmetic, expected).
+7. **Tigris coupling.** Compute leaves Fly, storage does not. Until Phase 0's
    decision is revisited, the site depends on a Fly-billed service.
 
 ## Verification checklist (run at Phase 2, Phase 3 and Phase 4)
